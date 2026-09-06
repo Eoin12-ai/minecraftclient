@@ -33,7 +33,7 @@ public class PotionsHud extends HudComponent {
       if (player == null) {
          return List.of();
       } else {
-         ArrayList list = new ArrayList(player.getStatusEffects());
+         ArrayList<StatusEffectInstance> list = new ArrayList(player.getStatusEffects());
          list.sort(Comparator.comparingInt(StatusEffectInstance::getDuration).reversed());
          return list;
       }
@@ -73,7 +73,7 @@ public class PotionsHud extends HudComponent {
    @Override
    public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2, float tickDelta3, float tickDelta4) {
       Theme theme = this.themes.current();
-      List list = this.effects();
+      List<StatusEffectInstance> list = this.effects();
       if (!list.isEmpty()) {
          boolean ok = this.rightAnchored();
          float f = tickDelta2;
