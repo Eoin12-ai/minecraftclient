@@ -407,7 +407,7 @@ public class ConfigPanel {
                this.pendingConfirm = new ConfigPanel.Confirm(
                   ConfigPanel.Action.SAVE,
                   n,
-                  "Overwrite "" + configStore.slot(n).name() + ""?",
+                  "Overwrite \\"" + configStore.slot(n).name() + "\"?",
                   "This replaces the config saved in slot " + (n + 1) + ".",
                   (String)null
                );
@@ -434,7 +434,7 @@ public class ConfigPanel {
                this.pendingConfirm = new ConfigPanel.Confirm(
                   ConfigPanel.Action.IMPORT,
                   n,
-                  "Import over "" + configStore.slot(n).name() + ""?",
+                  "Import over \\"" + configStore.slot(n).name() + "\"?",
                   "This replaces slot " + (n + 1) + " with the pasted config.",
                   text2
                );
@@ -445,7 +445,7 @@ public class ConfigPanel {
             break;
          case DELETE:
             this.pendingConfirm = new ConfigPanel.Confirm(
-               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
             );
             UiSounds.select();
       }
@@ -468,7 +468,7 @@ public class ConfigPanel {
    private void doDelete(int n) {
       String text2 = this.store().slot(n).name();
       if (this.store().delete(n)) {
-         this.toast("Deleted "" + text2 + """);
+         this.toast("Deleted \\"" + text2 + "\"");
          UiSounds.select();
       } else {
          this.toast("Couldn't delete the config");
@@ -585,7 +585,7 @@ public class ConfigPanel {
       this.pendingConfirm = new ConfigPanel.Confirm(
          ConfigPanel.Action.SAVE,
          n,
-         "Overwrite "" + this.store().slot(n).name() + ""?",
+         "Overwrite \\"" + this.store().slot(n).name() + "\"?",
          "This replaces the config saved in slot " + (n + 1) + ".",
          (String)null
       );
@@ -596,7 +596,7 @@ public class ConfigPanel {
       this.pendingConfirm = new ConfigPanel.Confirm(
          ConfigPanel.Action.DELETE,
          n,
-         "Delete "" + this.store().slot(n).name() + ""?",
+         "Delete \\"" + this.store().slot(n).name() + "\"?",
          "This permanently removes slot " + (n + 1) + ".",
          (String)null
       );
