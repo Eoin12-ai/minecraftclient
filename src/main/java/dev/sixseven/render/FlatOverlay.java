@@ -59,4 +59,12 @@ public final class FlatOverlay {
             edge(immediate, matrices, camera, x1, z2, x1, z1, y2, line, lineWidth);
         }
     }
+
+    public static void marker(Object immediate, Object matrices, Object vec, double x, double z, double y, double size, int color) {
+        // stub — marker rendering not implemented in 1.21.5 compat mode
+    }
+
+    public static void flush(Object immediate) {
+        // stub
+    }
 }
