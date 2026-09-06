@@ -1,7 +1,6 @@
 package dev.sixseven.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
 import dev.sixseven.SixSevenClient;
 import dev.sixseven.module.misc.CustomGlintModule;
 import java.io.InputStream;
@@ -21,7 +20,7 @@ public final class GlintTextureTinter {
    private static final Identifier[] TEXTURES = new Identifier[]{ItemRenderer.ITEM_ENCHANTMENT_GLINT, ItemRenderer.ENTITY_ENCHANTMENT_GLINT};
    private static final NativeImage[] originals = new NativeImage[TEXTURES.length];
    private static final NativeImage[] scratch = new NativeImage[TEXTURES.length];
-   private static final GpuTexture[] lastUploaded = new GpuTexture[TEXTURES.length];
+   private static final int[] lastUploaded = new int[TEXTURES.length];
    private static final Map<String, NativeImage> customCache = new HashMap<>();
    private static boolean loaded;
    private static boolean written;
@@ -92,7 +91,7 @@ public final class GlintTextureTinter {
          for (int offset = 0; offset < TEXTURES.length; offset++) {
             if (originals[offset] != null) {
                AbstractTexture abstractTexture2 = client.getTexture(TEXTURES[offset]);
-               GpuTexture gpuTexture = abstractTexture2 == null ? null : abstractTexture2.getGlTexture();
+               int gpuTextureId = abstractTexture2 == null ? null : abstractTexture2.getGlTexture();
                if (gpuTexture != null) {
                   NativeImage nativeImage = source.build(offset);
                   if (nativeImage != null) {
@@ -115,7 +114,7 @@ public final class GlintTextureTinter {
          NativeImage nativeImage = originals[n];
          if (nativeImage != null) {
             AbstractTexture abstractTexture = client.getTexture(TEXTURES[n]);
-            GpuTexture gpuTexture = abstractTexture == null ? null : abstractTexture.getGlTexture();
+            int gpuTextureId = abstractTexture == null ? null : abstractTexture.getGlTexture();
             if (gpuTexture != null) {
                RenderSystem.getDevice().createCommandEncoder().writeToTexture(gpuTexture, nativeImage);
                lastUploaded[n] = gpuTexture;
