@@ -478,7 +478,7 @@ public class ConfigPanel {
    private void doSave(int n) {
       if (this.store().save(n)) {
          String text2 = this.store().slot(n).name();
-         this.toast("Saved to "" + text2 + """);
+         this.toast("Saved to \"" + text2 + "\"");
          UiSounds.toggle(true);
       } else {
          this.toast("Couldn't save the config");
@@ -488,7 +488,7 @@ public class ConfigPanel {
    private void doActivate(int n) {
       if (this.store().activate(n)) {
          String text2 = this.store().slot(n).name();
-         this.toast("Activated "" + text2 + """);
+         this.toast("Activated \"" + text2 + "\"");
          UiSounds.toggle(true);
       } else {
          this.toast("That slot is empty");
@@ -502,7 +502,7 @@ public class ConfigPanel {
       } else {
          this.setClipboard(text2);
          String name2 = this.store().slot(n).name();
-         this.toast("Copied "" + name2 + "" to clipboard");
+         this.toast("Copied \"" + name2 + "\" to clipboard");
          UiSounds.select();
       }
    }
