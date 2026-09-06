@@ -10,7 +10,7 @@ base { archivesName = project.archives_base_name }
 
 loom {
     mixin {
-        defaultRefmapName = 'sixsevenclient.refmap.json'
+        defaultRefmapName = 'epsteinclient.refmap.json'
     }
 }
 
