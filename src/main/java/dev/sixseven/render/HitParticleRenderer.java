@@ -158,7 +158,7 @@ public final class HitParticleRenderer {
          float f12 = (float)(hitParticle.getX(tickDelta) - vec.x);
          float f13 = (float)(hitParticle.getY(tickDelta) - vec.y);
          float f14 = (float)(hitParticle.getZ(tickDelta) - vec.z);
-         float f15 = 0.18F * MathHelper.sin((double)(tickDelta * 6.0F + hitParticle.rot));
+         float f15 = 0.18F * (float)Math.sin((tickDelta * 6.0F + hitParticle.rot));
          int n = Colors.withAlpha(Colors.lighten(hitParticle.rgb, 0.25F), f9);
          fanHeart(consumer, entry, vector3f, vector3f2, f12, f13, f14, f11, f15, n);
          if (tickDelta2 > 0.01F) {
@@ -189,7 +189,7 @@ public final class HitParticleRenderer {
       float f = tickDelta / hitParticle.lifetime;
       float f29 = fadeAlpha(f);
       if (!(f29 <= 0.01F)) {
-         float f30 = 0.45F + 0.55F * MathHelper.abs(MathHelper.sin((double)(tickDelta * 42.0F + hitParticle.rot)));
+         float f30 = 0.45F + 0.55F * MathHelper.abs((float)Math.sin((tickDelta * 42.0F + hitParticle.rot)));
          f29 *= f30;
          float f31 = (float)(hitParticle.ox - vec.x);
          float f32 = (float)(hitParticle.oy - vec.y);
@@ -223,7 +223,7 @@ public final class HitParticleRenderer {
 
          for (int offset = 1; offset <= b; offset++) {
             float f50 = (float)offset / (float)b;
-            float f51 = MathHelper.sin((double)(f50 * (float) Math.PI));
+            float f51 = (float)Math.sin((f50 * (float) Math.PI));
             float f52 = offset == b ? 0.0F : (hash(hitParticle, offset) * 2.0F - 1.0F) * f45 * f51;
             float f53 = f31 + f37 * f50 + (vector3f.x * f43 + vector3f2.x * f44) * f52;
             float f54 = f32 + f38 * f50 + (vector3f.y * f43 + vector3f2.y * f44) * f52;
@@ -245,8 +245,8 @@ public final class HitParticleRenderer {
          float f15 = f < 0.22F ? easeOutBack(f / 0.22F) : 1.0F;
          float f16 = 0.16F * hitParticle.size * f15;
          float f17 = hitParticle.rot + hitParticle.rotSpeed * tickDelta * 0.5F;
-         float f18 = MathHelper.cos((double)f17);
-         float f19 = MathHelper.sin((double)f17);
+         float f18 = (float)Math.cos(f17);
+         float f19 = (float)Math.sin(f17);
          Vector3f vector3f4 = axis(vector3f, vector3f2, f18 * f16, f19 * f16);
          Vector3f vector3f5 = axis(vector3f, vector3f2, -f19 * f16, f18 * f16);
          float f20 = (float)(hitParticle.getX(tickDelta) - vec.x);
@@ -280,8 +280,8 @@ public final class HitParticleRenderer {
 
          for (int offset = 0; offset <= b; offset++) {
             float f26 = (float)offset / (float)b * (float) (Math.PI * 2);
-            float f27 = MathHelper.cos((double)f26) * f18;
-            float f28 = MathHelper.sin((double)f26) * f18;
+            float f27 = (float)Math.cos(f26) * f18;
+            float f28 = (float)Math.sin(f26) * f18;
             float f29 = f20 + vector3f.x * f27 + vector3f2.x * f28;
             float f30 = f21 + vector3f.y * f27 + vector3f2.y * f28;
             float f31 = f22 + vector3f.z * f27 + vector3f2.z * f28;
@@ -319,8 +319,8 @@ public final class HitParticleRenderer {
          vector3f.set(0.0F, 1.0F, 0.0F);
       }
 
-      consumer.vertex(entry, f, f8, f9).color(n).normal(entry, vector3f).lineWidth(f13);
-      consumer.vertex(entry, f10, f11, f12).color(n).normal(entry, vector3f).lineWidth(f13);
+      consumer.vertex(entry, f, f8, f9).color(n).normal(entry, vector3f);
+      consumer.vertex(entry, f10, f11, f12).color(n).normal(entry, vector3f);
    }
 
    private static void texVertex(
@@ -335,7 +335,7 @@ public final class HitParticleRenderer {
    }
 
    private static float hash(HitParticlesModule.HitParticle hitParticle, int n) {
-      float f = MathHelper.sin((double)((float)(hitParticle.ox * 12.9898 + hitParticle.oz * 78.233 + (double)hitParticle.rot * 3.17 + (double)n * 43.123)))
+      float f = (float)Math.sin(((float)(hitParticle.ox * 12.9898 + hitParticle.oz * 78.233 + (double)hitParticle.rot * 3.17 + (double)n * 43.123)))
          * 43758.547F;
       return f - (float)MathHelper.floor(f);
    }
