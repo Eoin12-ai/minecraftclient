@@ -107,12 +107,12 @@ public class StorageEspModule extends Module {
       final int defaultColor;
       final boolean defaultEnabled;
 
-      private StorageType(String name, String iconId, Item nullxxxx, int nullxxxxx, boolean nullxxxxxx) {
-         this.key = nullxx;
-         this.label = nullxxx;
-         this.icon = nullxxxx;
-         this.defaultColor = nullxxxxx;
-         this.defaultEnabled = nullxxxxxx;
+      private StorageType(String key, String label, Item icon, int defaultColor, boolean defaultEnabled) {
+         this.key = key;
+         this.label = label;
+         this.icon = icon;
+         this.defaultColor = defaultColor;
+         this.defaultEnabled = defaultEnabled;
       }
 
       private static StorageEspModule.StorageType[] $values() {
