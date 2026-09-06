@@ -184,8 +184,8 @@ public class ConfigPanel {
       nVGRenderer.text(text2, f + 6.0F, f4, 9.5F, theme.accentBright());
    }
 
-   private void layoutButtons(NVGRenderer nVGRenderer, Theme theme, ConfigStore.Slot slot, float f3, float f2, float f, float f4) {
-      ArrayList list = new ArrayList();
+   private void layoutButtons(NVGRenderer nVGRenderer, Theme theme, ConfigStore.Slot slot, float panelX, float mouseX, float mouseY, float btnAreaH) {
+      ArrayList<Object> list = new ArrayList<>();
 
       record Spec(ConfigPanel.Action action, String label, boolean primary, boolean danger) {
       }
@@ -202,28 +202,28 @@ public class ConfigPanel {
          list.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
       }
 
-      float f = 26.0F;
-      float f2 = 11.0F;
-      float f3 = 6.0F;
-      float f4 = 12.0F;
-      float f5 = 0.0F;
-      float[] f6 = new float[list.size()];
+      float btnH   = 26.0F;
+      float padX   = 11.0F;
+      float gap    = 6.0F;
+      float font   = 12.0F;
+      float totalW = 0.0F;
+      float[] widths = new float[list.size()];
 
       for (int n = 0; n < list.size(); n++) {
-         widths[n] = nVGRenderer.textWidth(((Spec)list.get(n)).label(), btnFont) + f2 * 2.0F;
-         totalW += widths[n] + (n > 0 ? btnGap : 0.0F);
+         widths[n] = nVGRenderer.textWidth(((Spec)list.get(n)).label(), font) + padX * 2.0F;
+         totalW += widths[n] + (n > 0 ? gap : 0.0F);
       }
 
-      float f = tmp12 - totalW;
-      float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+      float startX = panelX - totalW;
+      float startY = mouseY + (60.0F - btnAreaH) / 2.0F;
 
       for (int n = 0; n < list.size(); n++) {
-         Spec spec = (Spec)tmp5.get(n);
-         float f3 = temp[n];
-         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
-         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
-         this.hits.add(new ConfigPanel.Hit(spec.action(), tmp7.index(), f, f2, f3, tmp13, spec.primary()));
-         f += f3 + temp4;
+         Spec spec = (Spec)list.get(n);
+         float specW = widths[n];
+         boolean ok = mouseX >= startX && mouseX <= startX + specW && mouseY >= startY && mouseY <= startY + btnAreaH;
+         this.drawButton(nVGRenderer, theme, startX, startY, specW, btnAreaH, spec.label(), font, spec.primary(), ok, spec.danger());
+         this.hits.add(new ConfigPanel.Hit(spec.action(), slot.index(), startX, startY, specW, btnAreaH, spec.primary()));
+         startX += specW + gap;
       }
    }
 
