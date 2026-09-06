@@ -161,7 +161,7 @@ public class FakeStatsModule extends Module {
             return false;
          } else {
             String text6 = str5[0];
-            if (text6.startsWith("\\")) {
+            if (text6.startsWith("\")) {
                text6 = text6.substring(1);
             }
 
