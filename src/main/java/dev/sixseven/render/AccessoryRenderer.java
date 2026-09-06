@@ -8,9 +8,6 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.RenderPhase;
-import net.minecraft.client.render.VertexFormats;
-import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider.Immediate;
@@ -27,19 +24,7 @@ public final class AccessoryRenderer {
    private static final int CAPE_ROWS = 9;
    private static final float CAPE_WIDTH = 0.62F;
    private static final float CAPE_LENGTH = 1.05F;
-   private static final RenderLayer CAPE_FILL = RenderLayer.of(
-      "sixsevenclient:cape_fill",
-      VertexFormats.POSITION_COLOR,
-      VertexFormat.DrawMode.QUADS,
-      1536,
-      RenderLayer.MultiPhaseParameters.builder()
-          .program(RenderPhase.COLOR_PROGRAM)
-          .transparency(RenderPhase.TRANSLUCENT_TRANSPARENCY)
-          .depthTest(RenderPhase.LEQUAL_DEPTH_TEST)
-          .cull(RenderPhase.DISABLE_CULLING)
-          .writeMaskState(RenderPhase.ALL_MASK)
-          .build(false)
-   );
+   private static final RenderLayer CAPE_FILL = RenderLayer.getDebugQuads();
 
    private AccessoryRenderer() {
    }
