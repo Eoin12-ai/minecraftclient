@@ -24,66 +24,6 @@ Please make sure to read and understand the following license:
 :remapping 50 mods from modImplementation (java-api)
 
 > Task :compileJava
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: ')' or ',' expected
-                  "Overwrite \\"" + configStore.slot(n).name() + "\"?",
-                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: illegal character: '\'
-                  "Overwrite \\"" + configStore.slot(n).name() + "\"?",
-                                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: not a statement
-                  "This replaces the config saved in slot " + (n + 1) + ".",
-                                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: ';' expected
-                  "This replaces the config saved in slot " + (n + 1) + ".",
-                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: not a statement
-                  (String)null
-                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: ';' expected
-                  (String)null
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: ')' or ',' expected
-                  "Import over \\"" + configStore.slot(n).name() + "\"?",
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: illegal character: '\'
-                  "Import over \\"" + configStore.slot(n).name() + "\"?",
-                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: not a statement
-                  "This replaces slot " + (n + 1) + " with the pasted config.",
-                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: ';' expected
-                  "This replaces slot " + (n + 1) + " with the pasted config.",
-                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: not a statement
-                  text2
-                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: ';' expected
-                  text2
-                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ')' or ',' expected
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: illegal character: '\'
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: ')' or ',' expected
-         this.toast("Deleted \\"" + text2 + "\"");
-                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: illegal character: '\'
-         this.toast("Deleted \\"" + text2 + "\"");
-                                             ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
          this.toast("Saved to "" + text2 + """);
                                ^
@@ -93,49 +33,7 @@ Please make sure to read and understand the following license:
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
          this.toast("Copied "" + name2 + "" to clipboard");
                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: ')' or ',' expected
-         "Overwrite \\"" + this.store().slot(n).name() + "\"?",
-                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: illegal character: '\'
-         "Overwrite \\"" + this.store().slot(n).name() + "\"?",
-                                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: not a statement
-         "This replaces the config saved in slot " + (n + 1) + ".",
-                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: ';' expected
-         "This replaces the config saved in slot " + (n + 1) + ".",
-                                                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: not a statement
-         (String)null
-          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: ';' expected
-         (String)null
-                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: ')' or ',' expected
-         "Delete \\"" + this.store().slot(n).name() + "\"?",
-                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: illegal character: '\'
-         "Delete \\"" + this.store().slot(n).name() + "\"?",
-                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: not a statement
-         "This permanently removes slot " + (n + 1) + ".",
-                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: ';' expected
-         "This permanently removes slot " + (n + 1) + ".",
-                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: not a statement
-         (String)null
-          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: ';' expected
-         (String)null
-                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: ')' or ',' expected
-                  return new ConfigStore.ImportResult(true, "Imported \\"" + slot2.name + "\"");
-                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: illegal character: '\'
-                  return new ConfigStore.ImportResult(true, "Imported \\"" + slot2.name + "\"");
-                                                                                           ^
-37 errors
+3 errors
 
 > Task :compileJava FAILED
 [Incubating] Problems report is available at: file:///home/runner/work/minecraftclient/minecraftclient/build/reports/problems/problems-report.html
@@ -145,99 +43,6 @@ FAILURE: Build failed with an exception.
 * What went wrong:
 Execution failed for task ':compileJava'.
 > Compilation failed; see the compiler output below.
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: ';' expected
-                    "This replaces the config saved in slot " + (n + 1) + ".",
-                                                                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: ';' expected
-                    (String)null
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: ';' expected
-                    "This replaces slot " + (n + 1) + " with the pasted config.",
-                                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: ';' expected
-                    text2
-                         ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
-                 ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
-                 ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: ';' expected
-           "This replaces the config saved in slot " + (n + 1) + ".",
-                                                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: ';' expected
-           (String)null
-                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: ';' expected
-           "This permanently removes slot " + (n + 1) + ".",
-                                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: ';' expected
-           (String)null
-                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: not a statement
-                    "This replaces the config saved in slot " + (n + 1) + ".",
-                                                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: not a statement
-                    (String)null
-                     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: not a statement
-                    "This replaces slot " + (n + 1) + " with the pasted config.",
-                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: not a statement
-                    text2
-                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
-                 ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                        ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
-                 ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                                     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: not a statement
-           "This replaces the config saved in slot " + (n + 1) + ".",
-                                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: not a statement
-           (String)null
-            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: not a statement
-           "This permanently removes slot " + (n + 1) + ".",
-                                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: not a statement
-           (String)null
-            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: illegal character: '\'
-                    "Overwrite \\"" + configStore.slot(n).name() + "\"?",
-                                                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: illegal character: '\'
-                    "Import over \\"" + configStore.slot(n).name() + "\"?",
-                                                                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: illegal character: '\'
-                 ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: illegal character: '\'
-           this.toast("Deleted \\"" + text2 + "\"");
-                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: illegal character: '\'
-           "Overwrite \\"" + this.store().slot(n).name() + "\"?",
-                                                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: illegal character: '\'
-           "Delete \\"" + this.store().slot(n).name() + "\"?",
-                                                         ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: illegal character: '\'
-                    return new ConfigStore.ImportResult(true, "Imported \\"" + slot2.name + "\"");
-                                                                                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: ')' or ',' expected
-                    "Overwrite \\"" + configStore.slot(n).name() + "\"?",
-                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: ')' or ',' expected
-                    "Import over \\"" + configStore.slot(n).name() + "\"?",
-                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ')' or ',' expected
-                 ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: ')' or ',' expected
-           this.toast("Deleted \\"" + text2 + "\"");
-                                  ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
            this.toast("Saved to "" + text2 + """);
                                  ^
@@ -247,16 +52,7 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
            this.toast("Copied "" + name2 + "" to clipboard");
                                ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: ')' or ',' expected
-           "Overwrite \\"" + this.store().slot(n).name() + "\"?",
-                         ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: ')' or ',' expected
-           "Delete \\"" + this.store().slot(n).name() + "\"?",
-                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: ')' or ',' expected
-                    return new ConfigStore.ImportResult(true, "Imported \\"" + slot2.name + "\"");
-                                                                           ^
-  37 errors
+  3 errors
 
 * Try:
 > Check your code and dependencies to fix the compilation error(s)
@@ -296,99 +92,6 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: ';' expected
-                  "This replaces the config saved in slot " + (n + 1) + ".",
-                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: ';' expected
-                  (String)null
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: ';' expected
-                  "This replaces slot " + (n + 1) + " with the pasted config.",
-                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: ';' expected
-                  text2
-                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: ';' expected
-         "This replaces the config saved in slot " + (n + 1) + ".",
-                                                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: ';' expected
-         (String)null
-                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: ';' expected
-         "This permanently removes slot " + (n + 1) + ".",
-                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: ';' expected
-         (String)null
-                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: not a statement
-                  "This replaces the config saved in slot " + (n + 1) + ".",
-                                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: not a statement
-                  (String)null
-                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: not a statement
-                  "This replaces slot " + (n + 1) + " with the pasted config.",
-                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: not a statement
-                  text2
-                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                                                                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: not a statement
-         "This replaces the config saved in slot " + (n + 1) + ".",
-                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: not a statement
-         (String)null
-          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: not a statement
-         "This permanently removes slot " + (n + 1) + ".",
-                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: not a statement
-         (String)null
-          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: illegal character: '\'
-                  "Overwrite \\"" + configStore.slot(n).name() + "\"?",
-                                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: illegal character: '\'
-                  "Import over \\"" + configStore.slot(n).name() + "\"?",
-                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: illegal character: '\'
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: illegal character: '\'
-         this.toast("Deleted \\"" + text2 + "\"");
-                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: illegal character: '\'
-         "Overwrite \\"" + this.store().slot(n).name() + "\"?",
-                                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: illegal character: '\'
-         "Delete \\"" + this.store().slot(n).name() + "\"?",
-                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: illegal character: '\'
-                  return new ConfigStore.ImportResult(true, "Imported \\"" + slot2.name + "\"");
-                                                                                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: ')' or ',' expected
-                  "Overwrite \\"" + configStore.slot(n).name() + "\"?",
-                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: ')' or ',' expected
-                  "Import over \\"" + configStore.slot(n).name() + "\"?",
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ')' or ',' expected
-               ConfigPanel.Action.DELETE, n, "Delete \\"" + configStore.slot(n).name() + "\"?", "This permanently removes slot " + (n + 1) + ".", (String)null
-                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: ')' or ',' expected
-         this.toast("Deleted \\"" + text2 + "\"");
-                                ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
          this.toast("Saved to "" + text2 + """);
                                ^
@@ -398,16 +101,7 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
          this.toast("Copied "" + name2 + "" to clipboard");
                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: ')' or ',' expected
-         "Overwrite \\"" + this.store().slot(n).name() + "\"?",
-                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: ')' or ',' expected
-         "Delete \\"" + this.store().slot(n).name() + "\"?",
-                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: ')' or ',' expected
-                  return new ConfigStore.ImportResult(true, "Imported \\"" + slot2.name + "\"");
-                                                                         ^
-37 errors
+3 errors
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:84)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:46)
 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
@@ -564,5 +258,5 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
 
-BUILD FAILED in 50s
+BUILD FAILED in 56s
 1 actionable task: 1 executed
