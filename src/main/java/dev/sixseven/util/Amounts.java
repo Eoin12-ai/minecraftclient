@@ -1,6 +1,5 @@
 package dev.sixseven.util;
 
-import java.lang.invoke.StringConcatFactory;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Optional;
@@ -12,6 +11,8 @@ import net.minecraft.text.Text;
 
 public final class Amounts {
    private static final int[] POWER = new int[]{18, 15, 12, 9, 6, 3};
+   private static final String[] SUFFIX = new String[]{"qt", "q", "t", "b", "m", "k"};
+   private static final String[] DISPLAY = new String[]{"qt", "Q", "T", "B", "M", "k"};
    private static final Pattern NUMBER = Pattern.compile("\\d[\\d.,]*(?:\\s?(?:[qQ][tT]|[kKmMbBtTqQ]))?");
 
    private Amounts() {
@@ -118,7 +119,7 @@ public final class Amounts {
 
    private static Text spliceStyled(Text text, String text2, boolean value) {
       ArrayList list = new ArrayList();
-      ArrayList list2 = new ArrayList();
+      ArrayList<String> list2 = new ArrayList();
       text.visit((arg, arg2) -> {
          list.add(arg);
          list2.add(arg2);
