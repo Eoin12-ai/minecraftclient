@@ -80,7 +80,7 @@ public class WeatherNotifierModule extends Module {
 
          if (this.sound.get()) {
             float f = value ? 1.2F : 0.8F;
-            client.getSoundManager().play(PositionedSoundInstance.ui((SoundEvent)SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f, 0.6F));
+            client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL, f, 0.6F));
          }
       }
    }
