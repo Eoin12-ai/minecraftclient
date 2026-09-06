@@ -9,7 +9,6 @@ import java.util.Set;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.item.ItemStack;
@@ -118,7 +117,7 @@ public final class SelectBlocksScreen extends Screen {
             return true;
          }
       } else {
-         return super.mouseClicked(var1, var2);
+         return super.mouseClicked(_cx, _cy, _cb);
       }
    }
 
