@@ -17,29 +17,678 @@ Daemon will be stopped at the end of the build
 Fabric Loom: 1.9.2
 :remapping 50 mods from modImplementation (java-api)
 
+> Task :compileJava
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @Inject.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GuiRenderer;incrementFrame()V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Cannot find target method "renderWorld(Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="renderWorld(Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:41: warning: Cannot find target method "onMouseButton(JLnet/minecraft/MouseInput;I)V" for @Inject.method="onMouseButton(JLnet/minecraft/MouseInput;I)V" in net.minecraft.client.Mouse
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:21: warning: Cannot find target method "onKey(JILnet/minecraft/KeyInput;)V" for @Inject.method="onKey(JILnet/minecraft/KeyInput;)V" in net.minecraft.client.Keyboard
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:29: warning: Cannot find target method "renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" for @Inject.method="renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" in net.minecraft.client.render.WorldRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @ModifyArg.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Camera;setRotation(FF)V'
+   @ModifyArgs(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:32: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/TextRenderer;getWidth(Lnet/minecraft/StringVisitable;)I'
+   @Redirect(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/MathHelper;lerp(FFF)F'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:86: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Cannot find target method "render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" for @ModifyExpressionValue.method="render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" in net.minecraft.client.render.entity.equipment.EquipmentRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getGamma()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:29: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyReturnValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:14: error: Could not locate @Accessor target movementVector in target net.minecraft.client.input.Input
+   @Accessor("movementVector")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: cannot find symbol
+import net.minecraft.client.input.CharInput;
+                                 ^
+  symbol:   class CharInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
+    public boolean mouseClicked(Click click, boolean unused) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
+    public boolean mouseDragged(Click click, double dx, double dy) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
+    public boolean mouseReleased(Click click) {
+                                 ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
+    public boolean keyPressed(KeyInput ki) {
+                              ^
+  symbol:   class KeyInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
+    public boolean charTyped(CharInput ci) {
+                             ^
+  symbol:   class CharInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:23: error: cannot find symbol
+import net.minecraft.entity.player.SkinTextures;
+                                  ^
+  symbol:   class SkinTextures
+  location: package net.minecraft.entity.player
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:29: error: cannot find symbol
+   private volatile SkinTextures replacement;
+                    ^
+  symbol:   class SkinTextures
+  location: class SkinProtectModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:51: error: cannot find symbol
+   public SkinTextures replacementSkin() {
+          ^
+  symbol:   class SkinTextures
+  location: class SkinProtectModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:17: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:20: error: cannot find symbol
+import net.minecraft.client.input.CharInput;
+                                 ^
+  symbol:   class CharInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:21: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:334: error: cannot find symbol
+   public boolean mouseClicked(Click click, boolean value) {
+                               ^
+  symbol:   class Click
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:405: error: cannot find symbol
+   public boolean mouseDragged(Click click, double d, double coord) {
+                               ^
+  symbol:   class Click
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:413: error: cannot find symbol
+   public boolean mouseReleased(Click click) {
+                                ^
+  symbol:   class Click
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:429: error: cannot find symbol
+   public boolean keyPressed(KeyInput keyInput) {
+                             ^
+  symbol:   class KeyInput
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:464: error: cannot find symbol
+   public boolean charTyped(CharInput charInput) {
+                            ^
+  symbol:   class CharInput
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:4: error: package com.mojang.blaze3d.textures does not exist
+import com.mojang.blaze3d.textures.GpuTexture;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:24: error: cannot find symbol
+   private static final GpuTexture[] lastUploaded = new GpuTexture[TEXTURES.length];
+                        ^
+  symbol:   class GpuTexture
+  location: class GlintTextureTinter
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:16: error: cannot find symbol
+import net.minecraft.client.texture.GlTexture;
+                                   ^
+  symbol:   class GlTexture
+  location: package net.minecraft.client.texture
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
+   private static boolean bindOverlayFbo(GlTexture glTexture, int bind, int bind2) {
+                                         ^
+  symbol:   class GlTexture
+  location: class OverlayRenderer
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:3: error: package com.mojang.blaze3d.pipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
+                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:5: error: cannot find symbol
+import com.mojang.blaze3d.platform.DepthTestFunction;
+                                  ^
+  symbol:   class DepthTestFunction
+  location: package com.mojang.blaze3d.platform
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:7: error: cannot find symbol
+import net.minecraft.RenderLayerBridge;
+                    ^
+  symbol:   class RenderLayerBridge
+  location: package net.minecraft
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:9: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:18: error: cannot find symbol
+   private static final RenderPipeline FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
+                        ^
+  symbol:   class RenderPipeline
+  location: class FlatOverlay
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:26: error: cannot find symbol
+   private static final RenderPipeline LINE_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColorLines()})
+                        ^
+  symbol:   class RenderPipeline
+  location: class FlatOverlay
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.OutlineRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:19: error: cannot find symbol
+   public static void render(Immediate immediate, MatrixStack matrices, OutlineRenderState outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
+                                                                        ^
+  symbol:   class OutlineRenderState
+  location: class BlockOutlineRenderer
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:3: error: package com.mojang.blaze3d.pipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
+                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:5: error: cannot find symbol
+import com.mojang.blaze3d.platform.DepthTestFunction;
+                                  ^
+  symbol:   class DepthTestFunction
+  location: package com.mojang.blaze3d.platform
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:9: error: cannot find symbol
+import net.minecraft.RenderLayerBridge;
+                    ^
+  symbol:   class RenderLayerBridge
+  location: package net.minecraft
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:16: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:32: error: cannot find symbol
+   private static final RenderPipeline CAPE_FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
+                        ^
+  symbol:   class RenderPipeline
+  location: class AccessoryRenderer
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:13: error: cannot find symbol
+import net.minecraft.client.texture.GlTexture;
+                                   ^
+  symbol:   class GlTexture
+  location: package net.minecraft.client.texture
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
+import net.minecraft.client.input.MouseInput;
+                                 ^
+  symbol:   class MouseInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:46: error: cannot find symbol
+   private void sixsevenclient$onButton(long l, MouseInput mouseInput, int n, CallbackInfo callbackInfo) {
+                                                ^
+  symbol:   class MouseInput
+  location: class MouseHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:7: error: cannot find symbol
+import net.minecraft.entity.player.SkinTextures;
+                                  ^
+  symbol:   class SkinTextures
+  location: package net.minecraft.entity.player
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:20: error: cannot find symbol
+   private void sixsevenclient$replaceSkin(CallbackInfoReturnable<SkinTextures> callbackInfoReturnable) {
+                                                                  ^
+  symbol:   class SkinTextures
+  location: class AbstractClientPlayerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:13: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:26: error: cannot find symbol
+   private void sixsevenclient$dispatchModuleKeybinds(long l, int n, KeyInput keyInput, CallbackInfo callbackInfo) {
+                                                                     ^
+  symbol:   class KeyInput
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:11: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:14: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.CameraRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
+                                                                                                  ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
+                                                                                                                                                       ^
+  symbol:   class CameraRenderState
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:19: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.OutlineRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:20: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.WorldRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:34: error: cannot find symbol
+   private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, WorldRenderState worldRenderState, CallbackInfo callbackInfo) {
+                                                                                                           ^
+  symbol:   class WorldRenderState
+  location: class LevelRendererMixin
+53 errors
+26 warnings
+
 > Task :compileJava FAILED
+[Incubating] Problems report is available at: file:///home/runner/work/minecraftclient/minecraftclient/build/reports/problems/problems-report.html
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
 Execution failed for task ':compileJava'.
-> Could not resolve all files for configuration ':compileClasspath'.
-   > Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
-     Required by:
-         root project :
-      > Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
-         > Could not get resource 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
-            > Could not GET 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
-               > maven.llamalad7.com: Name or service not known
+> Compilation failed; see the compiler output below.
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @Inject.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GuiRenderer;incrementFrame()V'
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Cannot find target method "renderWorld(Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="renderWorld(Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.render.GameRenderer
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:41: warning: Cannot find target method "onMouseButton(JLnet/minecraft/MouseInput;I)V" for @Inject.method="onMouseButton(JLnet/minecraft/MouseInput;I)V" in net.minecraft.client.Mouse
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:21: warning: Cannot find target method "onKey(JILnet/minecraft/KeyInput;)V" for @Inject.method="onKey(JILnet/minecraft/KeyInput;)V" in net.minecraft.client.Keyboard
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:29: warning: Cannot find target method "renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" for @Inject.method="renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" in net.minecraft.client.render.WorldRenderer
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
+     @ModifyArg(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @ModifyArg.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+     @ModifyArg(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V'
+     @ModifyArg(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Camera;setRotation(FF)V'
+     @ModifyArgs(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:32: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/TextRenderer;getWidth(Lnet/minecraft/StringVisitable;)I'
+     @Redirect(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+     @ModifyVariable(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/MathHelper;lerp(FFF)F'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:86: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Cannot find target method "render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" for @ModifyExpressionValue.method="render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" in net.minecraft.client.render.entity.equipment.EquipmentRenderer
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getGamma()Lnet/minecraft/SimpleOption;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:29: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+     @ModifyReturnValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:4: error: package com.mojang.blaze3d.textures does not exist
+  import com.mojang.blaze3d.textures.GpuTexture;
+                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:3: error: package com.mojang.blaze3d.pipeline does not exist
+  import com.mojang.blaze3d.pipeline.RenderPipeline;
+                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
+  import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
+                                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
+  import net.minecraft.client.render.state.OutlineRenderState;
+                                          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:3: error: package com.mojang.blaze3d.pipeline does not exist
+  import com.mojang.blaze3d.pipeline.RenderPipeline;
+                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
+  import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
+                                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:11: error: package net.minecraft.client.render.command does not exist
+  import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:14: error: package net.minecraft.client.render.state does not exist
+  import net.minecraft.client.render.state.CameraRenderState;
+                                          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:19: error: package net.minecraft.client.render.state does not exist
+  import net.minecraft.client.render.state.OutlineRenderState;
+                                          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:20: error: package net.minecraft.client.render.state does not exist
+  import net.minecraft.client.render.state.WorldRenderState;
+                                          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:14: error: Could not locate @Accessor target movementVector in target net.minecraft.client.input.Input
+     @Accessor("movementVector")
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
+  import net.minecraft.client.gui.Click;
+                                 ^
+    symbol:   class Click
+    location: package net.minecraft.client.gui
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: cannot find symbol
+  import net.minecraft.client.input.CharInput;
+                                   ^
+    symbol:   class CharInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: cannot find symbol
+  import net.minecraft.client.input.KeyInput;
+                                   ^
+    symbol:   class KeyInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
+      public boolean mouseClicked(Click click, boolean unused) {
+                                  ^
+    symbol:   class Click
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
+      public boolean mouseDragged(Click click, double dx, double dy) {
+                                  ^
+    symbol:   class Click
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
+      public boolean mouseReleased(Click click) {
+                                   ^
+    symbol:   class Click
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
+      public boolean keyPressed(KeyInput ki) {
+                                ^
+    symbol:   class KeyInput
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
+      public boolean charTyped(CharInput ci) {
+                               ^
+    symbol:   class CharInput
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:23: error: cannot find symbol
+  import net.minecraft.entity.player.SkinTextures;
+                                    ^
+    symbol:   class SkinTextures
+    location: package net.minecraft.entity.player
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:29: error: cannot find symbol
+     private volatile SkinTextures replacement;
+                      ^
+    symbol:   class SkinTextures
+    location: class SkinProtectModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:51: error: cannot find symbol
+     public SkinTextures replacementSkin() {
+            ^
+    symbol:   class SkinTextures
+    location: class SkinProtectModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:17: error: cannot find symbol
+  import net.minecraft.client.gui.Click;
+                                 ^
+    symbol:   class Click
+    location: package net.minecraft.client.gui
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:20: error: cannot find symbol
+  import net.minecraft.client.input.CharInput;
+                                   ^
+    symbol:   class CharInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:21: error: cannot find symbol
+  import net.minecraft.client.input.KeyInput;
+                                   ^
+    symbol:   class KeyInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:334: error: cannot find symbol
+     public boolean mouseClicked(Click click, boolean value) {
+                                 ^
+    symbol:   class Click
+    location: class IconPickerScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:405: error: cannot find symbol
+     public boolean mouseDragged(Click click, double d, double coord) {
+                                 ^
+    symbol:   class Click
+    location: class IconPickerScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:413: error: cannot find symbol
+     public boolean mouseReleased(Click click) {
+                                  ^
+    symbol:   class Click
+    location: class IconPickerScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:429: error: cannot find symbol
+     public boolean keyPressed(KeyInput keyInput) {
+                               ^
+    symbol:   class KeyInput
+    location: class IconPickerScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:464: error: cannot find symbol
+     public boolean charTyped(CharInput charInput) {
+                              ^
+    symbol:   class CharInput
+    location: class IconPickerScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:24: error: cannot find symbol
+     private static final GpuTexture[] lastUploaded = new GpuTexture[TEXTURES.length];
+                          ^
+    symbol:   class GpuTexture
+    location: class GlintTextureTinter
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:16: error: cannot find symbol
+  import net.minecraft.client.texture.GlTexture;
+                                     ^
+    symbol:   class GlTexture
+    location: package net.minecraft.client.texture
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
+     private static boolean bindOverlayFbo(GlTexture glTexture, int bind, int bind2) {
+                                           ^
+    symbol:   class GlTexture
+    location: class OverlayRenderer
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:5: error: cannot find symbol
+  import com.mojang.blaze3d.platform.DepthTestFunction;
+                                    ^
+    symbol:   class DepthTestFunction
+    location: package com.mojang.blaze3d.platform
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:7: error: cannot find symbol
+  import net.minecraft.RenderLayerBridge;
+                      ^
+    symbol:   class RenderLayerBridge
+    location: package net.minecraft
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:9: error: cannot find symbol
+  import net.minecraft.client.render.RenderSetup;
+                                    ^
+    symbol:   class RenderSetup
+    location: package net.minecraft.client.render
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:18: error: cannot find symbol
+     private static final RenderPipeline FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
+                          ^
+    symbol:   class RenderPipeline
+    location: class FlatOverlay
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:26: error: cannot find symbol
+     private static final RenderPipeline LINE_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColorLines()})
+                          ^
+    symbol:   class RenderPipeline
+    location: class FlatOverlay
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:19: error: cannot find symbol
+     public static void render(Immediate immediate, MatrixStack matrices, OutlineRenderState outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
+                                                                          ^
+    symbol:   class OutlineRenderState
+    location: class BlockOutlineRenderer
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:5: error: cannot find symbol
+  import com.mojang.blaze3d.platform.DepthTestFunction;
+                                    ^
+    symbol:   class DepthTestFunction
+    location: package com.mojang.blaze3d.platform
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:9: error: cannot find symbol
+  import net.minecraft.RenderLayerBridge;
+                      ^
+    symbol:   class RenderLayerBridge
+    location: package net.minecraft
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:16: error: cannot find symbol
+  import net.minecraft.client.render.RenderSetup;
+                                    ^
+    symbol:   class RenderSetup
+    location: package net.minecraft.client.render
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:32: error: cannot find symbol
+     private static final RenderPipeline CAPE_FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
+                          ^
+    symbol:   class RenderPipeline
+    location: class AccessoryRenderer
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:13: error: cannot find symbol
+  import net.minecraft.client.texture.GlTexture;
+                                     ^
+    symbol:   class GlTexture
+    location: package net.minecraft.client.texture
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
+  import net.minecraft.client.input.MouseInput;
+                                   ^
+    symbol:   class MouseInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:46: error: cannot find symbol
+     private void sixsevenclient$onButton(long l, MouseInput mouseInput, int n, CallbackInfo callbackInfo) {
+                                                  ^
+    symbol:   class MouseInput
+    location: class MouseHandlerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:7: error: cannot find symbol
+  import net.minecraft.entity.player.SkinTextures;
+                                    ^
+    symbol:   class SkinTextures
+    location: package net.minecraft.entity.player
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:20: error: cannot find symbol
+     private void sixsevenclient$replaceSkin(CallbackInfoReturnable<SkinTextures> callbackInfoReturnable) {
+                                                                    ^
+    symbol:   class SkinTextures
+    location: class AbstractClientPlayerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:13: error: cannot find symbol
+  import net.minecraft.client.input.KeyInput;
+                                   ^
+    symbol:   class KeyInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:26: error: cannot find symbol
+     private void sixsevenclient$dispatchModuleKeybinds(long l, int n, KeyInput keyInput, CallbackInfo callbackInfo) {
+                                                                       ^
+    symbol:   class KeyInput
+    location: class KeyboardHandlerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+     private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
+                                                                                                    ^
+    symbol:   class OrderedRenderCommandQueue
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+     private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
+                                                                                                                                                         ^
+    symbol:   class CameraRenderState
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:34: error: cannot find symbol
+     private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, WorldRenderState worldRenderState, CallbackInfo callbackInfo) {
+                                                                                                             ^
+    symbol:   class WorldRenderState
+    location: class LevelRendererMixin
+  53 errors
+  26 warnings
 
 * Try:
-> Run with --info or --debug option to get more log output.
+> Check your code and dependencies to fix the compilation error(s)
 > Run with --scan to get full insights.
-> Get more help at https://help.gradle.org.
 
 * Exception is:
 org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
-	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
@@ -62,33 +711,349 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: Could not resolve all files for configuration ':compileClasspath'.
-	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailure(ResolveExceptionMapper.java:68)
-	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailures(ResolveExceptionMapper.java:60)
-	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.consolidateFailures(DefaultConfiguration.java:1995)
-	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailuresAndReportProblems(ResolutionHost.java:75)
-	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:87)
-	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:77)
-	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
-	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.visitContents(DefaultConfiguration.java:550)
-	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
-	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
-	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:67)
-	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:92)
-	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
-	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
-	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
-	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
-	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
-	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
-	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
-	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
-	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
-	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
-	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
-	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
-	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
-	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @Inject.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GuiRenderer;incrementFrame()V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Cannot find target method "renderWorld(Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="renderWorld(Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:41: warning: Cannot find target method "onMouseButton(JLnet/minecraft/MouseInput;I)V" for @Inject.method="onMouseButton(JLnet/minecraft/MouseInput;I)V" in net.minecraft.client.Mouse
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:21: warning: Cannot find target method "onKey(JILnet/minecraft/KeyInput;)V" for @Inject.method="onKey(JILnet/minecraft/KeyInput;)V" in net.minecraft.client.Keyboard
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:29: warning: Cannot find target method "renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" for @Inject.method="renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" in net.minecraft.client.render.WorldRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @ModifyArg.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Camera;setRotation(FF)V'
+   @ModifyArgs(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:32: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/TextRenderer;getWidth(Lnet/minecraft/StringVisitable;)I'
+   @Redirect(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/MathHelper;lerp(FFF)F'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:86: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Cannot find target method "render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" for @ModifyExpressionValue.method="render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" in net.minecraft.client.render.entity.equipment.EquipmentRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getGamma()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:29: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyReturnValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:4: error: package com.mojang.blaze3d.textures does not exist
+import com.mojang.blaze3d.textures.GpuTexture;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:3: error: package com.mojang.blaze3d.pipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
+                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.OutlineRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:3: error: package com.mojang.blaze3d.pipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
+import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
+                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:11: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:14: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.CameraRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:19: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.OutlineRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:20: error: package net.minecraft.client.render.state does not exist
+import net.minecraft.client.render.state.WorldRenderState;
+                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:14: error: Could not locate @Accessor target movementVector in target net.minecraft.client.input.Input
+   @Accessor("movementVector")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: cannot find symbol
+import net.minecraft.client.input.CharInput;
+                                 ^
+  symbol:   class CharInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
+    public boolean mouseClicked(Click click, boolean unused) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
+    public boolean mouseDragged(Click click, double dx, double dy) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
+    public boolean mouseReleased(Click click) {
+                                 ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
+    public boolean keyPressed(KeyInput ki) {
+                              ^
+  symbol:   class KeyInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
+    public boolean charTyped(CharInput ci) {
+                             ^
+  symbol:   class CharInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:23: error: cannot find symbol
+import net.minecraft.entity.player.SkinTextures;
+                                  ^
+  symbol:   class SkinTextures
+  location: package net.minecraft.entity.player
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:29: error: cannot find symbol
+   private volatile SkinTextures replacement;
+                    ^
+  symbol:   class SkinTextures
+  location: class SkinProtectModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:51: error: cannot find symbol
+   public SkinTextures replacementSkin() {
+          ^
+  symbol:   class SkinTextures
+  location: class SkinProtectModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:17: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:20: error: cannot find symbol
+import net.minecraft.client.input.CharInput;
+                                 ^
+  symbol:   class CharInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:21: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:334: error: cannot find symbol
+   public boolean mouseClicked(Click click, boolean value) {
+                               ^
+  symbol:   class Click
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:405: error: cannot find symbol
+   public boolean mouseDragged(Click click, double d, double coord) {
+                               ^
+  symbol:   class Click
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:413: error: cannot find symbol
+   public boolean mouseReleased(Click click) {
+                                ^
+  symbol:   class Click
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:429: error: cannot find symbol
+   public boolean keyPressed(KeyInput keyInput) {
+                             ^
+  symbol:   class KeyInput
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:464: error: cannot find symbol
+   public boolean charTyped(CharInput charInput) {
+                            ^
+  symbol:   class CharInput
+  location: class IconPickerScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:24: error: cannot find symbol
+   private static final GpuTexture[] lastUploaded = new GpuTexture[TEXTURES.length];
+                        ^
+  symbol:   class GpuTexture
+  location: class GlintTextureTinter
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:16: error: cannot find symbol
+import net.minecraft.client.texture.GlTexture;
+                                   ^
+  symbol:   class GlTexture
+  location: package net.minecraft.client.texture
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
+   private static boolean bindOverlayFbo(GlTexture glTexture, int bind, int bind2) {
+                                         ^
+  symbol:   class GlTexture
+  location: class OverlayRenderer
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:5: error: cannot find symbol
+import com.mojang.blaze3d.platform.DepthTestFunction;
+                                  ^
+  symbol:   class DepthTestFunction
+  location: package com.mojang.blaze3d.platform
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:7: error: cannot find symbol
+import net.minecraft.RenderLayerBridge;
+                    ^
+  symbol:   class RenderLayerBridge
+  location: package net.minecraft
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:9: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:18: error: cannot find symbol
+   private static final RenderPipeline FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
+                        ^
+  symbol:   class RenderPipeline
+  location: class FlatOverlay
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:26: error: cannot find symbol
+   private static final RenderPipeline LINE_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColorLines()})
+                        ^
+  symbol:   class RenderPipeline
+  location: class FlatOverlay
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:19: error: cannot find symbol
+   public static void render(Immediate immediate, MatrixStack matrices, OutlineRenderState outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
+                                                                        ^
+  symbol:   class OutlineRenderState
+  location: class BlockOutlineRenderer
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:5: error: cannot find symbol
+import com.mojang.blaze3d.platform.DepthTestFunction;
+                                  ^
+  symbol:   class DepthTestFunction
+  location: package com.mojang.blaze3d.platform
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:9: error: cannot find symbol
+import net.minecraft.RenderLayerBridge;
+                    ^
+  symbol:   class RenderLayerBridge
+  location: package net.minecraft
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:16: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:32: error: cannot find symbol
+   private static final RenderPipeline CAPE_FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
+                        ^
+  symbol:   class RenderPipeline
+  location: class AccessoryRenderer
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:13: error: cannot find symbol
+import net.minecraft.client.texture.GlTexture;
+                                   ^
+  symbol:   class GlTexture
+  location: package net.minecraft.client.texture
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
+import net.minecraft.client.input.MouseInput;
+                                 ^
+  symbol:   class MouseInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:46: error: cannot find symbol
+   private void sixsevenclient$onButton(long l, MouseInput mouseInput, int n, CallbackInfo callbackInfo) {
+                                                ^
+  symbol:   class MouseInput
+  location: class MouseHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:7: error: cannot find symbol
+import net.minecraft.entity.player.SkinTextures;
+                                  ^
+  symbol:   class SkinTextures
+  location: package net.minecraft.entity.player
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:20: error: cannot find symbol
+   private void sixsevenclient$replaceSkin(CallbackInfoReturnable<SkinTextures> callbackInfoReturnable) {
+                                                                  ^
+  symbol:   class SkinTextures
+  location: class AbstractClientPlayerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:13: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:26: error: cannot find symbol
+   private void sixsevenclient$dispatchModuleKeybinds(long l, int n, KeyInput keyInput, CallbackInfo callbackInfo) {
+                                                                     ^
+  symbol:   class KeyInput
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
+                                                                                                  ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
+                                                                                                                                                       ^
+  symbol:   class CameraRenderState
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:34: error: cannot find symbol
+   private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, WorldRenderState worldRenderState, CallbackInfo callbackInfo) {
+                                                                                                           ^
+  symbol:   class WorldRenderState
+  location: class LevelRendererMixin
+53 errors
+26 warnings
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:84)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:46)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:205)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:52)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
@@ -96,9 +1061,77 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: C
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
-	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
-	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:223)
+	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:164)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:149)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+	at org.gradle.internal.Either$Right.fold(Either.java:175)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
@@ -151,108 +1184,7 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: C
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
-Required by:
-    root project :
-Caused by: org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
-Caused by: org.gradle.api.resources.ResourceException: Could not get resource 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
-	at org.gradle.internal.resource.ResourceExceptions.failure(ResourceExceptions.java:74)
-	at org.gradle.internal.resource.ResourceExceptions.getFailed(ResourceExceptions.java:57)
-	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadByCoords(DefaultExternalResourceArtifactResolver.java:154)
-	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadStaticResource(DefaultExternalResourceArtifactResolver.java:94)
-	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.resolveArtifact(DefaultExternalResourceArtifactResolver.java:60)
-	at org.gradle.api.internal.artifacts.repositories.metadata.AbstractRepositoryMetadataSource.parseMetaDataFromArtifact(AbstractRepositoryMetadataSource.java:79)
-	at org.gradle.api.internal.artifacts.repositories.metadata.AbstractRepositoryMetadataSource.create(AbstractRepositoryMetadataSource.java:69)
-	at org.gradle.api.internal.artifacts.repositories.metadata.DefaultMavenPomMetadataSource.create(DefaultMavenPomMetadataSource.java:40)
-	at org.gradle.api.internal.artifacts.repositories.metadata.RedirectingGradleMetadataModuleMetadataSource.create(RedirectingGradleMetadataModuleMetadataSource.java:52)
-	at org.gradle.api.internal.artifacts.repositories.resolver.ExternalResourceResolver.resolveStaticDependency(ExternalResourceResolver.java:235)
-	at org.gradle.api.internal.artifacts.repositories.resolver.MavenResolver.doResolveComponentMetaData(MavenResolver.java:108)
-	at org.gradle.api.internal.artifacts.repositories.resolver.ExternalResourceResolver$RemoteRepositoryAccess.resolveComponentMetaData(ExternalResourceResolver.java:427)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository$ResolveAndCacheRepositoryAccess.resolveComponentMetaDataAndCache(CachingModuleComponentRepository.java:396)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository$ResolveAndCacheRepositoryAccess.resolveComponentMetaData(CachingModuleComponentRepository.java:390)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.lambda$resolveComponentMetaData$5(ErrorHandlingModuleComponentRepository.java:150)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.lambda$tryResolveAndMaybeDisable$15(ErrorHandlingModuleComponentRepository.java:220)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.tryResolveAndMaybeDisable(ErrorHandlingModuleComponentRepository.java:236)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.tryResolveAndMaybeDisable(ErrorHandlingModuleComponentRepository.java:219)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.performOperationWithRetries(ErrorHandlingModuleComponentRepository.java:203)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.resolveComponentMetaData(ErrorHandlingModuleComponentRepository.java:149)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ComponentMetaDataResolveState.process(ComponentMetaDataResolveState.java:70)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ComponentMetaDataResolveState.resolve(ComponentMetaDataResolveState.java:62)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.findBestMatch(RepositoryChainComponentMetaDataResolver.java:165)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.findBestMatch(RepositoryChainComponentMetaDataResolver.java:145)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.resolveModule(RepositoryChainComponentMetaDataResolver.java:115)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.lambda$createValueContainerFor$1(RepositoryChainComponentMetaDataResolver.java:85)
-	at org.gradle.internal.model.CalculatedValueContainerFactory$SupplierBackedCalculator.calculateValue(CalculatedValueContainerFactory.java:78)
-	at org.gradle.internal.model.CalculatedValueContainer$CalculationState.lambda$attachValue$0(CalculatedValueContainer.java:229)
-	at org.gradle.internal.Try.ofFailable(Try.java:50)
-	at org.gradle.internal.model.CalculatedValueContainer$CalculationState.attachValue(CalculatedValueContainer.java:224)
-	at org.gradle.internal.model.CalculatedValueContainer.finalizeIfNotAlready(CalculatedValueContainer.java:195)
-	at org.gradle.internal.model.CalculatedValueContainer.finalizeIfNotAlready(CalculatedValueContainer.java:186)
-	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.resolve(RepositoryChainComponentMetaDataResolver.java:77)
-	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.ComponentResolversChain$ComponentMetaDataResolverChain.resolve(ComponentResolversChain.java:90)
-	at org.gradle.api.internal.artifacts.ivyservice.clientmodule.ClientModuleResolver.resolve(ClientModuleResolver.java:70)
-	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.ComponentState.resolve(ComponentState.java:224)
-	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.ComponentState.getMetadataOrNull(ComponentState.java:146)
-	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DownloadMetadataOperation.run(DownloadMetadataOperation.java:31)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationExecutor$QueueWorker.execute(DefaultBuildOperationExecutor.java:161)
-	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.runOperation(DefaultBuildOperationQueue.java:272)
-	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.doRunBatch(DefaultBuildOperationQueue.java:253)
-	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.lambda$runBatch$0(DefaultBuildOperationQueue.java:238)
-	at org.gradle.internal.resources.AbstractResourceLockRegistry.whileDisallowingLockChanges(AbstractResourceLockRegistry.java:50)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.whileDisallowingProjectLockChanges(DefaultWorkerLeaseService.java:235)
-	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.lambda$runBatch$1(DefaultBuildOperationQueue.java:238)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.runBatch(DefaultBuildOperationQueue.java:224)
-	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.run(DefaultBuildOperationQueue.java:192)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.gradle.internal.resource.transport.http.HttpRequestException: Could not GET 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.createHttpRequestException(HttpClientHelper.java:124)
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.performRequest(HttpClientHelper.java:118)
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.performRawGet(HttpClientHelper.java:100)
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.performGet(HttpClientHelper.java:105)
-	at org.gradle.internal.resource.transport.http.HttpResourceAccessor.openResource(HttpResourceAccessor.java:45)
-	at org.gradle.internal.resource.transport.http.HttpResourceAccessor.openResource(HttpResourceAccessor.java:30)
-	at org.gradle.internal.resource.transfer.AbstractExternalResourceAccessor.withContent(AbstractExternalResourceAccessor.java:32)
-	at org.gradle.internal.resource.transfer.DefaultExternalResourceConnector.withContent(DefaultExternalResourceConnector.java:59)
-	at org.gradle.internal.resource.transfer.ProgressLoggingExternalResourceAccessor$DownloadOperation.call(ProgressLoggingExternalResourceAccessor.java:134)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-	at org.gradle.internal.resource.transfer.ProgressLoggingExternalResourceAccessor.withContent(ProgressLoggingExternalResourceAccessor.java:47)
-	at org.gradle.internal.resource.transfer.AccessorBackedExternalResource.withContentIfPresent(AccessorBackedExternalResource.java:103)
-	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.copyToCache(DefaultCacheAwareExternalResourceAccessor.java:188)
-	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.lambda$getResource$1(DefaultCacheAwareExternalResourceAccessor.java:86)
-	at org.gradle.cache.internal.ProducerGuard$AdaptiveProducerGuard.guardByKey(ProducerGuard.java:97)
-	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.getResource(DefaultCacheAwareExternalResourceAccessor.java:80)
-	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadByCoords(DefaultExternalResourceArtifactResolver.java:149)
-	... 52 more
-Caused by: java.net.UnknownHostException: maven.llamalad7.com: Name or service not known
-	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.performHttpRequest(HttpClientHelper.java:201)
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.performHttpRequest(HttpClientHelper.java:177)
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.executeGetOrHead(HttpClientHelper.java:166)
-	at org.gradle.internal.resource.transport.http.HttpClientHelper.performRequest(HttpClientHelper.java:114)
-	... 73 more
 
 
-BUILD FAILED in 45s
+BUILD FAILED in 53s
 1 actionable task: 1 executed
