@@ -107,7 +107,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         if (client.world == null) renderPanoramaBackground(ctx, delta);
         if (guiModule().blur.get()) {
             BlurHook.set(guiModule().blurStrength.getFloat() * openAnim.value());
-            ctx.applyBlur();
+            // ctx.applyBlur() not available in 1.21.5
         } else {
             BlurHook.clear();
         }
