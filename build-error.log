@@ -15,776 +15,31 @@ Daemon will be stopped at the end of the build
 
 > Configure project :
 Fabric Loom: 1.9.2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Using of the official minecraft mappings is at your own risk!
-Please make sure to read and understand the following license:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# (c) 2020 Microsoft Corporation. These mappings are provided "as-is" and you bear the risk of using them. You may copy and use the mappings for development purposes, but you may not redistribute the mappings complete and unmodified. Microsoft makes no warranties, express or implied, with respect to the mappings provided here.  Use and modification of this document or the source code (in any form) of Minecraft: Java Edition is governed by the Minecraft End User License Agreement available at https://account.mojang.com/documents/minecraft_eula.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 :remapping 50 mods from modImplementation (java-api)
 
-> Task :compileJava
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:11: error: Mixin has no targets
-@Mixin({ClientPlayerEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:19: error: Mixin has no targets
-@Mixin({InGameHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:12: error: Mixin has no targets
-@Mixin({Mouse.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:12: error: Mixin has no targets
-@Mixin({Entity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:11: error: Mixin has no targets
-@Mixin({Entity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:22: error: Mixin has no targets
-@Mixin({GameRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:16: error: Mixin has no targets
-@Mixin({EquipmentRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:14: error: Mixin has no targets
-@Mixin({ClientPlayerInteractionManager.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:19: error: Mixin has no targets
-@Mixin({Mouse.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightPacketMixin.java:13: error: Mixin has no targets
-@Mixin({ClientPlayNetworkHandler.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:13: error: Mixin has no targets
-@Mixin({AbstractClientPlayerEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:13: error: Mixin has no targets
-@Mixin({LivingEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:11: error: Mixin has no targets
-@Mixin({LightmapTextureManager.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:11: error: Mixin has no targets
-@Mixin({ChatHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:19: error: Mixin has no targets
-@Mixin({Keyboard.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:22: error: Mixin has no targets
-@Mixin({EntityRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityHitboxMixin.java:9: error: Mixin has no targets
-@Mixin({Entity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:12: error: Mixin has no targets
-@Mixin({InGameHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:11: error: Mixin has no targets
-@Mixin({LivingEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractContainerScreenAccessor.java:8: error: Mixin has no targets
-@Mixin({HandledScreen.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:11: error: Mixin has no targets
-@Mixin({KeyboardInput.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MinecraftAccessor.java:8: error: Mixin has no targets
-@Mixin({MinecraftClient.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:9: error: Mixin has no targets
-@Mixin({Input.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:27: error: Mixin has no targets
-@Mixin({WorldRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:13: error: Mixin has no targets
-@Mixin({PlayerListHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientPacketListenerMixin.java:21: error: Mixin has no targets
-@Mixin({ClientPlayNetworkHandler.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:13: error: Mixin has no targets
-@Mixin({Camera.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:15: error: Mixin has no targets
-@Mixin({InGameHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreecamMixin.java:14: error: Mixin has no targets
-@Mixin({Camera.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyMappingAccessor.java:8: error: Mixin has no targets
-@Mixin({KeyBinding.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:11: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:12: error: package net.minecraft.client.network does not exist
-import net.minecraft.client.network.ClientPlayNetworkHandler;
-                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:13: error: package net.minecraft.client.network does not exist
-import net.minecraft.client.network.PlayerListEntry;
-                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:14: error: package net.minecraft.scoreboard does not exist
-import net.minecraft.scoreboard.Team;
-                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:15: error: cannot find symbol
-import net.minecraft.world.GameMode;
-                          ^
-  symbol:   class GameMode
-  location: package net.minecraft.world
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:18: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:19: error: package net.minecraft.client.sound does not exist
-import net.minecraft.client.sound.PositionedSoundInstance;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:20: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvent;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:21: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvents;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:22: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:10: error: package net.minecraft.text does not exist
-import net.minecraft.text.Style;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:11: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:12: error: package net.minecraft.text does not exist
-import net.minecraft.text.TextColor;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                 ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                            ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                                        ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:104: error: cannot find symbol
-   static Integer scanMarker(Text text, StaffDetector.DetectConfig detectConfig) {
-                             ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:157: error: cannot find symbol
-   private static String plain(Text text) {
-                               ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: package net.minecraft.client.gui does not exist
-import net.minecraft.client.gui.Click;
-                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:25: error: package net.minecraft.client.gui does not exist
-import net.minecraft.client.gui.DrawContext;
-                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:26: error: package net.minecraft.client.gui.screen does not exist
-import net.minecraft.client.gui.screen.Screen;
-                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: package net.minecraft.client.input does not exist
-import net.minecraft.client.input.CharInput;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: package net.minecraft.client.input does not exist
-import net.minecraft.client.input.KeyInput;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:29: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:52: error: cannot find symbol
-public class ClickGuiScreen extends Screen implements NvgDrawable {
-                                    ^
-  symbol: class Screen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:12: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:95: error: cannot find symbol
-    private final Screen parent;
-                  ^
-  symbol:   class Screen
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:101: error: cannot find symbol
-    public ClickGuiScreen(Screen parent) {
-                          ^
-  symbol:   class Screen
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:150: error: cannot find symbol
-    public void render(DrawContext ctx, int mx, int my, float delta) {
-                       ^
-  symbol:   class DrawContext
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:164: error: cannot find symbol
-    public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
-                                 ^
-  symbol:   class DrawContext
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
-    public boolean mouseClicked(Click click, boolean unused) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
-    public boolean mouseDragged(Click click, double dx, double dy) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
-    public boolean mouseReleased(Click click) {
-                                 ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
-    public boolean keyPressed(KeyInput ki) {
-                              ^
-  symbol:   class KeyInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
-    public boolean charTyped(CharInput ci) {
-                             ^
-  symbol:   class CharInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:12: error: package net.minecraft.block does not exist
-import net.minecraft.block.Block;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:13: error: package net.minecraft.block does not exist
-import net.minecraft.block.Blocks;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:14: error: package net.minecraft.registry does not exist
-import net.minecraft.registry.Registries;
-                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:15: error: cannot find symbol
-import net.minecraft.util.Identifier;
-                         ^
-  symbol:   class Identifier
-  location: package net.minecraft.util
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:11: error: package net.minecraft.item does not exist
-import net.minecraft.item.Item;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:20: error: cannot find symbol
-   public IconListSetting.Entry add(String str, String str3, Item item, boolean value, int n) {
-                                                             ^
-  symbol:   class Item
-  location: class IconListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:94: error: cannot find symbol
-      private final Item icon;
-                    ^
-  symbol:   class Item
-  location: class Entry
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:98: error: cannot find symbol
-      Entry(String str, String str2, Item item, boolean flag, int n) {
-                                     ^
-  symbol:   class Item
-  location: class Entry
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:114: error: cannot find symbol
-      public Item icon() {
-             ^
-  symbol:   class Item
-  location: class Entry
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:19: error: cannot find symbol
-   private final Set<Identifier> ids = new HashSet<>();
-                     ^
-  symbol:   class Identifier
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:37: error: cannot find symbol
-   public boolean contains(Identifier id2) {
-                           ^
-  symbol:   class Identifier
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:41: error: cannot find symbol
-   public BlockListSetting.Target find(Block block2) {
-                                       ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:60: error: cannot find symbol
-   public boolean isActive(Block block2) {
-                           ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:65: error: cannot find symbol
-   public BlockListSetting.Target add(Block block2, boolean value, int n) {
-                                      ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:92: error: cannot find symbol
-   public List<Block> searchRegistry(String str, int n) {
-               ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:119: error: cannot find symbol
-   public static String displayName(Block block2) {
-                                    ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:206: error: cannot find symbol
-      private final Identifier id;
-                    ^
-  symbol:   class Identifier
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:207: error: cannot find symbol
-      private final Block block;
-                    ^
-  symbol:   class Block
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
-      Target(Identifier id2, Block block2, boolean enabled2, int n) {
-             ^
-  symbol:   class Identifier
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
-      Target(Identifier id2, Block block2, boolean enabled2, int n) {
-                             ^
-  symbol:   class Block
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:218: error: cannot find symbol
-      public Identifier id() {
-             ^
-  symbol:   class Identifier
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:222: error: cannot find symbol
-      public Block block() {
-             ^
-  symbol:   class Block
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:8: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:9: error: package net.minecraft.client.option does not exist
-import net.minecraft.client.option.GameOptions;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:10: error: package net.minecraft.client.option does not exist
-import net.minecraft.client.option.KeyBinding;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:11: error: package net.minecraft.client.util.InputUtil does not exist
-import net.minecraft.client.util.InputUtil.Key;
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:12: error: package net.minecraft.client.util.InputUtil does not exist
-import net.minecraft.client.util.InputUtil.Type;
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:9: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:10: error: package net.minecraft.client.sound does not exist
-import net.minecraft.client.sound.PositionedSoundInstance;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:11: error: package net.minecraft.client.world does not exist
-import net.minecraft.client.world.ClientWorld;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:12: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvent;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:13: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvents;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:14: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:12: error: package net.minecraft.block does not exist
-import net.minecraft.block.BlockState;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:13: error: package net.minecraft.block does not exist
-import net.minecraft.block.ChestBlock;
-                          ^
-100 errors
-
 > Task :compileJava FAILED
-[Incubating] Problems report is available at: file:///home/runner/work/minecraftclient/minecraftclient/build/reports/problems/problems-report.html
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
 Execution failed for task ':compileJava'.
-> Compilation failed; see the compiler output below.
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:52: error: cannot find symbol
-  public class ClickGuiScreen extends Screen implements NvgDrawable {
-                                      ^
-    symbol: class Screen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:11: error: package net.minecraft.client does not exist
-  import net.minecraft.client.MinecraftClient;
-                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:12: error: package net.minecraft.client.network does not exist
-  import net.minecraft.client.network.ClientPlayNetworkHandler;
-                                     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:13: error: package net.minecraft.client.network does not exist
-  import net.minecraft.client.network.PlayerListEntry;
-                                     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:14: error: package net.minecraft.scoreboard does not exist
-  import net.minecraft.scoreboard.Team;
-                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:18: error: package net.minecraft.client does not exist
-  import net.minecraft.client.MinecraftClient;
-                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:19: error: package net.minecraft.client.sound does not exist
-  import net.minecraft.client.sound.PositionedSoundInstance;
-                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:20: error: package net.minecraft.sound does not exist
-  import net.minecraft.sound.SoundEvent;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:21: error: package net.minecraft.sound does not exist
-  import net.minecraft.sound.SoundEvents;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:22: error: package net.minecraft.text does not exist
-  import net.minecraft.text.Text;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:10: error: package net.minecraft.text does not exist
-  import net.minecraft.text.Style;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:11: error: package net.minecraft.text does not exist
-  import net.minecraft.text.Text;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:12: error: package net.minecraft.text does not exist
-  import net.minecraft.text.TextColor;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: package net.minecraft.client.gui does not exist
-  import net.minecraft.client.gui.Click;
-                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:25: error: package net.minecraft.client.gui does not exist
-  import net.minecraft.client.gui.DrawContext;
-                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:26: error: package net.minecraft.client.gui.screen does not exist
-  import net.minecraft.client.gui.screen.Screen;
-                                        ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: package net.minecraft.client.input does not exist
-  import net.minecraft.client.input.CharInput;
-                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: package net.minecraft.client.input does not exist
-  import net.minecraft.client.input.KeyInput;
-                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:29: error: package net.minecraft.text does not exist
-  import net.minecraft.text.Text;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:12: error: package net.minecraft.client does not exist
-  import net.minecraft.client.MinecraftClient;
-                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:12: error: package net.minecraft.block does not exist
-  import net.minecraft.block.Block;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:13: error: package net.minecraft.block does not exist
-  import net.minecraft.block.Blocks;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:14: error: package net.minecraft.registry does not exist
-  import net.minecraft.registry.Registries;
-                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:11: error: package net.minecraft.item does not exist
-  import net.minecraft.item.Item;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:8: error: package net.minecraft.client does not exist
-  import net.minecraft.client.MinecraftClient;
-                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:9: error: package net.minecraft.client.option does not exist
-  import net.minecraft.client.option.GameOptions;
-                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:10: error: package net.minecraft.client.option does not exist
-  import net.minecraft.client.option.KeyBinding;
-                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:11: error: package net.minecraft.client.util.InputUtil does not exist
-  import net.minecraft.client.util.InputUtil.Key;
-                                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:12: error: package net.minecraft.client.util.InputUtil does not exist
-  import net.minecraft.client.util.InputUtil.Type;
-                                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:9: error: package net.minecraft.client does not exist
-  import net.minecraft.client.MinecraftClient;
-                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:10: error: package net.minecraft.client.sound does not exist
-  import net.minecraft.client.sound.PositionedSoundInstance;
-                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:11: error: package net.minecraft.client.world does not exist
-  import net.minecraft.client.world.ClientWorld;
-                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:12: error: package net.minecraft.sound does not exist
-  import net.minecraft.sound.SoundEvent;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:13: error: package net.minecraft.sound does not exist
-  import net.minecraft.sound.SoundEvents;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:14: error: package net.minecraft.text does not exist
-  import net.minecraft.text.Text;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:12: error: package net.minecraft.block does not exist
-  import net.minecraft.block.BlockState;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:13: error: package net.minecraft.block does not exist
-  import net.minecraft.block.ChestBlock;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:11: error: Mixin has no targets
-  @Mixin({ClientPlayerEntity.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:19: error: Mixin has no targets
-  @Mixin({InGameHud.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:12: error: Mixin has no targets
-  @Mixin({Mouse.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:12: error: Mixin has no targets
-  @Mixin({Entity.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:11: error: Mixin has no targets
-  @Mixin({Entity.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:22: error: Mixin has no targets
-  @Mixin({GameRenderer.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:16: error: Mixin has no targets
-  @Mixin({EquipmentRenderer.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:14: error: Mixin has no targets
-  @Mixin({ClientPlayerInteractionManager.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:19: error: Mixin has no targets
-  @Mixin({Mouse.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightPacketMixin.java:13: error: Mixin has no targets
-  @Mixin({ClientPlayNetworkHandler.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:13: error: Mixin has no targets
-  @Mixin({AbstractClientPlayerEntity.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:13: error: Mixin has no targets
-  @Mixin({LivingEntity.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:11: error: Mixin has no targets
-  @Mixin({LightmapTextureManager.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:11: error: Mixin has no targets
-  @Mixin({ChatHud.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:19: error: Mixin has no targets
-  @Mixin({Keyboard.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:22: error: Mixin has no targets
-  @Mixin({EntityRenderer.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityHitboxMixin.java:9: error: Mixin has no targets
-  @Mixin({Entity.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:12: error: Mixin has no targets
-  @Mixin({InGameHud.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:11: error: Mixin has no targets
-  @Mixin({LivingEntity.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractContainerScreenAccessor.java:8: error: Mixin has no targets
-  @Mixin({HandledScreen.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:11: error: Mixin has no targets
-  @Mixin({KeyboardInput.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MinecraftAccessor.java:8: error: Mixin has no targets
-  @Mixin({MinecraftClient.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:9: error: Mixin has no targets
-  @Mixin({Input.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:27: error: Mixin has no targets
-  @Mixin({WorldRenderer.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:13: error: Mixin has no targets
-  @Mixin({PlayerListHud.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientPacketListenerMixin.java:21: error: Mixin has no targets
-  @Mixin({ClientPlayNetworkHandler.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:13: error: Mixin has no targets
-  @Mixin({Camera.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:15: error: Mixin has no targets
-  @Mixin({InGameHud.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreecamMixin.java:14: error: Mixin has no targets
-  @Mixin({Camera.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyMappingAccessor.java:8: error: Mixin has no targets
-  @Mixin({KeyBinding.class})
-  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:15: error: cannot find symbol
-  import net.minecraft.world.GameMode;
-                            ^
-    symbol:   class GameMode
-    location: package net.minecraft.world
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-     public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                   ^
-    symbol:   class Text
-    location: class StaffDetector
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-     public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                              ^
-    symbol:   class Text
-    location: class StaffDetector
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-     public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                                          ^
-    symbol:   class Text
-    location: class StaffDetector
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:104: error: cannot find symbol
-     static Integer scanMarker(Text text, StaffDetector.DetectConfig detectConfig) {
-                               ^
-    symbol:   class Text
-    location: class StaffDetector
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:157: error: cannot find symbol
-     private static String plain(Text text) {
-                                 ^
-    symbol:   class Text
-    location: class StaffDetector
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:95: error: cannot find symbol
-      private final Screen parent;
-                    ^
-    symbol:   class Screen
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:101: error: cannot find symbol
-      public ClickGuiScreen(Screen parent) {
-                            ^
-    symbol:   class Screen
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:150: error: cannot find symbol
-      public void render(DrawContext ctx, int mx, int my, float delta) {
-                         ^
-    symbol:   class DrawContext
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:164: error: cannot find symbol
-      public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
-                                   ^
-    symbol:   class DrawContext
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
-      public boolean mouseClicked(Click click, boolean unused) {
-                                  ^
-    symbol:   class Click
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
-      public boolean mouseDragged(Click click, double dx, double dy) {
-                                  ^
-    symbol:   class Click
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
-      public boolean mouseReleased(Click click) {
-                                   ^
-    symbol:   class Click
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
-      public boolean keyPressed(KeyInput ki) {
-                                ^
-    symbol:   class KeyInput
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
-      public boolean charTyped(CharInput ci) {
-                               ^
-    symbol:   class CharInput
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:15: error: cannot find symbol
-  import net.minecraft.util.Identifier;
-                           ^
-    symbol:   class Identifier
-    location: package net.minecraft.util
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:20: error: cannot find symbol
-     public IconListSetting.Entry add(String str, String str3, Item item, boolean value, int n) {
-                                                               ^
-    symbol:   class Item
-    location: class IconListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:94: error: cannot find symbol
-        private final Item icon;
-                      ^
-    symbol:   class Item
-    location: class Entry
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:98: error: cannot find symbol
-        Entry(String str, String str2, Item item, boolean flag, int n) {
-                                       ^
-    symbol:   class Item
-    location: class Entry
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:114: error: cannot find symbol
-        public Item icon() {
-               ^
-    symbol:   class Item
-    location: class Entry
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:19: error: cannot find symbol
-     private final Set<Identifier> ids = new HashSet<>();
-                       ^
-    symbol:   class Identifier
-    location: class BlockListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:37: error: cannot find symbol
-     public boolean contains(Identifier id2) {
-                             ^
-    symbol:   class Identifier
-    location: class BlockListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:41: error: cannot find symbol
-     public BlockListSetting.Target find(Block block2) {
-                                         ^
-    symbol:   class Block
-    location: class BlockListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:60: error: cannot find symbol
-     public boolean isActive(Block block2) {
-                             ^
-    symbol:   class Block
-    location: class BlockListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:65: error: cannot find symbol
-     public BlockListSetting.Target add(Block block2, boolean value, int n) {
-                                        ^
-    symbol:   class Block
-    location: class BlockListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:92: error: cannot find symbol
-     public List<Block> searchRegistry(String str, int n) {
-                 ^
-    symbol:   class Block
-    location: class BlockListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:119: error: cannot find symbol
-     public static String displayName(Block block2) {
-                                      ^
-    symbol:   class Block
-    location: class BlockListSetting
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:206: error: cannot find symbol
-        private final Identifier id;
-                      ^
-    symbol:   class Identifier
-    location: class Target
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:207: error: cannot find symbol
-        private final Block block;
-                      ^
-    symbol:   class Block
-    location: class Target
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
-        Target(Identifier id2, Block block2, boolean enabled2, int n) {
-               ^
-    symbol:   class Identifier
-    location: class Target
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
-        Target(Identifier id2, Block block2, boolean enabled2, int n) {
-                               ^
-    symbol:   class Block
-    location: class Target
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:218: error: cannot find symbol
-        public Identifier id() {
-               ^
-    symbol:   class Identifier
-    location: class Target
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:222: error: cannot find symbol
-        public Block block() {
-               ^
-    symbol:   class Block
-    location: class Target
-  100 errors
+> Could not resolve all files for configuration ':compileClasspath'.
+   > Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
+     Required by:
+         root project :
+      > Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
+         > Could not get resource 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
+            > Could not GET 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
+               > maven.llamalad7.com: Name or service not known
 
 * Try:
-> Check your code and dependencies to fix the compilation error(s)
+> Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
 
 * Exception is:
 org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
-	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
-	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
-	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
-	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
-	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
@@ -807,394 +62,33 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
-Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:52: error: cannot find symbol
-public class ClickGuiScreen extends Screen implements NvgDrawable {
-                                    ^
-  symbol: class Screen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:11: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:12: error: package net.minecraft.client.network does not exist
-import net.minecraft.client.network.ClientPlayNetworkHandler;
-                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:13: error: package net.minecraft.client.network does not exist
-import net.minecraft.client.network.PlayerListEntry;
-                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:14: error: package net.minecraft.scoreboard does not exist
-import net.minecraft.scoreboard.Team;
-                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:18: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:19: error: package net.minecraft.client.sound does not exist
-import net.minecraft.client.sound.PositionedSoundInstance;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:20: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvent;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:21: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvents;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:22: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:10: error: package net.minecraft.text does not exist
-import net.minecraft.text.Style;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:11: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:12: error: package net.minecraft.text does not exist
-import net.minecraft.text.TextColor;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: package net.minecraft.client.gui does not exist
-import net.minecraft.client.gui.Click;
-                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:25: error: package net.minecraft.client.gui does not exist
-import net.minecraft.client.gui.DrawContext;
-                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:26: error: package net.minecraft.client.gui.screen does not exist
-import net.minecraft.client.gui.screen.Screen;
-                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: package net.minecraft.client.input does not exist
-import net.minecraft.client.input.CharInput;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: package net.minecraft.client.input does not exist
-import net.minecraft.client.input.KeyInput;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:29: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:12: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:12: error: package net.minecraft.block does not exist
-import net.minecraft.block.Block;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:13: error: package net.minecraft.block does not exist
-import net.minecraft.block.Blocks;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:14: error: package net.minecraft.registry does not exist
-import net.minecraft.registry.Registries;
-                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:11: error: package net.minecraft.item does not exist
-import net.minecraft.item.Item;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:8: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:9: error: package net.minecraft.client.option does not exist
-import net.minecraft.client.option.GameOptions;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:10: error: package net.minecraft.client.option does not exist
-import net.minecraft.client.option.KeyBinding;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:11: error: package net.minecraft.client.util.InputUtil does not exist
-import net.minecraft.client.util.InputUtil.Key;
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:12: error: package net.minecraft.client.util.InputUtil does not exist
-import net.minecraft.client.util.InputUtil.Type;
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:9: error: package net.minecraft.client does not exist
-import net.minecraft.client.MinecraftClient;
-                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:10: error: package net.minecraft.client.sound does not exist
-import net.minecraft.client.sound.PositionedSoundInstance;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:11: error: package net.minecraft.client.world does not exist
-import net.minecraft.client.world.ClientWorld;
-                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:12: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvent;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:13: error: package net.minecraft.sound does not exist
-import net.minecraft.sound.SoundEvents;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:14: error: package net.minecraft.text does not exist
-import net.minecraft.text.Text;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:12: error: package net.minecraft.block does not exist
-import net.minecraft.block.BlockState;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:13: error: package net.minecraft.block does not exist
-import net.minecraft.block.ChestBlock;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:11: error: Mixin has no targets
-@Mixin({ClientPlayerEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:19: error: Mixin has no targets
-@Mixin({InGameHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:12: error: Mixin has no targets
-@Mixin({Mouse.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:12: error: Mixin has no targets
-@Mixin({Entity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:11: error: Mixin has no targets
-@Mixin({Entity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:22: error: Mixin has no targets
-@Mixin({GameRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:16: error: Mixin has no targets
-@Mixin({EquipmentRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:14: error: Mixin has no targets
-@Mixin({ClientPlayerInteractionManager.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:19: error: Mixin has no targets
-@Mixin({Mouse.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightPacketMixin.java:13: error: Mixin has no targets
-@Mixin({ClientPlayNetworkHandler.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:13: error: Mixin has no targets
-@Mixin({AbstractClientPlayerEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:13: error: Mixin has no targets
-@Mixin({LivingEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:11: error: Mixin has no targets
-@Mixin({LightmapTextureManager.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:11: error: Mixin has no targets
-@Mixin({ChatHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:19: error: Mixin has no targets
-@Mixin({Keyboard.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:22: error: Mixin has no targets
-@Mixin({EntityRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityHitboxMixin.java:9: error: Mixin has no targets
-@Mixin({Entity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:12: error: Mixin has no targets
-@Mixin({InGameHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:11: error: Mixin has no targets
-@Mixin({LivingEntity.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractContainerScreenAccessor.java:8: error: Mixin has no targets
-@Mixin({HandledScreen.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:11: error: Mixin has no targets
-@Mixin({KeyboardInput.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MinecraftAccessor.java:8: error: Mixin has no targets
-@Mixin({MinecraftClient.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:9: error: Mixin has no targets
-@Mixin({Input.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:27: error: Mixin has no targets
-@Mixin({WorldRenderer.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:13: error: Mixin has no targets
-@Mixin({PlayerListHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientPacketListenerMixin.java:21: error: Mixin has no targets
-@Mixin({ClientPlayNetworkHandler.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:13: error: Mixin has no targets
-@Mixin({Camera.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:15: error: Mixin has no targets
-@Mixin({InGameHud.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreecamMixin.java:14: error: Mixin has no targets
-@Mixin({Camera.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyMappingAccessor.java:8: error: Mixin has no targets
-@Mixin({KeyBinding.class})
-^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:15: error: cannot find symbol
-import net.minecraft.world.GameMode;
-                          ^
-  symbol:   class GameMode
-  location: package net.minecraft.world
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                 ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                            ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
-   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
-                                                                        ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:104: error: cannot find symbol
-   static Integer scanMarker(Text text, StaffDetector.DetectConfig detectConfig) {
-                             ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:157: error: cannot find symbol
-   private static String plain(Text text) {
-                               ^
-  symbol:   class Text
-  location: class StaffDetector
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:95: error: cannot find symbol
-    private final Screen parent;
-                  ^
-  symbol:   class Screen
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:101: error: cannot find symbol
-    public ClickGuiScreen(Screen parent) {
-                          ^
-  symbol:   class Screen
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:150: error: cannot find symbol
-    public void render(DrawContext ctx, int mx, int my, float delta) {
-                       ^
-  symbol:   class DrawContext
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:164: error: cannot find symbol
-    public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
-                                 ^
-  symbol:   class DrawContext
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
-    public boolean mouseClicked(Click click, boolean unused) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
-    public boolean mouseDragged(Click click, double dx, double dy) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
-    public boolean mouseReleased(Click click) {
-                                 ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
-    public boolean keyPressed(KeyInput ki) {
-                              ^
-  symbol:   class KeyInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
-    public boolean charTyped(CharInput ci) {
-                             ^
-  symbol:   class CharInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:15: error: cannot find symbol
-import net.minecraft.util.Identifier;
-                         ^
-  symbol:   class Identifier
-  location: package net.minecraft.util
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:20: error: cannot find symbol
-   public IconListSetting.Entry add(String str, String str3, Item item, boolean value, int n) {
-                                                             ^
-  symbol:   class Item
-  location: class IconListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:94: error: cannot find symbol
-      private final Item icon;
-                    ^
-  symbol:   class Item
-  location: class Entry
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:98: error: cannot find symbol
-      Entry(String str, String str2, Item item, boolean flag, int n) {
-                                     ^
-  symbol:   class Item
-  location: class Entry
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:114: error: cannot find symbol
-      public Item icon() {
-             ^
-  symbol:   class Item
-  location: class Entry
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:19: error: cannot find symbol
-   private final Set<Identifier> ids = new HashSet<>();
-                     ^
-  symbol:   class Identifier
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:37: error: cannot find symbol
-   public boolean contains(Identifier id2) {
-                           ^
-  symbol:   class Identifier
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:41: error: cannot find symbol
-   public BlockListSetting.Target find(Block block2) {
-                                       ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:60: error: cannot find symbol
-   public boolean isActive(Block block2) {
-                           ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:65: error: cannot find symbol
-   public BlockListSetting.Target add(Block block2, boolean value, int n) {
-                                      ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:92: error: cannot find symbol
-   public List<Block> searchRegistry(String str, int n) {
-               ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:119: error: cannot find symbol
-   public static String displayName(Block block2) {
-                                    ^
-  symbol:   class Block
-  location: class BlockListSetting
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:206: error: cannot find symbol
-      private final Identifier id;
-                    ^
-  symbol:   class Identifier
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:207: error: cannot find symbol
-      private final Block block;
-                    ^
-  symbol:   class Block
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
-      Target(Identifier id2, Block block2, boolean enabled2, int n) {
-             ^
-  symbol:   class Identifier
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
-      Target(Identifier id2, Block block2, boolean enabled2, int n) {
-                             ^
-  symbol:   class Block
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:218: error: cannot find symbol
-      public Identifier id() {
-             ^
-  symbol:   class Identifier
-  location: class Target
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:222: error: cannot find symbol
-      public Block block() {
-             ^
-  symbol:   class Block
-  location: class Target
-100 errors
-	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:84)
-	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:46)
-	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
-	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
-	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
-	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
-	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
-	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
-	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
-	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
-	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:205)
-	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
-	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:52)
-	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
-	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
-	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
-	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
-	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
-	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: Could not resolve all files for configuration ':compileClasspath'.
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailure(ResolveExceptionMapper.java:68)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailures(ResolveExceptionMapper.java:60)
+	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.consolidateFailures(DefaultConfiguration.java:1995)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailuresAndReportProblems(ResolutionHost.java:75)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:87)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:77)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
+	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.visitContents(DefaultConfiguration.java:550)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:67)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:92)
+	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
+	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
+	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
@@ -1202,82 +96,9 @@ import net.minecraft.util.Identifier;
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
-	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:223)
-	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:164)
-	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:149)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
-	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
-	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
-	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
-	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
-	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
-	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
-	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
-	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
-	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
-	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
-	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
-	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
-	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
-	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
-	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
-	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
-	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
-	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
-	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
-	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
-	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
-	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
-	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
-	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
-	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
-	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
-	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
-	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
-	at org.gradle.internal.execution.steps.BuildCacheStep.executeAndStoreInCache(BuildCacheStep.java:145)
-	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$4(BuildCacheStep.java:101)
-	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$5(BuildCacheStep.java:101)
-	at org.gradle.internal.Try$Success.map(Try.java:175)
-	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithCache(BuildCacheStep.java:85)
-	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$0(BuildCacheStep.java:74)
-	at org.gradle.internal.Either$Left.fold(Either.java:115)
-	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
-	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
-	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
-	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
-	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
-	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
-	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
-	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
-	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
-	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
-	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
-	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
-	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
-	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
-	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
-	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
-	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
-	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
-	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
-	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
@@ -1330,7 +151,108 @@ import net.minecraft.util.Identifier;
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
+Required by:
+    root project :
+Caused by: org.gradle.internal.resolve.ModuleVersionResolveException: Could not resolve com.llamalad7:mixinextras-fabric:0.4.1.
+Caused by: org.gradle.api.resources.ResourceException: Could not get resource 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
+	at org.gradle.internal.resource.ResourceExceptions.failure(ResourceExceptions.java:74)
+	at org.gradle.internal.resource.ResourceExceptions.getFailed(ResourceExceptions.java:57)
+	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadByCoords(DefaultExternalResourceArtifactResolver.java:154)
+	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadStaticResource(DefaultExternalResourceArtifactResolver.java:94)
+	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.resolveArtifact(DefaultExternalResourceArtifactResolver.java:60)
+	at org.gradle.api.internal.artifacts.repositories.metadata.AbstractRepositoryMetadataSource.parseMetaDataFromArtifact(AbstractRepositoryMetadataSource.java:79)
+	at org.gradle.api.internal.artifacts.repositories.metadata.AbstractRepositoryMetadataSource.create(AbstractRepositoryMetadataSource.java:69)
+	at org.gradle.api.internal.artifacts.repositories.metadata.DefaultMavenPomMetadataSource.create(DefaultMavenPomMetadataSource.java:40)
+	at org.gradle.api.internal.artifacts.repositories.metadata.RedirectingGradleMetadataModuleMetadataSource.create(RedirectingGradleMetadataModuleMetadataSource.java:52)
+	at org.gradle.api.internal.artifacts.repositories.resolver.ExternalResourceResolver.resolveStaticDependency(ExternalResourceResolver.java:235)
+	at org.gradle.api.internal.artifacts.repositories.resolver.MavenResolver.doResolveComponentMetaData(MavenResolver.java:108)
+	at org.gradle.api.internal.artifacts.repositories.resolver.ExternalResourceResolver$RemoteRepositoryAccess.resolveComponentMetaData(ExternalResourceResolver.java:427)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository$ResolveAndCacheRepositoryAccess.resolveComponentMetaDataAndCache(CachingModuleComponentRepository.java:396)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository$ResolveAndCacheRepositoryAccess.resolveComponentMetaData(CachingModuleComponentRepository.java:390)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.lambda$resolveComponentMetaData$5(ErrorHandlingModuleComponentRepository.java:150)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.lambda$tryResolveAndMaybeDisable$15(ErrorHandlingModuleComponentRepository.java:220)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.tryResolveAndMaybeDisable(ErrorHandlingModuleComponentRepository.java:236)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.tryResolveAndMaybeDisable(ErrorHandlingModuleComponentRepository.java:219)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.performOperationWithRetries(ErrorHandlingModuleComponentRepository.java:203)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ErrorHandlingModuleComponentRepository$ErrorHandlingModuleComponentRepositoryAccess.resolveComponentMetaData(ErrorHandlingModuleComponentRepository.java:149)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ComponentMetaDataResolveState.process(ComponentMetaDataResolveState.java:70)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ComponentMetaDataResolveState.resolve(ComponentMetaDataResolveState.java:62)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.findBestMatch(RepositoryChainComponentMetaDataResolver.java:165)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.findBestMatch(RepositoryChainComponentMetaDataResolver.java:145)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.resolveModule(RepositoryChainComponentMetaDataResolver.java:115)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.lambda$createValueContainerFor$1(RepositoryChainComponentMetaDataResolver.java:85)
+	at org.gradle.internal.model.CalculatedValueContainerFactory$SupplierBackedCalculator.calculateValue(CalculatedValueContainerFactory.java:78)
+	at org.gradle.internal.model.CalculatedValueContainer$CalculationState.lambda$attachValue$0(CalculatedValueContainer.java:229)
+	at org.gradle.internal.Try.ofFailable(Try.java:50)
+	at org.gradle.internal.model.CalculatedValueContainer$CalculationState.attachValue(CalculatedValueContainer.java:224)
+	at org.gradle.internal.model.CalculatedValueContainer.finalizeIfNotAlready(CalculatedValueContainer.java:195)
+	at org.gradle.internal.model.CalculatedValueContainer.finalizeIfNotAlready(CalculatedValueContainer.java:186)
+	at org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver.resolve(RepositoryChainComponentMetaDataResolver.java:77)
+	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.ComponentResolversChain$ComponentMetaDataResolverChain.resolve(ComponentResolversChain.java:90)
+	at org.gradle.api.internal.artifacts.ivyservice.clientmodule.ClientModuleResolver.resolve(ClientModuleResolver.java:70)
+	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.ComponentState.resolve(ComponentState.java:224)
+	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.ComponentState.getMetadataOrNull(ComponentState.java:146)
+	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.builder.DownloadMetadataOperation.run(DownloadMetadataOperation.java:31)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$QueueWorker.execute(DefaultBuildOperationExecutor.java:161)
+	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.runOperation(DefaultBuildOperationQueue.java:272)
+	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.doRunBatch(DefaultBuildOperationQueue.java:253)
+	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.lambda$runBatch$0(DefaultBuildOperationQueue.java:238)
+	at org.gradle.internal.resources.AbstractResourceLockRegistry.whileDisallowingLockChanges(AbstractResourceLockRegistry.java:50)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.whileDisallowingProjectLockChanges(DefaultWorkerLeaseService.java:235)
+	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.lambda$runBatch$1(DefaultBuildOperationQueue.java:238)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.runBatch(DefaultBuildOperationQueue.java:224)
+	at org.gradle.internal.operations.DefaultBuildOperationQueue$WorkerRunnable.run(DefaultBuildOperationQueue.java:192)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.gradle.internal.resource.transport.http.HttpRequestException: Could not GET 'https://maven.llamalad7.com/mixinextras-fabric/com/llamalad7/mixinextras-fabric/0.4.1/mixinextras-fabric-0.4.1.pom'.
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.createHttpRequestException(HttpClientHelper.java:124)
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.performRequest(HttpClientHelper.java:118)
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.performRawGet(HttpClientHelper.java:100)
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.performGet(HttpClientHelper.java:105)
+	at org.gradle.internal.resource.transport.http.HttpResourceAccessor.openResource(HttpResourceAccessor.java:45)
+	at org.gradle.internal.resource.transport.http.HttpResourceAccessor.openResource(HttpResourceAccessor.java:30)
+	at org.gradle.internal.resource.transfer.AbstractExternalResourceAccessor.withContent(AbstractExternalResourceAccessor.java:32)
+	at org.gradle.internal.resource.transfer.DefaultExternalResourceConnector.withContent(DefaultExternalResourceConnector.java:59)
+	at org.gradle.internal.resource.transfer.ProgressLoggingExternalResourceAccessor$DownloadOperation.call(ProgressLoggingExternalResourceAccessor.java:134)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.resource.transfer.ProgressLoggingExternalResourceAccessor.withContent(ProgressLoggingExternalResourceAccessor.java:47)
+	at org.gradle.internal.resource.transfer.AccessorBackedExternalResource.withContentIfPresent(AccessorBackedExternalResource.java:103)
+	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.copyToCache(DefaultCacheAwareExternalResourceAccessor.java:188)
+	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.lambda$getResource$1(DefaultCacheAwareExternalResourceAccessor.java:86)
+	at org.gradle.cache.internal.ProducerGuard$AdaptiveProducerGuard.guardByKey(ProducerGuard.java:97)
+	at org.gradle.internal.resource.transfer.DefaultCacheAwareExternalResourceAccessor.getResource(DefaultCacheAwareExternalResourceAccessor.java:80)
+	at org.gradle.api.internal.artifacts.repositories.resolver.DefaultExternalResourceArtifactResolver.downloadByCoords(DefaultExternalResourceArtifactResolver.java:149)
+	... 52 more
+Caused by: java.net.UnknownHostException: maven.llamalad7.com: Name or service not known
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.performHttpRequest(HttpClientHelper.java:201)
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.performHttpRequest(HttpClientHelper.java:177)
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.executeGetOrHead(HttpClientHelper.java:166)
+	at org.gradle.internal.resource.transport.http.HttpClientHelper.performRequest(HttpClientHelper.java:114)
+	... 73 more
 
 
-BUILD FAILED in 1m 8s
+BUILD FAILED in 45s
 1 actionable task: 1 executed
