@@ -39,6 +39,45 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
    @Inject(
    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/PlayerListHudMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/KeyboardInputMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:19: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:27: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:35: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:43: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:52: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:61: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:70: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientCommonNetworkHandlerMixin.java:13: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:42: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:28: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientWorldMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
    @ModifyArg(
    ^
@@ -55,6 +94,9 @@ Fabric Loom: 1.10.5
    @Redirect(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/TextVisitFactoryMixin.java:11: warning: Cannot find target method "method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" for @ModifyVariable.method="method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" in net.minecraft.text.TextVisitFactory
    @ModifyVariable(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
@@ -90,13 +132,169 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to determine descriptor for @WrapOperation target method
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/class_746;method_5872(DD)V'
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
+   @Shadow
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:9: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
+   @Accessor("field_1771")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:12: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
+   @Accessor("field_1771")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/InputAccessor.java:10: error: Could not locate @Accessor target field_55868 in target net.minecraft.client.input.Input
+   @Accessor("field_55868")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:10: error: Could not locate @Invoker target method_75940 in target net.minecraft.client.render.RenderLayer
+   @Invoker("method_75940")
+   ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:24: error: cannot find symbol
 import net.minecraft.client.texture.PlayerSkinTexture;
                                    ^
   symbol:   class PlayerSkinTexture
   location: package net.minecraft.client.texture
-1 error
-24 warnings
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:4: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:11: error: cannot find symbol
+   static RenderLayer swyzzy$of(String var0, RenderSetup var1) {
+                                             ^
+  symbol:   class RenderSetup
+  location: interface RenderLayerInvoker
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:4: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:7: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:22: error: cannot find symbol
+   public boolean keyPressed(KeyInput var1) {
+                             ^
+  symbol:   class KeyInput
+  location: class InternalHelper4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:33: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class InternalHelper4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:18: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:22: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:155: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class SwyzzyClientScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:182: error: cannot find symbol
+   public boolean mouseReleased(Click var1) {
+                                ^
+  symbol:   class Click
+  location: class SwyzzyClientScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:199: error: cannot find symbol
+   public boolean keyPressed(KeyInput var1) {
+                             ^
+  symbol:   class KeyInput
+  location: class SwyzzyClientScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:26: error: cannot find symbol
+import net.minecraft.entity.player.SkinTextures;
+                                  ^
+  symbol:   class SkinTextures
+  location: package net.minecraft.entity.player
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:81: error: cannot find symbol
+   private final Map<String, SkinTextures> map2 = new HashMap<>();
+                             ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:389: error: cannot find symbol
+   private void run11(String var1, SkinTextures var2) {
+                                   ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:424: error: cannot find symbol
+      private SkinTextures skinTextures;
+              ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner1
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:426: error: cannot find symbol
+      Inner1(String var1, SkinTextures var2) {
+                          ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner1
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:435: error: cannot find symbol
+      public SkinTextures skinTextures() {
+             ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner1
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:508: error: cannot find symbol
+      private SkinTextures skinTextures;
+              ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:510: error: cannot find symbol
+      Inner4(String var1, String var2, boolean var3, SkinTextures var4) {
+                                                     ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:529: error: cannot find symbol
+      public SkinTextures skinTextures() {
+             ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:7: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:82: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class PickNullScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:113: error: cannot find symbol
+   public boolean mouseDragged(Click var1, double var2, double var4) {
+                               ^
+  symbol:   class Click
+  location: class PickNullScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:122: error: cannot find symbol
+   public boolean mouseReleased(Click var1) {
+                                ^
+  symbol:   class Click
+  location: class PickNullScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SelectBlocksScreen.java:12: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SelectBlocksScreen.java:104: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class SelectBlocksScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/util/RenderPipelineUtils.java:14: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+32 errors
+41 warnings
 
 > Task :compileJava FAILED
 
@@ -128,6 +326,45 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
      @Inject(
      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/PlayerListHudMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/KeyboardInputMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:19: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:27: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:35: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:43: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:52: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:61: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:70: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientCommonNetworkHandlerMixin.java:13: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:42: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:28: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientWorldMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
      @ModifyArg(
      ^
@@ -144,6 +381,9 @@ Execution failed for task ':compileJava'.
      @Redirect(
      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+     @ModifyVariable(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/TextVisitFactoryMixin.java:11: warning: Cannot find target method "method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" for @ModifyVariable.method="method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" in net.minecraft.text.TextVisitFactory
      @ModifyVariable(
      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
@@ -179,13 +419,169 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
      @ModifyReturnValue(
      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to determine descriptor for @WrapOperation target method
+     @WrapOperation(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/class_746;method_5872(DD)V'
+     @WrapOperation(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
+     @Shadow
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:9: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
+     @Accessor("field_1771")
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:12: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
+     @Accessor("field_1771")
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/InputAccessor.java:10: error: Could not locate @Accessor target field_55868 in target net.minecraft.client.input.Input
+     @Accessor("field_55868")
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:10: error: Could not locate @Invoker target method_75940 in target net.minecraft.client.render.RenderLayer
+     @Invoker("method_75940")
+     ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:24: error: cannot find symbol
   import net.minecraft.client.texture.PlayerSkinTexture;
                                      ^
     symbol:   class PlayerSkinTexture
     location: package net.minecraft.client.texture
-  1 error
-  24 warnings
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:4: error: cannot find symbol
+  import net.minecraft.client.render.RenderSetup;
+                                    ^
+    symbol:   class RenderSetup
+    location: package net.minecraft.client.render
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:11: error: cannot find symbol
+     static RenderLayer swyzzy$of(String var0, RenderSetup var1) {
+                                               ^
+    symbol:   class RenderSetup
+    location: interface RenderLayerInvoker
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:4: error: cannot find symbol
+  import net.minecraft.client.gui.Click;
+                                 ^
+    symbol:   class Click
+    location: package net.minecraft.client.gui
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:7: error: cannot find symbol
+  import net.minecraft.client.input.KeyInput;
+                                   ^
+    symbol:   class KeyInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:22: error: cannot find symbol
+     public boolean keyPressed(KeyInput var1) {
+                               ^
+    symbol:   class KeyInput
+    location: class InternalHelper4
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:33: error: cannot find symbol
+     public boolean mouseClicked(Click var1, boolean var2) {
+                                 ^
+    symbol:   class Click
+    location: class InternalHelper4
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:18: error: cannot find symbol
+  import net.minecraft.client.gui.Click;
+                                 ^
+    symbol:   class Click
+    location: package net.minecraft.client.gui
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:22: error: cannot find symbol
+  import net.minecraft.client.input.KeyInput;
+                                   ^
+    symbol:   class KeyInput
+    location: package net.minecraft.client.input
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:155: error: cannot find symbol
+     public boolean mouseClicked(Click var1, boolean var2) {
+                                 ^
+    symbol:   class Click
+    location: class SwyzzyClientScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:182: error: cannot find symbol
+     public boolean mouseReleased(Click var1) {
+                                  ^
+    symbol:   class Click
+    location: class SwyzzyClientScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:199: error: cannot find symbol
+     public boolean keyPressed(KeyInput var1) {
+                               ^
+    symbol:   class KeyInput
+    location: class SwyzzyClientScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:26: error: cannot find symbol
+  import net.minecraft.entity.player.SkinTextures;
+                                    ^
+    symbol:   class SkinTextures
+    location: package net.minecraft.entity.player
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:81: error: cannot find symbol
+     private final Map<String, SkinTextures> map2 = new HashMap<>();
+                               ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:389: error: cannot find symbol
+     private void run11(String var1, SkinTextures var2) {
+                                     ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:424: error: cannot find symbol
+        private SkinTextures skinTextures;
+                ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule.Inner1
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:426: error: cannot find symbol
+        Inner1(String var1, SkinTextures var2) {
+                            ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule.Inner1
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:435: error: cannot find symbol
+        public SkinTextures skinTextures() {
+               ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule.Inner1
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:508: error: cannot find symbol
+        private SkinTextures skinTextures;
+                ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule.Inner4
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:510: error: cannot find symbol
+        Inner4(String var1, String var2, boolean var3, SkinTextures var4) {
+                                                       ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule.Inner4
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:529: error: cannot find symbol
+        public SkinTextures skinTextures() {
+               ^
+    symbol:   class SkinTextures
+    location: class AdminDetectorModule.Inner4
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:7: error: cannot find symbol
+  import net.minecraft.client.gui.Click;
+                                 ^
+    symbol:   class Click
+    location: package net.minecraft.client.gui
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:82: error: cannot find symbol
+     public boolean mouseClicked(Click var1, boolean var2) {
+                                 ^
+    symbol:   class Click
+    location: class PickNullScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:113: error: cannot find symbol
+     public boolean mouseDragged(Click var1, double var2, double var4) {
+                                 ^
+    symbol:   class Click
+    location: class PickNullScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:122: error: cannot find symbol
+     public boolean mouseReleased(Click var1) {
+                                  ^
+    symbol:   class Click
+    location: class PickNullScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SelectBlocksScreen.java:12: error: cannot find symbol
+  import net.minecraft.client.gui.Click;
+                                 ^
+    symbol:   class Click
+    location: package net.minecraft.client.gui
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SelectBlocksScreen.java:104: error: cannot find symbol
+     public boolean mouseClicked(Click var1, boolean var2) {
+                                 ^
+    symbol:   class Click
+    location: class SelectBlocksScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/util/RenderPipelineUtils.java:14: error: cannot find symbol
+  import net.minecraft.client.render.RenderSetup;
+                                    ^
+    symbol:   class RenderSetup
+    location: package net.minecraft.client.render
+  32 errors
+  41 warnings
 
 * Try:
 > Check your code and dependencies to fix the compilation error(s)
@@ -247,6 +643,45 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
    @Inject(
    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/PlayerListHudMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/KeyboardInputMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:19: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:27: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:35: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:43: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:52: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:61: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:70: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientCommonNetworkHandlerMixin.java:13: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:42: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:28: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientWorldMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
    @ModifyArg(
    ^
@@ -263,6 +698,9 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
    @Redirect(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/TextVisitFactoryMixin.java:11: warning: Cannot find target method "method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" for @ModifyVariable.method="method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" in net.minecraft.text.TextVisitFactory
    @ModifyVariable(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
@@ -298,13 +736,169 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to determine descriptor for @WrapOperation target method
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/class_746;method_5872(DD)V'
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
+   @Shadow
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:9: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
+   @Accessor("field_1771")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:12: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
+   @Accessor("field_1771")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/InputAccessor.java:10: error: Could not locate @Accessor target field_55868 in target net.minecraft.client.input.Input
+   @Accessor("field_55868")
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:10: error: Could not locate @Invoker target method_75940 in target net.minecraft.client.render.RenderLayer
+   @Invoker("method_75940")
+   ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:24: error: cannot find symbol
 import net.minecraft.client.texture.PlayerSkinTexture;
                                    ^
   symbol:   class PlayerSkinTexture
   location: package net.minecraft.client.texture
-1 error
-24 warnings
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:4: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:11: error: cannot find symbol
+   static RenderLayer swyzzy$of(String var0, RenderSetup var1) {
+                                             ^
+  symbol:   class RenderSetup
+  location: interface RenderLayerInvoker
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:4: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:7: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:22: error: cannot find symbol
+   public boolean keyPressed(KeyInput var1) {
+                             ^
+  symbol:   class KeyInput
+  location: class InternalHelper4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:33: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class InternalHelper4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:18: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:22: error: cannot find symbol
+import net.minecraft.client.input.KeyInput;
+                                 ^
+  symbol:   class KeyInput
+  location: package net.minecraft.client.input
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:155: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class SwyzzyClientScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:182: error: cannot find symbol
+   public boolean mouseReleased(Click var1) {
+                                ^
+  symbol:   class Click
+  location: class SwyzzyClientScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:199: error: cannot find symbol
+   public boolean keyPressed(KeyInput var1) {
+                             ^
+  symbol:   class KeyInput
+  location: class SwyzzyClientScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:26: error: cannot find symbol
+import net.minecraft.entity.player.SkinTextures;
+                                  ^
+  symbol:   class SkinTextures
+  location: package net.minecraft.entity.player
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:81: error: cannot find symbol
+   private final Map<String, SkinTextures> map2 = new HashMap<>();
+                             ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:389: error: cannot find symbol
+   private void run11(String var1, SkinTextures var2) {
+                                   ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:424: error: cannot find symbol
+      private SkinTextures skinTextures;
+              ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner1
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:426: error: cannot find symbol
+      Inner1(String var1, SkinTextures var2) {
+                          ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner1
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:435: error: cannot find symbol
+      public SkinTextures skinTextures() {
+             ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner1
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:508: error: cannot find symbol
+      private SkinTextures skinTextures;
+              ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:510: error: cannot find symbol
+      Inner4(String var1, String var2, boolean var3, SkinTextures var4) {
+                                                     ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:529: error: cannot find symbol
+      public SkinTextures skinTextures() {
+             ^
+  symbol:   class SkinTextures
+  location: class AdminDetectorModule.Inner4
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:7: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:82: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class PickNullScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:113: error: cannot find symbol
+   public boolean mouseDragged(Click var1, double var2, double var4) {
+                               ^
+  symbol:   class Click
+  location: class PickNullScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:122: error: cannot find symbol
+   public boolean mouseReleased(Click var1) {
+                                ^
+  symbol:   class Click
+  location: class PickNullScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SelectBlocksScreen.java:12: error: cannot find symbol
+import net.minecraft.client.gui.Click;
+                               ^
+  symbol:   class Click
+  location: package net.minecraft.client.gui
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SelectBlocksScreen.java:104: error: cannot find symbol
+   public boolean mouseClicked(Click var1, boolean var2) {
+                               ^
+  symbol:   class Click
+  location: class SelectBlocksScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/util/RenderPipelineUtils.java:14: error: cannot find symbol
+import net.minecraft.client.render.RenderSetup;
+                                  ^
+  symbol:   class RenderSetup
+  location: package net.minecraft.client.render
+32 errors
+41 warnings
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
@@ -463,5 +1057,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 59s
+BUILD FAILED in 47s
 1 actionable task: 1 executed
