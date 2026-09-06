@@ -115,7 +115,7 @@ public final class OverlayRenderer {
                return;
             } catch (Throwable ex2) {
                crashed = true;
-               SixSevenClient.LOGGER.error("67Client overlay renderer crashed; disabling overlay", ex2);
+               SixSevenClient.LOGGER.error("Epstein Client overlay renderer crashed; disabling overlay", ex2);
                return;
             }
          }
