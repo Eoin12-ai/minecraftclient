@@ -28,7 +28,7 @@ public final class BlockEntityEspRenderer {
             boolean found = blockEntityEspModule.showGhosts.get();
             boolean found2 = blockEntityEspModule.tracers.get();
             int localY = blockEntityEspModule.ghostTint.get();
-            Vector3fc camera = found2 ? client.gameRenderer.getCamera().getHorizontalPlane() : null;
+            Vector3fc camera = found2 ? client.gameRenderer.getCamera().getPos() : null;
 
             for (BlockEntityEspModule.Cached cached : collection) {
                String text = cached.typeKey();
