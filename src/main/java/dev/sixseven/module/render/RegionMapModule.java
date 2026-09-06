@@ -99,6 +99,7 @@ public class RegionMapModule extends Module {
    };
    private static final int[] REGION_ID = new int[81];
    private static final int[] REGION_TYPE = new int[81];
+   private static final String[] TYPE_NAMES = new String[]{"Spawn", "Nether Hub", "Wilderness", "Ocean", "Mountain", "Desert"};
    public final SliderSetting opacity = this.addSetting(new SliderSetting("Opacity", "Region cell fill opacity.", 90.0, 10.0, 100.0, 5.0, "V"));
    public final BooleanSetting gridLines = this.addSetting(new BooleanSetting("Grid Lines", "Draw the accent lines between region cells.", true));
    public final BooleanSetting cellNumbers = this.addSetting(new BooleanSetting("Cell Numbers", "Show each region's ID number in its cell.", true));
