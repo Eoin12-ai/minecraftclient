@@ -53,7 +53,7 @@ public class AutoTpaModule extends Module {
                this.nextSendAtMs = this.scheduleNext();
             } else {
                String text4 = this.mode.is("TPAHere") ? "tpahere " : "tpa ";
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
+               String text = text4 + trimmed;
                client.player.networkHandler.sendChatCommand(text);
                this.lastSent = text;
                if (this.notify.get()) {
