@@ -108,7 +108,7 @@ public final class ChunkFinderModule extends Module {
          HashSet<Long> set2 = new HashSet<>();
          HashSet<Long> set3 = new HashSet<>();
 
-         for (long l : set) {
+         for (Long lRaw : set) { long l = lRaw;
             if (set3.add(l)) {
                ArrayList list = new ArrayList();
                ArrayDeque arrayDeque = new ArrayDeque();
