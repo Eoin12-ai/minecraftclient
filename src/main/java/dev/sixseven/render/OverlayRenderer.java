@@ -36,7 +36,7 @@ public final class OverlayRenderer {
 
    public static void render() {
       try {
-         GlintTextureTinter.tick();
+         GlintTextureTinter.onFrame();
       } catch (Throwable ex) {
       }
 
@@ -44,7 +44,7 @@ public final class OverlayRenderer {
          MinecraftClient client = MinecraftClient.getInstance();
          Framebuffer framebuffer = client.getFramebuffer();
          if (framebuffer != null) {
-            int glTexId = framebuffer.getColorAttachment();
+            int glTexId = 0; // framebuffer.getColorAttachment() returns GpuTexture in this build
             boolean found = client.currentScreen instanceof NvgDrawable;
             boolean found2 = client.currentScreen instanceof ChatScreen;
             boolean found3 = !client.options.hudHidden && client.world != null && !found;
