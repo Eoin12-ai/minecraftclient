@@ -30,20 +30,25 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Build
+      - name: Build and capture errors
+        id: build
         run: |
-          ./gradlew build --no-daemon --stacktrace 2>&1 | tee build-output.txt
-          exit ${PIPESTATUS[0]}
+          set +e
+          ./gradlew build --no-daemon --stacktrace 2>&1 | tee /tmp/build.log
+          EXIT=${PIPESTATUS[0]}
+          if [ $EXIT -ne 0 ]; then
+            echo "## Build Errors" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            grep -E "error:|error\[|cannot find symbol|cannot access|does not override|incompatible|BUILD FAILED|Caused by:|> Could not" /tmp/build.log | head -100 >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "## Full tail" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            tail -60 /tmp/build.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
+          exit $EXIT
         env:
           GRADLE_OPTS: '-Xmx3g'
-
-      - name: Upload build log (always)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build-output.txt
-          retention-days: 7
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
