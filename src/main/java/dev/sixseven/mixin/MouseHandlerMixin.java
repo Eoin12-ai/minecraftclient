@@ -8,7 +8,6 @@ import dev.sixseven.util.CpsTracker;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import net.minecraft.client.gui.screen.ChatScreen;
-import net.minecraft.client.input.MouseInput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,18 +38,18 @@ public class MouseHandlerMixin {
    }
 
    @Inject(
-      method = {"onMouseButton(JLnet/minecraft/MouseInput;I)V"},
+      method = {"onMouseButton(JIII)V"},
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void sixsevenclient$onButton(long l, MouseInput mouseInput, int n, CallbackInfo callbackInfo) {
+   private void sixsevenclient$onButton(long l, int mouseInputButton, int mouseInputAction, int n, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
       if (temp == client.getWindow().getHandle()) {
          if (temp4 == 1 && client.currentScreen == null) {
-            CpsTracker.onClick(temp3.button());
+            CpsTracker.onClick(mouseInputButton);
          }
 
-         if (client.currentScreen instanceof ChatScreen && temp3.button() == 0 && SixSevenClient.hud() != null) {
+         if (client.currentScreen instanceof ChatScreen && mouseInputButton == 0 && SixSevenClient.hud() != null) {
             if (temp4 == 1) {
                if (HudDragController.tryStartDrag(SixSevenClient.hud())) {
                   temp2.cancel();
