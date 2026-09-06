@@ -41,7 +41,7 @@ public class SixSevenClient implements ClientModInitializer {
    public static final String MOD_ID = "sixsevenclient";
    public static final String NAME = "CrackedByDexter";
    public static final String VERSION = "1.6.2";
-   public static final Logger LOGGER = LoggerFactory.getLogger("CrackedByDexter");
+   public static final Logger LOGGER = LoggerFactory.getLogger("EpsteinClient");
    private static ModuleManager modules;
    private static ThemeManager themes;
    private static ConfigManager config;
@@ -86,7 +86,7 @@ public class SixSevenClient implements ClientModInitializer {
 
    public void onInitializeClient() {
       Seed.check();
-      LOGGER.info("{} {} initializing", "CrackedByDexter", "1.6.2");
+      LOGGER.info("{} {} initializing", "EpsteinClient", "1.6.2");
       UiSoundEvents.bootstrap();
       themes = new ThemeManager();
       soundSettings = new SoundSettings();
