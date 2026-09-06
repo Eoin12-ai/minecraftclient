@@ -19,14 +19,18 @@ repositories {
     maven { url = 'https://maven.fabricmc.net/' }
 }
 
+configurations {
+    localDeps
+}
+
 dependencies {
     minecraft         "com.mojang:minecraft:${project.minecraft_version}"
     mappings          "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    // MixinExtras is bundled with Fabric Loader 0.15+ — no explicit dep needed
-    // NanoVG API jar for compilation only
+    // Pre-compiled JAR supplies class_11905/8/9 and other snapshot-only APIs
+    // that aren't yet in the stable Yarn mappings
     compileOnly fileTree(dir: 'libs', include: '*.jar')
 
     compileOnly 'org.jetbrains:annotations:24.1.0'
