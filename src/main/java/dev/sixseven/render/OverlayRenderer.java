@@ -45,7 +45,6 @@ public final class OverlayRenderer {
          Framebuffer framebuffer = client.getFramebuffer();
          if (framebuffer != null) {
             int glTexId = framebuffer.getColorAttachment();
-            if (true) {
             boolean found = client.currentScreen instanceof NvgDrawable;
             boolean found2 = client.currentScreen instanceof ChatScreen;
             boolean found3 = !client.options.hudHidden && client.world != null && !found;
