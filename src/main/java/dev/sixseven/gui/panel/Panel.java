@@ -136,9 +136,7 @@ public abstract class Panel {
 
         // ── content background (flat, single colour) ─────────────────────────
         if (open) {
-            nvg.rect(px, py + HEADER_H, WIDTH, vH,
-                    new float[]{0, 0, RADIUS, RADIUS},
-                    th.background());
+            nvg.rect(px, py + HEADER_H, WIDTH, vH, RADIUS, th.background());
         }
 
         // ── header background ────────────────────────────────────────────────
