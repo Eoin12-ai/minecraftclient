@@ -91,7 +91,7 @@ public class StringWidget extends SettingWidget {
       } else if (Character.isValidCodePoint(n) && !Character.isISOControl(n)) {
          StringSetting stringSetting = this.setting;
          String text2 = this.setting.get();
-         stringSetting.set(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, new String(Character.toChars(n))));
+         stringSetting.set(text2 + new String(Character.toChars(n)));
          return true;
       } else {
          return true;
