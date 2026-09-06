@@ -197,7 +197,7 @@ public class ConfigStore {
                   return new ConfigStore.ImportResult(false, "Couldn't write the slot file");
                } else {
                   this.refreshSlot(n);
-                  return new ConfigStore.ImportResult(true, "Imported \\"" + slot2.name + "\"");
+                  return new ConfigStore.ImportResult(true, "Imported \"" + slot2.name + "\"");
                }
             }
          }
