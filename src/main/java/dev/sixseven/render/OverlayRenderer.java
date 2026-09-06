@@ -59,7 +59,7 @@ public final class OverlayRenderer {
                GlStateSnapshot glStateSnapshot = GlStateSnapshot.capture();
 
                try {
-                  if (!bindOverlayFbo(glTexture, framebuffer.textureWidth, framebuffer.textureHeight)) {
+                  if (!bindOverlayFbo(glTexId, framebuffer.textureWidth, framebuffer.textureHeight)) {
                      return;
                   }
 
