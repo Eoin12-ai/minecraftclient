@@ -21,7 +21,7 @@ public class WatermarkHud extends HudComponent {
 
    @Override
    public float measureWidth(NVGRenderer nVGRenderer) {
-      return 13.0F + nVGRenderer.textWidth("67", 18.0F) + 7.0F + nVGRenderer.textWidth("client", 14.0F) + 13.0F;
+      return 13.0F + nVGRenderer.textWidth("Epstein", 18.0F) + 7.0F + nVGRenderer.textWidth("Client", 14.0F) + 13.0F;
    }
 
    @Override
@@ -41,10 +41,10 @@ public class WatermarkHud extends HudComponent {
       nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, tickDelta4 / 2.0F, Colors.withAlpha(-15264995, 0.88F), Colors.withAlpha(-15856878, 0.88F), true);
       nVGRenderer.rectOutline(tickDelta, tickDelta2, tickDelta3, tickDelta4, tickDelta4 / 2.0F, 1.0F, Colors.withAlpha(Colors.lerp(theme.accent(), theme.accentBright(), f5), 0.55F));
       float f7 = tickDelta + 13.0F;
-      nVGRenderer.textGlow("67", f7, f, 18.0F, Colors.withAlpha(theme.accent(), 0.45F + 0.3F * f5));
-      nVGRenderer.textGradient("67", f7, f, 18.0F, n, offset);
-      f7 += nVGRenderer.textWidth("67", 18.0F) + 7.0F;
+      nVGRenderer.textGlow("Epstein", f7, f, 18.0F, Colors.withAlpha(theme.accent(), 0.45F + 0.3F * f5));
+      nVGRenderer.textGradient("Epstein", f7, f, 18.0F, n, offset);
+      f7 += nVGRenderer.textWidth("Epstein", 18.0F) + 7.0F;
       nVGRenderer.circle(f7 - 4.5F, f, 1.4F, Colors.withAlpha(theme.textMuted(), 0.8F));
-      nVGRenderer.text("client", f7, f, 14.0F, Colors.withAlpha(-856073, 0.92F));
+      nVGRenderer.text("Client", f7, f, 14.0F, Colors.withAlpha(-856073, 0.92F));
    }
 }
