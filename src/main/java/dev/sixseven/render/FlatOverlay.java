@@ -36,9 +36,9 @@ public final class FlatOverlay {
         Entry entry = matrices.peek();
         Vector3f normal = new Vector3f((float)(x2 - x1), 0.0f, (float)(z2 - z1)).normalize();
         consumer.vertex(entry, (float)(x1 - vec.x), (float)(y - vec.y), (float)(z1 - vec.z))
-            .color(color).normal(entry, normal).lineWidth(lineWidth);
+            .color(color).normal(entry, normal);
         consumer.vertex(entry, (float)(x2 - vec.x), (float)(y - vec.y), (float)(z2 - vec.z))
-            .color(color).normal(entry, normal).lineWidth(lineWidth);
+            .color(color).normal(entry, normal);
     }
 
     public static void box(Immediate immediate, MatrixStack matrices, Vec3d camera,
