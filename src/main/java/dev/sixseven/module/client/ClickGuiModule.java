@@ -12,7 +12,7 @@ public class ClickGuiModule extends Module {
    public final ModeSetting font = this.addSetting(new ModeSetting("Font", "GUI font (Xuong TTF or vanilla-style)", "Xuong", "Xuong", "Vanilla"));
 
    public ClickGuiModule() {
-      super("ClickGUI", "The 67Client menu. In menus, Shift opens it too.", Category.CLIENT);
+      super("ClickGUI", "The Epstein Client menu. In menus, Shift opens it too.", Category.CLIENT);
       this.getKeybind().set(Integer.valueOf(344));
    }
 }
