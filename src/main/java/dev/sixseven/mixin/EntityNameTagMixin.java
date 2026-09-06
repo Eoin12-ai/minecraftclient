@@ -8,10 +8,8 @@ import dev.sixseven.module.misc.NameTagsModule;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.state.EntityRenderState;
-import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,7 +24,7 @@ public class EntityNameTagMixin {
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
+   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, Object orderedRenderCommandQueue, Object cameraRenderState, CallbackInfo callbackInfo) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager != null && temp.displayName != null) {
          NameTagsModule nameTagsModule = moduleManager.nameTags;
