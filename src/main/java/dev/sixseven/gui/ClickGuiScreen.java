@@ -65,7 +65,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     public ClickGuiScreen()              { this(null); }
 
     public ClickGuiScreen(Screen parent) {
-        super(Text.literal("67Client ClickGUI"));
+        super(Text.literal("Epstein Client ClickGUI"));
         this.parent = parent;
         STATE.ensureDefaultLayout(OverlayRenderer.uiWidth(), OverlayRenderer.uiHeight());
         ModuleManager mm = SixSevenClient.modules();
