@@ -171,7 +171,7 @@ public class RegionMapModule extends Module {
    }
 
    public int currentRegionId() {
-      ClientPlayerEntity temp = MinecraftClient.getInstance().temp;
+      ClientPlayerEntity temp = MinecraftClient.getInstance().player;
       return temp == null ? -1 : this.regionIdAtWorld(temp.getX(), temp.getZ());
    }
 
