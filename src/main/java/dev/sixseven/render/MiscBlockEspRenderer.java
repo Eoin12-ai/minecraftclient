@@ -25,7 +25,7 @@ public final class MiscBlockEspRenderer {
          boolean found = spawnerNametagsModule.box.get();
          boolean found2 = spawnerNametagsModule.tracers.get();
          if (ok || found || found2) {
-            Vector3fc client = found2 ? MinecraftClient.getInstance().gameRenderer.getCamera().getHorizontalPlane() : null;
+            Vector3fc client = found2 ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
 
             for (BlockPos pos : list) {
                if (found) {
