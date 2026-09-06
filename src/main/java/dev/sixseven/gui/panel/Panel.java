@@ -66,8 +66,8 @@ public abstract class Panel {
 
     protected abstract void renderContent(NVGRenderer nvg,
                                           float contentTop,
-                                          float mouseX, float mouseY,
-                                          float clipTop, float clipBot,
+                                          float tickDelta2, float tickDelta3,
+                                          float tickDelta4, float tickDelta5,
                                           float edgeFade);
 
     // ── layout helpers ────────────────────────────────────────────────────────
@@ -199,7 +199,7 @@ public abstract class Panel {
                     clipTop + CONTENT_PAD - scroll.value(),
                     mouseX, mouseY,
                     clipTop, clipBot,
-                    1.0f /* outer fade handled per-entry */);
+                    1.0f);
             nvg.restore();
         }
     }
