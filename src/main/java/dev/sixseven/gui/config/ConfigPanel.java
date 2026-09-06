@@ -90,11 +90,11 @@ public class ConfigPanel {
          nVGRenderer.rectOutline(this.cardX, this.cardY, 600.0F, this.cardH, 18.0F, 1.2F, Colors.withAlpha(theme.accent(), 0.3F));
          this.renderHeader(nVGRenderer, theme, tickDelta, tickDelta2);
          this.hits.clear();
-         float f5 = this.cardY + 64.0F;
+         float slotY = this.cardY + 64.0F;
 
          for (int n = 0; n < 5; n++) {
-            this.renderSlot(nVGRenderer, theme, configStore.slot(n), this.cardX + 18.0F, totalW, 564.0F, tickDelta, tickDelta2, configStore.activeIndex() == n);
-            totalW += 68.0F;
+            this.renderSlot(nVGRenderer, theme, configStore.slot(n), this.cardX + 18.0F, slotY, 564.0F, tickDelta, tickDelta2, configStore.activeIndex() == n);
+            slotY += 68.0F;
          }
 
          this.renderFooter(nVGRenderer, theme);
