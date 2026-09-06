@@ -17,7 +17,6 @@ import java.util.Locale;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
-import org.joml.Matrix3x2fStack;
 
 public class IconPickerScreen extends Screen implements NvgDrawable {
    private static final float HEADER_H = 42.0F;
@@ -107,7 +106,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       int n10 = Math.max(0, (int)(this.scroll / layout2.cell()) * layout2.cols());
       int n11 = layout2.cols() * ((int)(layout2.gridH() / layout2.cell()) + 3);
       int n12 = Math.min(this.filtered.size(), n10 + n11);
-      Matrix3x2fStack matrix3x2fStack = context.getMatrices();
+      MatrixStack matrix3x2fStack = context.getMatrices();
 
       for (int n13 = n10; n13 < n12; n13++) {
          PickerGrid.Cell cell = this.filtered.get(n13);
@@ -334,7 +333,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       IconPickerScreen.Layout layout2 = this.layout();
       if (this.colorSetting != null) {
          if (inRect(f, f3, this.popupRect)) {
-            this.colorWidget.mouseClicked(f, f3, _cb);
+            this.colorWidget.mouseClicked((double)f, (double)f3, _cb);
          } else {
             this.closeColor();
             UiSounds.select();
@@ -454,7 +453,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
          this.close();
          return true;
       } else {
-         return super.keyPressed(keyInput);
+         return super.keyPressed(_key, _scan, _mods);
       }
    }
 
