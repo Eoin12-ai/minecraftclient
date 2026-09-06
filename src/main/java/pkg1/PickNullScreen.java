@@ -79,9 +79,9 @@ public final class PickNullScreen extends Screen {
       return this.getInt3() + 16 + 12;
    }
 
-   public boolean mouseClicked(Click var1, boolean var2) {
-      double var3 = var1.x();
-      double var5 = var1.y();
+   public boolean mouseClicked(double _cx, double _cy, int _cb) {
+      double var3 = _cx;
+      double var5 = _cy;
       int var7 = this.intVal9 + 236 - 84;
       if (var5 >= var7 && var5 < var7 + 18) {
          for (int var8 = 0; var8 < intArray.length; var8++) {
@@ -110,16 +110,16 @@ public final class PickNullScreen extends Screen {
       }
    }
 
-   public boolean mouseDragged(Click var1, double var2, double var4) {
+   public boolean mouseDragged(double _cx, double _cy, int _cb, double _dx, double _dy) {
       if (this.val2 == PickNullScreen.State.NONE) {
          return super.mouseDragged(var1, var2, var4);
       } else {
-         this.run(var1.x(), var1.y());
+         this.run(_cx, _cy);
          return true;
       }
    }
 
-   public boolean mouseReleased(Click var1) {
+   public boolean mouseReleased(double _cx, double _cy, int _cb) {
       this.val2 = PickNullScreen.State.NONE;
       return super.mouseReleased(var1);
    }
