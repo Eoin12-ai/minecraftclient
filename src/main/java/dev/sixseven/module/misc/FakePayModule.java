@@ -41,7 +41,7 @@ public class FakePayModule extends Module {
             return false;
          } else {
             String text6 = text5[0];
-            if (text6.startsWith("\\")) {
+            if (text6.startsWith("\")) {
                text6 = text6.substring(1);
             }
 
@@ -88,13 +88,13 @@ public class FakePayModule extends Module {
                   String text5 = this.currency.get();
                   if (!text5.isEmpty()) {
                      text.append(
-                           Text.literal(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","S-">(text5))
+                           Text.literal(String.valueOf(text5))
                               .withColor(this.currencyColor.get() & 16777215)
                         )
                         .append(Text.literal(Amounts.shortForm(d)).withColor(16777215));
                   } else {
                      text.append(
-                        Text.literal(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","S-">(Amounts.shortForm(d)))
+                        Text.literal(String.valueOf(Amounts.shortForm(d)))
                            .withColor(16777215)
                      );
                   }
