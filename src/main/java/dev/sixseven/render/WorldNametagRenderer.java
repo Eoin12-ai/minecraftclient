@@ -25,7 +25,6 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import org.joml.Matrix3x2fStack;
 
 import dev.sixseven.module.client.HudModule;
 public final class WorldNametagRenderer {
@@ -68,7 +67,7 @@ public final class WorldNametagRenderer {
                            if ((!ok2 || ok) && !abstractClientPlayerEntity.isSpectator() && abstractClientPlayerEntity.isAlive()) {
                               double currentScore = player.squaredDistanceTo(abstractClientPlayerEntity);
                               if (ok2 || !(currentScore > coord)) {
-                                 String name2 = abstractClientPlayerEntity.getGameProfile().name();
+                                 String name2 = abstractClientPlayerEntity.getGameProfile().getName();
                                  if (enabled3) {
                                     String text6 = nameProtectModule.replacementForDisplay(name2);
                                     if (text6 != null) {
@@ -252,7 +251,7 @@ public final class WorldNametagRenderer {
                                     float f21 = (float)list.size() * f19 + (float)(list.size() - 1) * 1.5F;
                                     float f22 = f17 - f21 / 2.0F;
                                     float f23 = f18 - f19;
-                                    Matrix3x2fStack matrix3x2fStack = context.getMatrices();
+                                    MatrixStack matrix3x2fStack = context.getMatrices();
 
                                     for (int n = 0; n < list.size(); n++) {
                                        ItemStack stack = (ItemStack)list.get(n);
