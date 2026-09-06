@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin({Input.class})
 public interface InputAccessor {
-   @Accessor("field_55868")
+   @Accessor("movementVector")
    void swyzzy$setMovementVector(Vec2f var1);
 }
