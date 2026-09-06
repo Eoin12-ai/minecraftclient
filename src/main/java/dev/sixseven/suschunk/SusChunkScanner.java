@@ -425,15 +425,15 @@ public class SusChunkScanner {
             }
          }
 
-         HashMap<Long, SusChunkScanner.FlagAggregate> map = new HashMap<>();
+         HashMap<Integer, ArrayList<BlockPos>> map2 = new HashMap<>();
 
          for (int n13 = 0; n13 < n; n13++) {
-            map.computeIfAbsent(find(step2, n13), k -> new ArrayList<>()).add((BlockPos)list.get(n13));
+            map2.computeIfAbsent(find(step2, n13), k -> new ArrayList<>()).add((BlockPos)list.get(n13));
          }
 
          ArrayList<SusChunkScanner.Zone> list2 = new ArrayList<>();
 
-         for (ArrayList<BlockPos> list3 : map.values()) {
+         for (ArrayList<BlockPos> list3 : map2.values()) {
             HashSet set = new HashSet();
             double d = 0.0;
             double currentScore = 0.0;
@@ -445,10 +445,10 @@ public class SusChunkScanner {
             }
 
             double currentScore2 = SusChunkScanner.SignalType.AMETHYST.weight * (double)Math.min(list3.size(), SusChunkScanner.SignalType.AMETHYST.cap);
-            list2.add(new SusChunkScanner.Geode(List.copyOf(list3), Set.copyOf(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
+            list2.add(new SusChunkScanner.Zone(List.copyOf(list3), Set.copyOf(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
          }
 
-         return list2;
+         return List.copyOf(list2);
       }
    }
 
@@ -500,7 +500,7 @@ public class SusChunkScanner {
       }
 
       list2.sort(Comparator.comparingDouble(SusChunkScanner.Zone::totalScore).reversed());
-      return list2;
+      return List.copyOf(list2);
    }
 
    private SusChunkScanner.Zone makeZone(List<SusChunkScanner.Flag> list, Map<Long, SusChunkScanner.FlagAggregate> map) {
