@@ -93,8 +93,8 @@ public class ConfigPanel {
          float f5 = this.cardY + 64.0F;
 
          for (int n = 0; n < 5; n++) {
-            this.renderSlot(nVGRenderer, theme, configStore.slot(n), this.cardX + 18.0F, f5, 564.0F, tickDelta, tickDelta2, configStore.activeIndex() == n);
-            f5 += 68.0F;
+            this.renderSlot(nVGRenderer, theme, configStore.slot(n), this.cardX + 18.0F, totalW, 564.0F, tickDelta, tickDelta2, configStore.activeIndex() == n);
+            totalW += 68.0F;
          }
 
          this.renderFooter(nVGRenderer, theme);
@@ -140,12 +140,12 @@ public class ConfigPanel {
       float f = tickDelta + 16.0F;
       float f5 = tickDelta2 + 30.0F;
       if (value) {
-         nVGRenderer.circleGlow(f, f5, 4.0F, 5.0F, theme.accent());
-         nVGRenderer.circle(f, f5, 4.0F, theme.accentBright());
+         nVGRenderer.circleGlow(f, totalW, 4.0F, 5.0F, theme.accent());
+         nVGRenderer.circle(f, totalW, 4.0F, theme.accentBright());
       } else if (slot.filled()) {
-         nVGRenderer.circle(f, f5, 3.5F, theme.statusEnabled());
+         nVGRenderer.circle(f, totalW, 3.5F, theme.statusEnabled());
       } else {
-         nVGRenderer.circleOutline(f, f5, 3.5F, 1.2F, theme.statusDisabled());
+         nVGRenderer.circleOutline(f, totalW, 3.5F, 1.2F, theme.statusDisabled());
       }
 
       float f6 = tickDelta + 32.0F;
@@ -172,7 +172,7 @@ public class ConfigPanel {
       nVGRenderer.rectOutline(tickDelta, tickDelta2, tickDelta3, f, f / 2.0F, 1.2F, Colors.withAlpha(theme.accentBright(), 0.9F));
       float f5 = tickDelta + 8.0F;
       float f6 = tickDelta2 + f / 2.0F;
-      float f7 = nVGRenderer.text(this.renameBuffer.toString(), f5, f6, 12.5F, theme.textPrimary());
+      float f7 = nVGRenderer.text(this.renameBuffer.toString(), totalW, f6, 12.5F, theme.textPrimary());
       if (System.nanoTime() / 400000000L % 2L == 0L) {
          nVGRenderer.rect(f5 + f7 + 1.5F, f6 - 6.0F, 1.4F, 12.0F, 0.7F, theme.accentBright());
       }
@@ -190,16 +190,16 @@ public class ConfigPanel {
       record Spec(ConfigPanel.Action action, String label, boolean primary, boolean danger) {
       }
 
-      if (temp2.filled()) {
-         temp.add(new Spec(ConfigPanel.Action.ACTIVATE, "Activate", true, false));
-         temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", false, false));
-         temp.add(new Spec(ConfigPanel.Action.RENAME, "Rename", false, false));
-         temp.add(new Spec(ConfigPanel.Action.EXPORT, "Export", false, false));
-         temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
-         temp.add(new Spec(ConfigPanel.Action.DELETE, "Delete", false, true));
+      if (slot.filled()) {
+         list.add(new Spec(ConfigPanel.Action.ACTIVATE, "Activate", true, false));
+         list.add(new Spec(ConfigPanel.Action.SAVE, "Save", false, false));
+         list.add(new Spec(ConfigPanel.Action.RENAME, "Rename", false, false));
+         list.add(new Spec(ConfigPanel.Action.EXPORT, "Export", false, false));
+         list.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+         list.add(new Spec(ConfigPanel.Action.DELETE, "Delete", false, true));
       } else {
-         temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", true, false));
-         temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+         list.add(new Spec(ConfigPanel.Action.SAVE, "Save", true, false));
+         list.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
       }
 
       float f = 26.0F;
@@ -207,11 +207,11 @@ public class ConfigPanel {
       float f3 = 6.0F;
       float f4 = 12.0F;
       float f5 = 0.0F;
-      float[] f6 = new float[temp2.size()];
+      float[] f6 = new float[list.size()];
 
-      for (int n = 0; n < temp2.size(); n++) {
-         f6[n] = temp.textWidth(((Spec)temp2.get(n)).label(), f4) + f2 * 2.0F;
-         f5 += f6[n] + (n > 0 ? f3 : 0.0F);
+      for (int n = 0; n < list.size(); n++) {
+         widths[n] = temp.textWidth(((Spec)list.get(n)).label(), f4) + f2 * 2.0F;
+         totalW += widths[n] + (n > 0 ? f3 : 0.0F);
       }
 
       float f = tmp12 - temp3;
