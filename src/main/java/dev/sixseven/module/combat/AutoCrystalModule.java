@@ -130,7 +130,7 @@ public class AutoCrystalModule extends Module {
          return false;
       } else if (crystal.getId() == this.lastBrokenId) {
          return false;
-      } else if (client.player.getEyePos().distanceTo(crystal.getEntityPos()) > this.range.get()) {
+      } else if (client.player.getEyePos().distanceTo(crystal.getPos()) > this.range.get()) {
          return false;
       } else {
          client.interactionManager.attackEntity(client.player, crystal);
