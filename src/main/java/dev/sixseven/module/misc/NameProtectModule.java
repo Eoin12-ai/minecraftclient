@@ -46,7 +46,7 @@ public class NameProtectModule extends Module {
 
    public String selfName() {
       MinecraftClient client = MinecraftClient.getInstance();
-      return client.player == null ? null : client.player.getGameProfile().name();
+      return client.player == null ? null : client.player.getGameProfile().getName();
    }
 
    private boolean isSelf(String text) {
