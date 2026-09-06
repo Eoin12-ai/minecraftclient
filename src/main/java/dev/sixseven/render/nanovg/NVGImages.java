@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Optional;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.AbstractTexture;
-import net.minecraft.client.texture.GlTexture;
 import net.minecraft.resource.Resource;
 import net.minecraft.util.Identifier;
 import org.lwjgl.nanovg.NanoVG;
@@ -92,8 +91,8 @@ public final class NVGImages {
 
    public static int wrapGlTexture(Identifier id, int n, int localX) {
       AbstractTexture client = MinecraftClient.getInstance().getTextureManager().getTexture(id);
-      if (client != null && client.getGlTexture() instanceof GlTexture glTexture) {
-         int localZ = glTexture.getGlId();
+      if (client != null) {
+         int localZ = client.getGlId();
          return GL_HANDLE_CACHE.computeIfAbsent(localZ, arg -> NanoVGGL3.nvglCreateImageFromHandle(NVGRenderer.get().ctx(), arg, n, localX, 65536));
       } else {
          return -1;
