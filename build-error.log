@@ -30,19 +30,13 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
    @Inject(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:41: warning: Cannot find target method "onMouseButton(JLnet/minecraft/MouseInput;I)V" for @Inject.method="onMouseButton(JLnet/minecraft/MouseInput;I)V" in net.minecraft.client.Mouse
-   @Inject(
-   ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
    @Inject(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:21: warning: Cannot find target method "onKey(JILnet/minecraft/KeyInput;)V" for @Inject.method="onKey(JILnet/minecraft/KeyInput;)V" in net.minecraft.client.Keyboard
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:20: warning: Cannot find target method "onKey(JIII)V" for @Inject.method="onKey(JIII)V" in net.minecraft.client.Keyboard
    @Inject(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
-   @Inject(
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:29: warning: Cannot find target method "renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" for @Inject.method="renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" in net.minecraft.client.render.WorldRenderer
    @Inject(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
@@ -78,10 +72,10 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
    @ModifyExpressionValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
    @ModifyExpressionValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
    @ModifyExpressionValue(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
@@ -96,178 +90,18 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
-import net.minecraft.client.gui.Click;
-                               ^
-  symbol:   class Click
-  location: package net.minecraft.client.gui
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: cannot find symbol
-import net.minecraft.client.input.CharInput;
-                                 ^
-  symbol:   class CharInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: cannot find symbol
-import net.minecraft.client.input.KeyInput;
-                                 ^
-  symbol:   class KeyInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
-    public boolean mouseClicked(Click click, boolean unused) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
-    public boolean mouseDragged(Click click, double dx, double dy) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
-    public boolean mouseReleased(Click click) {
-                                 ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
-    public boolean keyPressed(KeyInput ki) {
-                              ^
-  symbol:   class KeyInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
-    public boolean charTyped(CharInput ci) {
-                             ^
-  symbol:   class CharInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:23: error: cannot find symbol
-import net.minecraft.entity.player.SkinTextures;
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:13: error: cannot find symbol
+import net.minecraft.client.render.VertexFormat;
                                   ^
-  symbol:   class SkinTextures
-  location: package net.minecraft.entity.player
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:29: error: cannot find symbol
-   private volatile SkinTextures replacement;
-                    ^
-  symbol:   class SkinTextures
-  location: class SkinProtectModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:51: error: cannot find symbol
-   public SkinTextures replacementSkin() {
-          ^
-  symbol:   class SkinTextures
-  location: class SkinProtectModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:17: error: cannot find symbol
-import net.minecraft.client.gui.Click;
-                               ^
-  symbol:   class Click
-  location: package net.minecraft.client.gui
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:20: error: cannot find symbol
-import net.minecraft.client.input.CharInput;
-                                 ^
-  symbol:   class CharInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:21: error: cannot find symbol
-import net.minecraft.client.input.KeyInput;
-                                 ^
-  symbol:   class KeyInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:334: error: cannot find symbol
-   public boolean mouseClicked(Click click, boolean value) {
-                               ^
-  symbol:   class Click
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:405: error: cannot find symbol
-   public boolean mouseDragged(Click click, double d, double coord) {
-                               ^
-  symbol:   class Click
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:413: error: cannot find symbol
-   public boolean mouseReleased(Click click) {
-                                ^
-  symbol:   class Click
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:429: error: cannot find symbol
-   public boolean keyPressed(KeyInput keyInput) {
-                             ^
-  symbol:   class KeyInput
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:464: error: cannot find symbol
-   public boolean charTyped(CharInput charInput) {
-                            ^
-  symbol:   class CharInput
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:9: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
-                                  ^
-  symbol:   class RenderSetup
+  symbol:   class VertexFormat
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.OutlineRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:19: error: cannot find symbol
-   public static void render(Immediate immediate, MatrixStack matrices, OutlineRenderState outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
-                                                                        ^
-  symbol:   class OutlineRenderState
-  location: class BlockOutlineRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:16: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:13: error: cannot find symbol
+import net.minecraft.client.render.VertexFormat;
                                   ^
-  symbol:   class RenderSetup
+  symbol:   class VertexFormat
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
-import net.minecraft.client.input.MouseInput;
-                                 ^
-  symbol:   class MouseInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:46: error: cannot find symbol
-   private void sixsevenclient$onButton(long l, MouseInput mouseInput, int n, CallbackInfo callbackInfo) {
-                                                ^
-  symbol:   class MouseInput
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:7: error: cannot find symbol
-import net.minecraft.entity.player.SkinTextures;
-                                  ^
-  symbol:   class SkinTextures
-  location: package net.minecraft.entity.player
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:20: error: cannot find symbol
-   private void sixsevenclient$replaceSkin(CallbackInfoReturnable<SkinTextures> callbackInfoReturnable) {
-                                                                  ^
-  symbol:   class SkinTextures
-  location: class AbstractClientPlayerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:13: error: cannot find symbol
-import net.minecraft.client.input.KeyInput;
-                                 ^
-  symbol:   class KeyInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:26: error: cannot find symbol
-   private void sixsevenclient$dispatchModuleKeybinds(long l, int n, KeyInput keyInput, CallbackInfo callbackInfo) {
-                                                                     ^
-  symbol:   class KeyInput
-  location: class KeyboardHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:11: error: package net.minecraft.client.render.command does not exist
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:14: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.CameraRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
-   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
-                                                                                                  ^
-  symbol:   class OrderedRenderCommandQueue
-  location: class EntityNameTagMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
-   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
-                                                                                                                                                       ^
-  symbol:   class CameraRenderState
-  location: class EntityNameTagMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:19: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.OutlineRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:20: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.WorldRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:34: error: cannot find symbol
-   private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, WorldRenderState worldRenderState, CallbackInfo callbackInfo) {
-                                                                                                           ^
-  symbol:   class WorldRenderState
-  location: class LevelRendererMixin
-36 errors
-26 warnings
+2 errors
+24 warnings
 
 > Task :compileJava FAILED
 
@@ -290,19 +124,13 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
      @Inject(
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:41: warning: Cannot find target method "onMouseButton(JLnet/minecraft/MouseInput;I)V" for @Inject.method="onMouseButton(JLnet/minecraft/MouseInput;I)V" in net.minecraft.client.Mouse
-     @Inject(
-     ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
      @Inject(
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:21: warning: Cannot find target method "onKey(JILnet/minecraft/KeyInput;)V" for @Inject.method="onKey(JILnet/minecraft/KeyInput;)V" in net.minecraft.client.Keyboard
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:20: warning: Cannot find target method "onKey(JIII)V" for @Inject.method="onKey(JIII)V" in net.minecraft.client.Keyboard
      @Inject(
      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
-     @Inject(
-     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:29: warning: Cannot find target method "renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" for @Inject.method="renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" in net.minecraft.client.render.WorldRenderer
      @Inject(
      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
@@ -338,10 +166,10 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
      @ModifyExpressionValue(
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
      @ModifyExpressionValue(
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
      @ModifyExpressionValue(
      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
@@ -356,178 +184,18 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
      @ModifyReturnValue(
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
-  import net.minecraft.client.gui.Click;
-                                 ^
-    symbol:   class Click
-    location: package net.minecraft.client.gui
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: cannot find symbol
-  import net.minecraft.client.input.CharInput;
-                                   ^
-    symbol:   class CharInput
-    location: package net.minecraft.client.input
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: cannot find symbol
-  import net.minecraft.client.input.KeyInput;
-                                   ^
-    symbol:   class KeyInput
-    location: package net.minecraft.client.input
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
-      public boolean mouseClicked(Click click, boolean unused) {
-                                  ^
-    symbol:   class Click
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
-      public boolean mouseDragged(Click click, double dx, double dy) {
-                                  ^
-    symbol:   class Click
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
-      public boolean mouseReleased(Click click) {
-                                   ^
-    symbol:   class Click
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
-      public boolean keyPressed(KeyInput ki) {
-                                ^
-    symbol:   class KeyInput
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
-      public boolean charTyped(CharInput ci) {
-                               ^
-    symbol:   class CharInput
-    location: class ClickGuiScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:23: error: cannot find symbol
-  import net.minecraft.entity.player.SkinTextures;
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:13: error: cannot find symbol
+  import net.minecraft.client.render.VertexFormat;
                                     ^
-    symbol:   class SkinTextures
-    location: package net.minecraft.entity.player
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:29: error: cannot find symbol
-     private volatile SkinTextures replacement;
-                      ^
-    symbol:   class SkinTextures
-    location: class SkinProtectModule
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:51: error: cannot find symbol
-     public SkinTextures replacementSkin() {
-            ^
-    symbol:   class SkinTextures
-    location: class SkinProtectModule
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:17: error: cannot find symbol
-  import net.minecraft.client.gui.Click;
-                                 ^
-    symbol:   class Click
-    location: package net.minecraft.client.gui
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:20: error: cannot find symbol
-  import net.minecraft.client.input.CharInput;
-                                   ^
-    symbol:   class CharInput
-    location: package net.minecraft.client.input
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:21: error: cannot find symbol
-  import net.minecraft.client.input.KeyInput;
-                                   ^
-    symbol:   class KeyInput
-    location: package net.minecraft.client.input
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:334: error: cannot find symbol
-     public boolean mouseClicked(Click click, boolean value) {
-                                 ^
-    symbol:   class Click
-    location: class IconPickerScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:405: error: cannot find symbol
-     public boolean mouseDragged(Click click, double d, double coord) {
-                                 ^
-    symbol:   class Click
-    location: class IconPickerScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:413: error: cannot find symbol
-     public boolean mouseReleased(Click click) {
-                                  ^
-    symbol:   class Click
-    location: class IconPickerScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:429: error: cannot find symbol
-     public boolean keyPressed(KeyInput keyInput) {
-                               ^
-    symbol:   class KeyInput
-    location: class IconPickerScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:464: error: cannot find symbol
-     public boolean charTyped(CharInput charInput) {
-                              ^
-    symbol:   class CharInput
-    location: class IconPickerScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:9: error: cannot find symbol
-  import net.minecraft.client.render.RenderSetup;
-                                    ^
-    symbol:   class RenderSetup
+    symbol:   class VertexFormat
     location: package net.minecraft.client.render
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
-  import net.minecraft.client.render.state.OutlineRenderState;
-                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:19: error: cannot find symbol
-     public static void render(Immediate immediate, MatrixStack matrices, OutlineRenderState outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
-                                                                          ^
-    symbol:   class OutlineRenderState
-    location: class BlockOutlineRenderer
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:16: error: cannot find symbol
-  import net.minecraft.client.render.RenderSetup;
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:13: error: cannot find symbol
+  import net.minecraft.client.render.VertexFormat;
                                     ^
-    symbol:   class RenderSetup
+    symbol:   class VertexFormat
     location: package net.minecraft.client.render
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
-  import net.minecraft.client.input.MouseInput;
-                                   ^
-    symbol:   class MouseInput
-    location: package net.minecraft.client.input
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:46: error: cannot find symbol
-     private void sixsevenclient$onButton(long l, MouseInput mouseInput, int n, CallbackInfo callbackInfo) {
-                                                  ^
-    symbol:   class MouseInput
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:7: error: cannot find symbol
-  import net.minecraft.entity.player.SkinTextures;
-                                    ^
-    symbol:   class SkinTextures
-    location: package net.minecraft.entity.player
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:20: error: cannot find symbol
-     private void sixsevenclient$replaceSkin(CallbackInfoReturnable<SkinTextures> callbackInfoReturnable) {
-                                                                    ^
-    symbol:   class SkinTextures
-    location: class AbstractClientPlayerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:13: error: cannot find symbol
-  import net.minecraft.client.input.KeyInput;
-                                   ^
-    symbol:   class KeyInput
-    location: package net.minecraft.client.input
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:26: error: cannot find symbol
-     private void sixsevenclient$dispatchModuleKeybinds(long l, int n, KeyInput keyInput, CallbackInfo callbackInfo) {
-                                                                       ^
-    symbol:   class KeyInput
-    location: class KeyboardHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:11: error: package net.minecraft.client.render.command does not exist
-  import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-                                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:14: error: package net.minecraft.client.render.state does not exist
-  import net.minecraft.client.render.state.CameraRenderState;
-                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
-     private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
-                                                                                                    ^
-    symbol:   class OrderedRenderCommandQueue
-    location: class EntityNameTagMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
-     private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
-                                                                                                                                                         ^
-    symbol:   class CameraRenderState
-    location: class EntityNameTagMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:19: error: package net.minecraft.client.render.state does not exist
-  import net.minecraft.client.render.state.OutlineRenderState;
-                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:20: error: package net.minecraft.client.render.state does not exist
-  import net.minecraft.client.render.state.WorldRenderState;
-                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:34: error: cannot find symbol
-     private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, WorldRenderState worldRenderState, CallbackInfo callbackInfo) {
-                                                                                                             ^
-    symbol:   class WorldRenderState
-    location: class LevelRendererMixin
-  36 errors
-  26 warnings
+  2 errors
+  24 warnings
 
 * Try:
 > Check your code and dependencies to fix the compilation error(s)
@@ -580,19 +248,13 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
    @Inject(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:41: warning: Cannot find target method "onMouseButton(JLnet/minecraft/MouseInput;I)V" for @Inject.method="onMouseButton(JLnet/minecraft/MouseInput;I)V" in net.minecraft.client.Mouse
-   @Inject(
-   ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
    @Inject(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:21: warning: Cannot find target method "onKey(JILnet/minecraft/KeyInput;)V" for @Inject.method="onKey(JILnet/minecraft/KeyInput;)V" in net.minecraft.client.Keyboard
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:20: warning: Cannot find target method "onKey(JIII)V" for @Inject.method="onKey(JIII)V" in net.minecraft.client.Keyboard
    @Inject(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
-   @Inject(
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:29: warning: Cannot find target method "renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" for @Inject.method="renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V" in net.minecraft.client.render.WorldRenderer
    @Inject(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
@@ -628,10 +290,10 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
    @ModifyExpressionValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
    @ModifyExpressionValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:67: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
    @ModifyExpressionValue(
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
@@ -646,178 +308,18 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
-import net.minecraft.client.gui.Click;
-                               ^
-  symbol:   class Click
-  location: package net.minecraft.client.gui
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: cannot find symbol
-import net.minecraft.client.input.CharInput;
-                                 ^
-  symbol:   class CharInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: cannot find symbol
-import net.minecraft.client.input.KeyInput;
-                                 ^
-  symbol:   class KeyInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
-    public boolean mouseClicked(Click click, boolean unused) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
-    public boolean mouseDragged(Click click, double dx, double dy) {
-                                ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
-    public boolean mouseReleased(Click click) {
-                                 ^
-  symbol:   class Click
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
-    public boolean keyPressed(KeyInput ki) {
-                              ^
-  symbol:   class KeyInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
-    public boolean charTyped(CharInput ci) {
-                             ^
-  symbol:   class CharInput
-  location: class ClickGuiScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:23: error: cannot find symbol
-import net.minecraft.entity.player.SkinTextures;
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:13: error: cannot find symbol
+import net.minecraft.client.render.VertexFormat;
                                   ^
-  symbol:   class SkinTextures
-  location: package net.minecraft.entity.player
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:29: error: cannot find symbol
-   private volatile SkinTextures replacement;
-                    ^
-  symbol:   class SkinTextures
-  location: class SkinProtectModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:51: error: cannot find symbol
-   public SkinTextures replacementSkin() {
-          ^
-  symbol:   class SkinTextures
-  location: class SkinProtectModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:17: error: cannot find symbol
-import net.minecraft.client.gui.Click;
-                               ^
-  symbol:   class Click
-  location: package net.minecraft.client.gui
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:20: error: cannot find symbol
-import net.minecraft.client.input.CharInput;
-                                 ^
-  symbol:   class CharInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:21: error: cannot find symbol
-import net.minecraft.client.input.KeyInput;
-                                 ^
-  symbol:   class KeyInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:334: error: cannot find symbol
-   public boolean mouseClicked(Click click, boolean value) {
-                               ^
-  symbol:   class Click
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:405: error: cannot find symbol
-   public boolean mouseDragged(Click click, double d, double coord) {
-                               ^
-  symbol:   class Click
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:413: error: cannot find symbol
-   public boolean mouseReleased(Click click) {
-                                ^
-  symbol:   class Click
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:429: error: cannot find symbol
-   public boolean keyPressed(KeyInput keyInput) {
-                             ^
-  symbol:   class KeyInput
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:464: error: cannot find symbol
-   public boolean charTyped(CharInput charInput) {
-                            ^
-  symbol:   class CharInput
-  location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:9: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
-                                  ^
-  symbol:   class RenderSetup
+  symbol:   class VertexFormat
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.OutlineRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:19: error: cannot find symbol
-   public static void render(Immediate immediate, MatrixStack matrices, OutlineRenderState outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
-                                                                        ^
-  symbol:   class OutlineRenderState
-  location: class BlockOutlineRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:16: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:13: error: cannot find symbol
+import net.minecraft.client.render.VertexFormat;
                                   ^
-  symbol:   class RenderSetup
+  symbol:   class VertexFormat
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
-import net.minecraft.client.input.MouseInput;
-                                 ^
-  symbol:   class MouseInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:46: error: cannot find symbol
-   private void sixsevenclient$onButton(long l, MouseInput mouseInput, int n, CallbackInfo callbackInfo) {
-                                                ^
-  symbol:   class MouseInput
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:7: error: cannot find symbol
-import net.minecraft.entity.player.SkinTextures;
-                                  ^
-  symbol:   class SkinTextures
-  location: package net.minecraft.entity.player
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:20: error: cannot find symbol
-   private void sixsevenclient$replaceSkin(CallbackInfoReturnable<SkinTextures> callbackInfoReturnable) {
-                                                                  ^
-  symbol:   class SkinTextures
-  location: class AbstractClientPlayerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:13: error: cannot find symbol
-import net.minecraft.client.input.KeyInput;
-                                 ^
-  symbol:   class KeyInput
-  location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:26: error: cannot find symbol
-   private void sixsevenclient$dispatchModuleKeybinds(long l, int n, KeyInput keyInput, CallbackInfo callbackInfo) {
-                                                                     ^
-  symbol:   class KeyInput
-  location: class KeyboardHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:11: error: package net.minecraft.client.render.command does not exist
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:14: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.CameraRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
-   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
-                                                                                                  ^
-  symbol:   class OrderedRenderCommandQueue
-  location: class EntityNameTagMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
-   private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState, CallbackInfo callbackInfo) {
-                                                                                                                                                       ^
-  symbol:   class CameraRenderState
-  location: class EntityNameTagMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:19: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.OutlineRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:20: error: package net.minecraft.client.render.state does not exist
-import net.minecraft.client.render.state.WorldRenderState;
-                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:34: error: cannot find symbol
-   private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, WorldRenderState worldRenderState, CallbackInfo callbackInfo) {
-                                                                                                           ^
-  symbol:   class WorldRenderState
-  location: class LevelRendererMixin
-36 errors
-26 warnings
+2 errors
+24 warnings
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
@@ -976,5 +478,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 47s
+BUILD FAILED in 1m
 1 actionable task: 1 executed
