@@ -14,11 +14,8 @@ import dev.sixseven.util.UiSounds;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.input.CharInput;
-import net.minecraft.client.input.KeyInput;
 import net.minecraft.text.Text;
 import org.joml.Matrix3x2fStack;
 
@@ -331,13 +328,13 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       return OverlayRenderer.guiToUi(d);
    }
 
-   public boolean mouseClicked(Click click, boolean value) {
-      float f = this.ux(click.x());
-      float f3 = this.ux(click.y());
+   public boolean mouseClicked(double _cx, double _cy, int value) {
+      float f = this.ux(_cx);
+      float f3 = this.ux(_cy);
       IconPickerScreen.Layout layout2 = this.layout();
       if (this.colorSetting != null) {
          if (inRect(f, f3, this.popupRect)) {
-            this.colorWidget.mouseClicked(f, f3, click.button());
+            this.colorWidget.mouseClicked(f, f3, _cb);
          } else {
             this.closeColor();
             UiSounds.select();
@@ -363,9 +360,9 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
             int n = this.cellAt(f, f3, layout2);
             if (n >= 0) {
                PickerGrid.Cell cell = this.filtered.get(n);
-               if (click.button() == 1) {
+               if (_cb == 1) {
                   this.openColor(cell.colorTarget(), cell.label());
-               } else if (click.button() == 0) {
+               } else if (_cb == 0) {
                   boolean ok = cell.selected();
                   cell.toggle();
                   UiSounds.toggle(cell.enabled());
@@ -402,15 +399,15 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       this.colorWidget = null;
    }
 
-   public boolean mouseDragged(Click click, double d, double coord) {
+   public boolean mouseDragged(double _cx, double _cy, int _cb, double d, double coord) {
       if (this.colorSetting != null && this.colorWidget != null) {
-         this.colorWidget.mouseDragged(this.ux(click.x()), this.ux(click.y()));
+         this.colorWidget.mouseDragged(this.ux(_cx), this.ux(_cy));
       }
 
       return true;
    }
 
-   public boolean mouseReleased(Click click) {
+   public boolean mouseReleased(double _cx, double _cy, int _cb) {
       if (this.colorWidget != null) {
          this.colorWidget.mouseReleased();
       }
@@ -418,7 +415,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       return true;
    }
 
-   public boolean mouseScrolled(double d, double coord, double currentScore, double coord3) {
+   public boolean mouseScrolled(double _sx, double _sy, double d, double coord, double currentScore, double coord3) {
       if (this.colorSetting == null) {
          this.scroll = Math.clamp(this.scroll - (float)(coord3 * (double)this.layout().cell()), 0.0F, this.maxScroll);
       }
@@ -426,8 +423,8 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       return true;
    }
 
-   public boolean keyPressed(KeyInput keyInput) {
-      int n = keyInput.key();
+   public boolean keyPressed(int _key, int _scan, int keyInput) {
+      int n = _key;
       if (this.colorSetting != null) {
          if (this.colorWidget != null && this.colorWidget.isListening()) {
             this.colorWidget.keyPressed(n);
@@ -461,7 +458,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       }
    }
 
-   public boolean charTyped(CharInput charInput) {
+   public boolean charTyped(char _c, int charInput) {
       if (this.colorSetting != null) {
          return true;
       } else if (!this.searchFocused) {
@@ -469,7 +466,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       } else if (this.search.length() >= 48) {
          return true;
       } else {
-         char ch = (char)charInput.codepoint();
+         char ch = (char)_c;
          if (ch == ' ' || ch == '_' || ch == ':' || ch == '/' || ch >= '0' && ch <= '9' || ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z'
             )
           {
