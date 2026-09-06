@@ -17,7 +17,6 @@ loom {
 repositories {
     mavenCentral()
     maven { url = 'https://maven.fabricmc.net/' }
-    maven { url = 'https://maven.llamalad7.com/mixinextras-fabric/' }
 }
 
 dependencies {
@@ -25,9 +24,9 @@ dependencies {
     mappings          "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    include(implementation("com.llamalad7:mixinextras-fabric:0.4.1"))
 
-    // NanoVG API jar for compilation
+    // MixinExtras is bundled with Fabric Loader 0.15+ — no explicit dep needed
+    // NanoVG API jar for compilation only
     compileOnly fileTree(dir: 'libs', include: '*.jar')
 
     compileOnly 'org.jetbrains:annotations:24.1.0'
