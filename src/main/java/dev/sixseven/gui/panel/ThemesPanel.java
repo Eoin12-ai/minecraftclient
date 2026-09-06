@@ -77,7 +77,7 @@ public class ThemesPanel extends Panel {
    }
 
    @Override
-   protected void renderContent(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2, float tickDelta3, float tickDelta4, float tickDelta5) {
+   protected void renderContent(NVGRenderer nVGRenderer, float contentTop, float tickDelta2, float tickDelta3, float tickDelta4, float tickDelta5, float edgeFade) {
       this.lastStartY = tickDelta;
       Theme theme = this.themes.current();
       float f = tickDelta;
