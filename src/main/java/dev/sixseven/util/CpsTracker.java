@@ -11,7 +11,7 @@ public final class CpsTracker {
    }
 
    public static void onClick(int n) {
-      Deque deque = n == 0 ? LEFT : (n == 1 ? RIGHT : null);
+      Deque<Long> deque = n == 0 ? LEFT : (n == 1 ? RIGHT : null);
       if (deque != null) {
          synchronized (deque) {
             deque.addLast(System.nanoTime());
@@ -20,7 +20,7 @@ public final class CpsTracker {
    }
 
    public static int get(int n) {
-      Deque deque = n == 0 ? LEFT : RIGHT;
+      Deque<Long> deque = n == 0 ? LEFT : RIGHT;
       long l = System.nanoTime() - 1000000000L;
       synchronized (deque) {
          while (!deque.isEmpty() && deque.peekFirst() < l) {
