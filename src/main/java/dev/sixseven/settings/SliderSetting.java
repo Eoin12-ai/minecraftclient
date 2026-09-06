@@ -78,7 +78,7 @@ public class SliderSetting extends Setting<Double> {
             }
          }
 
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
+         return json + this.suffix;
       }
    }
 
