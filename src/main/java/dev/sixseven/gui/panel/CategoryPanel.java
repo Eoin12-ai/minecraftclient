@@ -122,7 +122,7 @@ public class CategoryPanel extends Panel {
                                  float contentTop,
                                  float mouseX, float mouseY,
                                  float clipTop, float clipBot,
-                                 float outerFade) {
+                                 float edgeFade) {
         List<ModuleEntry> vis = visibleEntries();
 
         if (vis.isEmpty()) {
@@ -142,7 +142,7 @@ public class CategoryPanel extends Panel {
             // only render rows touching the clip window
             if (y + eH >= clipTop - 20.0f && y <= clipBot + 20.0f) {
                 float fade = edgeFade(y, y + eH, clipTop, clipBot);
-                e.render(nvg, mouseX, mouseY, fade * outerFade);
+                e.render(nvg, mouseX, mouseY, fade * edgeFade);
             }
             y += eH + ENTRY_GAP;
         }
