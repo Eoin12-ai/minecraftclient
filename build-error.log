@@ -24,175 +24,270 @@ Please make sure to read and understand the following license:
 :remapping 50 mods from modImplementation (java-api)
 
 > Task :compileJava
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: not a statement
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:76: error: ';' expected
-        this.key    = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(
-                                                                                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:77: error: ';' expected
-                module.getName(), module.getCategory().name());
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: ')' or ',' expected
+                  "Overwrite "" + configStore.slot(n).name() + ""?",
+                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: not a statement
+                  "This replaces the config saved in slot " + (n + 1) + ".",
+                                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: ';' expected
+                  "This replaces the config saved in slot " + (n + 1) + ".",
+                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: not a statement
+                  (String)null
+                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: ';' expected
+                  (String)null
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: ')' or ',' expected
+                  "Import over "" + configStore.slot(n).name() + ""?",
                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:77: error: ';' expected
-                module.getName(), module.getCategory().name());
-                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/StringWidget.java:94: error: ')' expected
-         stringSetting.set(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, new String(Character.toChars(n))));
-                                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/StringWidget.java:94: error: ';' expected
-         stringSetting.set(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, new String(Character.toChars(n))));
-                                                                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: : expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: <identifier> expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: not a statement
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: ';' expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: not a statement
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: ';' expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: ')' expected
-            StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(str, value ? " enabled" : " disabled"),
-                                                                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: illegal start of expression
-            StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(str, value ? " enabled" : " disabled"),
-                                                                                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:52: error: ';' expected
-         )
-          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:140: error: illegal character: '\'
-         throw new Error(\"integrity\");
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:140: error: unclosed string literal
-         throw new Error(\"integrity\");
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: <identifier> expected
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: not a statement
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: ';' expected
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: not a statement
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: ';' expected
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: : expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: not a statement
+                  "This replaces slot " + (n + 1) + " with the pasted config.",
+                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: ';' expected
+                  "This replaces slot " + (n + 1) + " with the pasted config.",
+                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: not a statement
+                  text2
+                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: ';' expected
+                  text2
                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: not a statement
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: not a statement
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ')' expected
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ';' expected
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: not a statement
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ')' or ',' expected
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
                                                                                                                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ';' expected
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ')' expected
-                  StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(name2, module.getCategory().name())
-                                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ';' expected
-                  StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(name2, module.getCategory().name())
-                                                                                                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: not a statement
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: ')' or ',' expected
+         this.toast("Deleted "" + text2 + """);
+                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
+         this.toast("Saved to "" + text2 + """);
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:491: error: ')' or ',' expected
+         this.toast("Activated "" + text2 + """);
+                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
+         this.toast("Copied "" + name2 + "" to clipboard");
+                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: ')' or ',' expected
+         "Overwrite "" + this.store().slot(n).name() + ""?",
+                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: not a statement
+         "This replaces the config saved in slot " + (n + 1) + ".",
+                                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: ';' expected
+         "This replaces the config saved in slot " + (n + 1) + ".",
+                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: not a statement
+         (String)null
+          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: ';' expected
+         (String)null
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: ')' or ',' expected
+         "Delete "" + this.store().slot(n).name() + ""?",
+                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: not a statement
+         "This permanently removes slot " + (n + 1) + ".",
+                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: ';' expected
+         "This permanently removes slot " + (n + 1) + ".",
+                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: not a statement
+         (String)null
+          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: ';' expected
+         (String)null
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: illegal start of expression
+            ? this.hexBuffer + System.nanoTime( / 400000000L % 2L == 0L ? "," : "")
+                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ')' or ',' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: not a statement
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: not a statement
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ')' or ',' expected
+               .replace(""black"", ""white"");
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ';' expected
+               .replace(""black"", ""white"");
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: not a statement
+               .replace(""black"", ""white"");
+                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ';' expected
+               .replace(""black"", ""white"");
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:51: error: unclosed string literal
+            } else if (text.startsWith("\")) {
+                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:59: error: class, interface, enum, or record expected
+}
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: ';' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
                                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: not a statement
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                                ^
-56 errors
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:164: error: unclosed string literal
+            if (text6.startsWith("\")) {
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:187: error: illegal start of type
+      } else {
+        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:192: error: unnamed classes are a preview feature and are disabled by default.
+   private static String stripCodes(String text2) {
+                  ^
+  (use --enable-preview to enable unnamed classes)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:195: error: class, interface, enum, or record expected
+}
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:1: error: unnamed class should not have package declaration
+package dev.sixseven.module.misc;
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:44: error: unclosed string literal
+            if (text6.startsWith("\")) {
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:56: error: illegal start of type
+      } else {
+        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:61: error: unnamed classes are a preview feature and are disabled by default.
+   private void handle(String[] text2) {
+           ^
+  (use --enable-preview to enable unnamed classes)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:143: error: class, interface, enum, or record expected
+}
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:1: error: unnamed class should not have package declaration
+package dev.sixseven.module.misc;
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: illegal start of expression
+                  name2 + module.getCategory(.name())
+                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ';' expected
+                  name2 + module.getCategory(.name())
+                                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: ')' or ',' expected
+                  return new ConfigStore.ImportResult(true, "Imported "" + slot2.name + """);
+                                                                       ^
+87 errors
 
 > Task :compileJava FAILED
 [Incubating] Problems report is available at: file:///home/runner/work/minecraftclient/minecraftclient/build/reports/problems/problems-report.html
@@ -202,175 +297,270 @@ FAILURE: Build failed with an exception.
 * What went wrong:
 Execution failed for task ':compileJava'.
 > Compilation failed; see the compiler output below.
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                       ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                                ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:76: error: ';' expected
-          this.key    = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(
-                                                                                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:77: error: ';' expected
-                  module.getName(), module.getCategory().name());
-                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:77: error: ';' expected
-                  module.getName(), module.getCategory().name());
-                                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/StringWidget.java:94: error: ')' expected
-           stringSetting.set(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, new String(Character.toChars(n))));
-                                                                                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/StringWidget.java:94: error: ';' expected
-           stringSetting.set(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, new String(Character.toChars(n))));
-                                                                                                                                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: : expected
-              ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: <identifier> expected
-              ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: ';' expected
-              ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: ';' expected
-              ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                                                                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: ')' expected
-              StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(str, value ? " enabled" : " disabled"),
-                                                                                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:52: error: ';' expected
-           )
-            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: <identifier> expected
-                 String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: ';' expected
-                 String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                                ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: ';' expected
-                 String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                                         ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: : expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                        ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                       ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ')' expected
-           jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                        ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ';' expected
-           jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ';' expected
-           jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ')' expected
-                    StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(name2, module.getCategory().name())
-                                                                                                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ';' expected
-                    StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(name2, module.getCategory().name())
-                                                                                                                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-              return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-              return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-              return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:140: error: illegal character: '\'
-           throw new Error(\"integrity\");
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: ';' expected
+                    "This replaces the config saved in slot " + (n + 1) + ".",
+                                                                      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: ';' expected
+                    (String)null
                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: not a statement
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                              ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: not a statement
-              ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: not a statement
-              ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                                                                       ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: not a statement
-                 String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: not a statement
-                 String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: not a statement
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                              ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: not a statement
-           return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                        ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: not a statement
-           jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                        ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: not a statement
-              return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: not a statement
-              return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                         ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                              ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                       ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                         ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-                 ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-                 : "KEY" + n;
-                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-                 : "KEY" + n;
-                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-                 : "KEY" + n;
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: ';' expected
+                    "This replaces slot " + (n + 1) + " with the pasted config.",
+                                                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: ';' expected
+                    text2
                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-                 : "KEY" + n;
-                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-                 : "KEY" + n;
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: illegal start of expression
-              StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(str, value ? " enabled" : " disabled"),
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
+                 ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
+                 ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: ';' expected
+           "This replaces the config saved in slot " + (n + 1) + ".",
+                                                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: ';' expected
+           (String)null
+                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: ';' expected
+           "This permanently removes slot " + (n + 1) + ".",
+                                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: ';' expected
+           (String)null
+                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+              nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+              nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+              nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+              nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                                                         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ';' expected
+                 .replace(""black"", ""white"");
+                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ';' expected
+                 .replace(""black"", ""white"");
+                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: ';' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ';' expected
+                    name2 + module.getCategory(.name())
+                                                       ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:187: error: illegal start of type
+        } else {
+          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:56: error: illegal start of type
+        } else {
+          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: not a statement
+                    "This replaces the config saved in slot " + (n + 1) + ".",
+                                                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: not a statement
+                    (String)null
+                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: not a statement
+                    "This replaces slot " + (n + 1) + " with the pasted config.",
+                                               ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: not a statement
+                    text2
+                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
+                 ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
+                 ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: not a statement
+           "This replaces the config saved in slot " + (n + 1) + ".",
+                                                          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: not a statement
+           (String)null
+            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: not a statement
+           "This permanently removes slot " + (n + 1) + ".",
+                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: not a statement
+           (String)null
+            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: not a statement
+              nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: not a statement
+              nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: not a statement
+                 .replace(""black"", ""white"");
+                                       ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:1: error: unnamed class should not have package declaration
+  package dev.sixseven.module.misc;
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:1: error: unnamed class should not have package declaration
+  package dev.sixseven.module.misc;
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                               ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                       ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                               ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
                                                                                                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:140: error: unclosed string literal
-           throw new Error(\"integrity\");
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+                 case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: ')' or ',' expected
+                    "Overwrite "" + configStore.slot(n).name() + ""?",
+                                ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: ')' or ',' expected
+                    "Import over "" + configStore.slot(n).name() + ""?",
+                                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ')' or ',' expected
+                 ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: ')' or ',' expected
+           this.toast("Deleted "" + text2 + """);
+                                ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
+           this.toast("Saved to "" + text2 + """);
+                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:491: error: ')' or ',' expected
+           this.toast("Activated "" + text2 + """);
+                                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
+           this.toast("Copied "" + name2 + "" to clipboard");
+                               ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: ')' or ',' expected
+           "Overwrite "" + this.store().slot(n).name() + ""?",
+                       ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: ')' or ',' expected
+           "Delete "" + this.store().slot(n).name() + ""?",
+                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ')' or ',' expected
+              nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ')' or ',' expected
+                 .replace(""black"", ""white"");
                             ^
-  56 errors
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: ')' or ',' expected
+                    return new ConfigStore.ImportResult(true, "Imported "" + slot2.name + """);
+                                                                         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: illegal start of expression
+              ? this.hexBuffer + System.nanoTime( / 400000000L % 2L == 0L ? "," : "")
+                                                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: illegal start of expression
+                    name2 + module.getCategory(.name())
+                                               ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:59: error: class, interface, enum, or record expected
+  }
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:195: error: class, interface, enum, or record expected
+  }
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:143: error: class, interface, enum, or record expected
+  }
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:192: error: unnamed classes are a preview feature and are disabled by default.
+     private static String stripCodes(String text2) {
+                    ^
+    (use --enable-preview to enable unnamed classes)
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:61: error: unnamed classes are a preview feature and are disabled by default.
+     private void handle(String[] text2) {
+             ^
+    (use --enable-preview to enable unnamed classes)
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:51: error: unclosed string literal
+              } else if (text.startsWith("\")) {
+                                         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:164: error: unclosed string literal
+              if (text6.startsWith("\")) {
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:44: error: unclosed string literal
+              if (text6.startsWith("\")) {
+                                   ^
+  87 errors
 
 * Try:
 > Check your code and dependencies to fix the compilation error(s)
@@ -410,175 +600,270 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:76: error: ';' expected
-        this.key    = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(
-                                                                                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:77: error: ';' expected
-                module.getName(), module.getCategory().name());
-                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ModuleEntry.java:77: error: ';' expected
-                module.getName(), module.getCategory().name());
-                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/StringWidget.java:94: error: ')' expected
-         stringSetting.set(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, new String(Character.toChars(n))));
-                                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/StringWidget.java:94: error: ';' expected
-         stringSetting.set(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, new String(Character.toChars(n))));
-                                                                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: : expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: <identifier> expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: ';' expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: ';' expected
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: ')' expected
-            StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(str, value ? " enabled" : " disabled"),
-                                                                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:52: error: ';' expected
-         )
-          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: <identifier> expected
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: ';' expected
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: ';' expected
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: : expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: ';' expected
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ')' expected
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ';' expected
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: ';' expected
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ')' expected
-                  StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(name2, module.getCategory().name())
-                                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ';' expected
-                  StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(name2, module.getCategory().name())
-                                                                                                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: ';' expected
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:140: error: illegal character: '\'
-         throw new Error(\"integrity\");
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: ';' expected
+                  "This replaces the config saved in slot " + (n + 1) + ".",
+                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: ';' expected
+                  (String)null
                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:153: error: not a statement
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
-                                                                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: not a statement
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: not a statement
-            ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","P-I">(this.hexBuffer, System.nanoTime() / 400000000L % 2L == 0L ? "," : "")
-                                                                                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: not a statement
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoTpaModule.java:56: error: not a statement
-               String text = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text4, trimmed);
-                                                                                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: not a statement
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/SliderSetting.java:81: error: not a statement
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(json, this.suffix);
-                                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: not a statement
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
-                                                                                                                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: not a statement
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/Amounts.java:62: error: not a statement
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
-                                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                       ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:62: error: case, default, or '}' expected
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
-                                                                                                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: ';' expected
+                  "This replaces slot " + (n + 1) + " with the pasted config.",
+                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: ';' expected
+                  text2
                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/KeybindSetting.java:63: error: case, default, or '}' expected
-               : "KEY" + n;
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: illegal start of expression
-            StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(str, value ? " enabled" : " disabled"),
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ';' expected
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: ';' expected
+         "This replaces the config saved in slot " + (n + 1) + ".",
+                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: ';' expected
+         (String)null
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: ';' expected
+         "This permanently removes slot " + (n + 1) + ".",
+                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: ';' expected
+         (String)null
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ';' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ';' expected
+               .replace(""black"", ""white"");
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ';' expected
+               .replace(""black"", ""white"");
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: ';' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: ';' expected
+                  name2 + module.getCategory(.name())
+                                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:187: error: illegal start of type
+      } else {
+        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:56: error: illegal start of type
+      } else {
+        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:411: error: not a statement
+                  "This replaces the config saved in slot " + (n + 1) + ".",
+                                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:412: error: not a statement
+                  (String)null
+                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:438: error: not a statement
+                  "This replaces slot " + (n + 1) + " with the pasted config.",
+                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:439: error: not a statement
+                  text2
+                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: not a statement
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                                                                                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:589: error: not a statement
+         "This replaces the config saved in slot " + (n + 1) + ".",
+                                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:590: error: not a statement
+         (String)null
+          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:600: error: not a statement
+         "This permanently removes slot " + (n + 1) + ".",
+                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:601: error: not a statement
+         (String)null
+          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: not a statement
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: not a statement
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: not a statement
+               .replace(""black"", ""white"");
+                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:1: error: unnamed class should not have package declaration
+package dev.sixseven.module.misc;
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:1: error: unnamed class should not have package declaration
+package dev.sixseven.module.misc;
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
                                                                                                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:140: error: unclosed string literal
-         throw new Error(\"integrity\");
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/CoordSnapperModule.java:52: error: case, default, or '}' expected
+               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+                                                                                                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:410: error: ')' or ',' expected
+                  "Overwrite "" + configStore.slot(n).name() + ""?",
+                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:437: error: ')' or ',' expected
+                  "Import over "" + configStore.slot(n).name() + ""?",
+                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:448: error: ')' or ',' expected
+               ConfigPanel.Action.DELETE, n, "Delete "" + configStore.slot(n).name() + ""?", "This permanently removes slot " + (n + 1) + ".", (String)null
+                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:471: error: ')' or ',' expected
+         this.toast("Deleted "" + text2 + """);
+                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
+         this.toast("Saved to "" + text2 + """);
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:491: error: ')' or ',' expected
+         this.toast("Activated "" + text2 + """);
+                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
+         this.toast("Copied "" + name2 + "" to clipboard");
+                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:588: error: ')' or ',' expected
+         "Overwrite "" + this.store().slot(n).name() + ""?",
+                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:599: error: ')' or ',' expected
+         "Delete "" + this.store().slot(n).name() + ""?",
+                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:274: error: ')' or ',' expected
+            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGIcons.java:56: error: ')' or ',' expected
+               .replace(""black"", ""white"");
                           ^
-56 errors
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigStore.java:200: error: ')' or ',' expected
+                  return new ConfigStore.ImportResult(true, "Imported "" + slot2.name + """);
+                                                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/widget/ColorWidget.java:112: error: illegal start of expression
+            ? this.hexBuffer + System.nanoTime( / 400000000L % 2L == 0L ? "," : "")
+                                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:80: error: illegal start of expression
+                  name2 + module.getCategory(.name())
+                                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:59: error: class, interface, enum, or record expected
+}
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:195: error: class, interface, enum, or record expected
+}
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:143: error: class, interface, enum, or record expected
+}
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:192: error: unnamed classes are a preview feature and are disabled by default.
+   private static String stripCodes(String text2) {
+                  ^
+  (use --enable-preview to enable unnamed classes)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:61: error: unnamed classes are a preview feature and are disabled by default.
+   private void handle(String[] text2) {
+           ^
+  (use --enable-preview to enable unnamed classes)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:51: error: unclosed string literal
+            } else if (text.startsWith("\")) {
+                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:164: error: unclosed string literal
+            if (text6.startsWith("\")) {
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:44: error: unclosed string literal
+            if (text6.startsWith("\")) {
+                                 ^
+87 errors
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:84)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:46)
 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
@@ -735,5 +1020,5 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
 
-BUILD FAILED in 52s
+BUILD FAILED in 56s
 1 actionable task: 1 executed
