@@ -105,8 +105,8 @@ public final class ChunkFinderModule extends Module {
          this.displayChunks = Set.copyOf(set);
       } else {
          int radius = Math.max(1, this.lastMergeRadius);
-         HashSet set2 = new HashSet();
-         HashSet set3 = new HashSet();
+         HashSet<Long> set2 = new HashSet<>();
+         HashSet<Long> set3 = new HashSet<>();
 
          for (long l : set) {
             if (set3.add(l)) {
