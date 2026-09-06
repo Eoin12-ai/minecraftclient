@@ -210,14 +210,14 @@ public class ConfigPanel {
       float[] f6 = new float[list.size()];
 
       for (int n = 0; n < list.size(); n++) {
-         widths[n] = nVGRenderer.textWidth(((Spec)list.get(n)).label(), f4) + f2 * 2.0F;
-         totalW += widths[n] + (n > 0 ? f3 : 0.0F);
+         widths[n] = nVGRenderer.textWidth(((Spec)list.get(n)).label(), btnFont) + f2 * 2.0F;
+         totalW += widths[n] + (n > 0 ? btnGap : 0.0F);
       }
 
-      float f = tmp12 - temp3;
+      float f = tmp12 - totalW;
       float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
 
-      for (int n = 0; n < tmp5.size(); n++) {
+      for (int n = 0; n < list.size(); n++) {
          Spec spec = (Spec)tmp5.get(n);
          float f3 = temp[n];
          boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
