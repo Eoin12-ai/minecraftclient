@@ -20,7 +20,7 @@ public final class InternalHelper4 extends Screen {
    }
 
    public boolean keyPressed(int _key, int _scan, int var1) {
-      int var2 = var1.key();
+      int var2 = _key;
       if (var2 == 256) {
          this.close();
          return true;
@@ -30,8 +30,8 @@ public final class InternalHelper4 extends Screen {
       }
    }
 
-   public boolean mouseClicked(Click var1, boolean var2) {
-      this.val.run2(Tab.valOf(var1.button()));
+   public boolean mouseClicked(double _cx, double _cy, int _cb) {
+      this.val.run2(Tab.valOf(_cb));
       this.close();
       return true;
    }
