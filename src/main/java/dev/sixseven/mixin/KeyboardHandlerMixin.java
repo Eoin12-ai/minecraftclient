@@ -10,7 +10,6 @@ import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;
 import net.minecraft.client.gui.screen.ingame.BookEditScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.input.KeyInput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,18 +18,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({Keyboard.class})
 public class KeyboardHandlerMixin {
    @Inject(
-      method = {"onKey(JILnet/minecraft/KeyInput;)V"},
+      method = {"onKey(JIII)V"},
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void sixsevenclient$dispatchModuleKeybinds(long l, int n, KeyInput keyInput, CallbackInfo callbackInfo) {
+   private void sixsevenclient$dispatchModuleKeybinds(long l, int n, int keyCode, int scanCode, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
       if (SixSevenClient.modules() != null && temp3 == 1) {
          if (client.currentScreen == null && client.world != null) {
-            if (SixSevenClient.modules().onKeyPressed(temp.key())) {
+            if (SixSevenClient.modules().onKeyPressed(keyCode)) {
                temp2.cancel();
             }
-         } else if ((temp.key() == 340 || temp.key() == 344) && client.currentScreen != null && shiftOpensGui(client.currentScreen)) {
+         } else if ((keyCode == 340 || keyCode == 344) && client.currentScreen != null && shiftOpensGui(client.currentScreen)) {
             client.setScreen(new ClickGuiScreen(client.currentScreen));
             temp2.cancel();
          }
