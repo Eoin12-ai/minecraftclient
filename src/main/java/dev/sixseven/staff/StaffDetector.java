@@ -78,8 +78,8 @@ public final class StaffDetector {
 
          boolean found = num != null;
          String text8 = plain(text);
-         String text2 = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
-         StaffDetector.Rank rank = deriveRank(stripName(text2, str), detectConfig.rankKeywords());
+         String combined = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
+         StaffDetector.Rank rank = deriveRank(stripName(combined, str), detectConfig.rankKeywords());
          boolean found2 = rank != null;
          String text10 = detectConfig.mode();
 
