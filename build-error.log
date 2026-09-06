@@ -1186,5 +1186,5 @@ import net.minecraft.client.input.KeyInput;
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
 
-BUILD FAILED in 53s
+BUILD FAILED in 45s
 1 actionable task: 1 executed
