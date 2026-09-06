@@ -77,7 +77,7 @@ public class ConfigManager {
             for (Module module : this.modules.all()) {
                String name2 = module.getName();
                JsonObject jsonObject3 = jsonObject2.getAsJsonObject(
-                  name2 + module.getCategory(.name())
+                  name2 + module.getCategory().name()
                );
                if (jsonObject3 != null) {
                   if (jsonObject3.has("enabled") && jsonObject3.get("enabled").getAsBoolean() != module.isEnabled()) {
