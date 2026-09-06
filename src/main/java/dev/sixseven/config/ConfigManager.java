@@ -53,7 +53,7 @@ public class ConfigManager {
          }
 
          jsonObject3.add("settings", jsonObject4);
-         jsonObject2.add(String.valueOf(module.getName(), module.getCategory().name()), jsonObject3);
+         jsonObject2.add(module.getName() + module.getCategory().name(), jsonObject3);
       }
 
       jsonObject.add("modules", jsonObject2);
