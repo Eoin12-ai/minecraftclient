@@ -13,7 +13,7 @@ import dev.sixseven.util.Colors;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.gui.screen.ChatScreen;
-import net.minecraft.client.texture.GlTexture;
+import net.minecraft.client.texture.AbstractTexture;
 import org.lwjgl.opengl.GL33C;
 
 public final class OverlayRenderer {
@@ -44,7 +44,7 @@ public final class OverlayRenderer {
       if (!crashed && hudManager != null) {
          MinecraftClient client = MinecraftClient.getInstance();
          Framebuffer framebuffer = client.getFramebuffer();
-         if (framebuffer != null && framebuffer.getColorAttachment() instanceof GlTexture glTexture) {
+         if (framebuffer != null && framebuffer.getColorAttachment() instanceof AbstractTexture glTexture) {
             boolean found = client.currentScreen instanceof NvgDrawable;
             boolean found2 = client.currentScreen instanceof ChatScreen;
             boolean found3 = !client.options.hudHidden && client.world != null && !found;
@@ -150,7 +150,7 @@ public final class OverlayRenderer {
       }
    }
 
-   private static boolean bindOverlayFbo(GlTexture glTexture, int bind, int bind2) {
+   private static boolean bindOverlayFbo(AbstractTexture glTexture, int bind, int bind2) {
       if (fbo == -1) {
          fbo = GL33C.glGenFramebuffers();
       }
