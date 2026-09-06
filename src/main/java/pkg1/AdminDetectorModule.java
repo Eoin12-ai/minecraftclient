@@ -23,10 +23,10 @@ import net.minecraft.client.gui.PlayerSkinDrawer;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.SkinTextures;
+import net.minecraft.client.util.SkinTextures;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import org.joml.Matrix3x2fStack;
+import org.joml.Matrix3x2f;
 
 public class AdminDetectorModule extends Module {
    private static final int intVal = 10;
@@ -275,7 +275,7 @@ public class AdminDetectorModule extends Module {
          int var11 = ((Integer)this.val6.getObject()) >= 0 ? this.val6.getObject() : 10;
          int var12 = ((Integer)this.val7.getObject()) >= 0 ? this.val7.getObject() : 10;
          int var13 = AdminDetectorModuleUtil.getInt();
-         Matrix3x2fStack var14 = var1.getMatrices();
+         Matrix3x2f var14 = var1.getMatrices();
          var14.pushMatrix();
          var14.translate(var11, var12);
          var14.scale(var8, var8);
