@@ -129,8 +129,8 @@ public final class EspBoxRenderer {
          vector3f.set(0.0F, 1.0F, 0.0F);
       }
 
-      consumer.vertex(entry, f, f8, f9).color(n).normal(entry, vector3f).lineWidth(f13);
-      consumer.vertex(entry, f10, f11, f12).color(n).normal(entry, vector3f).lineWidth(f13);
+      consumer.vertex(entry, f, f8, f9).color(n).normal(entry, vector3f);
+      consumer.vertex(entry, f10, f11, f12).color(n).normal(entry, vector3f);
    }
 
    private static void quad(
