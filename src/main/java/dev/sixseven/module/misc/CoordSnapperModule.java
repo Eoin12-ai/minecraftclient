@@ -49,7 +49,7 @@ public class CoordSnapperModule extends Module {
             String text = this.format.get();
 
             String json = switch (text) {
-               case "JSON" -> "{"x": " + pos.getX() + ", "y": " + pos.getY() + ", "z": " + pos.getZ() + "}";
+               case "JSON" -> "{\"x\": " + pos.getX() + ", \"y\": " + pos.getY() + ", \"z\": " + pos.getZ() + "}";
                case "Command" -> "/tp " + pos.getX() + " " + pos.getY() + " " + pos.getZ();
                default -> pos.getX() + " " + pos.getY() + " " + pos.getZ();
             };
