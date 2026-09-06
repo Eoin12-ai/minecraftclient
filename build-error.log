@@ -90,17 +90,473 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:13: error: cannot find symbol
-import net.minecraft.client.render.VertexFormat;
-                                  ^
-  symbol:   class VertexFormat
-  location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:13: error: cannot find symbol
-import net.minecraft.client.render.VertexFormat;
-                                  ^
-  symbol:   class VertexFormat
-  location: package net.minecraft.client.render
-2 errors
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:61: error: cannot find symbol
+            set.add(playerListEntry.getProfile().id());
+                                                ^
+  symbol:   method id()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:67: error: cannot find symbol
+            UUID uuid2 = playerListEntry2.getProfile().id();
+                                                      ^
+  symbol:   method id()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:69: error: cannot find symbol
+               String name2 = playerListEntry2.getProfile().name();
+                                                           ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:99: error: incompatible types: Object cannot be converted to StaffEntry
+         for (StaffEntry staffEntry2 : list) {
+                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:104: error: incompatible types: Object cannot be converted to StaffEntry
+            for (StaffEntry staffEntry3 : list) {
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:137: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui((SoundEvent)SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F, 0.6F));
+                                                                 ^
+  symbol:   method ui(SoundEvent,float,float)
+  location: class PositionedSoundInstance
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:81: error: variable text2 is already defined in method classify(String,Text,Text,Text,String,boolean,int,DetectConfig)
+         String text2 = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:81: error: incompatible types: String cannot be converted to Text
+         String text2 = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
+                                            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:110: error: cannot find symbol
+            ctx.applyBlur();
+               ^
+  symbol:   method applyBlur()
+  location: variable ctx of type DrawContext
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/Panel.java:140: error: incompatible types: float[] cannot be converted to float
+                    new float[]{0, 0, RADIUS, RADIUS},
+                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:193: error: cannot find symbol
+      if (temp2.filled()) {
+          ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:194: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.ACTIVATE, "Activate", true, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:195: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:196: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.RENAME, "Rename", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:197: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.EXPORT, "Export", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:198: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:199: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.DELETE, "Delete", false, true));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:201: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", true, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:202: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:205: error: variable f is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f = 26.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:206: error: variable f2 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f2 = 11.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:207: error: variable f3 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f3 = 6.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:208: error: variable f4 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f4 = 12.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:210: error: cannot find symbol
+      float[] f6 = new float[temp2.size()];
+                             ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:212: error: cannot find symbol
+      for (int n = 0; n < temp2.size(); n++) {
+                          ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:213: error: cannot find symbol
+         f6[n] = temp.textWidth(((Spec)temp2.get(n)).label(), f4) + f2 * 2.0F;
+                 ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:213: error: cannot find symbol
+         f6[n] = temp.textWidth(((Spec)temp2.get(n)).label(), f4) + f2 * 2.0F;
+                                       ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: variable f is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f = tmp12 - temp3;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: cannot find symbol
+      float f = tmp12 - temp3;
+                ^
+  symbol:   variable tmp12
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: cannot find symbol
+      float f = tmp12 - temp3;
+                        ^
+  symbol:   variable temp3
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: variable f2 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: cannot find symbol
+      float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+                 ^
+  symbol:   variable tmp9
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: cannot find symbol
+      float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+                                 ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:220: error: cannot find symbol
+      for (int n = 0; n < tmp5.size(); n++) {
+                          ^
+  symbol:   variable tmp5
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:221: error: cannot find symbol
+         Spec spec = (Spec)tmp5.get(n);
+                           ^
+  symbol:   variable tmp5
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:222: error: variable f3 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+         float f3 = temp[n];
+               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:222: error: cannot find symbol
+         float f3 = temp[n];
+                    ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                      ^
+  symbol:   variable tmp8
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                   ^
+  symbol:   variable tmp8
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                     ^
+  symbol:   variable tmp10
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                                    ^
+  symbol:   variable tmp10
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                                                  ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                         ^
+  symbol:   variable tmp11
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                ^
+  symbol:   variable tmp6
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                                 ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                                                      ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:225: error: cannot find symbol
+         this.hits.add(new ConfigPanel.Hit(spec.action(), tmp7.index(), f, f2, f3, tmp13, spec.primary()));
+                                                                                   ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:225: error: cannot find symbol
+         this.hits.add(new ConfigPanel.Hit(spec.action(), tmp7.index(), f, f2, f3, tmp13, spec.primary()));
+                                                          ^
+  symbol:   variable tmp7
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:226: error: cannot find symbol
+         f += f3 + temp4;
+                   ^
+  symbol:   variable temp4
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: no suitable method found for valueOf(String,String)
+         jsonObject2.add(String.valueOf(module.getName(), module.getCategory().name()), jsonObject3);
+                               ^
+    method String.valueOf(Object) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(char[]) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(char[],int,int) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(boolean) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(char) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(int) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(long) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(float) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(double) is not applicable
+      (actual and formal argument lists differ in length)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:225: error: invalid method reference
+      module.setToggleCallback(this::pollTickotifyToggle);
+                               ^
+  cannot find symbol
+    symbol:   method pollTickotifyToggle(Module,Boolean)
+    location: class ModuleManager
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:83: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui((SoundEvent)SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f, 0.6F));
+                                                                 ^
+  symbol:   method ui(SoundEvent,float,float)
+  location: class PositionedSoundInstance
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:111: error: cannot find symbol
+         this.key = nullxx;
+                    ^
+  symbol:   variable nullxx
+  location: class StorageType
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:112: error: cannot find symbol
+         this.label = nullxxx;
+                      ^
+  symbol:   variable nullxxx
+  location: class StorageType
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/combat/AutoCrystalModule.java:133: error: cannot find symbol
+      } else if (client.player.getEyePos().distanceTo(crystal.getEntityPos()) > this.range.get()) {
+                                                             ^
+  symbol:   method getEntityPos()
+  location: variable crystal of type EndCrystalEntity
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/combat/AutoCrystalModule.java:221: error: incompatible types: Window cannot be converted to long
+         return n <= 7 ? GLFW.glfwGetMouseButton(client.getWindow().getHandle(), n) == 1 : InputUtil.isKeyPressed(client.getWindow(), n);
+                                                                                                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:49: error: cannot find symbol
+      return client.player == null ? null : client.player.getGameProfile().name();
+                                                                          ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:92: error: cannot find symbol
+            String name2 = gameProfile == null ? null : gameProfile.name();
+                                                                   ^
+  symbol:   method name()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
+      linkedHashMap.entrySet().removeIf(arg -> ((String)arg.getKey()).equalsIgnoreCase((String)arg.getValue()));
+                                                                                                  ^
+  symbol:   method getValue()
+  location: variable arg of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
+      linkedHashMap.entrySet().removeIf(arg -> ((String)arg.getKey()).equalsIgnoreCase((String)arg.getValue()));
+                                                           ^
+  symbol:   method getKey()
+  location: variable arg of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:128: error: cannot find symbol
+         list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
+                                                      ^
+  symbol:   method length()
+  location: variable arg2 of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:128: error: cannot find symbol
+         list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
+                                                                    ^
+  symbol:   method length()
+  location: variable arg of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:180: error: variable text is already defined in method rewrite(Text)
+            } else if (value instanceof String text) {
+                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:108: error: cannot find symbol
+         gameProfile.properties().putAll(linkedHashMultimap);
+                    ^
+  symbol:   method properties()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/ChunkFinderModule.java:111: error: incompatible types: Object cannot be converted to long
+         for (long l : set) {
+                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:124: error: cannot find symbol
+      return TYPE_NAMES.length;
+             ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:128: error: cannot find symbol
+      return n >= 0 && n < TYPE_NAMES.length ? TYPE_NAMES[n] : "";
+                           ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:128: error: cannot find symbol
+      return n >= 0 && n < TYPE_NAMES.length ? TYPE_NAMES[n] : "";
+                                               ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:174: error: cannot find symbol
+      ClientPlayerEntity temp = MinecraftClient.getInstance().temp;
+                                                             ^
+  symbol:   variable temp
+  location: class MinecraftClient
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:182: error: cannot find symbol
+            REGION_TYPE[n] = Math.min(LAYOUT[n][1], TYPE_NAMES.length - 1);
+                                                    ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:50: error: constructor ChatScreen in class ChatScreen cannot be applied to given types;
+               client.setScreen(new ChatScreen(text, false));
+                                ^
+  required: String
+  found:    String,boolean
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:73: error: cannot find symbol
+            } else if (this.selfGuard.get() && text4.equalsIgnoreCase(client.player.getGameProfile().name())) {
+                                                                                                    ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:136: error: cannot find symbol
+      client.getSoundManager().play(PositionedSoundInstance.ui(sound, f, 1.0F));
+                                                           ^
+  symbol:   method ui(SoundEvent,float,float)
+  location: class PositionedSoundInstance
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:127: error: cannot find symbol
+      if (!this.money.get().isBlank() && matches(this.moneyLine, n, text2, MONEY_KEYS)) {
+                                                                           ^
+  symbol:   variable MONEY_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:129: error: cannot find symbol
+      } else if (!this.shards.get().isBlank() && matches(this.shardsLine, n, text2, SHARD_KEYS)) {
+                                                                                    ^
+  symbol:   variable SHARD_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:131: error: cannot find symbol
+      } else if (!this.kills.get().isBlank() && matches(this.killsLine, n, text2, KILL_KEYS)) {
+                                                                                  ^
+  symbol:   variable KILL_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:133: error: cannot find symbol
+      } else if (!this.deaths.get().isBlank() && matches(this.deathsLine, n, text2, DEATH_KEYS)) {
+                                                                                    ^
+  symbol:   variable DEATH_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:136: error: cannot find symbol
+         return !this.playtime.get().isBlank() && matches(this.playtimeLine, n, text2, PLAYTIME_KEYS)
+                                                                                       ^
+  symbol:   variable PLAYTIME_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:174: error: cannot find symbol
+               } else if (str5.length >= 2 && !str5[1].equalsIgnoreCase(client.player.getGameProfile().name())) {
+                                                                                                      ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:43: error: cannot find symbol
+      return client.player == null ? null : client.player.getGameProfile().name();
+                                                                          ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:146: error: variable value is already defined in method splice(Text,String,boolean[])
+            Object value = obj[step];
+                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:148: error: incompatible types: Object cannot be converted to boolean[]
+               obj4[step] = this.splice(text3, text4, value);
+                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:150: error: array required, but Object found
+               if (!value[0] && value instanceof String) {
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:153: error: array required, but Object found
+                     value[0] = true;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SpawnerProtectModule.java:322: error: cannot find symbol
+               vec = itemEntity.getEntityPos();
+                               ^
+  symbol:   method getEntityPos()
+  location: variable itemEntity of type ItemEntity
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: incompatible types: String cannot be converted to boolean
+            str + value ? " enabled" : " disabled",
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:153: error: incompatible types: Object cannot be converted to long
+               arg -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
+                                                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:153: error: incompatible types: Object cannot be converted to long
+               arg -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
+                                                                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:194: error: incompatible types: Object cannot be converted to BlockPos
+         for (BlockPos pos : list) {
+                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: incompatible types: invalid constructor reference
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, SusChunkScanner.FlagAggregate::new);
+                                                                                                   ^
+    incompatible types: Object cannot be converted to long
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: incompatible types: invalid constructor reference
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, SusChunkScanner.FlagAggregate::new);
+                                                                                     ^
+    incompatible types: Object cannot be converted to long
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:386: error: incompatible types: Object cannot be converted to FlagAggregate
+      for (SusChunkScanner.FlagAggregate flagAggregate3 : map.values()) {
+                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:431: error: cannot find symbol
+            map.computeIfAbsent(find(step2, n13), arg -> new ArrayList<>()).add((BlockPos)list.get(n13));
+                                                                           ^
+  symbol:   method add(BlockPos)
+  location: class Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:436: error: incompatible types: Object cannot be converted to List
+         for (List list3 : map.values()) {
+                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:441: error: incompatible types: Object cannot be converted to BlockPos
+            for (BlockPos pos3 : list3) {
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:23: error: ThemesPanel is not abstract and does not override abstract method renderContent(NVGRenderer,float,float,float,float,float,float) in Panel
+public class ThemesPanel extends Panel {
+       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:39: error: cannot find symbol
+            Theme theme = temp.current();
+                          ^
+  symbol: variable temp
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:45: error: cannot find symbol
+      this.accentWidget = new ColorWidget(temp, this.accentProxy);
+                                          ^
+  symbol:   variable temp
+  location: class ThemesPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:50: error: cannot find symbol
+               this.soundWidgets.add(new SliderWidget(temp, sliderSetting));
+                                                      ^
+  symbol:   variable temp
+  location: class ThemesPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:51: error: cannot find symbol
+            } else if (temp instanceof BooleanSetting booleanSetting) {
+                       ^
+  symbol:   variable temp
+  location: class ThemesPanel
+Note: /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+100 errors
 24 warnings
 
 > Task :compileJava FAILED
@@ -184,17 +640,473 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
      @ModifyReturnValue(
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:13: error: cannot find symbol
-  import net.minecraft.client.render.VertexFormat;
-                                    ^
-    symbol:   class VertexFormat
-    location: package net.minecraft.client.render
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:13: error: cannot find symbol
-  import net.minecraft.client.render.VertexFormat;
-                                    ^
-    symbol:   class VertexFormat
-    location: package net.minecraft.client.render
-  2 errors
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:61: error: cannot find symbol
+              set.add(playerListEntry.getProfile().id());
+                                                  ^
+    symbol:   method id()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:67: error: cannot find symbol
+              UUID uuid2 = playerListEntry2.getProfile().id();
+                                                        ^
+    symbol:   method id()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:69: error: cannot find symbol
+                 String name2 = playerListEntry2.getProfile().name();
+                                                             ^
+    symbol:   method name()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:99: error: incompatible types: Object cannot be converted to StaffEntry
+           for (StaffEntry staffEntry2 : list) {
+                                         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:104: error: incompatible types: Object cannot be converted to StaffEntry
+              for (StaffEntry staffEntry3 : list) {
+                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:137: error: cannot find symbol
+              client.getSoundManager().play(PositionedSoundInstance.ui((SoundEvent)SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F, 0.6F));
+                                                                   ^
+    symbol:   method ui(SoundEvent,float,float)
+    location: class PositionedSoundInstance
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:81: error: variable text2 is already defined in method classify(String,Text,Text,Text,String,boolean,int,DetectConfig)
+           String text2 = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
+                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:81: error: incompatible types: String cannot be converted to Text
+           String text2 = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
+                                              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:110: error: cannot find symbol
+              ctx.applyBlur();
+                 ^
+    symbol:   method applyBlur()
+    location: variable ctx of type DrawContext
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/Panel.java:140: error: incompatible types: float[] cannot be converted to float
+                      new float[]{0, 0, RADIUS, RADIUS},
+                      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:193: error: cannot find symbol
+        if (temp2.filled()) {
+            ^
+    symbol:   variable temp2
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:194: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.ACTIVATE, "Activate", true, false));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:195: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", false, false));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:196: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.RENAME, "Rename", false, false));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:197: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.EXPORT, "Export", false, false));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:198: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:199: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.DELETE, "Delete", false, true));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:201: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", true, false));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:202: error: cannot find symbol
+           temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+           ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:205: error: variable f is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+        float f = 26.0F;
+              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:206: error: variable f2 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+        float f2 = 11.0F;
+              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:207: error: variable f3 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+        float f3 = 6.0F;
+              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:208: error: variable f4 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+        float f4 = 12.0F;
+              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:210: error: cannot find symbol
+        float[] f6 = new float[temp2.size()];
+                               ^
+    symbol:   variable temp2
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:212: error: cannot find symbol
+        for (int n = 0; n < temp2.size(); n++) {
+                            ^
+    symbol:   variable temp2
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:213: error: cannot find symbol
+           f6[n] = temp.textWidth(((Spec)temp2.get(n)).label(), f4) + f2 * 2.0F;
+                   ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:213: error: cannot find symbol
+           f6[n] = temp.textWidth(((Spec)temp2.get(n)).label(), f4) + f2 * 2.0F;
+                                         ^
+    symbol:   variable temp2
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: variable f is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+        float f = tmp12 - temp3;
+              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: cannot find symbol
+        float f = tmp12 - temp3;
+                  ^
+    symbol:   variable tmp12
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: cannot find symbol
+        float f = tmp12 - temp3;
+                          ^
+    symbol:   variable temp3
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: variable f2 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+        float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+              ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: cannot find symbol
+        float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+                   ^
+    symbol:   variable tmp9
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: cannot find symbol
+        float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+                                   ^
+    symbol:   variable tmp13
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:220: error: cannot find symbol
+        for (int n = 0; n < tmp5.size(); n++) {
+                            ^
+    symbol:   variable tmp5
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:221: error: cannot find symbol
+           Spec spec = (Spec)tmp5.get(n);
+                             ^
+    symbol:   variable tmp5
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:222: error: variable f3 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+           float f3 = temp[n];
+                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:222: error: cannot find symbol
+           float f3 = temp[n];
+                      ^
+    symbol:   variable temp
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+           boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                        ^
+    symbol:   variable tmp8
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+           boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                     ^
+    symbol:   variable tmp8
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+           boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                       ^
+    symbol:   variable tmp10
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+           boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                                      ^
+    symbol:   variable tmp10
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+           boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                                                    ^
+    symbol:   variable tmp13
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+           this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                           ^
+    symbol:   variable tmp11
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+           this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                  ^
+    symbol:   variable tmp6
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+           this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                                   ^
+    symbol:   variable tmp13
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+           this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                                                        ^
+    symbol:   variable temp2
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:225: error: cannot find symbol
+           this.hits.add(new ConfigPanel.Hit(spec.action(), tmp7.index(), f, f2, f3, tmp13, spec.primary()));
+                                                                                     ^
+    symbol:   variable tmp13
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:225: error: cannot find symbol
+           this.hits.add(new ConfigPanel.Hit(spec.action(), tmp7.index(), f, f2, f3, tmp13, spec.primary()));
+                                                            ^
+    symbol:   variable tmp7
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:226: error: cannot find symbol
+           f += f3 + temp4;
+                     ^
+    symbol:   variable temp4
+    location: class ConfigPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: no suitable method found for valueOf(String,String)
+           jsonObject2.add(String.valueOf(module.getName(), module.getCategory().name()), jsonObject3);
+                                 ^
+      method String.valueOf(Object) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(char[]) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(char[],int,int) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(boolean) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(char) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(int) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(long) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(float) is not applicable
+        (actual and formal argument lists differ in length)
+      method String.valueOf(double) is not applicable
+        (actual and formal argument lists differ in length)
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:225: error: invalid method reference
+        module.setToggleCallback(this::pollTickotifyToggle);
+                                 ^
+    cannot find symbol
+      symbol:   method pollTickotifyToggle(Module,Boolean)
+      location: class ModuleManager
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:83: error: cannot find symbol
+              client.getSoundManager().play(PositionedSoundInstance.ui((SoundEvent)SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f, 0.6F));
+                                                                   ^
+    symbol:   method ui(SoundEvent,float,float)
+    location: class PositionedSoundInstance
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:111: error: cannot find symbol
+           this.key = nullxx;
+                      ^
+    symbol:   variable nullxx
+    location: class StorageType
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:112: error: cannot find symbol
+           this.label = nullxxx;
+                        ^
+    symbol:   variable nullxxx
+    location: class StorageType
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/combat/AutoCrystalModule.java:133: error: cannot find symbol
+        } else if (client.player.getEyePos().distanceTo(crystal.getEntityPos()) > this.range.get()) {
+                                                               ^
+    symbol:   method getEntityPos()
+    location: variable crystal of type EndCrystalEntity
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/combat/AutoCrystalModule.java:221: error: incompatible types: Window cannot be converted to long
+           return n <= 7 ? GLFW.glfwGetMouseButton(client.getWindow().getHandle(), n) == 1 : InputUtil.isKeyPressed(client.getWindow(), n);
+                                                                                                                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:49: error: cannot find symbol
+        return client.player == null ? null : client.player.getGameProfile().name();
+                                                                            ^
+    symbol:   method name()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:92: error: cannot find symbol
+              String name2 = gameProfile == null ? null : gameProfile.name();
+                                                                     ^
+    symbol:   method name()
+    location: variable gameProfile of type GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
+        linkedHashMap.entrySet().removeIf(arg -> ((String)arg.getKey()).equalsIgnoreCase((String)arg.getValue()));
+                                                                                                    ^
+    symbol:   method getValue()
+    location: variable arg of type Object
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
+        linkedHashMap.entrySet().removeIf(arg -> ((String)arg.getKey()).equalsIgnoreCase((String)arg.getValue()));
+                                                             ^
+    symbol:   method getKey()
+    location: variable arg of type Object
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:128: error: cannot find symbol
+           list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
+                                                        ^
+    symbol:   method length()
+    location: variable arg2 of type Object
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:128: error: cannot find symbol
+           list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
+                                                                      ^
+    symbol:   method length()
+    location: variable arg of type Object
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:180: error: variable text is already defined in method rewrite(Text)
+              } else if (value instanceof String text) {
+                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:108: error: cannot find symbol
+           gameProfile.properties().putAll(linkedHashMultimap);
+                      ^
+    symbol:   method properties()
+    location: variable gameProfile of type GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/ChunkFinderModule.java:111: error: incompatible types: Object cannot be converted to long
+           for (long l : set) {
+                         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:124: error: cannot find symbol
+        return TYPE_NAMES.length;
+               ^
+    symbol:   variable TYPE_NAMES
+    location: class RegionMapModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:128: error: cannot find symbol
+        return n >= 0 && n < TYPE_NAMES.length ? TYPE_NAMES[n] : "";
+                             ^
+    symbol:   variable TYPE_NAMES
+    location: class RegionMapModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:128: error: cannot find symbol
+        return n >= 0 && n < TYPE_NAMES.length ? TYPE_NAMES[n] : "";
+                                                 ^
+    symbol:   variable TYPE_NAMES
+    location: class RegionMapModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:174: error: cannot find symbol
+        ClientPlayerEntity temp = MinecraftClient.getInstance().temp;
+                                                               ^
+    symbol:   variable temp
+    location: class MinecraftClient
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:182: error: cannot find symbol
+              REGION_TYPE[n] = Math.min(LAYOUT[n][1], TYPE_NAMES.length - 1);
+                                                      ^
+    symbol:   variable TYPE_NAMES
+    location: class RegionMapModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:50: error: constructor ChatScreen in class ChatScreen cannot be applied to given types;
+                 client.setScreen(new ChatScreen(text, false));
+                                  ^
+    required: String
+    found:    String,boolean
+    reason: actual and formal argument lists differ in length
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:73: error: cannot find symbol
+              } else if (this.selfGuard.get() && text4.equalsIgnoreCase(client.player.getGameProfile().name())) {
+                                                                                                      ^
+    symbol:   method name()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:136: error: cannot find symbol
+        client.getSoundManager().play(PositionedSoundInstance.ui(sound, f, 1.0F));
+                                                             ^
+    symbol:   method ui(SoundEvent,float,float)
+    location: class PositionedSoundInstance
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:127: error: cannot find symbol
+        if (!this.money.get().isBlank() && matches(this.moneyLine, n, text2, MONEY_KEYS)) {
+                                                                             ^
+    symbol:   variable MONEY_KEYS
+    location: class FakeStatsModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:129: error: cannot find symbol
+        } else if (!this.shards.get().isBlank() && matches(this.shardsLine, n, text2, SHARD_KEYS)) {
+                                                                                      ^
+    symbol:   variable SHARD_KEYS
+    location: class FakeStatsModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:131: error: cannot find symbol
+        } else if (!this.kills.get().isBlank() && matches(this.killsLine, n, text2, KILL_KEYS)) {
+                                                                                    ^
+    symbol:   variable KILL_KEYS
+    location: class FakeStatsModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:133: error: cannot find symbol
+        } else if (!this.deaths.get().isBlank() && matches(this.deathsLine, n, text2, DEATH_KEYS)) {
+                                                                                      ^
+    symbol:   variable DEATH_KEYS
+    location: class FakeStatsModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:136: error: cannot find symbol
+           return !this.playtime.get().isBlank() && matches(this.playtimeLine, n, text2, PLAYTIME_KEYS)
+                                                                                         ^
+    symbol:   variable PLAYTIME_KEYS
+    location: class FakeStatsModule
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:174: error: cannot find symbol
+                 } else if (str5.length >= 2 && !str5[1].equalsIgnoreCase(client.player.getGameProfile().name())) {
+                                                                                                        ^
+    symbol:   method name()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:43: error: cannot find symbol
+        return client.player == null ? null : client.player.getGameProfile().name();
+                                                                            ^
+    symbol:   method name()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:146: error: variable value is already defined in method splice(Text,String,boolean[])
+              Object value = obj[step];
+                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:148: error: incompatible types: Object cannot be converted to boolean[]
+                 obj4[step] = this.splice(text3, text4, value);
+                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:150: error: array required, but Object found
+                 if (!value[0] && value instanceof String) {
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:153: error: array required, but Object found
+                       value[0] = true;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SpawnerProtectModule.java:322: error: cannot find symbol
+                 vec = itemEntity.getEntityPos();
+                                 ^
+    symbol:   method getEntityPos()
+    location: variable itemEntity of type ItemEntity
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: incompatible types: String cannot be converted to boolean
+              str + value ? " enabled" : " disabled",
+                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:153: error: incompatible types: Object cannot be converted to long
+                 arg -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
+                                                                ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:153: error: incompatible types: Object cannot be converted to long
+                 arg -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
+                                                                                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:194: error: incompatible types: Object cannot be converted to BlockPos
+           for (BlockPos pos : list) {
+                               ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: incompatible types: invalid constructor reference
+              SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, SusChunkScanner.FlagAggregate::new);
+                                                                                                     ^
+      incompatible types: Object cannot be converted to long
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: incompatible types: invalid constructor reference
+                 SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, SusChunkScanner.FlagAggregate::new);
+                                                                                       ^
+      incompatible types: Object cannot be converted to long
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:386: error: incompatible types: Object cannot be converted to FlagAggregate
+        for (SusChunkScanner.FlagAggregate flagAggregate3 : map.values()) {
+                                                                      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:431: error: cannot find symbol
+              map.computeIfAbsent(find(step2, n13), arg -> new ArrayList<>()).add((BlockPos)list.get(n13));
+                                                                             ^
+    symbol:   method add(BlockPos)
+    location: class Object
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:436: error: incompatible types: Object cannot be converted to List
+           for (List list3 : map.values()) {
+                                       ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:441: error: incompatible types: Object cannot be converted to BlockPos
+              for (BlockPos pos3 : list3) {
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:23: error: ThemesPanel is not abstract and does not override abstract method renderContent(NVGRenderer,float,float,float,float,float,float) in Panel
+  public class ThemesPanel extends Panel {
+         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:39: error: cannot find symbol
+              Theme theme = temp.current();
+                            ^
+    symbol: variable temp
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:45: error: cannot find symbol
+        this.accentWidget = new ColorWidget(temp, this.accentProxy);
+                                            ^
+    symbol:   variable temp
+    location: class ThemesPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:50: error: cannot find symbol
+                 this.soundWidgets.add(new SliderWidget(temp, sliderSetting));
+                                                        ^
+    symbol:   variable temp
+    location: class ThemesPanel
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:51: error: cannot find symbol
+              } else if (temp instanceof BooleanSetting booleanSetting) {
+                         ^
+    symbol:   variable temp
+    location: class ThemesPanel
+  Note: /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java uses or overrides a deprecated API.
+  Note: Recompile with -Xlint:deprecation for details.
+  Note: Some input files use unchecked or unsafe operations.
+  Note: Recompile with -Xlint:unchecked for details.
+  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+  100 errors
   24 warnings
 
 * Try:
@@ -308,17 +1220,473 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:13: error: cannot find symbol
-import net.minecraft.client.render.VertexFormat;
-                                  ^
-  symbol:   class VertexFormat
-  location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:13: error: cannot find symbol
-import net.minecraft.client.render.VertexFormat;
-                                  ^
-  symbol:   class VertexFormat
-  location: package net.minecraft.client.render
-2 errors
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:61: error: cannot find symbol
+            set.add(playerListEntry.getProfile().id());
+                                                ^
+  symbol:   method id()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:67: error: cannot find symbol
+            UUID uuid2 = playerListEntry2.getProfile().id();
+                                                      ^
+  symbol:   method id()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:69: error: cannot find symbol
+               String name2 = playerListEntry2.getProfile().name();
+                                                           ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:99: error: incompatible types: Object cannot be converted to StaffEntry
+         for (StaffEntry staffEntry2 : list) {
+                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:104: error: incompatible types: Object cannot be converted to StaffEntry
+            for (StaffEntry staffEntry3 : list) {
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:137: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui((SoundEvent)SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F, 0.6F));
+                                                                 ^
+  symbol:   method ui(SoundEvent,float,float)
+  location: class PositionedSoundInstance
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:81: error: variable text2 is already defined in method classify(String,Text,Text,Text,String,boolean,int,DetectConfig)
+         String text2 = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:81: error: incompatible types: String cannot be converted to Text
+         String text2 = text8 + " " + plain(text2) + " " + plain(text3) + " " + (str7 == null ? "" : str7);
+                                            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:110: error: cannot find symbol
+            ctx.applyBlur();
+               ^
+  symbol:   method applyBlur()
+  location: variable ctx of type DrawContext
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/Panel.java:140: error: incompatible types: float[] cannot be converted to float
+                    new float[]{0, 0, RADIUS, RADIUS},
+                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:193: error: cannot find symbol
+      if (temp2.filled()) {
+          ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:194: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.ACTIVATE, "Activate", true, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:195: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:196: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.RENAME, "Rename", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:197: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.EXPORT, "Export", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:198: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:199: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.DELETE, "Delete", false, true));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:201: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.SAVE, "Save", true, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:202: error: cannot find symbol
+         temp.add(new Spec(ConfigPanel.Action.IMPORT, "Import", false, false));
+         ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:205: error: variable f is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f = 26.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:206: error: variable f2 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f2 = 11.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:207: error: variable f3 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f3 = 6.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:208: error: variable f4 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f4 = 12.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:210: error: cannot find symbol
+      float[] f6 = new float[temp2.size()];
+                             ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:212: error: cannot find symbol
+      for (int n = 0; n < temp2.size(); n++) {
+                          ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:213: error: cannot find symbol
+         f6[n] = temp.textWidth(((Spec)temp2.get(n)).label(), f4) + f2 * 2.0F;
+                 ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:213: error: cannot find symbol
+         f6[n] = temp.textWidth(((Spec)temp2.get(n)).label(), f4) + f2 * 2.0F;
+                                       ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: variable f is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f = tmp12 - temp3;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: cannot find symbol
+      float f = tmp12 - temp3;
+                ^
+  symbol:   variable tmp12
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:217: error: cannot find symbol
+      float f = tmp12 - temp3;
+                        ^
+  symbol:   variable temp3
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: variable f2 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+      float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+            ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: cannot find symbol
+      float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+                 ^
+  symbol:   variable tmp9
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:218: error: cannot find symbol
+      float f2 = tmp9 + (60.0F - tmp13) / 2.0F;
+                                 ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:220: error: cannot find symbol
+      for (int n = 0; n < tmp5.size(); n++) {
+                          ^
+  symbol:   variable tmp5
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:221: error: cannot find symbol
+         Spec spec = (Spec)tmp5.get(n);
+                           ^
+  symbol:   variable tmp5
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:222: error: variable f3 is already defined in method layoutButtons(NVGRenderer,Theme,Slot,float,float,float,float)
+         float f3 = temp[n];
+               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:222: error: cannot find symbol
+         float f3 = temp[n];
+                    ^
+  symbol:   variable temp
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                      ^
+  symbol:   variable tmp8
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                   ^
+  symbol:   variable tmp8
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                     ^
+  symbol:   variable tmp10
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                                    ^
+  symbol:   variable tmp10
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:223: error: cannot find symbol
+         boolean ok = tmp8 >= f && tmp8 <= f + f3 && tmp10 >= f2 && tmp10 <= f2 + tmp13;
+                                                                                  ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                         ^
+  symbol:   variable tmp11
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                ^
+  symbol:   variable tmp6
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                                 ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:224: error: cannot find symbol
+         this.drawButton(tmp11, tmp6, f, f2, f3, tmp13, spec.label(), temp2, spec.primary(), ok, spec.danger());
+                                                                      ^
+  symbol:   variable temp2
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:225: error: cannot find symbol
+         this.hits.add(new ConfigPanel.Hit(spec.action(), tmp7.index(), f, f2, f3, tmp13, spec.primary()));
+                                                                                   ^
+  symbol:   variable tmp13
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:225: error: cannot find symbol
+         this.hits.add(new ConfigPanel.Hit(spec.action(), tmp7.index(), f, f2, f3, tmp13, spec.primary()));
+                                                          ^
+  symbol:   variable tmp7
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:226: error: cannot find symbol
+         f += f3 + temp4;
+                   ^
+  symbol:   variable temp4
+  location: class ConfigPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/config/ConfigManager.java:56: error: no suitable method found for valueOf(String,String)
+         jsonObject2.add(String.valueOf(module.getName(), module.getCategory().name()), jsonObject3);
+                               ^
+    method String.valueOf(Object) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(char[]) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(char[],int,int) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(boolean) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(char) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(int) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(long) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(float) is not applicable
+      (actual and formal argument lists differ in length)
+    method String.valueOf(double) is not applicable
+      (actual and formal argument lists differ in length)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/ModuleManager.java:225: error: invalid method reference
+      module.setToggleCallback(this::pollTickotifyToggle);
+                               ^
+  cannot find symbol
+    symbol:   method pollTickotifyToggle(Module,Boolean)
+    location: class ModuleManager
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:83: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui((SoundEvent)SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f, 0.6F));
+                                                                 ^
+  symbol:   method ui(SoundEvent,float,float)
+  location: class PositionedSoundInstance
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:111: error: cannot find symbol
+         this.key = nullxx;
+                    ^
+  symbol:   variable nullxx
+  location: class StorageType
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:112: error: cannot find symbol
+         this.label = nullxxx;
+                      ^
+  symbol:   variable nullxxx
+  location: class StorageType
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/combat/AutoCrystalModule.java:133: error: cannot find symbol
+      } else if (client.player.getEyePos().distanceTo(crystal.getEntityPos()) > this.range.get()) {
+                                                             ^
+  symbol:   method getEntityPos()
+  location: variable crystal of type EndCrystalEntity
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/combat/AutoCrystalModule.java:221: error: incompatible types: Window cannot be converted to long
+         return n <= 7 ? GLFW.glfwGetMouseButton(client.getWindow().getHandle(), n) == 1 : InputUtil.isKeyPressed(client.getWindow(), n);
+                                                                                                                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:49: error: cannot find symbol
+      return client.player == null ? null : client.player.getGameProfile().name();
+                                                                          ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:92: error: cannot find symbol
+            String name2 = gameProfile == null ? null : gameProfile.name();
+                                                                   ^
+  symbol:   method name()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
+      linkedHashMap.entrySet().removeIf(arg -> ((String)arg.getKey()).equalsIgnoreCase((String)arg.getValue()));
+                                                                                                  ^
+  symbol:   method getValue()
+  location: variable arg of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
+      linkedHashMap.entrySet().removeIf(arg -> ((String)arg.getKey()).equalsIgnoreCase((String)arg.getValue()));
+                                                           ^
+  symbol:   method getKey()
+  location: variable arg of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:128: error: cannot find symbol
+         list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
+                                                      ^
+  symbol:   method length()
+  location: variable arg2 of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:128: error: cannot find symbol
+         list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
+                                                                    ^
+  symbol:   method length()
+  location: variable arg of type Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:180: error: variable text is already defined in method rewrite(Text)
+            } else if (value instanceof String text) {
+                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:108: error: cannot find symbol
+         gameProfile.properties().putAll(linkedHashMultimap);
+                    ^
+  symbol:   method properties()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/ChunkFinderModule.java:111: error: incompatible types: Object cannot be converted to long
+         for (long l : set) {
+                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:124: error: cannot find symbol
+      return TYPE_NAMES.length;
+             ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:128: error: cannot find symbol
+      return n >= 0 && n < TYPE_NAMES.length ? TYPE_NAMES[n] : "";
+                           ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:128: error: cannot find symbol
+      return n >= 0 && n < TYPE_NAMES.length ? TYPE_NAMES[n] : "";
+                                               ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:174: error: cannot find symbol
+      ClientPlayerEntity temp = MinecraftClient.getInstance().temp;
+                                                             ^
+  symbol:   variable temp
+  location: class MinecraftClient
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/RegionMapModule.java:182: error: cannot find symbol
+            REGION_TYPE[n] = Math.min(LAYOUT[n][1], TYPE_NAMES.length - 1);
+                                                    ^
+  symbol:   variable TYPE_NAMES
+  location: class RegionMapModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/client/ChatMacroModule.java:50: error: constructor ChatScreen in class ChatScreen cannot be applied to given types;
+               client.setScreen(new ChatScreen(text, false));
+                                ^
+  required: String
+  found:    String,boolean
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:73: error: cannot find symbol
+            } else if (this.selfGuard.get() && text4.equalsIgnoreCase(client.player.getGameProfile().name())) {
+                                                                                                    ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:136: error: cannot find symbol
+      client.getSoundManager().play(PositionedSoundInstance.ui(sound, f, 1.0F));
+                                                           ^
+  symbol:   method ui(SoundEvent,float,float)
+  location: class PositionedSoundInstance
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:127: error: cannot find symbol
+      if (!this.money.get().isBlank() && matches(this.moneyLine, n, text2, MONEY_KEYS)) {
+                                                                           ^
+  symbol:   variable MONEY_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:129: error: cannot find symbol
+      } else if (!this.shards.get().isBlank() && matches(this.shardsLine, n, text2, SHARD_KEYS)) {
+                                                                                    ^
+  symbol:   variable SHARD_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:131: error: cannot find symbol
+      } else if (!this.kills.get().isBlank() && matches(this.killsLine, n, text2, KILL_KEYS)) {
+                                                                                  ^
+  symbol:   variable KILL_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:133: error: cannot find symbol
+      } else if (!this.deaths.get().isBlank() && matches(this.deathsLine, n, text2, DEATH_KEYS)) {
+                                                                                    ^
+  symbol:   variable DEATH_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:136: error: cannot find symbol
+         return !this.playtime.get().isBlank() && matches(this.playtimeLine, n, text2, PLAYTIME_KEYS)
+                                                                                       ^
+  symbol:   variable PLAYTIME_KEYS
+  location: class FakeStatsModule
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeStatsModule.java:174: error: cannot find symbol
+               } else if (str5.length >= 2 && !str5[1].equalsIgnoreCase(client.player.getGameProfile().name())) {
+                                                                                                      ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:43: error: cannot find symbol
+      return client.player == null ? null : client.player.getGameProfile().name();
+                                                                          ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:146: error: variable value is already defined in method splice(Text,String,boolean[])
+            Object value = obj[step];
+                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:148: error: incompatible types: Object cannot be converted to boolean[]
+               obj4[step] = this.splice(text3, text4, value);
+                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:150: error: array required, but Object found
+               if (!value[0] && value instanceof String) {
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakeRolesModule.java:153: error: array required, but Object found
+                     value[0] = true;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SpawnerProtectModule.java:322: error: cannot find symbol
+               vec = itemEntity.getEntityPos();
+                               ^
+  symbol:   method getEntityPos()
+  location: variable itemEntity of type ItemEntity
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/notification/NotificationManager.java:48: error: incompatible types: String cannot be converted to boolean
+            str + value ? " enabled" : " disabled",
+                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:153: error: incompatible types: Object cannot be converted to long
+               arg -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
+                                                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:153: error: incompatible types: Object cannot be converted to long
+               arg -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
+                                                                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:194: error: incompatible types: Object cannot be converted to BlockPos
+         for (BlockPos pos : list) {
+                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: incompatible types: invalid constructor reference
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, SusChunkScanner.FlagAggregate::new);
+                                                                                                   ^
+    incompatible types: Object cannot be converted to long
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: incompatible types: invalid constructor reference
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, SusChunkScanner.FlagAggregate::new);
+                                                                                     ^
+    incompatible types: Object cannot be converted to long
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:386: error: incompatible types: Object cannot be converted to FlagAggregate
+      for (SusChunkScanner.FlagAggregate flagAggregate3 : map.values()) {
+                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:431: error: cannot find symbol
+            map.computeIfAbsent(find(step2, n13), arg -> new ArrayList<>()).add((BlockPos)list.get(n13));
+                                                                           ^
+  symbol:   method add(BlockPos)
+  location: class Object
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:436: error: incompatible types: Object cannot be converted to List
+         for (List list3 : map.values()) {
+                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:441: error: incompatible types: Object cannot be converted to BlockPos
+            for (BlockPos pos3 : list3) {
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:23: error: ThemesPanel is not abstract and does not override abstract method renderContent(NVGRenderer,float,float,float,float,float,float) in Panel
+public class ThemesPanel extends Panel {
+       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:39: error: cannot find symbol
+            Theme theme = temp.current();
+                          ^
+  symbol: variable temp
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:45: error: cannot find symbol
+      this.accentWidget = new ColorWidget(temp, this.accentProxy);
+                                          ^
+  symbol:   variable temp
+  location: class ThemesPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:50: error: cannot find symbol
+               this.soundWidgets.add(new SliderWidget(temp, sliderSetting));
+                                                      ^
+  symbol:   variable temp
+  location: class ThemesPanel
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/panel/ThemesPanel.java:51: error: cannot find symbol
+            } else if (temp instanceof BooleanSetting booleanSetting) {
+                       ^
+  symbol:   variable temp
+  location: class ThemesPanel
+Note: /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+100 errors
 24 warnings
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
@@ -478,5 +1846,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 1m
+BUILD FAILED in 1m 1s
 1 actionable task: 1 executed
