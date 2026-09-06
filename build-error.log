@@ -1332,5 +1332,5 @@ import net.minecraft.util.Identifier;
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
 
-BUILD FAILED in 56s
+BUILD FAILED in 1m 8s
 1 actionable task: 1 executed
