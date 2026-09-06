@@ -152,10 +152,10 @@ public final class SwyzzyClientScreen extends Screen {
       );
    }
 
-   public boolean mouseClicked(Click var1, boolean var2) {
-      double var3 = var1.x();
-      double var5 = var1.y();
-      int var7 = var1.button();
+   public boolean mouseClicked(double _cx, double _cy, int _cb) {
+      double var3 = _cx;
+      double var5 = _cy;
+      int var7 = _cb;
 
       for (int var8 = list.size() - 1; var8 >= 0; var8--) {
          SwyzzyClientScreenHelper var9 = list.get(var8);
@@ -179,7 +179,7 @@ public final class SwyzzyClientScreen extends Screen {
       return super.mouseClicked(var1, var2);
    }
 
-   public boolean mouseReleased(Click var1) {
+   public boolean mouseReleased(double _cx, double _cy, int _cb) {
       this.val = null;
       this.val2 = null;
       this.val3 = null;
@@ -197,7 +197,7 @@ public final class SwyzzyClientScreen extends Screen {
    }
 
    public boolean keyPressed(int _key, int _scan, int var1) {
-      int var2 = var1.key();
+      int var2 = _key;
       if (var2 == 256) {
          this.close();
          return true;
