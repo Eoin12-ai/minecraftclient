@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.Locale;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
@@ -106,13 +105,13 @@ public final class PickNullScreen extends Screen {
          this.run(var3, var5);
          return true;
       } else {
-         return super.mouseClicked(var1, var2);
+         return super.mouseClicked(_cx, _cy, _cb);
       }
    }
 
    public boolean mouseDragged(double _cx, double _cy, int _cb, double _dx, double _dy) {
       if (this.val2 == PickNullScreen.State.NONE) {
-         return super.mouseDragged(var1, var2, var4);
+         return super.mouseDragged(_cx, _cy, _cb, _dx, _dy);
       } else {
          this.run(_cx, _cy);
          return true;
@@ -121,7 +120,7 @@ public final class PickNullScreen extends Screen {
 
    public boolean mouseReleased(double _cx, double _cy, int _cb) {
       this.val2 = PickNullScreen.State.NONE;
-      return super.mouseReleased(var1);
+      return super.mouseReleased(_cx, _cy, _cb);
    }
 
    private void run(double var1, double var3) {
