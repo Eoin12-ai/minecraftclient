@@ -48,7 +48,7 @@ public class ChatMacroModule extends Module {
          if (client.player != null && client.player.networkHandler != null) {
             if (!this.sendInstantly.get()) {
                client.setScreen(new ChatScreen(text, false));
-            } else if (text.startsWith("\\")) {
+            } else if (text.startsWith("\")) {
                client.player.networkHandler.sendChatCommand(text.substring(1));
             } else {
                client.player.networkHandler.sendChatMessage(text);
