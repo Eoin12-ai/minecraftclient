@@ -19,7 +19,7 @@ public final class MiscBlockEspRenderer {
    }
 
    public static void renderSpawners(Immediate immediate, MatrixStack matrices, Vec3d vec, SpawnerNametagsModule spawnerNametagsModule) {
-      List list = spawnerNametagsModule.scan.get();
+      List<BlockPos> list = spawnerNametagsModule.scan.get();
       if (!list.isEmpty()) {
          boolean ok = spawnerNametagsModule.rangeRing.get();
          boolean found = spawnerNametagsModule.box.get();
