@@ -32,7 +32,7 @@ public abstract class LocalPlayerFreecamMixin {
       if (client.player == player) {
          FreecamModule freecamModule = FreecamModule.get();
          if (freecamModule != null && freecamModule.isActive()) {
-            FreecamModule.reapplyBodyInput(temp);
+            FreecamModule.reapplyBodyInput(player);
          }
       }
    }
