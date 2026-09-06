@@ -140,12 +140,12 @@ public class ConfigPanel {
       float f = tickDelta + 16.0F;
       float f5 = tickDelta2 + 30.0F;
       if (value) {
-         nVGRenderer.circleGlow(f, totalW, 4.0F, 5.0F, theme.accent());
-         nVGRenderer.circle(f, totalW, 4.0F, theme.accentBright());
+         nVGRenderer.circleGlow(f, f5, 4.0F, 5.0F, theme.accent());
+         nVGRenderer.circle(f, f5, 4.0F, theme.accentBright());
       } else if (slot.filled()) {
-         nVGRenderer.circle(f, totalW, 3.5F, theme.statusEnabled());
+         nVGRenderer.circle(f, f5, 3.5F, theme.statusEnabled());
       } else {
-         nVGRenderer.circleOutline(f, totalW, 3.5F, 1.2F, theme.statusDisabled());
+         nVGRenderer.circleOutline(f, f5, 3.5F, 1.2F, theme.statusDisabled());
       }
 
       float f6 = tickDelta + 32.0F;
@@ -172,7 +172,7 @@ public class ConfigPanel {
       nVGRenderer.rectOutline(tickDelta, tickDelta2, tickDelta3, f, f / 2.0F, 1.2F, Colors.withAlpha(theme.accentBright(), 0.9F));
       float f5 = tickDelta + 8.0F;
       float f6 = tickDelta2 + f / 2.0F;
-      float f7 = nVGRenderer.text(this.renameBuffer.toString(), totalW, f6, 12.5F, theme.textPrimary());
+      float f7 = nVGRenderer.text(this.renameBuffer.toString(), f5, f6, 12.5F, theme.textPrimary());
       if (System.nanoTime() / 400000000L % 2L == 0L) {
          nVGRenderer.rect(f5 + f7 + 1.5F, f6 - 6.0F, 1.4F, 12.0F, 0.7F, theme.accentBright());
       }
