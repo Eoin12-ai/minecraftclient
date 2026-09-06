@@ -2,45 +2,18 @@ package dev.sixseven.render;
 
 import dev.sixseven.util.Colors;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.RenderPhase;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider.Immediate;
-import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.MatrixStack.Entry;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3f;
-import net.minecraft.client.render.VertexFormat;
 
 public final class FlatOverlay {
 
-    // 1.21.5-compatible render layers using the stable RenderLayer API
-    public static final RenderLayer FILL = RenderLayer.of(
-        "sixsevenclient:flat_fill",
-        VertexFormats.POSITION_COLOR,
-        VertexFormat.DrawMode.QUADS,
-        1536,
-        RenderLayer.MultiPhaseParameters.builder()
-            .program(RenderPhase.COLOR_PROGRAM)
-            .transparency(RenderPhase.TRANSLUCENT_TRANSPARENCY)
-            .depthTest(RenderPhase.ALWAYS_DEPTH_TEST)
-            .cull(RenderPhase.DISABLE_CULLING)
-            .writeMaskState(RenderPhase.ALL_MASK)
-            .build(false)
-    );
-
-    public static final RenderLayer LINES = RenderLayer.of(
-        "sixsevenclient:flat_lines",
-        VertexFormats.LINES,
-        VertexFormat.DrawMode.LINES,
-        1536,
-        RenderLayer.MultiPhaseParameters.builder()
-            .program(RenderPhase.RENDERTYPE_LINES_PROGRAM)
-            .transparency(RenderPhase.TRANSLUCENT_TRANSPARENCY)
-            .depthTest(RenderPhase.ALWAYS_DEPTH_TEST)
-            .writeMaskState(RenderPhase.COLOR_MASK)
-            .build(false)
-    );
+    // Use existing MC RenderLayer presets — no custom pipeline needed
+    public static final RenderLayer FILL  = RenderLayer.getDebugQuads();
+    public static final RenderLayer LINES = RenderLayer.getLines();
 
     private FlatOverlay() {}
 
