@@ -210,7 +210,7 @@ public class ConfigPanel {
       float[] f6 = new float[list.size()];
 
       for (int n = 0; n < list.size(); n++) {
-         widths[n] = temp.textWidth(((Spec)list.get(n)).label(), f4) + f2 * 2.0F;
+         widths[n] = nVGRenderer.textWidth(((Spec)list.get(n)).label(), f4) + f2 * 2.0F;
          totalW += widths[n] + (n > 0 ? f3 : 0.0F);
       }
 
