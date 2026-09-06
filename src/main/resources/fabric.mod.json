@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "sixsevenclient",
+  "version": "1.6.2",
+  "name": "CrackedByDexter",
+  "description": "discord.gg/leakestan | DexterOwnsYou | Krypton Better Nigga | CrackedByDexter | 67Client \u2014 NanoVG ClickGUI and HUD for Minecraft 1.21.11.",
+  "authors": [
+    "Dexter"
+  ],
+  "license": "All-Rights-Reserved",
+  "icon": "assets/sixsevenclient/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.sixseven.wm.Boot",
+      "dev.sixseven.SixSevenClient"
+    ]
+  },
+  "mixins": [
+    "sixsevenclient.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "jars": [
+    {
+      "file": "META-INF/jars/lwjgl-nanovg-3.3.3-natives-linux-arm64.jar"
+    },
+    {
+      "file": "META-INF/jars/lwjgl-nanovg-3.3.3-natives-linux.jar"
+    },
+    {
+      "file": "META-INF/jars/lwjgl-nanovg-3.3.3-natives-macos-arm64.jar"
+    },
+    {
+      "file": "META-INF/jars/lwjgl-nanovg-3.3.3-natives-macos.jar"
+    },
+    {
+      "file": "META-INF/jars/lwjgl-nanovg-3.3.3-natives-windows-arm64.jar"
+    },
+    {
+      "file": "META-INF/jars/lwjgl-nanovg-3.3.3-natives-windows.jar"
+    },
+    {
+      "file": "META-INF/jars/lwjgl-nanovg-3.3.3.jar"
+    }
+  ]
+}

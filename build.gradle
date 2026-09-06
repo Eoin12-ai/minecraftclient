@@ -1,0 +1,64 @@
+plugins {
+    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'java'
+}
+
+version = project.mod_version
+group   = project.maven_group
+
+base { archivesName = project.archives_base_name }
+
+loom {
+    splitEnvironmentSourceSets()
+    mixin {
+        defaultRefmapName = 'sixsevenclient.refmap.json'
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft         "com.mojang:minecraft:${project.minecraft_version}"
+    mappings          loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // NanoVG bundled natives — shipped inside the mod JAR via fabric.mod.json jars[]
+    // We supply them as local file deps so the compiler sees the API classes
+    compileOnly fileTree(dir: 'libs', include: '*.jar')
+
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release   = 21
+    it.options.encoding  = 'UTF-8'
+}
+
+// Copy bundled NanoVG jars into META-INF/jars inside the output JAR
+jar {
+    from('src/main/resources/META-INF/jars') {
+        into 'META-INF/jars'
+    }
+    from('LICENSE') {
+        rename { "${it}_${base.archivesName.get()}" }
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filteringCharset 'UTF-8'
+
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}

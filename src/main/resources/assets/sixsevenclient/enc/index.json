@@ -1,0 +1,6 @@
+{
+  "classes": [
+    "dev.sixseven.secured.AimAssistLogic",
+    "dev.sixseven.secured.SecuredFeature"
+  ]
+}

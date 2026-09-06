@@ -1,0 +1,36 @@
+package dev.sixseven.mixin;
+
+import dev.sixseven.SixSevenClient;
+import dev.sixseven.module.ModuleManager;
+import net.minecraft.client.gui.hud.ChatHud;
+import net.minecraft.text.Text;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+
+@Mixin({ChatHud.class})
+public class ChatComponentMixin {
+   @ModifyVariable(
+      method = {"addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V"},
+      at = @At("HEAD"),
+      argsOnly = true,
+      ordinal = 0
+   )
+   private Text sixsevenclient$censorChat(Text text) {
+      ModuleManager moduleManager = SixSevenClient.modules();
+      if (moduleManager == null) {
+         return temp;
+      } else {
+         Text text = temp;
+         if (moduleManager.fakeRoles != null) {
+            text = moduleManager.fakeRoles.decorateChat(temp);
+         }
+
+         if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled()) {
+            text = moduleManager.nameProtect.censorChat(text);
+         }
+
+         return text;
+      }
+   }
+}
