@@ -129,8 +129,8 @@ public final class AccessoryRenderer {
       Vec3d vec
    ) {
       float f35 = f32 * (float) (Math.PI / 180.0);
-      float f36 = -MathHelper.sin((double)f35);
-      float f37 = MathHelper.cos((double)f35);
+      float f36 = -(float)Math.sin(f35);
+      float f37 = (float)Math.cos(f35);
       float f38 = f37;
       float f39 = -f36;
       float f40 = -f36;
@@ -150,8 +150,8 @@ public final class AccessoryRenderer {
          for (int localX = 0; localX <= 7; localX++) {
             float f51 = (float)localX / 7.0F;
             float f52 = (f51 - 0.5F) * 0.62F;
-            float f53 = value ? MathHelper.sin((double)(f34 * 6.5F - f48 * 4.2F + (float)localX * 0.7F)) * f47 * f48 : 0.0F;
-            float f54 = value ? MathHelper.sin((double)(f34 * 5.0F + f48 * 3.5F)) * 0.03F * f48 : 0.0F;
+            float f53 = value ? (float)Math.sin((f34 * 6.5F - f48 * 4.2F + (float)localX * 0.7F)) * f47 * f48 : 0.0F;
+            float f54 = value ? (float)Math.sin((f34 * 5.0F + f48 * 3.5F)) * 0.03F * f48 : 0.0F;
             float f55 = f50 + f53;
             int localZ = n * 8 + localX;
             f[localZ] = f43 + f38 * (f52 + f54) + f40 * f55 - (float)vec.x;
@@ -228,7 +228,7 @@ public final class AccessoryRenderer {
    }
 
    private static float highlight(float f, float f4) {
-      float f5 = MathHelper.sin((double)((f - f4 * 0.35F % 1.0F) * (float) (Math.PI * 2)));
+      float f5 = (float)Math.sin(((f - f4 * 0.35F % 1.0F) * (float) (Math.PI * 2)));
       return Math.max(0.0F, f5) * 0.5F;
    }
 
@@ -375,9 +375,9 @@ public final class AccessoryRenderer {
 
       for (int localX = 0; localX < b; localX++) {
          float f15 = tickDelta * 1.7F + (float)localX * ((float) (Math.PI * 2) / (float)b);
-         float f16 = MathHelper.cos((double)f15) * f;
-         float f17 = MathHelper.sin((double)f15) * f;
-         float f18 = f12 + MathHelper.sin((double)(tickDelta * 2.4F + (float)localX)) * 0.18F + 0.25F;
+         float f16 = (float)Math.cos(f15) * f;
+         float f17 = (float)Math.sin(f15) * f;
+         float f18 = f12 + (float)Math.sin((tickDelta * 2.4F + (float)localX)) * 0.18F + 0.25F;
          float f19 = f13 + f16;
          float f20 = f14 + f17;
          float f21 = 0.07F * (0.75F + 0.5F * tickDelta2);
@@ -420,14 +420,14 @@ public final class AccessoryRenderer {
       float tickDelta2,
       int n
    ) {
-      float f = MathHelper.sin((double)(tickDelta2 * 2.0F)) * 0.06F;
+      float f = (float)Math.sin((tickDelta2 * 2.0F)) * 0.06F;
       float f12 = (float)(d - vec.x);
       float f13 = (float)(coord - vec.y) + tickDelta + 0.55F + f;
       float f14 = (float)(currentScore - vec.z);
       float f15 = 0.34F;
       float f16 = tickDelta2 * 1.4F;
-      float f17 = MathHelper.cos((double)f16);
-      float f18 = MathHelper.sin((double)f16);
+      float f17 = (float)Math.cos(f16);
+      float f18 = (float)Math.sin(f16);
       Vector3f vector3f4 = axis(vector3f, vector3f2, f17 * f15, f18 * f15);
       Vector3f vector3f5 = axis(vector3f, vector3f2, -f18 * f15, f17 * f15);
       int offset = withA(n, 0.98F);
@@ -459,8 +459,8 @@ public final class AccessoryRenderer {
 
       for (int localZ = 1; localZ <= n; localZ++) {
          float f17 = (float)localZ / (float)n * (float) (Math.PI * 2);
-         float f18 = f + MathHelper.cos((double)f17) * f13;
-         float f19 = f12 + MathHelper.sin((double)f17) * f13;
+         float f18 = f + (float)Math.cos(f17) * f13;
+         float f19 = f12 + (float)Math.sin(f17) * f13;
          line(consumer, entry, f15, f11, f16, f18, f11, f19, localX, f14);
          f15 = f18;
          f16 = f19;
@@ -479,8 +479,8 @@ public final class AccessoryRenderer {
          vector3f.set(0.0F, 1.0F, 0.0F);
       }
 
-      consumer.vertex(entry, f, f8, f9).color(n).normal(entry, vector3f).lineWidth(f13);
-      consumer.vertex(entry, f10, f11, f12).color(n).normal(entry, vector3f).lineWidth(f13);
+      consumer.vertex(entry, f, f8, f9).color(n).normal(entry, vector3f);
+      consumer.vertex(entry, f10, f11, f12).color(n).normal(entry, vector3f);
    }
 
    private static void tex(
@@ -511,7 +511,7 @@ public final class AccessoryRenderer {
    }
 
    private static float hash(long l, int n) {
-      float f = MathHelper.sin((double)((float)(l % 100000L) * 0.0131F + (float)n * 12.9898F)) * 43758.547F;
+      float f = (float)Math.sin(((float)(l % 100000L) * 0.0131F + (float)n * 12.9898F)) * 43758.547F;
       return f - (float)MathHelper.floor(f);
    }
 }
