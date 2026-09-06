@@ -101,9 +101,9 @@ public final class SelectBlocksScreen extends Screen {
       this.val.run2(new ArrayList<>(this.set));
    }
 
-   public boolean mouseClicked(Click var1, boolean var2) {
-      double var3 = var1.x();
-      double var5 = var1.y();
+   public boolean mouseClicked(double _cx, double _cy, int _cb) {
+      double var3 = _cx;
+      double var5 = _cy;
       if (var3 >= this.intVal4 && var3 <= this.intVal4 + 300 && var5 >= this.intVal7 && var5 < this.intVal7 + this.intVal8) {
          int var7 = (int)((var5 - this.intVal7 + this.floatVal) / 18.0);
          if (var7 >= 0 && var7 < this.list2.size()) {
