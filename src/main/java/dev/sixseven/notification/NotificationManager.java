@@ -45,7 +45,7 @@ public class NotificationManager extends HudComponent {
    public void push(String str, boolean value) {
       this.add(
          new NotificationManager.Toast(
-            str + value ? " enabled" : " disabled",
+            str + (value ? " enabled" : " disabled"),
             (String)null,
             (NotificationManager.Weather)null,
             value
