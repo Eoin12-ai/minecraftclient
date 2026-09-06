@@ -18,10 +18,136 @@ Fabric Loom: 1.10.5
 :remapping 50 mods from modImplementation (java-api)
 
 > Task :compileJava
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:126: error: illegal start of expression
-   private static void renderChatEditOverlay(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @Inject.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GuiRenderer;incrementFrame()V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Cannot find target method "renderWorld(Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="renderWorld(Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:20: warning: Cannot find target method "onKey(JIII)V" for @Inject.method="onKey(JIII)V" in net.minecraft.client.Keyboard
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/PlayerListHudMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/KeyboardInputMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:19: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:27: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:35: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:43: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:52: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:61: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:70: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientCommonNetworkHandlerMixin.java:13: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:42: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:28: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientWorldMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @ModifyArg.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Camera;setRotation(FF)V'
+   @ModifyArgs(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:32: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/TextRenderer;getWidth(Lnet/minecraft/StringVisitable;)I'
+   @Redirect(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/TextVisitFactoryMixin.java:11: warning: Cannot find target method "method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" for @ModifyVariable.method="method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" in net.minecraft.text.TextVisitFactory
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/MathHelper;lerp(FFF)F'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:86: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Cannot find target method "render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" for @ModifyExpressionValue.method="render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" in net.minecraft.client.render.entity.equipment.EquipmentRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getGamma()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:29: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyReturnValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to determine descriptor for @WrapOperation target method
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/class_746;method_5872(DD)V'
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
+   @Shadow
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
+   private static boolean bindOverlayFbo(AbstractTexture glTexture, int bind, int bind2) {
+                                         ^
+  symbol:   class AbstractTexture
+  location: class OverlayRenderer
 1 error
+41 warnings
 
 > Task :compileJava FAILED
 
@@ -32,10 +158,136 @@ FAILURE: Build failed with an exception.
 * What went wrong:
 Execution failed for task ':compileJava'.
 > Compilation failed; see the compiler output below.
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:126: error: illegal start of expression
-     private static void renderChatEditOverlay(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @Inject.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+     @Inject(
      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GuiRenderer;incrementFrame()V'
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Cannot find target method "renderWorld(Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="renderWorld(Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.render.GameRenderer
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:20: warning: Cannot find target method "onKey(JIII)V" for @Inject.method="onKey(JIII)V" in net.minecraft.client.Keyboard
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/PlayerListHudMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/KeyboardInputMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:19: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:27: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:35: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:43: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:52: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:61: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:70: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientCommonNetworkHandlerMixin.java:13: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:42: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:28: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientWorldMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+     @Inject(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
+     @ModifyArg(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @ModifyArg.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+     @ModifyArg(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V'
+     @ModifyArg(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Camera;setRotation(FF)V'
+     @ModifyArgs(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:32: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/TextRenderer;getWidth(Lnet/minecraft/StringVisitable;)I'
+     @Redirect(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+     @ModifyVariable(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/TextVisitFactoryMixin.java:11: warning: Cannot find target method "method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" for @ModifyVariable.method="method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" in net.minecraft.text.TextVisitFactory
+     @ModifyVariable(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/MathHelper;lerp(FFF)F'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:86: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Cannot find target method "render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" for @ModifyExpressionValue.method="render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" in net.minecraft.client.render.entity.equipment.EquipmentRenderer
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getGamma()Lnet/minecraft/SimpleOption;'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:29: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+     @ModifyExpressionValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+     @ModifyReturnValue(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to determine descriptor for @WrapOperation target method
+     @WrapOperation(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/class_746;method_5872(DD)V'
+     @WrapOperation(
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
+     @Shadow
+     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
+     private static boolean bindOverlayFbo(AbstractTexture glTexture, int bind, int bind2) {
+                                           ^
+    symbol:   class AbstractTexture
+    location: class OverlayRenderer
   1 error
+  41 warnings
 
 * Try:
 > Check your code and dependencies to fix the compilation error(s)
@@ -76,10 +328,136 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:126: error: illegal start of expression
-   private static void renderChatEditOverlay(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @Inject.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:24: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GuiRenderer;incrementFrame()V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Cannot find target method "renderWorld(Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="renderWorld(Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.render.GameRenderer
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:36: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V'
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:15: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:20: warning: Cannot find target method "onKey(JIII)V" for @Inject.method="onKey(JIII)V" in net.minecraft.client.Keyboard
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:14: warning: Cannot find target method "render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" for @Inject.method="render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V" in net.minecraft.client.gui.hud.InGameHud
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/PlayerListHudMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/KeyboardInputMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:19: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:27: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:35: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:43: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:52: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:61: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientPlayNetworkHandlerMixin.java:70: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientCommonNetworkHandlerMixin.java:13: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:42: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:28: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/ClientWorldMixin.java:14: warning: Unable to determine descriptor for @Inject target method
+   @Inject(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:52: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Cannot find target method "render(Lnet/minecraft/RenderTickCounter;Z)V" for @ModifyArg.method="render(Lnet/minecraft/RenderTickCounter;Z)V" in net.minecraft.client.render.GameRenderer
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:47: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V'
+   @ModifyArg(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Camera;setRotation(FF)V'
+   @ModifyArgs(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:32: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/TextRenderer;getWidth(Lnet/minecraft/StringVisitable;)I'
+   @Redirect(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:13: warning: Cannot find target method "addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" for @ModifyVariable.method="addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V" in net.minecraft.client.gui.hud.ChatHud
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/TextVisitFactoryMixin.java:11: warning: Cannot find target method "method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" for @ModifyVariable.method="method_27473(Ljava/lang/String;ILnet/minecraft/class_2583;Lnet/minecraft/class_2583;Lnet/minecraft/class_5224;)Z" in net.minecraft.text.TextVisitFactory
+   @ModifyVariable(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyExpressionValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:73: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/MathHelper;lerp(FFF)F'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:86: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Cannot find target method "render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" for @ModifyExpressionValue.method="render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V" in net.minecraft.client.render.entity.equipment.EquipmentRenderer
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:18: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:66: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:13: warning: Unable to locate method mapping for @Slice[](from=@At(INVOKE.<target>)) 'Lnet/minecraft/GameOptions;getGamma()Lnet/minecraft/SimpleOption;'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:29: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/Perspective;isFirstPerson()Z'
+   @ModifyExpressionValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
+   @ModifyReturnValue(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to determine descriptor for @WrapOperation target method
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MouseMixin.java:15: warning: Unable to locate method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/class_746;method_5872(DD)V'
+   @WrapOperation(
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
+   @Shadow
+   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
+   private static boolean bindOverlayFbo(AbstractTexture glTexture, int bind, int bind2) {
+                                         ^
+  symbol:   class AbstractTexture
+  location: class OverlayRenderer
 1 error
+41 warnings
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
@@ -238,5 +616,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 58s
+BUILD FAILED in 56s
 1 actionable task: 1 executed
