@@ -70,7 +70,7 @@ public class FakePayModule extends Module {
             if (Double.isNaN(d) || d <= 0.0) {
                this.show(client, Text.literal("Invalid amount: " + text2[2]).withColor(16733525));
                this.fail(client);
-            } else if (this.selfGuard.get() && text4.equalsIgnoreCase(client.player.getGameProfile().name())) {
+            } else if (this.selfGuard.get() && text4.equalsIgnoreCase(client.player.getGameProfile().getName())) {
                this.show(client, Text.literal("You can't pay yourself!").withColor(16733525));
                this.fail(client);
             } else {
