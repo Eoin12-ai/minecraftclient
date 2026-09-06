@@ -150,7 +150,7 @@ public final class StaffDetector {
          return "Staff";
       } else {
          char ch = Character.toUpperCase(str.charAt(0));
-         return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(ch, str.substring(1));
+         return ch + str.substring(1);
       }
    }
 
