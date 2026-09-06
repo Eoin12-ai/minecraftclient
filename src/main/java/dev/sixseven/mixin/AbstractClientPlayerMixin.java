@@ -4,7 +4,7 @@ import dev.sixseven.SixSevenClient;
 import dev.sixseven.module.ModuleManager;
 import dev.sixseven.module.misc.SkinProtectModule;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.entity.player.SkinTextures;
+import net.minecraft.client.util.SkinTextures;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
