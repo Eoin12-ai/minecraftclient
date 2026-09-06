@@ -107,7 +107,7 @@ public final class StorageEspRenderer {
    }
 
    public static void render(Immediate immediate, MatrixStack matrices, Vec3d vec, StorageEspModule storageEspModule) {
-      List list = SCAN.get();
+      List<StorageEspRenderer.Hit> list = SCAN.get();
       if (!list.isEmpty()) {
          MinecraftClient client = MinecraftClient.getInstance();
          ClientWorld world = client.world;
