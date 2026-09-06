@@ -74,7 +74,7 @@ public final class JumpCircleRenderer {
          f8 = 1.0F;
       }
 
-      float f11 = 0.5F + 0.5F * MathHelper.sin((double)(f * 10.0F));
+      float f11 = 0.5F + 0.5F * (float)Math.sin((f * 10.0F));
       f8 *= 0.82F + 0.18F * f11;
       int localX = lerpRgb(n, 16761566, f11 * 0.35F);
       int localZ = withAlpha(localX, f8);
