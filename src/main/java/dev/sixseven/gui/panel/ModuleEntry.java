@@ -73,8 +73,7 @@ public class ModuleEntry {
         this.module = module;
         this.themes = themes;
         this.state  = state;
-        this.key    = StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(
-                module.getName(), module.getCategory().name());
+        this.key    = String.valueOf(module.getName(), module.getCategory().name());
         this.expand = new Animation(190.0f, state.isExpanded(key) ? 1.0f : 0.0f);
         this.enable.snapTo(module.isEnabled() ? 1.0f : 0.0f);
 
