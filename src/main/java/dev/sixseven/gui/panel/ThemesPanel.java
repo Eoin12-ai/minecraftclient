@@ -194,8 +194,8 @@ public class ThemesPanel extends Panel {
                return false;
             } else {
                for (Theme theme2 : this.themes.getThemes()) {
-                  if (tickDelta4 >= f5 && tickDelta4 <= f5 + 26.0F && tickDelta2 >= this.panelState.x + 6.0F && tickDelta2 <= this.panelState.x + 210.0F - 6.0F) {
-                     if (theme2.isCustom() && tickDelta2 >= this.panelState.x + 210.0F - 34.0F) {
+                  if (f >= f5 && f <= f5 + 26.0F && f4 >= this.panelState.x + 6.0F && f4 <= this.panelState.x + 210.0F - 6.0F) {
+                     if (theme2.isCustom() && f4 >= this.panelState.x + 210.0F - 34.0F) {
                         this.themes.removeCustom(theme2);
                      } else {
                         this.themes.select(theme2);
@@ -214,7 +214,7 @@ public class ThemesPanel extends Panel {
                   f5 += this.accentWidget.height((NVGRenderer)null) + 6.0F;
                }
 
-               if (tickDelta4 >= f5 && tickDelta4 <= f5 + 28.0F - 4.0F && tickDelta2 >= this.panelState.x + 6.0F && tickDelta2 <= this.panelState.x + 210.0F - 6.0F) {
+               if (f >= f5 && f <= f5 + 28.0F - 4.0F && f4 >= this.panelState.x + 6.0F && f4 <= this.panelState.x + 210.0F - 6.0F) {
                   Theme theme = this.themes.addCustom(this.themes.current().accent());
                   this.themes.select(theme);
                   this.accentProxy.set(Integer.valueOf(theme.accent()));
