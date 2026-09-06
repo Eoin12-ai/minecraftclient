@@ -36,20 +36,20 @@ public class ThemesPanel extends Panel {
       this.accentProxy = new ColorSetting("Accent", "Custom theme accent color", themeManager.current().accent()) {
          public void set(Integer num) {
             super.set(num);
-            Theme theme = temp.current();
+            Theme theme = themeManager.current();
             if (theme.isCustom()) {
                theme.setAccent(num | 0xFF000000);
             }
          }
       };
-      this.accentWidget = new ColorWidget(temp, this.accentProxy);
+      this.accentWidget = new ColorWidget(themeManager, this.accentProxy);
       SoundSettings soundSettings = SixSevenClient.sounds();
       if (soundSettings != null) {
          for (Setting setting : soundSettings.all()) {
             if (setting instanceof SliderSetting sliderSetting) {
-               this.soundWidgets.add(new SliderWidget(temp, sliderSetting));
-            } else if (temp instanceof BooleanSetting booleanSetting) {
-               this.soundWidgets.add(new BooleanWidget(temp2, booleanSetting));
+               this.soundWidgets.add(new SliderWidget(themeManager, sliderSetting));
+            } else if (setting instanceof BooleanSetting booleanSetting) {
+               this.soundWidgets.add(new BooleanWidget(themeManager, booleanSetting));
             }
          }
       }
@@ -78,9 +78,9 @@ public class ThemesPanel extends Panel {
 
    @Override
    protected void renderContent(NVGRenderer nVGRenderer, float contentTop, float tickDelta2, float tickDelta3, float tickDelta4, float tickDelta5, float edgeFade) {
-      this.lastStartY = tickDelta;
+      this.lastStartY = contentTop;
       Theme theme = this.themes.current();
-      float f = tickDelta;
+      float f = contentTop;
       int n = 0;
       int bestSlot = -1;
 
@@ -194,8 +194,8 @@ public class ThemesPanel extends Panel {
                return false;
             } else {
                for (Theme theme2 : this.themes.getThemes()) {
-                  if (f4 >= f5 && f4 <= f5 + 26.0F && f >= this.ps.x + 6.0F && f <= this.ps.x + 210.0F - 6.0F) {
-                     if (theme2.isCustom() && f >= this.ps.x + 210.0F - 34.0F) {
+                  if (tickDelta4 >= f5 && tickDelta4 <= f5 + 26.0F && tickDelta2 >= this.ps.x + 6.0F && tickDelta2 <= this.ps.x + 210.0F - 6.0F) {
+                     if (theme2.isCustom() && tickDelta2 >= this.ps.x + 210.0F - 34.0F) {
                         this.themes.removeCustom(theme2);
                      } else {
                         this.themes.select(theme2);
@@ -214,7 +214,7 @@ public class ThemesPanel extends Panel {
                   f5 += this.accentWidget.height((NVGRenderer)null) + 6.0F;
                }
 
-               if (f4 >= f5 && f4 <= f5 + 28.0F - 4.0F && f >= this.ps.x + 6.0F && f <= this.ps.x + 210.0F - 6.0F) {
+               if (tickDelta4 >= f5 && tickDelta4 <= f5 + 28.0F - 4.0F && tickDelta2 >= this.ps.x + 6.0F && tickDelta2 <= this.ps.x + 210.0F - 6.0F) {
                   Theme theme = this.themes.addCustom(this.themes.current().accent());
                   this.themes.select(theme);
                   this.accentProxy.set(Integer.valueOf(theme.accent()));
