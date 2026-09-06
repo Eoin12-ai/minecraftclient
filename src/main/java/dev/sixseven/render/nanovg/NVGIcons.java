@@ -53,7 +53,7 @@ public final class NVGIcons {
             text3 = text3.replaceAll("#[0-9a-fA-F]{6}", "#ffffff")
                .replaceAll("#[0-9a-fA-F]{3}\\b", "#fff")
                .replace("currentColor", "#ffffff")
-               .replace("\"black\"", "\"white\"");
+               .replace(""black"", ""white"");
             ByteBuffer byteBuffer = MemoryUtil.memUTF8(text3, true);
             ByteBuffer byteBuffer2 = MemoryUtil.memASCII("px");
             NSVGImage nSVGImage = null;
