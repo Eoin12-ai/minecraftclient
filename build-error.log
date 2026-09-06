@@ -24,16 +24,374 @@ Please make sure to read and understand the following license:
 :remapping 50 mods from modImplementation (java-api)
 
 > Task :compileJava
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
-         this.toast("Saved to "" + text2 + """);
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:11: error: Mixin has no targets
+@Mixin({ClientPlayerEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:19: error: Mixin has no targets
+@Mixin({InGameHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:12: error: Mixin has no targets
+@Mixin({Mouse.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:12: error: Mixin has no targets
+@Mixin({Entity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:11: error: Mixin has no targets
+@Mixin({Entity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:22: error: Mixin has no targets
+@Mixin({GameRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:16: error: Mixin has no targets
+@Mixin({EquipmentRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:14: error: Mixin has no targets
+@Mixin({ClientPlayerInteractionManager.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:19: error: Mixin has no targets
+@Mixin({Mouse.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightPacketMixin.java:13: error: Mixin has no targets
+@Mixin({ClientPlayNetworkHandler.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:13: error: Mixin has no targets
+@Mixin({AbstractClientPlayerEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:13: error: Mixin has no targets
+@Mixin({LivingEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:11: error: Mixin has no targets
+@Mixin({LightmapTextureManager.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:11: error: Mixin has no targets
+@Mixin({ChatHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:19: error: Mixin has no targets
+@Mixin({Keyboard.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:22: error: Mixin has no targets
+@Mixin({EntityRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityHitboxMixin.java:9: error: Mixin has no targets
+@Mixin({Entity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:12: error: Mixin has no targets
+@Mixin({InGameHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:11: error: Mixin has no targets
+@Mixin({LivingEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractContainerScreenAccessor.java:8: error: Mixin has no targets
+@Mixin({HandledScreen.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:11: error: Mixin has no targets
+@Mixin({KeyboardInput.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MinecraftAccessor.java:8: error: Mixin has no targets
+@Mixin({MinecraftClient.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:9: error: Mixin has no targets
+@Mixin({Input.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:27: error: Mixin has no targets
+@Mixin({WorldRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:13: error: Mixin has no targets
+@Mixin({PlayerListHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientPacketListenerMixin.java:21: error: Mixin has no targets
+@Mixin({ClientPlayNetworkHandler.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:13: error: Mixin has no targets
+@Mixin({Camera.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:15: error: Mixin has no targets
+@Mixin({InGameHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreecamMixin.java:14: error: Mixin has no targets
+@Mixin({Camera.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyMappingAccessor.java:8: error: Mixin has no targets
+@Mixin({KeyBinding.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:11: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:12: error: package net.minecraft.client.network does not exist
+import net.minecraft.client.network.ClientPlayNetworkHandler;
+                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:13: error: package net.minecraft.client.network does not exist
+import net.minecraft.client.network.PlayerListEntry;
+                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:14: error: package net.minecraft.scoreboard does not exist
+import net.minecraft.scoreboard.Team;
                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:491: error: ')' or ',' expected
-         this.toast("Activated "" + text2 + """);
-                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
-         this.toast("Copied "" + name2 + "" to clipboard");
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:15: error: cannot find symbol
+import net.minecraft.world.GameMode;
+                          ^
+  symbol:   class GameMode
+  location: package net.minecraft.world
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:18: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:19: error: package net.minecraft.client.sound does not exist
+import net.minecraft.client.sound.PositionedSoundInstance;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:20: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvent;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:21: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvents;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:22: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:10: error: package net.minecraft.text does not exist
+import net.minecraft.text.Style;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:11: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:12: error: package net.minecraft.text does not exist
+import net.minecraft.text.TextColor;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                 ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                            ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                                        ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:104: error: cannot find symbol
+   static Integer scanMarker(Text text, StaffDetector.DetectConfig detectConfig) {
                              ^
-3 errors
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:157: error: cannot find symbol
+   private static String plain(Text text) {
+                               ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: package net.minecraft.client.gui does not exist
+import net.minecraft.client.gui.Click;
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:25: error: package net.minecraft.client.gui does not exist
+import net.minecraft.client.gui.DrawContext;
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:26: error: package net.minecraft.client.gui.screen does not exist
+import net.minecraft.client.gui.screen.Screen;
+                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: package net.minecraft.client.input does not exist
+import net.minecraft.client.input.CharInput;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: package net.minecraft.client.input does not exist
+import net.minecraft.client.input.KeyInput;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:29: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:52: error: cannot find symbol
+public class ClickGuiScreen extends Screen implements NvgDrawable {
+                                    ^
+  symbol: class Screen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:12: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:95: error: cannot find symbol
+    private final Screen parent;
+                  ^
+  symbol:   class Screen
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:101: error: cannot find symbol
+    public ClickGuiScreen(Screen parent) {
+                          ^
+  symbol:   class Screen
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:150: error: cannot find symbol
+    public void render(DrawContext ctx, int mx, int my, float delta) {
+                       ^
+  symbol:   class DrawContext
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:164: error: cannot find symbol
+    public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
+                                 ^
+  symbol:   class DrawContext
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
+    public boolean mouseClicked(Click click, boolean unused) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
+    public boolean mouseDragged(Click click, double dx, double dy) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
+    public boolean mouseReleased(Click click) {
+                                 ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
+    public boolean keyPressed(KeyInput ki) {
+                              ^
+  symbol:   class KeyInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
+    public boolean charTyped(CharInput ci) {
+                             ^
+  symbol:   class CharInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:12: error: package net.minecraft.block does not exist
+import net.minecraft.block.Block;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:13: error: package net.minecraft.block does not exist
+import net.minecraft.block.Blocks;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:14: error: package net.minecraft.registry does not exist
+import net.minecraft.registry.Registries;
+                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:15: error: cannot find symbol
+import net.minecraft.util.Identifier;
+                         ^
+  symbol:   class Identifier
+  location: package net.minecraft.util
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:11: error: package net.minecraft.item does not exist
+import net.minecraft.item.Item;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:20: error: cannot find symbol
+   public IconListSetting.Entry add(String str, String str3, Item item, boolean value, int n) {
+                                                             ^
+  symbol:   class Item
+  location: class IconListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:94: error: cannot find symbol
+      private final Item icon;
+                    ^
+  symbol:   class Item
+  location: class Entry
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:98: error: cannot find symbol
+      Entry(String str, String str2, Item item, boolean flag, int n) {
+                                     ^
+  symbol:   class Item
+  location: class Entry
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:114: error: cannot find symbol
+      public Item icon() {
+             ^
+  symbol:   class Item
+  location: class Entry
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:19: error: cannot find symbol
+   private final Set<Identifier> ids = new HashSet<>();
+                     ^
+  symbol:   class Identifier
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:37: error: cannot find symbol
+   public boolean contains(Identifier id2) {
+                           ^
+  symbol:   class Identifier
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:41: error: cannot find symbol
+   public BlockListSetting.Target find(Block block2) {
+                                       ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:60: error: cannot find symbol
+   public boolean isActive(Block block2) {
+                           ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:65: error: cannot find symbol
+   public BlockListSetting.Target add(Block block2, boolean value, int n) {
+                                      ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:92: error: cannot find symbol
+   public List<Block> searchRegistry(String str, int n) {
+               ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:119: error: cannot find symbol
+   public static String displayName(Block block2) {
+                                    ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:206: error: cannot find symbol
+      private final Identifier id;
+                    ^
+  symbol:   class Identifier
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:207: error: cannot find symbol
+      private final Block block;
+                    ^
+  symbol:   class Block
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
+      Target(Identifier id2, Block block2, boolean enabled2, int n) {
+             ^
+  symbol:   class Identifier
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
+      Target(Identifier id2, Block block2, boolean enabled2, int n) {
+                             ^
+  symbol:   class Block
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:218: error: cannot find symbol
+      public Identifier id() {
+             ^
+  symbol:   class Identifier
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:222: error: cannot find symbol
+      public Block block() {
+             ^
+  symbol:   class Block
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:8: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:9: error: package net.minecraft.client.option does not exist
+import net.minecraft.client.option.GameOptions;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:10: error: package net.minecraft.client.option does not exist
+import net.minecraft.client.option.KeyBinding;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:11: error: package net.minecraft.client.util.InputUtil does not exist
+import net.minecraft.client.util.InputUtil.Key;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:12: error: package net.minecraft.client.util.InputUtil does not exist
+import net.minecraft.client.util.InputUtil.Type;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:9: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:10: error: package net.minecraft.client.sound does not exist
+import net.minecraft.client.sound.PositionedSoundInstance;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:11: error: package net.minecraft.client.world does not exist
+import net.minecraft.client.world.ClientWorld;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:12: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvent;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:13: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvents;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:14: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:12: error: package net.minecraft.block does not exist
+import net.minecraft.block.BlockState;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:13: error: package net.minecraft.block does not exist
+import net.minecraft.block.ChestBlock;
+                          ^
+100 errors
 
 > Task :compileJava FAILED
 [Incubating] Problems report is available at: file:///home/runner/work/minecraftclient/minecraftclient/build/reports/problems/problems-report.html
@@ -43,16 +401,374 @@ FAILURE: Build failed with an exception.
 * What went wrong:
 Execution failed for task ':compileJava'.
 > Compilation failed; see the compiler output below.
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
-           this.toast("Saved to "" + text2 + """);
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:52: error: cannot find symbol
+  public class ClickGuiScreen extends Screen implements NvgDrawable {
+                                      ^
+    symbol: class Screen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:11: error: package net.minecraft.client does not exist
+  import net.minecraft.client.MinecraftClient;
+                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:12: error: package net.minecraft.client.network does not exist
+  import net.minecraft.client.network.ClientPlayNetworkHandler;
+                                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:13: error: package net.minecraft.client.network does not exist
+  import net.minecraft.client.network.PlayerListEntry;
+                                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:14: error: package net.minecraft.scoreboard does not exist
+  import net.minecraft.scoreboard.Team;
                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:491: error: ')' or ',' expected
-           this.toast("Activated "" + text2 + """);
-                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
-           this.toast("Copied "" + name2 + "" to clipboard");
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:18: error: package net.minecraft.client does not exist
+  import net.minecraft.client.MinecraftClient;
+                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:19: error: package net.minecraft.client.sound does not exist
+  import net.minecraft.client.sound.PositionedSoundInstance;
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:20: error: package net.minecraft.sound does not exist
+  import net.minecraft.sound.SoundEvent;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:21: error: package net.minecraft.sound does not exist
+  import net.minecraft.sound.SoundEvents;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:22: error: package net.minecraft.text does not exist
+  import net.minecraft.text.Text;
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:10: error: package net.minecraft.text does not exist
+  import net.minecraft.text.Style;
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:11: error: package net.minecraft.text does not exist
+  import net.minecraft.text.Text;
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:12: error: package net.minecraft.text does not exist
+  import net.minecraft.text.TextColor;
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: package net.minecraft.client.gui does not exist
+  import net.minecraft.client.gui.Click;
+                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:25: error: package net.minecraft.client.gui does not exist
+  import net.minecraft.client.gui.DrawContext;
+                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:26: error: package net.minecraft.client.gui.screen does not exist
+  import net.minecraft.client.gui.screen.Screen;
+                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: package net.minecraft.client.input does not exist
+  import net.minecraft.client.input.CharInput;
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: package net.minecraft.client.input does not exist
+  import net.minecraft.client.input.KeyInput;
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:29: error: package net.minecraft.text does not exist
+  import net.minecraft.text.Text;
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:12: error: package net.minecraft.client does not exist
+  import net.minecraft.client.MinecraftClient;
+                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:12: error: package net.minecraft.block does not exist
+  import net.minecraft.block.Block;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:13: error: package net.minecraft.block does not exist
+  import net.minecraft.block.Blocks;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:14: error: package net.minecraft.registry does not exist
+  import net.minecraft.registry.Registries;
                                ^
-  3 errors
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:11: error: package net.minecraft.item does not exist
+  import net.minecraft.item.Item;
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:8: error: package net.minecraft.client does not exist
+  import net.minecraft.client.MinecraftClient;
+                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:9: error: package net.minecraft.client.option does not exist
+  import net.minecraft.client.option.GameOptions;
+                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:10: error: package net.minecraft.client.option does not exist
+  import net.minecraft.client.option.KeyBinding;
+                                    ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:11: error: package net.minecraft.client.util.InputUtil does not exist
+  import net.minecraft.client.util.InputUtil.Key;
+                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:12: error: package net.minecraft.client.util.InputUtil does not exist
+  import net.minecraft.client.util.InputUtil.Type;
+                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:9: error: package net.minecraft.client does not exist
+  import net.minecraft.client.MinecraftClient;
+                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:10: error: package net.minecraft.client.sound does not exist
+  import net.minecraft.client.sound.PositionedSoundInstance;
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:11: error: package net.minecraft.client.world does not exist
+  import net.minecraft.client.world.ClientWorld;
+                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:12: error: package net.minecraft.sound does not exist
+  import net.minecraft.sound.SoundEvent;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:13: error: package net.minecraft.sound does not exist
+  import net.minecraft.sound.SoundEvents;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:14: error: package net.minecraft.text does not exist
+  import net.minecraft.text.Text;
+                           ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:12: error: package net.minecraft.block does not exist
+  import net.minecraft.block.BlockState;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:13: error: package net.minecraft.block does not exist
+  import net.minecraft.block.ChestBlock;
+                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:11: error: Mixin has no targets
+  @Mixin({ClientPlayerEntity.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:19: error: Mixin has no targets
+  @Mixin({InGameHud.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:12: error: Mixin has no targets
+  @Mixin({Mouse.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:12: error: Mixin has no targets
+  @Mixin({Entity.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:11: error: Mixin has no targets
+  @Mixin({Entity.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:22: error: Mixin has no targets
+  @Mixin({GameRenderer.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:16: error: Mixin has no targets
+  @Mixin({EquipmentRenderer.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:14: error: Mixin has no targets
+  @Mixin({ClientPlayerInteractionManager.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:19: error: Mixin has no targets
+  @Mixin({Mouse.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightPacketMixin.java:13: error: Mixin has no targets
+  @Mixin({ClientPlayNetworkHandler.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:13: error: Mixin has no targets
+  @Mixin({AbstractClientPlayerEntity.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:13: error: Mixin has no targets
+  @Mixin({LivingEntity.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:11: error: Mixin has no targets
+  @Mixin({LightmapTextureManager.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:11: error: Mixin has no targets
+  @Mixin({ChatHud.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:19: error: Mixin has no targets
+  @Mixin({Keyboard.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:22: error: Mixin has no targets
+  @Mixin({EntityRenderer.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityHitboxMixin.java:9: error: Mixin has no targets
+  @Mixin({Entity.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:12: error: Mixin has no targets
+  @Mixin({InGameHud.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:11: error: Mixin has no targets
+  @Mixin({LivingEntity.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractContainerScreenAccessor.java:8: error: Mixin has no targets
+  @Mixin({HandledScreen.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:11: error: Mixin has no targets
+  @Mixin({KeyboardInput.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MinecraftAccessor.java:8: error: Mixin has no targets
+  @Mixin({MinecraftClient.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:9: error: Mixin has no targets
+  @Mixin({Input.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:27: error: Mixin has no targets
+  @Mixin({WorldRenderer.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:13: error: Mixin has no targets
+  @Mixin({PlayerListHud.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientPacketListenerMixin.java:21: error: Mixin has no targets
+  @Mixin({ClientPlayNetworkHandler.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:13: error: Mixin has no targets
+  @Mixin({Camera.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:15: error: Mixin has no targets
+  @Mixin({InGameHud.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreecamMixin.java:14: error: Mixin has no targets
+  @Mixin({Camera.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyMappingAccessor.java:8: error: Mixin has no targets
+  @Mixin({KeyBinding.class})
+  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:15: error: cannot find symbol
+  import net.minecraft.world.GameMode;
+                            ^
+    symbol:   class GameMode
+    location: package net.minecraft.world
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+     public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                   ^
+    symbol:   class Text
+    location: class StaffDetector
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+     public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                              ^
+    symbol:   class Text
+    location: class StaffDetector
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+     public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                                          ^
+    symbol:   class Text
+    location: class StaffDetector
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:104: error: cannot find symbol
+     static Integer scanMarker(Text text, StaffDetector.DetectConfig detectConfig) {
+                               ^
+    symbol:   class Text
+    location: class StaffDetector
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:157: error: cannot find symbol
+     private static String plain(Text text) {
+                                 ^
+    symbol:   class Text
+    location: class StaffDetector
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:95: error: cannot find symbol
+      private final Screen parent;
+                    ^
+    symbol:   class Screen
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:101: error: cannot find symbol
+      public ClickGuiScreen(Screen parent) {
+                            ^
+    symbol:   class Screen
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:150: error: cannot find symbol
+      public void render(DrawContext ctx, int mx, int my, float delta) {
+                         ^
+    symbol:   class DrawContext
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:164: error: cannot find symbol
+      public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
+                                   ^
+    symbol:   class DrawContext
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
+      public boolean mouseClicked(Click click, boolean unused) {
+                                  ^
+    symbol:   class Click
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
+      public boolean mouseDragged(Click click, double dx, double dy) {
+                                  ^
+    symbol:   class Click
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
+      public boolean mouseReleased(Click click) {
+                                   ^
+    symbol:   class Click
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
+      public boolean keyPressed(KeyInput ki) {
+                                ^
+    symbol:   class KeyInput
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
+      public boolean charTyped(CharInput ci) {
+                               ^
+    symbol:   class CharInput
+    location: class ClickGuiScreen
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:15: error: cannot find symbol
+  import net.minecraft.util.Identifier;
+                           ^
+    symbol:   class Identifier
+    location: package net.minecraft.util
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:20: error: cannot find symbol
+     public IconListSetting.Entry add(String str, String str3, Item item, boolean value, int n) {
+                                                               ^
+    symbol:   class Item
+    location: class IconListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:94: error: cannot find symbol
+        private final Item icon;
+                      ^
+    symbol:   class Item
+    location: class Entry
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:98: error: cannot find symbol
+        Entry(String str, String str2, Item item, boolean flag, int n) {
+                                       ^
+    symbol:   class Item
+    location: class Entry
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:114: error: cannot find symbol
+        public Item icon() {
+               ^
+    symbol:   class Item
+    location: class Entry
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:19: error: cannot find symbol
+     private final Set<Identifier> ids = new HashSet<>();
+                       ^
+    symbol:   class Identifier
+    location: class BlockListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:37: error: cannot find symbol
+     public boolean contains(Identifier id2) {
+                             ^
+    symbol:   class Identifier
+    location: class BlockListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:41: error: cannot find symbol
+     public BlockListSetting.Target find(Block block2) {
+                                         ^
+    symbol:   class Block
+    location: class BlockListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:60: error: cannot find symbol
+     public boolean isActive(Block block2) {
+                             ^
+    symbol:   class Block
+    location: class BlockListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:65: error: cannot find symbol
+     public BlockListSetting.Target add(Block block2, boolean value, int n) {
+                                        ^
+    symbol:   class Block
+    location: class BlockListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:92: error: cannot find symbol
+     public List<Block> searchRegistry(String str, int n) {
+                 ^
+    symbol:   class Block
+    location: class BlockListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:119: error: cannot find symbol
+     public static String displayName(Block block2) {
+                                      ^
+    symbol:   class Block
+    location: class BlockListSetting
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:206: error: cannot find symbol
+        private final Identifier id;
+                      ^
+    symbol:   class Identifier
+    location: class Target
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:207: error: cannot find symbol
+        private final Block block;
+                      ^
+    symbol:   class Block
+    location: class Target
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
+        Target(Identifier id2, Block block2, boolean enabled2, int n) {
+               ^
+    symbol:   class Identifier
+    location: class Target
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
+        Target(Identifier id2, Block block2, boolean enabled2, int n) {
+                               ^
+    symbol:   class Block
+    location: class Target
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:218: error: cannot find symbol
+        public Identifier id() {
+               ^
+    symbol:   class Identifier
+    location: class Target
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:222: error: cannot find symbol
+        public Block block() {
+               ^
+    symbol:   class Block
+    location: class Target
+  100 errors
 
 * Try:
 > Check your code and dependencies to fix the compilation error(s)
@@ -92,16 +808,374 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:481: error: ')' or ',' expected
-         this.toast("Saved to "" + text2 + """);
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:52: error: cannot find symbol
+public class ClickGuiScreen extends Screen implements NvgDrawable {
+                                    ^
+  symbol: class Screen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:11: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:12: error: package net.minecraft.client.network does not exist
+import net.minecraft.client.network.ClientPlayNetworkHandler;
+                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:13: error: package net.minecraft.client.network does not exist
+import net.minecraft.client.network.PlayerListEntry;
+                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:14: error: package net.minecraft.scoreboard does not exist
+import net.minecraft.scoreboard.Team;
                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:491: error: ')' or ',' expected
-         this.toast("Activated "" + text2 + """);
-                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:505: error: ')' or ',' expected
-         this.toast("Copied "" + name2 + "" to clipboard");
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:18: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:19: error: package net.minecraft.client.sound does not exist
+import net.minecraft.client.sound.PositionedSoundInstance;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:20: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvent;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:21: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvents;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:22: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:10: error: package net.minecraft.text does not exist
+import net.minecraft.text.Style;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:11: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:12: error: package net.minecraft.text does not exist
+import net.minecraft.text.TextColor;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: package net.minecraft.client.gui does not exist
+import net.minecraft.client.gui.Click;
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:25: error: package net.minecraft.client.gui does not exist
+import net.minecraft.client.gui.DrawContext;
+                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:26: error: package net.minecraft.client.gui.screen does not exist
+import net.minecraft.client.gui.screen.Screen;
+                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:27: error: package net.minecraft.client.input does not exist
+import net.minecraft.client.input.CharInput;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:28: error: package net.minecraft.client.input does not exist
+import net.minecraft.client.input.KeyInput;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:29: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/config/ConfigPanel.java:12: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:12: error: package net.minecraft.block does not exist
+import net.minecraft.block.Block;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:13: error: package net.minecraft.block does not exist
+import net.minecraft.block.Blocks;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:14: error: package net.minecraft.registry does not exist
+import net.minecraft.registry.Registries;
                              ^
-3 errors
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:11: error: package net.minecraft.item does not exist
+import net.minecraft.item.Item;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:8: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:9: error: package net.minecraft.client.option does not exist
+import net.minecraft.client.option.GameOptions;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:10: error: package net.minecraft.client.option does not exist
+import net.minecraft.client.option.KeyBinding;
+                                  ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:11: error: package net.minecraft.client.util.InputUtil does not exist
+import net.minecraft.client.util.InputUtil.Key;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/AutoWalkModule.java:12: error: package net.minecraft.client.util.InputUtil does not exist
+import net.minecraft.client.util.InputUtil.Type;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:9: error: package net.minecraft.client does not exist
+import net.minecraft.client.MinecraftClient;
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:10: error: package net.minecraft.client.sound does not exist
+import net.minecraft.client.sound.PositionedSoundInstance;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:11: error: package net.minecraft.client.world does not exist
+import net.minecraft.client.world.ClientWorld;
+                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:12: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvent;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:13: error: package net.minecraft.sound does not exist
+import net.minecraft.sound.SoundEvents;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:14: error: package net.minecraft.text does not exist
+import net.minecraft.text.Text;
+                         ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:12: error: package net.minecraft.block does not exist
+import net.minecraft.block.BlockState;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/StorageEspModule.java:13: error: package net.minecraft.block does not exist
+import net.minecraft.block.ChestBlock;
+                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:11: error: Mixin has no targets
+@Mixin({ClientPlayerEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:19: error: Mixin has no targets
+@Mixin({InGameHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:12: error: Mixin has no targets
+@Mixin({Mouse.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:12: error: Mixin has no targets
+@Mixin({Entity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:11: error: Mixin has no targets
+@Mixin({Entity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:22: error: Mixin has no targets
+@Mixin({GameRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:16: error: Mixin has no targets
+@Mixin({EquipmentRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:14: error: Mixin has no targets
+@Mixin({ClientPlayerInteractionManager.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:19: error: Mixin has no targets
+@Mixin({Mouse.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightPacketMixin.java:13: error: Mixin has no targets
+@Mixin({ClientPlayNetworkHandler.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:13: error: Mixin has no targets
+@Mixin({AbstractClientPlayerEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:13: error: Mixin has no targets
+@Mixin({LivingEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:11: error: Mixin has no targets
+@Mixin({LightmapTextureManager.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:11: error: Mixin has no targets
+@Mixin({ChatHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:19: error: Mixin has no targets
+@Mixin({Keyboard.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:22: error: Mixin has no targets
+@Mixin({EntityRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityHitboxMixin.java:9: error: Mixin has no targets
+@Mixin({Entity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiNametagEquipmentMixin.java:12: error: Mixin has no targets
+@Mixin({InGameHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:11: error: Mixin has no targets
+@Mixin({LivingEntity.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractContainerScreenAccessor.java:8: error: Mixin has no targets
+@Mixin({HandledScreen.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:11: error: Mixin has no targets
+@Mixin({KeyboardInput.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MinecraftAccessor.java:8: error: Mixin has no targets
+@Mixin({MinecraftClient.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:9: error: Mixin has no targets
+@Mixin({Input.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LevelRendererMixin.java:27: error: Mixin has no targets
+@Mixin({WorldRenderer.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:13: error: Mixin has no targets
+@Mixin({PlayerListHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientPacketListenerMixin.java:21: error: Mixin has no targets
+@Mixin({ClientPlayNetworkHandler.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreeLookMixin.java:13: error: Mixin has no targets
+@Mixin({Camera.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiCrosshairMixin.java:15: error: Mixin has no targets
+@Mixin({InGameHud.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/CameraFreecamMixin.java:14: error: Mixin has no targets
+@Mixin({Camera.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyMappingAccessor.java:8: error: Mixin has no targets
+@Mixin({KeyBinding.class})
+^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffTracker.java:15: error: cannot find symbol
+import net.minecraft.world.GameMode;
+                          ^
+  symbol:   class GameMode
+  location: package net.minecraft.world
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                 ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                            ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:67: error: cannot find symbol
+   public static StaffEntry classify(String str, Text text, Text text2, Text text3, String str7, boolean value, int n, StaffDetector.DetectConfig detectConfig) {
+                                                                        ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:104: error: cannot find symbol
+   static Integer scanMarker(Text text, StaffDetector.DetectConfig detectConfig) {
+                             ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/staff/StaffDetector.java:157: error: cannot find symbol
+   private static String plain(Text text) {
+                               ^
+  symbol:   class Text
+  location: class StaffDetector
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:95: error: cannot find symbol
+    private final Screen parent;
+                  ^
+  symbol:   class Screen
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:101: error: cannot find symbol
+    public ClickGuiScreen(Screen parent) {
+                          ^
+  symbol:   class Screen
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:150: error: cannot find symbol
+    public void render(DrawContext ctx, int mx, int my, float delta) {
+                       ^
+  symbol:   class DrawContext
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:164: error: cannot find symbol
+    public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
+                                 ^
+  symbol:   class DrawContext
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:345: error: cannot find symbol
+    public boolean mouseClicked(Click click, boolean unused) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:401: error: cannot find symbol
+    public boolean mouseDragged(Click click, double dx, double dy) {
+                                ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:418: error: cannot find symbol
+    public boolean mouseReleased(Click click) {
+                                 ^
+  symbol:   class Click
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:454: error: cannot find symbol
+    public boolean keyPressed(KeyInput ki) {
+                              ^
+  symbol:   class KeyInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:491: error: cannot find symbol
+    public boolean charTyped(CharInput ci) {
+                             ^
+  symbol:   class CharInput
+  location: class ClickGuiScreen
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:15: error: cannot find symbol
+import net.minecraft.util.Identifier;
+                         ^
+  symbol:   class Identifier
+  location: package net.minecraft.util
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:20: error: cannot find symbol
+   public IconListSetting.Entry add(String str, String str3, Item item, boolean value, int n) {
+                                                             ^
+  symbol:   class Item
+  location: class IconListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:94: error: cannot find symbol
+      private final Item icon;
+                    ^
+  symbol:   class Item
+  location: class Entry
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:98: error: cannot find symbol
+      Entry(String str, String str2, Item item, boolean flag, int n) {
+                                     ^
+  symbol:   class Item
+  location: class Entry
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/IconListSetting.java:114: error: cannot find symbol
+      public Item icon() {
+             ^
+  symbol:   class Item
+  location: class Entry
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:19: error: cannot find symbol
+   private final Set<Identifier> ids = new HashSet<>();
+                     ^
+  symbol:   class Identifier
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:37: error: cannot find symbol
+   public boolean contains(Identifier id2) {
+                           ^
+  symbol:   class Identifier
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:41: error: cannot find symbol
+   public BlockListSetting.Target find(Block block2) {
+                                       ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:60: error: cannot find symbol
+   public boolean isActive(Block block2) {
+                           ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:65: error: cannot find symbol
+   public BlockListSetting.Target add(Block block2, boolean value, int n) {
+                                      ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:92: error: cannot find symbol
+   public List<Block> searchRegistry(String str, int n) {
+               ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:119: error: cannot find symbol
+   public static String displayName(Block block2) {
+                                    ^
+  symbol:   class Block
+  location: class BlockListSetting
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:206: error: cannot find symbol
+      private final Identifier id;
+                    ^
+  symbol:   class Identifier
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:207: error: cannot find symbol
+      private final Block block;
+                    ^
+  symbol:   class Block
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
+      Target(Identifier id2, Block block2, boolean enabled2, int n) {
+             ^
+  symbol:   class Identifier
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:211: error: cannot find symbol
+      Target(Identifier id2, Block block2, boolean enabled2, int n) {
+                             ^
+  symbol:   class Block
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:218: error: cannot find symbol
+      public Identifier id() {
+             ^
+  symbol:   class Identifier
+  location: class Target
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/settings/BlockListSetting.java:222: error: cannot find symbol
+      public Block block() {
+             ^
+  symbol:   class Block
+  location: class Target
+100 errors
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:84)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:46)
 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
