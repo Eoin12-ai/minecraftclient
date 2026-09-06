@@ -222,7 +222,7 @@ public class ModuleManager {
    public void register(Module module) {
       this.modules.add(module);
       this.byCategory.get(module.getCategory()).add(module);
-      module.setToggleCallback(this::pollTickotifyToggle);
+      module.setToggleCallback(this::notifyToggle);
    }
 
    public List<Module> all() {
