@@ -40,7 +40,7 @@ public class FakeRolesModule extends Module {
 
    private String selfName() {
       MinecraftClient client = MinecraftClient.getInstance();
-      return client.player == null ? null : client.player.getGameProfile().name();
+      return client.player == null ? null : client.player.getGameProfile().getName();
    }
 
    private boolean isSelf(String text4) {
@@ -141,16 +141,16 @@ public class FakeRolesModule extends Module {
       } else if (!value[0] && textContent instanceof TranslatableTextContent translatableTextContent) {
          Object[] obj = translatableTextContent.getArgs();
          Object[] obj4 = new Object[obj.length];
-
+         boolean[] found2 = new boolean[]{false};
          for (int step = 0; step < obj.length; step++) {
             Object value = obj[step];
             if (value instanceof Text text3) {
-               obj4[step] = this.splice(text3, text4, value);
+               obj4[step] = this.splice(text3, text4, found2);
             } else {
-               if (!value[0] && value instanceof String) {
+               if (!found2[0] && value instanceof String) {
                   String text5 = (String)value;
                   if (text5.contains(text4)) {
-                     value[0] = true;
+                     found2[0] = true;
                      int step2 = text5.indexOf(text4);
                      MutableText mutableText2 = Text.empty();
                      if (step2 > 0) {
