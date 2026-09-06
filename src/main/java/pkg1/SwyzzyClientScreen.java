@@ -196,7 +196,7 @@ public final class SwyzzyClientScreen extends Screen {
       return super.mouseScrolled(var1, var3, var5, var7);
    }
 
-   public boolean keyPressed(KeyInput var1) {
+   public boolean keyPressed(int _key, int _scan, int var1) {
       int var2 = var1.key();
       if (var2 == 256) {
          this.close();
