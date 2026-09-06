@@ -16,8 +16,6 @@ import dev.sixseven.render.StorageEspRenderer;
 import dev.sixseven.render.SusChunkRenderer;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.VertexConsumerProvider.Immediate;
-import net.minecraft.client.render.state.OutlineRenderState;
-import net.minecraft.client.render.state.WorldRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,11 +25,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({WorldRenderer.class})
 public class LevelRendererMixin {
    @Inject(
-      method = {"renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/WorldRenderState;)V"},
+      method = {"renderTargetBlockOutline(Lnet/minecraft/VertexConsumerProvider$Immediate;Lnet/minecraft/MatrixStack;ZLnet/minecraft/Object;)V"},
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, WorldRenderState worldRenderState, CallbackInfo callbackInfo) {
+   private void sixsevenclient$customBlockOutline(Immediate immediate, MatrixStack matrices, boolean flag, Object worldRenderState, CallbackInfo callbackInfo) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager != null) {
          if (temp4 && moduleManager.susChunkFinder.isEnabled()) {
@@ -86,7 +84,7 @@ public class LevelRendererMixin {
             temp3.cancel();
          } else if (moduleManager.blockOutline.isEnabled()) {
             temp3.cancel();
-            OutlineRenderState outlineRenderState = tmp5.outlineRenderState;
+            Object outlineRenderState = tmp5.outlineRenderState;
             if (outlineRenderState != null && outlineRenderState.isTranslucent() == temp4) {
                BlockOutlineRenderer.render(temp, temp2, outlineRenderState, tmp5.cameraRenderState.pos, moduleManager.blockOutline);
             }
