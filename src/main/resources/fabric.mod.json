@@ -13,11 +13,13 @@
   "entrypoints": {
     "client": [
       "dev.sixseven.wm.Boot",
-      "dev.sixseven.SixSevenClient"
+      "dev.sixseven.SixSevenClient",
+      "com.swyzzyaddon.SwyzzyAddon"
     ]
   },
   "mixins": [
-    "sixsevenclient.mixins.json"
+    "sixsevenclient.mixins.json",
+    "swyzzyclient.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.19.0",
