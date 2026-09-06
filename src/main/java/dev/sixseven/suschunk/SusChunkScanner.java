@@ -150,7 +150,7 @@ public class SusChunkScanner {
 
          list.sort(
             Comparator.comparingDouble(
-               arg -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
+               (Long arg) -> Math.hypot((double)(ChunkPos.getPackedX(arg) - chunkPos.x), (double)(ChunkPos.getPackedZ(arg) - chunkPos.z))
             )
          );
          this.queue.addAll(list);
@@ -339,11 +339,11 @@ public class SusChunkScanner {
          .keySet()
          .removeIf(arg -> client.world.getChunkManager().getWorldChunk(ChunkPos.getPackedX(arg), ChunkPos.getPackedZ(arg), false) == null);
       int n = this.threshold();
-      HashMap map = new HashMap();
+      HashMap<Long, SusChunkScanner.FlagAggregate> map = new HashMap<>();
 
       for (SusChunkScanner.ChunkScore chunkScore : this.scores.values()) {
          if (chunkScore.coord >= (double)n) {
-            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, SusChunkScanner.FlagAggregate::new);
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> new SusChunkScanner.FlagAggregate(k));
             flagAggregate.coord = Math.max(flagAggregate.coord, chunkScore.coord);
             flagAggregate.hitWeight = flagAggregate.hitWeight + chunkScore.hitWeight;
             flagAggregate.hitX = flagAggregate.hitX + chunkScore.hitX;
@@ -354,7 +354,7 @@ public class SusChunkScanner {
       for (SusChunkScanner.Geode geode : this.clusterGeodes()) {
          if (!(geode.coord() < (double)n)) {
             for (long l : geode.chunks()) {
-               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, SusChunkScanner.FlagAggregate::new);
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> new SusChunkScanner.FlagAggregate(k));
                flagAggregate2.coord = Math.max(flagAggregate2.coord, geode.coord());
             }
 
@@ -425,15 +425,15 @@ public class SusChunkScanner {
             }
          }
 
-         HashMap map = new HashMap();
+         HashMap<Long, SusChunkScanner.FlagAggregate> map = new HashMap<>();
 
          for (int n13 = 0; n13 < n; n13++) {
-            map.computeIfAbsent(find(step2, n13), arg -> new ArrayList<>()).add((BlockPos)list.get(n13));
+            map.computeIfAbsent(find(step2, n13), k -> new ArrayList<>()).add((BlockPos)list.get(n13));
          }
 
-         ArrayList list2 = new ArrayList();
+         ArrayList<SusChunkScanner.Zone> list2 = new ArrayList<>();
 
-         for (List list3 : map.values()) {
+         for (ArrayList<BlockPos> list3 : map.values()) {
             HashSet set = new HashSet();
             double d = 0.0;
             double currentScore = 0.0;
@@ -469,7 +469,7 @@ public class SusChunkScanner {
          map2.put(item.chunkKey(), item);
       }
 
-      ArrayList list2 = new ArrayList();
+      ArrayList<SusChunkScanner.Zone> list2 = new ArrayList<>();
       HashSet set = new HashSet();
 
       for (SusChunkScanner.Flag item2 : list) {
