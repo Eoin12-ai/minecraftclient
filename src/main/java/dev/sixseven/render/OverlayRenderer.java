@@ -150,7 +150,7 @@ public final class OverlayRenderer {
       }
    }
 
-   private static boolean bindOverlayFbo(AbstractTexture glTexture, int bind, int bind2) {
+   private static boolean bindOverlayFbo(int glTexId, int bind, int bind2) {
       if (fbo == -1) {
          fbo = GL33C.glGenFramebuffers();
       }
