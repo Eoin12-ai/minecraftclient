@@ -53,7 +53,7 @@ public class ConfigManager {
          }
 
          jsonObject3.add("settings", jsonObject4);
-         jsonObject2.add(StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(module.getName(), module.getCategory().name()), jsonObject3);
+         jsonObject2.add(String.valueOf(module.getName(), module.getCategory().name()), jsonObject3);
       }
 
       jsonObject.add("modules", jsonObject2);
@@ -77,7 +77,7 @@ public class ConfigManager {
             for (Module module : this.modules.all()) {
                String name2 = module.getName();
                JsonObject jsonObject3 = jsonObject2.getAsJsonObject(
-                  StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","rlI">(name2, module.getCategory().name())
+                  name2 + module.getCategory(.name())
                );
                if (jsonObject3 != null) {
                   if (jsonObject3.has("enabled") && jsonObject3.get("enabled").getAsBoolean() != module.isEnabled()) {
