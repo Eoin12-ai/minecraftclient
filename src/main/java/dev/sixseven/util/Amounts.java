@@ -59,7 +59,7 @@ public final class Amounts {
          if (coord >= currentScore) {
             double coord3 = (double)Math.round(d / currentScore * 10.0) / 10.0;
             String text2 = trimZero(coord3);
-            return StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","r-">(text2, DISPLAY[n]);
+            return text2 + DISPLAY[n];
          }
       }
 
