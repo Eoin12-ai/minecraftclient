@@ -42,7 +42,7 @@ public class SpotifyHud extends HudComponent {
    private SpotifyState state() {
       if (this.demo()) {
          long l = (System.nanoTime() - DEMO_START) / 1000000L % 227000L;
-         return new SpotifyState(true, "Neon Nights", "67 Sound", l, 227000L, true, true, 0, 70, System.nanoTime());
+         return new SpotifyState(true, "Neon Nights", "Epstein Sound", l, 227000L, true, true, 0, 70, System.nanoTime());
       } else {
          return this.service.state();
       }
@@ -210,7 +210,7 @@ public class SpotifyHud extends HudComponent {
       nVGRenderer.circleOutline(f8, f9, f7 * 0.3F, 1.0F, Colors.withAlpha(theme.accent(), 0.35F));
       nVGRenderer.circleOutline(f8, f9, f7 * 0.22F, 1.0F, Colors.withAlpha(theme.accent(), 0.25F));
       nVGRenderer.circle(f8, f9, f7 * 0.12F, theme.accent());
-      nVGRenderer.textGradient("67", f8 - nVGRenderer.textWidth("67", 9.0F) / 2.0F, f9, 9.0F, -1, -1122834);
+      nVGRenderer.textGradient("EC", f8 - nVGRenderer.textWidth("EC", 9.0F) / 2.0F, f9, 9.0F, -1, -1122834);
    }
 
    private void drawPrev(NVGRenderer nVGRenderer, float f, float f3, int n) {
