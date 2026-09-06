@@ -137,7 +137,7 @@ public class ModuleManager {
 
    public ModuleManager() {
       if (wmTag().isEmpty()) {
-         throw new Error(\"integrity\");
+         throw new Error("integrity");
       }
       for (Category category : Category.values()) {
          this.byCategory.put(category, new ArrayList<>());
