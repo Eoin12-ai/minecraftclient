@@ -104,7 +104,7 @@ public class StaffListHud extends HudComponent {
 
    @Override
    public float measureWidth(NVGRenderer nVGRenderer) {
-      List list = this.module.staff();
+      List<StaffEntry> list = this.module.staff();
       float f = 92.0F;
       String text2 = Integer.toString(list.size());
       f = Math.max(f, nVGRenderer.textWidth("STAFF", 9.0F) + 10.0F + nVGRenderer.textWidth(text2, 8.5F) + 9.0F);
@@ -122,7 +122,7 @@ public class StaffListHud extends HudComponent {
 
    @Override
    public float measureHeight(NVGRenderer nVGRenderer) {
-      List list = this.module.staff();
+      List<StaffEntry> list = this.module.staff();
       float f = 0.0F;
 
       for (StaffListHud.RowAnim rowAnim : this.layoutRows(list)) {
@@ -144,7 +144,7 @@ public class StaffListHud extends HudComponent {
    @Override
    public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2, float tickDelta3, float tickDelta4) {
       Theme theme = this.themes.current();
-      List list = this.module.staff();
+      List<StaffEntry> list = this.module.staff();
       nVGRenderer.glow(tickDelta, tickDelta2, tickDelta3, tickDelta4, 13.0F, 8.0F, Colors.withAlpha(-16777216, 0.3F));
       nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, 10.0F, theme.background(), theme.backgroundTo(), true);
       this.drawHeader(nVGRenderer, theme, tickDelta, tickDelta2, tickDelta3, list.size());
