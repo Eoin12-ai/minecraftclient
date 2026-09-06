@@ -5,7 +5,6 @@ import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexRendering;
 import net.minecraft.client.render.VertexConsumerProvider.Immediate;
-import net.minecraft.client.render.state.OutlineRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.MatrixStack.Entry;
 import net.minecraft.util.math.Box;
@@ -16,7 +15,7 @@ public final class BlockOutlineRenderer {
    private BlockOutlineRenderer() {
    }
 
-   public static void render(Immediate immediate, MatrixStack matrices, OutlineRenderState outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
+   public static void render(Immediate immediate, MatrixStack matrices, Object outlineRenderState, Vec3d vec, BlockOutlineModule blockOutlineModule) {
       double d = (double)outlineRenderState.pos().getX() - vec.x;
       double coord = (double)outlineRenderState.pos().getY() - vec.y;
       double currentScore = (double)outlineRenderState.pos().getZ() - vec.z;
