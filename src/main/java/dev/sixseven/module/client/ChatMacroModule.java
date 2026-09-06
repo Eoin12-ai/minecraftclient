@@ -47,7 +47,7 @@ public class ChatMacroModule extends Module {
          MinecraftClient client = MinecraftClient.getInstance();
          if (client.player != null && client.player.networkHandler != null) {
             if (!this.sendInstantly.get()) {
-               client.setScreen(new ChatScreen(text, false));
+               client.setScreen(new ChatScreen(text));
             } else if (text.startsWith("\\")) {
                client.player.networkHandler.sendChatCommand(text.substring(1));
             } else {
