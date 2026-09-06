@@ -59,7 +59,7 @@ public class KeybindSetting extends Setting<Integer> {
                case 345 -> "RCTRL";
                case 346 -> "RALT";
                default -> n >= 290 && n <= 314
-               ? StringConcatFactory.makeConcatWithConstants<"makeConcatWithConstants","5-">(n - 290 + 1)
+               ? String.valueOf(n - 290 + 1)
                : "KEY" + n;
             };
          }
