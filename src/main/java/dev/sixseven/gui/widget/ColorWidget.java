@@ -109,7 +109,7 @@ public class ColorWidget extends SettingWidget {
          }
 
          String text2 = this.hexFocused
-            ? this.hexBuffer + System.nanoTime( / 400000000L % 2L == 0L ? "," : "")
+            ? (this.hexBuffer + (System.nanoTime() / 400000000L % 2L == 0L ? "|" : ""))
             : this.setting.hex();
          nVGRenderer.text(text2, f24 + 8.0F, f23 + 9.0F, 12.0F, this.hexFocused ? theme.textPrimary() : theme.textMuted());
          nVGRenderer.restore();
