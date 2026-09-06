@@ -271,7 +271,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
 
          nVGRenderer.restore();
          if (this.filtered.isEmpty() && this.selectedOnly) {
-            nVGRenderer.text("Nothing selected yet — turn off "Selected only" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
+            nVGRenderer.text("Nothing selected yet — turn off \"Selected only\" to browse.", layout2.gridX() + 4.0F, layout2.gridY() + 16.0F, 12.5F, theme.textDisabled());
          }
 
          if (this.maxScroll > 0.0F) {
