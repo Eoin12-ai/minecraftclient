@@ -96,9 +96,6 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:14: error: Could not locate @Accessor target movementVector in target net.minecraft.client.input.Input
-   @Accessor("movementVector")
-   ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
 import net.minecraft.client.gui.Click;
                                ^
@@ -194,35 +191,6 @@ import net.minecraft.client.input.KeyInput;
                             ^
   symbol:   class CharInput
   location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:4: error: package com.mojang.blaze3d.textures does not exist
-import com.mojang.blaze3d.textures.GpuTexture;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:24: error: cannot find symbol
-   private static final GpuTexture[] lastUploaded = new GpuTexture[TEXTURES.length];
-                        ^
-  symbol:   class GpuTexture
-  location: class GlintTextureTinter
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:16: error: cannot find symbol
-import net.minecraft.client.texture.GlTexture;
-                                   ^
-  symbol:   class GlTexture
-  location: package net.minecraft.client.texture
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
-   private static boolean bindOverlayFbo(GlTexture glTexture, int bind, int bind2) {
-                                         ^
-  symbol:   class GlTexture
-  location: class OverlayRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:3: error: package com.mojang.blaze3d.pipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
-                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:5: error: cannot find symbol
-import com.mojang.blaze3d.platform.DepthTestFunction;
-                                  ^
-  symbol:   class DepthTestFunction
-  location: package com.mojang.blaze3d.platform
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:7: error: cannot find symbol
 import net.minecraft.RenderLayerBridge;
                     ^
@@ -233,16 +201,6 @@ import net.minecraft.client.render.RenderSetup;
                                   ^
   symbol:   class RenderSetup
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:18: error: cannot find symbol
-   private static final RenderPipeline FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
-                        ^
-  symbol:   class RenderPipeline
-  location: class FlatOverlay
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:26: error: cannot find symbol
-   private static final RenderPipeline LINE_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColorLines()})
-                        ^
-  symbol:   class RenderPipeline
-  location: class FlatOverlay
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
 import net.minecraft.client.render.state.OutlineRenderState;
                                         ^
@@ -251,17 +209,6 @@ import net.minecraft.client.render.state.OutlineRenderState;
                                                                         ^
   symbol:   class OutlineRenderState
   location: class BlockOutlineRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:3: error: package com.mojang.blaze3d.pipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
-                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:5: error: cannot find symbol
-import com.mojang.blaze3d.platform.DepthTestFunction;
-                                  ^
-  symbol:   class DepthTestFunction
-  location: package com.mojang.blaze3d.platform
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:9: error: cannot find symbol
 import net.minecraft.RenderLayerBridge;
                     ^
@@ -272,16 +219,6 @@ import net.minecraft.client.render.RenderSetup;
                                   ^
   symbol:   class RenderSetup
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:32: error: cannot find symbol
-   private static final RenderPipeline CAPE_FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
-                        ^
-  symbol:   class RenderPipeline
-  location: class AccessoryRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:13: error: cannot find symbol
-import net.minecraft.client.texture.GlTexture;
-                                   ^
-  symbol:   class GlTexture
-  location: package net.minecraft.client.texture
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
 import net.minecraft.client.input.MouseInput;
                                  ^
@@ -339,7 +276,7 @@ import net.minecraft.client.render.state.WorldRenderState;
                                                                                                            ^
   symbol:   class WorldRenderState
   location: class LevelRendererMixin
-53 errors
+38 errors
 26 warnings
 
 > Task :compileJava FAILED
@@ -428,9 +365,6 @@ Execution failed for task ':compileJava'.
      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
      @ModifyReturnValue(
-     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:14: error: Could not locate @Accessor target movementVector in target net.minecraft.client.input.Input
-     @Accessor("movementVector")
      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
   import net.minecraft.client.gui.Click;
@@ -527,35 +461,6 @@ Execution failed for task ':compileJava'.
                               ^
     symbol:   class CharInput
     location: class IconPickerScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:4: error: package com.mojang.blaze3d.textures does not exist
-  import com.mojang.blaze3d.textures.GpuTexture;
-                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:24: error: cannot find symbol
-     private static final GpuTexture[] lastUploaded = new GpuTexture[TEXTURES.length];
-                          ^
-    symbol:   class GpuTexture
-    location: class GlintTextureTinter
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:16: error: cannot find symbol
-  import net.minecraft.client.texture.GlTexture;
-                                     ^
-    symbol:   class GlTexture
-    location: package net.minecraft.client.texture
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
-     private static boolean bindOverlayFbo(GlTexture glTexture, int bind, int bind2) {
-                                           ^
-    symbol:   class GlTexture
-    location: class OverlayRenderer
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:3: error: package com.mojang.blaze3d.pipeline does not exist
-  import com.mojang.blaze3d.pipeline.RenderPipeline;
-                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
-  import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
-                                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:5: error: cannot find symbol
-  import com.mojang.blaze3d.platform.DepthTestFunction;
-                                    ^
-    symbol:   class DepthTestFunction
-    location: package com.mojang.blaze3d.platform
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:7: error: cannot find symbol
   import net.minecraft.RenderLayerBridge;
                       ^
@@ -566,16 +471,6 @@ Execution failed for task ':compileJava'.
                                     ^
     symbol:   class RenderSetup
     location: package net.minecraft.client.render
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:18: error: cannot find symbol
-     private static final RenderPipeline FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
-                          ^
-    symbol:   class RenderPipeline
-    location: class FlatOverlay
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:26: error: cannot find symbol
-     private static final RenderPipeline LINE_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColorLines()})
-                          ^
-    symbol:   class RenderPipeline
-    location: class FlatOverlay
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
   import net.minecraft.client.render.state.OutlineRenderState;
                                           ^
@@ -584,17 +479,6 @@ Execution failed for task ':compileJava'.
                                                                           ^
     symbol:   class OutlineRenderState
     location: class BlockOutlineRenderer
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:3: error: package com.mojang.blaze3d.pipeline does not exist
-  import com.mojang.blaze3d.pipeline.RenderPipeline;
-                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
-  import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
-                                                   ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:5: error: cannot find symbol
-  import com.mojang.blaze3d.platform.DepthTestFunction;
-                                    ^
-    symbol:   class DepthTestFunction
-    location: package com.mojang.blaze3d.platform
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:9: error: cannot find symbol
   import net.minecraft.RenderLayerBridge;
                       ^
@@ -605,16 +489,6 @@ Execution failed for task ':compileJava'.
                                     ^
     symbol:   class RenderSetup
     location: package net.minecraft.client.render
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:32: error: cannot find symbol
-     private static final RenderPipeline CAPE_FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
-                          ^
-    symbol:   class RenderPipeline
-    location: class AccessoryRenderer
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:13: error: cannot find symbol
-  import net.minecraft.client.texture.GlTexture;
-                                     ^
-    symbol:   class GlTexture
-    location: package net.minecraft.client.texture
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
   import net.minecraft.client.input.MouseInput;
                                    ^
@@ -672,7 +546,7 @@ Execution failed for task ':compileJava'.
                                                                                                              ^
     symbol:   class WorldRenderState
     location: class LevelRendererMixin
-  53 errors
+  38 errors
   26 warnings
 
 * Try:
@@ -711,35 +585,6 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
-	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
-	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
-	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
-	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
-	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:46)
-	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
-	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
-	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
-	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
@@ -820,9 +665,6 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:59: warning: Cannot find target method "getFov(Lnet/minecraft/Camera;FZ)F" for @ModifyReturnValue.method="getFov(Lnet/minecraft/Camera;FZ)F" in net.minecraft.client.render.GameRenderer
    @ModifyReturnValue(
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ClientInputAccessor.java:14: error: Could not locate @Accessor target movementVector in target net.minecraft.client.input.Input
-   @Accessor("movementVector")
    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/ClickGuiScreen.java:24: error: cannot find symbol
 import net.minecraft.client.gui.Click;
@@ -919,35 +761,6 @@ import net.minecraft.client.input.KeyInput;
                             ^
   symbol:   class CharInput
   location: class IconPickerScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:4: error: package com.mojang.blaze3d.textures does not exist
-import com.mojang.blaze3d.textures.GpuTexture;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/GlintTextureTinter.java:24: error: cannot find symbol
-   private static final GpuTexture[] lastUploaded = new GpuTexture[TEXTURES.length];
-                        ^
-  symbol:   class GpuTexture
-  location: class GlintTextureTinter
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:16: error: cannot find symbol
-import net.minecraft.client.texture.GlTexture;
-                                   ^
-  symbol:   class GlTexture
-  location: package net.minecraft.client.texture
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/OverlayRenderer.java:153: error: cannot find symbol
-   private static boolean bindOverlayFbo(GlTexture glTexture, int bind, int bind2) {
-                                         ^
-  symbol:   class GlTexture
-  location: class OverlayRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:3: error: package com.mojang.blaze3d.pipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
-                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:5: error: cannot find symbol
-import com.mojang.blaze3d.platform.DepthTestFunction;
-                                  ^
-  symbol:   class DepthTestFunction
-  location: package com.mojang.blaze3d.platform
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:7: error: cannot find symbol
 import net.minecraft.RenderLayerBridge;
                     ^
@@ -958,16 +771,6 @@ import net.minecraft.client.render.RenderSetup;
                                   ^
   symbol:   class RenderSetup
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:18: error: cannot find symbol
-   private static final RenderPipeline FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
-                        ^
-  symbol:   class RenderPipeline
-  location: class FlatOverlay
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/FlatOverlay.java:26: error: cannot find symbol
-   private static final RenderPipeline LINE_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColorLines()})
-                        ^
-  symbol:   class RenderPipeline
-  location: class FlatOverlay
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:8: error: package net.minecraft.client.render.state does not exist
 import net.minecraft.client.render.state.OutlineRenderState;
                                         ^
@@ -976,17 +779,6 @@ import net.minecraft.client.render.state.OutlineRenderState;
                                                                         ^
   symbol:   class OutlineRenderState
   location: class BlockOutlineRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:3: error: package com.mojang.blaze3d.pipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:4: error: package com.mojang.blaze3d.pipeline.RenderPipeline does not exist
-import com.mojang.blaze3d.pipeline.RenderPipeline.Snippet;
-                                                 ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:5: error: cannot find symbol
-import com.mojang.blaze3d.platform.DepthTestFunction;
-                                  ^
-  symbol:   class DepthTestFunction
-  location: package com.mojang.blaze3d.platform
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:9: error: cannot find symbol
 import net.minecraft.RenderLayerBridge;
                     ^
@@ -997,16 +789,6 @@ import net.minecraft.client.render.RenderSetup;
                                   ^
   symbol:   class RenderSetup
   location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:32: error: cannot find symbol
-   private static final RenderPipeline CAPE_FILL_PIPELINE = RenderPipeline.builder(new Snippet[]{RenderLayerBridge.getPositionColor()})
-                        ^
-  symbol:   class RenderPipeline
-  location: class AccessoryRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:13: error: cannot find symbol
-import net.minecraft.client.texture.GlTexture;
-                                   ^
-  symbol:   class GlTexture
-  location: package net.minecraft.client.texture
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:11: error: cannot find symbol
 import net.minecraft.client.input.MouseInput;
                                  ^
@@ -1064,7 +846,7 @@ import net.minecraft.client.render.state.WorldRenderState;
                                                                                                            ^
   symbol:   class WorldRenderState
   location: class LevelRendererMixin
-53 errors
+38 errors
 26 warnings
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
@@ -1214,35 +996,6 @@ import net.minecraft.client.render.state.WorldRenderState;
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
-	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
-	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
-	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
-	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
-	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:46)
-	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
-	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
-	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
-	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
@@ -1253,5 +1006,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 50s
+BUILD FAILED in 52s
 1 actionable task: 1 executed
