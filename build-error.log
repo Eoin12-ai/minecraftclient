@@ -141,33 +141,6 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
    @Shadow
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:9: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
-   @Accessor("field_1771")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:12: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
-   @Accessor("field_1771")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/InputAccessor.java:10: error: Could not locate @Accessor target field_55868 in target net.minecraft.client.input.Input
-   @Accessor("field_55868")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:10: error: Could not locate @Invoker target method_75940 in target net.minecraft.client.render.RenderLayer
-   @Invoker("method_75940")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:24: error: cannot find symbol
-import net.minecraft.client.texture.PlayerSkinTexture;
-                                   ^
-  symbol:   class PlayerSkinTexture
-  location: package net.minecraft.client.texture
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:4: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
-                                  ^
-  symbol:   class RenderSetup
-  location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:11: error: cannot find symbol
-   static RenderLayer swyzzy$of(String var0, RenderSetup var1) {
-                                             ^
-  symbol:   class RenderSetup
-  location: interface RenderLayerInvoker
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:4: error: cannot find symbol
 import net.minecraft.client.gui.Click;
                                ^
@@ -178,11 +151,6 @@ import net.minecraft.client.input.KeyInput;
                                  ^
   symbol:   class KeyInput
   location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:22: error: cannot find symbol
-   public boolean keyPressed(KeyInput var1) {
-                             ^
-  symbol:   class KeyInput
-  location: class InternalHelper4
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:33: error: cannot find symbol
    public boolean mouseClicked(Click var1, boolean var2) {
                                ^
@@ -208,56 +176,6 @@ import net.minecraft.client.input.KeyInput;
                                 ^
   symbol:   class Click
   location: class SwyzzyClientScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:199: error: cannot find symbol
-   public boolean keyPressed(KeyInput var1) {
-                             ^
-  symbol:   class KeyInput
-  location: class SwyzzyClientScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:26: error: cannot find symbol
-import net.minecraft.entity.player.SkinTextures;
-                                  ^
-  symbol:   class SkinTextures
-  location: package net.minecraft.entity.player
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:81: error: cannot find symbol
-   private final Map<String, SkinTextures> map2 = new HashMap<>();
-                             ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:389: error: cannot find symbol
-   private void run11(String var1, SkinTextures var2) {
-                                   ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:424: error: cannot find symbol
-      private SkinTextures skinTextures;
-              ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner1
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:426: error: cannot find symbol
-      Inner1(String var1, SkinTextures var2) {
-                          ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner1
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:435: error: cannot find symbol
-      public SkinTextures skinTextures() {
-             ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner1
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:508: error: cannot find symbol
-      private SkinTextures skinTextures;
-              ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner4
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:510: error: cannot find symbol
-      Inner4(String var1, String var2, boolean var3, SkinTextures var4) {
-                                                     ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner4
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:529: error: cannot find symbol
-      public SkinTextures skinTextures() {
-             ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner4
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:7: error: cannot find symbol
 import net.minecraft.client.gui.Click;
                                ^
@@ -288,12 +206,7 @@ import net.minecraft.client.gui.Click;
                                ^
   symbol:   class Click
   location: class SelectBlocksScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/util/RenderPipelineUtils.java:14: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
-                                  ^
-  symbol:   class RenderSetup
-  location: package net.minecraft.client.render
-32 errors
+13 errors
 41 warnings
 
 > Task :compileJava FAILED
@@ -428,33 +341,6 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
      @Shadow
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:9: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
-     @Accessor("field_1771")
-     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:12: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
-     @Accessor("field_1771")
-     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/InputAccessor.java:10: error: Could not locate @Accessor target field_55868 in target net.minecraft.client.input.Input
-     @Accessor("field_55868")
-     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:10: error: Could not locate @Invoker target method_75940 in target net.minecraft.client.render.RenderLayer
-     @Invoker("method_75940")
-     ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:24: error: cannot find symbol
-  import net.minecraft.client.texture.PlayerSkinTexture;
-                                     ^
-    symbol:   class PlayerSkinTexture
-    location: package net.minecraft.client.texture
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:4: error: cannot find symbol
-  import net.minecraft.client.render.RenderSetup;
-                                    ^
-    symbol:   class RenderSetup
-    location: package net.minecraft.client.render
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:11: error: cannot find symbol
-     static RenderLayer swyzzy$of(String var0, RenderSetup var1) {
-                                               ^
-    symbol:   class RenderSetup
-    location: interface RenderLayerInvoker
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:4: error: cannot find symbol
   import net.minecraft.client.gui.Click;
                                  ^
@@ -465,11 +351,6 @@ Execution failed for task ':compileJava'.
                                    ^
     symbol:   class KeyInput
     location: package net.minecraft.client.input
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:22: error: cannot find symbol
-     public boolean keyPressed(KeyInput var1) {
-                               ^
-    symbol:   class KeyInput
-    location: class InternalHelper4
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:33: error: cannot find symbol
      public boolean mouseClicked(Click var1, boolean var2) {
                                  ^
@@ -495,56 +376,6 @@ Execution failed for task ':compileJava'.
                                   ^
     symbol:   class Click
     location: class SwyzzyClientScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:199: error: cannot find symbol
-     public boolean keyPressed(KeyInput var1) {
-                               ^
-    symbol:   class KeyInput
-    location: class SwyzzyClientScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:26: error: cannot find symbol
-  import net.minecraft.entity.player.SkinTextures;
-                                    ^
-    symbol:   class SkinTextures
-    location: package net.minecraft.entity.player
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:81: error: cannot find symbol
-     private final Map<String, SkinTextures> map2 = new HashMap<>();
-                               ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:389: error: cannot find symbol
-     private void run11(String var1, SkinTextures var2) {
-                                     ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:424: error: cannot find symbol
-        private SkinTextures skinTextures;
-                ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule.Inner1
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:426: error: cannot find symbol
-        Inner1(String var1, SkinTextures var2) {
-                            ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule.Inner1
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:435: error: cannot find symbol
-        public SkinTextures skinTextures() {
-               ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule.Inner1
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:508: error: cannot find symbol
-        private SkinTextures skinTextures;
-                ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule.Inner4
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:510: error: cannot find symbol
-        Inner4(String var1, String var2, boolean var3, SkinTextures var4) {
-                                                       ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule.Inner4
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:529: error: cannot find symbol
-        public SkinTextures skinTextures() {
-               ^
-    symbol:   class SkinTextures
-    location: class AdminDetectorModule.Inner4
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:7: error: cannot find symbol
   import net.minecraft.client.gui.Click;
                                  ^
@@ -575,12 +406,7 @@ Execution failed for task ':compileJava'.
                                  ^
     symbol:   class Click
     location: class SelectBlocksScreen
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/util/RenderPipelineUtils.java:14: error: cannot find symbol
-  import net.minecraft.client.render.RenderSetup;
-                                    ^
-    symbol:   class RenderSetup
-    location: package net.minecraft.client.render
-  32 errors
+  13 errors
   41 warnings
 
 * Try:
@@ -745,33 +571,6 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
    @Shadow
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:9: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
-   @Accessor("field_1771")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/MinecraftClientAccessor.java:12: error: Could not locate @Accessor target field_1771 in target net.minecraft.client.MinecraftClient
-   @Accessor("field_1771")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/InputAccessor.java:10: error: Could not locate @Accessor target field_55868 in target net.minecraft.client.input.Input
-   @Accessor("field_55868")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:10: error: Could not locate @Invoker target method_75940 in target net.minecraft.client.render.RenderLayer
-   @Invoker("method_75940")
-   ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:24: error: cannot find symbol
-import net.minecraft.client.texture.PlayerSkinTexture;
-                                   ^
-  symbol:   class PlayerSkinTexture
-  location: package net.minecraft.client.texture
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:4: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
-                                  ^
-  symbol:   class RenderSetup
-  location: package net.minecraft.client.render
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/RenderLayerInvoker.java:11: error: cannot find symbol
-   static RenderLayer swyzzy$of(String var0, RenderSetup var1) {
-                                             ^
-  symbol:   class RenderSetup
-  location: interface RenderLayerInvoker
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:4: error: cannot find symbol
 import net.minecraft.client.gui.Click;
                                ^
@@ -782,11 +581,6 @@ import net.minecraft.client.input.KeyInput;
                                  ^
   symbol:   class KeyInput
   location: package net.minecraft.client.input
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:22: error: cannot find symbol
-   public boolean keyPressed(KeyInput var1) {
-                             ^
-  symbol:   class KeyInput
-  location: class InternalHelper4
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/InternalHelper4.java:33: error: cannot find symbol
    public boolean mouseClicked(Click var1, boolean var2) {
                                ^
@@ -812,56 +606,6 @@ import net.minecraft.client.input.KeyInput;
                                 ^
   symbol:   class Click
   location: class SwyzzyClientScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/SwyzzyClientScreen.java:199: error: cannot find symbol
-   public boolean keyPressed(KeyInput var1) {
-                             ^
-  symbol:   class KeyInput
-  location: class SwyzzyClientScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:26: error: cannot find symbol
-import net.minecraft.entity.player.SkinTextures;
-                                  ^
-  symbol:   class SkinTextures
-  location: package net.minecraft.entity.player
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:81: error: cannot find symbol
-   private final Map<String, SkinTextures> map2 = new HashMap<>();
-                             ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:389: error: cannot find symbol
-   private void run11(String var1, SkinTextures var2) {
-                                   ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:424: error: cannot find symbol
-      private SkinTextures skinTextures;
-              ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner1
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:426: error: cannot find symbol
-      Inner1(String var1, SkinTextures var2) {
-                          ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner1
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:435: error: cannot find symbol
-      public SkinTextures skinTextures() {
-             ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner1
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:508: error: cannot find symbol
-      private SkinTextures skinTextures;
-              ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner4
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:510: error: cannot find symbol
-      Inner4(String var1, String var2, boolean var3, SkinTextures var4) {
-                                                     ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner4
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/AdminDetectorModule.java:529: error: cannot find symbol
-      public SkinTextures skinTextures() {
-             ^
-  symbol:   class SkinTextures
-  location: class AdminDetectorModule.Inner4
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/pkg1/PickNullScreen.java:7: error: cannot find symbol
 import net.minecraft.client.gui.Click;
                                ^
@@ -892,12 +636,7 @@ import net.minecraft.client.gui.Click;
                                ^
   symbol:   class Click
   location: class SelectBlocksScreen
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/util/RenderPipelineUtils.java:14: error: cannot find symbol
-import net.minecraft.client.render.RenderSetup;
-                                  ^
-  symbol:   class RenderSetup
-  location: package net.minecraft.client.render
-32 errors
+13 errors
 41 warnings
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
@@ -1057,5 +796,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 56s
+BUILD FAILED in 50s
 1 actionable task: 1 executed
