@@ -15,11 +15,9 @@ import java.util.Properties;
 import java.util.Map.Entry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.input.KeyInput;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import util.UtilsUtil;
@@ -176,14 +174,14 @@ public final class SwyzzyClientScreen extends Screen {
          }
       }
 
-      return super.mouseClicked(var1, var2);
+      return super.mouseClicked(_cx, _cy, _cb);
    }
 
    public boolean mouseReleased(double _cx, double _cy, int _cb) {
       this.val = null;
       this.val2 = null;
       this.val3 = null;
-      return super.mouseReleased(var1);
+      return super.mouseReleased(_cx, _cy, _cb);
    }
 
    public boolean mouseScrolled(double var1, double var3, double var5, double var7) {
@@ -202,7 +200,7 @@ public final class SwyzzyClientScreen extends Screen {
          this.close();
          return true;
       } else if (var2 != SwyzzyAddon.val7.getInt() || this.class342 != null && this.class342.isFocused()) {
-         return super.keyPressed(var1);
+         return super.keyPressed(_key, _scan, _mods);
       } else {
          this.close();
          return true;
