@@ -143,12 +143,12 @@ public class FakeRolesModule extends Module {
          Object[] obj4 = new Object[obj.length];
          boolean[] found2 = new boolean[]{false};
          for (int step = 0; step < obj.length; step++) {
-            Object value = obj[step];
-            if (value instanceof Text text3) {
+            Object elem = obj[step];
+            if (elem instanceof Text text3) {
                obj4[step] = this.splice(text3, text4, found2);
             } else {
-               if (!found2[0] && value instanceof String) {
-                  String text5 = (String)value;
+               if (!found2[0] && elem instanceof String) {
+                  String text5 = (String)elem;
                   if (text5.contains(text4)) {
                      found2[0] = true;
                      int step2 = text5.indexOf(text4);
