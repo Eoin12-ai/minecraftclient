@@ -15,6 +15,11 @@ import net.minecraft.text.Text;
 public class FakeStatsModule extends Module {
    private static final int GRAY = 11184810;
    private static final int GREEN = 5635925;
+   private static final String[] MONEY_KEYS   = {"bal", "balance", "money", "$", "coins", "dollars"};
+   private static final String[] SHARD_KEYS   = {"shard", "shards", "crystal", "crystals"};
+   private static final String[] KILL_KEYS    = {"kill", "kills", "k/d", "kdr"};
+   private static final String[] DEATH_KEYS   = {"death", "deaths", "died"};
+   private static final String[] PLAYTIME_KEYS = {"played", "playtime", "time", "hrs", "hours", "online"};
    public final StringSetting money = this.addSetting(
       new StringSetting("Money", "Your fake balance (1m, 67k, 250000). Wired to FakePay. Blank = off.", "BA", 32, "e.g. 1m, 250k")
    );
