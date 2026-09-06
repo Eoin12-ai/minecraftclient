@@ -110,8 +110,8 @@ public final class ChunkFinderModule extends Module {
 
          for (Long lRaw : set) { long l = lRaw;
             if (set3.add(l)) {
-               ArrayList list = new ArrayList();
-               ArrayDeque arrayDeque = new ArrayDeque();
+               ArrayList<Long> list = new ArrayList();
+               ArrayDeque<Long> arrayDeque = new ArrayDeque();
                arrayDeque.add(l);
 
                while (!arrayDeque.isEmpty()) {
