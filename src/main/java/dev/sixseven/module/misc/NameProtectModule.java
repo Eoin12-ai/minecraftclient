@@ -89,7 +89,7 @@ public class NameProtectModule extends Module {
       if (clientPlayNetworkHandler != null) {
          for (PlayerListEntry playerListEntry : clientPlayNetworkHandler.getPlayerList()) {
             GameProfile gameProfile = playerListEntry.getProfile();
-            String name2 = gameProfile == null ? null : gameProfile.name();
+            String name2 = gameProfile == null ? null : gameProfile.getName();
             if (name2 != null && !name2.isEmpty()) {
                this.seen.put(name2.toLowerCase(Locale.ROOT), name2);
                if (found) {
