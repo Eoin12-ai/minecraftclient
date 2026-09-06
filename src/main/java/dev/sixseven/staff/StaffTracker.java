@@ -58,15 +58,15 @@ public final class StaffTracker {
          HashSet set = new HashSet();
 
          for (PlayerListEntry playerListEntry : clientPlayNetworkHandler.getListedPlayerListEntries()) {
-            set.add(playerListEntry.getProfile().id());
+            set.add(playerListEntry.getProfile().getId());
          }
 
-         ArrayList list = new ArrayList();
+         ArrayList<StaffEntry> list = new ArrayList<>();
 
          for (PlayerListEntry playerListEntry2 : clientPlayNetworkHandler.getPlayerList()) {
-            UUID uuid2 = playerListEntry2.getProfile().id();
+            UUID uuid2 = playerListEntry2.getProfile().getId();
             if (!uuid2.equals(uuid)) {
-               String name2 = playerListEntry2.getProfile().name();
+               String name2 = playerListEntry2.getProfile().getName();
                if (name2 != null && !name2.isEmpty()) {
                   boolean matches = playerListEntry2.getGameMode() == GameMode.SPECTATOR || !set.contains(uuid2);
                   if (!matches || detectConfig.showVanished()) {
