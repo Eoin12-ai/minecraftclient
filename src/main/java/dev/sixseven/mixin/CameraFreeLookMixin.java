@@ -40,7 +40,7 @@ public abstract class CameraFreeLookMixin {
       if (freeLookModule != null && freeLookModule.seeThroughWalls()) {
          FreecamModule freecamModule = FreecamModule.get();
          if (freecamModule == null || !freecamModule.isActive()) {
-            callbackInfoReturnable.setReturnValue(flag);
+            callbackInfoReturnable.setReturnValue(f);
          }
       }
    }
