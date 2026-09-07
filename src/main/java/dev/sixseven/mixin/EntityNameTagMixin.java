@@ -67,7 +67,7 @@ public class EntityNameTagMixin {
          if (player == null) {
             return false;
          } else {
-            String name3 = player.getGameProfile().name();
+            String name3 = player.getGameProfile().getName();
             return name3 != null && !name3.isEmpty() && text.contains(name3);
          }
       } else {
@@ -83,7 +83,7 @@ public class EntityNameTagMixin {
          } else {
             for (PlayerListEntry playerListEntry : client.getNetworkHandler().getPlayerList()) {
                GameProfile gameProfile = playerListEntry.getProfile();
-               String name3 = gameProfile == null ? null : gameProfile.name();
+               String name3 = gameProfile == null ? null : gameProfile.getName();
                if (name3 != null && !name3.isEmpty() && text.contains(name3)) {
                   return true;
                }
