@@ -18,7 +18,7 @@ public final class BlockEntityEspRenderer {
    }
 
    public static void render(Immediate immediate, MatrixStack matrices, Vec3d vec, BlockEntityEspModule blockEntityEspModule) {
-      Collection collection = blockEntityEspModule.entries();
+      java.util.Collection<BlockEntityEspModule.Cached> collection = blockEntityEspModule.entries();
       if (!collection.isEmpty()) {
          MinecraftClient client = MinecraftClient.getInstance();
          ClientWorld world = client.world;
@@ -28,7 +28,7 @@ public final class BlockEntityEspRenderer {
             boolean found = blockEntityEspModule.showGhosts.get();
             boolean found2 = blockEntityEspModule.tracers.get();
             int localY = blockEntityEspModule.ghostTint.get();
-            Vector3fc camera = found2 ? client.gameRenderer.getCamera().getPos() : null;
+            net.minecraft.util.math.Vec3d camera = found2 ? client.gameRenderer.getCamera().getPos() : null;
 
             for (BlockEntityEspModule.Cached cached : collection) {
                String text = cached.typeKey();
