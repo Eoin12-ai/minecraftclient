@@ -27,7 +27,7 @@ public abstract class LocalPlayerFreecamMixin {
    }
 
    private void sixsevenclient$reapply() {
-      ClientPlayerEntity player = (ClientPlayerEntity)this;
+      ClientPlayerEntity player = (ClientPlayerEntity)(Object)this;
       MinecraftClient client = MinecraftClient.getInstance();
       if (client.player == player) {
          FreecamModule freecamModule = FreecamModule.get();
