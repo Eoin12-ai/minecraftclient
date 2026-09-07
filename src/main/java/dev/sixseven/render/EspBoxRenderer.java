@@ -6,7 +6,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.MatrixStack.Entry;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
+import org.joml.net.minecraft.util.math.Vec3d;
 
 public final class EspBoxRenderer {
    private static final float TRACER_START = 0.35F;
@@ -59,10 +59,10 @@ public final class EspBoxRenderer {
       quad(consumer, entry, n, f9, f7, f8, f9, f10, f8, f9, f10, f11, f9, f7, f11);
    }
 
-   public static void tracer(Immediate immediate, MatrixStack matrices, Vec3d vec, Vector3fc vector3fc, double d, double coord, double currentScore, int n, float tickDelta) {
-      float f = vector3fc.x();
-      float f13 = vector3fc.y();
-      float f14 = vector3fc.z();
+   public static void tracer(Immediate immediate, MatrixStack matrices, Vec3d vec, net.minecraft.util.math.Vec3d vector3fc, double d, double coord, double currentScore, int n, float tickDelta) {
+      float f = vector3fc.x;
+      float f13 = vector3fc.y;
+      float f14 = vector3fc.z;
       float f15 = (float)Math.sqrt((double)(f * f + f13 * f13 + f14 * f14));
       if (f15 > 1.0E-6F) {
          f /= f15;
