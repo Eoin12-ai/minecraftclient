@@ -151,7 +151,7 @@ public final class BlockEspRenderer {
                n11 = 200;
             }
 
-            Vector3fc client = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
+            net.minecraft.util.math.Vec3d client = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
 
             for (BlockEspRenderer.Hit hit2 : list) {
                int n12 = map.getOrDefault(hit2.block(), n) & 16777215;
