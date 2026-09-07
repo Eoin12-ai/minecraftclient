@@ -93,7 +93,7 @@ public final class EntityEspRenderer {
          immediate,
          matrices,
          vec,
-         vector3fc,
+         new net.minecraft.util.math.Vec3d(vector3fc.x(), vector3fc.y(), vector3fc.z()),
          (box2.minX + box2.maxX) / 2.0,
          (box2.minY + box2.maxY) / 2.0,
          (box2.minZ + box2.maxZ) / 2.0,
