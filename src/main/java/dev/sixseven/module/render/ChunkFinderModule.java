@@ -108,7 +108,7 @@ public final class ChunkFinderModule extends Module {
          HashSet<Long> set2 = new HashSet<>();
          HashSet<Long> set3 = new HashSet<>();
 
-         for (Long lRaw : set) { long l = lRaw;
+         for (Object lRawObj : set) { long l = ((Long)lRawObj).longValue();
             if (set3.add(l)) {
                ArrayList<Long> list = new ArrayList();
                ArrayDeque<Long> arrayDeque = new ArrayDeque();
@@ -186,7 +186,7 @@ public final class ChunkFinderModule extends Module {
       if (SixSevenClient.notifications() != null) {
          NotificationManager notificationManager = SixSevenClient.notifications();
          int n = chunkPos.getCenterX();
-         notificationManager.pushInfo("Chunk Finder · X " + n + " Z " + chunkPos.getCenterZ());
+         notificationManager.pushInfo("Chunk Finder Â· X " + n + " Z " + chunkPos.getCenterZ());
       }
    }
 
