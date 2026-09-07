@@ -19,19 +19,19 @@ public class PlayerTabOverlayMixin {
    private Text sixsevenclient$protectTabName(Text text, PlayerListEntry playerListEntry) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager == null) {
-         return temp;
+         return text;
       } else {
-         GameProfile gameProfile = temp2.getProfile();
-         String name2 = gameProfile == null ? null : gameProfile.name();
+         GameProfile gameProfile = playerListEntry.getProfile();
+         String name2 = gameProfile == null ? null : gameProfile.getName();
          Object value = temp;
-         if (temp3.nameProtect != null && temp3.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
-            String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+         if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
+            String name2 = moduleManager.nameProtect.replacementForDisplay(temp2);
             if (name2 != null) {
-               temp = Text.literal(name2);
+               text = Text.literal(name2);
             }
          }
 
-         if (temp2.fakeRoles != null && temp != null) {
+         if (moduleManager.fakeRoles != null && temp != null) {
             temp = temp3.fakeRoles.decorateTab((Text)temp, temp2);
          }
 
