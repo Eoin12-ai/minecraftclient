@@ -8,7 +8,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import org.joml.Vector3fc;
+import org.joml.net.minecraft.util.math.Vec3d;
 
 public final class BlockEntityEspRenderer {
    private static final double INSET = 0.002;
