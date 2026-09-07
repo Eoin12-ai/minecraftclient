@@ -28,7 +28,7 @@ public final class SwyzzyClientScreenUtil {
 
          for (int var10 = -1; var10 <= 1; var10++) {
             for (int var11 = -1; var11 <= 1; var11++) {
-               var0.drawTexture(class2960, var6 + var10 * 3, var7 + var11 * 3, 0.0F, 0.0F, var4, var5, var4, var5, var9);
+               var0.drawTexture(net.minecraft.client.render.RenderLayer::getGuiTextured, class2960, var6 + var10 * 3, var7 + var11 * 3, 0.0F, 0.0F, var4, var5, var4, var5, var9);
             }
          }
       }
