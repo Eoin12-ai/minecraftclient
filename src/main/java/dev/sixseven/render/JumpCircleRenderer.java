@@ -26,7 +26,7 @@ public final class JumpCircleRenderer {
    }
 
    public static void render(Immediate immediate, MatrixStack matrices, Vec3d vec, JumpCirclesModule jumpCirclesModule) {
-      Deque deque = jumpCirclesModule.circles();
+      Deque<JumpCirclesModule.JumpCircle> deque = jumpCirclesModule.circles();
       if (!deque.isEmpty()) {
          long l = System.nanoTime();
          float f = Math.max(0.1F, jumpCirclesModule.lifetime.getFloat());
