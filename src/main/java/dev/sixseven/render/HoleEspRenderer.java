@@ -16,7 +16,6 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.BlockPos.Mutable;
-import org.joml.net.minecraft.util.math.Vec3d;
 
 public final class HoleEspRenderer {
    private static final int SCAN_INTERVAL_TICKS = 10;
