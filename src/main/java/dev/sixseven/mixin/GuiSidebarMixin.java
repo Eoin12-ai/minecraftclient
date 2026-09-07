@@ -46,7 +46,7 @@ public class GuiSidebarMixin {
          }
       }
 
-      return textRenderer.getWidth(temp2);
+      return textRenderer.getWidth(stringVisitable);
    }
 
    @ModifyArg(
