@@ -24,7 +24,7 @@ public class AbstractClientPlayerMixin {
          if (skinProtectModule != null && skinProtectModule.isEnabled()) {
             SkinTextures skinTextures = skinProtectModule.replacementSkin();
             if (skinTextures != null) {
-               AbstractClientPlayerEntity abstractClientPlayerEntity = (AbstractClientPlayerEntity)this;
+               AbstractClientPlayerEntity abstractClientPlayerEntity = (AbstractClientPlayerEntity)(Object)this;
                if (skinProtectModule.shouldReplace(abstractClientPlayerEntity.getUuid())) {
                   callbackInfoReturnable.setReturnValue(skinTextures);
                }
