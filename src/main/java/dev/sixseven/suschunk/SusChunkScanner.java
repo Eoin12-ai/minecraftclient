@@ -187,7 +187,7 @@ public class SusChunkScanner {
    }
 
    private void detectAmethyst(MinecraftClient client, WorldChunk chunk, SusChunkScanner.ChunkScore chunkScore) {
-      List list = ServerLightCache.get().light5Positions(chunk.getPos().x, chunk.getPos().z);
+      List<net.minecraft.util.math.BlockPos> list = ServerLightCache.get().light5Positions(chunk.getPos().x, chunk.getPos().z);
       if (!list.isEmpty()) {
          Mutable mutablePos = new Mutable();
 
