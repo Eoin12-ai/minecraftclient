@@ -12,6 +12,7 @@ import dev.sixseven.util.Amounts;
 import java.lang.invoke.StringConcatFactory;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
@@ -133,7 +134,7 @@ public class FakePayModule extends Module {
    }
 
    private void play(MinecraftClient client, SoundEvent sound, float f) {
-      client.getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+      client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
    }
 
    private FakeStatsModule stats() {
