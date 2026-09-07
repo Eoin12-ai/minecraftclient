@@ -35,7 +35,7 @@ public class StaffListModule extends Module {
       )
    );
    public final StringSetting staffNames = this.addSetting(
-      new StringSetting("Staff Names", "Extra known staff usernames (comma-separated) — always shown when online", "", 220, "e.g. Notch, jeb_")
+      new StringSetting("Staff Names", "Extra known staff usernames (comma-separated) â always shown when online", "", 220, "e.g. Notch, jeb_")
    );
    public final StringSetting rankKeywords = this.addSetting(
       new StringSetting(
@@ -43,7 +43,7 @@ public class StaffListModule extends Module {
          "Words in a name tag that mark staff (comma-separated), most senior first",
          StaffDetector.DEFAULT_RANK_KEYWORDS_STRING,
          256,
-         "owner, admin, mod…"
+         "owner, admin, modâ¦"
       )
    );
    public final StringSetting starSymbols = this.addSetting(
@@ -52,7 +52,7 @@ public class StaffListModule extends Module {
          "Marker glyphs that mean 'staff'. Paste the server's star here if detection misses",
          "-Vy-We-Ra-RF-Sw-Pb-Ph-PI-Pk-VZ-VI-g|-V|-U}-SA-UO-Ud-ZB-ZI-[B-Zj-Ii",
          96,
-         "♶\f❮N⭂"
+         "â¶\fâ®Nâ­"
       )
    );
    public final BooleanSetting fontIcons = this.addSetting(
@@ -131,11 +131,11 @@ public class StaffListModule extends Module {
                SixSevenClient.notifications().pushInfo(text + " " + staffEntry.name() + " online" + text3);
             }
          } else if (this.alerts.is("Chat")) {
-            client.player.sendMessage(Text.literal("§d[67] §f" + text + " §b" + staffEntry.name() + "§7 is online" + text3), false);
+            client.player.sendMessage(Text.literal("Â§d[67] Â§f" + text + " Â§b" + staffEntry.name() + "Â§7 is online" + text3), false);
          }
 
          if (this.alertSound.get()) {
-            client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), 1.5F));
+            client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F));
          }
       }
    }
