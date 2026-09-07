@@ -235,7 +235,7 @@ public final class AccessoryRenderer {
    private static void renderTrailRibbon(
       VertexConsumer consumer, Entry entry, Vec3d vec, Vector3f vector3f, CustomAccessoriesModule customAccessoriesModule, long l, int n, float tickDelta
    ) {
-      Deque deque = customAccessoriesModule.trailNodes();
+      Deque<CustomAccessoriesModule.TrailNode> deque = customAccessoriesModule.trailNodes();
       if (deque.size() >= 2) {
          float f = Math.max(0.2F, customAccessoriesModule.trailLength.getFloat());
          float f24 = 0.28F * (0.7F + 0.6F * tickDelta);
@@ -291,7 +291,7 @@ public final class AccessoryRenderer {
    private static void renderTrailSparkle(
       VertexConsumer consumer, Entry entry, Vec3d vec, Vector3f vector3f, Vector3f vector3f2, CustomAccessoriesModule customAccessoriesModule, long l, int n, float tickDelta
    ) {
-      Deque deque = customAccessoriesModule.trailNodes();
+      Deque<CustomAccessoriesModule.TrailNode> deque = customAccessoriesModule.trailNodes();
       float f = Math.max(0.2F, customAccessoriesModule.trailLength.getFloat());
       int localZ = 0;
 
@@ -323,7 +323,7 @@ public final class AccessoryRenderer {
    }
 
    private static void renderTrailEcho(VertexConsumer consumer, Entry entry, Vec3d vec, CustomAccessoriesModule customAccessoriesModule, long l, int n) {
-      Deque deque = customAccessoriesModule.trailNodes();
+      Deque<CustomAccessoriesModule.TrailNode> deque = customAccessoriesModule.trailNodes();
       float f = Math.max(0.2F, customAccessoriesModule.trailLength.getFloat());
       int localZ = 0;
 
