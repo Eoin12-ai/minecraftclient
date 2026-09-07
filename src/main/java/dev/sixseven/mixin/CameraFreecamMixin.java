@@ -26,8 +26,8 @@ public abstract class CameraFreecamMixin {
    private void sixsevenclient$freecam(World world, Entity entity, boolean flag, boolean flag2, float f, CallbackInfo callbackInfo) {
       FreecamModule freecamModule = FreecamModule.get();
       if (freecamModule != null && freecamModule.isActive()) {
-         this.setRotation(temp2.getInterpolatedYaw(temp), temp2.getInterpolatedPitch(temp));
-         this.setPos(temp2.getInterpolatedPos(temp));
+         this.setRotation(freecamModule.getInterpolatedYaw(f), freecamModule.getInterpolatedPitch(f));
+         this.setPos(freecamModule.getInterpolatedPos(f));
       }
    }
 }
