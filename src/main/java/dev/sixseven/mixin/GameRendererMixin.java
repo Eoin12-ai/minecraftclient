@@ -41,7 +41,7 @@ public class GameRendererMixin {
       )}
    )
    private void sixsevenclient$captureProjection(RenderTickCounter renderTickCounter, CallbackInfo callbackInfo, @Local(ordinal = 0) Matrix4f matrix) {
-      WorldProjection.capture(temp2, temp.getTickProgress(false));
+      WorldProjection.capture(matrix, renderTickCounter.getTickProgress(false));
    }
 
    @ModifyArg(
@@ -53,7 +53,7 @@ public class GameRendererMixin {
       index = 5
    )
    private int sixsevenclient$overrideBlurRadius(int n) {
-      return BlurHook.apply(temp);
+      return BlurHook.apply(n);
    }
 
    @ModifyReturnValue(
@@ -63,8 +63,8 @@ public class GameRendererMixin {
    private float sixsevenclient$zoomFov(float f) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager != null && moduleManager.zoom != null) {
-         double d = temp.zoom.currentFactor();
-         return d > 1.0001 ? (float)((double)temp2 / d) : temp2;
+         double d = moduleManager.zoom.currentFactor();
+         return d > 1.0001 ? (float)((double)f / d) : f;
       } else {
          return temp;
       }
@@ -80,7 +80,7 @@ public class GameRendererMixin {
    )
    private float sixsevenclient$customFov(float f) {
       ModuleManager moduleManager = SixSevenClient.modules();
-      return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(temp) : temp;
+      return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(f) : f;
    }
 
    @ModifyExpressionValue(
@@ -92,6 +92,6 @@ public class GameRendererMixin {
    )
    private boolean sixsevenclient$freecamRenderFirstPersonHands(boolean flag) {
       FreecamModule freecamModule = FreecamModule.get();
-      return freecamModule != null && freecamModule.isActive() && freecamModule.renderHands() ? true : temp;
+      return freecamModule != null && freecamModule.isActive() && freecamModule.renderHands() ? true : flag;
    }
 }
