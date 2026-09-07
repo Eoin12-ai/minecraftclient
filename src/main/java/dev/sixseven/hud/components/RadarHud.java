@@ -99,7 +99,7 @@ public class RadarHud extends HudComponent {
                   float f38 = f22 + screenX(f34, f35, f26) / Math.max(f36, 0.001F) * f37 * (f - f33 / 2.0F - 3.0F);
                   float f39 = f23 + screenY(f34, f35, f26) / Math.max(f36, 0.001F) * f37 * (f - f33 / 2.0F - 3.0F);
                   if (this.module.radarHeads.get()) {
-                     int step = NVGImages.wrapGlTexture(abstractClientPlayerEntity.getSkin().getTexture(), 64, 64);
+                     int step = NVGImages.wrapGlTexture(abstractClientPlayerEntity.getSkinTextures().texture(), 64, 64);
                      if (step > 0) {
                         float f40 = f38 - f33 / 2.0F;
                         float f41 = f39 - f33 / 2.0F;
