@@ -38,12 +38,12 @@ public class ClientPacketListenerMixin {
       if (moduleManager != null) {
          try {
             if (moduleManager.fakePay != null && moduleManager.fakePay.tryIntercept(str)) {
-               temp.cancel();
+               callbackInfo.cancel();
                return;
             }
 
             if (moduleManager.fakeStats != null && moduleManager.fakeStats.tryInterceptBalance(str)) {
-               temp.cancel();
+               callbackInfo.cancel();
             }
          } catch (Exception ex) {
          }
