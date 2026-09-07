@@ -37,12 +37,12 @@ public class ClientPacketListenerMixin {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager != null) {
          try {
-            if (moduleManager.fakePay != null && moduleManager.fakePay.tryIntercept(temp2)) {
+            if (moduleManager.fakePay != null && moduleManager.fakePay.tryIntercept(str)) {
                temp.cancel();
                return;
             }
 
-            if (moduleManager.fakeStats != null && moduleManager.fakeStats.tryInterceptBalance(temp2)) {
+            if (moduleManager.fakeStats != null && moduleManager.fakeStats.tryInterceptBalance(str)) {
                temp.cancel();
             }
          } catch (Exception ex) {
@@ -58,7 +58,7 @@ public class ClientPacketListenerMixin {
       BlockEntityEspModule blockEntityEspModule = module();
       if (blockEntityEspModule != null && blockEntityEspModule.isEnabled() && blockEntityEspModule.chunkPacketsEnabled()) {
          try {
-            temp.getChunkData().getBlockEntities(temp.getChunkX(), temp.getChunkZ()).accept((arg, arg2, arg3) -> temp2.record(arg, arg2));
+            chunkDataS2CPacket.getChunkData().getBlockEntities(chunkDataS2CPacket.getChunkX(), chunkDataS2CPacket.getChunkZ()).accept((arg, arg2, arg3) -> blockEntityEspModule.record(arg, arg2));
          } catch (Exception ex) {
          }
       }
@@ -72,7 +72,7 @@ public class ClientPacketListenerMixin {
       BlockEntityEspModule blockEntityEspModule = module();
       if (blockEntityEspModule != null && blockEntityEspModule.isEnabled() && blockEntityEspModule.beUpdatePacketsEnabled()) {
          try {
-            temp2.record(temp.getPos(), temp.getBlockEntityType());
+            blockEntityEspModule.record(blockEntityUpdateS2CPacket.getPos(), blockEntityUpdateS2CPacket.getBlockEntityType());
          } catch (Exception ex) {
          }
       }
@@ -96,7 +96,7 @@ public class ClientPacketListenerMixin {
       SpawnerProtectModule spawnerProtectModule = spawnerProtect();
       if (spawnerProtectModule != null && spawnerProtectModule.isEnabled() && MinecraftClient.getInstance().isOnThread()) {
          try {
-            temp2.onBlockDestructionPacket(temp.getEntityId(), temp.getPos());
+            spawnerProtectModule.onBlockDestructionPacket(blockBreakingProgressS2CPacket.getEntityId(), blockBreakingProgressS2CPacket.getPos());
          } catch (Exception ex) {
          }
       }
@@ -110,7 +110,7 @@ public class ClientPacketListenerMixin {
       SpawnerProtectModule spawnerProtectModule = spawnerProtect();
       if (spawnerProtectModule != null && spawnerProtectModule.isEnabled() && spawnerProtectModule.detectBlockUpdatesEnabled() && MinecraftClient.getInstance().isOnThread()) {
          try {
-            temp2.onServerBlockUpdate(temp.getPos(), temp.getState(), false);
+            spawnerProtectModule.onServerBlockUpdate(blockUpdateS2CPacket.getPos(), blockUpdateS2CPacket.getState(), false);
          } catch (Exception ex) {
          }
       }
@@ -124,7 +124,7 @@ public class ClientPacketListenerMixin {
       SpawnerProtectModule spawnerProtectModule = spawnerProtect();
       if (spawnerProtectModule != null && spawnerProtectModule.isEnabled() && spawnerProtectModule.detectBlockUpdatesEnabled() && MinecraftClient.getInstance().isOnThread()) {
          try {
-            temp.visitUpdates((arg, arg2) -> temp2.onServerBlockUpdate(arg, arg2, true));
+            chunkDeltaUpdateS2CPacket.visitUpdates((arg, arg2) -> spawnerProtectModule.onServerBlockUpdate(arg, arg2, true));
          } catch (Exception ex) {
          }
       }
