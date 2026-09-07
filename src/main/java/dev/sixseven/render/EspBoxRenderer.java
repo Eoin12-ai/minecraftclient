@@ -6,7 +6,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.MatrixStack.Entry;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3f;
-import org.joml.net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3d;
 
 public final class EspBoxRenderer {
    private static final float TRACER_START = 0.35F;
