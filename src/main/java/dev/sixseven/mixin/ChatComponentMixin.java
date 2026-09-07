@@ -27,7 +27,7 @@ public class ChatComponentMixin {
          }
 
          if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled()) {
-            text = moduleManager.nameProtect.censorChat(modified);
+            modified = moduleManager.nameProtect.censorChat(modified);
          }
 
          return modified;
