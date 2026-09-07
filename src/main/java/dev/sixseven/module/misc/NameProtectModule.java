@@ -105,7 +105,7 @@ public class NameProtectModule extends Module {
          }
       }
 
-      linkedHashMap.entrySet().removeIf(arg -> ((java.util.Map.Entry<String,String>)arg).getKey().equalsIgnoreCase(((java.util.Map.Entry<String,String>)arg).getValue()));
+      linkedHashMap.entrySet().removeIf(arg -> { java.util.Map.Entry<String,String> e = (java.util.Map.Entry<String,String>)arg; return e.getKey().equalsIgnoreCase(e.getValue()); });
       return linkedHashMap;
    }
 
@@ -126,7 +126,7 @@ public class NameProtectModule extends Module {
       } else {
          ArrayList<String> list = new ArrayList<>(map.keySet());
          list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
-         StringBuilder sb = new StringBuilder("[\u0013!G:Ã»Ã°Ã\u0092ÄºÅÄ¹Ä¢ÇÇ©ÆÆ³ÉÈ®É¨ÉµË");
+         StringBuilder sb = new StringBuilder("[\u0013!G:ÃÂ»ÃÂ°ÃÂ\u0092ÃÂºÃÂÃÂ¹ÃÂ¢ÃÂÃÂ©ÃÂÃÂ³ÃÂÃÂ®ÃÂ¨ÃÂµÃÂ");
 
          for (int n = 0; n < list.size(); n++) {
             if (n > 0) {
