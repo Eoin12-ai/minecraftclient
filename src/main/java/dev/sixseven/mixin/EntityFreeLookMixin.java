@@ -20,8 +20,8 @@ public class EntityFreeLookMixin {
       if (this == client.player) {
          FreeLookModule freeLookModule = FreeLookModule.get();
          if (freeLookModule != null && freeLookModule.cameraMode()) {
-            freeLookModule.addCameraLook(temp, temp3);
-            temp2.cancel();
+            freeLookModule.addCameraLook(d, d2);
+            callbackInfo.cancel();
          }
       }
    }
