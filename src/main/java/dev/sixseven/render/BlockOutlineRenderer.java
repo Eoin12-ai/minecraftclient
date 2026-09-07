@@ -28,6 +28,7 @@ public final class BlockOutlineRenderer {
     }
 
     private static float pulseFactor(BlockOutlineModule mod, double t) {
-        return mod.pulse.get() ? (float)(Math.sin(t * 2.0 * Math.PI * mod.pulseSpeed.getFloat()) * 0.5 + 0.5) : 1.0f;
+        boolean isPulse = "Pulse".equals(mod.animation.get());
+        return isPulse ? (float)(Math.sin(t * 2.0 * Math.PI * 1.5) * 0.5 + 0.5) : 1.0f;
     }
 }
