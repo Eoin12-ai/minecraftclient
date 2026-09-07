@@ -76,7 +76,7 @@ public final class ServerLightCache {
                int n15 = this.cacheLight5(chunkKey, b);
                if (DEBUG_LOG && n15 > 0) {
                   SixSevenClient.LOGGER
-                     .info("(_=\u001d?¨¥\u008d¡ďĴŃİƕǰǀǷȔȟȕɴʂʈʎʠ͕̃̇͜Ιίϖ\u03a2πЏТІѪӁңҪҴԅմ\u0557՟\u05cdײך֡\u0605ذ", new Object[]{n, n14, n10, n15});
+                     .info("(_=\u001d?Â¨Â¥\u008dÂ¡ÄÄ´ÅÄ°ÆÇ°ÇÇ·ÈÈÈÉ´ÊÊÊÊ ÌÍÌÍÎÎ¯Ï\u03a2ÏÐÐ¢ÐÑªÓÒ£ÒªÒ´ÔÕ´\u0557Õ\u05cd×²×Ö¡\u0605Ø°", new Object[]{n, n14, n10, n15});
                }
 
                found = true;
@@ -171,7 +171,7 @@ public final class ServerLightCache {
          }
       }
 
-      return (List<BlockPos>)(list == null ? List.of() : list);
+      @SuppressWarnings("unchecked") List<BlockPos> result = (List<BlockPos>)(list == null ? List.of() : list); return result;
    }
 
    public void injectForTest(int n, int n10, int n11, int n12) {
