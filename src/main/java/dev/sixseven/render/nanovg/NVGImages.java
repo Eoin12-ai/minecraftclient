@@ -89,10 +89,14 @@ public final class NVGImages {
       }
    }
 
+   private static int getTextureId(net.minecraft.client.texture.AbstractTexture t) {
+      try { return t.getGlId(); } catch (Exception e) { return 0; }
+   }
+
    public static int wrapGlTexture(Identifier id, int n, int localX) {
       AbstractTexture client = MinecraftClient.getInstance().getTextureManager().getTexture(id);
       if (client != null) {
-         int localZ = client.getGlId();
+         int localZ = getTextureId(client);
          return GL_HANDLE_CACHE.computeIfAbsent(localZ, arg -> NanoVGGL3.nvglCreateImageFromHandle(NVGRenderer.get().ctx(), arg, n, localX, 65536));
       } else {
          return -1;
