@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin({AbstractClientPlayerEntity.class})
 public class AbstractClientPlayerMixin {
    @Inject(
-      method = {"getSkin"},
+      method = {"getSkinTextures"},
       at = {@At("RETURN")},
       cancellable = true
    )
