@@ -180,7 +180,7 @@ public class SusChunkScanner {
       this.detectGrowth(client, chunk, chunkKey2);
       chunkKey2.computeScore();
       if (DEBUG_LOG && chunkKey2.coord > 0.0) {
-         SixSevenClient.LOGGER.info("(_=\u001dOä¯\u0082¼ĕĂŃĸƍƳǇǽȔȃɐɡʂʈʂʳ̗̜̍̏ϋϨ", new Object[]{chunk.getPos(), chunkKey2.coord, chunkKey2.hits});
+         SixSevenClient.LOGGER.info("(_=\u001dOÃ¤Â¯\u0082Â¼ÄÄÅÄ¸ÆÆ³ÇÇ½ÈÈÉÉ¡ÊÊÊÊ³ÌÌÌÌÏÏ¨", new Object[]{chunk.getPos(), chunkKey2.coord, chunkKey2.hits});
       }
 
       return chunkKey2;
@@ -196,7 +196,7 @@ public class SusChunkScanner {
             if ((state.isAir() || state.isOf(Blocks.AMETHYST_CLUSTER)) && hasAmethystNeighbour(client, pos, mutablePos)) {
                chunkScore.amethystCells.add(pos.toImmutable());
                if (DEBUG_LOG) {
-                  SixSevenClient.LOGGER.info("(_=\u001dOä\u008d§\u008cįġĺĐƤƳǘǷȜșɁɱˌ˕ˁʾ̒̕͜͡ϋϨϖϱφђѧ", pos, state.isAir() ? "hidden" : "visible");
+                  SixSevenClient.LOGGER.info("(_=\u001dOÃ¤\u008dÂ§\u008cÄ¯Ä¡ÄºÄÆ¤Æ³ÇÇ·ÈÈÉÉ±ËËËÊ¾ÌÌÍÍ¡ÏÏ¨ÏÏ±ÏÑÑ§", pos, state.isAir() ? "hidden" : "visible");
                }
             }
          }
@@ -268,7 +268,7 @@ public class SusChunkScanner {
          if (matches && n >= 8 || n >= 14) {
             chunkScore.add(SusChunkScanner.SignalType.KELP, pos);
             if (DEBUG_LOG) {
-               SixSevenClient.LOGGER.info("(_=\u001dOä\u0087¯\u0085īŉģĸƍƳǜǻȒȖɝȨ˄ʎ˟˻̘̓̄͠ϗϰϋ\u03a2π", new Object[]{pos, n, matches});
+               SixSevenClient.LOGGER.info("(_=\u001dOÃ¤\u0087Â¯\u0085Ä«ÅÄ£Ä¸ÆÆ³ÇÇ»ÈÈÉÈ¨ËÊËË»ÌÌÌÍ ÏÏ°Ï\u03a2Ï", new Object[]{pos, n, matches});
             }
          }
       } else if (block == Blocks.BAMBOO && this.module.bamboo.get()) {
@@ -280,14 +280,14 @@ public class SusChunkScanner {
          if (localZ >= 12) {
             chunkScore.add(SusChunkScanner.SignalType.BAMBOO, pos);
             if (DEBUG_LOG) {
-               SixSevenClient.LOGGER.info("(_=\u001dOä\u008e«\u0084ĹĦĬţưǨǉƾȓȔɜȻʑʁʟʠ̃", pos, localZ);
+               SixSevenClient.LOGGER.info("(_=\u001dOÃ¤\u008eÂ«\u0084Ä¹Ä¦Ä¬Å£Æ°Ç¨ÇÆ¾ÈÈÉÈ»ÊÊÊÊ Ì", pos, localZ);
             }
          }
       } else if (block == Blocks.SWEET_BERRY_BUSH && this.module.berries.get()) {
          if (state.contains(Properties.AGE_3) && (Integer)state.get(Properties.AGE_3) == 3) {
             chunkScore.add(SusChunkScanner.SignalType.BERRIES, pos);
             if (DEBUG_LOG) {
-               SixSevenClient.LOGGER.info("(_=\u001dOä\u008e¯\u009bĩĠĦĐǐǾǕǦɛȐɒȹ˙ʵ˙ʦ", pos);
+               SixSevenClient.LOGGER.info("(_=\u001dOÃ¤\u008eÂ¯\u009bÄ©Ä Ä¦ÄÇÇ¾ÇÇ¦ÉÈÉÈ¹ËÊµËÊ¦", pos);
             }
          }
       } else if (block == Blocks.VINE && this.module.vines.get()) {
@@ -299,7 +299,7 @@ public class SusChunkScanner {
          if (localY >= 7) {
             chunkScore.add(SusChunkScanner.SignalType.VINES, pos);
             if (DEBUG_LOG) {
-               SixSevenClient.LOGGER.info("(_=\u001dOä\u009a£\u0087ľĺŃăƋǮƔǶȚȟɒɡʂʈ", pos, localY);
+               SixSevenClient.LOGGER.info("(_=\u001dOÃ¤\u009aÂ£\u0087Ä¾ÄºÅÄÆÇ®ÆÇ¶ÈÈÉÉ¡ÊÊ", pos, localY);
             }
          }
       } else if (block == Blocks.POINTED_DRIPSTONE && this.module.dripstone.get()) {
@@ -312,7 +312,7 @@ public class SusChunkScanner {
          if (step >= 5) {
             chunkScore.add(SusChunkScanner.SignalType.DRIPSTONE, pos);
             if (DEBUG_LOG) {
-               SixSevenClient.LOGGER.info("(_=\u001dOä\u0088¸\u0080īĺķČƾǖƔǞȀȌȕȰʜʛ˅ʯ̖̈́̇͜", pos, step);
+               SixSevenClient.LOGGER.info("(_=\u001dOÃ¤\u0088Â¸\u0080Ä«ÄºÄ·ÄÆ¾ÇÆÇÈÈÈÈ°ÊÊËÊ¯ÌÍÌÍ", pos, step);
             }
          }
       }
@@ -343,7 +343,7 @@ public class SusChunkScanner {
 
       for (SusChunkScanner.ChunkScore chunkScore : this.scores.values()) {
          if (chunkScore.coord >= (double)n) {
-            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(k); return fa; });
             flagAggregate.coord = Math.max(flagAggregate.coord, chunkScore.coord);
             flagAggregate.hitWeight = flagAggregate.hitWeight + chunkScore.hitWeight;
             flagAggregate.hitX = flagAggregate.hitX + chunkScore.hitX;
@@ -354,7 +354,7 @@ public class SusChunkScanner {
       for (SusChunkScanner.Geode geode : this.clusterGeodes()) {
          if (!(geode.coord() < (double)n)) {
             for (long l : geode.chunks()) {
-               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(k); return fa; });
                flagAggregate2.coord = Math.max(flagAggregate2.coord, geode.coord());
             }
 
@@ -374,7 +374,7 @@ public class SusChunkScanner {
             if (DEBUG_LOG) {
                SixSevenClient.LOGGER
                   .info(
-                     "(_=\u001dOä\u008b¯\u0086ĿĬŃĸƍƳǗǻȗȝɆɼ˖˕˙ʦ͔̔̚͞ϞϾ΅ϵΝќЭЀѿӌӷӼӼԅԩԆԌע\u05caײ։",
+                     "(_=\u001dOÃ¤\u008bÂ¯\u0086Ä¿Ä¬ÅÄ¸ÆÆ³ÇÇ»ÈÈÉÉ¼ËËËÊ¦ÍÌÌÍÏÏ¾ÎÏµÎÑÐ­ÐÑ¿ÓÓ·Ó¼Ó¼ÔÔ©ÔÔ×¢\u05ca×²Ö",
                      new Object[]{geode.cells().size(), geode.chunks().size(), geode.coord()}
                   );
             }
@@ -445,7 +445,7 @@ public class SusChunkScanner {
             }
 
             double currentScore2 = SusChunkScanner.SignalType.AMETHYST.weight * (double)Math.min(list3.size(), SusChunkScanner.SignalType.AMETHYST.cap);
-            list2.add(new SusChunkScanner.Zone(List.copyOf(list3), Set.copyOf(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
+            list2.add(new SusChunkScanner.Zone(List.copyOf(list3), new java.util.HashSet<Long>(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
          }
 
          return List.copyOf(list2);
@@ -552,12 +552,12 @@ public class SusChunkScanner {
                int n = (int)Math.round(zone.centroidX());
                int localX = (int)Math.round(zone.centroidZ());
                int localZ = (int)Math.hypot((double)n - client.player.getX(), (double)localX - client.player.getZ());
-               String text = "Sus zone · " + localZ + "m · " + n + ", " + localX;
+               String text = "Sus zone Â· " + localZ + "m Â· " + n + ", " + localX;
                if (this.module.notifications.is("Toast") && SixSevenClient.notifications() != null) {
                   SixSevenClient.notifications().pushInfo(text);
                   UiSounds.notification(true);
                } else if (this.module.notifications.is("Chat")) {
-                  client.player.sendMessage(Text.literal("§d[67] §f" + text), false);
+                  client.player.sendMessage(Text.literal("Â§d[67] Â§f" + text), false);
                }
             }
          }
