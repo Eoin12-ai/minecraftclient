@@ -92,7 +92,7 @@ public final class HitParticleRenderer {
 
             FlatOverlay.flush(immediate);
             if (active) {
-               VertexConsumer consumer3 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
+               VertexConsumer consumer3 = immediate.getBuffer(net.minecraft.client.render.RenderLayer.getEntityTranslucentEmissive(TEXTURE_67));
 
                for (HitParticlesModule.HitParticle hitParticle3 : deque) {
                   if (hitParticle3.styleId == 3) {
