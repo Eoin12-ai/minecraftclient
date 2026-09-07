@@ -328,7 +328,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       return OverlayRenderer.guiToUi(d);
    }
 
-   public boolean mouseClicked(double _cx, double _cy, int value) {
+   public boolean mouseClicked(double _cx, double _cy, int _cb) {
       float f = this.ux(_cx);
       float f3 = this.ux(_cy);
       IconPickerScreen.Layout layout2 = this.layout();
@@ -454,7 +454,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
          this.close();
          return true;
       } else {
-         return super.keyPressed(_key, _scan, _mods);
+         return super.keyPressed(_key, _scan, keyInput);
       }
    }
 
