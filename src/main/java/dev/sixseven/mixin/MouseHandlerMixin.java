@@ -29,11 +29,7 @@ public class MouseHandlerMixin {
    private void sixsevenclient$aimAssist(double d, CallbackInfo callbackInfo) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager != null && moduleManager.aimAssist != null && moduleManager.aimAssist.isEnabled()) {
-         double[] deltas = moduleManager.aimAssist.computePixels(this.cursorDeltaX, this.cursorDeltaY);
-         if (d != null) {
-            this.cursorDeltaX = this.cursorDeltaX + d[0];
-            this.cursorDeltaY = this.cursorDeltaY + d[1];
-         }
+         double[] deltas = moduleManager.aimAssist.computePixels(this.cursorDeltaX, this.cursorDeltaY, 1.0); if (deltas != null) { this.cursorDeltaX = this.cursorDeltaX + deltas[0]; this.cursorDeltaY = this.cursorDeltaY + deltas[1]; }
       }
    }
 
