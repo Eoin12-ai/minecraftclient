@@ -206,7 +206,7 @@ public class AdminDetectorModule extends Module {
       HashMap var3 = new HashMap();
 
       for (PlayerListEntry var5 : var2) {
-         String var6 = var5.getProfile() != null ? var5.getProfile().name() : "";
+         String var6 = var5.getProfile() != null ? var5.getProfile().getName() : "";
          SkinTextures var7 = var5.getSkinTextures();
          String var8 = var5.getDisplayName() != null ? var5.getDisplayName().getString() : "";
 
@@ -223,7 +223,7 @@ public class AdminDetectorModule extends Module {
    private void run3(Set<String> var1, Map<String, AdminDetectorModule.Inner1> var2) {
       if (class310.world != null) {
          for (PlayerEntity var4 : class310.world.getPlayers()) {
-            String var5 = var4.getGameProfile() != null ? var4.getGameProfile().name() : "";
+            String var5 = var4.getGameProfile() != null ? var4.getGameProfile().getName() : "";
             String var6 = var4.getDisplayName() != null ? var4.getDisplayName().getString() : "";
 
             for (String var8 : this.setOf(var1, var5, var6)) {
@@ -275,8 +275,8 @@ public class AdminDetectorModule extends Module {
          int var11 = ((Integer)this.val6.getObject()) >= 0 ? this.val6.getObject() : 10;
          int var12 = ((Integer)this.val7.getObject()) >= 0 ? this.val7.getObject() : 10;
          int var13 = AdminDetectorModuleUtil.getInt();
-         Matrix3x2f var14 = var1.getMatrices();
-         var14.pushMatrix();
+         net.minecraft.client.util.math.MatrixStack var14 = var1.getMatrices();
+         var14.push();
          var14.translate(var11, var12);
          var14.scale(var8, var8);
          AdminDetectorModuleUtil.run2(var1, 0, 0, var9, var10, 6, -301265901);
@@ -289,7 +289,7 @@ public class AdminDetectorModule extends Module {
          AdminDetectorModuleUtil.run(var1, 8, 22, var9 - 16, 1, AdminDetectorModuleUtil.intOf(var13, 0.22F));
          if (var4.isEmpty()) {
             var1.drawText(var3, Text.literal("No admins online"), 8, 30, -7565402, false);
-            var14.popMatrix();
+            var14.pop();
          } else {
             byte var17 = 26;
             int var18 = 0;
@@ -302,7 +302,7 @@ public class AdminDetectorModule extends Module {
                var18++;
             }
 
-            var14.popMatrix();
+            var14.pop();
          }
       }
    }
