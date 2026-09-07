@@ -19,10 +19,10 @@ public class EntityFreecamMixin {
    private void sixsevenclient$freecamSeeOwnBody(PlayerEntity player, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
       Entity entity = (Entity)this;
       MinecraftClient client = MinecraftClient.getInstance();
-      if (client.player != null && entity == client.player && temp == client.player) {
+      if (client.player != null && entity == client.player && player == client.player) {
          FreecamModule freecamModule = FreecamModule.get();
          if (freecamModule != null && freecamModule.isActive() && freecamModule.isShowPlayerModel()) {
-            temp2.setReturnValue(false);
+            callbackInfoReturnable.setReturnValue(false);
          }
       }
    }
