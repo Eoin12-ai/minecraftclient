@@ -52,12 +52,12 @@ public class MouseHandlerMixin {
          if (client.currentScreen instanceof ChatScreen && mouseInputButton == 0 && SixSevenClient.hud() != null) {
             if (mouseInputAction == 1) {
                if (HudDragController.tryStartDrag(SixSevenClient.hud())) {
-                  temp2.cancel();
+                  callbackInfo.cancel();
                }
             } else if (mouseInputAction == 0 && HudDragController.isDragging()) {
                HudDragController.stopDrag();
                SixSevenClient.config().save();
-               temp2.cancel();
+               callbackInfo.cancel();
             }
          }
       }
@@ -81,7 +81,7 @@ public class MouseHandlerMixin {
       if (moduleManager != null && moduleManager.zoom != null && value2 instanceof Double value) {
          double d = moduleManager.zoom.currentFactor();
          if (d <= 1.0001) {
-            return temp;
+            return value2;
          } else {
             double coord = value * 0.6 + 0.2;
             double currentScore = coord / Math.cbrt(d);
@@ -89,7 +89,7 @@ public class MouseHandlerMixin {
             return Math.max(0.0, coord3);
          }
       } else {
-         return temp;
+         return value2;
       }
    }
 
@@ -104,7 +104,7 @@ public class MouseHandlerMixin {
          && client.currentScreen instanceof ChatScreen
          && SixSevenClient.hud() != null
          && HudDragController.tryResize(SixSevenClient.hud(), coord)) {
-         temp3.cancel();
+         callbackInfo.cancel();
       }
    }
 }
