@@ -21,7 +21,7 @@ public class MultiPlayerGameModeAttackMixin {
       if (player == MinecraftClient.getInstance().player && entity != player) {
          ModuleManager moduleManager = SixSevenClient.modules();
          if (moduleManager != null && moduleManager.hitParticles != null && moduleManager.hitParticles.isEnabled()) {
-            moduleManager.hitParticles.onHit(temp);
+            moduleManager.hitParticles.onHit(entity);
          }
       }
    }
