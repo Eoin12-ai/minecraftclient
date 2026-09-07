@@ -29,7 +29,7 @@ public class EquipmentLayerRendererMixin {
       } else {
          ArmorTrimHiderModule armorTrimHiderModule = moduleManager.armorTrimHider;
          if (armorTrimHiderModule != null && armorTrimHiderModule.isEnabled()) {
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(value3) ? value3 : armorTrimHiderModule.mapTrim(value2, (ArmorTrim)value3);
+            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(value3) ? value3 : armorTrimHiderModule.mapTrim((ItemStack)value2, (ArmorTrim)value3);
          } else {
             return value3;
          }
