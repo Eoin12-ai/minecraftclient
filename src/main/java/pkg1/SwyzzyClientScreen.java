@@ -200,7 +200,7 @@ public final class SwyzzyClientScreen extends Screen {
          this.close();
          return true;
       } else if (var2 != SwyzzyAddon.val7.getInt() || this.class342 != null && this.class342.isFocused()) {
-         return super.keyPressed(_key, _scan, _mods);
+         return super.keyPressed(_key, _scan, var1);
       } else {
          this.close();
          return true;
