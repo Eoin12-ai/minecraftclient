@@ -13,7 +13,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.chunk.WorldChunk;
-import org.joml.Vector3fc;
+import org.joml.net.minecraft.util.math.Vec3d;
 
 public final class BlockEspRenderer {
    private static final int MAX_CHUNK_RADIUS = 12;
