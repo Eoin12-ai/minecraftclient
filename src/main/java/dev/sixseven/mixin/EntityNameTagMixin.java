@@ -26,37 +26,37 @@ public class EntityNameTagMixin {
    )
    private void sixsevenclient$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, Object orderedRenderCommandQueue, Object cameraRenderState, CallbackInfo callbackInfo) {
       ModuleManager moduleManager = SixSevenClient.modules();
-      if (moduleManager != null && temp.displayName != null) {
+      if (moduleManager != null && entityRenderState.displayName != null) {
          NameTagsModule nameTagsModule = moduleManager.nameTags;
          boolean enabled = nameTagsModule != null && nameTagsModule.isEnabled();
          if (enabled) {
-            String text = temp.displayName.getString();
+            String text = entityRenderState.displayName.getString();
             if (isLocalPlayer(text)) {
                if (nameTagsModule.hideOwnTag.get() || nameTagsModule.players.get() && nameTagsModule.self.get()) {
-                  temp2.cancel();
+                  callbackInfo.cancel();
                   return;
                }
             } else if (isOnlinePlayer(text)) {
                if (nameTagsModule.players.get() || nameTagsModule.hidePlayerTags.get()) {
-                  temp2.cancel();
+                  callbackInfo.cancel();
                   return;
                }
             } else if (nameTagsModule.hideOtherTags.get()) {
-               temp2.cancel();
+               callbackInfo.cancel();
                return;
             }
          }
 
          if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled()) {
-            String name2 = moduleManager.nameProtect.replacementForDisplay(temp.displayName.getString());
+            String name2 = moduleManager.nameProtect.replacementForDisplay(entityRenderState.displayName.getString());
             if (name2 != null) {
-               temp.displayName = Text.literal(name2);
+               entityRenderState.displayName = Text.literal(name2);
             }
          }
 
          FakeRolesModule fakeRolesModule = moduleManager.fakeRoles;
-         if (fakeRolesModule != null && isLocalPlayer(temp.displayName.getString())) {
-            temp.displayName = fakeRolesModule.decorateNametag(temp.displayName);
+         if (fakeRolesModule != null && isLocalPlayer(entityRenderState.displayName.getString())) {
+            entityRenderState.displayName = fakeRolesModule.decorateNametag(entityRenderState.displayName);
          }
       }
    }
