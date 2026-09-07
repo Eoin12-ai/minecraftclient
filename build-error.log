@@ -248,11 +248,6 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/ServerLightCache.java:174: error: incompatible types: List<Object> cannot be converted to List<BlockPos>
       return (List<BlockPos>)(list == null ? List.of() : list);
                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:70: error: cannot find symbol
-      return temp;
-             ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:69: error: cannot find symbol
          return temp;
                 ^
@@ -275,31 +270,6 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:35: error: array required, but double found
             this.cursorDeltaY = this.cursorDeltaY + d[1];
                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:55: error: cannot find symbol
-                  temp2.cancel();
-                  ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:60: error: cannot find symbol
-               temp2.cancel();
-               ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:84: error: cannot find symbol
-            return temp;
-                   ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:92: error: cannot find symbol
-         return temp;
-                ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:107: error: cannot find symbol
-         temp3.cancel();
-         ^
-  symbol:   variable temp3
-  location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:22: error: cannot find symbol
          return modified;
                 ^
@@ -398,7 +368,7 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-57 errors
+51 errors
 41 warnings
 
 > Task :compileJava FAILED
@@ -640,11 +610,6 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/ServerLightCache.java:174: error: incompatible types: List<Object> cannot be converted to List<BlockPos>
         return (List<BlockPos>)(list == null ? List.of() : list);
                                ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:70: error: cannot find symbol
-        return temp;
-               ^
-    symbol:   variable temp
-    location: class GuiSidebarMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:69: error: cannot find symbol
            return temp;
                   ^
@@ -667,31 +632,6 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:35: error: array required, but double found
               this.cursorDeltaY = this.cursorDeltaY + d[1];
                                                        ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:55: error: cannot find symbol
-                    temp2.cancel();
-                    ^
-    symbol:   variable temp2
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:60: error: cannot find symbol
-                 temp2.cancel();
-                 ^
-    symbol:   variable temp2
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:84: error: cannot find symbol
-              return temp;
-                     ^
-    symbol:   variable temp
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:92: error: cannot find symbol
-           return temp;
-                  ^
-    symbol:   variable temp
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:107: error: cannot find symbol
-           temp3.cancel();
-           ^
-    symbol:   variable temp3
-    location: class MouseHandlerMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:22: error: cannot find symbol
            return modified;
                   ^
@@ -790,7 +730,7 @@ Execution failed for task ':compileJava'.
   Note: Some input files use unchecked or unsafe operations.
   Note: Recompile with -Xlint:unchecked for details.
   Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-  57 errors
+  51 errors
   41 warnings
 
 * Try:
@@ -1062,11 +1002,6 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/ServerLightCache.java:174: error: incompatible types: List<Object> cannot be converted to List<BlockPos>
       return (List<BlockPos>)(list == null ? List.of() : list);
                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:70: error: cannot find symbol
-      return temp;
-             ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:69: error: cannot find symbol
          return temp;
                 ^
@@ -1089,31 +1024,6 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:35: error: array required, but double found
             this.cursorDeltaY = this.cursorDeltaY + d[1];
                                                      ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:55: error: cannot find symbol
-                  temp2.cancel();
-                  ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:60: error: cannot find symbol
-               temp2.cancel();
-               ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:84: error: cannot find symbol
-            return temp;
-                   ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:92: error: cannot find symbol
-         return temp;
-                ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:107: error: cannot find symbol
-         temp3.cancel();
-         ^
-  symbol:   variable temp3
-  location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:22: error: cannot find symbol
          return modified;
                 ^
@@ -1212,7 +1122,7 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-57 errors
+51 errors
 41 warnings
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
@@ -1372,5 +1282,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 1m 6s
+BUILD FAILED in 56s
 1 actionable task: 1 executed
