@@ -105,10 +105,10 @@ public class SkinProtectModule extends Module {
          }
 
          GameProfile gameProfile = new GameProfile(uuid, name);
-         gameProfile.properties().putAll(linkedHashMultimap);
+         gameProfile.getProperties().putAll(linkedHashMultimap);
          MinecraftClient.getInstance().getSkinProvider().fetchSkinTextures(gameProfile).thenAccept(skinTextures -> {
              if (skinTextures != null) {
-                this.replacement = skinTextures;;
+                this.replacement = skinTextures;
                SixSevenClient.LOGGER.info("(\u007f#\u0007|\u0094¾\u0085½ĞĊėĞǐǟǛǿȟȔɑɼʊʞˋʵ̟͓̓͞ΐϮ\u038b", name);
             } else {
                SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094¾\u0085½ĞĊėĞǐǐǛǫȗȕȕȲʖʁʂʷ̘̘̑́σϾΟηΝћЫЗѹӜҥӢҡՃիՊԌן\u05fb", name);
