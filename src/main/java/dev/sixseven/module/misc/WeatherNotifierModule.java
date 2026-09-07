@@ -8,6 +8,7 @@ import dev.sixseven.settings.BooleanSetting;
 import dev.sixseven.settings.ModeSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -80,7 +81,7 @@ public class WeatherNotifierModule extends Module {
 
          if (this.sound.get()) {
             float f = value ? 1.2F : 0.8F;
-            client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f));
+            client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), f));
          }
       }
    }
