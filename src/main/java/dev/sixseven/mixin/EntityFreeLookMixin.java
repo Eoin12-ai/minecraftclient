@@ -17,7 +17,7 @@ public class EntityFreeLookMixin {
    )
    private void sixsevenclient$freeLookTurn(double d, double d2, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
-      if (this == client.player) {
+      if ((Object)this == client.player) {
          FreeLookModule freeLookModule = FreeLookModule.get();
          if (freeLookModule != null && freeLookModule.cameraMode()) {
             freeLookModule.addCameraLook(d, d2);
