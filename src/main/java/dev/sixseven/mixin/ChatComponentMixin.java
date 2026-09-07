@@ -19,11 +19,11 @@ public class ChatComponentMixin {
    private Text sixsevenclient$censorChat(Text text) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager == null) {
-         return temp;
+         return text;
       } else {
-         Text text = temp;
+         Text modified = text;
          if (moduleManager.fakeRoles != null) {
-            text = moduleManager.fakeRoles.decorateChat(temp);
+            modified = moduleManager.fakeRoles.decorateChat(text);
          }
 
          if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled()) {
