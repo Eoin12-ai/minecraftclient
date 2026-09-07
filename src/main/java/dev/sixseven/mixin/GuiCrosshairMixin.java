@@ -22,7 +22,7 @@ public class GuiCrosshairMixin {
    private void sixsevenclient$hideVanillaCrosshair(DrawContext context, RenderTickCounter renderTickCounter, CallbackInfo callbackInfo) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager != null && moduleManager.customCrosshair != null && moduleManager.customCrosshair.shouldHideVanilla()) {
-         temp.cancel();
+         callbackInfo.cancel();
       }
    }
 
@@ -35,6 +35,6 @@ public class GuiCrosshairMixin {
    )
    private boolean sixsevenclient$freecamCrosshairInThirdPerson(boolean flag) {
       FreecamModule freecamModule = FreecamModule.get();
-      return freecamModule != null && freecamModule.isActive() && freecamModule.isShowPlayerModel() && !temp ? true : temp;
+      return freecamModule != null && freecamModule.isActive() && freecamModule.isShowPlayerModel() && !flag ? true : flag;
    }
 }
