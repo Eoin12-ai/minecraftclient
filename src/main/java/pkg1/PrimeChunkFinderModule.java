@@ -554,7 +554,7 @@ public final class PrimeChunkFinderModule extends Module {
 
    private void run16() {
       if (Boolean.TRUE.equals(this.val12.getObject()) && class310.player != null && class310.getSoundManager() != null) {
-         class310.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.ENTITY_PLAYER_LEVELUP.value(), 1.0F));
+         class310.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0F));
       }
    }
 
