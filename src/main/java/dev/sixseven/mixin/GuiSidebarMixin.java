@@ -25,7 +25,7 @@ public class GuiSidebarMixin {
    private void sixsevenclient$beginSidebar(DrawContext context, ScoreboardObjective scoreboardObjective, CallbackInfo callbackInfo) {
       FakeStatsModule fakeStatsModule = fakeStats();
       if (fakeStatsModule != null) {
-         temp.beginSidebar();
+         fakeStatsModule.beginSidebar();
       }
    }
 
@@ -39,14 +39,14 @@ public class GuiSidebarMixin {
    )
    private int sixsevenclient$lineWidth(TextRenderer textRenderer, StringVisitable stringVisitable) {
       FakeStatsModule fakeStatsModule = fakeStats();
-      if (fakeStatsModule != null && temp2 instanceof Text text) {
+      if (fakeStatsModule != null && stringVisitable instanceof Text text) {
          try {
-            return temp.getWidth(fakeStatsModule.rewriteForWidth(text));
+            return textRenderer.getWidth(fakeStatsModule.rewriteForWidth(text));
          } catch (Exception ex) {
          }
       }
 
-      return temp.getWidth(temp2);
+      return textRenderer.getWidth(temp2);
    }
 
    @ModifyArg(
@@ -62,7 +62,7 @@ public class GuiSidebarMixin {
       FakeStatsModule fakeStatsModule = fakeStats();
       if (fakeStatsModule != null) {
          try {
-            return fakeStatsModule.rewriteForDraw(temp);
+            return fakeStatsModule.rewriteForDraw(text);
          } catch (Exception ex) {
          }
       }
