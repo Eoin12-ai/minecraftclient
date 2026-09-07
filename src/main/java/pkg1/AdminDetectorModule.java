@@ -228,7 +228,7 @@ public class AdminDetectorModule extends Module {
 
             for (String var8 : this.setOf(var1, var5, var6)) {
                String var9 = !var5.isBlank() ? var5 : addSetting2(var6);
-               SkinTextures var10 = var4 instanceof AbstractClientPlayerEntity var11 ? var11.getSkin() : this.map2.get(var8);
+               SkinTextures var10 = var4 instanceof AbstractClientPlayerEntity var11 ? var11.getSkinTextures() : this.map2.get(var8);
                var2.putIfAbsent(var8, new Inner1(var9, var10));
                this.run11(var8, var10);
             }
@@ -277,8 +277,8 @@ public class AdminDetectorModule extends Module {
          int var13 = AdminDetectorModuleUtil.getInt();
          net.minecraft.client.util.math.MatrixStack var14 = var1.getMatrices();
          var14.push();
-         var14.translate(var11, var12);
-         var14.scale(var8, var8);
+         var14.translate((double)var11, (double)var12, 0.0);
+         var14.scale(var8, var8, var8);
          AdminDetectorModuleUtil.run2(var1, 0, 0, var9, var10, 6, -301265901);
          AdminDetectorModuleUtil.run3(var1, 0, 0, var9, 3, 3, 0, var13);
          var1.drawText(var3, Text.literal("ADMIN LIST"), 8, 10, var13, false);
@@ -404,7 +404,7 @@ public class AdminDetectorModule extends Module {
    }
 
    private static String addSetting2(String var0) {
-      return var0.replaceAll("(?i)§[0-9A-FK-OR]", "").trim();
+      return var0.replaceAll("(?i)Â§[0-9A-FK-OR]", "").trim();
    }
 
    private static String stringOf(AdminDetectorModule.Inner4 var0) {
