@@ -177,8 +177,8 @@ public class NameProtectModule extends Module {
             Object value = obj[n];
             if (value instanceof Text text3) {
                obj4[n] = this.rewrite(text3);
-            } else if (value instanceof String textVal) { String text = textVal;
-               obj4[n] = this.replaceNames(text);
+            } else if (value instanceof String textVal) {
+               obj4[n] = this.replaceNames(textVal);
             } else {
                obj4[n] = value;
             }

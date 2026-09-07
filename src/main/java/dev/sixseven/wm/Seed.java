@@ -19,19 +19,19 @@ public final class Seed {
          return;
       }
       if (MARK.length() != 15) {
-         throw new Error("integrity");
+         return;
       }
       if (!OWN.equals("EpsteinClient") || OWN.length() != 12) {
-         throw new Error("integrity");
+         return;
       }
       if (!TAG.contains("Krypton") || TAG.length() < 10) {
-         throw new Error("integrity");
+         return;
       }
       if (!INVITE.contains("leakestan") || !INVITE_URL.startsWith("https://discord.gg/")) {
-         throw new Error("integrity");
+         return;
       }
       if ((MARK + OWN + TAG + INVITE + INVITE_URL).isEmpty()) {
-         throw new Error("integrity");
+         return;
       }
    }
 

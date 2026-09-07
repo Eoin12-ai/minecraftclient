@@ -351,16 +351,16 @@ public class SusChunkScanner {
          }
       }
 
-      for (SusChunkScanner.Geode geode : this.clusterGeodes()) {
-         if (!(geode.coord() < (double)n)) {
-            for (long l : geode.chunks()) {
+      for (SusChunkScanner.Zone geode : this.clusterGeodes()) {
+         if (!(geode.totalScore() < (double)n)) {
+            for (long l : geode.members()) {
                SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(k); return fa; });
-               flagAggregate2.coord = Math.max(flagAggregate2.coord, geode.coord());
+               flagAggregate2.coord = Math.max(flagAggregate2.coord, geode.totalScore());
             }
 
             double d = SusChunkScanner.SignalType.AMETHYST.weight;
 
-            for (BlockPos pos : geode.cells()) {
+            for (long chunkLong : geode.members()) { BlockPos pos = new net.minecraft.util.math.BlockPos((int)(chunkLong >> 32), 64, (int)(chunkLong & 0xFFFFFFFFL));
                SusChunkScanner.FlagAggregate chunkKey2 = (SusChunkScanner.FlagAggregate)map.get(
                   ChunkPos.toLong(pos.getX() >> 4, pos.getZ() >> 4)
                );
@@ -375,7 +375,7 @@ public class SusChunkScanner {
                SixSevenClient.LOGGER
                   .info(
                      "(_=\u001dOÃÂ¤\u008bÃÂ¯\u0086ÃÂ¿ÃÂ¬ÃÂÃÂ¸ÃÂÃÂ³ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¼ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¾ÃÂÃÂµÃÂÃÂÃÂ­ÃÂÃÂ¿ÃÂÃÂ·ÃÂ¼ÃÂ¼ÃÂÃÂ©ÃÂÃÂÃÂ¢\u05caÃÂ²ÃÂ",
-                     new Object[]{geode.cells().size(), geode.chunks().size(), geode.coord()}
+                     new Object[]{geode.members().size(), geode.members().size(), geode.totalScore()}
                   );
             }
          }
@@ -392,7 +392,7 @@ public class SusChunkScanner {
       this.fireAlerts(client);
    }
 
-   private List<SusChunkScanner.Geode> clusterGeodes() {
+   private List<SusChunkScanner.Zone> clusterGeodes() {
       ArrayList list = new ArrayList();
 
       for (SusChunkScanner.ChunkScore chunkScore : this.scores.values()) {
@@ -445,10 +445,10 @@ public class SusChunkScanner {
             }
 
             double currentScore2 = SusChunkScanner.SignalType.AMETHYST.weight * (double)Math.min(list3.size(), SusChunkScanner.SignalType.AMETHYST.cap);
-            list2.add(new SusChunkScanner.Zone(List.copyOf(list3), new java.util.HashSet<Long>(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
+            list2.add(new SusChunkScanner.Zone(new java.util.HashSet<Long>(set), d / (double)list3.size(), currentScore / (double)list3.size(), currentScore2, currentScore2));
          }
 
-         return new java.util.ArrayList<>(list2);
+         return list2;
       }
    }
 

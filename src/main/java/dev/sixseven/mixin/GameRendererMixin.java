@@ -66,7 +66,7 @@ public class GameRendererMixin {
          double d = moduleManager.zoom.currentFactor();
          return d > 1.0001 ? (float)((double)f / d) : f;
       } else {
-         return cir.getReturnValue();
+         return f;
       }
    }
 

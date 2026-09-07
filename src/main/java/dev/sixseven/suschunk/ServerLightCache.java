@@ -171,7 +171,7 @@ public final class ServerLightCache {
          }
       }
 
-      @SuppressWarnings("unchecked") List<BlockPos> result = (List<BlockPos>)(list == null ? List.of() : list); return result;
+      if (list == null) return java.util.Collections.emptyList(); java.util.List r2 = list; return (java.util.List<net.minecraft.util.math.BlockPos>)r2;
    }
 
    public void injectForTest(int n, int n10, int n11, int n12) {

@@ -90,7 +90,7 @@ public final class NVGImages {
    }
 
    private static int getTextureId(net.minecraft.client.texture.AbstractTexture t) {
-      try { return t.getId(); } catch (Exception e) { return 0; }
+      try { java.lang.reflect.Method m = t.getClass().getMethod("getGlId"); return (int)m.invoke(t); } catch (Exception e) { return 0; }
    }
 
    public static int wrapGlTexture(Identifier id, int n, int localX) {
