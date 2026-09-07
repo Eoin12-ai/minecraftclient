@@ -19,7 +19,7 @@ public class ChatComponentMixin {
    private Text sixsevenclient$censorChat(Text text) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager == null) {
-         return text;
+         return modified;
       } else {
          Text modified = text;
          if (moduleManager.fakeRoles != null) {
@@ -27,10 +27,10 @@ public class ChatComponentMixin {
          }
 
          if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled()) {
-            text = moduleManager.nameProtect.censorChat(text);
+            text = moduleManager.nameProtect.censorChat(modified);
          }
 
-         return text;
+         return modified;
       }
    }
 }
