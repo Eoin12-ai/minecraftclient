@@ -105,7 +105,7 @@ public class NameProtectModule extends Module {
          }
       }
 
-      linkedHashMap.entrySet().removeIf(arg -> arg.getKey().equalsIgnoreCase(arg.getValue()));
+      linkedHashMap.entrySet().removeIf(arg -> ((java.util.Map.Entry<String,String>)arg).getKey().equalsIgnoreCase(((java.util.Map.Entry<String,String>)arg).getValue()));
       return linkedHashMap;
    }
 
@@ -126,7 +126,7 @@ public class NameProtectModule extends Module {
       } else {
          ArrayList<String> list = new ArrayList<>(map.keySet());
          list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
-         StringBuilder sb = new StringBuilder("[\u0013!G:ûðË\u0092ĺńĹĢǝǩƄƳɂȮɨɵˑ");
+         StringBuilder sb = new StringBuilder("[\u0013!G:Ã»Ã°Ã\u0092ÄºÅÄ¹Ä¢ÇÇ©ÆÆ³ÉÈ®É¨ÉµË");
 
          for (int n = 0; n < list.size(); n++) {
             if (n > 0) {
@@ -177,7 +177,7 @@ public class NameProtectModule extends Module {
             Object value = obj[n];
             if (value instanceof Text text3) {
                obj4[n] = this.rewrite(text3);
-            } else if (value instanceof String text) {
+            } else if (value instanceof String textVal) { String text = textVal;
                obj4[n] = this.replaceNames(text);
             } else {
                obj4[n] = value;
