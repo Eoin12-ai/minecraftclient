@@ -110,7 +110,7 @@ public final class BlockEspRenderer {
          boolean ok3 = blockEspModule.tracers.get() && blockEspModule.tracer.get();
 
          for (BlockEspRenderer.Hit hit : list) {
-            int n9 = map.getOrDefault(hit.block(), n) & 16777215;
+            int n9 = (int)map.getOrDefault(hit.block(), n) & 16777215;
             int n10 = n9 | step2 << 24;
             if (ok2) {
                EspBoxRenderer.fill(
@@ -153,7 +153,7 @@ public final class BlockEspRenderer {
             net.minecraft.util.math.Vec3d client = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
 
             for (BlockEspRenderer.Hit hit2 : list) {
-               int n12 = map.getOrDefault(hit2.block(), n) & 16777215;
+               int n12 = (int)map.getOrDefault(hit2.block(), n) & 16777215;
                int n13 = n12 | n11 << 24;
                EspBoxRenderer.tracer(immediate, matrices, vec, client, (double)hit2.x() + 0.5, (double)hit2.y() + 0.5, (double)hit2.z() + 0.5, n13, 1.2F);
             }
