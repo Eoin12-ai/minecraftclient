@@ -33,7 +33,7 @@ public abstract class MouseHandlerFreecamMixin {
             float f = freecamModule.getCurrentYaw() + (float)currentScore * 0.15F;
             float f3 = freecamModule.getCurrentPitch() + (float)coord3 * 0.15F;
             freecamModule.setRotation(f, f3);
-            temp.cancel();
+            callbackInfo.cancel();
          }
       }
    }
