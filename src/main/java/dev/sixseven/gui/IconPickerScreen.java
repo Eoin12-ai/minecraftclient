@@ -116,11 +116,11 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
          float f7 = layout2.gridX() + (float)n14 * layout2.cell() + (layout2.cell() - layout2.icon()) / 2.0F;
          float f8 = layout2.gridY() - this.scroll + (float)n15 * layout2.cell() + (layout2.cell() - layout2.icon()) / 2.0F;
          float f9 = layout2.icon() * f6 / 16.0F;
-         matrix3x2fStack.pushMatrix();
-         matrix3x2fStack.translate(f7 * f6, f8 * f6);
-         matrix3x2fStack.scale(f9, f9);
+         matrix3x2fStack.push();
+         matrix3x2fStack.translate(f7 * f6, f8 * f6, 0.0f);
+         matrix3x2fStack.scale(f9, f9, f9);
          context.drawItem(cell.icon(), 0, 0);
-         matrix3x2fStack.popMatrix();
+         matrix3x2fStack.pop();
       }
 
       context.disableScissor();
@@ -334,7 +334,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       IconPickerScreen.Layout layout2 = this.layout();
       if (this.colorSetting != null) {
          if (inRect(f, f3, this.popupRect)) {
-            this.colorWidget.mouseClicked((double)f, (double)f3, _cb);
+            this.colorWidget.mouseClicked(f, f3, _cb);
          } else {
             this.closeColor();
             UiSounds.select();
