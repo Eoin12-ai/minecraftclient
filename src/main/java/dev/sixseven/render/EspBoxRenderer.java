@@ -65,7 +65,7 @@ public final class EspBoxRenderer {
       float f14 = vector3fc.z;
       float f15 = (float)Math.sqrt((double)(f * f + f13 * f13 + f14 * f14));
       if (f15 > 1.0E-6F) {
-         f /= f15;
+         f /= (float)(f15);
          f13 /= f15;
          f14 /= f15;
       }
