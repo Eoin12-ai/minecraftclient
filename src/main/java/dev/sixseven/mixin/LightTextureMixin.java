@@ -25,6 +25,6 @@ public class LightTextureMixin {
    )
    private Object sixsevenclient$fullbrightGamma(Object value2) {
       ModuleManager moduleManager = SixSevenClient.modules();
-      return moduleManager != null && moduleManager.fullbright != null && moduleManager.fullbright.isEnabled() ? (double)moduleManager.fullbright.gamma.getFloat() : temp;
+      return moduleManager != null && moduleManager.fullbright != null && moduleManager.fullbright.isEnabled() ? (double)moduleManager.fullbright.gamma.getFloat() : value2;
    }
 }
