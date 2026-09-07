@@ -279,7 +279,7 @@ public final class PlayerRadarModule extends Module {
          }
 
          var1.fill(var23 - 1, var24 - 1, var23 + var8 + 1, var24 + var8 + 1, -586544368);
-         PlayerSkinDrawer.draw(var1, var13.getSkin(), var23, var24, var8);
+         PlayerSkinDrawer.draw(var1, var13.getSkinTextures(), var23, var24, var8);
       }
    }
 
