@@ -266,7 +266,7 @@ public final class ActivityChunkFinderModuleHelper {
    }
 
    private VertexConsumer class4588Of(String... var1) throws ReflectiveOperationException {
-      RenderLayer var2 = var1[0].startsWith("debug") ? RenderPipelineUtils.getclass19212() : RenderPipelineUtils.getclass1921();
+      RenderLayer var2 = var1[0].startsWith("debug") ? RenderPipelineUtils.getLinesLayer("debug") : RenderPipelineUtils.getLayer("default");
       if (var2 == null) {
          var2 = class1921Of(var1);
       }
