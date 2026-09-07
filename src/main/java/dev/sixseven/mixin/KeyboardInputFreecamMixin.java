@@ -19,7 +19,7 @@ public class KeyboardInputFreecamMixin {
       if (client.player != null && client.player.input == this) {
          FreecamModule freecamModule = FreecamModule.get();
          if (freecamModule != null && freecamModule.isActive()) {
-            FreecamModule.reapplyBodyInput(temp);
+            FreecamModule.reapplyBodyInput(client.player);
          }
       }
    }
