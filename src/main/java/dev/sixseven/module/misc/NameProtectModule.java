@@ -124,7 +124,7 @@ public class NameProtectModule extends Module {
       if (map.isEmpty()) {
          return null;
       } else {
-         ArrayList<String> list = new ArrayList(map.keySet());
+         ArrayList<String> list = new ArrayList<>(map.keySet());
          list.sort((arg, arg2) -> Integer.compare(arg2.length(), arg.length()));
          StringBuilder sb = new StringBuilder("[\u0013!G:ûðË\u0092ĺńĹĢǝǩƄƳɂȮɨɵˑ");
 
