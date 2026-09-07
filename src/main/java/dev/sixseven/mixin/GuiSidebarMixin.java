@@ -67,7 +67,7 @@ public class GuiSidebarMixin {
          }
       }
 
-      return temp;
+      return text;
    }
 
    private static FakeStatsModule fakeStats() {
