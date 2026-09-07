@@ -60,9 +60,9 @@ public final class EspBoxRenderer {
    }
 
    public static void tracer(Immediate immediate, MatrixStack matrices, Vec3d vec, net.minecraft.util.math.Vec3d vector3fc, double d, double coord, double currentScore, int n, float tickDelta) {
-      float f = vector3fc.x;
-      float f13 = vector3fc.y;
-      float f14 = vector3fc.z;
+      float f = (float)vector3fc.x;
+      float f13 = (float)vector3fc.y;
+      float f14 = (float)vector3fc.z;
       float f15 = (float)Math.sqrt((double)(f * f + f13 * f13 + f14 * f14));
       if (f15 > 1.0E-6F) {
          f /= (float)(f15);
