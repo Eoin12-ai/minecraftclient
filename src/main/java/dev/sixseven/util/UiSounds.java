@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 
 public final class UiSounds {
@@ -22,7 +23,7 @@ public final class UiSounds {
    private static void play(SoundEvent sound, float f, float f4) {
       float f5 = settings.volume();
       if (!(f5 <= 0.01F)) {
-         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
       }
    }
 
@@ -101,7 +102,7 @@ public final class UiSounds {
    }
 
    public static void playStartup() {
-      ArrayList list = new ArrayList();
+      ArrayList<SoundEvent> list = new ArrayList<>();
       if (settings.startup67.get()) {
          list.add(UiSoundEvents.STARTUP_67);
       }
@@ -119,7 +120,7 @@ public final class UiSounds {
       }
 
       if (!list.isEmpty()) {
-         SoundEvent sound = (SoundEvent)list.get(ThreadLocalRandom.current().nextInt(list.size()));
+         SoundEvent sound = list.get(ThreadLocalRandom.current().nextInt(list.size()));
          play(sound, 1.0F, 0.9F);
       }
    }
