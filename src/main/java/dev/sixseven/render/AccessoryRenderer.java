@@ -102,7 +102,7 @@ public final class AccessoryRenderer {
          FlatOverlay.flush(immediate);
          boolean ok2 = customAccessoriesModule.crown.get() && !ok;
          if (found2 || ok2) {
-            VertexConsumer consumer4 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
+            VertexConsumer consumer4 = immediate.getBuffer(net.minecraft.client.render.RenderLayer.getEntityTranslucentEmissive(TEXTURE_67));
             if (found2) {
                texCape(consumer4, entry, f15, f16, f17, vector3f, n);
             }
