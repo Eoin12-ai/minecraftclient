@@ -16,10 +16,10 @@ public class KeyboardInputFreecamMixin {
    )
    private void sixsevenclient$freecamReapplyCachedBodyInput(CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
-      if (client.player != null && client.player.input == (Object)this) {
+      if (client.player != null && client.player.input == this) {
          FreecamModule freecamModule = FreecamModule.get();
          if (freecamModule != null && freecamModule.isActive()) {
-            FreecamModule.reapplyBodyInput(client.player);
+            FreecamModule.reapplyBodyInput(client);
          }
       }
    }
