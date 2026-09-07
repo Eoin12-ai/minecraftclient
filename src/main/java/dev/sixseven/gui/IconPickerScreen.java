@@ -427,7 +427,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       int n = _key;
       if (this.colorSetting != null) {
          if (this.colorWidget != null && this.colorWidget.isListening()) {
-            this.colorWidget.keyPressed(n);
+            this.colorWidget.keyPressed(_key);
             return true;
          } else if (n == 256) {
             this.closeColor();
