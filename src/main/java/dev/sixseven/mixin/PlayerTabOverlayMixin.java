@@ -25,13 +25,13 @@ public class PlayerTabOverlayMixin {
          String name2 = gameProfile == null ? null : gameProfile.getName();
          Object value = text;
          if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
-            String name2 = moduleManager.nameProtect.replacementForDisplay(temp2);
+            String name2 = moduleManager.nameProtect.replacementForDisplay(playerListEntry);
             if (name2 != null) {
                text = Text.literal(name2);
             }
          }
 
-         if (moduleManager.fakeRoles != null && temp != null) {
+         if (moduleManager.fakeRoles != null && text != null) {
             text = moduleManager.fakeRoles.decorateTab((Text)text, playerListEntry);
          }
 
