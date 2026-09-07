@@ -343,7 +343,7 @@ public class SusChunkScanner {
 
       for (SusChunkScanner.ChunkScore chunkScore : this.scores.values()) {
          if (chunkScore.coord >= (double)n) {
-            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> new SusChunkScanner.FlagAggregate(k));
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
             flagAggregate.coord = Math.max(flagAggregate.coord, chunkScore.coord);
             flagAggregate.hitWeight = flagAggregate.hitWeight + chunkScore.hitWeight;
             flagAggregate.hitX = flagAggregate.hitX + chunkScore.hitX;
@@ -354,7 +354,7 @@ public class SusChunkScanner {
       for (SusChunkScanner.Geode geode : this.clusterGeodes()) {
          if (!(geode.coord() < (double)n)) {
             for (long l : geode.chunks()) {
-               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> new SusChunkScanner.FlagAggregate(k));
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
                flagAggregate2.coord = Math.max(flagAggregate2.coord, geode.coord());
             }
 
