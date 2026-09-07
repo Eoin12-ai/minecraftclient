@@ -24,14 +24,14 @@ public class KeyboardHandlerMixin {
    )
    private void sixsevenclient$dispatchModuleKeybinds(long l, int n, int keyCode, int scanCode, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
-      if (SixSevenClient.modules() != null && temp3 == 1) {
+      if (SixSevenClient.modules() != null && n == 1) {
          if (client.currentScreen == null && client.world != null) {
             if (SixSevenClient.modules().onKeyPressed(keyCode)) {
-               temp2.cancel();
+               callbackInfo.cancel();
             }
          } else if ((keyCode == 340 || keyCode == 344) && client.currentScreen != null && shiftOpensGui(client.currentScreen)) {
             client.setScreen(new ClickGuiScreen(client.currentScreen));
-            temp2.cancel();
+            callbackInfo.cancel();
          }
       }
    }
