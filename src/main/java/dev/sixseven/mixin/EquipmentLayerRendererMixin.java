@@ -25,13 +25,13 @@ public class EquipmentLayerRendererMixin {
    private Object sixsevenclient$armorTrim(Object value3, @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) Object value2) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager == null) {
-         return temp;
+         return value3;
       } else {
          ArmorTrimHiderModule armorTrimHiderModule = moduleManager.armorTrimHider;
          if (armorTrimHiderModule != null && armorTrimHiderModule.isEnabled()) {
             return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(value3) ? value3 : armorTrimHiderModule.mapTrim(value2, (ArmorTrim)value3);
          } else {
-            return temp;
+            return value3;
          }
       }
    }
