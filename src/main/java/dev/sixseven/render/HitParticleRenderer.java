@@ -27,8 +27,8 @@ public final class HitParticleRenderer {
    }
 
    public static void render(Immediate immediate, MatrixStack matrices, Vec3d vec, HitParticlesModule hitParticlesModule) {
-      Deque deque = hitParticlesModule.particles();
-      Deque deque2 = hitParticlesModule.shocks();
+      Deque<HitParticlesModule.HitParticle> deque = hitParticlesModule.particles();
+      Deque<HitParticlesModule.Shock> deque2 = hitParticlesModule.shocks();
       if (!deque.isEmpty() || !deque2.isEmpty()) {
          long l = System.nanoTime();
 
