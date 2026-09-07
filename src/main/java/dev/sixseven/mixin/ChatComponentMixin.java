@@ -19,7 +19,7 @@ public class ChatComponentMixin {
    private Text sixsevenclient$censorChat(Text text) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager == null) {
-         return modified;
+         return cir.getReturnValue() instanceof net.minecraft.text.Text ? (net.minecraft.text.Text)cir.getReturnValue() : cir.getReturnValue();
       } else {
          Text modified = text;
          if (moduleManager.fakeRoles != null) {
