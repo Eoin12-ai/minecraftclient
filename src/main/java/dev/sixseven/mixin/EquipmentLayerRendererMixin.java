@@ -29,7 +29,7 @@ public class EquipmentLayerRendererMixin {
       } else {
          ArmorTrimHiderModule armorTrimHiderModule = moduleManager.armorTrimHider;
          if (armorTrimHiderModule != null && armorTrimHiderModule.isEnabled()) {
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
+            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(value3) ? value3 : armorTrimHiderModule.mapTrim(value2, (ArmorTrim)value3);
          } else {
             return temp;
          }
@@ -37,7 +37,7 @@ public class EquipmentLayerRendererMixin {
    }
 
    private static boolean sixsevenclient$isLocalPlayer(Object value3) {
-      if (!(temp instanceof PlayerEntityRenderState playerEntityRenderState)) {
+      if (!(value3 instanceof PlayerEntityRenderState playerEntityRenderState)) {
          return false;
       } else {
          MinecraftClient client = MinecraftClient.getInstance();
