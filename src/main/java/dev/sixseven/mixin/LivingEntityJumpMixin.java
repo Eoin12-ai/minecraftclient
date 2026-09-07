@@ -17,7 +17,7 @@ public class LivingEntityJumpMixin {
       at = {@At("HEAD")}
    )
    private void sixsevenclient$onJump(CallbackInfo callbackInfo) {
-      if (this instanceof ClientPlayerEntity && ((ClientPlayerEntity)(Object)this) == MinecraftClient.getInstance().player) {
+      if (((Object)this) instanceof ClientPlayerEntity && ((ClientPlayerEntity)(Object)this) == MinecraftClient.getInstance().player) {
          ModuleManager moduleManager = SixSevenClient.modules();
          if (moduleManager != null && moduleManager.jumpCircles != null && moduleManager.jumpCircles.isEnabled()) {
             moduleManager.jumpCircles.onPlayerJump((ClientPlayerEntity)(Object)this);
