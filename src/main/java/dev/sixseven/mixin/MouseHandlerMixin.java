@@ -29,7 +29,7 @@ public class MouseHandlerMixin {
    private void sixsevenclient$aimAssist(double d, CallbackInfo callbackInfo) {
       ModuleManager moduleManager = SixSevenClient.modules();
       if (moduleManager != null && moduleManager.aimAssist != null && moduleManager.aimAssist.isEnabled()) {
-         double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
+         double[] deltas = moduleManager.aimAssist.computePixels(callbackInfo, this.cursorDeltaX, this.cursorDeltaY);
          if (d != null) {
             this.cursorDeltaX = this.cursorDeltaX + d[0];
             this.cursorDeltaY = this.cursorDeltaY + d[1];
@@ -44,17 +44,17 @@ public class MouseHandlerMixin {
    )
    private void sixsevenclient$onButton(long l, int mouseInputButton, int mouseInputAction, int n, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
-      if (temp == client.getWindow().getHandle()) {
-         if (temp4 == 1 && client.currentScreen == null) {
+      if (l == client.getWindow().getHandle()) {
+         if (mouseInputAction == 1 && client.currentScreen == null) {
             CpsTracker.onClick(mouseInputButton);
          }
 
          if (client.currentScreen instanceof ChatScreen && mouseInputButton == 0 && SixSevenClient.hud() != null) {
-            if (temp4 == 1) {
+            if (mouseInputAction == 1) {
                if (HudDragController.tryStartDrag(SixSevenClient.hud())) {
                   temp2.cancel();
                }
-            } else if (temp4 == 0 && HudDragController.isDragging()) {
+            } else if (mouseInputAction == 0 && HudDragController.isDragging()) {
                HudDragController.stopDrag();
                SixSevenClient.config().save();
                temp2.cancel();
@@ -78,7 +78,7 @@ public class MouseHandlerMixin {
    )
    private Object sixsevenclient$zoomSensitivity(Object value2) {
       ModuleManager moduleManager = SixSevenClient.modules();
-      if (moduleManager != null && moduleManager.zoom != null && temp instanceof Double value) {
+      if (moduleManager != null && moduleManager.zoom != null && value2 instanceof Double value) {
          double d = moduleManager.zoom.currentFactor();
          if (d <= 1.0001) {
             return temp;
@@ -100,10 +100,10 @@ public class MouseHandlerMixin {
    )
    private void sixsevenclient$onScroll(long l, double coord, double d, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
-      if (temp2 == client.getWindow().getHandle()
+      if (l == client.getWindow().getHandle()
          && client.currentScreen instanceof ChatScreen
          && SixSevenClient.hud() != null
-         && HudDragController.tryResize(SixSevenClient.hud(), temp)) {
+         && HudDragController.tryResize(SixSevenClient.hud(), coord)) {
          temp3.cancel();
       }
    }
