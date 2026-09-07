@@ -8,7 +8,6 @@ import net.minecraft.client.render.VertexConsumerProvider.Immediate;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import org.joml.net.minecraft.util.math.Vec3d;
 
 public final class MiscBlockEspRenderer {
    private static final int SPAWNER_COLOR = -24576;
