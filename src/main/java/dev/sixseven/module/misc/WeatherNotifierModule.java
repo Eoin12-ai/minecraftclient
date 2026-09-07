@@ -76,12 +76,12 @@ public class WeatherNotifierModule extends Module {
             }
          } else {
             boolean found = this.output.is("Action Bar");
-            client.player.sendMessage(Text.literal("§d[67] §f" + str + " — " + str3), found);
+            client.player.sendMessage(Text.literal("Â§d[67] Â§f" + str + " â " + str3), found);
          }
 
          if (this.sound.get()) {
             float f = value ? 1.2F : 0.8F;
-            client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), f));
+            client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f));
          }
       }
    }
