@@ -43,7 +43,7 @@ public final class HoleEspRenderer {
             int n = debugHoleEspModule.depth.is("2B1") ? 1 : Integer.parseInt(debugHoleEspModule.depth.get());
             BlockPos pos = player.getBlockPos();
             Mutable mutablePos = new Mutable();
-            ArrayList list = new ArrayList();
+            java.util.ArrayList<HoleEspRenderer.Hole> list = new ArrayList();
 
             for (int step2 = -16; step2 <= 16; step2++) {
                for (int n9 = -16; n9 <= 16; n9++) {
@@ -64,12 +64,12 @@ public final class HoleEspRenderer {
    }
 
    public static void render(Immediate immediate, MatrixStack matrices, Vec3d vec, DebugHoleEspModule debugHoleEspModule) {
-      List list = cache;
+      java.util.List<HoleEspRenderer.Hole> list = cache;
       if (!list.isEmpty()) {
          int n = debugHoleEspModule.safe.get();
          int localX = debugHoleEspModule.unsafe.get();
          boolean found = debugHoleEspModule.tracers.get();
-         Vector3fc client = found ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
+         net.minecraft.util.math.Vec3d client = found ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
 
          for (HoleEspRenderer.Hole hole : list) {
             int localZ = hole.safe() ? n : localX;
