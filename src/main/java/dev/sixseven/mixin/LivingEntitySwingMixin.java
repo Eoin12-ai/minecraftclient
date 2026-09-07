@@ -15,16 +15,16 @@ public class LivingEntitySwingMixin {
       at = {@At("RETURN")}
    )
    private int sixsevenclient$swingSpeed(int n) {
-      LivingEntity entity = (LivingEntity)this;
+      LivingEntity entity = (LivingEntity)(Object)this;
       if (MinecraftClient.getInstance().player != entity) {
-         return temp;
+         return n;
       } else {
          ModuleManager moduleManager = SixSevenClient.modules();
          if (moduleManager != null && moduleManager.swingSpeed != null && moduleManager.swingSpeed.isEnabled()) {
-            float f = temp2.swingSpeed.multiplier();
-            return f <= 0.01F ? temp : Math.max(1, Math.round((float)temp / f));
+            float f = moduleManager.swingSpeed.multiplier();
+            return f <= 0.01F ? n : Math.max(1, Math.round((float)n / f));
          } else {
-            return temp;
+            return n;
          }
       }
    }
