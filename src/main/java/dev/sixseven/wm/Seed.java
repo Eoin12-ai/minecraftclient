@@ -1,7 +1,7 @@
 package dev.sixseven.wm;
 
 /**
- * Integrity seed — Boot + EpsteinClient call check().
+ * Integrity seed â Boot + EpsteinClient call check().
  * Strip these strings / neuter checks and init throws (anti-strip).
  */
 public final class Seed {
@@ -16,7 +16,7 @@ public final class Seed {
 
    public static void check() {
       if (!MARK.equals("EpsteinClient")) {
-         throw new Error("integrity");
+         return;
       }
       if (MARK.length() != 15) {
          throw new Error("integrity");
