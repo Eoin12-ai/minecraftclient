@@ -256,12 +256,12 @@ public final class WorldNametagRenderer {
 
                                     for (int n = 0; n < list.size(); n++) {
                                        ItemStack stack = (ItemStack)list.get(n);
-                                       matrix3x2fStack.pushMatrix();
-                                       matrix3x2fStack.translate(f22 + (float)n * f20, f23);
-                                       matrix3x2fStack.scale(f19 / 16.0F, f19 / 16.0F);
+                                       matrix3x2fStack.push();
+                                       matrix3x2fStack.translate(f22 + (float)n * f20, f23, 0.0f);
+                                       matrix3x2fStack.scale(f19 / 16.0F, f19 / 16.0F, 1.0f);
                                        context.drawItem(abstractClientPlayerEntity, stack, 0, 0, 0);
                                        context.drawStackOverlay(client.textRenderer, stack, 0, 0);
-                                       matrix3x2fStack.popMatrix();
+                                       matrix3x2fStack.pop();
                                     }
                                  }
                               }
