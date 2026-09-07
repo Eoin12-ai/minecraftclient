@@ -21,7 +21,7 @@ public abstract class MouseHandlerFreecamMixin {
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void sixsevenclient$freecamMouse(double d, CallbackInfo callbackInfo) {
+   private void sixsevenclient$freecamMouse(double dParam, CallbackInfo callbackInfo) {
       FreecamModule freecamModule = FreecamModule.get();
       if (freecamModule != null && freecamModule.isActive()) {
          MinecraftClient client = MinecraftClient.getInstance();
