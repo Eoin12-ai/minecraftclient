@@ -121,7 +121,7 @@ public class FakeRankModule extends Module {
       MinecraftClient var2 = MinecraftClient.getInstance();
       if (var2.player != null && var1 != null) {
          GameProfile var3 = var2.player.getGameProfile();
-         return var1.id() != null && var3.id() != null ? var1.id().equals(var3.id()) : var1.equals(var3);
+         return var1.getId() != null && var3.getId() != null ? var1.getId().equals(var3.getId()) : var1.equals(var3);
       } else {
          return false;
       }
