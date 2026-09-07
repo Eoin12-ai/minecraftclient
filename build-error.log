@@ -141,15 +141,15 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
    @Shadow
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:137: error: cannot find symbol
-            client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:138: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), 1.5F));
                                                                  ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:83: error: cannot find symbol
-            client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:84: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), f));
                                                                  ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
       linkedHashMap.entrySet().removeIf(arg -> arg.getKey().equalsIgnoreCase(arg.getValue()));
@@ -164,25 +164,35 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:180: error: variable text is already defined in method rewrite(Text)
             } else if (value instanceof String text) {
                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:108: error: cannot find symbol
-         gameProfile.properties().putAll(linkedHashMultimap);
-                    ^
-  symbol:   method properties()
-  location: variable gameProfile of type GameProfile
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:111: error: incompatible types: Optional<SkinTextures> cannot be converted to SkinTextures
-                this.replacement = skinTextures;;
+                this.replacement = skinTextures;
                                    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/ChunkFinderModule.java:111: error: incompatible types: Object cannot be converted to Long
          for (Long lRaw : set) { long l = lRaw;
                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:136: error: cannot find symbol
-      client.getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:137: error: cannot find symbol
+      client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
                                                            ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:194: error: incompatible types: Object cannot be converted to BlockPos
-         for (BlockPos pos : list) {
-                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: constructor FlagAggregate in class FlagAggregate cannot be applied to given types;
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                             ^
+  required: long
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: cannot assign a value to final variable chunkKey
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: constructor FlagAggregate in class FlagAggregate cannot be applied to given types;
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                               ^
+  required: long
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: cannot assign a value to final variable chunkKey
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                                                      ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:448: error: incompatible types: no instance(s) of type variable(s) E exist so that List<E> conforms to Set<Long>
             list2.add(new SusChunkScanner.Zone(List.copyOf(list3), Set.copyOf(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
                       ^
@@ -195,34 +205,9 @@ Fabric Loom: 1.10.5
     lower bounds: Zone
   where E is a type-variable:
     E extends Object declared in method <E>copyOf(Collection<? extends E>)
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:119: error: cannot find symbol
-         matrix3x2fStack.pushMatrix();
-                        ^
-  symbol:   method pushMatrix()
-  location: variable matrix3x2fStack of type MatrixStack
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:120: error: no suitable method found for translate(float,float)
-         matrix3x2fStack.translate(f7 * f6, f8 * f6);
-                        ^
-    method MatrixStack.translate(double,double,double) is not applicable
-      (actual and formal argument lists differ in length)
-    method MatrixStack.translate(float,float,float) is not applicable
-      (actual and formal argument lists differ in length)
-    method MatrixStack.translate(Vec3d) is not applicable
-      (actual and formal argument lists differ in length)
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:121: error: method scale in class MatrixStack cannot be applied to given types;
-         matrix3x2fStack.scale(f9, f9);
-                        ^
-  required: float,float,float
-  found:    float,float
-  reason: actual and formal argument lists differ in length
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:123: error: cannot find symbol
-         matrix3x2fStack.popMatrix();
-                        ^
-  symbol:   method popMatrix()
-  location: variable matrix3x2fStack of type MatrixStack
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:337: error: cannot find symbol
-            this.colorWidget.mouseClicked((double)f, (double)f3, _cb);
-                                                                 ^
+            this.colorWidget.mouseClicked(f, f3, _cb);
+                                                 ^
   symbol:   variable _cb
   location: class IconPickerScreen
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:363: error: cannot find symbol
@@ -245,86 +230,66 @@ Fabric Loom: 1.10.5
                                                                                   ^
   symbol:   method getSkin()
   location: variable abstractClientPlayerEntity of type AbstractClientPlayerEntity
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/StorageEspRenderer.java:119: error: incompatible types: Vec3d cannot be converted to Vector3fc
-            Vector3fc camera = client.gameRenderer.getCamera().getPos();
-                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/MiscBlockEspRenderer.java:28: error: incompatible types: bad type in conditional expression
-            Vector3fc client = found2 ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
-                                                                                                     ^
-    Vec3d cannot be converted to Vector3fc
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:254: error: cannot find symbol
-                                    MatrixStack matrix3x2fStack = context.getMatrices();
-                                    ^
-  symbol:   class MatrixStack
-  location: class WorldNametagRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:31: error: cannot find symbol
-        return mod.pulse.get() ? (float)(Math.sin(t * 2.0 * Math.PI * mod.pulseSpeed.getFloat()) * 0.5 + 0.5) : 1.0f;
-                  ^
-  symbol:   variable pulse
-  location: variable mod of type BlockOutlineModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:31: error: cannot find symbol
-        return mod.pulse.get() ? (float)(Math.sin(t * 2.0 * Math.PI * mod.pulseSpeed.getFloat()) * 0.5 + 0.5) : 1.0f;
-                                                                         ^
-  symbol:   variable pulseSpeed
-  location: variable mod of type BlockOutlineModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:72: error: incompatible types: bad type in conditional expression
-         Vector3fc client = found ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
-                                                                                                 ^
-    Vec3d cannot be converted to Vector3fc
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:74: error: incompatible types: Object cannot be converted to Hole
-         for (HoleEspRenderer.Hole hole : list) {
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:63: error: incompatible types: Object cannot be converted to Shock
-            for (HitParticlesModule.Shock shock : deque2) {
-                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:69: error: incompatible types: Object cannot be converted to HitParticle
-            for (HitParticlesModule.HitParticle hitParticle : deque) {
-                                                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:82: error: incompatible types: Object cannot be converted to HitParticle
-            for (HitParticlesModule.HitParticle hitParticle2 : deque) {
-                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/StorageEspRenderer.java:171: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                        EspBoxRenderer.tracer(immediate, matrices, vec, camera, (d + coord3) / 2.0, (coord + coord4) / 2.0, (currentScore + coord5) / 2.0, step, 1.15F);
+                                                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/MiscBlockEspRenderer.java:67: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                     client,
+                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:259: error: cannot find symbol
+                                       matrix3x2fStack.pushMatrix();
+                                                      ^
+  symbol:   method pushMatrix()
+  location: variable matrix3x2fStack of type MatrixStack
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:260: error: no suitable method found for translate(float,float)
+                                       matrix3x2fStack.translate(f22 + (float)n * f20, f23);
+                                                      ^
+    method MatrixStack.translate(double,double,double) is not applicable
+      (actual and formal argument lists differ in length)
+    method MatrixStack.translate(float,float,float) is not applicable
+      (actual and formal argument lists differ in length)
+    method MatrixStack.translate(Vec3d) is not applicable
+      (actual and formal argument lists differ in length)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:261: error: method scale in class MatrixStack cannot be applied to given types;
+                                       matrix3x2fStack.scale(f19 / 16.0F, f19 / 16.0F);
+                                                      ^
+  required: float,float,float
+  found:    float,float
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:264: error: cannot find symbol
+                                       matrix3x2fStack.popMatrix();
+                                                      ^
+  symbol:   method popMatrix()
+  location: variable matrix3x2fStack of type MatrixStack
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:91: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                  immediate, matrices, vec, client, (double)hole.x() + 0.5, (double)hole.y() + 0.5, (double)hole.z() + 0.5, Colors.withAlpha(localZ, 0.72F), 1.2F
+                                            ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:95: error: cannot find symbol
                VertexConsumer consumer3 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
                                                                           ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:97: error: incompatible types: Object cannot be converted to HitParticle
-               for (HitParticlesModule.HitParticle hitParticle3 : deque) {
-                                                                  ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:105: error: cannot find symbol
             VertexConsumer consumer4 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
                                                                        ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:252: error: incompatible types: Object cannot be converted to TrailNode
-         for (CustomAccessoriesModule.TrailNode trailNode2 : deque) {
-                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:298: error: incompatible types: Object cannot be converted to TrailNode
-      for (CustomAccessoriesModule.TrailNode trailNode : deque) {
-                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:330: error: incompatible types: Object cannot be converted to TrailNode
-      for (CustomAccessoriesModule.TrailNode trailNode : deque) {
-                                                         ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:114: error: bad operand types for binary operator '&'
             int n9 = map.getOrDefault(hit.block(), n) & 16777215;
                                                       ^
   first type:  Object
   second type: int
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:154: error: incompatible types: Vec3d cannot be converted to Vector3fc
-            Vector3fc client = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
-                                                                                            ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:157: error: bad operand types for binary operator '&'
                int n12 = map.getOrDefault(hit2.block(), n) & 16777215;
                                                            ^
   first type:  Object
   second type: int
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:31: error: incompatible types: bad type in conditional expression
-            Vector3fc camera = found2 ? client.gameRenderer.getCamera().getPos() : null;
-                                                                              ^
-    Vec3d cannot be converted to Vector3fc
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:33: error: incompatible types: Object cannot be converted to Cached
-            for (BlockEntityEspModule.Cached cached : collection) {
-                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:159: error: incompatible types: Vec3d cannot be converted to Vector3fc
+               EspBoxRenderer.tracer(immediate, matrices, vec, client, (double)hit2.x() + 0.5, (double)hit2.y() + 0.5, (double)hit2.z() + 0.5, n13, 1.2F);
+                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:55: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                        EspBoxRenderer.tracer(immediate, matrices, vec, camera, d + 0.5, coord + 0.5, currentScore + 0.5, n9, 1.2F);
+                                                                        ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:95: error: cannot find symbol
          int localZ = client.getGlId();
                             ^
@@ -335,60 +300,26 @@ Fabric Loom: 1.10.5
                                                                       ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:43: error: incompatible types: Object cannot be converted to JumpCircle
-            for (JumpCirclesModule.JumpCircle jumpCircle : deque) {
-                                                           ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:48: error: cannot find symbol
                VertexConsumer consumer2 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_RING));
                                                                           ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:50: error: incompatible types: Object cannot be converted to JumpCircle
-               for (JumpCirclesModule.JumpCircle jumpCircle2 : deque) {
-                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/UiSounds.java:25: error: cannot find symbol
-         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/UiSounds.java:26: error: cannot find symbol
+         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
                                                                                      ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/ServerLightCache.java:174: error: incompatible types: List<Object> cannot be converted to List<BlockPos>
       return (List<BlockPos>)(list == null ? List.of() : list);
                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:30: error: incompatible types: LocalPlayerFreecamMixin cannot be converted to ClientPlayerEntity
-      ClientPlayerEntity player = (ClientPlayerEntity)this;
-                                                      ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:35: error: incompatible types: ClientPlayerEntity cannot be converted to MinecraftClient
             FreecamModule.reapplyBodyInput(player);
                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:28: error: cannot find symbol
-         temp.beginSidebar();
-         ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:42: error: cannot find symbol
-      if (fakeStatsModule != null && temp2 instanceof Text text) {
-                                     ^
-  symbol:   variable temp2
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:44: error: cannot find symbol
-            return temp.getWidth(fakeStatsModule.rewriteForWidth(text));
-                   ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:49: error: cannot find symbol
-      return temp.getWidth(temp2);
-                           ^
+      return textRenderer.getWidth(temp2);
+                                   ^
   symbol:   variable temp2
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:49: error: cannot find symbol
-      return temp.getWidth(temp2);
-             ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:65: error: cannot find symbol
-            return fakeStatsModule.rewriteForDraw(temp);
-                                                  ^
-  symbol:   variable temp
   location: class GuiSidebarMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:70: error: cannot find symbol
       return temp;
@@ -398,88 +329,15 @@ Fabric Loom: 1.10.5
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:29: error: variable d is already defined in method sixsevenclient$freecamMouse(double,CallbackInfo)
             double d = (Double)client.options.getMouseSensitivity().getValue() * 0.6 + 0.2;
                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:36: error: cannot find symbol
-            temp.cancel();
-            ^
-  symbol:   variable temp
-  location: class MouseHandlerFreecamMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:20: error: incompatible types: EntityFreecamMixin cannot be converted to Entity
       Entity entity = (Entity)this;
                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:22: error: cannot find symbol
-      if (client.player != null && entity == client.player && temp == client.player) {
-                                                              ^
-  symbol:   variable temp
-  location: class EntityFreecamMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:25: error: cannot find symbol
-            temp2.setReturnValue(false);
-            ^
-  symbol:   variable temp2
-  location: class EntityFreecamMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:20: error: incomparable types: EntityFreeLookMixin and ClientPlayerEntity
       if (this == client.player) {
                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:23: error: cannot find symbol
-            freeLookModule.addCameraLook(temp, temp3);
-                                         ^
-  symbol:   variable temp
-  location: class EntityFreeLookMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:23: error: cannot find symbol
-            freeLookModule.addCameraLook(temp, temp3);
-                                               ^
-  symbol:   variable temp3
-  location: class EntityFreeLookMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:24: error: cannot find symbol
-            temp2.cancel();
-            ^
-  symbol:   variable temp2
-  location: class EntityFreeLookMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:44: error: cannot find symbol
-      WorldProjection.capture(temp2, temp.getTickProgress(false));
-                              ^
-  symbol:   variable temp2
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:44: error: cannot find symbol
-      WorldProjection.capture(temp2, temp.getTickProgress(false));
-                                     ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:56: error: cannot find symbol
-      return BlurHook.apply(temp);
-                            ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:66: error: package temp does not exist
-         double d = temp.zoom.currentFactor();
-                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:67: error: cannot find symbol
-         return d > 1.0001 ? (float)((double)temp2 / d) : temp2;
-                                             ^
-  symbol:   variable temp2
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:67: error: cannot find symbol
-         return d > 1.0001 ? (float)((double)temp2 / d) : temp2;
-                                                          ^
-  symbol:   variable temp2
-  location: class GameRendererMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:69: error: cannot find symbol
          return temp;
                 ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:83: error: cannot find symbol
-      return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(temp) : temp;
-                                                                                                              ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:83: error: cannot find symbol
-      return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(temp) : temp;
-                                                                                                                      ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:95: error: cannot find symbol
-      return freecamModule != null && freecamModule.isActive() && freecamModule.renderHands() ? true : temp;
-                                                                                                       ^
   symbol:   variable temp
   location: class GameRendererMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:28: error: cannot find symbol
@@ -487,86 +345,37 @@ Fabric Loom: 1.10.5
                 ^
   symbol:   variable temp
   location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                      ^
-  symbol:   variable temp3
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                               ^
-  symbol:   variable temp
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                                                                   ^
-  symbol:   variable temp2
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                                                                                     ^
-  symbol:   variable temp
-  location: class EquipmentLayerRendererMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: incompatible types: Object cannot be converted to ItemStack
+            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(value3) ? value3 : armorTrimHiderModule.mapTrim(value2, (ArmorTrim)value3);
+                                                                                                                                      ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:34: error: cannot find symbol
             return temp;
                    ^
   symbol:   variable temp
   location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:40: error: cannot find symbol
-      if (!(temp instanceof PlayerEntityRenderState playerEntityRenderState)) {
-            ^
-  symbol:   variable temp
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:24: error: cannot find symbol
-            moduleManager.hitParticles.onHit(temp);
-                                             ^
-  symbol:   variable temp
-  location: class MultiPlayerGameModeAttackMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: variable d is already defined in method sixsevenclient$aimAssist(double,CallbackInfo)
-         double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: cannot find symbol
-         double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                                                   ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: package temp does not exist
-         double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:47: error: cannot find symbol
-      if (temp == client.getWindow().getHandle()) {
-          ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:48: error: cannot find symbol
-         if (temp4 == 1 && client.currentScreen == null) {
-             ^
-  symbol:   variable temp4
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:53: error: cannot find symbol
-            if (temp4 == 1) {
-                ^
-  symbol:   variable temp4
-  location: class MouseHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: incompatible types: CallbackInfo cannot be converted to double
+         double[] deltas = moduleManager.aimAssist.computePixels(callbackInfo, this.cursorDeltaX, this.cursorDeltaY);
+                                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:33: error: bad operand types for binary operator '!='
+         if (d != null) {
+               ^
+  first type:  double
+  second type: <null>
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:34: error: array required, but double found
+            this.cursorDeltaX = this.cursorDeltaX + d[0];
+                                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:35: error: array required, but double found
+            this.cursorDeltaY = this.cursorDeltaY + d[1];
+                                                     ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:55: error: cannot find symbol
                   temp2.cancel();
                   ^
   symbol:   variable temp2
   location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:57: error: cannot find symbol
-            } else if (temp4 == 0 && HudDragController.isDragging()) {
-                       ^
-  symbol:   variable temp4
-  location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:60: error: cannot find symbol
                temp2.cancel();
                ^
   symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:81: error: cannot find symbol
-      if (moduleManager != null && moduleManager.zoom != null && temp instanceof Double value) {
-                                                                 ^
-  symbol:   variable temp
   location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:84: error: cannot find symbol
             return temp;
@@ -578,21 +387,207 @@ Fabric Loom: 1.10.5
                 ^
   symbol:   variable temp
   location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:103: error: cannot find symbol
-      if (temp2 == client.getWindow().getHandle()
-          ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:106: error: cannot find symbol
-         && HudDragController.tryResize(SixSevenClient.hud(), temp)) {
-                                                              ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:107: error: cannot find symbol
          temp3.cancel();
          ^
   symbol:   variable temp3
   location: class MouseHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:27: error: incompatible types: AbstractClientPlayerMixin cannot be converted to AbstractClientPlayerEntity
+               AbstractClientPlayerEntity abstractClientPlayerEntity = (AbstractClientPlayerEntity)this;
+                                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:29: error: cannot find symbol
+                  temp.setReturnValue(skinTextures);
+                  ^
+  symbol:   variable temp
+  location: class AbstractClientPlayerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:20: error: incompatible types: LivingEntityJumpMixin cannot be converted to ClientPlayerEntity
+      if (this instanceof ClientPlayerEntity player && player == MinecraftClient.getInstance().player) {
+          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:23: error: cannot find symbol
+            moduleManager.jumpCircles.onPlayerJump(temp);
+                                                   ^
+  symbol:   variable temp
+  location: class LivingEntityJumpMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:28: error: cannot find symbol
+      return moduleManager != null && moduleManager.fullbright != null && moduleManager.fullbright.isEnabled() ? (double)moduleManager.fullbright.gamma.getFloat() : temp;
+                                                                                                                                                                     ^
+  symbol:   variable temp
+  location: class LightTextureMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:22: error: cannot find symbol
+         return temp;
+                ^
+  symbol:   variable temp
+  location: class ChatComponentMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:24: error: variable text is already defined in method sixsevenclient$censorChat(Text)
+         Text text = temp;
+              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:24: error: cannot find symbol
+         Text text = temp;
+                     ^
+  symbol:   variable temp
+  location: class ChatComponentMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:26: error: cannot find symbol
+            text = moduleManager.fakeRoles.decorateChat(temp);
+                                                        ^
+  symbol:   variable temp
+  location: class ChatComponentMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:27: error: cannot find symbol
+      if (SixSevenClient.modules() != null && temp3 == 1) {
+                                              ^
+  symbol:   variable temp3
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:30: error: cannot find symbol
+               temp2.cancel();
+               ^
+  symbol:   variable temp2
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:34: error: cannot find symbol
+            temp2.cancel();
+            ^
+  symbol:   variable temp2
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+      if (moduleManager != null && temp.displayName != null) {
+                                   ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:33: error: package temp does not exist
+            String text = temp.displayName.getString();
+                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:36: error: cannot find symbol
+                  temp2.cancel();
+                  ^
+  symbol:   variable temp2
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:41: error: cannot find symbol
+                  temp2.cancel();
+                  ^
+  symbol:   variable temp2
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:45: error: cannot find symbol
+               temp2.cancel();
+               ^
+  symbol:   variable temp2
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:51: error: package temp does not exist
+            String name2 = moduleManager.nameProtect.replacementForDisplay(temp.displayName.getString());
+                                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:53: error: cannot find symbol
+               temp.displayName = Text.literal(name2);
+               ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:58: error: package temp does not exist
+         if (fakeRolesModule != null && isLocalPlayer(temp.displayName.getString())) {
+                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:59: error: cannot find symbol
+            temp.displayName = fakeRolesModule.decorateNametag(temp.displayName);
+            ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:59: error: cannot find symbol
+            temp.displayName = fakeRolesModule.decorateNametag(temp.displayName);
+                                                               ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:70: error: cannot find symbol
+            String name3 = player.getGameProfile().name();
+                                                  ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:86: error: cannot find symbol
+               String name3 = gameProfile == null ? null : gameProfile.name();
+                                                                      ^
+  symbol:   method name()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:18: error: incompatible types: LivingEntitySwingMixin cannot be converted to LivingEntity
+      LivingEntity entity = (LivingEntity)this;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:20: error: cannot find symbol
+         return temp;
+                ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:24: error: package temp2 does not exist
+            float f = temp2.swingSpeed.multiplier();
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:25: error: cannot find symbol
+            return f <= 0.01F ? temp : Math.max(1, Math.round((float)temp / f));
+                                ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:25: error: cannot find symbol
+            return f <= 0.01F ? temp : Math.max(1, Math.round((float)temp / f));
+                                                                     ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:27: error: cannot find symbol
+            return temp;
+                   ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:19: error: incomparable types: Input and KeyboardInputFreecamMixin
+      if (client.player != null && client.player.input == this) {
+                                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:22: error: cannot find symbol
+            FreecamModule.reapplyBodyInput(temp);
+                                           ^
+  symbol:   variable temp
+  location: class KeyboardInputFreecamMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:22: error: cannot find symbol
+         return temp;
+                ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:24: error: cannot find symbol
+         GameProfile gameProfile = temp2.getProfile();
+                                   ^
+  symbol:   variable temp2
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:25: error: cannot find symbol
+         String name2 = gameProfile == null ? null : gameProfile.name();
+                                                                ^
+  symbol:   method name()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:26: error: cannot find symbol
+         Object value = temp;
+                        ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:27: error: cannot find symbol
+         if (temp3.nameProtect != null && temp3.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
+             ^
+  symbol:   variable temp3
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:27: error: package temp3 does not exist
+         if (temp3.nameProtect != null && temp3.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
+                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: variable name2 is already defined in method sixsevenclient$protectTabName(Text,PlayerListEntry)
+            String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: cannot find symbol
+            String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                                                                   ^
+  symbol:   variable temp2
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: package temp3 does not exist
+            String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:30: error: cannot find symbol
+               temp = Text.literal(name2);
+               ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:34: error: cannot find symbol
+         if (temp2.fakeRoles != null && temp != null) {
+             ^
+  symbol:   variable temp2
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:34: error: cannot find symbol
+         if (temp2.fakeRoles != null && temp != null) {
+                                        ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
 Note: /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java uses or overrides a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
@@ -733,15 +728,15 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
      @Shadow
      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:137: error: cannot find symbol
-              client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F));
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:138: error: cannot find symbol
+              client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), 1.5F));
                                                                    ^
-    symbol:   method ui(SoundEvent,float)
+    symbol:   method ui(RegistryEntry<SoundEvent>,float)
     location: class PositionedSoundInstance
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:83: error: cannot find symbol
-              client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f));
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:84: error: cannot find symbol
+              client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), f));
                                                                    ^
-    symbol:   method ui(SoundEvent,float)
+    symbol:   method ui(RegistryEntry<SoundEvent>,float)
     location: class PositionedSoundInstance
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
         linkedHashMap.entrySet().removeIf(arg -> arg.getKey().equalsIgnoreCase(arg.getValue()));
@@ -756,25 +751,35 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:180: error: variable text is already defined in method rewrite(Text)
               } else if (value instanceof String text) {
                                                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:108: error: cannot find symbol
-           gameProfile.properties().putAll(linkedHashMultimap);
-                      ^
-    symbol:   method properties()
-    location: variable gameProfile of type GameProfile
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:111: error: incompatible types: Optional<SkinTextures> cannot be converted to SkinTextures
-                  this.replacement = skinTextures;;
+                  this.replacement = skinTextures;
                                      ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/ChunkFinderModule.java:111: error: incompatible types: Object cannot be converted to Long
            for (Long lRaw : set) { long l = lRaw;
                             ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:136: error: cannot find symbol
-        client.getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:137: error: cannot find symbol
+        client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
                                                              ^
-    symbol:   method ui(SoundEvent,float)
+    symbol:   method ui(RegistryEntry<SoundEvent>,float)
     location: class PositionedSoundInstance
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:194: error: incompatible types: Object cannot be converted to BlockPos
-           for (BlockPos pos : list) {
-                               ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: constructor FlagAggregate in class FlagAggregate cannot be applied to given types;
+              SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                               ^
+    required: long
+    found:    no arguments
+    reason: actual and formal argument lists differ in length
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: cannot assign a value to final variable chunkKey
+              SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                                                                      ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: constructor FlagAggregate in class FlagAggregate cannot be applied to given types;
+                 SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                 ^
+    required: long
+    found:    no arguments
+    reason: actual and formal argument lists differ in length
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: cannot assign a value to final variable chunkKey
+                 SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                                                        ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:448: error: incompatible types: no instance(s) of type variable(s) E exist so that List<E> conforms to Set<Long>
               list2.add(new SusChunkScanner.Zone(List.copyOf(list3), Set.copyOf(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
                         ^
@@ -787,34 +792,9 @@ Execution failed for task ':compileJava'.
       lower bounds: Zone
     where E is a type-variable:
       E extends Object declared in method <E>copyOf(Collection<? extends E>)
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:119: error: cannot find symbol
-           matrix3x2fStack.pushMatrix();
-                          ^
-    symbol:   method pushMatrix()
-    location: variable matrix3x2fStack of type MatrixStack
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:120: error: no suitable method found for translate(float,float)
-           matrix3x2fStack.translate(f7 * f6, f8 * f6);
-                          ^
-      method MatrixStack.translate(double,double,double) is not applicable
-        (actual and formal argument lists differ in length)
-      method MatrixStack.translate(float,float,float) is not applicable
-        (actual and formal argument lists differ in length)
-      method MatrixStack.translate(Vec3d) is not applicable
-        (actual and formal argument lists differ in length)
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:121: error: method scale in class MatrixStack cannot be applied to given types;
-           matrix3x2fStack.scale(f9, f9);
-                          ^
-    required: float,float,float
-    found:    float,float
-    reason: actual and formal argument lists differ in length
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:123: error: cannot find symbol
-           matrix3x2fStack.popMatrix();
-                          ^
-    symbol:   method popMatrix()
-    location: variable matrix3x2fStack of type MatrixStack
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:337: error: cannot find symbol
-              this.colorWidget.mouseClicked((double)f, (double)f3, _cb);
-                                                                   ^
+              this.colorWidget.mouseClicked(f, f3, _cb);
+                                                   ^
     symbol:   variable _cb
     location: class IconPickerScreen
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:363: error: cannot find symbol
@@ -837,86 +817,66 @@ Execution failed for task ':compileJava'.
                                                                                     ^
     symbol:   method getSkin()
     location: variable abstractClientPlayerEntity of type AbstractClientPlayerEntity
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/StorageEspRenderer.java:119: error: incompatible types: Vec3d cannot be converted to Vector3fc
-              Vector3fc camera = client.gameRenderer.getCamera().getPos();
-                                                                       ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/MiscBlockEspRenderer.java:28: error: incompatible types: bad type in conditional expression
-              Vector3fc client = found2 ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
-                                                                                                       ^
-      Vec3d cannot be converted to Vector3fc
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:254: error: cannot find symbol
-                                      MatrixStack matrix3x2fStack = context.getMatrices();
-                                      ^
-    symbol:   class MatrixStack
-    location: class WorldNametagRenderer
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:31: error: cannot find symbol
-          return mod.pulse.get() ? (float)(Math.sin(t * 2.0 * Math.PI * mod.pulseSpeed.getFloat()) * 0.5 + 0.5) : 1.0f;
-                    ^
-    symbol:   variable pulse
-    location: variable mod of type BlockOutlineModule
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:31: error: cannot find symbol
-          return mod.pulse.get() ? (float)(Math.sin(t * 2.0 * Math.PI * mod.pulseSpeed.getFloat()) * 0.5 + 0.5) : 1.0f;
-                                                                           ^
-    symbol:   variable pulseSpeed
-    location: variable mod of type BlockOutlineModule
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:72: error: incompatible types: bad type in conditional expression
-           Vector3fc client = found ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
-                                                                                                   ^
-      Vec3d cannot be converted to Vector3fc
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:74: error: incompatible types: Object cannot be converted to Hole
-           for (HoleEspRenderer.Hole hole : list) {
-                                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:63: error: incompatible types: Object cannot be converted to Shock
-              for (HitParticlesModule.Shock shock : deque2) {
-                                                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:69: error: incompatible types: Object cannot be converted to HitParticle
-              for (HitParticlesModule.HitParticle hitParticle : deque) {
-                                                                ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:82: error: incompatible types: Object cannot be converted to HitParticle
-              for (HitParticlesModule.HitParticle hitParticle2 : deque) {
-                                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/StorageEspRenderer.java:171: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                          EspBoxRenderer.tracer(immediate, matrices, vec, camera, (d + coord3) / 2.0, (coord + coord4) / 2.0, (currentScore + coord5) / 2.0, step, 1.15F);
+                                                                          ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/MiscBlockEspRenderer.java:67: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                       client,
+                       ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:259: error: cannot find symbol
+                                         matrix3x2fStack.pushMatrix();
+                                                        ^
+    symbol:   method pushMatrix()
+    location: variable matrix3x2fStack of type MatrixStack
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:260: error: no suitable method found for translate(float,float)
+                                         matrix3x2fStack.translate(f22 + (float)n * f20, f23);
+                                                        ^
+      method MatrixStack.translate(double,double,double) is not applicable
+        (actual and formal argument lists differ in length)
+      method MatrixStack.translate(float,float,float) is not applicable
+        (actual and formal argument lists differ in length)
+      method MatrixStack.translate(Vec3d) is not applicable
+        (actual and formal argument lists differ in length)
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:261: error: method scale in class MatrixStack cannot be applied to given types;
+                                         matrix3x2fStack.scale(f19 / 16.0F, f19 / 16.0F);
+                                                        ^
+    required: float,float,float
+    found:    float,float
+    reason: actual and formal argument lists differ in length
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:264: error: cannot find symbol
+                                         matrix3x2fStack.popMatrix();
+                                                        ^
+    symbol:   method popMatrix()
+    location: variable matrix3x2fStack of type MatrixStack
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:91: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                    immediate, matrices, vec, client, (double)hole.x() + 0.5, (double)hole.y() + 0.5, (double)hole.z() + 0.5, Colors.withAlpha(localZ, 0.72F), 1.2F
+                                              ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:95: error: cannot find symbol
                  VertexConsumer consumer3 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
                                                                             ^
     symbol:   method entityTranslucentEmissive(Identifier)
     location: class RenderLayers
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:97: error: incompatible types: Object cannot be converted to HitParticle
-                 for (HitParticlesModule.HitParticle hitParticle3 : deque) {
-                                                                    ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:105: error: cannot find symbol
               VertexConsumer consumer4 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
                                                                          ^
     symbol:   method entityTranslucentEmissive(Identifier)
     location: class RenderLayers
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:252: error: incompatible types: Object cannot be converted to TrailNode
-           for (CustomAccessoriesModule.TrailNode trailNode2 : deque) {
-                                                               ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:298: error: incompatible types: Object cannot be converted to TrailNode
-        for (CustomAccessoriesModule.TrailNode trailNode : deque) {
-                                                           ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:330: error: incompatible types: Object cannot be converted to TrailNode
-        for (CustomAccessoriesModule.TrailNode trailNode : deque) {
-                                                           ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:114: error: bad operand types for binary operator '&'
               int n9 = map.getOrDefault(hit.block(), n) & 16777215;
                                                         ^
     first type:  Object
     second type: int
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:154: error: incompatible types: Vec3d cannot be converted to Vector3fc
-              Vector3fc client = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
-                                                                                              ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:157: error: bad operand types for binary operator '&'
                  int n12 = map.getOrDefault(hit2.block(), n) & 16777215;
                                                              ^
     first type:  Object
     second type: int
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:31: error: incompatible types: bad type in conditional expression
-              Vector3fc camera = found2 ? client.gameRenderer.getCamera().getPos() : null;
-                                                                                ^
-      Vec3d cannot be converted to Vector3fc
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:33: error: incompatible types: Object cannot be converted to Cached
-              for (BlockEntityEspModule.Cached cached : collection) {
-                                                        ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:159: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                 EspBoxRenderer.tracer(immediate, matrices, vec, client, (double)hit2.x() + 0.5, (double)hit2.y() + 0.5, (double)hit2.z() + 0.5, n13, 1.2F);
+                                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:55: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                          EspBoxRenderer.tracer(immediate, matrices, vec, camera, d + 0.5, coord + 0.5, currentScore + 0.5, n9, 1.2F);
+                                                                          ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:95: error: cannot find symbol
            int localZ = client.getGlId();
                               ^
@@ -927,60 +887,26 @@ Execution failed for task ':compileJava'.
                                                                         ^
     symbol:   method entityTranslucentEmissive(Identifier)
     location: class RenderLayers
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:43: error: incompatible types: Object cannot be converted to JumpCircle
-              for (JumpCirclesModule.JumpCircle jumpCircle : deque) {
-                                                             ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:48: error: cannot find symbol
                  VertexConsumer consumer2 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_RING));
                                                                             ^
     symbol:   method entityTranslucentEmissive(Identifier)
     location: class RenderLayers
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:50: error: incompatible types: Object cannot be converted to JumpCircle
-                 for (JumpCirclesModule.JumpCircle jumpCircle2 : deque) {
-                                                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/UiSounds.java:25: error: cannot find symbol
-           MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/UiSounds.java:26: error: cannot find symbol
+           MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
                                                                                        ^
-    symbol:   method ui(SoundEvent,float)
+    symbol:   method ui(RegistryEntry<SoundEvent>,float)
     location: class PositionedSoundInstance
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/ServerLightCache.java:174: error: incompatible types: List<Object> cannot be converted to List<BlockPos>
         return (List<BlockPos>)(list == null ? List.of() : list);
                                ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:30: error: incompatible types: LocalPlayerFreecamMixin cannot be converted to ClientPlayerEntity
-        ClientPlayerEntity player = (ClientPlayerEntity)this;
-                                                        ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:35: error: incompatible types: ClientPlayerEntity cannot be converted to MinecraftClient
               FreecamModule.reapplyBodyInput(player);
                                              ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:28: error: cannot find symbol
-           temp.beginSidebar();
-           ^
-    symbol:   variable temp
-    location: class GuiSidebarMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:42: error: cannot find symbol
-        if (fakeStatsModule != null && temp2 instanceof Text text) {
-                                       ^
-    symbol:   variable temp2
-    location: class GuiSidebarMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:44: error: cannot find symbol
-              return temp.getWidth(fakeStatsModule.rewriteForWidth(text));
-                     ^
-    symbol:   variable temp
-    location: class GuiSidebarMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:49: error: cannot find symbol
-        return temp.getWidth(temp2);
-                             ^
+        return textRenderer.getWidth(temp2);
+                                     ^
     symbol:   variable temp2
-    location: class GuiSidebarMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:49: error: cannot find symbol
-        return temp.getWidth(temp2);
-               ^
-    symbol:   variable temp
-    location: class GuiSidebarMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:65: error: cannot find symbol
-              return fakeStatsModule.rewriteForDraw(temp);
-                                                    ^
-    symbol:   variable temp
     location: class GuiSidebarMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:70: error: cannot find symbol
         return temp;
@@ -990,88 +916,15 @@ Execution failed for task ':compileJava'.
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:29: error: variable d is already defined in method sixsevenclient$freecamMouse(double,CallbackInfo)
               double d = (Double)client.options.getMouseSensitivity().getValue() * 0.6 + 0.2;
                      ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:36: error: cannot find symbol
-              temp.cancel();
-              ^
-    symbol:   variable temp
-    location: class MouseHandlerFreecamMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:20: error: incompatible types: EntityFreecamMixin cannot be converted to Entity
         Entity entity = (Entity)this;
                                 ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:22: error: cannot find symbol
-        if (client.player != null && entity == client.player && temp == client.player) {
-                                                                ^
-    symbol:   variable temp
-    location: class EntityFreecamMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:25: error: cannot find symbol
-              temp2.setReturnValue(false);
-              ^
-    symbol:   variable temp2
-    location: class EntityFreecamMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:20: error: incomparable types: EntityFreeLookMixin and ClientPlayerEntity
         if (this == client.player) {
                  ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:23: error: cannot find symbol
-              freeLookModule.addCameraLook(temp, temp3);
-                                           ^
-    symbol:   variable temp
-    location: class EntityFreeLookMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:23: error: cannot find symbol
-              freeLookModule.addCameraLook(temp, temp3);
-                                                 ^
-    symbol:   variable temp3
-    location: class EntityFreeLookMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:24: error: cannot find symbol
-              temp2.cancel();
-              ^
-    symbol:   variable temp2
-    location: class EntityFreeLookMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:44: error: cannot find symbol
-        WorldProjection.capture(temp2, temp.getTickProgress(false));
-                                ^
-    symbol:   variable temp2
-    location: class GameRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:44: error: cannot find symbol
-        WorldProjection.capture(temp2, temp.getTickProgress(false));
-                                       ^
-    symbol:   variable temp
-    location: class GameRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:56: error: cannot find symbol
-        return BlurHook.apply(temp);
-                              ^
-    symbol:   variable temp
-    location: class GameRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:66: error: package temp does not exist
-           double d = temp.zoom.currentFactor();
-                          ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:67: error: cannot find symbol
-           return d > 1.0001 ? (float)((double)temp2 / d) : temp2;
-                                               ^
-    symbol:   variable temp2
-    location: class GameRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:67: error: cannot find symbol
-           return d > 1.0001 ? (float)((double)temp2 / d) : temp2;
-                                                            ^
-    symbol:   variable temp2
-    location: class GameRendererMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:69: error: cannot find symbol
            return temp;
                   ^
-    symbol:   variable temp
-    location: class GameRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:83: error: cannot find symbol
-        return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(temp) : temp;
-                                                                                                                ^
-    symbol:   variable temp
-    location: class GameRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:83: error: cannot find symbol
-        return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(temp) : temp;
-                                                                                                                        ^
-    symbol:   variable temp
-    location: class GameRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:95: error: cannot find symbol
-        return freecamModule != null && freecamModule.isActive() && freecamModule.renderHands() ? true : temp;
-                                                                                                         ^
     symbol:   variable temp
     location: class GameRendererMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:28: error: cannot find symbol
@@ -1079,86 +932,37 @@ Execution failed for task ':compileJava'.
                   ^
     symbol:   variable temp
     location: class EquipmentLayerRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-              return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                        ^
-    symbol:   variable temp3
-    location: class EquipmentLayerRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-              return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                                 ^
-    symbol:   variable temp
-    location: class EquipmentLayerRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-              return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                                                                     ^
-    symbol:   variable temp2
-    location: class EquipmentLayerRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-              return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                                                                                       ^
-    symbol:   variable temp
-    location: class EquipmentLayerRendererMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: incompatible types: Object cannot be converted to ItemStack
+              return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(value3) ? value3 : armorTrimHiderModule.mapTrim(value2, (ArmorTrim)value3);
+                                                                                                                                        ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:34: error: cannot find symbol
               return temp;
                      ^
     symbol:   variable temp
     location: class EquipmentLayerRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:40: error: cannot find symbol
-        if (!(temp instanceof PlayerEntityRenderState playerEntityRenderState)) {
-              ^
-    symbol:   variable temp
-    location: class EquipmentLayerRendererMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:24: error: cannot find symbol
-              moduleManager.hitParticles.onHit(temp);
-                                               ^
-    symbol:   variable temp
-    location: class MultiPlayerGameModeAttackMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: variable d is already defined in method sixsevenclient$aimAssist(double,CallbackInfo)
-           double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                    ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: cannot find symbol
-           double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                                                     ^
-    symbol:   variable temp2
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: package temp does not exist
-           double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                            ^
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:47: error: cannot find symbol
-        if (temp == client.getWindow().getHandle()) {
-            ^
-    symbol:   variable temp
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:48: error: cannot find symbol
-           if (temp4 == 1 && client.currentScreen == null) {
-               ^
-    symbol:   variable temp4
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:53: error: cannot find symbol
-              if (temp4 == 1) {
-                  ^
-    symbol:   variable temp4
-    location: class MouseHandlerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: incompatible types: CallbackInfo cannot be converted to double
+           double[] deltas = moduleManager.aimAssist.computePixels(callbackInfo, this.cursorDeltaX, this.cursorDeltaY);
+                                                                   ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:33: error: bad operand types for binary operator '!='
+           if (d != null) {
+                 ^
+    first type:  double
+    second type: <null>
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:34: error: array required, but double found
+              this.cursorDeltaX = this.cursorDeltaX + d[0];
+                                                       ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:35: error: array required, but double found
+              this.cursorDeltaY = this.cursorDeltaY + d[1];
+                                                       ^
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:55: error: cannot find symbol
                     temp2.cancel();
                     ^
     symbol:   variable temp2
     location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:57: error: cannot find symbol
-              } else if (temp4 == 0 && HudDragController.isDragging()) {
-                         ^
-    symbol:   variable temp4
-    location: class MouseHandlerMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:60: error: cannot find symbol
                  temp2.cancel();
                  ^
     symbol:   variable temp2
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:81: error: cannot find symbol
-        if (moduleManager != null && moduleManager.zoom != null && temp instanceof Double value) {
-                                                                   ^
-    symbol:   variable temp
     location: class MouseHandlerMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:84: error: cannot find symbol
               return temp;
@@ -1170,21 +974,207 @@ Execution failed for task ':compileJava'.
                   ^
     symbol:   variable temp
     location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:103: error: cannot find symbol
-        if (temp2 == client.getWindow().getHandle()
-            ^
-    symbol:   variable temp2
-    location: class MouseHandlerMixin
-  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:106: error: cannot find symbol
-           && HudDragController.tryResize(SixSevenClient.hud(), temp)) {
-                                                                ^
-    symbol:   variable temp
-    location: class MouseHandlerMixin
   /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:107: error: cannot find symbol
            temp3.cancel();
            ^
     symbol:   variable temp3
     location: class MouseHandlerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:27: error: incompatible types: AbstractClientPlayerMixin cannot be converted to AbstractClientPlayerEntity
+                 AbstractClientPlayerEntity abstractClientPlayerEntity = (AbstractClientPlayerEntity)this;
+                                                                                                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:29: error: cannot find symbol
+                    temp.setReturnValue(skinTextures);
+                    ^
+    symbol:   variable temp
+    location: class AbstractClientPlayerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:20: error: incompatible types: LivingEntityJumpMixin cannot be converted to ClientPlayerEntity
+        if (this instanceof ClientPlayerEntity player && player == MinecraftClient.getInstance().player) {
+            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:23: error: cannot find symbol
+              moduleManager.jumpCircles.onPlayerJump(temp);
+                                                     ^
+    symbol:   variable temp
+    location: class LivingEntityJumpMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:28: error: cannot find symbol
+        return moduleManager != null && moduleManager.fullbright != null && moduleManager.fullbright.isEnabled() ? (double)moduleManager.fullbright.gamma.getFloat() : temp;
+                                                                                                                                                                       ^
+    symbol:   variable temp
+    location: class LightTextureMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:22: error: cannot find symbol
+           return temp;
+                  ^
+    symbol:   variable temp
+    location: class ChatComponentMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:24: error: variable text is already defined in method sixsevenclient$censorChat(Text)
+           Text text = temp;
+                ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:24: error: cannot find symbol
+           Text text = temp;
+                       ^
+    symbol:   variable temp
+    location: class ChatComponentMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:26: error: cannot find symbol
+              text = moduleManager.fakeRoles.decorateChat(temp);
+                                                          ^
+    symbol:   variable temp
+    location: class ChatComponentMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:27: error: cannot find symbol
+        if (SixSevenClient.modules() != null && temp3 == 1) {
+                                                ^
+    symbol:   variable temp3
+    location: class KeyboardHandlerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:30: error: cannot find symbol
+                 temp2.cancel();
+                 ^
+    symbol:   variable temp2
+    location: class KeyboardHandlerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:34: error: cannot find symbol
+              temp2.cancel();
+              ^
+    symbol:   variable temp2
+    location: class KeyboardHandlerMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+        if (moduleManager != null && temp.displayName != null) {
+                                     ^
+    symbol:   variable temp
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:33: error: package temp does not exist
+              String text = temp.displayName.getString();
+                                ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:36: error: cannot find symbol
+                    temp2.cancel();
+                    ^
+    symbol:   variable temp2
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:41: error: cannot find symbol
+                    temp2.cancel();
+                    ^
+    symbol:   variable temp2
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:45: error: cannot find symbol
+                 temp2.cancel();
+                 ^
+    symbol:   variable temp2
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:51: error: package temp does not exist
+              String name2 = moduleManager.nameProtect.replacementForDisplay(temp.displayName.getString());
+                                                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:53: error: cannot find symbol
+                 temp.displayName = Text.literal(name2);
+                 ^
+    symbol:   variable temp
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:58: error: package temp does not exist
+           if (fakeRolesModule != null && isLocalPlayer(temp.displayName.getString())) {
+                                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:59: error: cannot find symbol
+              temp.displayName = fakeRolesModule.decorateNametag(temp.displayName);
+              ^
+    symbol:   variable temp
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:59: error: cannot find symbol
+              temp.displayName = fakeRolesModule.decorateNametag(temp.displayName);
+                                                                 ^
+    symbol:   variable temp
+    location: class EntityNameTagMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:70: error: cannot find symbol
+              String name3 = player.getGameProfile().name();
+                                                    ^
+    symbol:   method name()
+    location: class GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:86: error: cannot find symbol
+                 String name3 = gameProfile == null ? null : gameProfile.name();
+                                                                        ^
+    symbol:   method name()
+    location: variable gameProfile of type GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:18: error: incompatible types: LivingEntitySwingMixin cannot be converted to LivingEntity
+        LivingEntity entity = (LivingEntity)this;
+                                            ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:20: error: cannot find symbol
+           return temp;
+                  ^
+    symbol:   variable temp
+    location: class LivingEntitySwingMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:24: error: package temp2 does not exist
+              float f = temp2.swingSpeed.multiplier();
+                             ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:25: error: cannot find symbol
+              return f <= 0.01F ? temp : Math.max(1, Math.round((float)temp / f));
+                                  ^
+    symbol:   variable temp
+    location: class LivingEntitySwingMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:25: error: cannot find symbol
+              return f <= 0.01F ? temp : Math.max(1, Math.round((float)temp / f));
+                                                                       ^
+    symbol:   variable temp
+    location: class LivingEntitySwingMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:27: error: cannot find symbol
+              return temp;
+                     ^
+    symbol:   variable temp
+    location: class LivingEntitySwingMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:19: error: incomparable types: Input and KeyboardInputFreecamMixin
+        if (client.player != null && client.player.input == this) {
+                                                         ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:22: error: cannot find symbol
+              FreecamModule.reapplyBodyInput(temp);
+                                             ^
+    symbol:   variable temp
+    location: class KeyboardInputFreecamMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:22: error: cannot find symbol
+           return temp;
+                  ^
+    symbol:   variable temp
+    location: class PlayerTabOverlayMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:24: error: cannot find symbol
+           GameProfile gameProfile = temp2.getProfile();
+                                     ^
+    symbol:   variable temp2
+    location: class PlayerTabOverlayMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:25: error: cannot find symbol
+           String name2 = gameProfile == null ? null : gameProfile.name();
+                                                                  ^
+    symbol:   method name()
+    location: variable gameProfile of type GameProfile
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:26: error: cannot find symbol
+           Object value = temp;
+                          ^
+    symbol:   variable temp
+    location: class PlayerTabOverlayMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:27: error: cannot find symbol
+           if (temp3.nameProtect != null && temp3.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
+               ^
+    symbol:   variable temp3
+    location: class PlayerTabOverlayMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:27: error: package temp3 does not exist
+           if (temp3.nameProtect != null && temp3.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
+                                                 ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: variable name2 is already defined in method sixsevenclient$protectTabName(Text,PlayerListEntry)
+              String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                     ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: cannot find symbol
+              String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                                                                     ^
+    symbol:   variable temp2
+    location: class PlayerTabOverlayMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: package temp3 does not exist
+              String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                                  ^
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:30: error: cannot find symbol
+                 temp = Text.literal(name2);
+                 ^
+    symbol:   variable temp
+    location: class PlayerTabOverlayMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:34: error: cannot find symbol
+           if (temp2.fakeRoles != null && temp != null) {
+               ^
+    symbol:   variable temp2
+    location: class PlayerTabOverlayMixin
+  /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:34: error: cannot find symbol
+           if (temp2.fakeRoles != null && temp != null) {
+                                          ^
+    symbol:   variable temp
+    location: class PlayerTabOverlayMixin
   Note: /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java uses or overrides a deprecated API.
   Note: Recompile with -Xlint:deprecation for details.
   Note: Some input files use unchecked or unsafe operations.
@@ -1229,35 +1219,6 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
-	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
-	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
-	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
-	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
-	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:46)
-	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
-	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
-	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
-	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
@@ -1384,15 +1345,15 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/com/swyzzyaddon/mixin/CameraMixin.java:20: warning: Cannot find target for @Shadow field in net.minecraft.client.render.Camera
    @Shadow
    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:137: error: cannot find symbol
-            client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/StaffListModule.java:138: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), 1.5F));
                                                                  ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:83: error: cannot find symbol
-            client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), f));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/WeatherNotifierModule.java:84: error: cannot find symbol
+            client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value()), f));
                                                                  ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:108: error: cannot find symbol
       linkedHashMap.entrySet().removeIf(arg -> arg.getKey().equalsIgnoreCase(arg.getValue()));
@@ -1407,25 +1368,35 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/NameProtectModule.java:180: error: variable text is already defined in method rewrite(Text)
             } else if (value instanceof String text) {
                                                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:108: error: cannot find symbol
-         gameProfile.properties().putAll(linkedHashMultimap);
-                    ^
-  symbol:   method properties()
-  location: variable gameProfile of type GameProfile
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/SkinProtectModule.java:111: error: incompatible types: Optional<SkinTextures> cannot be converted to SkinTextures
-                this.replacement = skinTextures;;
+                this.replacement = skinTextures;
                                    ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/render/ChunkFinderModule.java:111: error: incompatible types: Object cannot be converted to Long
          for (Long lRaw : set) { long l = lRaw;
                           ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:136: error: cannot find symbol
-      client.getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/module/misc/FakePayModule.java:137: error: cannot find symbol
+      client.getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
                                                            ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:194: error: incompatible types: Object cannot be converted to BlockPos
-         for (BlockPos pos : list) {
-                             ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: constructor FlagAggregate in class FlagAggregate cannot be applied to given types;
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                             ^
+  required: long
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:346: error: cannot assign a value to final variable chunkKey
+            SusChunkScanner.FlagAggregate flagAggregate = map.computeIfAbsent(chunkScore.chunkKey, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                                                                    ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: constructor FlagAggregate in class FlagAggregate cannot be applied to given types;
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                               ^
+  required: long
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:357: error: cannot assign a value to final variable chunkKey
+               SusChunkScanner.FlagAggregate flagAggregate2 = map.computeIfAbsent(l, k -> { SusChunkScanner.FlagAggregate fa = new SusChunkScanner.FlagAggregate(); fa.chunkKey = k; return fa; });
+                                                                                                                                                                      ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/SusChunkScanner.java:448: error: incompatible types: no instance(s) of type variable(s) E exist so that List<E> conforms to Set<Long>
             list2.add(new SusChunkScanner.Zone(List.copyOf(list3), Set.copyOf(set), currentScore2, d / (double)list3.size(), currentScore / (double)list3.size()));
                       ^
@@ -1438,34 +1409,9 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
     lower bounds: Zone
   where E is a type-variable:
     E extends Object declared in method <E>copyOf(Collection<? extends E>)
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:119: error: cannot find symbol
-         matrix3x2fStack.pushMatrix();
-                        ^
-  symbol:   method pushMatrix()
-  location: variable matrix3x2fStack of type MatrixStack
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:120: error: no suitable method found for translate(float,float)
-         matrix3x2fStack.translate(f7 * f6, f8 * f6);
-                        ^
-    method MatrixStack.translate(double,double,double) is not applicable
-      (actual and formal argument lists differ in length)
-    method MatrixStack.translate(float,float,float) is not applicable
-      (actual and formal argument lists differ in length)
-    method MatrixStack.translate(Vec3d) is not applicable
-      (actual and formal argument lists differ in length)
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:121: error: method scale in class MatrixStack cannot be applied to given types;
-         matrix3x2fStack.scale(f9, f9);
-                        ^
-  required: float,float,float
-  found:    float,float
-  reason: actual and formal argument lists differ in length
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:123: error: cannot find symbol
-         matrix3x2fStack.popMatrix();
-                        ^
-  symbol:   method popMatrix()
-  location: variable matrix3x2fStack of type MatrixStack
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:337: error: cannot find symbol
-            this.colorWidget.mouseClicked((double)f, (double)f3, _cb);
-                                                                 ^
+            this.colorWidget.mouseClicked(f, f3, _cb);
+                                                 ^
   symbol:   variable _cb
   location: class IconPickerScreen
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/gui/IconPickerScreen.java:363: error: cannot find symbol
@@ -1488,86 +1434,66 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
                                                                                   ^
   symbol:   method getSkin()
   location: variable abstractClientPlayerEntity of type AbstractClientPlayerEntity
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/StorageEspRenderer.java:119: error: incompatible types: Vec3d cannot be converted to Vector3fc
-            Vector3fc camera = client.gameRenderer.getCamera().getPos();
-                                                                     ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/MiscBlockEspRenderer.java:28: error: incompatible types: bad type in conditional expression
-            Vector3fc client = found2 ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
-                                                                                                     ^
-    Vec3d cannot be converted to Vector3fc
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:254: error: cannot find symbol
-                                    MatrixStack matrix3x2fStack = context.getMatrices();
-                                    ^
-  symbol:   class MatrixStack
-  location: class WorldNametagRenderer
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:31: error: cannot find symbol
-        return mod.pulse.get() ? (float)(Math.sin(t * 2.0 * Math.PI * mod.pulseSpeed.getFloat()) * 0.5 + 0.5) : 1.0f;
-                  ^
-  symbol:   variable pulse
-  location: variable mod of type BlockOutlineModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockOutlineRenderer.java:31: error: cannot find symbol
-        return mod.pulse.get() ? (float)(Math.sin(t * 2.0 * Math.PI * mod.pulseSpeed.getFloat()) * 0.5 + 0.5) : 1.0f;
-                                                                         ^
-  symbol:   variable pulseSpeed
-  location: variable mod of type BlockOutlineModule
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:72: error: incompatible types: bad type in conditional expression
-         Vector3fc client = found ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
-                                                                                                 ^
-    Vec3d cannot be converted to Vector3fc
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:74: error: incompatible types: Object cannot be converted to Hole
-         for (HoleEspRenderer.Hole hole : list) {
-                                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:63: error: incompatible types: Object cannot be converted to Shock
-            for (HitParticlesModule.Shock shock : deque2) {
-                                                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:69: error: incompatible types: Object cannot be converted to HitParticle
-            for (HitParticlesModule.HitParticle hitParticle : deque) {
-                                                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:82: error: incompatible types: Object cannot be converted to HitParticle
-            for (HitParticlesModule.HitParticle hitParticle2 : deque) {
-                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/StorageEspRenderer.java:171: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                        EspBoxRenderer.tracer(immediate, matrices, vec, camera, (d + coord3) / 2.0, (coord + coord4) / 2.0, (currentScore + coord5) / 2.0, step, 1.15F);
+                                                                        ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/MiscBlockEspRenderer.java:67: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                     client,
+                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:259: error: cannot find symbol
+                                       matrix3x2fStack.pushMatrix();
+                                                      ^
+  symbol:   method pushMatrix()
+  location: variable matrix3x2fStack of type MatrixStack
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:260: error: no suitable method found for translate(float,float)
+                                       matrix3x2fStack.translate(f22 + (float)n * f20, f23);
+                                                      ^
+    method MatrixStack.translate(double,double,double) is not applicable
+      (actual and formal argument lists differ in length)
+    method MatrixStack.translate(float,float,float) is not applicable
+      (actual and formal argument lists differ in length)
+    method MatrixStack.translate(Vec3d) is not applicable
+      (actual and formal argument lists differ in length)
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:261: error: method scale in class MatrixStack cannot be applied to given types;
+                                       matrix3x2fStack.scale(f19 / 16.0F, f19 / 16.0F);
+                                                      ^
+  required: float,float,float
+  found:    float,float
+  reason: actual and formal argument lists differ in length
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/WorldNametagRenderer.java:264: error: cannot find symbol
+                                       matrix3x2fStack.popMatrix();
+                                                      ^
+  symbol:   method popMatrix()
+  location: variable matrix3x2fStack of type MatrixStack
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java:91: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                  immediate, matrices, vec, client, (double)hole.x() + 0.5, (double)hole.y() + 0.5, (double)hole.z() + 0.5, Colors.withAlpha(localZ, 0.72F), 1.2F
+                                            ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:95: error: cannot find symbol
                VertexConsumer consumer3 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
                                                                           ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HitParticleRenderer.java:97: error: incompatible types: Object cannot be converted to HitParticle
-               for (HitParticlesModule.HitParticle hitParticle3 : deque) {
-                                                                  ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:105: error: cannot find symbol
             VertexConsumer consumer4 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_67));
                                                                        ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:252: error: incompatible types: Object cannot be converted to TrailNode
-         for (CustomAccessoriesModule.TrailNode trailNode2 : deque) {
-                                                             ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:298: error: incompatible types: Object cannot be converted to TrailNode
-      for (CustomAccessoriesModule.TrailNode trailNode : deque) {
-                                                         ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/AccessoryRenderer.java:330: error: incompatible types: Object cannot be converted to TrailNode
-      for (CustomAccessoriesModule.TrailNode trailNode : deque) {
-                                                         ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:114: error: bad operand types for binary operator '&'
             int n9 = map.getOrDefault(hit.block(), n) & 16777215;
                                                       ^
   first type:  Object
   second type: int
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:154: error: incompatible types: Vec3d cannot be converted to Vector3fc
-            Vector3fc client = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
-                                                                                            ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:157: error: bad operand types for binary operator '&'
                int n12 = map.getOrDefault(hit2.block(), n) & 16777215;
                                                            ^
   first type:  Object
   second type: int
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:31: error: incompatible types: bad type in conditional expression
-            Vector3fc camera = found2 ? client.gameRenderer.getCamera().getPos() : null;
-                                                                              ^
-    Vec3d cannot be converted to Vector3fc
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:33: error: incompatible types: Object cannot be converted to Cached
-            for (BlockEntityEspModule.Cached cached : collection) {
-                                                      ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEspRenderer.java:159: error: incompatible types: Vec3d cannot be converted to Vector3fc
+               EspBoxRenderer.tracer(immediate, matrices, vec, client, (double)hit2.x() + 0.5, (double)hit2.y() + 0.5, (double)hit2.z() + 0.5, n13, 1.2F);
+                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/BlockEntityEspRenderer.java:55: error: incompatible types: Vec3d cannot be converted to Vector3fc
+                        EspBoxRenderer.tracer(immediate, matrices, vec, camera, d + 0.5, coord + 0.5, currentScore + 0.5, n9, 1.2F);
+                                                                        ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/nanovg/NVGImages.java:95: error: cannot find symbol
          int localZ = client.getGlId();
                             ^
@@ -1578,60 +1504,26 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
                                                                       ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:43: error: incompatible types: Object cannot be converted to JumpCircle
-            for (JumpCirclesModule.JumpCircle jumpCircle : deque) {
-                                                           ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:48: error: cannot find symbol
                VertexConsumer consumer2 = immediate.getBuffer(RenderLayers.entityTranslucentEmissive(TEXTURE_RING));
                                                                           ^
   symbol:   method entityTranslucentEmissive(Identifier)
   location: class RenderLayers
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/JumpCircleRenderer.java:50: error: incompatible types: Object cannot be converted to JumpCircle
-               for (JumpCirclesModule.JumpCircle jumpCircle2 : deque) {
-                                                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/UiSounds.java:25: error: cannot find symbol
-         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/util/UiSounds.java:26: error: cannot find symbol
+         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(RegistryEntry.of(sound), f));
                                                                                      ^
-  symbol:   method ui(SoundEvent,float)
+  symbol:   method ui(RegistryEntry<SoundEvent>,float)
   location: class PositionedSoundInstance
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/suschunk/ServerLightCache.java:174: error: incompatible types: List<Object> cannot be converted to List<BlockPos>
       return (List<BlockPos>)(list == null ? List.of() : list);
                              ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:30: error: incompatible types: LocalPlayerFreecamMixin cannot be converted to ClientPlayerEntity
-      ClientPlayerEntity player = (ClientPlayerEntity)this;
-                                                      ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LocalPlayerFreecamMixin.java:35: error: incompatible types: ClientPlayerEntity cannot be converted to MinecraftClient
             FreecamModule.reapplyBodyInput(player);
                                            ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:28: error: cannot find symbol
-         temp.beginSidebar();
-         ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:42: error: cannot find symbol
-      if (fakeStatsModule != null && temp2 instanceof Text text) {
-                                     ^
-  symbol:   variable temp2
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:44: error: cannot find symbol
-            return temp.getWidth(fakeStatsModule.rewriteForWidth(text));
-                   ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:49: error: cannot find symbol
-      return temp.getWidth(temp2);
-                           ^
+      return textRenderer.getWidth(temp2);
+                                   ^
   symbol:   variable temp2
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:49: error: cannot find symbol
-      return temp.getWidth(temp2);
-             ^
-  symbol:   variable temp
-  location: class GuiSidebarMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:65: error: cannot find symbol
-            return fakeStatsModule.rewriteForDraw(temp);
-                                                  ^
-  symbol:   variable temp
   location: class GuiSidebarMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GuiSidebarMixin.java:70: error: cannot find symbol
       return temp;
@@ -1641,88 +1533,15 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:29: error: variable d is already defined in method sixsevenclient$freecamMouse(double,CallbackInfo)
             double d = (Double)client.options.getMouseSensitivity().getValue() * 0.6 + 0.2;
                    ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerFreecamMixin.java:36: error: cannot find symbol
-            temp.cancel();
-            ^
-  symbol:   variable temp
-  location: class MouseHandlerFreecamMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:20: error: incompatible types: EntityFreecamMixin cannot be converted to Entity
       Entity entity = (Entity)this;
                               ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:22: error: cannot find symbol
-      if (client.player != null && entity == client.player && temp == client.player) {
-                                                              ^
-  symbol:   variable temp
-  location: class EntityFreecamMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreecamMixin.java:25: error: cannot find symbol
-            temp2.setReturnValue(false);
-            ^
-  symbol:   variable temp2
-  location: class EntityFreecamMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:20: error: incomparable types: EntityFreeLookMixin and ClientPlayerEntity
       if (this == client.player) {
                ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:23: error: cannot find symbol
-            freeLookModule.addCameraLook(temp, temp3);
-                                         ^
-  symbol:   variable temp
-  location: class EntityFreeLookMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:23: error: cannot find symbol
-            freeLookModule.addCameraLook(temp, temp3);
-                                               ^
-  symbol:   variable temp3
-  location: class EntityFreeLookMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityFreeLookMixin.java:24: error: cannot find symbol
-            temp2.cancel();
-            ^
-  symbol:   variable temp2
-  location: class EntityFreeLookMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:44: error: cannot find symbol
-      WorldProjection.capture(temp2, temp.getTickProgress(false));
-                              ^
-  symbol:   variable temp2
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:44: error: cannot find symbol
-      WorldProjection.capture(temp2, temp.getTickProgress(false));
-                                     ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:56: error: cannot find symbol
-      return BlurHook.apply(temp);
-                            ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:66: error: package temp does not exist
-         double d = temp.zoom.currentFactor();
-                        ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:67: error: cannot find symbol
-         return d > 1.0001 ? (float)((double)temp2 / d) : temp2;
-                                             ^
-  symbol:   variable temp2
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:67: error: cannot find symbol
-         return d > 1.0001 ? (float)((double)temp2 / d) : temp2;
-                                                          ^
-  symbol:   variable temp2
-  location: class GameRendererMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:69: error: cannot find symbol
          return temp;
                 ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:83: error: cannot find symbol
-      return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(temp) : temp;
-                                                                                                              ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:83: error: cannot find symbol
-      return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(temp) : temp;
-                                                                                                                      ^
-  symbol:   variable temp
-  location: class GameRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/GameRendererMixin.java:95: error: cannot find symbol
-      return freecamModule != null && freecamModule.isActive() && freecamModule.renderHands() ? true : temp;
-                                                                                                       ^
   symbol:   variable temp
   location: class GameRendererMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:28: error: cannot find symbol
@@ -1730,86 +1549,37 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
                 ^
   symbol:   variable temp
   location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                      ^
-  symbol:   variable temp3
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                               ^
-  symbol:   variable temp
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                                                                   ^
-  symbol:   variable temp2
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: cannot find symbol
-            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(temp3) ? temp : armorTrimHiderModule.mapTrim(temp2, (ArmorTrim)temp);
-                                                                                                                                                     ^
-  symbol:   variable temp
-  location: class EquipmentLayerRendererMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:32: error: incompatible types: Object cannot be converted to ItemStack
+            return !armorTrimHiderModule.affectsOwn() && sixsevenclient$isLocalPlayer(value3) ? value3 : armorTrimHiderModule.mapTrim(value2, (ArmorTrim)value3);
+                                                                                                                                      ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:34: error: cannot find symbol
             return temp;
                    ^
   symbol:   variable temp
   location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EquipmentLayerRendererMixin.java:40: error: cannot find symbol
-      if (!(temp instanceof PlayerEntityRenderState playerEntityRenderState)) {
-            ^
-  symbol:   variable temp
-  location: class EquipmentLayerRendererMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MultiPlayerGameModeAttackMixin.java:24: error: cannot find symbol
-            moduleManager.hitParticles.onHit(temp);
-                                             ^
-  symbol:   variable temp
-  location: class MultiPlayerGameModeAttackMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: variable d is already defined in method sixsevenclient$aimAssist(double,CallbackInfo)
-         double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                  ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: cannot find symbol
-         double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                                                   ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: package temp does not exist
-         double[] d = temp.aimAssist.computePixels(temp2, this.cursorDeltaX, this.cursorDeltaY);
-                          ^
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:47: error: cannot find symbol
-      if (temp == client.getWindow().getHandle()) {
-          ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:48: error: cannot find symbol
-         if (temp4 == 1 && client.currentScreen == null) {
-             ^
-  symbol:   variable temp4
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:53: error: cannot find symbol
-            if (temp4 == 1) {
-                ^
-  symbol:   variable temp4
-  location: class MouseHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:32: error: incompatible types: CallbackInfo cannot be converted to double
+         double[] deltas = moduleManager.aimAssist.computePixels(callbackInfo, this.cursorDeltaX, this.cursorDeltaY);
+                                                                 ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:33: error: bad operand types for binary operator '!='
+         if (d != null) {
+               ^
+  first type:  double
+  second type: <null>
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:34: error: array required, but double found
+            this.cursorDeltaX = this.cursorDeltaX + d[0];
+                                                     ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:35: error: array required, but double found
+            this.cursorDeltaY = this.cursorDeltaY + d[1];
+                                                     ^
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:55: error: cannot find symbol
                   temp2.cancel();
                   ^
   symbol:   variable temp2
   location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:57: error: cannot find symbol
-            } else if (temp4 == 0 && HudDragController.isDragging()) {
-                       ^
-  symbol:   variable temp4
-  location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:60: error: cannot find symbol
                temp2.cancel();
                ^
   symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:81: error: cannot find symbol
-      if (moduleManager != null && moduleManager.zoom != null && temp instanceof Double value) {
-                                                                 ^
-  symbol:   variable temp
   location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:84: error: cannot find symbol
             return temp;
@@ -1821,21 +1591,207 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
                 ^
   symbol:   variable temp
   location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:103: error: cannot find symbol
-      if (temp2 == client.getWindow().getHandle()
-          ^
-  symbol:   variable temp2
-  location: class MouseHandlerMixin
-/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:106: error: cannot find symbol
-         && HudDragController.tryResize(SixSevenClient.hud(), temp)) {
-                                                              ^
-  symbol:   variable temp
-  location: class MouseHandlerMixin
 /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/MouseHandlerMixin.java:107: error: cannot find symbol
          temp3.cancel();
          ^
   symbol:   variable temp3
   location: class MouseHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:27: error: incompatible types: AbstractClientPlayerMixin cannot be converted to AbstractClientPlayerEntity
+               AbstractClientPlayerEntity abstractClientPlayerEntity = (AbstractClientPlayerEntity)this;
+                                                                                                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/AbstractClientPlayerMixin.java:29: error: cannot find symbol
+                  temp.setReturnValue(skinTextures);
+                  ^
+  symbol:   variable temp
+  location: class AbstractClientPlayerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:20: error: incompatible types: LivingEntityJumpMixin cannot be converted to ClientPlayerEntity
+      if (this instanceof ClientPlayerEntity player && player == MinecraftClient.getInstance().player) {
+          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntityJumpMixin.java:23: error: cannot find symbol
+            moduleManager.jumpCircles.onPlayerJump(temp);
+                                                   ^
+  symbol:   variable temp
+  location: class LivingEntityJumpMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LightTextureMixin.java:28: error: cannot find symbol
+      return moduleManager != null && moduleManager.fullbright != null && moduleManager.fullbright.isEnabled() ? (double)moduleManager.fullbright.gamma.getFloat() : temp;
+                                                                                                                                                                     ^
+  symbol:   variable temp
+  location: class LightTextureMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:22: error: cannot find symbol
+         return temp;
+                ^
+  symbol:   variable temp
+  location: class ChatComponentMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:24: error: variable text is already defined in method sixsevenclient$censorChat(Text)
+         Text text = temp;
+              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:24: error: cannot find symbol
+         Text text = temp;
+                     ^
+  symbol:   variable temp
+  location: class ChatComponentMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/ChatComponentMixin.java:26: error: cannot find symbol
+            text = moduleManager.fakeRoles.decorateChat(temp);
+                                                        ^
+  symbol:   variable temp
+  location: class ChatComponentMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:27: error: cannot find symbol
+      if (SixSevenClient.modules() != null && temp3 == 1) {
+                                              ^
+  symbol:   variable temp3
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:30: error: cannot find symbol
+               temp2.cancel();
+               ^
+  symbol:   variable temp2
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardHandlerMixin.java:34: error: cannot find symbol
+            temp2.cancel();
+            ^
+  symbol:   variable temp2
+  location: class KeyboardHandlerMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:29: error: cannot find symbol
+      if (moduleManager != null && temp.displayName != null) {
+                                   ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:33: error: package temp does not exist
+            String text = temp.displayName.getString();
+                              ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:36: error: cannot find symbol
+                  temp2.cancel();
+                  ^
+  symbol:   variable temp2
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:41: error: cannot find symbol
+                  temp2.cancel();
+                  ^
+  symbol:   variable temp2
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:45: error: cannot find symbol
+               temp2.cancel();
+               ^
+  symbol:   variable temp2
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:51: error: package temp does not exist
+            String name2 = moduleManager.nameProtect.replacementForDisplay(temp.displayName.getString());
+                                                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:53: error: cannot find symbol
+               temp.displayName = Text.literal(name2);
+               ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:58: error: package temp does not exist
+         if (fakeRolesModule != null && isLocalPlayer(temp.displayName.getString())) {
+                                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:59: error: cannot find symbol
+            temp.displayName = fakeRolesModule.decorateNametag(temp.displayName);
+            ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:59: error: cannot find symbol
+            temp.displayName = fakeRolesModule.decorateNametag(temp.displayName);
+                                                               ^
+  symbol:   variable temp
+  location: class EntityNameTagMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:70: error: cannot find symbol
+            String name3 = player.getGameProfile().name();
+                                                  ^
+  symbol:   method name()
+  location: class GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/EntityNameTagMixin.java:86: error: cannot find symbol
+               String name3 = gameProfile == null ? null : gameProfile.name();
+                                                                      ^
+  symbol:   method name()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:18: error: incompatible types: LivingEntitySwingMixin cannot be converted to LivingEntity
+      LivingEntity entity = (LivingEntity)this;
+                                          ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:20: error: cannot find symbol
+         return temp;
+                ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:24: error: package temp2 does not exist
+            float f = temp2.swingSpeed.multiplier();
+                           ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:25: error: cannot find symbol
+            return f <= 0.01F ? temp : Math.max(1, Math.round((float)temp / f));
+                                ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:25: error: cannot find symbol
+            return f <= 0.01F ? temp : Math.max(1, Math.round((float)temp / f));
+                                                                     ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/LivingEntitySwingMixin.java:27: error: cannot find symbol
+            return temp;
+                   ^
+  symbol:   variable temp
+  location: class LivingEntitySwingMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:19: error: incomparable types: Input and KeyboardInputFreecamMixin
+      if (client.player != null && client.player.input == this) {
+                                                       ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/KeyboardInputFreecamMixin.java:22: error: cannot find symbol
+            FreecamModule.reapplyBodyInput(temp);
+                                           ^
+  symbol:   variable temp
+  location: class KeyboardInputFreecamMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:22: error: cannot find symbol
+         return temp;
+                ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:24: error: cannot find symbol
+         GameProfile gameProfile = temp2.getProfile();
+                                   ^
+  symbol:   variable temp2
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:25: error: cannot find symbol
+         String name2 = gameProfile == null ? null : gameProfile.name();
+                                                                ^
+  symbol:   method name()
+  location: variable gameProfile of type GameProfile
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:26: error: cannot find symbol
+         Object value = temp;
+                        ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:27: error: cannot find symbol
+         if (temp3.nameProtect != null && temp3.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
+             ^
+  symbol:   variable temp3
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:27: error: package temp3 does not exist
+         if (temp3.nameProtect != null && temp3.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
+                                               ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: variable name2 is already defined in method sixsevenclient$protectTabName(Text,PlayerListEntry)
+            String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                   ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: cannot find symbol
+            String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                                                                   ^
+  symbol:   variable temp2
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:28: error: package temp3 does not exist
+            String name2 = temp3.nameProtect.replacementForDisplay(temp2);
+                                ^
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:30: error: cannot find symbol
+               temp = Text.literal(name2);
+               ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:34: error: cannot find symbol
+         if (temp2.fakeRoles != null && temp != null) {
+             ^
+  symbol:   variable temp2
+  location: class PlayerTabOverlayMixin
+/home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/mixin/PlayerTabOverlayMixin.java:34: error: cannot find symbol
+         if (temp2.fakeRoles != null && temp != null) {
+                                        ^
+  symbol:   variable temp
+  location: class PlayerTabOverlayMixin
 Note: /home/runner/work/minecraftclient/minecraftclient/src/main/java/dev/sixseven/render/HoleEspRenderer.java uses or overrides a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
@@ -1991,35 +1947,6 @@ Note: Some messages have been simplified; recompile with -Xdiags:verbose to get 
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
-	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
-	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
-	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
-	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
-	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
-	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
-	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:46)
-	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
-	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
-	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
-	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
-	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
 
@@ -2030,5 +1957,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 58s
+BUILD FAILED in 1m 2s
 1 actionable task: 1 executed
