@@ -24,7 +24,7 @@ import net.minecraft.client.util.SkinTextures;
 
 public class SkinProtectModule extends Module {
    private static final HttpClient HTTP = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(8L)).build();
-   public final StringSetting ign = this.addSetting(new StringSetting("Skin IGN", "Username whose skin is applied", "epsteinclient", 16, "Type a username…"));
+   public final StringSetting ign = this.addSetting(new StringSetting("Skin IGN", "Username whose skin is applied", "epsteinclient", 16, "Type a usernameâ¦"));
    public final ModeSetting applyTo = this.addSetting(new ModeSetting("Apply To", "Whose skin gets replaced", "Everyone", "Everyone", "Others", "Self"));
    private volatile SkinTextures replacement;
    private volatile String fetchedFor = "";
@@ -79,7 +79,7 @@ public class SkinProtectModule extends Module {
       try {
          JsonObject jsonObject = getJson("https://api.mojang.com/users/profiles/minecraft/" + trimmed);
          if (jsonObject == null || !jsonObject.has("id")) {
-            SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094¾\u0085½ĞĊėĞǐǆǚǵȕȞɂȲ˙ʀˑʾ̗̝̌͌ϕίϖ\u03a2π", trimmed);
+            SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÇµÈÈÉÈ²ËÊËÊ¾ÌÌÌÍÏÎ¯Ï\u03a2Ï", trimmed);
             return;
          }
 
@@ -89,7 +89,7 @@ public class SkinProtectModule extends Module {
          String text2 = "^";
          JsonObject jsonObject2 = getJson("https://sessionserver.mojang.com/session/minecraft/profile/" + text.replace(text2, "") + "?unsigned=false");
          if (jsonObject2 == null || !jsonObject2.has("properties")) {
-            SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094¾\u0085½ĞĊėĞǐǝǛƾȋȃɚȺʐʙˇ˻̜͕̊̄υϧΓΪΝщСНЭӒҪ", trimmed);
+            SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÆ¾ÈÈÉÈºÊÊËË»ÌÌÌÍÏÏ§ÎÎªÎÑÐ¡ÐÐ­ÓÒª", trimmed);
             return;
          }
 
@@ -108,14 +108,14 @@ public class SkinProtectModule extends Module {
          gameProfile.getProperties().putAll(linkedHashMultimap);
          MinecraftClient.getInstance().getSkinProvider().fetchSkinTextures(gameProfile).thenAccept(skinTextures -> {
              if (skinTextures != null) {
-                this.replacement = skinTextures;
-               SixSevenClient.LOGGER.info("(\u007f#\u0007|\u0094¾\u0085½ĞĊėĞǐǟǛǿȟȔɑɼʊʞˋʵ̟͓̓͞ΐϮ\u038b", name);
+                this.replacement = skinTextures.orElse(null);
+               SixSevenClient.LOGGER.info("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÇ¿ÈÈÉÉ¼ÊÊËÊµÍÌÌÍÎÏ®\u038b", name);
             } else {
-               SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094¾\u0085½ĞĊėĞǐǐǛǫȗȕȕȲʖʁʂʷ̘̘̑́σϾΟηΝћЫЗѹӜҥӢҡՃիՊԌן\u05fb", name);
+               SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÇ«ÈÈÈÈ²ÊÊÊÊ·ÌÌÌÌÏÏ¾ÎÎ·ÎÑÐ«ÐÑ¹ÓÒ¥Ó¢Ò¡ÕÕ«ÕÔ×\u05fb", name);
             }
          });
       } catch (Exception ex) {
-         SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094¾\u0085½ĞĊėĞǐǕǕǷȗȔɑɼʍʚʂʽ̛̟͉̍ΐϦΝΰϓЏШЀѿ҉ҬӺһԅտՅ", trimmed, ex.toString());
+         SixSevenClient.LOGGER.warn("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÇ·ÈÈÉÉ¼ÊÊÊÊ½ÌÌÌÍÎÏ¦ÎÎ°ÏÐÐ¨ÐÑ¿ÒÒ¬ÓºÒ»ÔÕ¿Õ", trimmed, ex.toString());
       }
    }
 
@@ -128,6 +128,6 @@ public class SkinProtectModule extends Module {
    }
 
    private static UUID dashify(String trimmed) {
-      return UUID.fromString(trimmed.replaceFirst("[p?\u0015*¹åÂ\u0095ČĒŗľǙƻǨǩȀɅɈɵˑʩ˕ʠ͕͊̄̉ϬϢ\u038dϨΏђѧ", "$1-$2-$3-$4-$5"));
+      return UUID.fromString(trimmed.replaceFirst("[p?\u0015*Â¹Ã¥Ã\u0095ÄÄÅÄ¾ÇÆ»Ç¨Ç©ÈÉÉÉµËÊ©ËÊ ÍÌÍÌÏ¬Ï¢\u038dÏ¨ÎÑÑ§", "$1-$2-$3-$4-$5"));
    }
 }
