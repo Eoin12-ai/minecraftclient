@@ -1,5 +1,7 @@
 package dev.sixseven.module.misc;
 
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Multimap;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -93,19 +95,19 @@ public class SkinProtectModule extends Module {
             return;
          }
 
-         PropertyMap propertyMap = new PropertyMap();
+         Multimap<String, Property> properties = LinkedHashMultimap.create();
 
          for (JsonElement jsonElement : jsonObject2.getAsJsonArray("properties")) {
             JsonObject jsonObject3 = jsonElement.getAsJsonObject();
             if ("textures".equals(jsonObject3.get("name").getAsString())) {
                String json = jsonObject3.get("value").getAsString();
                String json2 = jsonObject3.has("signature") ? jsonObject3.get("signature").getAsString() : null;
-               propertyMap.put("textures", json2 == null ? new Property("textures", json) : new Property("textures", json, json2));
+               properties.put("textures", json2 == null ? new Property("textures", json) : new Property("textures", json, json2));
             }
          }
 
          // GameProfile is a record now, so the properties go in at construction
-         GameProfile gameProfile = new GameProfile(uuid, name, propertyMap);
+         GameProfile gameProfile = new GameProfile(uuid, name, new PropertyMap(properties));
          MinecraftClient.getInstance().getSkinProvider().fetchSkinTextures(gameProfile).thenAccept(skinTextures -> {
              if (skinTextures != null) {
                 this.replacement = skinTextures.orElse(null);
