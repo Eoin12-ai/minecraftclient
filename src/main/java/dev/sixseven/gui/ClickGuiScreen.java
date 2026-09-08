@@ -1,5 +1,8 @@
 package dev.sixseven.gui;
 
+import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharInput;
+import net.minecraft.client.gui.Click;
 import dev.sixseven.SixSevenClient;
 import dev.sixseven.gui.config.ConfigPanel;
 import dev.sixseven.config.ConfigStore;
@@ -319,9 +322,11 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
     private void closeThemes() { themesOpen = false; UiSounds.guiClose(); }
 
-    // ── 1.21.5 Screen API signatures ──────────────────────────────────────────
+    // ── Screen API: 1.21.11 passes input as records ───────────────────────────
     @Override
-    public boolean mouseClicked(double px, double py, int btn) {
+    public boolean mouseClicked(Click click, boolean doubleClick) {
+        double px = click.x(), py = click.y();
+        int btn = click.button();
         float mx = uiX(px), my = uiY(py);
         NVGRenderer nvg = NVGRenderer.get();
         float sh  = OverlayRenderer.uiHeight();
@@ -374,15 +379,15 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     }
 
     @Override
-    public boolean mouseDragged(double px, double py, int btn, double dx, double dy) {
+    public boolean mouseDragged(Click click, double dx, double dy) {
         if (configPanel.isOpen()) return true;
-        float mx = uiX(px), my = uiY(py);
+        float mx = uiX(click.x()), my = uiY(click.y());
         if (pressedContentPanel != null) pressedContentPanel.mouseDragged(mx, my);
         return true;
     }
 
     @Override
-    public boolean mouseReleased(double px, double py, int btn) {
+    public boolean mouseReleased(Click click) {
         if (configPanel.isOpen()) return true;
         if (pressedContentPanel != null) { pressedContentPanel.mouseReleased(); pressedContentPanel = null; }
         return true;
@@ -405,7 +410,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     }
 
     @Override
-    public boolean keyPressed(int key, int scancode, int mods) {
+    public boolean keyPressed(KeyInput input) {
+        int key = input.key(), mods = input.modifiers();
         if (configPanel.isOpen()) { configPanel.keyPressed(key); return true; }
         if (themesOpen && themesPanel.isListening()) { themesPanel.keyPressed(key); return true; }
         for (CategoryPanel p : columns) { if (p.isListening()) { p.keyPressed(key); return true; } }
@@ -420,19 +426,20 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             return true;
         }
         if (key == 256 || guiModule().getKeybind().matches(key)) { close(); return true; }
-        return super.keyPressed(key, scancode, mods);
+        return super.keyPressed(input);
     }
 
     @Override
-    public boolean charTyped(char c, int mods) {
+    public boolean charTyped(CharInput input) {
+        char c = (char) input.codepoint();
         if (configPanel.isOpen()) { configPanel.charTyped(c); return true; }
         if (themesOpen && themesPanel.isListening()) { themesPanel.charTyped(c); return true; }
         for (CategoryPanel p : columns) { if (p.isListening()) { p.charTyped(c); return true; } }
-        if (searchFocused && !Character.isISOControl(c)) {
-            if (search.length() < 40) search.append(c);
+        if (searchFocused && input.isValidChar()) {
+            if (search.length() < 40) search.append(input.asString());
             return true;
         }
-        return super.charTyped(c, mods);
+        return super.charTyped(input);
     }
 
     public void openSearch(String text) { search.setLength(0); search.append(text); searchFocused = true; }

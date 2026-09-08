@@ -24,7 +24,7 @@ public final class AccessoryRenderer {
    private static final int CAPE_ROWS = 9;
    private static final float CAPE_WIDTH = 0.62F;
    private static final float CAPE_LENGTH = 1.05F;
-   private static final RenderLayer CAPE_FILL = RenderLayer.getDebugQuads();
+   private static final RenderLayer CAPE_FILL = RenderLayers.debugQuads();
 
    private AccessoryRenderer() {
    }
@@ -102,7 +102,7 @@ public final class AccessoryRenderer {
          FlatOverlay.flush(immediate);
          boolean ok2 = customAccessoriesModule.crown.get() && !ok;
          if (found2 || ok2) {
-            VertexConsumer consumer4 = immediate.getBuffer(net.minecraft.client.render.RenderLayer.getEntityTranslucentEmissive(TEXTURE_67));
+            VertexConsumer consumer4 = immediate.getBuffer(net.minecraft.client.render.RenderLayers.entityTranslucentEmissive(TEXTURE_67));
             if (found2) {
                texCape(consumer4, entry, f15, f16, f17, vector3f, n);
             }

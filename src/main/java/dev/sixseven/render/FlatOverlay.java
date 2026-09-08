@@ -2,6 +2,7 @@ package dev.sixseven.render;
 
 import dev.sixseven.util.Colors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider.Immediate;
 import net.minecraft.client.util.math.MatrixStack;
@@ -12,8 +13,8 @@ import org.joml.Vector3f;
 public final class FlatOverlay {
 
     // Use existing MC RenderLayer presets — no custom pipeline needed
-    public static final RenderLayer FILL  = RenderLayer.getDebugQuads();
-    public static final RenderLayer LINES = RenderLayer.getLines();
+    public static final RenderLayer FILL  = RenderLayers.debugQuads();
+    public static final RenderLayer LINES = RenderLayers.lines();
 
     private FlatOverlay() {}
 

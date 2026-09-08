@@ -38,14 +38,14 @@ public final class JumpCircleRenderer {
          if (!deque.isEmpty()) {
             float f3 = jumpCirclesModule.size.getFloat();
             int n = currentBaseRgb(jumpCirclesModule);
-            VertexConsumer consumer = immediate.getBuffer(net.minecraft.client.render.RenderLayer.getEntityTranslucentEmissive(TEXTURE_67));
+            VertexConsumer consumer = immediate.getBuffer(net.minecraft.client.render.RenderLayers.entityTranslucentEmissive(TEXTURE_67));
 
             for (JumpCirclesModule.JumpCircle jumpCircle : deque) {
                renderDecal(matrices, consumer, jumpCircle, vec, l, f, f3, n);
             }
 
             if (jumpCirclesModule.shockwave.get()) {
-               VertexConsumer consumer2 = immediate.getBuffer(net.minecraft.client.render.RenderLayer.getEntityTranslucentEmissive(TEXTURE_RING));
+               VertexConsumer consumer2 = immediate.getBuffer(net.minecraft.client.render.RenderLayers.entityTranslucentEmissive(TEXTURE_RING));
 
                for (JumpCirclesModule.JumpCircle jumpCircle2 : deque) {
                   renderShockwave(matrices, consumer2, jumpCircle2, vec, l, f3, n);

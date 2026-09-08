@@ -10,6 +10,7 @@ import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;
 import net.minecraft.client.gui.screen.ingame.BookEditScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.input.KeyInput;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,13 +20,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({Keyboard.class})
 public class KeyboardHandlerMixin {
    @Inject(
-      method = {"onKey(JIIII)V"},
+      method = {"onKey(JILnet/minecraft/client/input/KeyInput;)V"},
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void sixsevenclient$dispatchModuleKeybinds(long window, int key, int scancode, int action,
-                                                     int modifiers, CallbackInfo callbackInfo) {
+   private void sixsevenclient$dispatchModuleKeybinds(long window, int action, KeyInput input,
+                                                     CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
+      int key = input.key();
       if (SixSevenClient.modules() != null && action == GLFW.GLFW_PRESS) {
          if (client.currentScreen == null && client.world != null) {
             if (SixSevenClient.modules().onKeyPressed(key)) {

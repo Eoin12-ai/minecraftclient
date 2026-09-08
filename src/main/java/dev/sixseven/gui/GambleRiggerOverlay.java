@@ -23,7 +23,7 @@ public final class GambleRiggerOverlay {
                      GamblePanel gamblePanel = new GamblePanel(generic3x3ContainerScreen, gambleRiggerModule);
                      ScreenEvents.afterRender(arg2).register((AfterRender)(arg5, arg6, arg7, arg8, arg9) -> gamblePanel.render(arg6, arg7, arg8));
                      ScreenMouseEvents.allowMouseClick(arg2)
-                        .register((AllowMouseClick)(arg5, arg6, arg7, arg8) -> !gamblePanel.handleClick((double)arg6, (double)arg7, (int)arg8));
+                        .register((AllowMouseClick)(arg5, click) -> !gamblePanel.handleClick(click.x(), click.y(), click.button()));
                   }
                }
             }

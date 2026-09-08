@@ -1,5 +1,8 @@
 package dev.sixseven.gui;
 
+import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharInput;
+import net.minecraft.client.gui.Click;
 import dev.sixseven.SixSevenClient;
 import dev.sixseven.gui.picker.PickerGrid;
 import dev.sixseven.gui.widget.ColorWidget;
@@ -328,9 +331,11 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       return OverlayRenderer.guiToUi(d);
    }
 
-   public boolean mouseClicked(double _cx, double _cy, int _cb) {
-      float f = this.ux(_cx);
-      float f3 = this.ux(_cy);
+   @Override
+   public boolean mouseClicked(Click click, boolean doubleClick) {
+      int _cb = click.button();
+      float f = this.ux(click.x());
+      float f3 = this.ux(click.y());
       IconPickerScreen.Layout layout2 = this.layout();
       if (this.colorSetting != null) {
          if (inRect(f, f3, this.popupRect)) {
@@ -399,15 +404,17 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       this.colorWidget = null;
    }
 
-   public boolean mouseDragged(double _cx, double _cy, int _cb, double d, double coord) {
+   @Override
+   public boolean mouseDragged(Click click, double d, double coord) {
       if (this.colorSetting != null && this.colorWidget != null) {
-         this.colorWidget.mouseDragged(this.ux(_cx), this.ux(_cy));
+         this.colorWidget.mouseDragged(this.ux(click.x()), this.ux(click.y()));
       }
 
       return true;
    }
 
-   public boolean mouseReleased(double _cx, double _cy, int _cb) {
+   @Override
+   public boolean mouseReleased(Click click) {
       if (this.colorWidget != null) {
          this.colorWidget.mouseReleased();
       }
@@ -415,15 +422,18 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       return true;
    }
 
-   public boolean mouseScrolled(double _sx, double _sy, double d, double coord, double currentScore, double coord3) {
+   @Override
+   public boolean mouseScrolled(double _sx, double _sy, double hDelta, double vDelta) {
       if (this.colorSetting == null) {
-         this.scroll = Math.clamp(this.scroll - (float)(coord3 * (double)this.layout().cell()), 0.0F, this.maxScroll);
+         this.scroll = Math.clamp(this.scroll - (float)(vDelta * (double)this.layout().cell()), 0.0F, this.maxScroll);
       }
 
       return true;
    }
 
-   public boolean keyPressed(int _key, int _scan, int keyInput) {
+   @Override
+   public boolean keyPressed(KeyInput input) {
+      int _key = input.key();
       int n = _key;
       if (this.colorSetting != null) {
          if (this.colorWidget != null && this.colorWidget.isListening()) {
@@ -454,11 +464,13 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
          this.close();
          return true;
       } else {
-         return super.keyPressed(_key, _scan, keyInput);
+         return super.keyPressed(input);
       }
    }
 
-   public boolean charTyped(char _c, int charInput) {
+   @Override
+   public boolean charTyped(CharInput input) {
+      char _c = (char) input.codepoint();
       if (this.colorSetting != null) {
          return true;
       } else if (!this.searchFocused) {

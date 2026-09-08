@@ -319,7 +319,7 @@ public class SpawnerProtectModule extends Module {
          if (this.currentState == SpawnerProtectModule.State.WORKING) {
             ItemEntity itemEntity = this.findDroppedSpawner();
             if (itemEntity != null) {
-               vec = itemEntity.getPos();
+               vec = new Vec3d(itemEntity.getX(), itemEntity.getY(), itemEntity.getZ());
             } else {
                if (this.targetBlock == null
                   || world.getBlockState(this.targetBlock).getBlock() != Blocks.SPAWNER

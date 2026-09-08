@@ -34,7 +34,7 @@ public class GameRendererMixin {
       method = {"render"},
       at = @At(
          value = "INVOKE",
-         target = "Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/client/render/RenderTickCounter;ILnet/minecraft/client/render/Camera;Z)V"
+         target = "Lnet/minecraft/client/gl/GlobalSettings;set(IIDJLnet/minecraft/client/render/RenderTickCounter;ILnet/minecraft/client/render/Camera;Z)V"
       ),
       index = 5
    )
