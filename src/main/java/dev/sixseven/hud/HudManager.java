@@ -10,6 +10,7 @@ import dev.sixseven.hud.components.RadarHud;
 import dev.sixseven.hud.components.RegionMapHud;
 import dev.sixseven.hud.components.SpotifyHud;
 import dev.sixseven.hud.components.StaffListHud;
+import dev.sixseven.hud.components.StatsHud;
 import dev.sixseven.hud.components.WatermarkHud;
 import dev.sixseven.module.ModuleManager;
 import dev.sixseven.notification.NotificationManager;
@@ -62,6 +63,7 @@ public class HudManager {
       this.components.add(new RegionMapHud(moduleManager.regionMap, themeManager));
       this.components.add(new StaffListHud(moduleManager.staffList, themeManager));
       this.components.add(new SpotifyHud(moduleManager.spotify, spotifyService, themeManager));
+      this.components.add(new StatsHud(moduleManager.stats, themeManager));
       this.components.add(notificationManager);
    }
 

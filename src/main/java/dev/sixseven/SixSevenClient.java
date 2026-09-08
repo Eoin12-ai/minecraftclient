@@ -37,6 +37,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import dev.sixseven.discord.DiscordPresenceService;
+import dev.sixseven.stats.StatsTracker;
 import dev.sixseven.wm.Seed;
 public class SixSevenClient implements ClientModInitializer {
    public static final String MOD_ID = "sixsevenclient";
@@ -117,6 +118,11 @@ public class SixSevenClient implements ClientModInitializer {
       Supplier supplier3 = soundSettings2::toJson;
       SoundSettings soundSettings3 = soundSettings;
       configManager.addSection("sounds", supplier3, soundSettings3::fromJson);
+      configManager = config;
+      StatsTracker statsTracker = modules.stats.tracker();
+      Supplier supplier4 = statsTracker::toJson;
+      StatsTracker statsTracker2 = modules.stats.tracker();
+      configManager.addSection("stats", supplier4, statsTracker2::fromJson);
       config.load();
       configStore = new ConfigStore(config);
       configStore.loadAll();

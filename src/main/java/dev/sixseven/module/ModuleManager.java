@@ -60,6 +60,7 @@ import dev.sixseven.module.render.SpawnerNametagsModule;
 import dev.sixseven.module.misc.SpawnerProtectModule;
 import dev.sixseven.module.client.DiscordPresenceModule;
 import dev.sixseven.module.client.SpotifyModule;
+import dev.sixseven.module.client.StatsModule;
 import dev.sixseven.module.misc.StaffListModule;
 import dev.sixseven.module.render.StorageEspModule;
 import dev.sixseven.module.render.SusChunkFinderModule;
@@ -79,6 +80,7 @@ public class ModuleManager {
    public final HudModule hud;
    public final SpotifyModule spotify;
    public final DiscordPresenceModule discordRpc;
+   public final StatsModule stats;
    public final BlockOutlineModule blockOutline;
    public final SusChunkFinderModule susChunkFinder;
    public FullbrightModule fullbright;
@@ -154,6 +156,7 @@ public class ModuleManager {
       this.register(this.hud = new HudModule());
       this.register(this.spotify = new SpotifyModule());
       this.register(this.discordRpc = new DiscordPresenceModule());
+      this.register(this.stats = new StatsModule());
       this.register(this.chatMacro = new ChatMacroModule());
       this.ph("ConfigShare", "Import/export configs via codes", Category.CLIENT, new BooleanSetting("Include HUD Layout", "Share HUD positions too", true));
       this.register(this.swingSpeed = new SwingSpeedModule());
