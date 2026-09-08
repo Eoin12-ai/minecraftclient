@@ -19,8 +19,11 @@ import dev.sixseven.spotify.SpotifyService;
 import dev.sixseven.theme.ThemeManager;
 import dev.sixseven.util.CpsTracker;
 import dev.sixseven.util.TpsTracker;
+import dev.sixseven.SixSevenClient;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
@@ -30,6 +33,23 @@ import net.minecraft.util.math.Direction;
 import dev.sixseven.module.client.HudModule;
 public class HudManager {
    private final List<HudComponent> components = new ArrayList<>();
+
+   /**
+    * Components that threw once and are skipped from then on.
+    *
+    * OverlayRenderer catches anything escaping this class by disabling the
+    * whole overlay for the rest of the session, so without this a single bad
+    * component takes the watermark, the arraylist and every readout down with
+    * it. Isolating failures here keeps the blast radius to the one component.
+    */
+   private final Set<HudComponent> failed = new HashSet<>();
+
+   private void markFailed(HudComponent component, Throwable error) {
+      if (failed.add(component)) {
+         SixSevenClient.LOGGER.error(
+               "HUD component '{}' failed; disabling it for this session", component.getId(), error);
+      }
+   }
 
    public HudManager(ModuleManager moduleManager, ThemeManager themeManager, SpotifyService spotifyService, NotificationManager notificationManager) {
       HudModule hudModule = moduleManager.hud;
@@ -113,13 +133,21 @@ public class HudManager {
       ArrayList list = new ArrayList();
 
       for (HudComponent hudComponent : this.components) {
-         if (value || hudComponent.visible()) {
-            float f9 = hudComponent.getScale();
-            float f10 = hudComponent.measureWidth(nVGRenderer) * f9;
-            float f11 = hudComponent.measureHeight(nVGRenderer) * f9;
-            float f12 = hudComponent.getFx() * (f - f10);
-            float f13 = hudComponent.getFy() * (f8 - f11);
-            list.add(new HudManager.Placement(hudComponent, f12, f13, f10, f11));
+         if (this.failed.contains(hudComponent)) {
+            continue;
+         }
+
+         try {
+            if (value || hudComponent.visible()) {
+               float f9 = hudComponent.getScale();
+               float f10 = hudComponent.measureWidth(nVGRenderer) * f9;
+               float f11 = hudComponent.measureHeight(nVGRenderer) * f9;
+               float f12 = hudComponent.getFx() * (f - f10);
+               float f13 = hudComponent.getFy() * (f8 - f11);
+               list.add(new HudManager.Placement(hudComponent, f12, f13, f10, f11));
+            }
+         } catch (Throwable error) {
+            this.markFailed(hudComponent, error);
          }
       }
 
@@ -133,12 +161,25 @@ public class HudManager {
    }
 
    public void renderPlacement(NVGRenderer nVGRenderer, HudManager.Placement placement) {
-      float f = placement.component().getScale();
+      HudComponent component = placement.component();
+      if (this.failed.contains(component)) {
+         return;
+      }
+
+      float f = component.getScale();
+      // save/restore must be balanced even when the component throws, or the
+      // NanoVG state stack is left skewed and every later draw is affected
       nVGRenderer.save();
-      nVGRenderer.translate((float)Math.round(placement.x()), (float)Math.round(placement.y()));
-      nVGRenderer.scale(f);
-      placement.component().render(nVGRenderer, 0.0F, 0.0F, placement.w() / f, placement.h() / f);
-      nVGRenderer.restore();
+
+      try {
+         nVGRenderer.translate((float)Math.round(placement.x()), (float)Math.round(placement.y()));
+         nVGRenderer.scale(f);
+         component.render(nVGRenderer, 0.0F, 0.0F, placement.w() / f, placement.h() / f);
+      } catch (Throwable error) {
+         this.markFailed(component, error);
+      } finally {
+         nVGRenderer.restore();
+      }
    }
 
    public JsonObject toJson() {
