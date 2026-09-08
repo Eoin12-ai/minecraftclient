@@ -55,32 +55,34 @@ processResources {
     }
 }
 
-// TEMPORARY probe: prints the exact Fabric versions available for the target
-// Minecraft release. This environment cannot reach Fabric's servers; CI can.
-// Removed once gradle.properties is updated.
-tasks.register('fabricVersions') {
+// TEMPORARY probe: the three classes whose mixin targets are still unresolved.
+tasks.register('mcNames') {
     doLast {
-        def mc = '1.21.11'
-        ['yarn', 'loader'].each { kind ->
-            try {
-                def txt = new URL("https://meta.fabricmc.net/v2/versions/${kind}/${mc}").text
-                def m = (txt =~ /"version"\s*:\s*"([^"]+)"/)
-                def out = []
-                for (int i = 0; i < Math.min(3, m.count); i++) out << m[i][1]
-                println "FABRICVER ${kind}: ${out}"
-            } catch (Exception e) {
-                println "FABRICVER ${kind}: ERROR ${e.message}"
+        def wanted = ['GuiRenderer', 'GlobalSettings', 'GpuBufferSlice', 'ProjectionType'] as Set
+        def seen = [:]
+        def cp = configurations.findByName('compileClasspath')
+        if (cp != null) {
+            cp.resolve().each { f ->
+                if (!f.name.endsWith('.jar')) return
+                try {
+                    def zf = new java.util.zip.ZipFile(f)
+                    try {
+                        for (e in zf.entries()) {
+                            def n = e.name
+                            if (!n.endsWith('.class') || n.contains('$')) continue
+                            def simple = n.substring(n.lastIndexOf('/') + 1, n.length() - 6)
+                            if (wanted.contains(simple)) {
+                                seen.computeIfAbsent(simple, { k -> [] as Set })
+                                    .add(n.substring(0, n.length() - 6))
+                            }
+                        }
+                    } finally { zf.close() }
+                } catch (ignored) { }
             }
         }
-        try {
-            def meta = new URL('https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml').text
-            def vs = (meta =~ /<version>([^<]*\+1\.21\.11)<\/version>/)
-            def out = []
-            for (int i = Math.max(0, vs.count - 3); i < vs.count; i++) out << vs[i][1]
-            println "FABRICVER fabric-api: ${out}"
-        } catch (Exception e) {
-            println "FABRICVER fabric-api: ERROR ${e.message}"
-        }
+        println '=== MCNAMES BEGIN ==='
+        wanted.toList().sort().each { w -> println "MCNAME ${w} -> ${seen[w] ?: 'NOT FOUND'}" }
+        println '=== MCNAMES END ==='
     }
 }
-compileJava.dependsOn 'fabricVersions'
+compileJava.dependsOn 'mcNames'
