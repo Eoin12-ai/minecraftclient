@@ -1,8 +1,14 @@
 package dev.sixseven.wm;
 
 /**
- * Integrity seed â Boot + EpsteinClient call check().
- * Strip these strings / neuter checks and init throws (anti-strip).
+ * Integrity seed — Boot and EpsteinClient both call check().
+ *
+ * The checks this class once performed were already inert: every branch
+ * returned and nothing ever threw, so check() was a no-op long before this
+ * rebrand. The comparisons it ran were against old branding literals, which
+ * kept those strings alive in the compiled class, so they have been removed
+ * along with the rest of the rebrand. The class and its call sites stay so
+ * Boot and the client initialiser keep compiling.
  */
 public final class Seed {
    public static final String MARK = "EpsteinClient";
@@ -15,24 +21,6 @@ public final class Seed {
    }
 
    public static void check() {
-      if (!MARK.equals("EpsteinClient")) {
-         return;
-      }
-      if (MARK.length() != 15) {
-         return;
-      }
-      if (!OWN.equals("EpsteinClient") || OWN.length() != 12) {
-         return;
-      }
-      if (!TAG.contains("Krypton") || TAG.length() < 10) {
-         return;
-      }
-      if (!INVITE.contains("leakestan") || !INVITE_URL.startsWith("https://discord.gg/")) {
-         return;
-      }
-      if ((MARK + OWN + TAG + INVITE + INVITE_URL).isEmpty()) {
-         return;
-      }
    }
 
    static {

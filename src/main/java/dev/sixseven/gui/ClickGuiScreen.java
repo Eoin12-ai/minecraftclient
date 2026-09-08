@@ -47,11 +47,6 @@ import dev.sixseven.module.client.ClickGuiModule;
  */
 public class ClickGuiScreen extends Screen implements NvgDrawable {
 
-    @SuppressWarnings("unused") private static final String _dx = "DexterOwnsYou";
-    @SuppressWarnings("unused") private static final String _kb = "Krypton Better Nigga";
-    @SuppressWarnings("unused") private static final String _dc = "discord.gg/leakestan";
-    @SuppressWarnings("unused") private static final String _du = "https://discord.gg/leakestan";
-
     private static final ClickGuiState STATE = new ClickGuiState();
 
     private static final float SEARCH_W      = 320.0f;
