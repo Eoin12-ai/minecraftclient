@@ -24,7 +24,7 @@ public final class MiscBlockEspRenderer {
          boolean found = spawnerNametagsModule.box.get();
          boolean found2 = spawnerNametagsModule.tracers.get();
          if (ok || found || found2) {
-            net.minecraft.util.math.Vec3d client = found2 ? net.minecraft.client.MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
+            net.minecraft.util.math.Vec3d client = found2 ? net.minecraft.client.MinecraftClient.getInstance().gameRenderer.getCamera().getCameraPos() : null;
 
             for (BlockPos pos : list) {
                if (found) {

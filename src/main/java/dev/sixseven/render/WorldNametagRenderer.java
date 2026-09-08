@@ -16,7 +16,6 @@ import net.minecraft.block.entity.MobSpawnerBlockEntity;
 import net.minecraft.block.entity.TrialSpawnerBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
@@ -28,6 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 
 import dev.sixseven.module.client.HudModule;
+import org.joml.Matrix3x2fStack;
 public final class WorldNametagRenderer {
    private static final int SPAWNER_ACCENT = -22733;
    private static final int MAX_TAGS = 80;
@@ -68,7 +68,7 @@ public final class WorldNametagRenderer {
                            if ((!ok2 || ok) && !abstractClientPlayerEntity.isSpectator() && abstractClientPlayerEntity.isAlive()) {
                               double currentScore = player.squaredDistanceTo(abstractClientPlayerEntity);
                               if (ok2 || !(currentScore > coord)) {
-                                 String name2 = abstractClientPlayerEntity.getGameProfile().getName();
+                                 String name2 = abstractClientPlayerEntity.getGameProfile().name();
                                  if (enabled3) {
                                     String text6 = nameProtectModule.replacementForDisplay(name2);
                                     if (text6 != null) {
@@ -252,16 +252,16 @@ public final class WorldNametagRenderer {
                                     float f21 = (float)list.size() * f19 + (float)(list.size() - 1) * 1.5F;
                                     float f22 = f17 - f21 / 2.0F;
                                     float f23 = f18 - f19;
-                                    MatrixStack matrix3x2fStack = context.getMatrices();
+                                    Matrix3x2fStack matrix3x2fStack = context.getMatrices();
 
                                     for (int n = 0; n < list.size(); n++) {
                                        ItemStack stack = (ItemStack)list.get(n);
-                                       matrix3x2fStack.push();
-                                       matrix3x2fStack.translate(f22 + (float)n * f20, f23, 0.0f);
-                                       matrix3x2fStack.scale(f19 / 16.0F, f19 / 16.0F, 1.0f);
+                                       matrix3x2fStack.pushMatrix();
+                                       matrix3x2fStack.translate(f22 + (float)n * f20, f23);
+                                       matrix3x2fStack.scale(f19 / 16.0F, f19 / 16.0F);
                                        context.drawItem(abstractClientPlayerEntity, stack, 0, 0, 0);
                                        context.drawStackOverlay(client.textRenderer, stack, 0, 0);
-                                       matrix3x2fStack.pop();
+                                       matrix3x2fStack.popMatrix();
                                     }
                                  }
                               }

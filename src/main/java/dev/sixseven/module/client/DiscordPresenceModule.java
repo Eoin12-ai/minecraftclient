@@ -212,7 +212,7 @@ public class DiscordPresenceModule extends Module {
 
     private String username(MinecraftClient client) {
         try {
-            return client.player == null ? "" : client.player.getGameProfile().getName();
+            return client.player == null ? "" : client.player.getGameProfile().name();
         } catch (Exception e) {
             return "";
         }

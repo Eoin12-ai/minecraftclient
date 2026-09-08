@@ -115,7 +115,7 @@ public final class StorageEspRenderer {
             int n = Math.max(0, Math.min(255, storageEspModule.highlightAlpha.getInt())) << 24;
             boolean ok2 = storageEspModule.tracers.get();
             boolean ok3 = storageEspModule.hideOpened();
-            net.minecraft.util.math.Vec3d camera = client.gameRenderer.getCamera().getPos();
+            net.minecraft.util.math.Vec3d camera = client.gameRenderer.getCamera().getCameraPos();
 
             for (StorageEspRenderer.Hit hit : list) {
                StorageEspModule.StorageType storageType = hit.type();

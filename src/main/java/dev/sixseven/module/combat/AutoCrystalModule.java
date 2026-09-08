@@ -218,7 +218,7 @@ public class AutoCrystalModule extends Module {
       if (n == -1) {
          return false;
       } else {
-         return n <= 7 ? GLFW.glfwGetMouseButton(client.getWindow().getHandle(), n) == 1 : InputUtil.isKeyPressed(client.getWindow().getHandle(), n);
+         return n <= 7 ? GLFW.glfwGetMouseButton(client.getWindow().getHandle(), n) == 1 : InputUtil.isKeyPressed(client.getWindow(), n);
       }
    }
 

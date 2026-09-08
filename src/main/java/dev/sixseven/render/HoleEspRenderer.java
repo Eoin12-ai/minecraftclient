@@ -68,7 +68,7 @@ public final class HoleEspRenderer {
          int n = debugHoleEspModule.safe.get();
          int localX = debugHoleEspModule.unsafe.get();
          boolean found = debugHoleEspModule.tracers.get();
-         net.minecraft.util.math.Vec3d client = found ? MinecraftClient.getInstance().gameRenderer.getCamera().getPos() : null;
+         net.minecraft.util.math.Vec3d client = found ? MinecraftClient.getInstance().gameRenderer.getCamera().getCameraPos() : null;
 
          for (HoleEspRenderer.Hole hole : list) {
             int localZ = hole.safe() ? n : localX;

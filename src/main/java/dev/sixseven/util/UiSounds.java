@@ -23,7 +23,7 @@ public final class UiSounds {
    private static void play(SoundEvent sound, float f, float f4) {
       float f5 = settings.volume();
       if (!(f5 <= 0.01F)) {
-         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(sound, f));
+         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(sound, f));
       }
    }
 

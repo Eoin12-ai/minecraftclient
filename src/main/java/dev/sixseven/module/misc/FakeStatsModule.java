@@ -176,7 +176,7 @@ public class FakeStatsModule extends Module {
                MinecraftClient client = MinecraftClient.getInstance();
                if (client.player == null) {
                   return false;
-               } else if (str5.length >= 2 && !str5[1].equalsIgnoreCase(client.player.getGameProfile().getName())) {
+               } else if (str5.length >= 2 && !str5[1].equalsIgnoreCase(client.player.getGameProfile().name())) {
                   return false;
                } else {
                   String text7 = Amounts.shortForm(this.getLiveBalance());

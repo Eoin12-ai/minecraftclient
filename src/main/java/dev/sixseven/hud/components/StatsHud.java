@@ -162,7 +162,7 @@ public class StatsHud extends HudComponent {
     private float renderHeader(NVGRenderer nvg, Theme th, MinecraftClient client,
                                float x, float y, float w) {
         ClientPlayerEntity player = client.player;
-        String name = player == null ? "Not in a world" : player.getGameProfile().getName();
+        String name = player == null ? "Not in a world" : player.getGameProfile().name();
         String where = player == null ? "—" : StatsTracker.serverLabel(client);
 
         float textX = x + PAD;
@@ -192,7 +192,7 @@ public class StatsHud extends HudComponent {
                           float x, float y, float size, boolean bust) {
         int tex;
         try {
-            tex = NVGImages.wrapGlTexture(player.getSkinTextures().texture(), 64, 64);
+            tex = NVGImages.wrapGlTexture(player.getSkin().texture(), 64, 64);
         } catch (Throwable t) {
             tex = -1;
         }

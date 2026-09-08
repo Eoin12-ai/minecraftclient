@@ -40,7 +40,7 @@ public class FakeRolesModule extends Module {
 
    private String selfName() {
       MinecraftClient client = MinecraftClient.getInstance();
-      return client.player == null ? null : client.player.getGameProfile().getName();
+      return client.player == null ? null : client.player.getGameProfile().name();
    }
 
    private boolean isSelf(String text4) {

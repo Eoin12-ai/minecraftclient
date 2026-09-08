@@ -46,7 +46,7 @@ public class NameProtectModule extends Module {
 
    public String selfName() {
       MinecraftClient client = MinecraftClient.getInstance();
-      return client.player == null ? null : client.player.getGameProfile().getName();
+      return client.player == null ? null : client.player.getGameProfile().name();
    }
 
    private boolean isSelf(String text) {
@@ -89,7 +89,7 @@ public class NameProtectModule extends Module {
       if (clientPlayNetworkHandler != null) {
          for (PlayerListEntry playerListEntry : clientPlayNetworkHandler.getPlayerList()) {
             GameProfile gameProfile = playerListEntry.getProfile();
-            String name2 = gameProfile == null ? null : gameProfile.getName();
+            String name2 = gameProfile == null ? null : gameProfile.name();
             if (name2 != null && !name2.isEmpty()) {
                this.seen.put(name2.toLowerCase(Locale.ROOT), name2);
                if (found) {

@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import org.joml.Matrix3x2fStack;
 
 public class IconPickerScreen extends Screen implements NvgDrawable {
    private static final float HEADER_H = 42.0F;
@@ -107,7 +107,7 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
       int n10 = Math.max(0, (int)(this.scroll / layout2.cell()) * layout2.cols());
       int n11 = layout2.cols() * ((int)(layout2.gridH() / layout2.cell()) + 3);
       int n12 = Math.min(this.filtered.size(), n10 + n11);
-      MatrixStack matrix3x2fStack = context.getMatrices();
+      Matrix3x2fStack matrix3x2fStack = context.getMatrices();
 
       for (int n13 = n10; n13 < n12; n13++) {
          PickerGrid.Cell cell = this.filtered.get(n13);
@@ -116,11 +116,11 @@ public class IconPickerScreen extends Screen implements NvgDrawable {
          float f7 = layout2.gridX() + (float)n14 * layout2.cell() + (layout2.cell() - layout2.icon()) / 2.0F;
          float f8 = layout2.gridY() - this.scroll + (float)n15 * layout2.cell() + (layout2.cell() - layout2.icon()) / 2.0F;
          float f9 = layout2.icon() * f6 / 16.0F;
-         matrix3x2fStack.push();
-         matrix3x2fStack.translate(f7 * f6, f8 * f6, 0.0f);
-         matrix3x2fStack.scale(f9, f9, f9);
+         matrix3x2fStack.pushMatrix();
+         matrix3x2fStack.translate(f7 * f6, f8 * f6);
+         matrix3x2fStack.scale(f9, f9);
          context.drawItem(cell.icon(), 0, 0);
-         matrix3x2fStack.pop();
+         matrix3x2fStack.popMatrix();
       }
 
       context.disableScissor();

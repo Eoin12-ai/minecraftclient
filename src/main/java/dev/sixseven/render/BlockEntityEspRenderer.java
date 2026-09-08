@@ -27,7 +27,7 @@ public final class BlockEntityEspRenderer {
             boolean found = blockEntityEspModule.showGhosts.get();
             boolean found2 = blockEntityEspModule.tracers.get();
             int localY = blockEntityEspModule.ghostTint.get();
-            net.minecraft.util.math.Vec3d camera = found2 ? client.gameRenderer.getCamera().getPos() : null;
+            net.minecraft.util.math.Vec3d camera = found2 ? client.gameRenderer.getCamera().getCameraPos() : null;
 
             for (BlockEntityEspModule.Cached cached : collection) {
                String text = cached.typeKey();

@@ -22,17 +22,17 @@ public class PlayerTabOverlayMixin {
          return text;
       } else {
          GameProfile gameProfile = playerListEntry.getProfile();
-         String name2 = gameProfile == null ? null : gameProfile.getName();
+         String name2 = gameProfile == null ? null : gameProfile.name();
          Object value = text;
          if (moduleManager.nameProtect != null && moduleManager.nameProtect.isEnabled() && name2 != null && !name2.isEmpty()) {
-            String name2r = moduleManager.nameProtect.replacementForDisplay(playerListEntry.getProfile().getName());
+            String name2r = moduleManager.nameProtect.replacementForDisplay(playerListEntry.getProfile().name());
             if (name2r != null) {
                text = Text.literal(name2r);
             }
          }
 
          if (moduleManager.fakeRoles != null && text != null) {
-            text = moduleManager.fakeRoles.decorateTab((Text)text, playerListEntry.getProfile().getName());
+            text = moduleManager.fakeRoles.decorateTab((Text)text, playerListEntry.getProfile().name());
          }
 
          return (Text)text;

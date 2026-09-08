@@ -28,7 +28,7 @@ public final class WorldProjection {
       } else {
          Quaternionf rotation = camera.getRotation().conjugate(new Quaternionf());
          mvp.set(matrix).rotate(rotation);
-         camPos = camera.getPos();
+         camPos = camera.getCameraPos();
          Framebuffer framebuffer = client.getFramebuffer();
          fbWidth = framebuffer.textureWidth;
          fbHeight = framebuffer.textureHeight;

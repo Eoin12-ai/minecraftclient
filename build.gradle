@@ -60,52 +60,21 @@ tasks.register('apiProbe') {
         def urls = cp.collect { it.toURI().toURL() } as URL[]
         def loader = new URLClassLoader(urls, (ClassLoader) null)
 
-        def dump = { String cn, List<String> interesting ->
-            Class<?> c
-            try { c = Class.forName(cn, false, loader) }
-            catch (Throwable t) { println "CLASS ${cn} -> UNAVAILABLE (${t})"; return }
-            println "CLASS ${cn}"
+        println '=== PROBE ENTITY BEGIN ==='
+        ['net.minecraft.entity.Entity'].each { cn ->
             try {
+                def c = Class.forName(cn, false, loader)
+                println "CLASS ${cn} extends ${c.superclass?.name} implements ${c.interfaces*.name}"
                 c.getDeclaredMethods()
-                 .findAll { m -> !m.name.startsWith('lambda$') }
-                 .collect { m -> "  M ${m.name}(${m.parameterTypes.collect { it.simpleName }.join(', ')}) : ${m.returnType.simpleName}" }
-                 .findAll { line -> interesting.isEmpty() || interesting.any { line.toLowerCase().contains(it) } }
+                 .findAll { m -> m.returnType.simpleName in ['Vec3d', 'Box', 'BlockPos'] && m.parameterCount == 0 }
+                 .collect { m -> "  M ${m.name}() : ${m.returnType.simpleName}" }
                  .sort().each { println it }
-            } catch (Throwable t) { println "  (methods unreadable: ${t})" }
-            try {
-                c.getDeclaredConstructors()
-                 .collect { m -> "  C <init>(${m.parameterTypes.collect { it.simpleName }.join(', ')})" }
-                 .sort().each { println it }
-            } catch (Throwable t) { println "  (ctors unreadable: ${t})" }
-            try {
-                c.getDeclaredFields()
-                 .collect { f -> "  F ${f.name} : ${f.type.simpleName}" }
-                 .findAll { line -> interesting.isEmpty() || interesting.any { line.toLowerCase().contains(it) } }
-                 .sort().each { println it }
-            } catch (Throwable t) { println "  (fields unreadable: ${t})" }
+            } catch (Throwable t) { println "  ${cn} -> ${t}" }
         }
+        println '=== PROBE ENTITY END ==='
 
-        println '=== PROBE INPUT BEGIN ==='
-        ['net.minecraft.client.input.KeyInput',
-         'net.minecraft.client.input.CharInput',
-         'net.minecraft.client.input.MouseInput',
-         'net.minecraft.client.gui.Click'].each { dump(it, []) }
-        println '=== PROBE INPUT END ==='
-
-        println '=== PROBE MEMBERS BEGIN ==='
-        dump('net.minecraft.entity.Entity', ['getpos', 'getx', 'gety', 'getz', 'boundingbox'])
-        dump('net.minecraft.entity.ItemEntity', ['pos', 'stack'])
-        dump('net.minecraft.client.font.TextRenderer', ['getwidth', 'draw'])
-        dump('net.minecraft.client.util.Window', ['handle'])
-        dump('net.minecraft.client.gl.GlobalSettings', [])
-        println '=== PROBE MEMBERS END ==='
-
-        // ── where did the RenderLayer factories go? ───────────────────────────
-        def wantedMethods = ['getEntityTranslucentEmissive', 'getLines', 'getDebugQuads',
-                             'getGuiTextured', 'getDebugLineStrip', 'getEntityCutoutNoCull'] as Set
-        def scanPkgs = ['net/minecraft/client/render/', 'net/minecraft/client/gl/',
-                        'net/minecraft/client/gui/render/']
-        def candidates = [] as Set
+        // every class on the client that hands back a RenderLayer
+        def all = [] as Set
         cp.each { f ->
             if (!f.name.endsWith('.jar')) return
             try {
@@ -114,18 +83,18 @@ tasks.register('apiProbe') {
                     for (e in zf.entries()) {
                         def n = e.name
                         if (!n.endsWith('.class') || n.contains('$')) continue
-                        if (scanPkgs.any { n.startsWith(it) }) candidates.add(n[0..-7].replace('/', '.'))
+                        if (n.startsWith('net/minecraft/')) all.add(n[0..-7].replace('/', '.'))
                     }
                 } finally { zf.close() }
             } catch (ignored) { }
         }
-        println "=== PROBE RENDERLAYER BEGIN (scanning ${candidates.size()} classes) ==="
-        candidates.sort().each { cn ->
+        println "=== PROBE RENDERLAYER BEGIN (scanning ${all.size()} classes) ==="
+        all.sort().each { cn ->
             try {
                 def c = Class.forName(cn, false, loader)
                 c.getDeclaredMethods().each { m ->
-                    if (wantedMethods.contains(m.name)) {
-                        println "FOUND ${cn}#${m.name}(${m.parameterTypes.collect { it.simpleName }.join(', ')}) : ${m.returnType.simpleName}"
+                    if (m.returnType.simpleName == 'RenderLayer' && java.lang.reflect.Modifier.isStatic(m.modifiers)) {
+                        println "RL ${cn}#${m.name}(${m.parameterTypes.collect { it.simpleName }.join(', ')})"
                     }
                 }
             } catch (Throwable ignored) { }
