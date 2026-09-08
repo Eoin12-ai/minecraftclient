@@ -51,34 +51,87 @@ processResources {
     }
 }
 
-// TEMPORARY probe: the three classes whose mixin targets are still unresolved.
-tasks.register('mcNames') {
+// TEMPORARY probe: dumps the real shape of the 1.21.11 API for every class the
+// migration touches, so the renames are read off the jar rather than guessed.
+// Delete once the source compiles.
+tasks.register('apiProbe') {
     doLast {
-        def wanted = ['GuiRenderer', 'GlobalSettings', 'GpuBufferSlice', 'ProjectionType'] as Set
+        def cp = configurations.compileClasspath.files
+        def urls = cp.collect { it.toURI().toURL() } as URL[]
+        def loader = new URLClassLoader(urls, (ClassLoader) null)
+
+        // ── part 1: where do these simple names live? ─────────────────────────
+        def wanted = ['SkinTextures', 'KeyInput', 'CharInput', 'Click', 'MouseInput',
+                      'Window', 'GuiRenderer', 'GlobalSettings', 'GpuBufferSlice',
+                      'ProjectionType', 'PlayerSkin'] as Set
         def seen = [:]
-        def cp = configurations.findByName('compileClasspath')
-        if (cp != null) {
-            cp.resolve().each { f ->
-                if (!f.name.endsWith('.jar')) return
+        cp.each { f ->
+            if (!f.name.endsWith('.jar')) return
+            try {
+                def zf = new java.util.zip.ZipFile(f)
                 try {
-                    def zf = new java.util.zip.ZipFile(f)
-                    try {
-                        for (e in zf.entries()) {
-                            def n = e.name
-                            if (!n.endsWith('.class') || n.contains('$')) continue
-                            def simple = n.substring(n.lastIndexOf('/') + 1, n.length() - 6)
-                            if (wanted.contains(simple)) {
-                                seen.computeIfAbsent(simple, { k -> [] as Set })
-                                    .add(n.substring(0, n.length() - 6))
-                            }
+                    for (e in zf.entries()) {
+                        def n = e.name
+                        if (!n.endsWith('.class') || n.contains('$')) continue
+                        def simple = n.substring(n.lastIndexOf('/') + 1, n.length() - 6)
+                        if (wanted.contains(simple)) {
+                            seen.computeIfAbsent(simple, { k -> [] as Set })
+                                .add(n.substring(0, n.length() - 6).replace('/', '.'))
                         }
-                    } finally { zf.close() }
-                } catch (ignored) { }
-            }
+                    }
+                } finally { zf.close() }
+            } catch (ignored) { }
         }
-        println '=== MCNAMES BEGIN ==='
-        wanted.toList().sort().each { w -> println "MCNAME ${w} -> ${seen[w] ?: 'NOT FOUND'}" }
-        println '=== MCNAMES END ==='
+        println '=== PROBE LOCATE BEGIN ==='
+        wanted.toList().sort().each { w -> println "LOCATE ${w} -> ${seen[w] ?: 'NOT FOUND'}" }
+        println '=== PROBE LOCATE END ==='
+
+        // ── part 2: what members do these classes actually have? ──────────────
+        def classes = [
+            'com.mojang.authlib.GameProfile',
+            'net.minecraft.client.render.Camera',
+            'net.minecraft.client.render.RenderLayer',
+            'net.minecraft.client.sound.PositionedSoundInstance',
+            'net.minecraft.client.gui.DrawContext',
+            'net.minecraft.client.gui.screen.Screen',
+            'net.minecraft.client.gui.ParentElement',
+            'net.minecraft.client.gui.Element',
+            'net.minecraft.client.gui.screen.ChatScreen',
+            'net.minecraft.client.network.AbstractClientPlayerEntity',
+            'net.minecraft.client.Keyboard',
+            'net.minecraft.client.Mouse',
+            'net.minecraft.client.gui.hud.InGameHud',
+            'net.minecraft.text.TextVisitFactory',
+            'net.minecraft.entity.Entity',
+            'net.minecraft.entity.ItemEntity',
+            'net.minecraft.client.font.TextRenderer',
+        ]
+        // members that matter; everything else is noise
+        def interesting = ['name', 'id', 'pos', 'skin', 'key', 'char', 'mouse', 'click',
+                           'gui', 'line', 'quad', 'emissive', 'master', 'render', 'sidebar',
+                           'text', 'visit', 'matrix', 'drawtext', 'sound', 'window'] as List
+
+        println '=== PROBE MEMBERS BEGIN ==='
+        classes.each { cn ->
+            Class<?> c
+            try { c = Class.forName(cn, false, loader) }
+            catch (Throwable t) { println "CLASS ${cn} -> UNAVAILABLE (${t.getClass().simpleName})"; return }
+            println "CLASS ${cn}"
+            c.getDeclaredMethods()
+             .findAll { m -> !m.name.startsWith('lambda$') }
+             .collect { m -> "  M ${m.name}(${m.parameterTypes.collect { it.simpleName }.join(', ')}) : ${m.returnType.simpleName}" }
+             .findAll { line -> interesting.any { line.toLowerCase().contains(it) } }
+             .sort()
+             .each { println it }
+            c.getDeclaredConstructors()
+             .collect { m -> "  C <init>(${m.parameterTypes.collect { it.simpleName }.join(', ')})" }
+             .sort().each { println it }
+            c.getDeclaredFields()
+             .collect { f -> "  F ${f.name} : ${f.type.simpleName}" }
+             .findAll { line -> interesting.any { line.toLowerCase().contains(it) } }
+             .sort().each { println it }
+        }
+        println '=== PROBE MEMBERS END ==='
     }
 }
-compileJava.dependsOn 'mcNames'
+compileJava.dependsOn 'apiProbe'
