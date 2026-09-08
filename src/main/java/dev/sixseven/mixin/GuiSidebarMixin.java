@@ -33,7 +33,7 @@ public class GuiSidebarMixin {
       method = {"renderScoreboardSidebar"},
       at = @At(
          value = "INVOKE",
-         target = "Lnet/minecraft/TextRenderer;getWidth(Lnet/minecraft/StringVisitable;)I",
+         target = "Lnet/minecraft/client/font/TextRenderer;getWidth(Lnet/minecraft/text/StringVisitable;)I",
          ordinal = 1
       )
    )
@@ -53,7 +53,7 @@ public class GuiSidebarMixin {
       method = {"renderScoreboardSidebar"},
       at = @At(
          value = "INVOKE",
-         target = "Lnet/minecraft/DrawContext;drawText(Lnet/minecraft/TextRenderer;Lnet/minecraft/Text;IIIZ)V",
+         target = "Lnet/minecraft/client/gui/DrawContext;drawText(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;IIIZ)V",
          ordinal = 1
       ),
       index = 1

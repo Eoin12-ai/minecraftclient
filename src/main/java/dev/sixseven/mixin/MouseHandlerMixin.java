@@ -63,12 +63,12 @@ public class MouseHandlerMixin {
       method = {"updateMouse"},
       at = {@At(
          value = "INVOKE",
-         target = "Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;"
+         target = "Lnet/minecraft/client/option/SimpleOption;getValue()Ljava/lang/Object;"
       )},
       slice = {@Slice(
          from = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/GameOptions;getMouseSensitivity()Lnet/minecraft/SimpleOption;"
+            target = "Lnet/minecraft/client/option/GameOptions;getMouseSensitivity()Lnet/minecraft/client/option/SimpleOption;"
          )
       )}
    )

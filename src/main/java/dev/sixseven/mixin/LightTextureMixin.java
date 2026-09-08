@@ -14,12 +14,12 @@ public class LightTextureMixin {
       method = {"update"},
       at = {@At(
          value = "INVOKE",
-         target = "Lnet/minecraft/SimpleOption;getValue()Ljava/lang/Object;"
+         target = "Lnet/minecraft/client/option/SimpleOption;getValue()Ljava/lang/Object;"
       )},
       slice = {@Slice(
          from = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/GameOptions;getGamma()Lnet/minecraft/SimpleOption;"
+            target = "Lnet/minecraft/client/option/GameOptions;getGamma()Lnet/minecraft/client/option/SimpleOption;"
          )
       )}
    )

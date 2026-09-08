@@ -30,7 +30,7 @@ public class GuiCrosshairMixin {
       method = {"renderCrosshair"},
       at = {@At(
          value = "INVOKE",
-         target = "Lnet/minecraft/Perspective;isFirstPerson()Z"
+         target = "Lnet/minecraft/client/option/Perspective;isFirstPerson()Z"
       )}
    )
    private boolean sixsevenclient$freecamCrosshairInThirdPerson(boolean flag) {

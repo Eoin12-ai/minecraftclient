@@ -16,7 +16,7 @@ public abstract class CameraFreeLookMixin {
       method = {"update"},
       at = @At(
          value = "INVOKE",
-         target = "Lnet/minecraft/Camera;setRotation(FF)V"
+         target = "Lnet/minecraft/client/render/Camera;setRotation(FF)V"
       )
    )
    private void sixsevenclient$freeLookRotation(Args args) {

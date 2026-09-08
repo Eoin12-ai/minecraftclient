@@ -19,7 +19,7 @@ public class EquipmentLayerRendererMixin {
       method = {"render"},
       at = {@At(
          value = "INVOKE",
-         target = "Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;"
+         target = "Lnet/minecraft/item/ItemStack;get(Lnet/minecraft/component/ComponentType;)Ljava/lang/Object;"
       )}
    )
    private Object sixsevenclient$armorTrim(Object value3, @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) Object value2) {

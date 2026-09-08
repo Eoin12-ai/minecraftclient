@@ -37,7 +37,7 @@ public class GameRendererMixin {
       method = {"renderWorld"},
       at = {@At(
          value = "INVOKE",
-         target = "Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V"
+         target = "Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lcom/mojang/blaze3d/systems/ProjectionType;)V"
       )}
    )
    private void sixsevenclient$captureProjection(RenderTickCounter renderTickCounter, CallbackInfo callbackInfo, @Local(ordinal = 0) Matrix4f matrix) {
@@ -48,7 +48,7 @@ public class GameRendererMixin {
       method = {"render"},
       at = @At(
          value = "INVOKE",
-         target = "Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V"
+         target = "Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/client/render/RenderTickCounter;ILnet/minecraft/client/render/Camera;Z)V"
       ),
       index = 5
    )
@@ -74,7 +74,7 @@ public class GameRendererMixin {
       method = {"getFov"},
       at = {@At(
          value = "INVOKE",
-         target = "Lnet/minecraft/MathHelper;lerp(FFF)F",
+         target = "Lnet/minecraft/util/math/MathHelper;lerp(FFF)F",
          ordinal = 0
       )}
    )
@@ -87,7 +87,7 @@ public class GameRendererMixin {
       method = {"renderHand"},
       at = {@At(
          value = "INVOKE",
-         target = "Lnet/minecraft/Perspective;isFirstPerson()Z"
+         target = "Lnet/minecraft/client/option/Perspective;isFirstPerson()Z"
       )}
    )
    private boolean sixsevenclient$freecamRenderFirstPersonHands(boolean flag) {
