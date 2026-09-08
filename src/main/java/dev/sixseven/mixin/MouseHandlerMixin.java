@@ -8,6 +8,7 @@ import dev.sixseven.util.CpsTracker;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import net.minecraft.client.gui.screen.ChatScreen;
+import net.minecraft.client.input.MouseInput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,12 +35,13 @@ public class MouseHandlerMixin {
    }
 
    @Inject(
-      method = {"onMouseButton(JIII)V"},
+      method = {"onMouseButton(JLnet/minecraft/client/input/MouseInput;I)V"},
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void sixsevenclient$onButton(long l, int mouseInputButton, int mouseInputAction, int n, CallbackInfo callbackInfo) {
+   private void sixsevenclient$onButton(long l, MouseInput input, int mouseInputAction, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
+      int mouseInputButton = input.button();
       if (l == client.getWindow().getHandle()) {
          if (mouseInputAction == 1 && client.currentScreen == null) {
             CpsTracker.onClick(mouseInputButton);
