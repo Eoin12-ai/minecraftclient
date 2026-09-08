@@ -51,3 +51,33 @@ processResources {
         expand 'version': project.version
     }
 }
+
+// TEMPORARY probe: the last few shapes the migration still needs.
+tasks.register('apiProbe') {
+    doLast {
+        def cp = configurations.compileClasspath.files
+        def loader = new URLClassLoader(cp.collect { it.toURI().toURL() } as URL[], (ClassLoader) null)
+        println '=== PROBE BEGIN ==='
+        ['net.minecraft.entity.player.SkinTextures',
+         'com.mojang.authlib.GameProfile',
+         'net.minecraft.world.entity.EntityLike'].each { cn ->
+            try {
+                def c = Class.forName(cn, false, loader)
+                println "CLASS ${cn}"
+                c.getDeclaredMethods().collect { m ->
+                    "  M ${m.name}(${m.parameterTypes.collect { it.simpleName }.join(', ')}) : ${m.returnType.simpleName}"
+                }.sort().each { println it }
+                c.getDeclaredFields().collect { f -> "  F ${f.name} : ${f.type.simpleName}" }.sort().each { println it }
+            } catch (Throwable t) { println "CLASS ${cn} -> ${t}" }
+        }
+        // which supertype of Entity still hands back a position?
+        try {
+            def e = Class.forName('net.minecraft.entity.Entity', false, loader)
+            e.getMethods().findAll { it.parameterCount == 0 && it.returnType.simpleName == 'Vec3d' }
+             .collect { "  ENTITY ${it.declaringClass.simpleName}#${it.name}() : Vec3d" }
+             .unique().sort().each { println it }
+        } catch (Throwable t) { println "entity scan -> ${t}" }
+        println '=== PROBE END ==='
+    }
+}
+compileJava.dependsOn 'apiProbe'

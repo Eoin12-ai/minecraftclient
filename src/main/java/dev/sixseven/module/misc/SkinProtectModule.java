@@ -1,11 +1,11 @@
 package dev.sixseven.module.misc;
 
-import com.google.common.collect.LinkedHashMultimap;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import com.mojang.authlib.properties.PropertyMap;
 import dev.sixseven.SixSevenClient;
 import dev.sixseven.module.Category;
 import dev.sixseven.module.Module;
@@ -93,19 +93,19 @@ public class SkinProtectModule extends Module {
             return;
          }
 
-         LinkedHashMultimap linkedHashMultimap = LinkedHashMultimap.create();
+         PropertyMap propertyMap = new PropertyMap();
 
          for (JsonElement jsonElement : jsonObject2.getAsJsonArray("properties")) {
             JsonObject jsonObject3 = jsonElement.getAsJsonObject();
             if ("textures".equals(jsonObject3.get("name").getAsString())) {
                String json = jsonObject3.get("value").getAsString();
                String json2 = jsonObject3.has("signature") ? jsonObject3.get("signature").getAsString() : null;
-               linkedHashMultimap.put("textures", json2 == null ? new Property("textures", json) : new Property("textures", json, json2));
+               propertyMap.put("textures", json2 == null ? new Property("textures", json) : new Property("textures", json, json2));
             }
          }
 
-         GameProfile gameProfile = new GameProfile(uuid, name);
-         gameProfile.getProperties().putAll(linkedHashMultimap);
+         // GameProfile is a record now, so the properties go in at construction
+         GameProfile gameProfile = new GameProfile(uuid, name, propertyMap);
          MinecraftClient.getInstance().getSkinProvider().fetchSkinTextures(gameProfile).thenAccept(skinTextures -> {
              if (skinTextures != null) {
                 this.replacement = skinTextures.orElse(null);

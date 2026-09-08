@@ -1,5 +1,6 @@
 package dev.sixseven.module.combat;
 
+import net.minecraft.util.math.Vec3d;
 import dev.sixseven.module.Category;
 import dev.sixseven.module.Module;
 import dev.sixseven.settings.BooleanSetting;
@@ -130,7 +131,7 @@ public class AutoCrystalModule extends Module {
          return false;
       } else if (crystal.getId() == this.lastBrokenId) {
          return false;
-      } else if (client.player.getEyePos().distanceTo(crystal.getPos()) > this.range.get()) {
+      } else if (client.player.getEyePos().distanceTo(new Vec3d(crystal.getX(), crystal.getY(), crystal.getZ())) > this.range.get()) {
          return false;
       } else {
          client.interactionManager.attackEntity(client.player, crystal);

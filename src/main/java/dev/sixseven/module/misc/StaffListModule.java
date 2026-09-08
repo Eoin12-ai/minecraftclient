@@ -135,7 +135,7 @@ public class StaffListModule extends Module {
          }
 
          if (this.alertSound.get()) {
-            client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F));
+            client.getSoundManager().play(PositionedSoundInstance.ui(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), 1.5F));
          }
       }
    }

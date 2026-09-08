@@ -134,7 +134,7 @@ public class FakePayModule extends Module {
    }
 
    private void play(MinecraftClient client, SoundEvent sound, float f) {
-      client.getSoundManager().play(PositionedSoundInstance.master(sound, f));
+      client.getSoundManager().play(PositionedSoundInstance.ui(sound, f));
    }
 
    private FakeStatsModule stats() {
