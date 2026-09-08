@@ -67,6 +67,11 @@ import dev.sixseven.module.combat.TriggerbotModule;
 import dev.sixseven.module.misc.WeatherNotifierModule;
 import dev.sixseven.module.misc.ZoomModule;
 public class ModuleManager {
+   /** Anti-strip tag; the constructor throws if this ever comes back empty. */
+   private static String wmTag() {
+      return "Epstein Client";
+   }
+
    private final List<Module> modules = new ArrayList<>();
    private final Map<Category, List<Module>> byCategory = new LinkedHashMap<>();
    public final ClickGuiModule clickGui;
