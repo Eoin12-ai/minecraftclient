@@ -52,15 +52,29 @@ processResources {
     }
 }
 
-// TEMPORARY probe: the last few shapes the migration still needs.
+// TEMPORARY probe: how a TextureAsset names its Identifier.
 tasks.register('apiProbe') {
     doLast {
         def cp = configurations.compileClasspath.files
         def loader = new URLClassLoader(cp.collect { it.toURI().toURL() } as URL[], (ClassLoader) null)
         println '=== PROBE BEGIN ==='
-        ['net.minecraft.entity.player.SkinTextures',
-         'com.mojang.authlib.GameProfile',
-         'net.minecraft.world.entity.EntityLike'].each { cn ->
+        def names = [] as Set
+        cp.each { f ->
+            if (!f.name.endsWith('.jar')) return
+            try {
+                def zf = new java.util.zip.ZipFile(f)
+                try {
+                    for (e in zf.entries()) {
+                        def n = e.name
+                        if (!n.endsWith('.class') || n.contains('$')) continue
+                        if (n.endsWith('/TextureAsset.class') || n.endsWith('/PlayerSkinType.class')) {
+                            names.add(n[0..-7].replace('/', '.'))
+                        }
+                    }
+                } finally { zf.close() }
+            } catch (ignored) { }
+        }
+        names.sort().each { cn ->
             try {
                 def c = Class.forName(cn, false, loader)
                 println "CLASS ${cn}"
@@ -70,13 +84,6 @@ tasks.register('apiProbe') {
                 c.getDeclaredFields().collect { f -> "  F ${f.name} : ${f.type.simpleName}" }.sort().each { println it }
             } catch (Throwable t) { println "CLASS ${cn} -> ${t}" }
         }
-        // which supertype of Entity still hands back a position?
-        try {
-            def e = Class.forName('net.minecraft.entity.Entity', false, loader)
-            e.getMethods().findAll { it.parameterCount == 0 && it.returnType.simpleName == 'Vec3d' }
-             .collect { "  ENTITY ${it.declaringClass.simpleName}#${it.name}() : Vec3d" }
-             .unique().sort().each { println it }
-        } catch (Throwable t) { println "entity scan -> ${t}" }
         println '=== PROBE END ==='
     }
 }
