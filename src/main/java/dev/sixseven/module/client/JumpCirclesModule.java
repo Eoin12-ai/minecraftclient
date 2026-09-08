@@ -14,7 +14,7 @@ import net.minecraft.util.math.random.Random;
 public class JumpCirclesModule extends Module {
    public final SliderSetting size = this.addSetting(new SliderSetting("Size", "Decal scale (1.0 = one block wide)", 1.0, 0.5, 3.0, 0.1, "x"));
    public final ColorSetting color = this.addSetting(new ColorSetting("Color", "Decal color (alpha is animated)", -38476));
-   public final SliderSetting lifetime = this.addSetting(new SliderSetting("Lifetime", "How long a 67 stays visible", 1.5, 0.5, 4.0, 0.1, "s"));
+   public final SliderSetting lifetime = this.addSetting(new SliderSetting("Lifetime", "How long a decal stays visible", 1.5, 0.5, 4.0, 0.1, "s"));
    public final BooleanSetting rainbow = this.addSetting(new BooleanSetting("Rainbow", "Cycle the color through the rainbow", false));
    public final BooleanSetting shockwave = this.addSetting(new BooleanSetting("Shockwave", "Expanding ring on spawn", true));
    public final BooleanSetting particles = this.addSetting(new BooleanSetting("Particles", "Drifting dust motes on jump", true));
@@ -23,7 +23,7 @@ public class JumpCirclesModule extends Module {
    private int spawnCounter;
 
    public JumpCirclesModule() {
-      super("67JumpCircles", "Stamps a glowing 67 on the ground when you jump", Category.CLIENT);
+      super("EpsteinJumpCircles", "Stamps a glowing Epstein decal on the ground when you jump", Category.CLIENT);
    }
 
    public Deque<JumpCirclesModule.JumpCircle> circles() {

@@ -7,7 +7,7 @@ import dev.sixseven.settings.ColorSetting;
 import dev.sixseven.settings.SliderSetting;
 
 public class HudModule extends Module {
-   public final BooleanSetting watermark = this.addSetting(new BooleanSetting("Watermark", "The Epstein Client badge", true));
+   public final BooleanSetting watermark = this.addSetting(new BooleanSetting("Watermark", "The Epstein badge", true));
    public final BooleanSetting arrayList = this.addSetting(new BooleanSetting("ArrayList", "Enabled modules list", true));
    public final BooleanSetting fps = this.addSetting(new BooleanSetting("FPS", "Framerate readout", true));
    public final BooleanSetting ping = this.addSetting(new BooleanSetting("Ping", "Latency readout", false));

@@ -21,7 +21,7 @@ public class WatermarkHud extends HudComponent {
 
    @Override
    public float measureWidth(NVGRenderer nVGRenderer) {
-      return 13.0F + nVGRenderer.textWidth("Epstein", 18.0F) + 7.0F + nVGRenderer.textWidth("Client", 14.0F) + 13.0F;
+      return 13.0F + nVGRenderer.textWidth("Epstein", 18.0F) + 13.0F;
    }
 
    @Override
@@ -43,8 +43,5 @@ public class WatermarkHud extends HudComponent {
       float f7 = tickDelta + 13.0F;
       nVGRenderer.textGlow("Epstein", f7, f, 18.0F, Colors.withAlpha(theme.accent(), 0.45F + 0.3F * f5));
       nVGRenderer.textGradient("Epstein", f7, f, 18.0F, n, offset);
-      f7 += nVGRenderer.textWidth("Epstein", 18.0F) + 7.0F;
-      nVGRenderer.circle(f7 - 4.5F, f, 1.4F, Colors.withAlpha(theme.textMuted(), 0.8F));
-      nVGRenderer.text("Client", f7, f, 14.0F, Colors.withAlpha(-856073, 0.92F));
    }
 }
