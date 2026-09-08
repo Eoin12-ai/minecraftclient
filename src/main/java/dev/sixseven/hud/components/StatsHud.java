@@ -192,7 +192,7 @@ public class StatsHud extends HudComponent {
                           float x, float y, float size, boolean bust) {
         int tex;
         try {
-            tex = NVGImages.wrapGlTexture(player.getSkin().texture(), 64, 64);
+            tex = NVGImages.wrapGlTexture(player.getSkin().body().texturePath(), 64, 64);
         } catch (Throwable t) {
             tex = -1;
         }

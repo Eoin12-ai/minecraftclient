@@ -51,23 +51,3 @@ processResources {
         expand 'version': project.version
     }
 }
-
-// TEMPORARY probe: the type SkinTextures hands back for a skin.
-tasks.register('apiProbe') {
-    doLast {
-        def cp = configurations.compileClasspath.files
-        def loader = new URLClassLoader(cp.collect { it.toURI().toURL() } as URL[], (ClassLoader) null)
-        println '=== PROBE BEGIN ==='
-        try {
-            def st = Class.forName('net.minecraft.entity.player.SkinTextures', false, loader)
-            def asset = st.getDeclaredMethod('body').returnType
-            println "ASSET ${asset.name}"
-            asset.getDeclaredMethods().collect { m ->
-                "  M ${m.name}(${m.parameterTypes.collect { it.simpleName }.join(', ')}) : ${m.returnType.name}"
-            }.sort().each { println it }
-            asset.getDeclaredFields().collect { f -> "  F ${f.name} : ${f.type.name}" }.sort().each { println it }
-        } catch (Throwable t) { println "probe -> ${t}" }
-        println '=== PROBE END ==='
-    }
-}
-compileJava.dependsOn 'apiProbe'
