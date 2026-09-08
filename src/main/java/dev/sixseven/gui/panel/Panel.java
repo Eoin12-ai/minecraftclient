@@ -47,7 +47,7 @@ public abstract class Panel {
     protected final ThemeManager             themes;
     protected final ClickGuiState.PanelState panelState;
     private   final Animation                open;
-    private   final Animation                scroll = new Animation(200.0f, 0.0f);
+    private   final Animation                scroll;
     private   final Animation                lift   = new Animation(150.0f, 0.0f);
     private         float                    maxScroll;
     private         boolean                  headerHovered;
@@ -60,6 +60,8 @@ public abstract class Panel {
         this.themes     = themes;
         this.panelState = panelState;
         this.open       = new Animation(200.0f, panelState.collapsed ? 0.0f : 1.0f);
+        // restore the scroll offset the GUI was left at, without animating to it
+        this.scroll     = new Animation(200.0f, Math.max(0.0f, panelState.scroll));
     }
 
     // ── subclass contract ─────────────────────────────────────────────────────
@@ -195,6 +197,7 @@ public abstract class Panel {
 
             maxScroll = Math.max(0.0f, contentHeight(nvg) - maxViewHeight(screenH));
             scroll.setTarget(Math.clamp(scroll.getTarget(), 0.0f, maxScroll));
+            panelState.scroll = scroll.getTarget();
 
             nvg.save();
             nvg.scissor(px, clipTop, w, vH);
@@ -245,6 +248,7 @@ public abstract class Panel {
         if (maxScroll <= 0.0f) return;
         scroll.setTarget(Math.clamp(scroll.getTarget() - (float)delta * HEADER_H,
                 0.0f, maxScroll));
+        panelState.scroll = scroll.getTarget();
     }
 
     public boolean mouseClicked(float mx, float my, int btn) { return false; }

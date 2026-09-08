@@ -36,6 +36,7 @@ import net.minecraft.client.gui.screen.TitleScreen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import dev.sixseven.discord.DiscordPresenceService;
 import dev.sixseven.wm.Seed;
 public class SixSevenClient implements ClientModInitializer {
    public static final String MOD_ID = "sixsevenclient";
@@ -49,6 +50,7 @@ public class SixSevenClient implements ClientModInitializer {
    private static HudManager hud;
    private static NotificationManager notifications;
    private static SpotifyService spotify;
+   private static DiscordPresenceService discord;
    private static SoundSettings soundSettings;
    private static boolean startupSoundPlayed;
 
@@ -76,6 +78,10 @@ public class SixSevenClient implements ClientModInitializer {
       return spotify;
    }
 
+   public static DiscordPresenceService discord() {
+      return discord;
+   }
+
    public static SoundSettings sounds() {
       return soundSettings;
    }
@@ -92,6 +98,7 @@ public class SixSevenClient implements ClientModInitializer {
       soundSettings = new SoundSettings();
       modules = new ModuleManager();
       spotify = new SpotifyService();
+      discord = new DiscordPresenceService();
       notifications = new NotificationManager(themes, modules.hud);
       hud = new HudManager(modules, themes, spotify, notifications);
       config = new ConfigManager(modules, themes);
@@ -149,6 +156,7 @@ public class SixSevenClient implements ClientModInitializer {
       ClientLifecycleEvents.CLIENT_STOPPING.register((ClientStopping)arg -> {
          config.save();
          spotify.stop();
+         discord.stop();
       });
    }
 

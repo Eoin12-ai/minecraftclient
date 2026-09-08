@@ -25,7 +25,7 @@ import java.util.Set;
 public class ClickGuiState {
 
     public static final String THEMES_PANEL   = "__themes__";
-    private static final int   LAYOUT_VERSION = 5;
+    private static final int   LAYOUT_VERSION = 6;
     private static final float PANEL_W        = 220.0f;   // fallback column width
 
     // ── locked column grid ───────────────────────────────────────────────────
@@ -110,6 +110,13 @@ public class ClickGuiState {
     }
 
     // ── serialisation ─────────────────────────────────────────────────────────
+    //
+    // Everything the GUI remembers between sessions lives here: which columns
+    // are collapsed and how far each is scrolled, which module drawers are
+    // open, and which modules are starred. Module enable state, keybinds and
+    // setting values are not in this section — ConfigManager already writes
+    // those under "modules", and duplicating them would give two sources of
+    // truth for the same thing.
 
     public JsonObject toJson() {
         JsonObject root = new JsonObject();
@@ -117,32 +124,45 @@ public class ClickGuiState {
         root.addProperty("custom", true);
 
         for (Map.Entry<String, PanelState> e : panels.entrySet()) {
+            PanelState ps = e.getValue();
             JsonObject obj = new JsonObject();
-            obj.addProperty("collapsed", e.getValue().collapsed);
+            obj.addProperty("collapsed", ps.collapsed);
+            obj.addProperty("scroll", ps.scroll);
             root.add(e.getKey(), obj);
         }
 
-        JsonArray favArr = new JsonArray();
-        for (String fk : favouriteModules) favArr.add(fk);
-        root.add("favourites", favArr);
-
+        root.add("favourites", toArray(favouriteModules));
+        root.add("expanded", toArray(expandedModules));
         return root;
     }
 
     public void fromJson(JsonObject root) {
-        if (!root.has("v") || root.get("v").getAsInt() < 3) return;
+        if (root == null || !root.has("v") || root.get("v").getAsInt() < 3) return;
 
         for (Map.Entry<String, PanelState> e : panels.entrySet()) {
             JsonObject obj = root.getAsJsonObject(e.getKey());
             if (obj == null) continue;
-            if (obj.has("collapsed")) e.getValue().collapsed = obj.get("collapsed").getAsBoolean();
+            PanelState ps = e.getValue();
+            if (obj.has("collapsed")) ps.collapsed = obj.get("collapsed").getAsBoolean();
+            if (obj.has("scroll")) ps.scroll = Math.max(0.0f, obj.get("scroll").getAsFloat());
         }
 
-        favouriteModules.clear();
-        if (root.has("favourites")) {
-            for (JsonElement el : root.getAsJsonArray("favourites")) {
-                favouriteModules.add(el.getAsString());
-            }
+        readInto(root, "favourites", favouriteModules);
+        readInto(root, "expanded", expandedModules);
+    }
+
+    private static JsonArray toArray(Set<String> keys) {
+        JsonArray arr = new JsonArray();
+        for (String k : keys) arr.add(k);
+        return arr;
+    }
+
+    /** Replaces {@code target} with the strings under {@code key}, if present. */
+    private static void readInto(JsonObject root, String key, Set<String> target) {
+        if (!root.has(key) || !root.get(key).isJsonArray()) return;
+        target.clear();
+        for (JsonElement el : root.getAsJsonArray(key)) {
+            if (el != null && el.isJsonPrimitive()) target.add(el.getAsString());
         }
     }
 
@@ -152,6 +172,8 @@ public class ClickGuiState {
         public float   x;
         public float   y;
         public boolean collapsed;
+        /** Scroll offset in UI units, written back by the panel as it scrolls. */
+        public float   scroll;
 
         PanelState(float x, float y) {
             this.x = x;

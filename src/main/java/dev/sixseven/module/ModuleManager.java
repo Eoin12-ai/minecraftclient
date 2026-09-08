@@ -58,6 +58,7 @@ import dev.sixseven.module.combat.ShieldBreakerModule;
 import dev.sixseven.module.misc.SkinProtectModule;
 import dev.sixseven.module.render.SpawnerNametagsModule;
 import dev.sixseven.module.misc.SpawnerProtectModule;
+import dev.sixseven.module.client.DiscordPresenceModule;
 import dev.sixseven.module.client.SpotifyModule;
 import dev.sixseven.module.misc.StaffListModule;
 import dev.sixseven.module.render.StorageEspModule;
@@ -77,6 +78,7 @@ public class ModuleManager {
    public final ClickGuiModule clickGui;
    public final HudModule hud;
    public final SpotifyModule spotify;
+   public final DiscordPresenceModule discordRpc;
    public final BlockOutlineModule blockOutline;
    public final SusChunkFinderModule susChunkFinder;
    public FullbrightModule fullbright;
@@ -151,6 +153,7 @@ public class ModuleManager {
       this.register(this.motionBlur = new MotionBlurModule());
       this.register(this.hud = new HudModule());
       this.register(this.spotify = new SpotifyModule());
+      this.register(this.discordRpc = new DiscordPresenceModule());
       this.register(this.chatMacro = new ChatMacroModule());
       this.ph("ConfigShare", "Import/export configs via codes", Category.CLIENT, new BooleanSetting("Include HUD Layout", "Share HUD positions too", true));
       this.register(this.swingSpeed = new SwingSpeedModule());
