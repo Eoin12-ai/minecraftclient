@@ -30,6 +30,15 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+      - name: Probe Loom versions
+        run: |
+          echo "=== fabric-loom plugin versions ==="
+          curl -sS https://maven.fabricmc.net/net/fabricmc/fabric-loom/fabric-loom.gradle.plugin/maven-metadata.xml \
+            | grep -oE '<version>[^<]+</version>' | sed 's/<[^>]*>//g' | tail -25
+          echo "=== latest/release ==="
+          curl -sS https://maven.fabricmc.net/net/fabricmc/fabric-loom/fabric-loom.gradle.plugin/maven-metadata.xml \
+            | grep -oE '<(latest|release)>[^<]+</(latest|release)>'
+
       - name: Build
         run: |
           set +e
