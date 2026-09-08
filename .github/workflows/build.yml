@@ -67,15 +67,31 @@ jobs:
       - name: Publish jar to claude/build-output branch
         if: success() && github.event_name == 'workflow_dispatch'
         run: |
-          set -euo pipefail
-          JAR=$(ls build/libs/*.jar | grep -vE -- '-(sources|dev)\.jar$' | head -1)
+          set -eu
+          JAR=""
+          for f in build/libs/*.jar; do
+            case "$f" in
+              *-sources.jar|*-dev.jar|*-sources-dev.jar) continue ;;
+            esac
+            JAR="$f"
+            break
+          done
+          if [ -z "$JAR" ]; then
+            echo "no publishable jar in build/libs"
+            ls -l build/libs || true
+            exit 1
+          fi
           NAME=$(basename "$JAR")
           echo "publishing $NAME"
+          git config user.email "ci@build.dev"
+          git config user.name "CI"
+          SUM=$(sha256sum "$JAR" | cut -d' ' -f1)
           BLOB=$(git hash-object -w "$JAR")
           INFO=$(printf 'commit: %s\nref:    %s\nrun:    %s\njar:    %s\nsha256: %s\n' \
-                   "$GITHUB_SHA" "$GITHUB_REF" "$GITHUB_RUN_ID" "$NAME" \
-                   "$(sha256sum "$JAR" | cut -d' ' -f1)" | git hash-object -w --stdin)
+                   "$GITHUB_SHA" "$GITHUB_REF" "$GITHUB_RUN_ID" "$NAME" "$SUM" \
+                 | git hash-object -w --stdin)
           TREE=$(printf '100644 blob %s\t%s\n100644 blob %s\tBUILD_INFO.txt\n' \
                    "$BLOB" "$NAME" "$INFO" | git mktree)
           COMMIT=$(git commit-tree "$TREE" -m "build: $NAME from $GITHUB_SHA")
           git push --force origin "$COMMIT:refs/heads/claude/build-output"
+          echo "published $NAME sha256=$SUM as commit $COMMIT"
