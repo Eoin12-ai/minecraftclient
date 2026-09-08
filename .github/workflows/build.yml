@@ -59,3 +59,23 @@ jobs:
           path: build/libs/*.jar
           if-no-files-found: error
           retention-days: 30
+
+      # Artifact downloads are served from a blob host that some networks block,
+      # so a manual run also publishes the jar to a throwaway orphan branch that
+      # can be fetched over plain git. The branch is built with git plumbing, so
+      # the working tree is untouched, and it is force-replaced each run.
+      - name: Publish jar to claude/build-output branch
+        if: success() && github.event_name == 'workflow_dispatch'
+        run: |
+          set -euo pipefail
+          JAR=$(ls build/libs/*.jar | grep -vE -- '-(sources|dev)\.jar$' | head -1)
+          NAME=$(basename "$JAR")
+          echo "publishing $NAME"
+          BLOB=$(git hash-object -w "$JAR")
+          INFO=$(printf 'commit: %s\nref:    %s\nrun:    %s\njar:    %s\nsha256: %s\n' \
+                   "$GITHUB_SHA" "$GITHUB_REF" "$GITHUB_RUN_ID" "$NAME" \
+                   "$(sha256sum "$JAR" | cut -d' ' -f1)" | git hash-object -w --stdin)
+          TREE=$(printf '100644 blob %s\t%s\n100644 blob %s\tBUILD_INFO.txt\n' \
+                   "$BLOB" "$NAME" "$INFO" | git mktree)
+          COMMIT=$(git commit-tree "$TREE" -m "build: $NAME from $GITHUB_SHA")
+          git push --force origin "$COMMIT:refs/heads/claude/build-output"
