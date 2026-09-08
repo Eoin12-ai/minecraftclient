@@ -2,6 +2,7 @@ package dev.sixseven;
 
 import dev.sixseven.config.ConfigManager;
 import dev.sixseven.config.ConfigStore;
+import dev.sixseven.config.ServerConfigs;
 import dev.sixseven.gui.ClickGuiScreen;
 import dev.sixseven.gui.ClickGuiState;
 import dev.sixseven.gui.GambleRiggerOverlay;
@@ -12,6 +13,7 @@ import dev.sixseven.module.misc.FreecamModule;
 import dev.sixseven.notification.NotificationManager;
 import dev.sixseven.render.MotionBlurRenderer;
 import dev.sixseven.render.OverlayRenderer;
+import dev.sixseven.render.NvgDrawable;
 import dev.sixseven.render.SusChunkRenderer;
 import dev.sixseven.spotify.SpotifyService;
 import dev.sixseven.suschunk.ServerLightCache;
@@ -29,6 +31,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.StartT
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents.Disconnect;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents.Join;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents.AfterInit;
 import net.minecraft.client.MinecraftClient;
@@ -52,6 +55,7 @@ public class SixSevenClient implements ClientModInitializer {
    private static NotificationManager notifications;
    private static SpotifyService spotify;
    private static DiscordPresenceService discord;
+   private static ServerConfigs serverConfigs;
    private static SoundSettings soundSettings;
    private static boolean startupSoundPlayed;
 
@@ -91,6 +95,10 @@ public class SixSevenClient implements ClientModInitializer {
       return notifications;
    }
 
+   public static ServerConfigs serverConfigs() {
+      return serverConfigs;
+   }
+
    public void onInitializeClient() {
       Seed.check();
       LOGGER.info("{} {} initializing", "EpsteinClient", "1.6.2");
@@ -100,6 +108,7 @@ public class SixSevenClient implements ClientModInitializer {
       modules = new ModuleManager();
       spotify = new SpotifyService();
       discord = new DiscordPresenceService();
+      serverConfigs = new ServerConfigs();
       notifications = new NotificationManager(themes, modules.hud);
       hud = new HudManager(modules, themes, spotify, notifications);
       config = new ConfigManager(modules, themes);
@@ -123,6 +132,11 @@ public class SixSevenClient implements ClientModInitializer {
       Supplier supplier4 = statsTracker::toJson;
       StatsTracker statsTracker2 = modules.stats.tracker();
       configManager.addSection("stats", supplier4, statsTracker2::fromJson);
+      configManager = config;
+      ServerConfigs serverConfigs2 = serverConfigs;
+      Supplier supplier5 = serverConfigs2::toJson;
+      ServerConfigs serverConfigs3 = serverConfigs;
+      configManager.addSection("serverConfigs", supplier5, serverConfigs3::fromJson);
       config.load();
       configStore = new ConfigStore(config);
       configStore.loadAll();
@@ -145,10 +159,33 @@ public class SixSevenClient implements ClientModInitializer {
             startupSoundPlayed = true;
             UiSounds.playStartup();
          }
+
+         // Screens that draw themselves through NanoVG get the overlay drawn
+         // after vanilla finishes with them. This also covers the ClickGUI
+         // opened from a menu, where there is no world and therefore no HUD
+         // render to piggyback on.
+         if (freecamModule instanceof NvgDrawable) {
+            ScreenEvents.afterRender(freecamModule).register((screen, ctx, mx, my, delta) -> OverlayRenderer.render());
+         }
+      });
+
+      // In-world overlay. Fabric's HUD event replaces the old mixin, which
+      // targeted a class that does not exist at this Minecraft version and so
+      // never bound — leaving the entire HUD and ClickGUI undrawn. Screens that
+      // implement NvgDrawable are skipped here because the hook registered
+      // above already draws them, and doing both would render twice.
+      HudRenderCallback.EVENT.register((drawContext, tickCounter) -> {
+         if (MinecraftClient.getInstance().currentScreen instanceof NvgDrawable) return;
+         OverlayRenderer.render();
       });
       GambleRiggerOverlay.register();
       spotify.start();
-      ClientPlayConnectionEvents.JOIN.register((Join)(arg, freecamModule, arg3) -> clearSusState());
+      ClientPlayConnectionEvents.JOIN.register((Join)(arg, freecamModule, arg3) -> {
+         clearSusState();
+         if (modules.serverConfigs != null) {
+            modules.serverConfigs.onJoinedServer();
+         }
+      });
       ClientPlayConnectionEvents.DISCONNECT.register((Disconnect)(arg, freecamModule) -> clearSusState());
       ClientTickEvents.END_CLIENT_TICK.register((EndTick)arg -> modules.onTick());
       ClientTickEvents.START_CLIENT_TICK.register((StartTick)arg -> {

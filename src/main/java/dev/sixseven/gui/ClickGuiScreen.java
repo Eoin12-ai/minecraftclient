@@ -2,6 +2,8 @@ package dev.sixseven.gui;
 
 import dev.sixseven.SixSevenClient;
 import dev.sixseven.gui.config.ConfigPanel;
+import dev.sixseven.config.ConfigStore;
+import dev.sixseven.config.ServerConfigs;
 import dev.sixseven.gui.panel.CategoryPanel;
 import dev.sixseven.gui.panel.Panel;
 import dev.sixseven.gui.panel.ThemesPanel;
@@ -30,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.sixseven.module.client.ClickGuiModule;
+import dev.sixseven.module.client.DiscordPresenceModule;
 
 /**
  * ClickGuiScreen — locked five-column liquid-glass menu.
@@ -247,10 +250,41 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
     private void renderHint(NVGRenderer nvg, float sw, float sh) {
         // nvgTextAlign is LEFT|MIDDLE throughout, so centre by hand
-        String hint = "ESC  ·  close      ·      layout locked";
+        String hint = "ESC  ·  close      ·      " + statusLine();
         float  hw   = nvg.textWidth(hint, HINT_FONT);
         nvg.text(hint, (sw - hw) / 2.0f, sh - HINT_MARGIN, HINT_FONT,
                 Colors.withAlpha(theme().textDisabled(), 0.5f));
+    }
+
+    /**
+     * The right half of the hint line: which config is live, whether this
+     * server is bound to one, and whether Discord is connected. All read-only,
+     * and each piece drops out silently when its subsystem is unavailable.
+     */
+    private String statusLine() {
+        StringBuilder out = new StringBuilder();
+        try {
+            ConfigStore store = SixSevenClient.configStore();
+            if (store != null) {
+                int active = store.activeIndex();
+                ConfigStore.Slot slot = active >= 0 ? store.slot(active) : null;
+                if (slot != null) out.append(slot.name());
+            }
+            ServerConfigs bindings = SixSevenClient.serverConfigs();
+            if (bindings != null && bindings.slotForCurrent() >= 0) {
+                if (out.length() > 0) out.append("  ·  ");
+                out.append("bound");
+            }
+            DiscordPresenceModule rpc = SixSevenClient.modules().discordRpc;
+            if (rpc != null && rpc.isEnabled() && rpc.isConnected()) {
+                if (out.length() > 0) out.append("  ·  ");
+                out.append("discord");
+            }
+        } catch (Throwable ignored) {
+            // the hint line is decoration; never let it break the GUI
+        }
+        if (out.length() == 0) out.append("layout locked");
+        return out.toString();
     }
 
     // ── hit tests ─────────────────────────────────────────────────────────────

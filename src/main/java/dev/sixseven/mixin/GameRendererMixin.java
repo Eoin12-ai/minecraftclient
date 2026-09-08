@@ -7,7 +7,6 @@ import dev.sixseven.SixSevenClient;
 import dev.sixseven.module.ModuleManager;
 import dev.sixseven.module.misc.FreecamModule;
 import dev.sixseven.render.BlurHook;
-import dev.sixseven.render.OverlayRenderer;
 import dev.sixseven.render.WorldProjection;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.RenderTickCounter;
@@ -16,23 +15,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({GameRenderer.class})
 public class GameRendererMixin {
-   @Inject(
-      method = {"render"},
-      at = {@At(
-         value = "INVOKE",
-         target = "Lnet/minecraft/GuiRenderer;incrementFrame()V",
-         shift = Shift.AFTER
-      )}
-   )
-   private void sixsevenclient$renderOverlay(RenderTickCounter renderTickCounter, boolean flag, CallbackInfo callbackInfo) {
-      OverlayRenderer.render();
-   }
-
    @Inject(
       method = {"renderWorld"},
       at = {@At(

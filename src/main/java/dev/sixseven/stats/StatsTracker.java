@@ -162,6 +162,31 @@ public final class StatsTracker {
         return servers.size();
     }
 
+    /** Everything across every server ever tracked, summed on demand. */
+    public ServerRecord allServers() {
+        ServerRecord total = new ServerRecord(0L);
+        for (ServerRecord r : servers.values()) {
+            total.playMillis += r.playMillis;
+            total.deaths += r.deaths;
+            total.joins += r.joins;
+            total.blocksTravelled += r.blocksTravelled;
+        }
+        return total;
+    }
+
+    /** Key of the server with the most recorded time, or "" when none. */
+    public String mostPlayedKey() {
+        String best = "";
+        long bestMillis = -1L;
+        for (Map.Entry<String, ServerRecord> e : servers.entrySet()) {
+            if (e.getValue().playMillis > bestMillis) {
+                bestMillis = e.getValue().playMillis;
+                best = e.getKey();
+            }
+        }
+        return best;
+    }
+
     /** Wipes both scopes. Bound to the module's Reset switch. */
     public void resetAll() {
         servers.clear();

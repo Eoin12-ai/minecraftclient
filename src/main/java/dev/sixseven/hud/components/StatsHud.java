@@ -83,6 +83,18 @@ public class StatsHud extends HudComponent {
             out.add(new Section("This Server", rows));
         }
 
+        if (module.allServers.get()) {
+            StatsTracker.ServerRecord all = tracker.allServers();
+            List<Row> rows = new ArrayList<>();
+            rows.add(new Row("Time", duration(all.playMillis)));
+            rows.add(new Row("Servers", Integer.toString(tracker.trackedServers())));
+            rows.add(new Row("Deaths", Integer.toString(all.deaths)));
+            rows.add(new Row("Travelled", distance(all.blocksTravelled)));
+            String most = tracker.mostPlayedKey();
+            if (!most.isEmpty()) rows.add(new Row("Most played", most));
+            out.add(new Section("All Servers", rows));
+        }
+
         if (module.lifetime.get()) {
             List<Row> rows = new ArrayList<>();
             boolean have = VanillaStats.available(client);

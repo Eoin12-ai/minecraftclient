@@ -42,6 +42,9 @@ public class StatsModule extends Module {
     public final BooleanSetting lifetime = this.addSetting(new BooleanSetting(
             "Lifetime", "Minecraft's own statistics for your account", true));
 
+    public final BooleanSetting allServers = this.addSetting(new BooleanSetting(
+            "All Servers", "Totals across every server the client has tracked", true));
+
     public final BooleanSetting requestStats = this.addSetting(new BooleanSetting(
             "Request Stats", "Ask the server for your statistics periodically", true));
 
