@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({InGameHud.class})
 public class GuiNametagEquipmentMixin {
    @Inject(
-      method = {"render(Lnet/minecraft/DrawContext;Lnet/minecraft/RenderTickCounter;)V"},
+      method = {"render"},
       at = {@At("TAIL")}
    )
    private void sixsevenclient$nametagEquipment(DrawContext context, RenderTickCounter renderTickCounter, CallbackInfo callbackInfo) {

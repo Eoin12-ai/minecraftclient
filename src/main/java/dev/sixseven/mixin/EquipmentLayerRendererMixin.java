@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin({EquipmentRenderer.class})
 public class EquipmentLayerRendererMixin {
    @ModifyExpressionValue(
-      method = {"render(Lnet/minecraft/EquipmentModel$LayerType;Lnet/minecraft/RegistryKey;Lnet/minecraft/Model;Ljava/lang/Object;Lnet/minecraft/ItemStack;Lnet/minecraft/MatrixStack;Lnet/minecraft/OrderedRenderCommandQueue;ILnet/minecraft/Identifier;II)V"},
+      method = {"render"},
       at = {@At(
          value = "INVOKE",
          target = "Lnet/minecraft/ItemStack;get(Lnet/minecraft/ComponentType;)Ljava/lang/Object;"

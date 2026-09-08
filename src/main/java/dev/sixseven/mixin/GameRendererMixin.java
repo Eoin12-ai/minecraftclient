@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({GameRenderer.class})
 public class GameRendererMixin {
    @Inject(
-      method = {"render(Lnet/minecraft/RenderTickCounter;Z)V"},
+      method = {"render"},
       at = {@At(
          value = "INVOKE",
          target = "Lnet/minecraft/GuiRenderer;incrementFrame()V",
@@ -34,7 +34,7 @@ public class GameRendererMixin {
    }
 
    @Inject(
-      method = {"renderWorld(Lnet/minecraft/RenderTickCounter;)V"},
+      method = {"renderWorld"},
       at = {@At(
          value = "INVOKE",
          target = "Lcom/mojang/blaze3d/systems/RenderSystem;setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/ProjectionType;)V"
@@ -45,7 +45,7 @@ public class GameRendererMixin {
    }
 
    @ModifyArg(
-      method = {"render(Lnet/minecraft/RenderTickCounter;Z)V"},
+      method = {"render"},
       at = @At(
          value = "INVOKE",
          target = "Lnet/minecraft/GlobalSettings;set(IIDJLnet/minecraft/RenderTickCounter;ILnet/minecraft/Camera;Z)V"
@@ -57,7 +57,7 @@ public class GameRendererMixin {
    }
 
    @ModifyReturnValue(
-      method = {"getFov(Lnet/minecraft/Camera;FZ)F"},
+      method = {"getFov"},
       at = {@At("RETURN")}
    )
    private float sixsevenclient$zoomFov(float f) {
@@ -71,7 +71,7 @@ public class GameRendererMixin {
    }
 
    @ModifyExpressionValue(
-      method = {"getFov(Lnet/minecraft/Camera;FZ)F"},
+      method = {"getFov"},
       at = {@At(
          value = "INVOKE",
          target = "Lnet/minecraft/MathHelper;lerp(FFF)F",

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin({ChatHud.class})
 public class ChatComponentMixin {
    @ModifyVariable(
-      method = {"addMessage(Lnet/minecraft/Text;Lnet/minecraft/MessageSignatureData;Lnet/minecraft/MessageIndicator;)V"},
+      method = {"addMessage"},
       at = @At("HEAD"),
       argsOnly = true,
       ordinal = 0
