@@ -24,37 +24,33 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: '8.13'
           cache-read-only: false
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Probe Loom versions
-        run: |
-          echo "=== fabric-loom plugin versions ==="
-          curl -sS https://maven.fabricmc.net/net/fabricmc/fabric-loom/fabric-loom.gradle.plugin/maven-metadata.xml \
-            | grep -oE '<version>[^<]+</version>' | sed 's/<[^>]*>//g' | tail -25
-          echo "=== latest/release ==="
-          curl -sS https://maven.fabricmc.net/net/fabricmc/fabric-loom/fabric-loom.gradle.plugin/maven-metadata.xml \
-            | grep -oE '<(latest|release)>[^<]+</(latest|release)>'
-
       - name: Build
         run: |
           set +e
           ./gradlew build --no-daemon --stacktrace 2>&1 | tee /tmp/build.log
-          EXIT=${PIPESTATUS[0]}
-          if [ $EXIT -ne 0 ]; then
-            git config user.email "ci@build.dev"
-            git config user.name "CI"
-            cp /tmp/build.log build-error.log
-            git add build-error.log
-            git commit -m "ci: build error log"
-            git push
-          fi
-          exit $EXIT
+          exit ${PIPESTATUS[0]}
         env:
           GRADLE_OPTS: '-Xmx3g'
+
+      # The build log is published to a throwaway orphan branch rather than
+      # committed onto the branch being built, so a failing run never races the
+      # working branch and pushes stay fast-forward.
+      - name: Publish build log
+        if: always()
+        run: |
+          set -eu
+          [ -f /tmp/build.log ] || exit 0
+          git config user.email "ci@build.dev"
+          git config user.name "CI"
+          BLOB=$(git hash-object -w /tmp/build.log)
+          TREE=$(printf '100644 blob %s\tbuild.log\n' "$BLOB" | git mktree)
+          COMMIT=$(git commit-tree "$TREE" -m "ci: build log for $GITHUB_SHA")
+          git push --force origin "$COMMIT:refs/heads/claude/build-log"
 
       - name: List build output
         if: success()
