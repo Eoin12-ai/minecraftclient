@@ -118,6 +118,17 @@ public class ModuleEntry {
 
     // ── render ───────────────────────────────────────────────────────────────
 
+    /** Module name trimmed with an ellipsis to fit {@code maxW}. */
+    private String fitName(NVGRenderer nvg, float maxW) {
+        String full = module.getName();
+        if (nvg == null || nvg.textWidth(full, 14.5f) <= maxW) return full;
+        String cut = full;
+        while (cut.length() > 1 && nvg.textWidth(cut + "\u2026", 14.5f) > maxW) {
+            cut = cut.substring(0, cut.length() - 1);
+        }
+        return cut + "\u2026";
+    }
+
     public void render(NVGRenderer nvg, float mouseX, float mouseY, float edgeFade) {
         Theme   th      = theme();
         boolean rowHit  = mouseX >= x && mouseX <= x + width
@@ -163,20 +174,24 @@ public class ModuleEntry {
             nameX += STAR_SIZE + 4.0f;
         }
 
+        // narrow columns: clip the label so it never runs under the indicators
+        float nameLimit = x + width - (widgets.isEmpty() ? 22.0f : 36.0f) - nameX;
+        String name = fitName(nvg, Math.max(16.0f, nameLimit));
+
         if (ev > 0.01f) {
             // active: gradient name + soft glow
             nvg.save();
             nvg.alpha(ev);
-            nvg.textGlow(module.getName(), nameX, midY, 14.5f,
+            nvg.textGlow(name, nameX, midY, 14.5f,
                     Colors.withAlpha(th.accent(), 0.7f));
-            nvg.textGradient(module.getName(), nameX, midY, 14.5f,
+            nvg.textGradient(name, nameX, midY, 14.5f,
                     th.accentBright(), th.accent());
             nvg.restore();
         }
         if (ev < 0.99f) {
             nvg.save();
             nvg.alpha(1.0f - ev);
-            nvg.text(module.getName(), nameX, midY, 14.5f,
+            nvg.text(name, nameX, midY, 14.5f,
                     Colors.lerp(th.textMuted(), th.textPrimary(), hv));
             nvg.restore();
         }

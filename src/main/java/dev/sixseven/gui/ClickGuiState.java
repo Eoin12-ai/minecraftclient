@@ -11,84 +11,86 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * ClickGuiState — unchanged layout logic; favourites Set added.
+ * ClickGuiState — layout, expansion and favourites for the ClickGUI.
  *
- * favouriteModules: Set<String> keyed by same module key as expandedModules.
- * Persisted in config JSON under "favourites" array.
- * Layout version bumped 3 → 4 so old configs still load (v>=3 check kept).
+ * The layout is now a locked column grid: one full-height column per
+ * {@link Category}, five of them today, sized and centred by
+ * {@link #applyColumnLayout}. Panels are no longer draggable, so stored x/y
+ * coordinates are recomputed every frame and only the collapsed flag and the
+ * favourites set carry over between sessions.
+ *
+ * Layout version bumped 4 → 5; older configs still load (v>=3 check kept) and
+ * their stored coordinates are simply overwritten by the column layout.
  */
 public class ClickGuiState {
 
     public static final String THEMES_PANEL   = "__themes__";
-    private static final int   LAYOUT_VERSION = 4;
-    private static final float PANEL_W        = 220.0f;   // matches new Panel.WIDTH
-    private static final float SEARCH_W       = 300.0f;   // matches new search bar
+    private static final int   LAYOUT_VERSION = 5;
+    private static final float PANEL_W        = 220.0f;   // fallback column width
 
-    private final Map<String, PanelState> panels          = new LinkedHashMap<>();
+    // ── locked column grid ───────────────────────────────────────────────────
+
+    /** One column per category — five with the current category set. */
+    public static final  int   COLUMNS     = Category.values().length;
+    private static final float COL_GAP     = 12.0f;
+    private static final float SIDE_MARGIN = 20.0f;
+    private static final float COL_MIN_W   = 160.0f;
+    private static final float COL_MAX_W   = 300.0f;
+    private static final float COL_TOP     = 68.0f;   // clears the search bar
+    private static final float COL_BOTTOM  = 58.0f;   // clears the bottom pill bar
+
+    private final Map<String, PanelState> panels           = new LinkedHashMap<>();
     private final Set<String>             expandedModules  = new HashSet<>();
-    private final Set<String>             favouriteModules = new HashSet<>();  // NEW
+    private final Set<String>             favouriteModules = new HashSet<>();
 
-    private boolean laidOut;
-    private boolean customized;
-    private float   lastLayoutWidth  = -1.0f;
-    private float   lastLayoutHeight = -1.0f;
+    private float colW    = PANEL_W;
+    private float colX0   = SIDE_MARGIN;
+    private float colTop  = COL_TOP;
+    private float colH    = 0.0f;
 
     // ─────────────────────────────────────────────────────────────────────────
 
     public ClickGuiState() {
-        float x = 16.0f;
+        float x = SIDE_MARGIN;
         for (Category c : Category.values()) {
-            panels.put(c.name(), new PanelState(x, 16.0f));
-            x += PANEL_W + 8.0f;
+            panels.put(c.name(), new PanelState(x, COL_TOP));
+            x += PANEL_W + COL_GAP;
         }
         panels.put(THEMES_PANEL, new PanelState(x, 320.0f));
     }
 
     // ── layout ────────────────────────────────────────────────────────────────
 
-    public void markCustomized() { customized = true; }
+    /**
+     * Recomputes the locked column grid for the given UI size. Cheap enough to
+     * call every frame, which is what keeps the layout pinned on resize.
+     */
+    public void applyColumnLayout(float sw, float sh) {
+        float avail = Math.max(COL_MIN_W * COLUMNS, sw - SIDE_MARGIN * 2.0f);
+        float raw   = (avail - COL_GAP * (COLUMNS - 1)) / COLUMNS;
+        colW  = Math.clamp(raw, COL_MIN_W, COL_MAX_W);
+        colX0 = Math.max(4.0f, (sw - columnsWidth()) / 2.0f);
+        colTop = COL_TOP;
+        colH   = Math.max(120.0f, sh - COL_TOP - COL_BOTTOM);
 
-    public void ensureDefaultLayout(float sw, float sh) {
-        if (!customized && (!laidOut || sw != lastLayoutWidth || sh != lastLayoutHeight)) {
-            laidOut          = true;
-            lastLayoutWidth  = sw;
-            lastLayoutHeight = sh;
-
-            String[] order = {
-                Category.COMBAT.name(), Category.MISC.name(),
-                Category.RENDER.name(), Category.VISUALS.name(),
-                Category.CLIENT.name(), THEMES_PANEL
-            };
-
-            float needed = PANEL_W * order.length + 8.0f * (order.length - 1) + SEARCH_W + 24.0f;
-            if (sw >= needed) {
-                // wide layout — single row, evenly spaced
-                float gap = (sw - PANEL_W * order.length - SEARCH_W) / (order.length + 1);
-                float cx  = gap;
-                for (int i = 0; i < order.length; i++) {
-                    PanelState ps = panel(order[i]);
-                    ps.x         = cx;
-                    ps.y         = 66.0f;  // below search bar
-                    ps.collapsed = false;
-                    cx += PANEL_W + gap;
-                    if (i == 2) cx += SEARCH_W + gap;  // gap around search centre
-                }
-            } else {
-                // narrow layout — wrap into columns
-                float colW   = PANEL_W + 8.0f;
-                int   cols   = Math.max(1, (int)((sw - 24.0f) / colW));
-                for (int i = 0; i < order.length; i++) {
-                    PanelState ps = panel(order[i]);
-                    ps.x         = 12.0f + (i % cols) * colW;
-                    ps.y         = 66.0f + (i / cols) * (sh * 0.44f);
-                    ps.collapsed = (i / cols) > 0;
-                }
-            }
+        int i = 0;
+        for (Category c : Category.values()) {
+            PanelState ps = panel(c.name());
+            ps.x = colX0 + i * (colW + COL_GAP);
+            ps.y = colTop;
+            i++;
         }
     }
 
+    public float columnWidth()  { return colW; }
+    public float columnGap()    { return COL_GAP; }
+    public float columnsLeft()  { return colX0; }
+    public float columnsWidth() { return colW * COLUMNS + COL_GAP * (COLUMNS - 1); }
+    public float columnTop()    { return colTop; }
+    public float columnHeight() { return colH; }
+
     public PanelState panel(String key) {
-        return panels.computeIfAbsent(key, k -> new PanelState(16.0f, 66.0f));
+        return panels.computeIfAbsent(key, k -> new PanelState(SIDE_MARGIN, COL_TOP));
     }
 
     // ── expanded ─────────────────────────────────────────────────────────────
@@ -112,12 +114,10 @@ public class ClickGuiState {
     public JsonObject toJson() {
         JsonObject root = new JsonObject();
         root.addProperty("v", LAYOUT_VERSION);
-        root.addProperty("custom", customized);
+        root.addProperty("custom", true);
 
         for (Map.Entry<String, PanelState> e : panels.entrySet()) {
             JsonObject obj = new JsonObject();
-            obj.addProperty("x",         e.getValue().x);
-            obj.addProperty("y",         e.getValue().y);
             obj.addProperty("collapsed", e.getValue().collapsed);
             root.add(e.getKey(), obj);
         }
@@ -131,17 +131,11 @@ public class ClickGuiState {
 
     public void fromJson(JsonObject root) {
         if (!root.has("v") || root.get("v").getAsInt() < 3) return;
-        if (!root.has("custom") || !root.get("custom").getAsBoolean()) return;
-
-        laidOut   = true;
-        customized = true;
 
         for (Map.Entry<String, PanelState> e : panels.entrySet()) {
             JsonObject obj = root.getAsJsonObject(e.getKey());
             if (obj == null) continue;
-            if (obj.has("x"))         e.getValue().x         = obj.get("x").getAsFloat();
-            if (obj.has("y"))         e.getValue().y         = obj.get("y").getAsFloat();
-            if (obj.has("collapsed")) e.getValue().collapsed  = obj.get("collapsed").getAsBoolean();
+            if (obj.has("collapsed")) e.getValue().collapsed = obj.get("collapsed").getAsBoolean();
         }
 
         favouriteModules.clear();

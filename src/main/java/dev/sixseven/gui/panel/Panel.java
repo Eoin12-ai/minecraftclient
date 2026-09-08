@@ -1,6 +1,7 @@
 package dev.sixseven.gui.panel;
 
 import dev.sixseven.gui.ClickGuiState;
+import dev.sixseven.render.Glass;
 import dev.sixseven.render.anim.Animation;
 import dev.sixseven.render.nanovg.NVGRenderer;
 import dev.sixseven.theme.Theme;
@@ -9,44 +10,49 @@ import dev.sixseven.util.Colors;
 import dev.sixseven.util.UiSounds;
 
 /**
- * Redesigned Panel — flat/minimal aesthetic.
+ * Panel — a single liquid-glass column of the ClickGUI.
  *
- * Visual changes vs original:
- *  - WIDTH 210 → 220  (slightly wider for breathing room)
- *  - HEADER_H 38 → 36 (tighter — content starts sooner)
- *  - RADIUS  12 → 10  (less bubbly, cleaner corners)
- *  - Accent strip under header replaced by a 1 px hairline — half the weight
- *  - Shadow glow sigma reduced: 14 → 8 (subtle, not muddy)
- *  - Header gradient kept but flattened (headerTop == headerBottom in flat themes)
- *  - Chevron rotates 90° on expand (unchanged) — still crisp
- *  - Content background is a single flat rect, no gradient (cleaner on dark themes)
- *  - Scroll target snaps to nearest 36 px (one row) — feels intentional
+ * The pane is drawn entirely from {@link Glass} layers so it shares one
+ * material with the search bar and the bottom pills: translucent frosted body,
+ * specular sheen over the top, inner white hairline, accent rim, soft drop
+ * shadow, and a slow travelling highlight across the header.
+ *
+ * Geometry is driven by the screen rather than by the panel: the ClickGUI hands
+ * each column its width via {@link #setWidth} and a fixed body height via
+ * {@link #setViewportHeight}, so all five columns line up exactly. A panel with
+ * no fixed viewport (the floating Themes pane) still sizes itself to content.
+ *
+ * Panels are locked in place — {@link #moveTo} exists for programmatic
+ * positioning only; there is no drag handling anywhere in the GUI.
  */
 public abstract class Panel {
 
     // ── geometry ─────────────────────────────────────────────────────────────
-    public  static final float WIDTH    = 220.0f;
-    public  static final float HEADER_H = 36.0f;
-    public  static final float RADIUS   = 10.0f;
+    public  static final float WIDTH    = 220.0f;   // fallback when no width is set
+    public  static final float HEADER_H = 38.0f;
+    public  static final float RADIUS   = Glass.RADIUS;
     protected static final float CONTENT_PAD = 6.0f;
     private  static final float FADE_ZONE    = 18.0f;
 
-    // ── accent strip ─────────────────────────────────────────────────────────
-    private static final float STRIP_H       = 1.0f;   // hairline under header
-    private static final float STRIP_ALPHA   = 0.55f;
+    // ── header hairline ──────────────────────────────────────────────────────
+    private static final float STRIP_H     = 1.0f;
+    private static final float STRIP_ALPHA = 0.55f;
 
-    // ── shadow ───────────────────────────────────────────────────────────────
-    private static final float GLOW_SIGMA_IDLE  = 8.0f;
-    private static final float GLOW_SIGMA_HOVER = 12.0f;
-    private static final float GLOW_ALPHA       = 0.32f;
+    // ── scrollbar ────────────────────────────────────────────────────────────
+    private static final float BAR_W        = 3.0f;
+    private static final float BAR_INSET    = 3.0f;
+    private static final float BAR_MIN_H    = 24.0f;
 
     // ── state ─────────────────────────────────────────────────────────────────
-    protected final ThemeManager         themes;
+    protected final ThemeManager             themes;
     protected final ClickGuiState.PanelState panelState;
-    private   final Animation            open;
-    private   final Animation            scroll = new Animation(200.0f, 0.0f);
-    private         float                maxScroll;
-    private         boolean              headerHovered;
+    private   final Animation                open;
+    private   final Animation                scroll = new Animation(200.0f, 0.0f);
+    private   final Animation                lift   = new Animation(150.0f, 0.0f);
+    private         float                    maxScroll;
+    private         boolean                  headerHovered;
+    private         float                    width     = WIDTH;
+    private         float                    viewportH = -1.0f;
 
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -77,10 +83,20 @@ public abstract class Panel {
     public float getX() { return panelState.x; }
     public float getY() { return panelState.y; }
 
+    /** Width of this pane in UI units. */
+    public float width() { return width; }
+
+    public void setWidth(float w) { this.width = Math.max(120.0f, w); }
+
+    /** Pins the body height so sibling columns align; pass a value &lt;= 0 to size to content. */
+    public void setViewportHeight(float h) { this.viewportH = h; }
+
     public void moveTo(float x, float y) {
         panelState.x = x;
         panelState.y = y;
     }
+
+    public boolean isCollapsed() { return panelState.collapsed; }
 
     public void toggleCollapsed() {
         panelState.collapsed = !panelState.collapsed;
@@ -88,11 +104,14 @@ public abstract class Panel {
     }
 
     protected float maxViewHeight(float screenH) {
+        if (viewportH > 0.0f) return viewportH;
         return Math.max(60.0f, screenH - panelState.y - HEADER_H - 24.0f);
     }
 
     protected float viewHeight(NVGRenderer nvg, float screenH) {
-        return Math.min(contentHeight(nvg), maxViewHeight(screenH)) * open.value();
+        float max = maxViewHeight(screenH);
+        float h   = viewportH > 0.0f ? max : Math.min(contentHeight(nvg), max);
+        return h * open.value();
     }
 
     public float totalHeight(NVGRenderer nvg, float screenH) {
@@ -113,69 +132,55 @@ public abstract class Panel {
                        float screenW, float screenH) {
 
         // keep on screen
-        panelState.x = Math.clamp(panelState.x, -WIDTH + 40.0f, screenW - 40.0f);
-        panelState.y = Math.clamp(panelState.y, 0.0f, screenH - HEADER_H);
+        panelState.x = Math.clamp(panelState.x, -width + 40.0f, screenW - 40.0f);
+        panelState.y = Math.clamp(panelState.y, 0.0f, Math.max(0.0f, screenH - HEADER_H));
 
-        Theme  th      = theme();
-        float  vH      = viewHeight(nvg, screenH);
-        boolean open   = vH > 0.5f;
+        Theme   th     = theme();
+        float   vH     = viewHeight(nvg, screenH);
+        boolean isOpen = vH > 0.5f;
         boolean hHover = headerHit(mouseX, mouseY);
 
         // hover sound
         if (hHover && !headerHovered) UiSounds.hover();
         headerHovered = hHover;
+        lift.setTarget(hHover ? 1.0f : 0.0f);
+        float lv = lift.value();
 
-        float px = panelState.x;
-        float py = panelState.y;
+        float px     = panelState.x;
+        float py     = panelState.y;
+        float w      = width;
         float totalH = HEADER_H + vH;
 
-        // ── drop shadow ──────────────────────────────────────────────────────
-        float glowSigma = hHover ? GLOW_SIGMA_HOVER : GLOW_SIGMA_IDLE;
-        nvg.glow(px, py, WIDTH, totalH, RADIUS, glowSigma,
-                Colors.withAlpha(0xFF000000, GLOW_ALPHA));
+        // ── glass pane ───────────────────────────────────────────────────────
+        Glass.surface(nvg, px, py, w, totalH, RADIUS, th, lv);
 
-        // ── content background (flat, single colour) ─────────────────────────
-        if (open) {
-            nvg.rect(px, py + HEADER_H, WIDTH, vH, RADIUS, th.background());
-        }
+        // travelling highlight over the header only — reads as liquid, stays cheap
+        Glass.caustic(nvg, px + 1.0f, py + 1.0f, w - 2.0f, HEADER_H - 1.0f, 9.0f, 1.0f);
 
-        // ── header background ────────────────────────────────────────────────
-        float[] headerRadii = open
-                ? new float[]{RADIUS, RADIUS, 0, 0}
-                : new float[]{RADIUS, RADIUS, RADIUS, RADIUS};
-        nvg.rectVaryingGradient(px, py, WIDTH, HEADER_H,
-                headerRadii[0], headerRadii[1], headerRadii[2], headerRadii[3],
-                th.headerTop(), th.headerBottom());
-
-        // ── hairline accent strip ────────────────────────────────────────────
-        if (open) {
+        // ── hairline under the header ────────────────────────────────────────
+        if (isOpen) {
             nvg.rectGradient(
                     px + 1.0f, py + HEADER_H - STRIP_H,
-                    WIDTH - 2.0f, STRIP_H, 0.5f,
-                    Colors.withAlpha(th.accent(),      STRIP_ALPHA),
+                    w - 2.0f, STRIP_H, 0.5f,
+                    Colors.withAlpha(th.accent(),       STRIP_ALPHA),
                     Colors.withAlpha(th.accentBright(), STRIP_ALPHA * 0.6f),
                     false);
         }
 
-        // ── thin outer border — entire panel ────────────────────────────────
-        nvg.rectOutline(px, py, WIDTH, totalH, RADIUS, 1.0f,
-                Colors.withAlpha(th.accent(), open ? 0.22f : 0.14f));
-
         // ── icon ─────────────────────────────────────────────────────────────
-        float titleX = px + 12.0f;
+        float titleX = px + 13.0f;
         int iconHandle = icon();
         if (iconHandle > 0) {
             float iconY = py + HEADER_H / 2.0f - 9.0f;
-            nvg.image(iconHandle, px + 10.0f, iconY, 18.0f, 18.0f,
-                    th.accentBright());
-            titleX = px + 34.0f;
+            nvg.image(iconHandle, px + 11.0f, iconY, 18.0f, 18.0f, th.accentBright());
+            titleX = px + 35.0f;
         }
 
         // ── title ─────────────────────────────────────────────────────────────
         nvg.text(title(), titleX, py + HEADER_H / 2.0f, 15.5f, th.textPrimary());
 
         // ── chevron (rotates 90° when expanded) ──────────────────────────────
-        float chX = px + WIDTH - 15.0f;
+        float chX = px + w - 15.0f;
         float chY = py + HEADER_H / 2.0f;
         nvg.save();
         nvg.translate(chX, chY);
@@ -184,7 +189,7 @@ public abstract class Panel {
         nvg.restore();
 
         // ── content ───────────────────────────────────────────────────────────
-        if (open) {
+        if (isOpen) {
             float clipTop = py + HEADER_H;
             float clipBot = clipTop + vH;
 
@@ -192,26 +197,44 @@ public abstract class Panel {
             scroll.setTarget(Math.clamp(scroll.getTarget(), 0.0f, maxScroll));
 
             nvg.save();
-            nvg.scissor(px, clipTop, WIDTH, vH);
+            nvg.scissor(px, clipTop, w, vH);
             renderContent(nvg,
                     clipTop + CONTENT_PAD - scroll.value(),
                     mouseX, mouseY,
                     clipTop, clipBot,
                     1.0f);
             nvg.restore();
+
+            renderScrollbar(nvg, th, px, clipTop, w, vH);
         }
+    }
+
+    private void renderScrollbar(NVGRenderer nvg, Theme th,
+                                 float px, float top, float w, float vH) {
+        if (maxScroll <= 0.5f || vH < BAR_MIN_H + 8.0f) return;
+        float track   = vH - BAR_INSET * 2.0f;
+        float frac    = track / (track + maxScroll);
+        float thumbH  = Math.max(BAR_MIN_H, track * frac);
+        float travel  = track - thumbH;
+        float pos     = maxScroll <= 0.0f ? 0.0f : Math.clamp(scroll.value() / maxScroll, 0.0f, 1.0f);
+        float thumbY  = top + BAR_INSET + travel * pos;
+        float barX    = px + w - BAR_W - BAR_INSET;
+        nvg.rect(barX, top + BAR_INSET, BAR_W, track, BAR_W / 2.0f,
+                Colors.withAlpha(0xFFFFFFFF, 0.06f));
+        nvg.rect(barX, thumbY, BAR_W, thumbH, BAR_W / 2.0f,
+                Colors.withAlpha(th.accentBright(), 0.55f));
     }
 
     // ── hit tests ─────────────────────────────────────────────────────────────
 
     public boolean headerHit(float mx, float my) {
-        return mx >= panelState.x && mx <= panelState.x + WIDTH
+        return mx >= panelState.x && mx <= panelState.x + width
                 && my >= panelState.y && my <= panelState.y + HEADER_H;
     }
 
     public boolean bodyHit(NVGRenderer nvg, float mx, float my, float screenH) {
         float vH = viewHeight(nvg, screenH);
-        return mx >= panelState.x && mx <= panelState.x + WIDTH
+        return mx >= panelState.x && mx <= panelState.x + width
                 && my >= panelState.y + HEADER_H
                 && my <= panelState.y + HEADER_H + vH;
     }

@@ -106,12 +106,12 @@ public class CategoryPanel extends Panel {
         float  bW   = nvg.textWidth(text, BADGE_FONT) + BADGE_PAD_X * 2.0f;
         float  bH   = BADGE_H;
         // position: header right, vertically centred
-        float  bX   = panelState.x + Panel.WIDTH - 28.0f - bW;
+        float  bX   = panelState.x + width() - 28.0f - bW;
         float  bY   = panelState.y + (Panel.HEADER_H - bH) / 2.0f;
 
         nvg.rect(bX, bY, bW, bH, bH / 2.0f,
                 Colors.withAlpha(th.accent(), 0.22f));
-        nvg.text(text, bX + bW / 2.0f, bY + bH / 2.0f, BADGE_FONT,
+        nvg.text(text, bX + BADGE_PAD_X, bY + bH / 2.0f, BADGE_FONT,
                 th.accentBright());
     }
 
@@ -128,7 +128,7 @@ public class CategoryPanel extends Panel {
         if (vis.isEmpty()) {
             // empty-state label
             Theme  th  = theme();
-            float  cx  = panelState.x + Panel.WIDTH / 2.0f;
+            float  cx  = panelState.x + width() / 2.0f;
             float  cy  = contentTop + EMPTY_PAD;
             nvg.text("No results", cx, cy, EMPTY_FONT, th.textDisabled());
             return;
@@ -137,7 +137,7 @@ public class CategoryPanel extends Panel {
         float y = contentTop;
         for (ModuleEntry e : vis) {
             float eH = e.height(nvg);
-            e.setBounds(panelState.x + CONTENT_PAD, y, Panel.WIDTH - CONTENT_PAD * 2.0f);
+            e.setBounds(panelState.x + CONTENT_PAD, y, width() - CONTENT_PAD * 2.0f);
 
             // only render rows touching the clip window
             if (y + eH >= clipTop - 20.0f && y <= clipBot + 20.0f) {
