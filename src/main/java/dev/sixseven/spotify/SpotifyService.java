@@ -34,7 +34,7 @@ public final class SpotifyService {
       if (!System.getProperty("os.name", "").toLowerCase(Locale.ROOT).contains("win")) {
          SixSevenClient.LOGGER.info("SpotifyHUD bridge disabled (not Windows)");
       } else {
-         Thread thread = new Thread(this::runBridge, "67client-spotify-bridge");
+         Thread thread = new Thread(this::runBridge, "epsteinclient-spotify-bridge");
          thread.setDaemon(true);
          thread.start();
       }

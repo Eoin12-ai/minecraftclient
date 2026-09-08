@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AimAssistModule extends Module {
-   private static final Logger LOG = LoggerFactory.getLogger("67Client/AimAssist");
+   private static final Logger LOG = LoggerFactory.getLogger("EpsteinClient/AimAssist");
    public final SliderSetting range = this.addSetting(new SliderSetting("Range", "Assist any target within this distance", 4.0, 1.0, 8.0, 0.5, "m"));
    public final SliderSetting speed = this.addSetting(new SliderSetting("Speed", "How fast the aim is pulled (higher = snappier)", 4.0, 1.0, 10.0, 1.0));
    public final SliderSetting smoothness = this.addSetting(

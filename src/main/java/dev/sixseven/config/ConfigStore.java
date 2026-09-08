@@ -13,7 +13,7 @@ import net.fabricmc.loader.api.FabricLoader;
 public class ConfigStore {
    public static final int SLOT_COUNT = 5;
    public static final int CONFIG_VERSION = 1;
-   public static final String FORMAT = "67client-config";
+   public static final String FORMAT = "epsteinclient-config";
    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
    public static volatile boolean applying;
    private final ConfigManager config;
@@ -82,7 +82,7 @@ public class ConfigStore {
    public boolean save(int n) {
       ConfigStore.Slot slot2 = this.slots[n];
       JsonObject jsonObject = new JsonObject();
-      jsonObject.addProperty("format", "67client-config");
+      jsonObject.addProperty("format", "epsteinclient-config");
       jsonObject.addProperty("version", 1);
       jsonObject.addProperty("name", slot2.name);
       jsonObject.addProperty("savedAt", System.currentTimeMillis());
@@ -184,7 +184,7 @@ public class ConfigStore {
                ConfigStore.Slot slot2 = this.slots[n];
                String text3 = jsonObject.has("name") && !jsonObject.get("name").getAsString().isBlank() ? this.sanitizeName(jsonObject.get("name").getAsString()) : slot2.name;
                JsonObject jsonObject3 = new JsonObject();
-               jsonObject3.addProperty("format", "67client-config");
+               jsonObject3.addProperty("format", "epsteinclient-config");
                jsonObject3.addProperty("version", 1);
                jsonObject3.addProperty("name", text3);
                jsonObject3.addProperty("savedAt", jsonObject.has("savedAt") ? jsonObject.get("savedAt").getAsLong() : System.currentTimeMillis());

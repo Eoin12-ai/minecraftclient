@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
 import dev.sixseven.wm.Seed;
 public class SixSevenClient implements ClientModInitializer {
    public static final String MOD_ID = "sixsevenclient";
-   public static final String NAME = "CrackedByDexter";
+   public static final String NAME = "Epstein Client";
    public static final String VERSION = "1.6.2";
    public static final Logger LOGGER = LoggerFactory.getLogger("EpsteinClient");
    private static ModuleManager modules;

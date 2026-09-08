@@ -48,7 +48,7 @@ public final class SwyzzyClientScreen extends Screen {
       this.run3();
       int var1 = (this.width - 302) / 2;
       int var2 = this.height - 30;
-      this.class342 = new TextFieldWidget(this.textRenderer, var1 + 9, var2 + 6, 212, 12, Text.literal("Cracked By Dexter"));
+      this.class342 = new TextFieldWidget(this.textRenderer, var1 + 9, var2 + 6, 212, 12, Text.literal("Epstein Client"));
       this.class342.setDrawsBackground(false);
       this.class342.setMaxLength(48);
       this.class342.setEditableColor(-1);
@@ -131,7 +131,7 @@ public final class SwyzzyClientScreen extends Screen {
       if (this.class342 != null) {
          if (this.class342.getText().isEmpty() && !var7) {
             TextRenderer var10001 = this.textRenderer;
-            MutableText var10002 = Text.literal("Cracked By Dexter");
+            MutableText var10002 = Text.literal("Epstein Client");
             int var10003 = var4 + 9;
             byte var10005 = 20;
             var1.drawText(var10001, var10002, var10003, var5 + 5 + 1, -7565402, false);
