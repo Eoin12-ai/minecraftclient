@@ -13,7 +13,6 @@ import java.util.function.BiConsumer;
 
 import dev.kryptic.module.combat.AimAssistModule;
 import dev.kryptic.module.combat.AnchorMacroModule;
-import dev.kryptic.module.misc.ArmorTrimHiderModule;
 import dev.kryptic.module.combat.AutoCrystalModule;
 import dev.kryptic.module.combat.AutoInventoryTotemModule;
 import dev.kryptic.module.combat.AutoTotemModule;
@@ -27,7 +26,6 @@ import dev.kryptic.module.render.ChunkBordersModule;
 import dev.kryptic.module.render.ChunkFinderModule;
 import dev.kryptic.module.render.TracersModule;
 import dev.kryptic.module.client.ClickGuiModule;
-import dev.kryptic.module.misc.CoordSnapperModule;
 import dev.kryptic.module.visuals.CustomAccessoriesModule;
 import dev.kryptic.module.misc.CustomCrosshairModule;
 import dev.kryptic.module.misc.CustomFovModule;
@@ -123,14 +121,12 @@ public class ModuleManager {
    public BreadcrumbsModule breadcrumbs;
    public ChunkFinderModule chunkFinder;
    public FreeLookModule freeLook;
-   public CoordSnapperModule coordSnapper;
    public RegionMapModule regionMap;
    public ChatMacroModule chatMacro;
    public FakePayModule fakePay;
    public FakeStatsModule fakeStats;
    public FakeRolesModule fakeRoles;
    public StaffListModule staffList;
-   public ArmorTrimHiderModule armorTrimHider;
    private Runnable openGuiAction = () -> {
    };
    private BiConsumer<Module, Boolean> toggleListener = (arg, arg2) -> {
@@ -186,11 +182,9 @@ public class ModuleManager {
       this.register(this.weatherNotifier = new WeatherNotifierModule());
       this.register(this.fakeStats = new FakeStatsModule());
       this.register(this.fakeRoles = new FakeRolesModule());
-      this.register(this.armorTrimHider = new ArmorTrimHiderModule());
       this.register(this.customCrosshair = new CustomCrosshairModule());
       this.register(this.staffList = new StaffListModule());
       this.register(this.customFov = new CustomFovModule());
-      this.register(this.coordSnapper = new CoordSnapperModule());
       this.register(this.autoWalk = new AutoWalkModule());
       this.register(this.zoom = new ZoomModule());
       this.register(this.freeLook = new FreeLookModule());
