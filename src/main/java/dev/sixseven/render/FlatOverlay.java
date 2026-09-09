@@ -61,11 +61,28 @@ public final class FlatOverlay {
         }
     }
 
-    public static void marker(Object immediate, Object matrices, Object vec, double x, double z, double y, double size, int color) {
-        // stub — marker rendering not implemented in 1.21.5 compat mode
+    /** A small diamond laid flat on the ground, used to pin a point on the map. */
+    public static void marker(Immediate immediate, MatrixStack matrices, Vec3d camera,
+                              double x, double z, double y, double size, int color) {
+        VertexConsumer consumer = immediate.getBuffer(FILL);
+        Entry entry = matrices.peek();
+        float fx = (float)(x - camera.x), fz = (float)(z - camera.z), fy = (float)(y - camera.y);
+        float r = (float) size;
+        consumer.vertex(entry, fx,     fy, fz - r).color(color);
+        consumer.vertex(entry, fx - r, fy, fz    ).color(color);
+        consumer.vertex(entry, fx,     fy, fz + r).color(color);
+        consumer.vertex(entry, fx + r, fy, fz    ).color(color);
     }
 
-    public static void flush(Object immediate) {
-        // stub
+    /**
+     * Draws what has been buffered into this overlay's two layers.
+     *
+     * Both layers have to be drawn explicitly: the world renderer flushes its
+     * own layers on its own schedule, and anything still buffered when the
+     * frame ends is simply dropped.
+     */
+    public static void flush(Immediate immediate) {
+        immediate.draw(FILL);
+        immediate.draw(LINES);
     }
 }

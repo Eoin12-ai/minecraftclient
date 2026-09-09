@@ -13,6 +13,7 @@ import dev.sixseven.module.misc.FreecamModule;
 import dev.sixseven.notification.NotificationManager;
 import dev.sixseven.render.MotionBlurRenderer;
 import dev.sixseven.render.OverlayRenderer;
+import dev.sixseven.render.WorldRenderHook;
 import dev.sixseven.render.NvgDrawable;
 import dev.sixseven.render.SusChunkRenderer;
 import dev.sixseven.spotify.SpotifyService;
@@ -154,6 +155,11 @@ public class SixSevenClient implements ClientModInitializer {
          }
       );
       OverlayRenderer.init(hud, notifications);
+
+      // Everything drawn into the world — the ESPs, the cosmetics, the jump
+      // circles — went through a mixin that had been stubbed out to a comment,
+      // so none of it had ever rendered. This is the hook that calls them.
+      WorldRenderHook.init();
       ScreenEvents.AFTER_INIT.register((AfterInit)(arg, freecamModule, arg3, arg4) -> {
          if (freecamModule instanceof TitleScreen && !startupSoundPlayed) {
             startupSoundPlayed = true;

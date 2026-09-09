@@ -99,6 +99,25 @@ public final class AccessoryRenderer {
             renderAuraOrbit(consumer3, entry, vec, vector3f2, vector3f3, d, coord, currentScore, f13, n, f14);
          }
 
+         // The ground pieces go down first so the wings and halo sit over them.
+         if (customAccessoriesModule.groundGlow.get()) {
+            renderGroundGlow(consumer3, entry, vec, d, coord, currentScore, f13, n, f14);
+         }
+
+         if (customAccessoriesModule.footsteps.get()) {
+            renderFootsteps(consumer3, entry, vec, customAccessoriesModule, l, n);
+         }
+
+         if (customAccessoriesModule.wings.get() && !ok) {
+            renderWings(consumer3, entry, vec, customAccessoriesModule,
+                        d, coord, currentScore, f11, f10, f12, f13, n);
+         }
+
+         if (customAccessoriesModule.halo.get() && !ok) {
+            renderHalo(consumer3, consumer, entry, vec, customAccessoriesModule,
+                       vector3f2, vector3f3, d, coord, currentScore, f11, f13, n, f14);
+         }
+
          FlatOverlay.flush(immediate);
          boolean ok2 = customAccessoriesModule.crown.get() && !ok;
          if (found2 || ok2) {
@@ -438,6 +457,276 @@ public final class AccessoryRenderer {
       tex(consumer, entry, f12 - vector3f4.x + vector3f5.x, f13 - vector3f4.y + vector3f5.y, f14 - vector3f4.z + vector3f5.z, 0.0F, 1.0F, offset, f19, f20, f21);
       tex(consumer, entry, f12 + vector3f4.x + vector3f5.x, f13 + vector3f4.y + vector3f5.y, f14 + vector3f4.z + vector3f5.z, 1.0F, 1.0F, offset, f19, f20, f21);
       tex(consumer, entry, f12 + vector3f4.x - vector3f5.x, f13 + vector3f4.y - vector3f5.y, f14 + vector3f4.z - vector3f5.z, 1.0F, 0.0F, offset, f19, f20, f21);
+   }
+
+   // ── wings ────────────────────────────────────────────────────────────────
+
+   private static final int WING_SEGMENTS = 10;
+
+   /**
+    * A pair of wings anchored between the shoulders.
+    *
+    * Each wing is a strip: a spine sweeping outward from the anchor and a
+    * trailing edge hanging behind and below it, with a quad between every pair
+    * of steps. The beat is driven by wall-clock time, and how hard it beats is
+    * driven by ground speed, so the wings idle when you stand still and snap
+    * when you run.
+    */
+   private static void renderWings(
+      VertexConsumer consumer,
+      Entry entry,
+      Vec3d vec,
+      CustomAccessoriesModule module,
+      double px,
+      double py,
+      double pz,
+      float height,
+      float bodyYaw,
+      float speed,
+      float time,
+      int rgb
+   ) {
+      float yawRad = bodyYaw * (float) (Math.PI / 180.0);
+      float sin = -(float)Math.sin(yawRad);
+      float cos = (float)Math.cos(yawRad);
+      // the same basis the cape uses: right across the shoulders, back behind
+      float rightX = cos;
+      float rightZ = -sin;
+      float backX = -sin;
+      float backZ = -cos;
+
+      float span = Math.max(0.5F, module.wingSpan.getFloat());
+      float beat = 0.55F + Math.min(speed * 6.0F, 1.0F) * 0.9F;
+      float flap = (float)Math.sin((time * (3.2F + beat * 2.4F))) * (0.16F + beat * 0.30F);
+
+      float anchorX = (float)px + backX * 0.10F - (float)vec.x;
+      float anchorY = (float)py + height * 0.74F - (float)vec.y;
+      float anchorZ = (float)pz + backZ * 0.10F - (float)vec.z;
+
+      String style = module.wingStyle.get();
+      int root = Colors.lighten(rgb, 0.10F);
+      int tip = Colors.lighten(rgb, 0.55F);
+
+      for (int side = -1; side <= 1; side += 2) {
+         // the far wing lags the near one very slightly, which reads as depth
+         float sideFlap = flap + (side > 0 ? 0.0F : 0.06F);
+         float outY = (float)Math.sin(sideFlap);
+         float outScale = (float)Math.cos(sideFlap);
+
+         float prevSx = 0.0F, prevSy = 0.0F, prevSz = 0.0F;
+         float prevTx = 0.0F, prevTy = 0.0F, prevTz = 0.0F;
+         int prevColour = 0;
+
+         for (int k = 0; k <= WING_SEGMENTS; k++) {
+            float u = (float)k / (float)WING_SEGMENTS;
+            float reach = u * span;
+            float sweep = u * u * 0.42F;
+            float droop = u * u * 0.22F;
+
+            float sx = anchorX + rightX * side * reach * outScale + backX * sweep;
+            float sy = anchorY + outY * reach - droop;
+            float sz = anchorZ + rightZ * side * reach * outScale + backZ * sweep;
+
+            float chord = chordFor(style, u, time);
+            float tx = sx + backX * chord;
+            float ty = sy - chord * 0.42F;
+            float tz = sz + backZ * chord;
+
+            int colour = withA(lerpRgb(root, tip, u), (0.72F - 0.34F * u) * fade(style, u));
+
+            if (k > 0) {
+               emitVertex(consumer, entry, prevSx, prevSy, prevSz, prevColour);
+               emitVertex(consumer, entry, prevTx, prevTy, prevTz, prevColour);
+               emitVertex(consumer, entry, tx, ty, tz, colour);
+               emitVertex(consumer, entry, sx, sy, sz, colour);
+            }
+
+            prevSx = sx; prevSy = sy; prevSz = sz;
+            prevTx = tx; prevTy = ty; prevTz = tz;
+            prevColour = colour;
+         }
+      }
+   }
+
+   /** How far the membrane hangs behind the spine at a point along the wing. */
+   private static float chordFor(String style, float u, float time) {
+      float base = 0.46F * (1.0F - u * 0.45F);
+      if (style.equals("Feathered")) {
+         // scalloped trailing edge, so the silhouette reads as separate feathers
+         return base * (0.72F + 0.28F * Math.abs((float)Math.sin((u * 26.0F))));
+      }
+      if (style.equals("Shard")) {
+         // hard steps rather than a curve, and no membrane at the very tip
+         return base * (u > 0.82F ? 0.25F : (float)Math.floor(u * 5.0F + 1.0F) / 5.0F);
+      }
+      // Membrane: a smooth sheet that ripples along its length
+      return base * (0.9F + 0.1F * (float)Math.sin((time * 4.0F - u * 5.0F)));
+   }
+
+   private static float fade(String style, float u) {
+      return style.equals("Shard") ? (u > 0.82F ? 0.55F : 1.0F) : 1.0F;
+   }
+
+   // ── halo ─────────────────────────────────────────────────────────────────
+
+   /**
+    * A ring of light above the head. The ring itself is drawn as lines so it
+    * stays a crisp circle at any distance; the runes and the second ring are
+    * camera-facing quads.
+    */
+   private static void renderHalo(
+      VertexConsumer quads,
+      VertexConsumer lines,
+      Entry entry,
+      Vec3d vec,
+      CustomAccessoriesModule module,
+      Vector3f right,
+      Vector3f up,
+      double px,
+      double py,
+      double pz,
+      float height,
+      float time,
+      int rgb,
+      float glow
+   ) {
+      float bob = (float)Math.sin((time * 1.6F)) * 0.045F;
+      float cx = (float)(px - vec.x);
+      float cy = (float)(py - vec.y) + height + 0.38F + bob;
+      float cz = (float)(pz - vec.z);
+      float radius = 0.34F;
+      float tilt = 0.07F;
+      float spin = time * 1.1F;
+      String style = module.haloStyle.get();
+
+      tiltedRing(lines, entry, cx, cy, cz, radius, tilt, spin, 44,
+                 withA(Colors.lighten(rgb, 0.45F), 0.95F), 2.2F);
+
+      if (style.equals("Double")) {
+         tiltedRing(lines, entry, cx, cy + 0.10F, cz, radius * 0.66F, -tilt, -spin * 1.6F, 36,
+                    withA(Colors.lighten(rgb, 0.7F), 0.7F), 1.8F);
+      }
+
+      if (style.equals("Runes")) {
+         // marks riding the ring, each turning at its own rate
+         for (int i = 0; i < 6; i++) {
+            float angle = spin + (float)i * ((float) (Math.PI * 2) / 6.0F);
+            float rx = cx + (float)Math.cos(angle) * radius;
+            float rz = cz + (float)Math.sin(angle) * radius;
+            float ry = cy + (float)Math.sin((angle * 2.0F)) * tilt;
+            float size = 0.055F * (0.85F + 0.3F * (float)Math.sin((time * 3.0F + (float)i)));
+            diamond(quads, entry, right, up, rx, ry, rz, size,
+                    withA(Colors.lighten(rgb, 0.6F), 0.95F));
+         }
+      }
+
+      if (glow > 0.01F) {
+         // a soft camera-facing bloom sitting in the middle of the ring
+         diamond(quads, entry, right, up, cx, cy, cz, radius * 1.15F,
+                 withA(rgb, 0.14F * glow));
+      }
+   }
+
+   /** A circle in the horizontal plane, rocked slightly so it reads as tilted. */
+   private static void tiltedRing(
+      VertexConsumer consumer, Entry entry,
+      float cx, float cy, float cz, float radius, float tilt, float phase,
+      int segments, int colour, float width
+   ) {
+      float prevX = 0.0F, prevY = 0.0F, prevZ = 0.0F;
+      for (int i = 0; i <= segments; i++) {
+         float a = (float)i / (float)segments * (float) (Math.PI * 2);
+         float x = cx + (float)Math.cos(a) * radius;
+         float z = cz + (float)Math.sin(a) * radius;
+         float y = cy + (float)Math.sin((a + phase)) * tilt;
+         if (i > 0) {
+            line(consumer, entry, prevX, prevY, prevZ, x, y, z, colour, width);
+         }
+         prevX = x; prevY = y; prevZ = z;
+      }
+   }
+
+   // ── footsteps ────────────────────────────────────────────────────────────
+
+   /**
+    * The prints left behind on the ground. Each is a small quad laid flat and
+    * turned to face the way the player was walking, offset to the side for
+    * whichever foot put it there.
+    */
+   private static void renderFootsteps(
+      VertexConsumer consumer, Entry entry, Vec3d vec,
+      CustomAccessoriesModule module, long now, int rgb
+   ) {
+      Deque<CustomAccessoriesModule.Footstep> prints = module.footprints();
+      if (prints.isEmpty()) return;
+      float life = Math.max(0.5F, module.footstepLife.getFloat());
+
+      for (CustomAccessoriesModule.Footstep print : prints) {
+         float age = print.ageSeconds(now);
+         if (age > life) continue;
+         float t = age / life;
+         float alpha = (1.0F - t) * (1.0F - t) * 0.85F;
+         if (alpha <= 0.02F) continue;
+
+         float yawRad = print.yaw * (float) (Math.PI / 180.0);
+         float sin = -(float)Math.sin(yawRad);
+         float cos = (float)Math.cos(yawRad);
+         float rightX = cos, rightZ = -sin;
+         float fwdX = sin, fwdZ = cos;
+
+         float offset = print.left ? -0.16F : 0.16F;
+         float bx = (float)(print.x - vec.x) + rightX * offset;
+         float by = (float)(print.y - vec.y);
+         float bz = (float)(print.z - vec.z) + rightZ * offset;
+
+         float halfLong = 0.13F;
+         float halfWide = 0.065F;
+         int colour = withA(Colors.lighten(rgb, 0.35F), alpha);
+
+         emitVertex(consumer, entry,
+               bx - rightX * halfWide - fwdX * halfLong, by, bz - rightZ * halfWide - fwdZ * halfLong, colour);
+         emitVertex(consumer, entry,
+               bx - rightX * halfWide + fwdX * halfLong, by, bz - rightZ * halfWide + fwdZ * halfLong, colour);
+         emitVertex(consumer, entry,
+               bx + rightX * halfWide + fwdX * halfLong, by, bz + rightZ * halfWide + fwdZ * halfLong, colour);
+         emitVertex(consumer, entry,
+               bx + rightX * halfWide - fwdX * halfLong, by, bz + rightZ * halfWide - fwdZ * halfLong, colour);
+      }
+   }
+
+   // ── ground glow ──────────────────────────────────────────────────────────
+
+   /**
+    * A disc of light on the floor under the player, breathing in and out.
+    * Built as a fan of quads with two corners collapsed onto the centre, since
+    * the overlay layer takes quads rather than triangles.
+    */
+   private static void renderGroundGlow(
+      VertexConsumer consumer, Entry entry, Vec3d vec,
+      double px, double py, double pz, float time, int rgb, float glow
+   ) {
+      float pulse = 0.5F + 0.5F * (float)Math.sin((time * 2.1F));
+      float radius = 0.52F + pulse * 0.16F;
+      float cx = (float)(px - vec.x);
+      float cy = (float)(py - vec.y) + 0.015F;
+      float cz = (float)(pz - vec.z);
+
+      int centre = withA(Colors.lighten(rgb, 0.5F), (0.30F + 0.18F * pulse) * (0.4F + 0.6F * glow));
+      int edge = withA(rgb, 0.0F);
+
+      int segments = 36;
+      float prevX = cx + radius, prevZ = cz;
+      for (int i = 1; i <= segments; i++) {
+         float a = (float)i / (float)segments * (float) (Math.PI * 2);
+         float x = cx + (float)Math.cos(a) * radius;
+         float z = cz + (float)Math.sin(a) * radius;
+         emitVertex(consumer, entry, cx, cy, cz, centre);
+         emitVertex(consumer, entry, prevX, cy, prevZ, edge);
+         emitVertex(consumer, entry, x, cy, z, edge);
+         emitVertex(consumer, entry, cx, cy, cz, centre);
+         prevX = x;
+         prevZ = z;
+      }
    }
 
    private static Vector3f axis(Vector3f vector3f, Vector3f vector3f2, float f, float f3) {
