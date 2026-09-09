@@ -196,7 +196,7 @@ public class SusChunkScanner {
             if ((state.isAir() || state.isOf(Blocks.AMETHYST_CLUSTER)) && hasAmethystNeighbour(client, pos, mutablePos)) {
                chunkScore.amethystCells.add(pos.toImmutable());
                if (DEBUG_LOG) {
-                  SixSevenClient.LOGGER.info("(_=\u001dOÃÂ¤\u008dÃÂ§\u008cÃÂ¯ÃÂ¡ÃÂºÃÂÃÂ¤ÃÂ³ÃÂÃÂ·ÃÂÃÂÃÂÃÂ±ÃÂÃÂÃÂÃÂ¾ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ¨ÃÂÃÂ±ÃÂÃÂÃÂ§", pos, state.isAir() ? "hidden" : "visible");
+                  SixSevenClient.LOGGER.info("(_=\u001dOÃÂ¤\u008dÃÂ§\u008cÃÂ¯ÃÂ¡ÃÂºÃÂÃÂ¤ÃÂ³ÃÂÃ·ÃÂÃÂÃÂÃÂ±ÃÂÃÂÃÂÃÂ¾ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ¨ÃÂÃÂ±ÃÂÃÂÃÂ§", pos, state.isAir() ? "hidden" : "visible");
                }
             }
          }
@@ -312,7 +312,7 @@ public class SusChunkScanner {
          if (step >= 5) {
             chunkScore.add(SusChunkScanner.SignalType.DRIPSTONE, pos);
             if (DEBUG_LOG) {
-               SixSevenClient.LOGGER.info("(_=\u001dOÃÂ¤\u0088ÃÂ¸\u0080ÃÂ«ÃÂºÃÂ·ÃÂÃÂ¾ÃÂÃÂÃÂÃÂÃÂÃÂÃÂ°ÃÂÃÂÃÂÃÂ¯ÃÂÃÂÃÂÃÂ", pos, step);
+               SixSevenClient.LOGGER.info("(_=\u001dOÃÂ¤\u0088ÃÂ¸\u0080ÃÂ«ÃÂºÃ·ÃÂÃÂ¾ÃÂÃÂÃÂÃÂÃÂÃÂÃÂ°ÃÂÃÂÃÂÃÂ¯ÃÂÃÂÃÂÃÂ", pos, step);
             }
          }
       }
@@ -374,7 +374,7 @@ public class SusChunkScanner {
             if (DEBUG_LOG) {
                SixSevenClient.LOGGER
                   .info(
-                     "(_=\u001dOÃÂ¤\u008bÃÂ¯\u0086ÃÂ¿ÃÂ¬ÃÂÃÂ¸ÃÂÃÂ³ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¼ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¾ÃÂÃÂµÃÂÃÂÃÂ­ÃÂÃÂ¿ÃÂÃÂ·ÃÂ¼ÃÂ¼ÃÂÃÂ©ÃÂÃÂÃÂ¢\u05caÃÂ²ÃÂ",
+                     "(_=\u001dOÃÂ¤\u008bÃÂ¯\u0086ÃÂ¿ÃÂ¬ÃÂÃÂ¸ÃÂÃÂ³ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¼ÃÂÃÂÃÂÃÂ¦ÃÂÃÂÃÂÃÂÃÂÃÂ¾ÃÂÃÂµÃÂÃÂÃÂ­ÃÂÃÂ¿ÃÂÃ·ÃÂ¼ÃÂ¼ÃÂÃÂ©ÃÂÃÂÃÂ¢\u05caÃÂ²ÃÂ",
                      new Object[]{geode.members().size(), geode.members().size(), geode.totalScore()}
                   );
             }
@@ -552,7 +552,7 @@ public class SusChunkScanner {
                int n = (int)Math.round(zone.centroidX());
                int localX = (int)Math.round(zone.centroidZ());
                int localZ = (int)Math.hypot((double)n - client.player.getX(), (double)localX - client.player.getZ());
-               String text = "Sus zone ÃÂ· " + localZ + "m ÃÂ· " + n + ", " + localX;
+               String text = "Sus zone Ã· " + localZ + "m Ã· " + n + ", " + localX;
                if (this.module.notifications.is("Toast") && SixSevenClient.notifications() != null) {
                   SixSevenClient.notifications().pushInfo(text);
                   UiSounds.notification(true);

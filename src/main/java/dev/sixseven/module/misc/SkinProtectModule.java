@@ -26,7 +26,7 @@ import net.minecraft.entity.player.SkinTextures;
 
 public class SkinProtectModule extends Module {
    private static final HttpClient HTTP = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(8L)).build();
-   public final StringSetting ign = this.addSetting(new StringSetting("Skin IGN", "Username whose skin is applied", "epsteinclient", 16, "Type a usernameâ¦"));
+   public final StringSetting ign = this.addSetting(new StringSetting("Skin IGN", "Username whose skin is applied", "epsteinclient", 16, "Type a username…"));
    public final ModeSetting applyTo = this.addSetting(new ModeSetting("Apply To", "Whose skin gets replaced", "Everyone", "Everyone", "Others", "Self"));
    private volatile SkinTextures replacement;
    private volatile String fetchedFor = "";

@@ -35,7 +35,7 @@ public class StaffListModule extends Module {
       )
    );
    public final StringSetting staffNames = this.addSetting(
-      new StringSetting("Staff Names", "Extra known staff usernames (comma-separated) â always shown when online", "", 220, "e.g. Notch, jeb_")
+      new StringSetting("Staff Names", "Extra known staff usernames (comma-separated) — always shown when online", "", 220, "e.g. Notch, jeb_")
    );
    public final StringSetting rankKeywords = this.addSetting(
       new StringSetting(
@@ -43,16 +43,16 @@ public class StaffListModule extends Module {
          "Words in a name tag that mark staff (comma-separated), most senior first",
          StaffDetector.DEFAULT_RANK_KEYWORDS_STRING,
          256,
-         "owner, admin, modâ¦"
+         "owner, admin, mod…"
       )
    );
    public final StringSetting starSymbols = this.addSetting(
       new StringSetting(
          "Star Symbols",
          "Marker glyphs that mean 'staff'. Paste the server's star here if detection misses",
-         "-Vy-We-Ra-RF-Sw-Pb-Ph-PI-Pk-VZ-VI-g|-V|-U}-SA-UO-Ud-ZB-ZI-[B-Zj-Ii",
+         "\u2605\u2606\u272A\u2726\u2727\u2B50\u272F\u269D",
          96,
-         "â¶\fâ®Nâ­"
+         "\u2605\u2606\u272A\u2726\u2727\u2B50\u272F\u269D"
       )
    );
    public final BooleanSetting fontIcons = this.addSetting(
@@ -69,7 +69,7 @@ public class StaffListModule extends Module {
       new SliderSetting("Max Rows", "Most staff rows to show before collapsing into a '+N more' line", 6.0, 1.0, 20.0, 1.0)
    );
    public final ModeSetting alerts = this.addSetting(
-      new ModeSetting("Alerts", "Announce when a new staff member appears in your tab", "Toast", "Toast", "Chat", "<J.")
+      new ModeSetting("Alerts", "Announce when a new staff member appears in your tab", "Toast", "Toast", "Chat", "Off")
    );
    public final BooleanSetting alertSound = this.addSetting(new BooleanSetting("Alert Sound", "Play a bell when a staff alert fires", true));
    public final StaffTracker tracker = new StaffTracker(this);
@@ -79,7 +79,7 @@ public class StaffListModule extends Module {
       this.rankKeywords.visibleWhen(this::usesRank);
       this.starSymbols.visibleWhen(this::usesStar);
       this.fontIcons.visibleWhen(this::usesStar);
-      this.alertSound.visibleWhen(() -> !this.alerts.is("<J."));
+      this.alertSound.visibleWhen(() -> !this.alerts.is("Off"));
    }
 
    private boolean usesStar() {
@@ -123,7 +123,7 @@ public class StaffListModule extends Module {
 
    public void onStaffAppear(StaffEntry staffEntry) {
       MinecraftClient client = MinecraftClient.getInstance();
-      if (client.player != null && !this.alerts.is("<J.")) {
+      if (client.player != null && !this.alerts.is("Off")) {
          String text = staffEntry.rankLabel().isEmpty() ? "Staff" : staffEntry.rankLabel();
          String text3 = staffEntry.vanished() ? " (vanished)" : "";
          if (this.alerts.is("Toast")) {

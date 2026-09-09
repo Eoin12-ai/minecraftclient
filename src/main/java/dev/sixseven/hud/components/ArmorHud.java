@@ -1,6 +1,7 @@
 package dev.sixseven.hud.components;
 
 import dev.sixseven.hud.HudComponent;
+import dev.sixseven.hud.HudSurface;
 import dev.sixseven.render.nanovg.NVGImages;
 import dev.sixseven.render.nanovg.NVGRenderer;
 import dev.sixseven.theme.Theme;
@@ -44,7 +45,7 @@ public class ArmorHud extends HudComponent {
       Theme theme = this.themes.current();
       ClientPlayerEntity player = MinecraftClient.getInstance().player;
       if (player != null) {
-         nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, 9.0F, theme.background(), theme.backgroundTo(), true);
+         HudSurface.panel(nVGRenderer, tickDelta, tickDelta2, tickDelta3, tickDelta4, 9.0F, theme);
          float f = tickDelta + 7.0F;
 
          for (EquipmentSlot equipmentSlot : SLOTS) {

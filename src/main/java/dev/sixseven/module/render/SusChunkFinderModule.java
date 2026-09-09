@@ -41,7 +41,7 @@ public class SusChunkFinderModule extends Module {
       )
    );
    public final BooleanSetting centroidMarker = this.addSetting(
-      new BooleanSetting("Centroid Marker", "Mark each zone's weighted centre â the likely base spot", true)
+      new BooleanSetting("Centroid Marker", "Mark each zone's weighted centre — the likely base spot", true)
    );
    public final BooleanSetting showOnRadar = this.addSetting(
       new BooleanSetting("Show on Radar", "Pulse sus zones on the Radar; far zones clamp to the edge", true)

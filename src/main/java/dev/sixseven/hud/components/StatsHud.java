@@ -1,6 +1,7 @@
 package dev.sixseven.hud.components;
 
 import dev.sixseven.hud.HudComponent;
+import dev.sixseven.hud.HudSurface;
 import dev.sixseven.module.client.StatsModule;
 import dev.sixseven.render.nanovg.NVGImages;
 import dev.sixseven.render.nanovg.NVGRenderer;
@@ -147,7 +148,7 @@ public class StatsHud extends HudComponent {
         MinecraftClient client = MinecraftClient.getInstance();
         Theme th = themes.current();
 
-        nvg.rectGradient(x, y, w, h, 10.0f, th.background(), th.backgroundTo(), true);
+        HudSurface.panel(nvg, x, y, w, h, 10.0f, th);
         nvg.rectOutline(x, y, w, h, 10.0f, 1.0f, Colors.withAlpha(th.accent(), 0.35f));
 
         float cursorY = y + PAD;

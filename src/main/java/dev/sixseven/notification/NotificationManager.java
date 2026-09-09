@@ -1,5 +1,6 @@
 package dev.sixseven.notification;
 
+import dev.sixseven.hud.HudSurface;
 import dev.sixseven.hud.HudComponent;
 import dev.sixseven.hud.HudDragController;
 import dev.sixseven.render.anim.Animation;
@@ -148,7 +149,7 @@ public class NotificationManager extends HudComponent {
       int n = value ? theme.accent() : theme.textDisabled();
       nVGRenderer.save();
       nVGRenderer.alpha(f14);
-      nVGRenderer.rectGradient(f20, f21, f19, f15, 9.0F, theme.background(), theme.backgroundTo(), true);
+      HudSurface.panel(nVGRenderer, f20, f21, f19, f15, 9.0F, theme);
       nVGRenderer.rect(f20 + 3.0F, f21 + 5.0F, 3.0F, f15 - 10.0F, 1.5F, n);
       nVGRenderer.glow(f20, f21, f19, f15, 9.0F, 5.0F, Colors.withAlpha(n, 0.2F * f14));
       if (weather != null) {

@@ -1,6 +1,7 @@
 package dev.sixseven.hud.components;
 
 import dev.sixseven.hud.HudComponent;
+import dev.sixseven.hud.HudSurface;
 import dev.sixseven.render.nanovg.NVGRenderer;
 import dev.sixseven.theme.Theme;
 import dev.sixseven.theme.ThemeManager;
@@ -58,7 +59,7 @@ public class InfoHud extends HudComponent {
    public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2, float tickDelta3, float tickDelta4) {
       Theme theme = this.themes.current();
       float f = tickDelta2 + tickDelta4 / 2.0F;
-      nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, tickDelta4 / 2.0F, theme.background(), theme.backgroundTo(), true);
+      HudSurface.pill(nVGRenderer, tickDelta, tickDelta2, tickDelta3, tickDelta4, theme);
       float f3 = tickDelta + 9.0F;
       f3 += nVGRenderer.textGradient(this.label, f3, f, 13.0F, theme.accentBright(), theme.accent());
       String shown = this.currentValue();

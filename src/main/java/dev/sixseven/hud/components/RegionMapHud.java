@@ -1,6 +1,7 @@
 package dev.sixseven.hud.components;
 
 import dev.sixseven.hud.HudComponent;
+import dev.sixseven.hud.HudSurface;
 import dev.sixseven.module.render.RegionMapModule;
 import dev.sixseven.render.nanovg.NVGRenderer;
 import dev.sixseven.theme.Theme;
@@ -53,7 +54,7 @@ public class RegionMapHud extends HudComponent {
       if (player != null) {
          float f = 10.0F;
          nVGRenderer.glow(tickDelta, tickDelta2, tickDelta3, tickDelta4, 13.0F, 8.0F, Colors.withAlpha(-16777216, 0.3F));
-         nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, f, theme.background(), theme.backgroundTo(), true);
+         HudSurface.panel(nVGRenderer, tickDelta, tickDelta2, tickDelta3, tickDelta4, f, theme);
          int n = this.module.currentRegionId();
          int offset = this.module.regionTypeAtWorld(player.getX(), player.getZ());
          this.drawHeader(nVGRenderer, theme, tickDelta, tickDelta2, tickDelta3, n);

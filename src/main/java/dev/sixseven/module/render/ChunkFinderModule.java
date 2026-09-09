@@ -186,7 +186,7 @@ public final class ChunkFinderModule extends Module {
       if (SixSevenClient.notifications() != null) {
          NotificationManager notificationManager = SixSevenClient.notifications();
          int n = chunkPos.getCenterX();
-         notificationManager.pushInfo("Chunk Finder Â· X " + n + " Z " + chunkPos.getCenterZ());
+         notificationManager.pushInfo("Chunk Finder · X " + n + " Z " + chunkPos.getCenterZ());
       }
    }
 

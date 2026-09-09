@@ -34,6 +34,7 @@ import net.minecraft.util.math.Direction;
 import dev.sixseven.module.client.HudModule;
 public class HudManager {
    private final List<HudComponent> components = new ArrayList<>();
+   private final HudModule hudModule;
 
    /**
     * Components that threw once and are skipped from then on.
@@ -54,6 +55,7 @@ public class HudManager {
 
    public HudManager(ModuleManager moduleManager, ThemeManager themeManager, SpotifyService spotifyService, NotificationManager notificationManager) {
       HudModule hudModule = moduleManager.hud;
+      this.hudModule = hudModule;
       this.components.add(new WatermarkHud(themeManager, () -> hudModule.isEnabled() && hudModule.watermark.get()));
       this.components.add(new ArrayListHud(moduleManager, hudModule, themeManager, () -> hudModule.isEnabled() && hudModule.arrayList.get()));
       this.components
@@ -162,6 +164,19 @@ public class HudManager {
       return this.components;
    }
 
+   /**
+    * How large a component actually draws: its own size times the HUD-wide one.
+    *
+    * Layout and render both have to ask this. They each used to call
+    * getScale() separately, which was fine while that was the whole answer —
+    * the moment a second factor exists, one of them measuring at a different
+    * size than the other puts every panel's border in the wrong place.
+    */
+   public float effectiveScale(HudComponent component) {
+      float global = this.hudModule == null ? 1.0F : this.hudModule.scale.getFloat();
+      return Math.clamp(component.getScale() * global, 0.25F, 6.0F);
+   }
+
    public List<HudManager.Placement> layout(NVGRenderer nVGRenderer, float f, float f8, boolean value) {
       ArrayList list = new ArrayList();
 
@@ -172,7 +187,7 @@ public class HudManager {
 
          try {
             if (value || hudComponent.visible()) {
-               float f9 = hudComponent.getScale();
+               float f9 = this.effectiveScale(hudComponent);
                float f10 = hudComponent.measureWidth(nVGRenderer) * f9;
                float f11 = hudComponent.measureHeight(nVGRenderer) * f9;
                float f12 = hudComponent.getFx() * (f - f10);
@@ -199,7 +214,7 @@ public class HudManager {
          return;
       }
 
-      float f = component.getScale();
+      float f = this.effectiveScale(component);
       // save/restore must be balanced even when the component throws, or the
       // NanoVG state stack is left skewed and every later draw is affected
       nVGRenderer.save();

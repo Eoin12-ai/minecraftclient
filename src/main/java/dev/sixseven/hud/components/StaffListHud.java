@@ -1,6 +1,7 @@
 package dev.sixseven.hud.components;
 
 import dev.sixseven.hud.HudComponent;
+import dev.sixseven.hud.HudSurface;
 import dev.sixseven.module.misc.StaffListModule;
 import dev.sixseven.render.anim.Animation;
 import dev.sixseven.render.anim.Easing;
@@ -146,7 +147,7 @@ public class StaffListHud extends HudComponent {
       Theme theme = this.themes.current();
       List<StaffEntry> list = this.module.staff();
       nVGRenderer.glow(tickDelta, tickDelta2, tickDelta3, tickDelta4, 13.0F, 8.0F, Colors.withAlpha(-16777216, 0.3F));
-      nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, 10.0F, theme.background(), theme.backgroundTo(), true);
+      HudSurface.panel(nVGRenderer, tickDelta, tickDelta2, tickDelta3, tickDelta4, 10.0F, theme);
       this.drawHeader(nVGRenderer, theme, tickDelta, tickDelta2, tickDelta3, list.size());
       float f = tickDelta2 + 8.0F + 15.0F + 5.0F;
       if (list.isEmpty()) {

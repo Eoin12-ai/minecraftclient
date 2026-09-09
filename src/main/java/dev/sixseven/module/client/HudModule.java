@@ -4,6 +4,7 @@ import dev.sixseven.module.Category;
 import dev.sixseven.module.Module;
 import dev.sixseven.settings.BooleanSetting;
 import dev.sixseven.settings.ColorSetting;
+import dev.sixseven.settings.ModeSetting;
 import dev.sixseven.settings.SliderSetting;
 
 public class HudModule extends Module {
@@ -19,6 +20,11 @@ public class HudModule extends Module {
    public final BooleanSetting potions = this.addSetting(new BooleanSetting("Potions", "Active effects with timers", false));
    public final BooleanSetting keystrokes = this.addSetting(new BooleanSetting("Keystrokes", "WASD + mouse + space display", false));
    public final BooleanSetting radar = this.addSetting(new BooleanSetting("Radar", "Circular player radar", true));
+   public final SliderSetting scale = this.addSetting(new SliderSetting(
+         "Scale", "Size of every HUD element at once, on top of each one's own size", 1.0, 0.5, 3.0, 0.05, "x"));
+   public final ModeSetting style = this.addSetting(new ModeSetting(
+         "Style", "Panel material — Flat is the plain pill, Glass is the menu's frosted material",
+         "Glass", "Flat", "Glass"));
    public final BooleanSetting meters = this.addSetting(new BooleanSetting("Meters", "A card of extra readouts, stacked and self-sizing", true));
    public final BooleanSetting meterSpeed = this.addSetting(new BooleanSetting("Meter: Speed", "Horizontal blocks per second", true));
    public final BooleanSetting meterBiome = this.addSetting(new BooleanSetting("Meter: Biome", "Biome you are standing in", true));
