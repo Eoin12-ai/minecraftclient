@@ -14,16 +14,38 @@ import java.util.Objects;
  * session so the elapsed timer counts up smoothly instead of resetting on every
  * update; it is 0 when the timer is switched off.
  */
+import java.util.List;
+
 public record PresenceState(String details,
                             String state,
                             long startEpochMillis,
                             String largeImage,
                             String largeText,
                             String smallImage,
-                            String smallText) {
+                            String smallText,
+                            List<Button> buttons) {
+
+    /**
+     * A clickable button on the presence, as other people see it.
+     *
+     * Discord takes at most two, the label caps at 32 characters, and the URL
+     * has to be http or https -- a discord:// link is rejected outright, so the
+     * "open Discord" action cannot live here and is a separate keybind.
+     */
+    public record Button(String label, String url) {
+        public Button {
+            label = label == null ? "" : label.strip();
+            if (label.length() > 32) label = label.substring(0, 32);
+            url = url == null ? "" : url.strip();
+        }
+
+        public boolean valid() {
+            return !label.isEmpty() && (url.startsWith("http://") || url.startsWith("https://"));
+        }
+    }
 
     public static final PresenceState EMPTY =
-            new PresenceState("", "", 0L, "", "", "", "");
+            new PresenceState("", "", 0L, "", "", "", "", List.of());
 
     public PresenceState {
         details    = trim(details, 128);
@@ -32,6 +54,9 @@ public record PresenceState(String details,
         largeText  = trim(largeText, 128);
         smallImage = trim(smallImage, 64);
         smallText  = trim(smallText, 128);
+        // Discord silently drops the whole activity if more than two arrive
+        buttons = buttons == null ? List.of()
+                : List.copyOf(buttons.stream().filter(Button::valid).limit(2).toList());
     }
 
     /**

@@ -158,6 +158,17 @@ public final class DiscordPresenceService {
             if (!s.smallText().isEmpty()) assets.addProperty("small_text", s.smallText());
             if (assets.size() > 0) activity.add("assets", assets);
 
+            if (!s.buttons().isEmpty()) {
+                com.google.gson.JsonArray buttons = new com.google.gson.JsonArray();
+                for (PresenceState.Button b : s.buttons()) {
+                    JsonObject entry = new JsonObject();
+                    entry.addProperty("label", b.label());
+                    entry.addProperty("url", b.url());
+                    buttons.add(entry);
+                }
+                activity.add("buttons", buttons);
+            }
+
             args.add("activity", activity);
         }
 

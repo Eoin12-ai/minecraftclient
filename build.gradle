@@ -45,22 +45,3 @@ processResources {
         expand 'version': project.version
     }
 }
-
-// TEMPORARY probe: the exact type Util.getOperatingSystem() returns.
-tasks.register('apiProbe') {
-    doLast {
-        def cp = configurations.compileClasspath.files
-        def loader = new URLClassLoader(cp.collect { it.toURI().toURL() } as URL[], (ClassLoader) null)
-        println '=== PROBE BEGIN ==='
-        try {
-            def util = Class.forName('net.minecraft.util.Util', false, loader)
-            def os = util.getDeclaredMethod('getOperatingSystem').returnType
-            println "RETURNS ${os.name}"
-            os.getDeclaredMethods().collect {
-                "  M ${it.name}(${it.parameterTypes.collect { p -> p.name }.join(', ')}) : ${it.returnType.simpleName}"
-            }.sort().each { println it }
-        } catch (Throwable t) { println "probe -> ${t}" }
-        println '=== PROBE END ==='
-    }
-}
-compileJava.dependsOn 'apiProbe'

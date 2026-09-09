@@ -7,6 +7,8 @@ import dev.kryptic.module.Category;
 import dev.kryptic.module.Module;
 import dev.kryptic.settings.BooleanSetting;
 import dev.kryptic.settings.StringSetting;
+import net.minecraft.util.Util;
+import java.net.URI;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.world.ClientWorld;
@@ -62,6 +64,29 @@ public class DiscordPresenceModule extends Module {
     public final StringSetting largeImage = this.addSetting(new StringSetting(
             "Large Image", "Asset key from the Discord application", "default", 64, "default"));
 
+    // ── the two buttons other people see on your profile ─────────────────────
+    public final StringSetting button1Label = this.addSetting(new StringSetting(
+            "Button 1", "Label for the first profile button, blank to hide it", "", 32, "Discord"));
+
+    public final StringSetting button1Url = this.addSetting(new StringSetting(
+            "Button 1 URL", "Where it goes. Must start with https://", "", 96, "https://discord.gg/..."));
+
+    public final StringSetting button2Label = this.addSetting(new StringSetting(
+            "Button 2", "Label for the second profile button, blank to hide it", "", 32, ""));
+
+    public final StringSetting button2Url = this.addSetting(new StringSetting(
+            "Button 2 URL", "Where it goes. Must start with https://", "", 96, "https://"));
+
+    // ── opening Discord from in-game ─────────────────────────────────────────
+    public final StringSetting invite = this.addSetting(new StringSetting(
+            "Invite", "Server to open. An invite code, or a full https:// link", "", 96, "discord.gg/..."));
+
+    public final BooleanSetting openDiscord = this.addSetting(new BooleanSetting(
+            "Open Discord", "Switch on to bring up Discord, then it switches back off", false));
+
+    public final BooleanSetting preferApp = this.addSetting(new BooleanSetting(
+            "Prefer App", "Hand the link to the desktop app rather than a browser", true));
+
     public final StringSetting appId = this.addSetting(new StringSetting(
             "Application ID", "Discord application the presence is published as",
             DiscordPresenceService.DEFAULT_APP_ID, 32, DiscordPresenceService.DEFAULT_APP_ID));
@@ -97,6 +122,12 @@ public class DiscordPresenceModule extends Module {
 
     @Override
     public void onTick() {
+        // the switch acts as a button: it fires once and pops back up
+        if (openDiscord.get()) {
+            openDiscord.set(Boolean.FALSE);
+            launchDiscord();
+        }
+
         DiscordPresenceService svc = service();
         if (svc == null) return;
 
@@ -146,7 +177,63 @@ public class DiscordPresenceModule extends Module {
                 largeImage.get(),
                 KrypticClient.NAME + " " + KrypticClient.VERSION,
                 "",
-                "");
+                "",
+                java.util.List.of(
+                        new PresenceState.Button(button1Label.get(), button1Url.get()),
+                        new PresenceState.Button(button2Label.get(), button2Url.get())));
+    }
+
+    // ── opening Discord ──────────────────────────────────────────────────────
+
+    /**
+     * Brings Discord up, on the invite if one is set.
+     *
+     * The desktop app registers the discord:// scheme, so handing it that
+     * jumps straight into the running client instead of opening a browser tab
+     * that then bounces you into it. It is not a link Discord will accept on a
+     * presence button, which is why this is an action here rather than a third
+     * button: the presence buttons have to be https.
+     *
+     * If no invite is set this opens Discord itself rather than doing nothing,
+     * since "open Discord" is the name on the switch.
+     */
+    public void launchDiscord() {
+        String target = resolveInvite();
+        try {
+            Util.getOperatingSystem().open(URI.create(target));
+            KrypticClient.LOGGER.info("Opened {}", target);
+        } catch (Exception ex) {
+            KrypticClient.LOGGER.warn("Could not open Discord: {}", ex.toString());
+            if (KrypticClient.notifications() != null) {
+                KrypticClient.notifications().pushInfo("Could not open Discord");
+            }
+        }
+    }
+
+    /**
+     * Turns whatever is in the Invite box into something openable.
+     *
+     * People paste all of "abc123", "discord.gg/abc123" and the full URL, so
+     * all three are accepted rather than only the one shape.
+     */
+    private String resolveInvite() {
+        String raw = invite.get() == null ? "" : invite.get().strip();
+        boolean app = preferApp.get();
+
+        if (raw.isEmpty()) {
+            return app ? "discord://" : "https://discord.com/app";
+        }
+
+        String code = raw;
+        for (String prefix : new String[]{"https://", "http://", "www.", "discord.gg/", "discord.com/invite/"}) {
+            if (code.startsWith(prefix)) code = code.substring(prefix.length());
+        }
+        // anything still carrying a slash is a full URL to somewhere else
+        if (code.contains("/")) {
+            return raw.startsWith("http") ? raw : "https://" + raw;
+        }
+        return app ? "discord://discord.com/invite/" + code
+                   : "https://discord.gg/" + code;
     }
 
     private String expand(String template, MinecraftClient client) {
