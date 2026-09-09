@@ -21,14 +21,16 @@ public final class NVGRenderer {
    public static final String FONT_VANILLA = "vanilla";
    public static final String FONT_TEN = "ten";
    public static final String FONT_MONO = "mono";
+   public static final String FONT_BOLD = "bold";
    private static NVGRenderer instance;
    private final long ctx = NanoVGGL3.nvgCreate(1);
    private boolean xuongLoaded;
    private boolean vanillaLoaded;
    private boolean tenLoaded;
    private boolean monoLoaded;
+   private boolean boldLoaded;
    private final List<ByteBuffer> retainedFontData = new ArrayList<>();
-   private String activeFont = "xuong";
+   private String activeFont = "bold";
    private final ArrayDeque<Float> alphaStack = new ArrayDeque<>();
    private float appliedAlpha = 1.0F;
 
@@ -40,6 +42,7 @@ public final class NVGRenderer {
          this.vanillaLoaded = this.loadFont("vanilla", "assets/krypticclient/fonts/Monocraft.ttf");
          this.tenLoaded = this.loadFont("ten", "assets/krypticclient/fonts/MinecraftTen.ttf");
          this.monoLoaded = this.loadFont("mono", "assets/krypticclient/fonts/JetBrainsMono-Regular.ttf");
+         this.boldLoaded = this.loadFont("bold", "assets/krypticclient/fonts/Inter-Bold.ttf");
          if (this.vanillaLoaded) {
             // Monocraft carries the glyphs the display faces do not. Xuong is
             // broad but not complete, and Minecraft Ten is a logo face with 99
@@ -48,6 +51,7 @@ public final class NVGRenderer {
             if (this.xuongLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "xuong", "vanilla");
             if (this.tenLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "ten", "vanilla");
             if (this.monoLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "mono", "vanilla");
+            if (this.boldLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "bold", "vanilla");
          }
       }
    }
@@ -106,13 +110,14 @@ public final class NVGRenderer {
          case "Xuong" -> "xuong";
          case "Ten" -> "ten";
          case "Mono" -> "mono";
-         default -> "vanilla";
+         case "Vanilla" -> "vanilla";
+         default -> "bold";
       };
       if (isLoaded(wanted)) {
          this.activeFont = wanted;
          return;
       }
-      for (String candidate : new String[]{"vanilla", "xuong", "mono", "ten"}) {
+      for (String candidate : new String[]{"bold", "vanilla", "xuong", "mono", "ten"}) {
          if (isLoaded(candidate)) {
             this.activeFont = candidate;
             return;
@@ -127,6 +132,7 @@ public final class NVGRenderer {
          case "vanilla" -> this.vanillaLoaded;
          case "ten" -> this.tenLoaded;
          case "mono" -> this.monoLoaded;
+         case "bold" -> this.boldLoaded;
          default -> false;
       };
    }

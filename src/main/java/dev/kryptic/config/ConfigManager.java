@@ -129,12 +129,9 @@ public class ConfigManager {
     */
    private static final Map<String, String> LEGACY_NAMES = Map.ofEntries(
          Map.entry("Aim Assist", "AimAssist"),
-         Map.entry("Hit Box", "HitBox"),
          Map.entry("Trigger Bot", "Triggerbot"),
-         Map.entry("Block Entity ESP", "BlockEntityESP"),
          Map.entry("Block ESP", "BlockESP"),
          Map.entry("Chunk Borders", "ChunkBorders"),
-         Map.entry("Debug Hole ESP", "DebugHoleESP"),
          Map.entry("Full Bright", "FullBright"),
          Map.entry("Mob ESP", "MobESP"),
          Map.entry("Player ESP", "PlayerESP"),
@@ -167,7 +164,6 @@ public class ConfigManager {
          Map.entry("Swing Speed", "SwingSpeed"),
          Map.entry("Accessories", "CustomAccessories"),
          Map.entry("Block Outline", "CustomBlockOutline"),
-         Map.entry("Motion Blur", "MotionBlur"),
          Map.entry("Config Share", "ConfigShare"));
 
    /**
@@ -201,9 +197,6 @@ public class ConfigManager {
          Map.entry("Weather Notifier/Show As", "Output"),
          Map.entry("Double Anchor/Second Blow Delay", "Timing"),
          Map.entry("Double Anchor/Replace Anchor", "Re-Place"),
-         Map.entry("Debug Hole ESP/Safe Hole", "Safe"),
-         Map.entry("Debug Hole ESP/Unsafe Hole", "Unsafe"),
-         Map.entry("Block Entity ESP/Block Entity Packets", "BE Update Packets"),
          Map.entry("Block ESP/Extra Chunk Radius", "Range Extra Chunks"),
          Map.entry("Skin Protect/Borrow Skin From", "Skin IGN"),
          Map.entry("Name Protect/Your Fake Name", "Your Alias"),
@@ -211,6 +204,7 @@ public class ConfigManager {
          Map.entry("Free Look/Arrows Turn Other View", "Arrows Control Opposite"),
          Map.entry("Fake Pay/Block Paying Yourself", "Self-Pay Guard"),
          Map.entry("Stats/Refresh Every", "Request Every"),
+         Map.entry("Fake Stats/Intercept /bal", "Balance Command"),
          Map.entry("Sus Chunk Finder/Merge Into Zones", "Smart Mode"),
          Map.entry("Hit Box/Show Hitboxes", "Enable Render"));
 

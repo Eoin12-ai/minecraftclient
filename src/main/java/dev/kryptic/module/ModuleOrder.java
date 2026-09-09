@@ -30,7 +30,6 @@ public final class ModuleOrder {
         "Sus Chunk Finder",       // the flagship signal
         "Chunk Finder",
         "Storage ESP",           // chests and shulkers, the payoff
-        "Block Entity ESP",
         "Block ESP",
         "Spawner Nametags",
         "Player ESP",            // who else is here
@@ -39,7 +38,6 @@ public final class ModuleOrder {
         "Chunk Borders",         // navigation aids
         "Breadcrumbs",
         "Region Map",
-        "Debug Hole ESP",
         "Full Bright",
 
         // ── Combat: keep-yourself-alive first, then offence ──────────────────
@@ -55,7 +53,6 @@ public final class ModuleOrder {
         "Shield Breaker",
         "Trigger Bot",
         "Aim Assist",
-        "Hit Box",
 
         // ── Misc: the things that keep a clip or a stash safe come first ─────
         "Name Protect",
@@ -92,7 +89,6 @@ public final class ModuleOrder {
         "Block Outline",
         "Jump Circles",
         "Swing Speed",
-        "Motion Blur",
     };
 
     private static final Map<String, Integer> RANK = buildRanks();

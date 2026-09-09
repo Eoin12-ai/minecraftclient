@@ -110,11 +110,6 @@ public final class WorldRenderHook {
                 BlockEspRenderer.render(immediate, matrices, camera, modules.blockEsp);
             }
         });
-        run("blockEntityEsp", () -> {
-            if (modules.blockEntityEsp != null && modules.blockEntityEsp.isEnabled()) {
-                BlockEntityEspRenderer.render(immediate, matrices, camera, modules.blockEntityEsp);
-            }
-        });
         run("chunkFinder", () -> {
             if (modules.chunkFinder != null && modules.chunkFinder.isEnabled()) {
                 ChunkFinderRenderer.render(immediate, matrices, camera, modules.chunkFinder);
@@ -123,11 +118,6 @@ public final class WorldRenderHook {
         run("susChunkFinder", () -> {
             if (modules.susChunkFinder != null && modules.susChunkFinder.isEnabled()) {
                 SusChunkRenderer.render(immediate, matrices, camera, modules.susChunkFinder);
-            }
-        });
-        run("holeEsp", () -> {
-            if (modules.debugHoleEsp != null && modules.debugHoleEsp.isEnabled()) {
-                HoleEspRenderer.render(immediate, matrices, camera, modules.debugHoleEsp);
             }
         });
         run("spawnerNametags", () -> {

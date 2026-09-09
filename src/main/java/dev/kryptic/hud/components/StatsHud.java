@@ -5,16 +5,14 @@ import dev.kryptic.hud.HudSurface;
 import dev.kryptic.module.client.StatsModule;
 import dev.kryptic.render.nanovg.NVGImages;
 import dev.kryptic.render.nanovg.NVGRenderer;
+import dev.kryptic.stats.StatsCard;
 import dev.kryptic.stats.StatsTracker;
-import dev.kryptic.stats.VanillaStats;
 import dev.kryptic.theme.Theme;
 import dev.kryptic.theme.ThemeManager;
 import dev.kryptic.util.Colors;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -52,73 +50,6 @@ public class StatsHud extends HudComponent {
         this.themes = themes;
     }
 
-    // ── model ────────────────────────────────────────────────────────────────
-
-    /** One line of the card; a null {@code value} renders as a dash. */
-    private record Row(String label, String value) {
-    }
-
-    /** A titled group of rows. */
-    private record Section(String title, List<Row> rows) {
-    }
-
-    private List<Section> sections(MinecraftClient client) {
-        List<Section> out = new ArrayList<>();
-        StatsTracker tracker = module.tracker();
-
-        if (module.session.get()) {
-            List<Row> rows = new ArrayList<>();
-            rows.add(new Row("Time", duration(tracker.sessionMillis())));
-            rows.add(new Row("Deaths", Integer.toString(tracker.sessionDeaths())));
-            rows.add(new Row("Travelled", distance(tracker.sessionBlocks())));
-            out.add(new Section("Session", rows));
-        }
-
-        if (module.server.get()) {
-            StatsTracker.ServerRecord rec = tracker.current();
-            List<Row> rows = new ArrayList<>();
-            rows.add(new Row("Time", duration(rec.playMillis)));
-            rows.add(new Row("Visits", Integer.toString(rec.joins)));
-            rows.add(new Row("Deaths", Integer.toString(rec.deaths)));
-            rows.add(new Row("Travelled", distance(rec.blocksTravelled)));
-            out.add(new Section("This Server", rows));
-        }
-
-        if (module.allServers.get()) {
-            StatsTracker.ServerRecord all = tracker.allServers();
-            List<Row> rows = new ArrayList<>();
-            rows.add(new Row("Time", duration(all.playMillis)));
-            rows.add(new Row("Servers", Integer.toString(tracker.trackedServers())));
-            rows.add(new Row("Deaths", Integer.toString(all.deaths)));
-            rows.add(new Row("Travelled", distance(all.blocksTravelled)));
-            String most = tracker.mostPlayedKey();
-            if (!most.isEmpty()) rows.add(new Row("Most played", most));
-            out.add(new Section("All Servers", rows));
-        }
-
-        if (module.lifetime.get()) {
-            List<Row> rows = new ArrayList<>();
-            boolean have = VanillaStats.available(client);
-            if (!have) {
-                rows.add(new Row("Waiting on server", null));
-            } else {
-                rows.add(new Row("Played", ticks(VanillaStats.playTimeTicks(client))));
-                rows.add(new Row("Days", count(VanillaStats.daysPlayed(client))));
-                rows.add(new Row("Deaths", count(VanillaStats.deaths(client))));
-                rows.add(new Row("Mob kills", count(VanillaStats.mobKills(client))));
-                rows.add(new Row("Player kills", count(VanillaStats.playerKills(client))));
-                rows.add(new Row("K/D", kd(VanillaStats.lifetimeKd(client))));
-                rows.add(new Row("Walked", centimetres(VanillaStats.walkedCm(client))));
-                rows.add(new Row("Jumps", count(VanillaStats.jumps(client))));
-                rows.add(new Row("Damage out", halfHearts(VanillaStats.damageDealt(client))));
-                rows.add(new Row("Damage in", halfHearts(VanillaStats.damageTaken(client))));
-            }
-            out.add(new Section("Lifetime", rows));
-        }
-
-        return out;
-    }
-
     private float headerHeight() {
         if (!module.skin.get()) return NAME_FONT + SERVER_FONT + 6.0f;
         return module.skinStyle.is("Bust") ? BUST_H : HEAD;
@@ -135,7 +66,7 @@ public class StatsHud extends HudComponent {
     public float measureHeight(NVGRenderer nvg) {
         MinecraftClient client = MinecraftClient.getInstance();
         float h = PAD + headerHeight() + HEADER_GAP;
-        for (Section s : sections(client)) {
+        for (StatsCard.Section s : StatsCard.sections(client, module)) {
             h += SECTION_H + s.rows().size() * ROW_H;
         }
         return h + PAD - 2.0f;
@@ -155,7 +86,7 @@ public class StatsHud extends HudComponent {
         cursorY = renderHeader(nvg, th, client, x, cursorY, w);
         cursorY += HEADER_GAP;
 
-        for (Section s : sections(client)) {
+        for (StatsCard.Section s : StatsCard.sections(client, module)) {
             cursorY = renderSection(nvg, th, s, x, cursorY, w);
         }
     }
@@ -222,7 +153,7 @@ public class StatsHud extends HudComponent {
                 Colors.withAlpha(0xFFFFFFFF, 0.28f));
     }
 
-    private float renderSection(NVGRenderer nvg, Theme th, Section s,
+    private float renderSection(NVGRenderer nvg, Theme th, StatsCard.Section s,
                                 float x, float y, float w) {
         String title = s.title().toUpperCase(Locale.ROOT);
         float titleY = y + SECTION_H / 2.0f;
@@ -233,7 +164,7 @@ public class StatsHud extends HudComponent {
         nvg.rect(lineX, titleY - 0.5f, lineW, 1.0f, 0.5f, Colors.withAlpha(th.accent(), 0.28f));
 
         float rowY = y + SECTION_H;
-        for (Row r : s.rows()) {
+        for (StatsCard.Row r : s.rows()) {
             float centre = rowY + ROW_H / 2.0f;
             nvg.text(r.label(), x + PAD, centre, ROW_FONT, th.textMuted());
 
@@ -245,51 +176,5 @@ public class StatsHud extends HudComponent {
             rowY += ROW_H;
         }
         return rowY;
-    }
-
-    // ── formatting ───────────────────────────────────────────────────────────
-
-    /** "6d 4h", "1h 23m", "45m", "12s". Never a bare zero-padded clock. */
-    private static String duration(long millis) {
-        if (millis < 0L) return null;
-        long seconds = millis / 1000L;
-        long days = seconds / 86400L;
-        long hours = (seconds % 86400L) / 3600L;
-        long minutes = (seconds % 3600L) / 60L;
-        if (days > 0L) return days + "d " + hours + "h";
-        if (hours > 0L) return hours + "h " + minutes + "m";
-        if (minutes > 0L) return minutes + "m";
-        return seconds + "s";
-    }
-
-    private static String ticks(int t) {
-        return t < 0 ? null : duration((long) t * 1000L / VanillaStats.TICKS_PER_SECOND);
-    }
-
-    /** Blocks travelled, shown in km once it stops being readable in blocks. */
-    private static String distance(double blocks) {
-        if (blocks < 0.0) return null;
-        if (blocks >= 1000.0) return String.format(Locale.ROOT, "%.1f km", blocks / 1000.0);
-        return Math.round(blocks) + " m";
-    }
-
-    private static String centimetres(int cm) {
-        return cm < 0 ? null : distance(cm / 100.0);
-    }
-
-    /** Minecraft records damage in tenths of a heart. */
-    private static String halfHearts(int tenths) {
-        if (tenths < 0) return null;
-        return count(Math.round(tenths / 10.0f));
-    }
-
-    private static String count(int value) {
-        if (value < 0) return null;
-        return String.format(Locale.ROOT, "%,d", value);
-    }
-
-    private static String kd(float value) {
-        if (value < 0.0f) return null;
-        return String.format(Locale.ROOT, "%.2f", value);
     }
 }

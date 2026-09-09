@@ -10,7 +10,6 @@ import dev.kryptic.module.Category;
 import dev.kryptic.module.ModuleManager;
 import dev.kryptic.module.misc.FreecamModule;
 import dev.kryptic.notification.NotificationManager;
-import dev.kryptic.render.MotionBlurRenderer;
 import dev.kryptic.render.OverlayRenderer;
 import dev.kryptic.render.WorldRenderHook;
 import dev.kryptic.render.NvgDrawable;
@@ -215,10 +214,6 @@ public class KrypticClient implements ClientModInitializer {
          modules.chunkFinder.clear();
       }
 
-      if (modules.blockEntityEsp != null) {
-         modules.blockEntityEsp.clear();
-      }
-
       if (modules.jumpCircles != null) {
          modules.jumpCircles.clear();
       }
@@ -227,6 +222,5 @@ public class KrypticClient implements ClientModInitializer {
          modules.customAccessories.clear();
       }
 
-      MotionBlurRenderer.reset();
    }
 }

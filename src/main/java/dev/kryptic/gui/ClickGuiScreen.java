@@ -10,6 +10,7 @@ import dev.kryptic.config.ConfigStore;
 import dev.kryptic.config.ServerConfigs;
 import dev.kryptic.gui.panel.CategoryPanel;
 import dev.kryptic.gui.panel.Panel;
+import dev.kryptic.gui.panel.StatsPanel;
 import dev.kryptic.gui.panel.ThemesPanel;
 import dev.kryptic.gui.picker.BlockGridModel;
 import dev.kryptic.gui.picker.IconListGridModel;
@@ -66,18 +67,22 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private static final float PILL_MARGIN_B = 14.0f;
 
     private static final float THEMES_W      = 300.0f;
+    private static final float STATS_W       = 400.0f;
 
     private static final float HINT_FONT     = 11.0f;
     private static final float HINT_MARGIN   = 6.0f;
 
     private final List<CategoryPanel> columns     = new ArrayList<>();
     private final ThemesPanel         themesPanel;
+    private final StatsPanel          statsPanel;
     private final Animation           openAnim    = new Animation(180.0f, 0.0f);
     private boolean                   closing;
     private final ConfigPanel         configPanel = new ConfigPanel();
     private boolean                   configHovered;
     private boolean                   themesHovered;
     private boolean                   themesOpen;
+    private boolean                   statsHovered;
+    private boolean                   statsOpen;
     private final StringBuilder       search      = new StringBuilder();
     private boolean                   searchFocused;
     private Panel                     pressedContentPanel;
@@ -93,6 +98,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         for (Category c : Category.values()) columns.add(new CategoryPanel(c, mm, tm, STATE));
         themesPanel = new ThemesPanel(tm, STATE);
         themesPanel.setWidth(THEMES_W);
+        statsPanel = new StatsPanel(tm, STATE);
+        statsPanel.setWidth(STATS_W);
         layoutColumns();
         openAnim.setTarget(1.0f);
     }
@@ -128,6 +135,9 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         float tw = Math.min(THEMES_W, Math.max(220.0f, sw - 40.0f));
         themesPanel.setWidth(tw);
         themesPanel.moveTo((sw - tw) / 2.0f, STATE.columnTop() + 24.0f);
+        float stw = Math.min(STATS_W, Math.max(260.0f, sw - 40.0f));
+        statsPanel.setWidth(stw);
+        statsPanel.moveTo((sw - stw) / 2.0f, STATE.columnTop() + 24.0f);
     }
 
     @Override
@@ -188,6 +198,11 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             themesPanel.render(nvg, mouseX, mouseY, screenW, screenH);
         }
 
+        if (statsOpen) {
+            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF05060A, 0.42f));
+            statsPanel.render(nvg, mouseX, mouseY, screenW, screenH);
+        }
+
         configPanel.render(nvg, mouseX, mouseY, screenW, screenH);
         nvg.restore();
     }
@@ -223,7 +238,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             nvg.cross(barX + SEARCH_W - 22.0f, textY - 5.5f, 11.0f, 1.5f, th.textMuted());
     }
 
-    private float pillBarX(float sw) { return (sw - (PILL_W * 2.0f + PILL_GAP)) / 2.0f; }
+    private float pillBarX(float sw) { return (sw - (PILL_W * 3.0f + PILL_GAP * 2.0f)) / 2.0f; }
     private float pillBarY(float sh) { return sh - PILL_H - PILL_MARGIN_B; }
 
     private void renderPillBar(NVGRenderer nvg, float mx, float my, float sw, float sh) {
@@ -250,6 +265,20 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                 Colors.withAlpha(th.accentBright(), thActive ? 0.9f : 0.45f));
         nvg.text("Themes", x1 + 36.0f, y + PILL_H / 2.0f, 13.5f,
                 thActive ? th.textPrimary() : th.textMuted());
+
+        float x2 = x1 + PILL_W + PILL_GAP;
+        boolean stActive = statsHit(mx, my) || statsOpen;
+        if (stActive != statsHovered) { statsHovered = stActive; if (stActive) UiSounds.hover(); }
+        Glass.pill(nvg, x2, y, PILL_W, PILL_H, th, stActive ? 1.0f : 0.0f);
+        // three ascending bars, the shortest first, so the icon reads as a chart
+        float barX = x2 + 16.0f, barBase = y + PILL_H / 2.0f + 6.0f;
+        for (int i = 0; i < 3; i++) {
+            float barH = 4.0f + i * 4.0f;
+            nvg.rect(barX + i * 5.0f, barBase - barH, 3.0f, barH, 1.5f,
+                    stActive ? th.accentBright() : th.accent());
+        }
+        nvg.text("Stats", x2 + 36.0f, y + PILL_H / 2.0f, 13.5f,
+                stActive ? th.textPrimary() : th.textMuted());
     }
 
     private void renderHint(NVGRenderer nvg, float sw, float sh) {
@@ -305,6 +334,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         return mx >= x1 && mx <= x1 + PILL_W && my >= y && my <= y + PILL_H;
     }
 
+    private boolean statsHit(float mx, float my) {
+        float x2 = pillBarX(OverlayRenderer.uiWidth()) + (PILL_W + PILL_GAP) * 2.0f;
+        float y  = pillBarY(OverlayRenderer.uiHeight());
+        return mx >= x2 && mx <= x2 + PILL_W && my >= y && my <= y + PILL_H;
+    }
+
     private boolean searchBarHit(float mx, float my) {
         float barX = searchX(OverlayRenderer.uiWidth());
         return mx >= barX && mx <= barX + SEARCH_W && my >= SEARCH_Y && my <= SEARCH_Y + SEARCH_H;
@@ -322,6 +357,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private Theme theme()        { return KrypticClient.themes().current(); }
 
     private void closeThemes() { themesOpen = false; UiSounds.guiClose(); }
+    private void closeStats()  { statsOpen  = false; UiSounds.guiClose(); }
 
     // ── Screen API: 1.21.11 passes input as records ───────────────────────────
     @Override
@@ -337,7 +373,27 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         if (configHit(mx, my)) { configPanel.open(); UiSounds.guiOpen(); return true; }
         if (themesHit(mx, my)) {
             themesOpen = !themesOpen;
-            if (themesOpen) UiSounds.guiOpen(); else UiSounds.guiClose();
+            if (themesOpen) { statsOpen = false; UiSounds.guiOpen(); } else UiSounds.guiClose();
+            return true;
+        }
+        if (statsHit(mx, my)) {
+            statsOpen = !statsOpen;
+            if (statsOpen) { themesOpen = false; UiSounds.guiOpen(); } else UiSounds.guiClose();
+            return true;
+        }
+
+        if (statsOpen) {
+            if (statsPanel.headerHit(mx, my)) {
+                if (btn == 0) { statsPanel.toggleCollapsed(); UiSounds.panelCollapse(); }
+                else          closeStats();
+                return true;
+            }
+            if (statsPanel.bodyHit(nvg, mx, my, sh)) {
+                pressedContentPanel = statsPanel;
+                statsPanel.mouseClicked(mx, my, btn);
+                return true;
+            }
+            closeStats();
             return true;
         }
 
@@ -404,6 +460,10 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             themesPanel.onScroll(vDelta);
             return true;
         }
+        if (statsOpen) {
+            statsPanel.onScroll(vDelta);
+            return true;
+        }
         for (CategoryPanel p : columns) {
             if (p.bodyHit(nvg, mx, my, sh) || p.headerHit(mx, my)) { p.onScroll(vDelta); return true; }
         }
@@ -431,6 +491,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             }
             return true;
         }
+        if (key == 256 && statsOpen)  { closeStats();  return true; }
+        if (key == 256 && themesOpen) { closeThemes(); return true; }
         if (key == 256 || guiModule().getKeybind().matches(key)) { close(); return true; }
         return super.keyPressed(input);
     }

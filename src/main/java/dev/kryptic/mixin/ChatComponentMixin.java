@@ -21,6 +21,15 @@ public class ChatComponentMixin {
       if (moduleManager == null) {
          return text;
       } else {
+         // read before anything rewrites it, so a censored name or a fake role
+         // cannot change what the balance parser sees
+         if (moduleManager.stats != null && moduleManager.stats.isEnabled()) {
+            try {
+               moduleManager.stats.onChatMessage(text.getString());
+            } catch (Exception ignored) {
+            }
+         }
+
          Text modified = text;
          if (moduleManager.fakeRoles != null) {
             modified = moduleManager.fakeRoles.decorateChat(text);

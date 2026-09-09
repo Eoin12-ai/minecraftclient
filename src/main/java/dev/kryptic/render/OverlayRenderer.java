@@ -4,7 +4,6 @@ import dev.kryptic.KrypticClient;
 import dev.kryptic.hud.HudDragController;
 import dev.kryptic.hud.HudManager;
 import dev.kryptic.module.misc.CustomCrosshairModule;
-import dev.kryptic.module.visuals.MotionBlurModule;
 import dev.kryptic.notification.NotificationManager;
 import dev.kryptic.render.nanovg.GlStateSnapshot;
 import dev.kryptic.render.nanovg.NVGRenderer;
@@ -42,9 +41,7 @@ public final class OverlayRenderer {
             boolean found2 = client.currentScreen instanceof ChatScreen;
             boolean found3 = !client.options.hudHidden && client.world != null && !found;
             boolean enabled = client.world != null && !client.options.hudHidden;
-            MotionBlurModule motionBlurModule = KrypticClient.modules() != null ? KrypticClient.modules().motionBlur : null;
-            boolean enabled2 = motionBlurModule != null && motionBlurModule.isEnabled() && client.world != null && !found;
-            if (!found && !found3 && !enabled && !enabled2) {
+            if (!found && !found3 && !enabled) {
                return;
             }
 
@@ -55,10 +52,6 @@ public final class OverlayRenderer {
                   prepareOverlayTarget(framebuffer.textureWidth, framebuffer.textureHeight);
 
                   NVGRenderer nVGRenderer = NVGRenderer.get();
-                  if (enabled2) {
-                     MotionBlurRenderer.render(nVGRenderer, framebuffer.textureWidth, framebuffer.textureHeight, motionBlurModule);
-                  }
-
                   nVGRenderer.setFontMode(KrypticClient.modules().clickGui.font.get());
                   if (nVGRenderer.hasFont()) {
                      float f = uiScale();

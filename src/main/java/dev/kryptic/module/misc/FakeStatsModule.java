@@ -45,7 +45,7 @@ public class FakeStatsModule extends Module {
    );
    public final BooleanSetting sidebar = this.addSetting(new BooleanSetting("Sidebar", "Rewrite the server scoreboard (leaderboard) on the right.", true));
    public final BooleanSetting balanceCommand = this.addSetting(
-      new BooleanSetting("Balance Command", "Intercept /bal & /balance to show your fake balance.", true)
+      new BooleanSetting("Intercept /bal", "Answer /bal and /balance with your fake balance.", true)
    );
    public final BooleanSetting deductOnPay = this.addSetting(new BooleanSetting("Deduct On Pay", "FakePay subtracts what you pay from Money.", true));
    private String lastMoneyText;
