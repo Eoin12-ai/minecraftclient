@@ -13,7 +13,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 
 public class CustomAccessoriesModule extends Module {
-   public final ColorSetting color = this.addSetting(new ColorSetting("Color", "Base tint for every accessory", -49508));
+   public final ColorSetting color = this.addSetting(new ColorSetting("Color", "Base tint for every accessory", -678620));
    public final BooleanSetting rainbow = this.addSetting(new BooleanSetting("Rainbow", "Cycle every accessory through the rainbow", false));
    public final SliderSetting glow = this.addSetting(new SliderSetting("Glow", "Soft outer-halo intensity", 70.0, 0.0, 100.0, 5.0, "V"));
    public final BooleanSetting firstPerson = this.addSetting(new BooleanSetting("First Person", "Also show your accessories in first-person view", false));

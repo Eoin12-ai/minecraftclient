@@ -37,36 +37,60 @@ public class Theme {
       return Colors.withAlpha(this.accent(), 0.35F);
    }
 
+   // ── surfaces ─────────────────────────────────────────────────────────────
+   //
+   // Near-black with a warm cast rather than the blue-violet greys this UI
+   // carried before. A violet base tints every neutral toward the accent it
+   // used to have, which is half of why the old look read as one specific
+   // client rather than as a piece of software.
+   //
+   // The panels are opaque now. Translucent bodies over a blurred world meant
+   // every label sat on whatever happened to be behind it, so text contrast
+   // changed as you turned around.
+
+   /** #0F0D0A — the card body. */
    public int background() {
-      return Colors.withAlpha(-15593450, 0.9F);
+      return -15790838;
    }
 
+   /** #17140F — the same body, a step lighter, for the gradient's far end. */
    public int backgroundTo() {
-      return Colors.withAlpha(-15067872, 0.9F);
+      return -15264753;
    }
 
+   /** #1C1813 — the column header strip. */
    public int headerTop() {
-      return Colors.withAlpha(-14870490, 0.95F);
+      return -14936045;
    }
 
    public int headerBottom() {
-      return Colors.withAlpha(-15396839, 0.95F);
+      return -15264753;
    }
 
+   /**
+    * The fill behind an enabled module.
+    *
+    * Only a fifth of the way to the accent: a row has an accent bar and an
+    * accent dot already, and a fully saturated fill under bright text is the
+    * thing that makes a long enabled column hard to read.
+    */
    public int moduleActiveFill() {
-      return Colors.withAlpha(Colors.lerp(-15593450, this.accent(), 0.22F), 0.95F);
+      return Colors.withAlpha(Colors.lerp(-15790838, this.accent(), 0.20F), 0.98F);
    }
 
+   /** #F2EDE4 */
    public int textPrimary() {
-      return -1185038;
+      return -856604;
    }
 
+   /** #A79C8A */
    public int textMuted() {
-      return -6646872;
+      return -5792630;
    }
 
+   /** #6E6558 */
    public int textDisabled() {
-      return -9607552;
+      return -9542312;
    }
 
    public int statusEnabled() {

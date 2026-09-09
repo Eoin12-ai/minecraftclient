@@ -1,7 +1,7 @@
 package dev.kryptic.gui.panel;
 
 import dev.kryptic.gui.ClickGuiState;
-import dev.kryptic.render.Glass;
+import dev.kryptic.render.Surface;
 import dev.kryptic.render.anim.Animation;
 import dev.kryptic.render.nanovg.NVGRenderer;
 import dev.kryptic.theme.Theme;
@@ -12,7 +12,7 @@ import dev.kryptic.util.UiSounds;
 /**
  * Panel — a single liquid-glass column of the ClickGUI.
  *
- * The pane is drawn entirely from {@link Glass} layers so it shares one
+ * The pane is drawn entirely from {@link Surface} parts so it shares one
  * material with the search bar and the bottom pills: translucent frosted body,
  * specular sheen over the top, inner white hairline, accent rim, soft drop
  * shadow, and a slow travelling highlight across the header.
@@ -30,7 +30,7 @@ public abstract class Panel {
     // ── geometry ─────────────────────────────────────────────────────────────
     public  static final float WIDTH    = 220.0f;   // fallback when no width is set
     public  static final float HEADER_H = 38.0f;
-    public  static final float RADIUS   = Glass.RADIUS;
+    public  static final float RADIUS   = Surface.RADIUS;
     protected static final float CONTENT_PAD = 6.0f;
     private  static final float FADE_ZONE    = 18.0f;
 
@@ -154,10 +154,9 @@ public abstract class Panel {
         float totalH = HEADER_H + vH;
 
         // ── glass pane ───────────────────────────────────────────────────────
-        Glass.surface(nvg, px, py, w, totalH, RADIUS, th, lv);
+        Surface.surface(nvg, px, py, w, totalH, RADIUS, th, lv);
 
         // travelling highlight over the header only — reads as liquid, stays cheap
-        Glass.caustic(nvg, px + 1.0f, py + 1.0f, w - 2.0f, HEADER_H - 1.0f, 9.0f, 1.0f);
 
         // ── hairline under the header ────────────────────────────────────────
         if (isOpen) {
@@ -243,6 +242,18 @@ public abstract class Panel {
     }
 
     // ── input ─────────────────────────────────────────────────────────────────
+
+    /**
+     * Scrolls so the given content offset sits at the top of the viewport.
+     *
+     * Clamped by render, which is the only place the content height is known
+     * cheaply; an out-of-range target here corrects itself on the next frame
+     * rather than needing the panel to measure itself twice.
+     */
+    protected void scrollTo(float offset) {
+        scroll.setTarget(Math.max(0.0f, offset));
+        panelState.scroll = scroll.getTarget();
+    }
 
     public void onScroll(double delta) {
         if (maxScroll <= 0.0f) return;

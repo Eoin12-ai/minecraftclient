@@ -67,6 +67,35 @@ public class ModuleEntry {
 
     private float x, y, width;
 
+    /**
+     * Told when this row's drawer opens, so the column can give it the room.
+     *
+     * A drawer used to open wherever the row happened to be, which on a long
+     * column meant a module's settings ran off the bottom and you scrolled a
+     * list of other modules to read them. The column now closes its other
+     * drawers and scrolls this one to the top, so a module's whole settings
+     * list is on screen at once.
+     */
+    public interface ExpandListener {
+        void onExpanded(ModuleEntry entry);
+    }
+
+    private ExpandListener expandListener = entry -> { };
+
+    public void setExpandListener(ExpandListener listener) {
+        this.expandListener = listener == null ? entry -> { } : listener;
+    }
+
+    /** Closes this drawer without telling the column, used when a sibling opens. */
+    public void collapse() {
+        expand.setTarget(0.0f);
+        state.setExpanded(key, false);
+    }
+
+    public boolean isExpanded() {
+        return expand.getTarget() > 0.5f;
+    }
+
     // ─────────────────────────────────────────────────────────────────────────
 
     public ModuleEntry(Module module, ThemeManager themes, ClickGuiState state) {
@@ -114,6 +143,18 @@ public class ModuleEntry {
     public float height(NVGRenderer nvg) {
         float exp = expand.value();
         return ROW_H + (exp <= 0.005f ? 0.0f : exp * drawerHeight(nvg));
+    }
+
+    /**
+     * The height this row is animating toward.
+     *
+     * Scrolling a newly opened drawer into view has to measure the rows above
+     * it as they will be, not as they are: at the moment of the click the
+     * siblings are still open and shrinking, and measuring those would scroll
+     * past the target and then crawl back as they closed.
+     */
+    public float targetHeight(NVGRenderer nvg) {
+        return ROW_H + (expand.getTarget() <= 0.005f ? 0.0f : drawerHeight(nvg));
     }
 
     // ── render ───────────────────────────────────────────────────────────────
@@ -270,9 +311,10 @@ public class ModuleEntry {
                 module.toggle();
                 UiSounds.toggle(module.isEnabled());
             } else if (btn == 1) {
-                boolean exp = !(expand.getTarget() > 0.5f);
+                boolean exp = !isExpanded();
                 expand.setTarget(exp ? 1.0f : 0.0f);
                 state.setExpanded(key, exp);
+                if (exp) expandListener.onExpanded(this);
                 UiSounds.select();
             } else if (btn == 2) {
                 // middle-click: toggle favourite

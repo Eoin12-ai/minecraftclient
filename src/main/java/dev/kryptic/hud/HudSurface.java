@@ -2,7 +2,7 @@ package dev.kryptic.hud;
 
 import dev.kryptic.KrypticClient;
 import dev.kryptic.module.ModuleManager;
-import dev.kryptic.render.Glass;
+import dev.kryptic.render.Surface;
 import dev.kryptic.render.nanovg.NVGRenderer;
 import dev.kryptic.theme.Theme;
 
@@ -15,11 +15,9 @@ import dev.kryptic.theme.Theme;
  * here lets the whole client share one surface, and lets that surface be
  * swapped for the whole HUD at once.
  *
- * Glass is the same five-layer material the menu panes use: a drop shadow to
- * ground the panel, accent bloom bleeding past the edge, a translucent body
- * that lightens toward the top, a specular sheen over the upper half, and a
- * hairline rim. Flat is the original pill, kept because the glass costs more
- * draw calls per panel and some people want their readouts plain.
+ * Card is the same flat material the menu panes use: a drop shadow to ground
+ * the panel, an opaque body, and a hairline edge. Flat is a plain gradient
+ * fill, kept for people who want their readouts with no chrome at all.
  */
 public final class HudSurface {
 
@@ -29,8 +27,8 @@ public final class HudSurface {
     /** A rectangular panel — cards, lists, the arraylist. */
     public static void panel(NVGRenderer nvg, float x, float y, float w, float h,
                              float radius, Theme theme) {
-        if (glass()) {
-            Glass.surface(nvg, x, y, w, h, radius, theme, 0.0f);
+        if (card()) {
+            Surface.surface(nvg, x, y, w, h, radius, theme, 0.0f);
         } else {
             nvg.rectGradient(x, y, w, h, radius, theme.background(), theme.backgroundTo(), true);
         }
@@ -38,24 +36,24 @@ public final class HudSurface {
 
     /** A capsule — the single-value readouts along the bottom. */
     public static void pill(NVGRenderer nvg, float x, float y, float w, float h, Theme theme) {
-        if (glass()) {
-            Glass.pill(nvg, x, y, w, h, theme, 0.0f);
+        if (card()) {
+            Surface.pill(nvg, x, y, w, h, theme, 0.0f);
         } else {
             nvg.rectGradient(x, y, w, h, h / 2.0f, theme.background(), theme.backgroundTo(), true);
         }
     }
 
     /**
-     * Whether the glass material is selected.
+     * Whether the card backing is selected.
      *
      * Read live rather than cached: the setting is a switch in the menu, and a
      * HUD that only changed material after a restart would read as broken.
-     * Defaults to glass when the module manager is not up yet, which is the
+     * Defaults to the card when the module manager is not up yet, which is the
      * same answer the setting's own default gives.
      */
-    private static boolean glass() {
+    private static boolean card() {
         ModuleManager modules = KrypticClient.modules();
         if (modules == null || modules.hud == null) return true;
-        return modules.hud.style.is("Glass");
+        return modules.hud.style.is("Card");
     }
 }

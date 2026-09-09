@@ -18,7 +18,7 @@ import dev.kryptic.module.Category;
 import dev.kryptic.module.ModuleManager;
 import dev.kryptic.module.render.BlockEspModule;
 import dev.kryptic.render.BlurHook;
-import dev.kryptic.render.Glass;
+import dev.kryptic.render.Surface;
 import dev.kryptic.render.NvgDrawable;
 import dev.kryptic.render.OverlayRenderer;
 import dev.kryptic.render.anim.Animation;
@@ -51,20 +51,32 @@ import dev.kryptic.module.client.DiscordPresenceModule;
  * pills — Configs and Themes. Themes is a floating pane centred over the
  * columns rather than a sixth column, which is what keeps the grid at five.
  *
- * Every surface comes from {@link Glass} so the whole menu is one material.
+ * Every surface comes from {@link Surface} so the whole menu is one material.
  */
 public class ClickGuiScreen extends Screen implements NvgDrawable {
 
     private static final ClickGuiState STATE = new ClickGuiState();
 
-    private static final float SEARCH_W      = 320.0f;
-    private static final float SEARCH_H      = 34.0f;
-    private static final float SEARCH_Y      = 16.0f;
+    // ── the top bar ──────────────────────────────────────────────────────────
+    //
+    // The search used to float in the middle of the sky and the three buttons
+    // sat in a second bar pinned to the bottom, which put the menu's own
+    // controls at two opposite edges with the modules stranded between them.
+    // One strip along the top holds all of it: title, search, buttons. The
+    // columns keep their size and their position, because COL_TOP already
+    // cleared the old floating search.
+    private static final float BAR_X         = 20.0f;   // matches SIDE_MARGIN
+    private static final float BAR_Y         = 10.0f;
+    private static final float BAR_H         = 44.0f;
+    private static final float BAR_PAD       = 14.0f;
 
-    private static final float PILL_W        = 128.0f;
-    private static final float PILL_H        = 30.0f;
-    private static final float PILL_GAP      = 10.0f;
-    private static final float PILL_MARGIN_B = 14.0f;
+    private static final float SEARCH_W      = 260.0f;
+    private static final float SEARCH_H      = 28.0f;
+    private static final float TITLE_W       = 118.0f;  // room for the wordmark
+
+    private static final float PILL_W        = 96.0f;
+    private static final float PILL_H        = 28.0f;
+    private static final float PILL_GAP      = 8.0f;
 
     private static final float THEMES_W      = 300.0f;
     private static final float STATS_W       = 400.0f;
@@ -188,8 +200,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         // by order because nothing overlaps in a locked grid
         for (CategoryPanel cp : columns) cp.render(nvg, mouseX, mouseY, screenW, screenH);
 
-        renderSearchBar(nvg, mouseX, mouseY, screenW);
-        renderPillBar(nvg, mouseX, mouseY, screenW, screenH);
+        renderTopBar(nvg, mouseX, mouseY, screenW);
         renderHint(nvg, screenW, screenH);
 
         if (themesOpen) {
@@ -209,76 +220,97 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
     // ── chrome ────────────────────────────────────────────────────────────────
 
-    private float searchX(float sw) { return (sw - SEARCH_W) / 2.0f; }
+    /** Where each piece of the bar sits, so hit tests and drawing agree. */
+    private float barW(float sw)      { return sw - BAR_X * 2.0f; }
+    private float barMidY()           { return BAR_Y + BAR_H / 2.0f; }
+    private float searchX(float sw)   { return BAR_X + BAR_PAD + TITLE_W; }
+    private float searchY()           { return barMidY() - SEARCH_H / 2.0f; }
+    private float buttonY()           { return barMidY() - PILL_H / 2.0f; }
 
-    private void renderSearchBar(NVGRenderer nvg, float mx, float my, float sw) {
-        Theme th   = theme();
-        float barX = searchX(sw);
-        float barY = SEARCH_Y;
-        boolean focused = searchFocused;
-        boolean hover   = searchBarHit(mx, my);
-        float lift = focused ? 1.0f : (hover ? 0.45f : 0.0f);
-
-        Glass.pill(nvg, barX, barY, SEARCH_W, SEARCH_H, th, lift);
-        Glass.caustic(nvg, barX + 2.0f, barY + 2.0f, SEARCH_W - 4.0f, SEARCH_H - 4.0f, 11.0f, 1.0f);
-
-        float iconCX = barX + 19.0f, iconCY = barY + SEARCH_H / 2.0f - 1.0f;
-        nvg.circleOutline(iconCX, iconCY, 4.5f, 1.5f, th.textMuted());
-        nvg.line(iconCX + 3.3f, iconCY + 3.2f, iconCX + 6.4f, iconCY + 6.3f, 1.5f, th.textMuted());
-
-        float textX = barX + 37.0f, textY = barY + SEARCH_H / 2.0f;
-        if (search.isEmpty() && !focused) {
-            nvg.text("Search modules...", textX, textY, 13.0f, th.textDisabled());
-        } else {
-            float textW = nvg.text(search.toString(), textX, textY, 13.0f, th.textPrimary());
-            if (focused && System.nanoTime() / 400_000_000L % 2L == 0L)
-                nvg.rect(textX + textW + 2.0f, textY - 7.0f, 1.4f, 14.0f, 0.7f, th.accentBright());
-        }
-        if (!search.isEmpty())
-            nvg.cross(barX + SEARCH_W - 22.0f, textY - 5.5f, 11.0f, 1.5f, th.textMuted());
+    /** Buttons are right-aligned, so the row reads Stats, Configs, Themes. */
+    private float buttonX(float sw, int index) {
+        float right = BAR_X + barW(sw) - BAR_PAD;
+        float first = right - (PILL_W * 3.0f + PILL_GAP * 2.0f);
+        return first + index * (PILL_W + PILL_GAP);
     }
 
-    private float pillBarX(float sw) { return (sw - (PILL_W * 3.0f + PILL_GAP * 2.0f)) / 2.0f; }
-    private float pillBarY(float sh) { return sh - PILL_H - PILL_MARGIN_B; }
-
-    private void renderPillBar(NVGRenderer nvg, float mx, float my, float sw, float sh) {
+    /**
+     * Title, search and the three buttons, on one strip.
+     *
+     * The order left to right is what you reach for in that order: what the
+     * client is, what you are looking for, and then the three panes you open
+     * occasionally. Putting the buttons hard right keeps them clear of the
+     * search field as the window narrows.
+     */
+    private void renderTopBar(NVGRenderer nvg, float mx, float my, float sw) {
         Theme th = theme();
-        float x0 = pillBarX(sw);
-        float y  = pillBarY(sh);
+        Surface.card(nvg, BAR_X, BAR_Y, barW(sw), BAR_H, Surface.RADIUS, th, 0.0f);
+
+        // ── wordmark ─────────────────────────────────────────────────────────
+        float titleX = BAR_X + BAR_PAD;
+        nvg.rect(titleX, barMidY() - 8.0f, 3.0f, 16.0f, 1.5f, th.accent());
+        nvg.text("KRYPTIC", titleX + 10.0f, barMidY(), 14.0f, th.textPrimary());
+
+        // ── search ───────────────────────────────────────────────────────────
+        float sx = searchX(sw), sy = searchY();
+        boolean focused = searchFocused;
+        float lift = focused ? 1.0f : (searchBarHit(mx, my) ? 0.45f : 0.0f);
+        Surface.button(nvg, sx, sy, SEARCH_W, SEARCH_H, th, lift);
+
+        float iconCX = sx + 16.0f, iconCY = sy + SEARCH_H / 2.0f - 1.0f;
+        nvg.circleOutline(iconCX, iconCY, 4.0f, 1.4f, th.textMuted());
+        nvg.line(iconCX + 3.0f, iconCY + 2.9f, iconCX + 5.8f, iconCY + 5.7f, 1.4f, th.textMuted());
+
+        float textX = sx + 30.0f, textY = sy + SEARCH_H / 2.0f;
+        if (search.isEmpty() && !focused) {
+            nvg.text("Search", textX, textY, 12.5f, th.textDisabled());
+        } else {
+            float tw = nvg.textTruncated(search.toString(), textX, textY, 12.5f,
+                    th.textPrimary(), SEARCH_W - 52.0f);
+            if (focused && System.nanoTime() / 400_000_000L % 2L == 0L) {
+                nvg.rect(textX + tw + 2.0f, textY - 6.0f, 1.4f, 12.0f, 0.7f, th.accentBright());
+            }
+        }
+        if (!search.isEmpty()) {
+            nvg.cross(sx + SEARCH_W - 19.0f, textY - 5.0f, 10.0f, 1.4f, th.textMuted());
+        }
+
+        // ── the three panes ──────────────────────────────────────────────────
+        boolean stActive = statsHit(mx, my) || statsOpen;
+        if (stActive != statsHovered) { statsHovered = stActive; if (stActive) UiSounds.hover(); }
+        float x0 = buttonX(sw, 0);
+        button(nvg, th, x0, "Stats", stActive);
+        // three ascending bars, shortest first, so the icon reads as a chart
+        float base = buttonY() + PILL_H / 2.0f + 5.0f;
+        for (int i = 0; i < 3; i++) {
+            float bh = 3.0f + i * 3.5f;
+            nvg.rect(x0 + 13.0f + i * 4.5f, base - bh, 2.5f, bh, 1.2f,
+                    stActive ? th.accentBright() : th.accent());
+        }
 
         boolean cfgActive = configHit(mx, my) || configPanel.isOpen();
         if (cfgActive != configHovered) { configHovered = cfgActive; if (cfgActive) UiSounds.hover(); }
-        Glass.pill(nvg, x0, y, PILL_W, PILL_H, th, cfgActive ? 1.0f : 0.0f);
-        float iconX = x0 + 16.0f, iconY = y + PILL_H / 2.0f - 6.0f;
-        nvg.rect(iconX + 3.0f, iconY + 3.0f, 11.0f, 9.0f, 2.5f, Colors.withAlpha(th.accent(), 0.45f));
-        nvg.rect(iconX, iconY, 11.0f, 9.0f, 2.5f, cfgActive ? th.accentBright() : th.accent());
-        nvg.text("Configs", x0 + 36.0f, y + PILL_H / 2.0f, 13.5f,
-                cfgActive ? th.textPrimary() : th.textMuted());
+        float x1 = buttonX(sw, 1);
+        button(nvg, th, x1, "Configs", cfgActive);
+        float iconY = buttonY() + PILL_H / 2.0f - 5.0f;
+        nvg.rect(x1 + 15.0f, iconY + 2.5f, 9.0f, 7.5f, 2.0f, Colors.withAlpha(th.accent(), 0.45f));
+        nvg.rect(x1 + 13.0f, iconY, 9.0f, 7.5f, 2.0f, cfgActive ? th.accentBright() : th.accent());
 
-        float x1 = x0 + PILL_W + PILL_GAP;
         boolean thActive = themesHit(mx, my) || themesOpen;
         if (thActive != themesHovered) { themesHovered = thActive; if (thActive) UiSounds.hover(); }
-        Glass.pill(nvg, x1, y, PILL_W, PILL_H, th, thActive ? 1.0f : 0.0f);
-        float dotX = x1 + 21.0f, dotY = y + PILL_H / 2.0f;
-        nvg.circle(dotX, dotY, 6.0f, th.accent());
-        nvg.circleOutline(dotX, dotY, 8.0f, 1.2f,
-                Colors.withAlpha(th.accentBright(), thActive ? 0.9f : 0.45f));
-        nvg.text("Themes", x1 + 36.0f, y + PILL_H / 2.0f, 13.5f,
-                thActive ? th.textPrimary() : th.textMuted());
+        float x2 = buttonX(sw, 2);
+        button(nvg, th, x2, "Themes", thActive);
+        float dotX = x2 + 17.0f, dotY = buttonY() + PILL_H / 2.0f;
+        nvg.circle(dotX, dotY, 5.0f, th.accent());
+        nvg.circleOutline(dotX, dotY, 6.8f, 1.1f,
+                Colors.withAlpha(th.accentBright(), thActive ? 0.9f : 0.4f));
+    }
 
-        float x2 = x1 + PILL_W + PILL_GAP;
-        boolean stActive = statsHit(mx, my) || statsOpen;
-        if (stActive != statsHovered) { statsHovered = stActive; if (stActive) UiSounds.hover(); }
-        Glass.pill(nvg, x2, y, PILL_W, PILL_H, th, stActive ? 1.0f : 0.0f);
-        // three ascending bars, the shortest first, so the icon reads as a chart
-        float barX = x2 + 16.0f, barBase = y + PILL_H / 2.0f + 6.0f;
-        for (int i = 0; i < 3; i++) {
-            float barH = 4.0f + i * 4.0f;
-            nvg.rect(barX + i * 5.0f, barBase - barH, 3.0f, barH, 1.5f,
-                    stActive ? th.accentBright() : th.accent());
-        }
-        nvg.text("Stats", x2 + 36.0f, y + PILL_H / 2.0f, 13.5f,
-                stActive ? th.textPrimary() : th.textMuted());
+    /** One bar button: the surface and its label. The icon is drawn by the caller. */
+    private void button(NVGRenderer nvg, Theme th, float x, String label, boolean active) {
+        Surface.button(nvg, x, buttonY(), PILL_W, PILL_H, th, active ? 1.0f : 0.0f);
+        nvg.text(label, x + 29.0f, buttonY() + PILL_H / 2.0f, 12.5f,
+                active ? th.textPrimary() : th.textMuted());
     }
 
     private void renderHint(NVGRenderer nvg, float sw, float sh) {
@@ -322,34 +354,26 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
     // ── hit tests ─────────────────────────────────────────────────────────────
 
-    private boolean configHit(float mx, float my) {
-        float x0 = pillBarX(OverlayRenderer.uiWidth());
-        float y  = pillBarY(OverlayRenderer.uiHeight());
-        return mx >= x0 && mx <= x0 + PILL_W && my >= y && my <= y + PILL_H;
+    /** All three buttons share one row, so only the x differs. */
+    private boolean buttonHit(float mx, float my, int index) {
+        float x = buttonX(OverlayRenderer.uiWidth(), index);
+        float y = buttonY();
+        return mx >= x && mx <= x + PILL_W && my >= y && my <= y + PILL_H;
     }
 
-    private boolean themesHit(float mx, float my) {
-        float x1 = pillBarX(OverlayRenderer.uiWidth()) + PILL_W + PILL_GAP;
-        float y  = pillBarY(OverlayRenderer.uiHeight());
-        return mx >= x1 && mx <= x1 + PILL_W && my >= y && my <= y + PILL_H;
-    }
-
-    private boolean statsHit(float mx, float my) {
-        float x2 = pillBarX(OverlayRenderer.uiWidth()) + (PILL_W + PILL_GAP) * 2.0f;
-        float y  = pillBarY(OverlayRenderer.uiHeight());
-        return mx >= x2 && mx <= x2 + PILL_W && my >= y && my <= y + PILL_H;
-    }
+    private boolean statsHit(float mx, float my)   { return buttonHit(mx, my, 0); }
+    private boolean configHit(float mx, float my)  { return buttonHit(mx, my, 1); }
+    private boolean themesHit(float mx, float my)  { return buttonHit(mx, my, 2); }
 
     private boolean searchBarHit(float mx, float my) {
-        float barX = searchX(OverlayRenderer.uiWidth());
-        return mx >= barX && mx <= barX + SEARCH_W && my >= SEARCH_Y && my <= SEARCH_Y + SEARCH_H;
+        float x = searchX(OverlayRenderer.uiWidth()), y = searchY();
+        return mx >= x && mx <= x + SEARCH_W && my >= y && my <= y + SEARCH_H;
     }
 
     private boolean searchClearHit(float mx, float my) {
-        float barX   = searchX(OverlayRenderer.uiWidth());
-        float clearX = barX + SEARCH_W - 26.0f;
-        float midY   = SEARCH_Y + SEARCH_H / 2.0f;
-        return mx >= clearX && mx <= clearX + 20.0f && my >= midY - 10.0f && my <= midY + 10.0f;
+        float clearX = searchX(OverlayRenderer.uiWidth()) + SEARCH_W - 26.0f;
+        float midY   = searchY() + SEARCH_H / 2.0f;
+        return mx >= clearX && mx <= clearX + 20.0f && my >= midY - 9.0f && my <= midY + 9.0f;
     }
 
     private float uiX(double v) { return OverlayRenderer.guiToUi(v); }

@@ -48,7 +48,9 @@ public class CategoryPanel extends Panel {
         this.category = category;
         this.modules = modules;
         for (Module m : modules.inCategory(category)) {
-            entries.add(new ModuleEntry(m, themes, state));
+            ModuleEntry entry = new ModuleEntry(m, themes, state);
+            entry.setExpandListener(this::onEntryExpanded);
+            entries.add(entry);
         }
         this.orderStamp = modules.orderStamp();
     }
@@ -90,6 +92,36 @@ public class CategoryPanel extends Panel {
                 .filter(e -> e.getModule().getName().toLowerCase(Locale.ROOT).contains(filter)
                           || e.getModule().getDescription().toLowerCase(Locale.ROOT).contains(filter))
                 .toList();
+    }
+
+    /**
+     * One drawer open per column, scrolled to the top.
+     *
+     * Two modules expanded at once split the column between them and neither
+     * gets enough room, and a drawer opened near the bottom runs off the end.
+     * Closing the others and scrolling this row to the top gives the settings
+     * the whole column, which is the only way a module with a dozen of them is
+     * readable without scrolling past its neighbours.
+     */
+    private void onEntryExpanded(ModuleEntry opened) {
+        for (ModuleEntry e : entries) {
+            if (e != opened && e.isExpanded()) e.collapse();
+        }
+        scrollTo(offsetOf(opened));
+    }
+
+    /**
+     * How far down the content a row starts, measured with every other drawer
+     * already shut — which is the state the column is in by the time it draws.
+     */
+    private float offsetOf(ModuleEntry target) {
+        NVGRenderer nvg = NVGRenderer.get();
+        float y = 0.0f;
+        for (ModuleEntry e : visibleEntries()) {
+            if (e == target) return y;
+            y += e.targetHeight(nvg) + ENTRY_GAP;
+        }
+        return 0.0f;
     }
 
     // ── Panel contract ────────────────────────────────────────────────────────

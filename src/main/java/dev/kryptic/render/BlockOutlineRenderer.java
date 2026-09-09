@@ -44,7 +44,7 @@ public final class BlockOutlineRenderer {
         List<Box> boxes = shapeOf(client, state, pos);
         if (boxes.isEmpty()) return;
 
-        float phase = Glass.phase(2.4f / module.speedScale());
+        float phase = Surface.phase(2.4f / module.speedScale());
         int rgb = module.currentRgb();
         float energy = animationEnergy(module, phase);
 

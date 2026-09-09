@@ -10,14 +10,13 @@ import dev.kryptic.settings.SliderSetting;
 import dev.kryptic.util.Colors;
 
 public class CustomCrosshairModule extends Module {
-   private static final int HOT_PINK = -49508;
    public final ModeSetting style = this.addSetting(
       new ModeSetting("Style", "Crosshair shape", "Cross", "Dot", "Cross", "Circle", "T-Shape", "Brackets", "Chevron", "Kryptic")
    );
    public final SliderSetting size = this.addSetting(new SliderSetting("Size", "Overall crosshair size", 7.0, 2.0, 24.0, 1.0, "px"));
    public final SliderSetting thickness = this.addSetting(new SliderSetting("Thickness", "Line / dot thickness", 2.0, 1.0, 6.0, 0.5, "px"));
    public final SliderSetting gap = this.addSetting(new SliderSetting("Center Gap", "Center gap for line styles", 3.0, 0.0, 12.0, 1.0, "px"));
-   public final ColorSetting color = this.addSetting(new ColorSetting("Color", "Crosshair color", -49508));
+   public final ColorSetting color = this.addSetting(new ColorSetting("Color", "Crosshair color", -678620));
    public final BooleanSetting rainbow = this.addSetting(new BooleanSetting("Rainbow", "Cycle through the rainbow", false));
    public final BooleanSetting centerDot = this.addSetting(new BooleanSetting("Center Dot", "Add a filled dot at the very center", false));
    public final BooleanSetting outline = this.addSetting(new BooleanSetting("Outline", "Dark border for contrast on any background", true));
@@ -144,11 +143,31 @@ public class CustomCrosshairModule extends Module {
       nVGRenderer.line(f + f7, f6 + f7, f + f7, f6 + f7 - f8, f9, n);
    }
 
-   private void logo(NVGRenderer nVGRenderer, float f, float f7, float f8, int n) {
-      float f9 = f8 * 2.4F;
-      float f10 = nVGRenderer.textWidth("67", f9);
-      float f11 = f - f10 / 2.0F;
-      nVGRenderer.textGlow("67", f11, f7, f9, Colors.withAlpha(-49508, 0.6F));
-      nVGRenderer.text("67", f11, f7, f9, n);
+   /**
+    * The client's own mark, as a crosshair.
+    *
+    * This drew the literal text "67" -- the name of the client this one was
+    * decompiled from -- in hot pink, in the middle of the screen, on a style
+    * named after Kryptic. A K, drawn as strokes rather than set in a typeface,
+    * so it reads the same whichever font is active.
+    */
+   private void logo(NVGRenderer nvg, float cx, float cy, float size, int colour) {
+      float h = size * 2.0F;                 // full height of the letter
+      float w = h * 0.62F;
+      float t = Math.max(1.4F, size * 0.42F);  // stroke weight
+      float left = cx - w / 2.0F;
+      float top = cy - h / 2.0F;
+      float bot = cy + h / 2.0F;
+      int glow = Colors.withAlpha(colour, 0.45F);
+
+      // drawn twice: a soft pass under a solid one, so it stays visible
+      // against both a bright sky and a dark cave
+      for (int pass = 0; pass < 2; pass++) {
+         int c = pass == 0 ? glow : colour;
+         float weight = pass == 0 ? t * 2.2F : t;
+         nvg.line(left, top, left, bot, weight, c);                    // stem
+         nvg.line(left + t * 0.6F, cy, left + w, top, weight, c);      // upper arm
+         nvg.line(left + t * 0.6F, cy, left + w, bot, weight, c);      // lower leg
+      }
    }
 }

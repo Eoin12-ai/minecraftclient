@@ -179,6 +179,7 @@ public class ConfigManager {
          Map.entry("Motion Blur/Blur Amount", "Rusdofui"),
          Map.entry("Spawner Nametags/Highlight Box", "1C0"),
          Map.entry("HUD/Module List", "ArrayList"),
+         Map.entry("HUD/Style", "Style"),
          Map.entry("HUD/List Follows Theme", "List Theme Sync"),
          Map.entry("HUD/Color Coded Numbers", "Colour Readouts"),
          Map.entry("HUD/Speed", "Meter: Speed"),

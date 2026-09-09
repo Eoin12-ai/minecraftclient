@@ -23,8 +23,8 @@ public class HudModule extends Module {
    public final SliderSetting scale = this.addSetting(new SliderSetting(
          "Scale", "Size of every HUD element at once, on top of each one's own size", 1.0, 0.5, 3.0, 0.05, "x"));
    public final ModeSetting style = this.addSetting(new ModeSetting(
-         "Style", "Panel material — Flat is the plain pill, Glass is the menu's frosted material",
-         "Glass", "Flat", "Glass"));
+         "Style", "Panel backing \u2014 Card matches the menu, Flat is a plain fill",
+         "Card", "Card", "Flat"));
    public final BooleanSetting meters = this.addSetting(new BooleanSetting("Meters", "A card of extra readouts, stacked and self-sizing", true));
    public final BooleanSetting meterSpeed = this.addSetting(new BooleanSetting("Speed", "Horizontal blocks per second", true));
    public final BooleanSetting meterBiome = this.addSetting(new BooleanSetting("Biome", "Biome you are standing in", true));
@@ -34,7 +34,7 @@ public class HudModule extends Module {
    public final BooleanSetting meterPortal = this.addSetting(new BooleanSetting("Portal Coords", "Your coordinates in the other dimension", true));
    public final BooleanSetting colourCode = this.addSetting(new BooleanSetting("Color Coded Numbers", "Tint the FPS and ping numbers by how good they are", true));
    public final BooleanSetting themeSync = this.addSetting(new BooleanSetting("List Follows Theme", "ArrayList follows the theme color", true));
-   public final ColorSetting listColor = this.addSetting(new ColorSetting("List Color", "ArrayList color when Theme Sync is off", -49508));
+   public final ColorSetting listColor = this.addSetting(new ColorSetting("List Color", "Module list color when List Follows Theme is off", -678620));
    public final SliderSetting radarRange = this.addSetting(new SliderSetting("Radar Range", "Scan radius in blocks", 48.0, 16.0, 128.0, 4.0, "m"));
    public final BooleanSetting radarHeads = this.addSetting(new BooleanSetting("Radar Heads", "Skin faces instead of dots", true));
    public final BooleanSetting notifications = this.addSetting(
