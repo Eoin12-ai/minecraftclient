@@ -1,0 +1,6 @@
+{
+  "classes": [
+    "dev.kryptic.secured.AimAssistLogic",
+    "dev.kryptic.secured.SecuredFeature"
+  ]
+}
