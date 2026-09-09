@@ -89,3 +89,44 @@ tasks.register('checkMixinDescriptors') {
 }
 
 tasks.named('check') { dependsOn 'checkMixinDescriptors' }
+
+/**
+ * Fails the build if the Mixin we compile against declares a singular-in-runtime
+ * annotation member as an array.
+ *
+ * @Redirect, @ModifyArg, @ModifyArgs and @ModifyVariable take one @At. When the
+ * Mixin on the compile classpath declares at() as At[] instead, javac silently
+ * auto-wraps `at = @At(...)` into `at = [@At(...)]` -- legal Java, compiles
+ * clean, and then MixinExtras casts that attribute to a single AnnotationNode
+ * at apply time and throws ClassCastException. The client dies before the
+ * window opens and the stack trace names neither the mixin nor the mod.
+ *
+ * Checking the classpath rather than our source is the point: our source was
+ * correct both times. What was wrong was what it compiled against.
+ */
+tasks.register('checkMixinAnnotationShape') {
+    dependsOn 'remapJar'
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, (ClassLoader) null)
+        def bad = []
+        ['Redirect', 'ModifyArg', 'ModifyArgs', 'ModifyVariable'].each { name ->
+            try {
+                def type = cl.loadClass("org.spongepowered.asm.mixin.injection.${name}")
+                        .getMethod('at').returnType
+                if (type.isArray()) bad << "@${name}.at() is ${type.simpleName}"
+            } catch (Throwable t) {
+                logger.warn("could not inspect @${name}: ${t}")
+            }
+        }
+        if (bad) {
+            throw new GradleException(
+                "Mixin on the compile classpath has array-valued at(): " + bad.join(', ')
+                + ". Building against this produces at=[@At(...)] on injectors that take a "
+                + "single @At, which MixinExtras rejects at apply time. Pin loader_version "
+                + "to a release whose Mixin declares these singular.")
+        }
+    }
+}
+
+tasks.named('check') { dependsOn 'checkMixinAnnotationShape' }
