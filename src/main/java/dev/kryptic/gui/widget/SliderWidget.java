@@ -22,7 +22,7 @@ import dev.kryptic.util.UiSounds;
  */
 public class SliderWidget extends SettingWidget {
 
-   public static final float HEIGHT = 29.0F;
+   public static final float HEIGHT = 32.0F;
 
    private static final float TRACK_H = 4.0F;
    private static final float KNOB_W = 4.0F;
@@ -75,7 +75,9 @@ public class SliderWidget extends SettingWidget {
             this.dragging ? theme.accentBright() : theme.textPrimary());
 
       // ── the track ─────────────────────────────────────────────────────────
-      float trackY = this.y + HEIGHT - 9.0F - TRACK_H / 2.0F;
+      // the label needs clearance: a descender on 'Layer Height' was
+      // landing on the track at the old spacing
+      float trackY = this.y + HEIGHT - 8.0F - TRACK_H / 2.0F;
       nvg.rect(this.x, trackY, this.width, TRACK_H, TRACK_H / 2.0F,
             Colors.withAlpha(0xFF000000, 0.5F));
 
@@ -96,7 +98,7 @@ public class SliderWidget extends SettingWidget {
    public boolean mouseClicked(float mouseX, float mouseY, int button) {
       // the top strip belongs to the label and the chip, so a click there does
       // not yank the value to wherever the pointer happened to be
-      if (button == 0 && this.contains(mouseX, mouseY) && mouseY >= this.y + 14.0F) {
+      if (button == 0 && this.contains(mouseX, mouseY) && mouseY >= this.y + 16.0F) {
          this.dragging = true;
          this.applyMouse(mouseX);
          return true;
