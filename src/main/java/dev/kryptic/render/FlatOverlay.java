@@ -61,6 +61,39 @@ public final class FlatOverlay {
         }
     }
 
+    /**
+     * A vertical quad spanning two heights, for columns and cages.
+     *
+     * The horizontal fill above is invisible edge-on, which is exactly what
+     * happens to a marker on the ground once you are any distance from it.
+     * Walls stay readable from every angle.
+     */
+    public static void wall(Immediate immediate, MatrixStack matrices, Vec3d camera,
+                            double x1, double z1, double x2, double z2,
+                            double yLow, double yHigh, int colorLow, int colorHigh) {
+        VertexConsumer consumer = immediate.getBuffer(FILL);
+        Entry entry = matrices.peek();
+        float fx1 = (float)(x1 - camera.x), fz1 = (float)(z1 - camera.z);
+        float fx2 = (float)(x2 - camera.x), fz2 = (float)(z2 - camera.z);
+        float lo = (float)(yLow - camera.y), hi = (float)(yHigh - camera.y);
+        consumer.vertex(entry, fx1, lo, fz1).color(colorLow);
+        consumer.vertex(entry, fx2, lo, fz2).color(colorLow);
+        consumer.vertex(entry, fx2, hi, fz2).color(colorHigh);
+        consumer.vertex(entry, fx1, hi, fz1).color(colorHigh);
+    }
+
+    /** A vertical line, for the uprights on a cage or a corner bracket. */
+    public static void upright(Immediate immediate, MatrixStack matrices, Vec3d camera,
+                               double x, double z, double yLow, double yHigh, int color) {
+        VertexConsumer consumer = immediate.getBuffer(LINES);
+        Entry entry = matrices.peek();
+        Vector3f normal = new Vector3f(0.0f, 1.0f, 0.0f);
+        consumer.vertex(entry, (float)(x - camera.x), (float)(yLow - camera.y), (float)(z - camera.z))
+            .color(color).normal(entry, normal);
+        consumer.vertex(entry, (float)(x - camera.x), (float)(yHigh - camera.y), (float)(z - camera.z))
+            .color(color).normal(entry, normal);
+    }
+
     /** A small diamond laid flat on the ground, used to pin a point on the map. */
     public static void marker(Immediate immediate, MatrixStack matrices, Vec3d camera,
                               double x, double z, double y, double size, int color) {

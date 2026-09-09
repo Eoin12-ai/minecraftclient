@@ -84,7 +84,11 @@ public final class SusChunkRenderer {
          } else {
             double coord = (double)ChunkPos.getPackedX((Long)entry.getKey()) * 16.0;
             double currentScore = (double)ChunkPos.getPackedZ((Long)entry.getKey()) * 16.0;
-            drawQuad(immediate, matrices, vec, coord, currentScore, coord + 16.0, currentScore + 16.0, d, n, f * chunkFade.tier * chunkFade.alpha, ok ? f5 * chunkFade.alpha : 0.0F);
+            drawMarker(immediate, matrices, vec, susChunkFinderModule,
+                  coord, currentScore, coord + 16.0, currentScore + 16.0, d, n,
+                  f * chunkFade.tier * chunkFade.alpha,
+                  ok ? f5 * chunkFade.alpha : 0.0F,
+                  chunkFade.alpha, chunkFade.tier);
          }
       }
 
@@ -101,18 +105,14 @@ public final class SusChunkRenderer {
             zoneFade.centerZ = zoneFade.centerZ + (zoneFade.targetZ - zoneFade.centerZ) * (double)f7;
             zoneFade.size = zoneFade.size + (zoneFade.targetSize - zoneFade.size) * f7;
             double coord3 = (double)zoneFade.size / 2.0;
-            drawQuad(
-               immediate,
-               matrices,
-               vec,
-               zoneFade.centerX - coord3,
-               zoneFade.centerZ - coord3,
-               zoneFade.centerX + coord3,
-               zoneFade.centerZ + coord3,
-               d,
-               n,
+            drawMarker(
+               immediate, matrices, vec, susChunkFinderModule,
+               zoneFade.centerX - coord3, zoneFade.centerZ - coord3,
+               zoneFade.centerX + coord3, zoneFade.centerZ + coord3,
+               d, n,
                f * zoneFade.tier * zoneFade.alpha,
-               ok ? f5 * zoneFade.alpha : 0.0F
+               ok ? f5 * zoneFade.alpha : 0.0F,
+               zoneFade.alpha, zoneFade.tier
             );
             if (susChunkFinderModule.centroidMarker.get()) {
                FlatOverlay.marker(immediate, matrices, vec, zoneFade.centerX, zoneFade.centerZ, d + 0.05, 2.0, Colors.withAlpha(n, 0.95F * zoneFade.alpha));
@@ -121,6 +121,170 @@ public final class SusChunkRenderer {
       }
 
       FlatOverlay.flush(immediate);
+   }
+
+   /**
+    * Draws one flagged area in whichever style is selected.
+    *
+    * A flat tile on the ground is invisible edge-on, which is the exact
+    * situation you are in whenever a candidate is far away and slightly below
+    * you -- so the default now stands up off the ground instead.
+    *
+    * {@code confidence} is how far past the threshold the evidence went; the
+    * upright styles spend it on height, so a stronger candidate is taller as
+    * well as brighter and can be picked out of a field of weak ones.
+    */
+   private static void drawMarker(
+      Immediate immediate, MatrixStack matrices, Vec3d camera, SusChunkFinderModule module,
+      double x1, double z1, double x2, double z2, double y, int colour,
+      float fillAlpha, float outlineAlpha, float fade, float confidence
+   ) {
+      String style = module.style.get();
+      double tall = module.height.getFloat() * (0.55 + 0.45 * confidence);
+
+      switch (style) {
+         case "Cage" -> drawCage(immediate, matrices, camera, x1, z1, x2, z2, y, tall,
+               colour, fillAlpha, outlineAlpha);
+         case "Corners" -> drawCorners(immediate, matrices, camera, x1, z1, x2, z2, y, tall,
+               colour, Math.max(outlineAlpha, fade * 0.85F));
+         case "Pulse" -> drawPulse(immediate, matrices, camera, x1, z1, x2, z2, y,
+               colour, fillAlpha, fade);
+         case "Flat" -> drawQuad(immediate, matrices, camera, x1, z1, x2, z2, y, colour,
+               fillAlpha, outlineAlpha);
+         default -> drawBeam(immediate, matrices, camera, x1, z1, x2, z2, y, tall,
+               colour, fillAlpha, fade);
+      }
+   }
+
+   /**
+    * A column of light rising out of the chunk, brightest at the base and
+    * fading out at the top. Narrower than the chunk so a cluster of flags
+    * reads as several separate beams rather than one solid wall.
+    */
+   private static void drawBeam(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      double x1, double z1, double x2, double z2, double y, double tall,
+      int colour, float fillAlpha, float fade
+   ) {
+      double cx = (x1 + x2) / 2.0;
+      double cz = (z1 + z2) / 2.0;
+      double half = Math.max(1.5, Math.min(x2 - x1, z2 - z1) * 0.18);
+
+      int low = Colors.withAlpha(Colors.lighten(colour, 0.25F), Math.min(1.0F, fillAlpha * 3.2F));
+      int high = Colors.withAlpha(colour, 0.0F);
+
+      // two crossed walls rather than four sides: a hollow box seen from
+      // outside shows only its far face, which halves the apparent brightness
+      FlatOverlay.wall(immediate, matrices, camera, cx - half, cz, cx + half, cz,
+            y, y + tall, low, high);
+      FlatOverlay.wall(immediate, matrices, camera, cx, cz - half, cx, cz + half,
+            y, y + tall, low, high);
+
+      // a footprint so the beam is anchored to something on the ground
+      FlatOverlay.fillQuad(immediate, matrices, camera, x1, z1, x2, z2, y + 0.02,
+            Colors.withAlpha(colour, fillAlpha * 0.8F));
+      int edge = Colors.withAlpha(Colors.lighten(colour, 0.4F), fade * 0.9F);
+      outlineFloor(immediate, matrices, camera, x1, z1, x2, z2, y + 0.03, edge, 2.5F);
+   }
+
+   /** The chunk as a wireframe volume: floor, ceiling and four uprights. */
+   private static void drawCage(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      double x1, double z1, double x2, double z2, double y, double tall,
+      int colour, float fillAlpha, float outlineAlpha
+   ) {
+      int edge = Colors.withAlpha(colour, Math.max(outlineAlpha, 0.25F));
+      double top = y + tall;
+
+      FlatOverlay.fillQuad(immediate, matrices, camera, x1, z1, x2, z2, y + 0.02,
+            Colors.withAlpha(colour, fillAlpha));
+      outlineFloor(immediate, matrices, camera, x1, z1, x2, z2, y, edge, 2.5F);
+      outlineFloor(immediate, matrices, camera, x1, z1, x2, z2, top, edge, 2.0F);
+      FlatOverlay.upright(immediate, matrices, camera, x1, z1, y, top, edge);
+      FlatOverlay.upright(immediate, matrices, camera, x2, z1, y, top, edge);
+      FlatOverlay.upright(immediate, matrices, camera, x2, z2, y, top, edge);
+      FlatOverlay.upright(immediate, matrices, camera, x1, z2, y, top, edge);
+   }
+
+   /**
+    * Just the corners -- an L bracket on the ground at each one plus a short
+    * upright. Least ink on screen, which matters once a scan has flagged
+    * thirty chunks at once and a solid fill would hide the terrain.
+    */
+   private static void drawCorners(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      double x1, double z1, double x2, double z2, double y, double tall,
+      int colour, float alpha
+   ) {
+      if (alpha <= 0.02F) return;
+      int edge = Colors.withAlpha(Colors.lighten(colour, 0.3F), alpha);
+      double arm = Math.min(4.0, (x2 - x1) * 0.28);
+      double tick = Math.min(tall, 6.0 + tall * 0.08);
+
+      double[][] corners = {
+         {x1, z1,  1,  1}, {x2, z1, -1,  1},
+         {x2, z2, -1, -1}, {x1, z2,  1, -1},
+      };
+      for (double[] c : corners) {
+         double cx = c[0], cz = c[1], sx = c[2], sz = c[3];
+         FlatOverlay.edge(immediate, matrices, camera, cx, cz, cx + arm * sx, cz, y, edge, 3.0F);
+         FlatOverlay.edge(immediate, matrices, camera, cx, cz, cx, cz + arm * sz, y, edge, 3.0F);
+         FlatOverlay.upright(immediate, matrices, camera, cx, cz, y, y + tick, edge);
+      }
+   }
+
+   /**
+    * A ring travelling outward from the centre, on a loop. Motion is the one
+    * thing that reads at the edge of vision, so this is the style to use when
+    * you are sweeping terrain rather than studying one spot.
+    */
+   private static void drawPulse(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      double x1, double z1, double x2, double z2, double y,
+      int colour, float fillAlpha, float fade
+   ) {
+      double cx = (x1 + x2) / 2.0;
+      double cz = (z1 + z2) / 2.0;
+      double maxR = Math.max(x2 - x1, z2 - z1) * 0.72;
+
+      FlatOverlay.fillQuad(immediate, matrices, camera, x1, z1, x2, z2, y + 0.02,
+            Colors.withAlpha(colour, fillAlpha * 0.55F));
+
+      float phase = (float)((System.nanoTime() % 2_000_000_000L) / 2.0e9);
+      for (int ring = 0; ring < 2; ring++) {
+         float t = (phase + ring * 0.5F) % 1.0F;
+         float ringAlpha = (1.0F - t) * fade * 0.95F;
+         if (ringAlpha <= 0.02F) continue;
+         double r = maxR * t;
+         int edge = Colors.withAlpha(Colors.lighten(colour, 0.45F), ringAlpha);
+         ring(immediate, matrices, camera, cx, cz, r, y + 0.05, edge);
+      }
+   }
+
+   private static void ring(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      double cx, double cz, double radius, double y, int colour
+   ) {
+      int segments = 28;
+      double px = cx + radius, pz = cz;
+      for (int i = 1; i <= segments; i++) {
+         double a = i / (double)segments * Math.PI * 2.0;
+         double nx = cx + Math.cos(a) * radius;
+         double nz = cz + Math.sin(a) * radius;
+         FlatOverlay.edge(immediate, matrices, camera, px, pz, nx, nz, y, colour, 2.0F);
+         px = nx;
+         pz = nz;
+      }
+   }
+
+   private static void outlineFloor(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      double x1, double z1, double x2, double z2, double y, int colour, float width
+   ) {
+      FlatOverlay.edge(immediate, matrices, camera, x1, z1, x2, z1, y, colour, width);
+      FlatOverlay.edge(immediate, matrices, camera, x2, z1, x2, z2, y, colour, width);
+      FlatOverlay.edge(immediate, matrices, camera, x2, z2, x1, z2, y, colour, width);
+      FlatOverlay.edge(immediate, matrices, camera, x1, z2, x1, z1, y, colour, width);
    }
 
    private static void drawQuad(

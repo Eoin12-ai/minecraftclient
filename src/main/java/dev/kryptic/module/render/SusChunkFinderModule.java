@@ -22,8 +22,17 @@ public class SusChunkFinderModule extends Module {
    public final BooleanSetting vines = this.addSetting(new BooleanSetting("Vines", "Vines grown far down from their support", true));
    public final BooleanSetting dripstone = this.addSetting(new BooleanSetting("Dripstone", "Dripstone spikes longer than natural generation", true));
    public final SliderSetting scanSpeed = this.addSetting(new SliderSetting("Scan Speed", "Chunks scanned per tick", 10.0, 2.0, 24.0, 1.0));
+   public final ModeSetting style = this.addSetting(
+      new ModeSetting(
+         "Style", "How a flagged chunk is drawn in the world",
+         "Beam", "Beam", "Cage", "Flat", "Corners", "Pulse"
+      )
+   );
+   public final SliderSetting height = this.addSetting(
+      new SliderSetting("Height", "How tall the beam or cage stands", 96.0, 8.0, 320.0, 8.0, "m")
+   );
    public final SliderSetting renderY = this.addSetting(
-      new SliderSetting("Render Y", "Height the flat chunk highlights render at", 100.0, -64.0, 320.0, 1.0)
+      new SliderSetting("Render Y", "Height the marker is anchored at", 100.0, -64.0, 320.0, 1.0)
    );
    public final SliderSetting fillOpacity = this.addSetting(new SliderSetting("Fill Opacity", "Fill opacity of the chunk quads", 90.0, 0.0, 255.0, 1.0));
    public final BooleanSetting outline = this.addSetting(
@@ -37,7 +46,7 @@ public class SusChunkFinderModule extends Module {
    );
    public final SliderSetting mergeRadius = this.addSetting(
       new SliderSetting(
-         "Merge Radius", "Flags within this many chunks merge into one zone", 3.0, 1.0, 8.0, 1.0, "SO "
+         "Merge Radius", "Flags within this many chunks merge into one zone", 3.0, 1.0, 8.0, 1.0, "ch"
       )
    );
    public final BooleanSetting centroidMarker = this.addSetting(
@@ -63,6 +72,15 @@ public class SusChunkFinderModule extends Module {
       SliderSetting sliderSetting = this.outlineOpacity;
       BooleanSetting booleanSetting = this.outline;
       sliderSetting.visibleWhen(booleanSetting::get);
+      // Height only means anything to the styles that stand up off the ground
+      this.height.visibleWhen(() -> this.style.is("Beam") || this.style.is("Cage")
+            || this.style.is("Corners"));
+      this.outline.visibleWhen(() -> this.style.is("Flat") || this.style.is("Cage"));
+   }
+
+   /** True while the selected style draws something standing off the ground. */
+   public boolean isUpright() {
+      return this.style.is("Beam") || this.style.is("Cage") || this.style.is("Corners");
    }
 
    @Override
