@@ -122,7 +122,40 @@ public final class SusChunkRenderer {
          }
       }
 
+      if (susChunkFinderModule.cellEsp.get()) {
+         drawCells(immediate, matrices, vec, susChunkScanner, susChunkFinderModule);
+      }
+
       FlatOverlay.flush(immediate);
+   }
+
+   /**
+    * Boxes the individual amethyst cells behind a flag.
+    *
+    * The chunk marker tells you where to go; this tells you what it found once
+    * you are there. It reads the cells the scan already collected -- no second
+    * pass over the world, and nothing here influences whether a chunk flags.
+    *
+    * Cells are drawn at their real block position rather than at the marker
+    * height, so they sit on the thing itself.
+    */
+   private static void drawCells(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      SusChunkScanner scanner, SusChunkFinderModule module
+   ) {
+      java.util.List<net.minecraft.util.math.BlockPos> cells = scanner.amethystCells();
+      if (cells.isEmpty()) return;
+
+      int base = module.cellColor.get() & 0xFFFFFF;
+      int fill = Colors.withAlpha(base, 0.28F);
+      int line = Colors.withAlpha(Colors.lighten(base, 0.35F), 0.9F);
+
+      for (net.minecraft.util.math.BlockPos pos : cells) {
+         FlatOverlay.box(immediate, matrices, camera,
+               pos.getX(), pos.getY(), pos.getZ(),
+               pos.getX() + 1.0, pos.getY() + 1.0, pos.getZ() + 1.0,
+               fill, line, 1.5F);
+      }
    }
 
    /**

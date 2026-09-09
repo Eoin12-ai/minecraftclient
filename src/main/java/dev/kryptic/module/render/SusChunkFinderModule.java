@@ -35,6 +35,12 @@ public class SusChunkFinderModule extends Module {
    public final BooleanSetting themeColor = this.addSetting(
       new BooleanSetting("Theme Color", "Follow the client theme's accent instead of the colour above", false)
    );
+   public final BooleanSetting cellEsp = this.addSetting(
+      new BooleanSetting("Cell ESP", "Box the individual amethyst cells that triggered the flag", false)
+   );
+   public final ColorSetting cellColor = this.addSetting(
+      new ColorSetting("Cell Color", "Colour of the individual cell boxes", 0xFFA569FF)
+   );
    public final SliderSetting layerThickness = this.addSetting(
       new SliderSetting("Layer Thickness", "How deep the floating slab is", 1.5, 0.2, 8.0, 0.1, "m")
    );
@@ -94,6 +100,7 @@ public class SusChunkFinderModule extends Module {
       this.outline.visibleWhen(() -> this.style.is("Flat") || this.style.is("Cage"));
       this.color.visibleWhen(() -> !this.themeColor.get());
       this.layerThickness.visibleWhen(() -> this.style.is("Layer"));
+      this.cellColor.visibleWhen(this.cellEsp::get);
       this.layerOffset.visibleWhen(this.followPlayer::get);
       // a fixed altitude only means anything when the marker is not tracking you
       this.renderY.visibleWhen(() -> !this.followPlayer.get());

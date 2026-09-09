@@ -33,6 +33,7 @@ import dev.kryptic.module.visuals.CustomAccessoriesModule;
 import dev.kryptic.module.misc.CustomCrosshairModule;
 import dev.kryptic.module.misc.CustomFovModule;
 import dev.kryptic.module.misc.CustomGlintModule;
+import dev.kryptic.module.misc.KeySoundsModule;
 import dev.kryptic.module.render.DebugHoleEspModule;
 import dev.kryptic.module.combat.DoubleAnchorModule;
 import dev.kryptic.module.combat.ElytraSwapModule;
@@ -130,6 +131,7 @@ public class ModuleManager {
    public HitParticlesModule hitParticles;
    public MotionBlurModule motionBlur;
    public CustomGlintModule customGlint;
+   public KeySoundsModule keySounds;
    public CustomAccessoriesModule customAccessories;
    public ChunkBordersModule chunkBorders;
    public TracersModule tracers;
@@ -215,6 +217,7 @@ public class ModuleManager {
       );
       this.register(this.staffList = new StaffListModule());
       this.register(this.customGlint = new CustomGlintModule());
+      this.register(this.keySounds = new KeySoundsModule());
       this.register(this.customFov = new CustomFovModule());
       this.register(this.coordSnapper = new CoordSnapperModule());
       this.register(this.autoWalk = new AutoWalkModule());

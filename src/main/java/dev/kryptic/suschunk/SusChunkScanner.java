@@ -393,6 +393,22 @@ public class SusChunkScanner {
       this.fireAlerts(client);
    }
 
+   /**
+    * Every amethyst cell the current scan has collected.
+    *
+    * Read-only view over what the scan already produced -- no extra detection
+    * work, and nothing here decides whether a chunk is flagged. It exists so
+    * the renderer can show which individual blocks triggered a chunk rather
+    * than only the chunk itself.
+    */
+   public List<BlockPos> amethystCells() {
+      List<BlockPos> out = new ArrayList<>();
+      for (SusChunkScanner.ChunkScore score : this.scores.values()) {
+         out.addAll(score.amethystCells);
+      }
+      return out;
+   }
+
    private List<SusChunkScanner.Zone> clusterGeodes() {
       ArrayList list = new ArrayList();
 

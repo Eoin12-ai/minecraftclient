@@ -21,6 +21,29 @@ public final class UiSoundEvents {
    public static final SoundEvent STARTUP_TIKI = register("startup.tiki");
    public static final SoundEvent STARTUP_67 = register("startup.67");
 
+   // ── mechanical keyboard set ───────────────────────────────────────────────
+   // Thirty-six samples of the same switch. A keyboard never sounds identical
+   // twice, and one looped sample is what makes this kind of effect grating.
+   public static final SoundEvent[] KEYS = registerKeys();
+   public static final SoundEvent KEY_SPACE = register("creamy_keys.space");
+   public static final SoundEvent KEY_ENTER = register("creamy_keys.enter");
+   public static final SoundEvent KEY_BACKSPACE = register("creamy_keys.backspace");
+   public static final SoundEvent KEY_MODIFIER = register("creamy_keys.modifier");
+   // each of these carries several variants; Minecraft picks between them
+   public static final SoundEvent MOUSE_LEFT = register("creamy_keys.mouse_left");
+   public static final SoundEvent MOUSE_RIGHT = register("creamy_keys.mouse_right");
+   public static final SoundEvent MOUSE_MIDDLE = register("creamy_keys.mouse_middle");
+   public static final SoundEvent SCROLL_UP = register("creamy_keys.scroll_up");
+   public static final SoundEvent SCROLL_DOWN = register("creamy_keys.scroll_down");
+
+   private static SoundEvent[] registerKeys() {
+      SoundEvent[] out = new SoundEvent[36];
+      for (int i = 0; i < out.length; i++) {
+         out[i] = register(String.format("creamy_keys.key_%02d", i + 1));
+      }
+      return out;
+   }
+
    private UiSoundEvents() {
    }
 

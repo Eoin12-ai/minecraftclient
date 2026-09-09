@@ -42,6 +42,10 @@ public class MouseHandlerMixin {
    private void kryptic$onButton(long l, MouseInput input, int mouseInputAction, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
       int mouseInputButton = input.button();
+      if (KrypticClient.modules() != null && KrypticClient.modules().keySounds != null) {
+         KrypticClient.modules().keySounds.onMouseButton(mouseInputButton, mouseInputAction);
+      }
+
       if (l == client.getWindow().getHandle()) {
          if (mouseInputAction == 1 && client.currentScreen == null) {
             CpsTracker.onClick(mouseInputButton);
@@ -98,6 +102,10 @@ public class MouseHandlerMixin {
    )
    private void kryptic$onScroll(long l, double coord, double d, CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
+      if (KrypticClient.modules() != null && KrypticClient.modules().keySounds != null) {
+         KrypticClient.modules().keySounds.onScroll(d != 0.0 ? d : coord);
+      }
+
       if (l == client.getWindow().getHandle()
          && client.currentScreen instanceof ChatScreen
          && KrypticClient.hud() != null

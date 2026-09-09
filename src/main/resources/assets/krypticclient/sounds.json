@@ -1,16 +1,313 @@
 {
-	"ui.gui_open": {"sounds": ["krypticclient:ui/gui_open"]},
-	"ui.gui_close": {"sounds": ["krypticclient:ui/gui_close"]},
-	"ui.hover": {"sounds": ["krypticclient:ui/hover"]},
-	"ui.toggle_on": {"sounds": ["krypticclient:ui/toggle_on"]},
-	"ui.toggle_off": {"sounds": ["krypticclient:ui/toggle_off"]},
-	"ui.slider": {"sounds": ["krypticclient:ui/slider"]},
-	"ui.select": {"sounds": ["krypticclient:ui/select"]},
-	"ui.keybind": {"sounds": ["krypticclient:ui/keybind"]},
-	"ui.notify_on": {"sounds": ["krypticclient:ui/notify_on"]},
-	"ui.notify_off": {"sounds": ["krypticclient:ui/notify_off"]},
-	"startup.sad": {"sounds": [{"name": "krypticclient:startup/startup_sad", "stream": true}]},
-	"startup.song": {"sounds": [{"name": "krypticclient:startup/startup_song", "stream": true}]},
-	"startup.tiki": {"sounds": [{"name": "krypticclient:startup/startup_tiki", "stream": true}]},
-	"startup.67": {"sounds": [{"name": "krypticclient:startup/startup_67", "stream": true}]}
+  "ui.gui_open": {
+    "sounds": [
+      "krypticclient:ui/gui_open"
+    ]
+  },
+  "ui.gui_close": {
+    "sounds": [
+      "krypticclient:ui/gui_close"
+    ]
+  },
+  "ui.hover": {
+    "sounds": [
+      "krypticclient:ui/hover"
+    ]
+  },
+  "ui.toggle_on": {
+    "sounds": [
+      "krypticclient:ui/toggle_on"
+    ]
+  },
+  "ui.toggle_off": {
+    "sounds": [
+      "krypticclient:ui/toggle_off"
+    ]
+  },
+  "ui.slider": {
+    "sounds": [
+      "krypticclient:ui/slider"
+    ]
+  },
+  "ui.select": {
+    "sounds": [
+      "krypticclient:ui/select"
+    ]
+  },
+  "ui.keybind": {
+    "sounds": [
+      "krypticclient:ui/keybind"
+    ]
+  },
+  "ui.notify_on": {
+    "sounds": [
+      "krypticclient:ui/notify_on"
+    ]
+  },
+  "ui.notify_off": {
+    "sounds": [
+      "krypticclient:ui/notify_off"
+    ]
+  },
+  "startup.sad": {
+    "sounds": [
+      {
+        "name": "krypticclient:startup/startup_sad",
+        "stream": true
+      }
+    ]
+  },
+  "startup.song": {
+    "sounds": [
+      {
+        "name": "krypticclient:startup/startup_song",
+        "stream": true
+      }
+    ]
+  },
+  "startup.tiki": {
+    "sounds": [
+      {
+        "name": "krypticclient:startup/startup_tiki",
+        "stream": true
+      }
+    ]
+  },
+  "startup.67": {
+    "sounds": [
+      {
+        "name": "krypticclient:startup/startup_67",
+        "stream": true
+      }
+    ]
+  },
+  "creamy_keys.key_01": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_01"
+    ]
+  },
+  "creamy_keys.key_02": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_02"
+    ]
+  },
+  "creamy_keys.key_03": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_03"
+    ]
+  },
+  "creamy_keys.key_04": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_04"
+    ]
+  },
+  "creamy_keys.key_05": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_05"
+    ]
+  },
+  "creamy_keys.key_06": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_06"
+    ]
+  },
+  "creamy_keys.key_07": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_07"
+    ]
+  },
+  "creamy_keys.key_08": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_08"
+    ]
+  },
+  "creamy_keys.key_09": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_09"
+    ]
+  },
+  "creamy_keys.key_10": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_10"
+    ]
+  },
+  "creamy_keys.key_11": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_11"
+    ]
+  },
+  "creamy_keys.key_12": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_12"
+    ]
+  },
+  "creamy_keys.key_13": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_13"
+    ]
+  },
+  "creamy_keys.key_14": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_14"
+    ]
+  },
+  "creamy_keys.key_15": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_15"
+    ]
+  },
+  "creamy_keys.key_16": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_16"
+    ]
+  },
+  "creamy_keys.key_17": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_17"
+    ]
+  },
+  "creamy_keys.key_18": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_18"
+    ]
+  },
+  "creamy_keys.key_19": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_19"
+    ]
+  },
+  "creamy_keys.key_20": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_20"
+    ]
+  },
+  "creamy_keys.key_21": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_21"
+    ]
+  },
+  "creamy_keys.key_22": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_22"
+    ]
+  },
+  "creamy_keys.key_23": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_23"
+    ]
+  },
+  "creamy_keys.key_24": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_24"
+    ]
+  },
+  "creamy_keys.key_25": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_25"
+    ]
+  },
+  "creamy_keys.key_26": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_26"
+    ]
+  },
+  "creamy_keys.key_27": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_27"
+    ]
+  },
+  "creamy_keys.key_28": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_28"
+    ]
+  },
+  "creamy_keys.key_29": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_29"
+    ]
+  },
+  "creamy_keys.key_30": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_30"
+    ]
+  },
+  "creamy_keys.key_31": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_31"
+    ]
+  },
+  "creamy_keys.key_32": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_32"
+    ]
+  },
+  "creamy_keys.key_33": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_33"
+    ]
+  },
+  "creamy_keys.key_34": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_34"
+    ]
+  },
+  "creamy_keys.key_35": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_35"
+    ]
+  },
+  "creamy_keys.key_36": {
+    "sounds": [
+      "krypticclient:creamy_keys/key_36"
+    ]
+  },
+  "creamy_keys.space": {
+    "sounds": [
+      "krypticclient:creamy_keys/space"
+    ]
+  },
+  "creamy_keys.enter": {
+    "sounds": [
+      "krypticclient:creamy_keys/enter"
+    ]
+  },
+  "creamy_keys.backspace": {
+    "sounds": [
+      "krypticclient:creamy_keys/backspace"
+    ]
+  },
+  "creamy_keys.modifier": {
+    "sounds": [
+      "krypticclient:creamy_keys/modifier"
+    ]
+  },
+  "creamy_keys.mouse_left": {
+    "sounds": [
+      "krypticclient:creamy_keys/mouse_left_1",
+      "krypticclient:creamy_keys/mouse_left_2",
+      "krypticclient:creamy_keys/mouse_left_3"
+    ]
+  },
+  "creamy_keys.mouse_right": {
+    "sounds": [
+      "krypticclient:creamy_keys/mouse_right_1",
+      "krypticclient:creamy_keys/mouse_right_2",
+      "krypticclient:creamy_keys/mouse_right_3"
+    ]
+  },
+  "creamy_keys.mouse_middle": {
+    "sounds": [
+      "krypticclient:creamy_keys/mouse_middle"
+    ]
+  },
+  "creamy_keys.scroll_up": {
+    "sounds": [
+      "krypticclient:creamy_keys/scroll_up"
+    ]
+  },
+  "creamy_keys.scroll_down": {
+    "sounds": [
+      "krypticclient:creamy_keys/scroll_down"
+    ]
+  }
 }
