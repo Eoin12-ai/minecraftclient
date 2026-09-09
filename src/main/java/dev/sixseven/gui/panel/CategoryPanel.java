@@ -11,6 +11,7 @@ import dev.sixseven.theme.ThemeManager;
 import dev.sixseven.util.Colors;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -35,6 +36,9 @@ public class CategoryPanel extends Panel {
     private final Category          category;
     private final List<ModuleEntry> entries = new ArrayList<>();
     private       String            filter  = "";
+    private final ModuleManager     modules;
+    /** Order this column was last arranged for; -1 forces the first sync. */
+    private       int               orderStamp = -1;
 
     public CategoryPanel(Category category,
                          ModuleManager modules,
@@ -42,9 +46,35 @@ public class CategoryPanel extends Panel {
                          ClickGuiState state) {
         super(themes, state.panel(category.name()));
         this.category = category;
+        this.modules = modules;
         for (Module m : modules.inCategory(category)) {
             entries.add(new ModuleEntry(m, themes, state));
         }
+        this.orderStamp = modules.orderStamp();
+    }
+
+    /**
+     * Re-arranges this column when the sort order changes underneath it.
+     *
+     * The entries are built once, in the constructor, and a panel outlives the
+     * setting that decides its order — changing Sort with the menu already open
+     * would otherwise do nothing until it was closed and reopened, which is the
+     * one moment you are least likely to be looking at it.
+     *
+     * Entries are reordered rather than rebuilt so each keeps its own state:
+     * which settings are expanded, where it is scrolled to, whether it is
+     * listening for a keybind.
+     */
+    private void syncOrder() {
+        int stamp = modules.orderStamp();
+        if (stamp == orderStamp) return;
+        orderStamp = stamp;
+        List<Module> wanted = modules.inCategory(category);
+        entries.sort(Comparator.comparingInt(e -> {
+            int index = wanted.indexOf(e.getModule());
+            // anything no longer listed sinks to the bottom rather than vanishing
+            return index < 0 ? Integer.MAX_VALUE : index;
+        }));
     }
 
     // ── filter ───────────────────────────────────────────────────────────────
@@ -54,6 +84,7 @@ public class CategoryPanel extends Panel {
     }
 
     private List<ModuleEntry> visibleEntries() {
+        syncOrder();
         if (filter.isEmpty()) return entries;
         return entries.stream()
                 .filter(e -> e.getModule().getName().toLowerCase(Locale.ROOT).contains(filter)

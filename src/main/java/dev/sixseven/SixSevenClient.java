@@ -5,7 +5,6 @@ import dev.sixseven.config.ConfigStore;
 import dev.sixseven.config.ServerConfigs;
 import dev.sixseven.gui.ClickGuiScreen;
 import dev.sixseven.gui.ClickGuiState;
-import dev.sixseven.gui.GambleRiggerOverlay;
 import dev.sixseven.hud.HudManager;
 import dev.sixseven.module.Category;
 import dev.sixseven.module.ModuleManager;
@@ -184,7 +183,6 @@ public class SixSevenClient implements ClientModInitializer {
          if (MinecraftClient.getInstance().currentScreen instanceof NvgDrawable) return;
          OverlayRenderer.render();
       });
-      GambleRiggerOverlay.register();
       spotify.start();
       ClientPlayConnectionEvents.JOIN.register((Join)(arg, freecamModule, arg3) -> {
          clearSusState();

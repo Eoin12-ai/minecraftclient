@@ -5,6 +5,8 @@ import dev.sixseven.settings.ModeSetting;
 import dev.sixseven.settings.Setting;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -12,7 +14,6 @@ import java.util.function.BiConsumer;
 import dev.sixseven.module.combat.AimAssistModule;
 import dev.sixseven.module.combat.AnchorMacroModule;
 import dev.sixseven.module.misc.ArmorTrimHiderModule;
-import dev.sixseven.module.misc.AutoClickerModule;
 import dev.sixseven.module.combat.AutoCrystalModule;
 import dev.sixseven.module.combat.AutoInventoryTotemModule;
 import dev.sixseven.module.combat.AutoTotemModule;
@@ -42,7 +43,6 @@ import dev.sixseven.module.misc.FastUseModule;
 import dev.sixseven.module.misc.FreeLookModule;
 import dev.sixseven.module.misc.FreecamModule;
 import dev.sixseven.module.render.FullbrightModule;
-import dev.sixseven.module.misc.GambleRiggerModule;
 import dev.sixseven.module.combat.HitBoxModule;
 import dev.sixseven.module.visuals.HitParticlesModule;
 import dev.sixseven.module.combat.HoverTotemModule;
@@ -80,6 +80,11 @@ public class ModuleManager {
 
    private final List<Module> modules = new ArrayList<>();
    private final Map<Category, List<Module>> byCategory = new LinkedHashMap<>();
+   /** byCategory reordered for display; rebuilt when the Sort setting changes. */
+   private final Map<Category, List<Module>> displayOrder = new LinkedHashMap<>();
+   private String displayOrderFor = "";
+   /** Bumped whenever the display order is rebuilt, so panels can re-sync. */
+   private int orderStamp;
    public final ClickGuiModule clickGui;
    public final HudModule hud;
    public final SpotifyModule spotify;
@@ -131,7 +136,6 @@ public class ModuleManager {
    public BreadcrumbsModule breadcrumbs;
    public ChunkFinderModule chunkFinder;
    public FreeLookModule freeLook;
-   public AutoClickerModule autoClicker;
    public CoordSnapperModule coordSnapper;
    public RegionMapModule regionMap;
    public ChatMacroModule chatMacro;
@@ -141,7 +145,6 @@ public class ModuleManager {
    public StaffListModule staffList;
    public ArmorTrimHiderModule armorTrimHider;
    public SpawnerProtectModule spawnerProtect;
-   public GambleRiggerModule gambleRigger;
    private Runnable openGuiAction = () -> {
    };
    private BiConsumer<Module, Boolean> toggleListener = (arg, arg2) -> {
@@ -194,7 +197,6 @@ public class ModuleManager {
       this.register(this.nameProtect = new NameProtectModule());
       this.register(this.freecam = new FreecamModule());
       this.register(this.autoTpa = new AutoTpaModule());
-      this.register(this.autoClicker = new AutoClickerModule());
       this.register(this.fastUse = new FastUseModule());
       this.register(this.nameTags = new NameTagsModule());
       this.register(this.fakePay = new FakePayModule());
@@ -219,7 +221,6 @@ public class ModuleManager {
       this.register(this.zoom = new ZoomModule());
       this.register(this.freeLook = new FreeLookModule());
       this.register(this.spawnerProtect = new SpawnerProtectModule());
-      this.register(this.gambleRigger = new GambleRiggerModule());
       this.register(this.blockEsp = new BlockEspModule());
       this.register(this.storageEsp = new StorageEspModule());
       this.register(this.blockEntityEsp = new BlockEntityEspModule());
@@ -241,14 +242,56 @@ public class ModuleManager {
       this.modules.add(module);
       this.byCategory.get(module.getCategory()).add(module);
       module.setToggleCallback(this::notifyToggle);
+      this.displayOrderFor = "";
    }
 
    public List<Module> all() {
       return this.modules;
    }
 
+   /**
+    * The modules of one category, in the order the menu should list them.
+    *
+    * Registration order is whatever the constructor happened to do, which is no
+    * order at all once there are sixty of them. The list is sorted for display
+    * instead, and the registration order is kept intact underneath so "Default"
+    * can still hand it back.
+    *
+    * Rebuilt only when the setting changes: this is called once per column per
+    * frame, and re-sorting five lists sixty times a second to get the same
+    * answer would be a waste.
+    */
    public List<Module> inCategory(Category category) {
-      return this.byCategory.get(category);
+      String mode = this.clickGui == null ? "Default" : this.clickGui.sort.get();
+      if (!mode.equals(this.displayOrderFor)) {
+         this.rebuildDisplayOrder(mode);
+         this.displayOrderFor = mode;
+      }
+      List<Module> ordered = this.displayOrder.get(category);
+      return ordered == null ? this.byCategory.get(category) : ordered;
+   }
+
+   private void rebuildDisplayOrder(String mode) {
+      Comparator<Module> byName = Comparator.comparing(m -> m.getName().toLowerCase(Locale.ROOT));
+      Comparator<Module> order = switch (mode) {
+         case "A-Z" -> byName;
+         case "Z-A" -> byName.reversed();
+         // enabled float to the top, each group still alphabetical inside itself
+         case "Enabled First" -> Comparator.comparing((Module m) -> !m.isEnabled()).thenComparing(byName);
+         default -> null;
+      };
+      this.displayOrder.clear();
+      this.orderStamp++;
+      for (Map.Entry<Category, List<Module>> entry : this.byCategory.entrySet()) {
+         List<Module> copy = new ArrayList<>(entry.getValue());
+         if (order != null) copy.sort(order);
+         this.displayOrder.put(entry.getKey(), copy);
+      }
+   }
+
+   /** Changes whenever inCategory would hand back a different order. */
+   public int orderStamp() {
+      return this.orderStamp;
    }
 
    public void setOpenGuiAction(Runnable runnable) {
@@ -260,6 +303,8 @@ public class ModuleManager {
    }
 
    public void notifyToggle(Module module, boolean value) {
+      // "Enabled First" orders by exactly this, so its cached answer is now stale
+      this.displayOrderFor = "";
       this.toggleListener.accept(module, Boolean.valueOf(value));
    }
 

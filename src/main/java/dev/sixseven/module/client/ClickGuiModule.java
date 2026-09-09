@@ -13,6 +13,10 @@ public class ClickGuiModule extends Module {
          "Font", "GUI typeface — Xuong, a vanilla-style pixel face, or the blocky Ten display face",
          "Xuong", "Xuong", "Vanilla", "Ten"));
 
+   public final ModeSetting sort = this.addSetting(new ModeSetting(
+         "Sort", "Order the modules run in down each column",
+         "A-Z", "A-Z", "Z-A", "Enabled First", "Default"));
+
    public ClickGuiModule() {
       super("ClickGUI", "The Epstein Client menu. In menus, Shift opens it too.", Category.CLIENT);
       this.getKeybind().set(Integer.valueOf(344));
