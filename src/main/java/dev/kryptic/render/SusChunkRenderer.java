@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider.Immediate;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.ChunkPos;
@@ -62,8 +64,8 @@ public final class SusChunkRenderer {
 
    public static void render(Immediate immediate, MatrixStack matrices, Vec3d vec, SusChunkFinderModule susChunkFinderModule) {
       SusChunkScanner susChunkScanner = susChunkFinderModule.scanner;
-      double d = susChunkFinderModule.renderY.get();
-      int n = KrypticClient.themes().current().accent();
+      double d = anchorY(susChunkFinderModule);
+      int n = markerColour(susChunkFinderModule);
       float f = susChunkFinderModule.fillOpacity.getFloat() / 255.0F;
       float f5 = susChunkFinderModule.outlineOpacity.getFloat() / 255.0F;
       boolean ok = susChunkFinderModule.outline.get();
@@ -124,6 +126,38 @@ public final class SusChunkRenderer {
    }
 
    /**
+    * The colour every marker is drawn in.
+    *
+    * This used to be the theme accent with no way to change it, which meant a
+    * flagged chunk was the same colour as the HUD, the menu and every other
+    * highlight on screen. Following the theme is still available, but it is
+    * no longer the only option.
+    */
+   private static int markerColour(SusChunkFinderModule module) {
+      if (module.themeColor.get()) {
+         return KrypticClient.themes().current().accent();
+      }
+      return module.color.get() & 0xFFFFFF;
+   }
+
+   /**
+    * The height the marker is anchored at.
+    *
+    * A fixed altitude is fine on the surface and useless underground: at Y=100
+    * every marker sits far overhead while you are in a cave at Y=-20. Tracking
+    * the player keeps the layer where it can actually be seen, whatever depth
+    * the search takes you to.
+    */
+   private static double anchorY(SusChunkFinderModule module) {
+      if (!module.followPlayer.get()) {
+         return module.renderY.get();
+      }
+      ClientPlayerEntity player = MinecraftClient.getInstance().player;
+      double base = player == null ? module.renderY.get() : player.getY();
+      return base + module.layerOffset.getFloat();
+   }
+
+   /**
     * Draws one flagged area in whichever style is selected.
     *
     * A flat tile on the ground is invisible edge-on, which is the exact
@@ -143,6 +177,8 @@ public final class SusChunkRenderer {
       double tall = module.height.getFloat() * (0.55 + 0.45 * confidence);
 
       switch (style) {
+         case "Layer" -> drawLayer(immediate, matrices, camera, x1, z1, x2, z2, y,
+               module.layerThickness.getFloat(), colour, fillAlpha, fade);
          case "Cage" -> drawCage(immediate, matrices, camera, x1, z1, x2, z2, y, tall,
                colour, fillAlpha, outlineAlpha);
          case "Corners" -> drawCorners(immediate, matrices, camera, x1, z1, x2, z2, y, tall,
@@ -152,8 +188,47 @@ public final class SusChunkRenderer {
          case "Flat" -> drawQuad(immediate, matrices, camera, x1, z1, x2, z2, y, colour,
                fillAlpha, outlineAlpha);
          default -> drawBeam(immediate, matrices, camera, x1, z1, x2, z2, y, tall,
-               colour, fillAlpha, fade);
+               colour, fillAlpha, fade);   // "Beam"
       }
+   }
+
+   /**
+    * A slab floating over the chunk.
+    *
+    * Given real thickness rather than drawn as a single plane: a
+    * zero-thickness quad disappears completely when your eye is level with it,
+    * and a marker that vanishes at one specific pitch is worse than one that
+    * is merely faint. The sides are what you see from level, the faces from
+    * above and below.
+    *
+    * The top face is brighter than the bottom so the slab reads as lit from
+    * above and sits in the world rather than floating on the screen.
+    */
+   private static void drawLayer(
+      Immediate immediate, MatrixStack matrices, Vec3d camera,
+      double x1, double z1, double x2, double z2, double y, double thickness,
+      int colour, float fillAlpha, float fade
+   ) {
+      double half = Math.max(0.05, thickness / 2.0);
+      double lo = y - half;
+      double hi = y + half;
+
+      int top = Colors.withAlpha(Colors.lighten(colour, 0.30F), fillAlpha);
+      int bottom = Colors.withAlpha(colour, fillAlpha * 0.75F);
+      int side = Colors.withAlpha(Colors.lighten(colour, 0.12F), Math.min(1.0F, fillAlpha * 1.6F));
+
+      FlatOverlay.fillQuad(immediate, matrices, camera, x1, z1, x2, z2, hi, top);
+      FlatOverlay.fillQuad(immediate, matrices, camera, x1, z1, x2, z2, lo, bottom);
+
+      FlatOverlay.wall(immediate, matrices, camera, x1, z1, x2, z1, lo, hi, side, side);
+      FlatOverlay.wall(immediate, matrices, camera, x2, z1, x2, z2, lo, hi, side, side);
+      FlatOverlay.wall(immediate, matrices, camera, x2, z2, x1, z2, lo, hi, side, side);
+      FlatOverlay.wall(immediate, matrices, camera, x1, z2, x1, z1, lo, hi, side, side);
+
+      // a crisp edge along the top so the outline of the chunk stays legible
+      // once several slabs overlap
+      int edge = Colors.withAlpha(Colors.lighten(colour, 0.55F), fade * 0.9F);
+      outlineFloor(immediate, matrices, camera, x1, z1, x2, z2, hi + 0.01, edge, 2.5F);
    }
 
    /**

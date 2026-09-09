@@ -3,6 +3,7 @@ package dev.kryptic.module.render;
 import dev.kryptic.module.Category;
 import dev.kryptic.module.Module;
 import dev.kryptic.settings.BooleanSetting;
+import dev.kryptic.settings.ColorSetting;
 import dev.kryptic.settings.SliderSetting;
 import dev.kryptic.settings.ModeSetting;
 import dev.kryptic.render.SusChunkRenderer;
@@ -25,8 +26,23 @@ public class SusChunkFinderModule extends Module {
    public final ModeSetting style = this.addSetting(
       new ModeSetting(
          "Style", "How a flagged chunk is drawn in the world",
-         "Beam", "Beam", "Cage", "Flat", "Corners", "Pulse"
+         "Layer", "Layer", "Beam", "Cage", "Flat", "Corners", "Pulse"
       )
+   );
+   public final ColorSetting color = this.addSetting(
+      new ColorSetting("Color", "Marker colour", 0xFFFF3B30)
+   );
+   public final BooleanSetting themeColor = this.addSetting(
+      new BooleanSetting("Theme Color", "Follow the client theme's accent instead of the colour above", false)
+   );
+   public final SliderSetting layerThickness = this.addSetting(
+      new SliderSetting("Layer Thickness", "How deep the floating slab is", 1.5, 0.2, 8.0, 0.1, "m")
+   );
+   public final BooleanSetting followPlayer = this.addSetting(
+      new BooleanSetting("Follow You", "Float the layer above your own height instead of a fixed Y", true)
+   );
+   public final SliderSetting layerOffset = this.addSetting(
+      new SliderSetting("Layer Height", "How far above you the layer floats", 12.0, -32.0, 96.0, 1.0, "m")
    );
    public final SliderSetting height = this.addSetting(
       new SliderSetting("Height", "How tall the beam or cage stands", 96.0, 8.0, 320.0, 8.0, "m")
@@ -76,6 +92,11 @@ public class SusChunkFinderModule extends Module {
       this.height.visibleWhen(() -> this.style.is("Beam") || this.style.is("Cage")
             || this.style.is("Corners"));
       this.outline.visibleWhen(() -> this.style.is("Flat") || this.style.is("Cage"));
+      this.color.visibleWhen(() -> !this.themeColor.get());
+      this.layerThickness.visibleWhen(() -> this.style.is("Layer"));
+      this.layerOffset.visibleWhen(this.followPlayer::get);
+      // a fixed altitude only means anything when the marker is not tracking you
+      this.renderY.visibleWhen(() -> !this.followPlayer.get());
    }
 
    /** True while the selected style draws something standing off the ground. */
