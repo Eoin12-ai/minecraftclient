@@ -17,7 +17,7 @@ import dev.kryptic.util.Colors;
 public class BlockOutlineModule extends Module {
 
    public final ColorSetting color = this.addSetting(new ColorSetting(
-      "Color", "Outline color", -678620));
+      "Color", "Outline color", -1));
    public final BooleanSetting rainbow = this.addSetting(new BooleanSetting(
       "Rainbow", "Cycle the outline through the rainbow", false));
    public final ModeSetting animation = this.addSetting(new ModeSetting(

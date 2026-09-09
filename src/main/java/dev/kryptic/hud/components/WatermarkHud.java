@@ -1,47 +1,81 @@
 package dev.kryptic.hud.components;
 
 import dev.kryptic.hud.HudComponent;
+import dev.kryptic.hud.HudSurface;
+import dev.kryptic.render.nanovg.NVGImages;
 import dev.kryptic.render.nanovg.NVGRenderer;
 import dev.kryptic.theme.Theme;
 import dev.kryptic.theme.ThemeManager;
 import dev.kryptic.util.Colors;
+import net.minecraft.util.Identifier;
+
 import java.util.function.BooleanSupplier;
 
+/**
+ * The client mark, in the corner.
+ *
+ * It was the word "Kryptic" set in whatever font was active, with a pulsing
+ * glow behind it, a gradient across it and a breathing outline around the
+ * plate — four animations on a static label. A mark that moves constantly stops
+ * reading as a mark and starts reading as an effect, and this one sits on top
+ * of the game for the whole session.
+ *
+ * The mark is drawn as the artwork now, still, on the same card as every other
+ * HUD element.
+ */
 public class WatermarkHud extends HudComponent {
+
+   private static final Identifier LOGO =
+         Identifier.of("krypticclient", "textures/logo.png");
+
+   /** The mark's own proportions, so it is never stretched. */
+   private static final float ASPECT = 319.0f / 512.0f;
+
    private static final float HEIGHT = 30.0F;
-   private static final float PAD = 13.0F;
-   private static final float LOGO_SIZE = 18.0F;
-   private static final float TEXT_SIZE = 14.0F;
+   private static final float PAD = 12.0F;
+   private static final float MARK_H = 15.0F;
+   private static final float TEXT_SIZE = 15.0F;
+
    private final ThemeManager themes;
 
-   public WatermarkHud(ThemeManager themeManager, BooleanSupplier booleanSupplier) {
-      super("watermark", 0.006F, 0.01F, booleanSupplier);
+   public WatermarkHud(ThemeManager themeManager, BooleanSupplier visible) {
+      super("watermark", 0.006F, 0.01F, visible);
       this.themes = themeManager;
    }
 
-   @Override
-   public float measureWidth(NVGRenderer nVGRenderer) {
-      return 13.0F + nVGRenderer.textWidth("Kryptic", 18.0F) + 13.0F;
+   private static float markWidth() {
+      return MARK_H / ASPECT;
    }
 
    @Override
-   public float measureHeight(NVGRenderer nVGRenderer) {
-      return 30.0F;
+   public float measureWidth(NVGRenderer nvg) {
+      int mark = NVGImages.fromResource(LOGO);
+      float inner = mark > 0 ? markWidth() : nvg.textWidth("KRYPTIC", TEXT_SIZE);
+      return PAD + inner + PAD;
    }
 
    @Override
-   public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2, float tickDelta3, float tickDelta4) {
+   public float measureHeight(NVGRenderer nvg) {
+      return HEIGHT;
+   }
+
+   @Override
+   public void render(NVGRenderer nvg, float x, float y, float w, float h) {
       Theme theme = this.themes.current();
-      float f = tickDelta2 + tickDelta4 / 2.0F;
-      float f5 = (float)(0.5 + 0.5 * Math.sin((double)System.nanoTime() / 8.0E8));
-      float f6 = (float)(0.5 + 0.5 * Math.sin((double)System.nanoTime() / 4.8E8));
-      int n = Colors.lerp(theme.accentBright(), theme.accent(), f6);
-      int offset = Colors.lerp(theme.accent(), theme.accentBright(), f6);
-      nVGRenderer.glow(tickDelta, tickDelta2, tickDelta3, tickDelta4, tickDelta4 / 2.0F, 8.0F, Colors.withAlpha(theme.accent(), 0.1F + 0.1F * f5));
-      nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, tickDelta4 / 2.0F, Colors.withAlpha(-15264995, 0.88F), Colors.withAlpha(-15856878, 0.88F), true);
-      nVGRenderer.rectOutline(tickDelta, tickDelta2, tickDelta3, tickDelta4, tickDelta4 / 2.0F, 1.0F, Colors.withAlpha(Colors.lerp(theme.accent(), theme.accentBright(), f5), 0.55F));
-      float f7 = tickDelta + 13.0F;
-      nVGRenderer.textGlow("Kryptic", f7, f, 18.0F, Colors.withAlpha(theme.accent(), 0.45F + 0.3F * f5));
-      nVGRenderer.textGradient("Kryptic", f7, f, 18.0F, n, offset);
+      HudSurface.panel(nvg, x, y, w, h, h / 2.0F, theme);
+
+      float midY = y + h / 2.0F;
+      int mark = NVGImages.fromResource(LOGO);
+      if (mark > 0) {
+         float mw = markWidth();
+         nvg.image(mark, x + (w - mw) / 2.0F, midY - MARK_H / 2.0F, mw, MARK_H, -1);
+         return;
+      }
+
+      // the artwork is an asset; if it will not load the name still has to
+      // appear rather than leaving an empty pill on screen
+      float tw = nvg.textWidth("KRYPTIC", TEXT_SIZE);
+      nvg.text("KRYPTIC", x + (w - tw) / 2.0F, midY, TEXT_SIZE,
+            Colors.withAlpha(theme.textPrimary(), 0.95F));
    }
 }

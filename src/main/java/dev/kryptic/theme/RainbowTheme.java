@@ -4,7 +4,7 @@ import dev.kryptic.util.Colors;
 
 public class RainbowTheme extends Theme {
    public RainbowTheme() {
-      super("Rainbow", -678620, false);
+      super("Rainbow", -1, false);
    }
 
    @Override

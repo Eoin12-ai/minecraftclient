@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThemeManager {
-   /** #F5A524 — the client's own accent, and the default theme. */
-   public static final int AMBER = -678620;
+   /** Plain white — the mark is white, so the client is. */
+   public static final int MONO = -1;
    private final List<Theme> themes = new ArrayList<>();
    private Theme current;
 
    public ThemeManager() {
-      this.themes.add(new Theme("Amber", AMBER, false));
+      this.themes.add(new Theme("Mono", MONO, false));
+      this.themes.add(new Theme("Steel", -3618608, false));    // #C8C8D0
+      this.themes.add(new Theme("Amber", -678620, false));
       this.themes.add(new Theme("Ember", -45715, false));      // was "!I," — decompiler garbage
       this.themes.add(new Theme("Emerald", -12654960, false));
       this.themes.add(new Theme("Ice", -11689985, false));

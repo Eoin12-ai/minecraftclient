@@ -39,58 +39,56 @@ public class Theme {
 
    // ── surfaces ─────────────────────────────────────────────────────────────
    //
-   // Near-black with a warm cast rather than the blue-violet greys this UI
-   // carried before. A violet base tints every neutral toward the accent it
-   // used to have, which is half of why the old look read as one specific
-   // client rather than as a piece of software.
+   // Neutral greys with no cast at all. A tinted base pulls every surface
+   // toward whatever the accent is, which is what made this menu recognisable
+   // as one particular client no matter which colour it was set to.
    //
-   // The panels are opaque now. Translucent bodies over a blurred world meant
-   // every label sat on whatever happened to be behind it, so text contrast
-   // changed as you turned around.
+   // The panels are opaque. Translucent bodies over a blurred world meant text
+   // contrast changed as the player turned around.
 
-   /** #0F0D0A — the card body. */
+   /** #0A0A0B — the card body. */
    public int background() {
-      return -15790838;
+      return -16119285;
    }
 
-   /** #17140F — the same body, a step lighter, for the gradient's far end. */
+   /** #111113 — a step lighter, for the gradient's far end. */
    public int backgroundTo() {
-      return -15264753;
+      return -15658733;
    }
 
-   /** #1C1813 — the column header strip. */
+   /** #17171A — the column header strip. */
    public int headerTop() {
-      return -14936045;
+      return -15263974;
    }
 
    public int headerBottom() {
-      return -15264753;
+      return -15658733;
    }
 
    /**
     * The fill behind an enabled module.
     *
-    * Only a fifth of the way to the accent: a row has an accent bar and an
-    * accent dot already, and a fully saturated fill under bright text is the
-    * thing that makes a long enabled column hard to read.
+    * A fifth of the way to the accent. A row already carries an accent bar and
+    * a dot; a saturated fill under bright text is what makes a long enabled
+    * column hard to read.
     */
    public int moduleActiveFill() {
-      return Colors.withAlpha(Colors.lerp(-15790838, this.accent(), 0.20F), 0.98F);
+      return Colors.withAlpha(Colors.lerp(-16119285, this.accent(), 0.20F), 0.98F);
    }
 
-   /** #F2EDE4 */
+   /** #EDEDEF */
    public int textPrimary() {
-      return -856604;
+      return -1184273;
    }
 
-   /** #A79C8A */
+   /** #8E8E96 */
    public int textMuted() {
-      return -5792630;
+      return -7434602;
    }
 
-   /** #6E6558 */
+   /** #5A5A62 */
    public int textDisabled() {
-      return -9542312;
+      return -10855838;
    }
 
    public int statusEnabled() {

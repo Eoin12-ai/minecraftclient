@@ -11,6 +11,8 @@ import dev.kryptic.config.ServerConfigs;
 import dev.kryptic.gui.panel.CategoryPanel;
 import dev.kryptic.gui.panel.Panel;
 import dev.kryptic.gui.panel.StatsPanel;
+import dev.kryptic.render.nanovg.NVGImages;
+import net.minecraft.util.Identifier;
 import dev.kryptic.gui.panel.ThemesPanel;
 import dev.kryptic.gui.picker.BlockGridModel;
 import dev.kryptic.gui.picker.IconListGridModel;
@@ -40,16 +42,17 @@ import dev.kryptic.module.client.ClickGuiModule;
 import dev.kryptic.module.client.DiscordPresenceModule;
 
 /**
- * ClickGuiScreen — locked five-column liquid-glass menu.
+ * The module menu: five locked columns under one row of controls.
  *
- * Layout: one full-height column per {@link Category}, five of them, centred as
- * a group and recomputed every frame from the UI size. Columns cannot be
- * dragged or reordered; clicking a header collapses or expands that column and
- * long lists scroll inside their own pane.
+ * One column per {@link Category}, centred as a group and recomputed every
+ * frame from the UI size. Columns cannot be dragged or reordered — the grid is
+ * the layout, not a starting arrangement — and each is as tall as its content
+ * up to the space available, with longer lists scrolling inside their own pane.
  *
- * Chrome: a glass search capsule at the top, and a bottom bar with two glass
- * pills — Configs and Themes. Themes is a floating pane centred over the
- * columns rather than a sixth column, which is what keeps the grid at five.
+ * The controls sit in one row along the top with nothing behind them: the mark,
+ * the search field, and the three panes. Themes, Configs and Stats open as
+ * floating panes over the grid rather than as extra columns, which is what
+ * keeps the count at five.
  *
  * Every surface comes from {@link Surface} so the whole menu is one material.
  */
@@ -62,16 +65,21 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     // The search used to float in the middle of the sky and the three buttons
     // sat in a second bar pinned to the bottom, which put the menu's own
     // controls at two opposite edges with the modules stranded between them.
-    // One strip along the top holds all of it: title, search, buttons. The
-    // columns keep their size and their position, because COL_TOP already
-    // cleared the old floating search.
+    // One row along the top holds all of it, on nothing: the mark, the search,
+    // the three panes. The columns keep their size and position, because
+    // COL_TOP already cleared the old floating search.
+    /** The client mark, drawn in the bar in place of a set wordmark. */
+    private static final Identifier LOGO =
+            Identifier.of("krypticclient", "textures/logo.png");
+    private static final float LOGO_ASPECT   = 319.0f / 512.0f;
+
     private static final float BAR_Y         = 10.0f;
     private static final float BAR_H         = 44.0f;
-    private static final float BAR_PAD       = 14.0f;
 
     private static final float SEARCH_W      = 260.0f;
     private static final float SEARCH_H      = 28.0f;
-    private static final float TITLE_W       = 118.0f;  // room for the wordmark
+    private static final float MARK_W        = 62.0f;   // the KP mark, drawn to scale
+    private static final float MARK_GAP      = 18.0f;
 
     private static final float PILL_W        = 96.0f;
     private static final float PILL_H        = 28.0f;
@@ -223,25 +231,26 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     /**
      * Where each piece of the bar sits, so hit tests and drawing agree.
      *
-     * The bar is exactly as wide as what it holds. Stretched to the window it
-     * had a few hundred pixels of empty card between the search and the
-     * buttons, which is the one thing a strip of controls should never have —
-     * the eye reads the gap as a missing control rather than as spacing.
+     * The row is exactly as wide as what it holds, and there is no plate behind
+     * it. Stretched to the window it had a few hundred pixels of empty card
+     * between the search and the buttons, which is the one thing a strip of
+     * controls should never have — the eye reads that gap as a missing control
+     * rather than as spacing.
      */
     private float barW() {
-        return BAR_PAD + TITLE_W + SEARCH_W + BAR_MID_GAP
-                + PILL_W * 3.0f + PILL_GAP * 2.0f + BAR_PAD;
+        return MARK_W + MARK_GAP + SEARCH_W + BAR_MID_GAP
+                + PILL_W * 3.0f + PILL_GAP * 2.0f;
     }
 
     private float barX(float sw)      { return (sw - barW()) / 2.0f; }
     private float barMidY()           { return BAR_Y + BAR_H / 2.0f; }
-    private float searchX(float sw)   { return barX(sw) + BAR_PAD + TITLE_W; }
+    private float searchX(float sw)   { return barX(sw) + MARK_W + MARK_GAP; }
     private float searchY()           { return barMidY() - SEARCH_H / 2.0f; }
     private float buttonY()           { return barMidY() - PILL_H / 2.0f; }
 
     /** Buttons sit at the right end, so the row reads Stats, Configs, Themes. */
     private float buttonX(float sw, int index) {
-        float first = barX(sw) + barW() - BAR_PAD - (PILL_W * 3.0f + PILL_GAP * 2.0f);
+        float first = barX(sw) + barW() - (PILL_W * 3.0f + PILL_GAP * 2.0f);
         return first + index * (PILL_W + PILL_GAP);
     }
 
@@ -256,12 +265,22 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private void renderTopBar(NVGRenderer nvg, float mx, float my, float sw) {
         Theme th = theme();
         float bx = barX(sw);
-        Surface.card(nvg, bx, BAR_Y, barW(), BAR_H, Surface.RADIUS, th, 0.0f);
 
-        // ── wordmark ─────────────────────────────────────────────────────────
-        float titleX = bx + BAR_PAD;
-        nvg.rect(titleX, barMidY() - 8.0f, 3.0f, 16.0f, 1.5f, th.accent());
-        nvg.text("KRYPTIC", titleX + 10.0f, barMidY(), 14.0f, th.textPrimary());
+        // No plate behind the row. A card here was a slab of black across the
+        // top of the screen holding three things that already have their own
+        // edges — the search field and the buttons are surfaces in their own
+        // right, and the mark needs no backing at all.
+
+        // ── the mark ─────────────────────────────────────────────────────────
+        int mark = NVGImages.fromResource(LOGO);
+        if (mark > 0) {
+            float mh = MARK_W * LOGO_ASPECT;
+            nvg.image(mark, bx, barMidY() - mh / 2.0f, MARK_W, mh, -1);
+        } else {
+            // the mark is an asset; if it will not load, the name still has to
+            // appear rather than leaving a hole where the brand goes
+            nvg.text("KRYPTIC", bx, barMidY(), 15.0f, th.textPrimary());
+        }
 
         // ── search ───────────────────────────────────────────────────────────
         float sx = searchX(sw), sy = searchY();
