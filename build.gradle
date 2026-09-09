@@ -45,3 +45,25 @@ processResources {
         expand 'version': project.version
     }
 }
+
+// TEMPORARY: the name-tag mixin crashes on apply because two parameters are
+// typed Object where Mixin demands the exact types. Reads the real signature
+// off the remapped jar rather than guessing at it.
+tasks.register('apiProbe') {
+    dependsOn 'remapJar'
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, (ClassLoader) null)
+        println "PROBE ==== EntityRenderer methods taking a MatrixStack"
+        try {
+            def er = cl.loadClass('net.minecraft.client.render.entity.EntityRenderer')
+            er.declaredMethods.findAll { m ->
+                m.parameterTypes.any { it.name.contains('MatrixStack') }
+            }.each { m ->
+                println "PROBE   ${m.name}(${m.parameterTypes*.name.join(', ')})"
+            }
+        } catch (Throwable t) {
+            println "PROBE   FAILED ${t}"
+        }
+    }
+}
