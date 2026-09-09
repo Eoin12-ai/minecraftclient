@@ -64,7 +64,7 @@ public class SusChunkFinderModule extends Module {
       new SliderSetting("Outline Opacity", "Border opacity", 200.0, 0.0, 255.0, 1.0)
    );
    public final BooleanSetting smartMode = this.addSetting(
-      new BooleanSetting("Smart Mode", "Merge nearby flags into zones with a centroid marker", true)
+      new BooleanSetting("Merge Into Zones", "Merge nearby flags into zones with a centroid marker", true)
    );
    public final SliderSetting mergeRadius = this.addSetting(
       new SliderSetting(

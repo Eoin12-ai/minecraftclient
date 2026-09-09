@@ -22,24 +22,48 @@ public class KeybindWidget extends SettingWidget {
       return 22.0F;
    }
 
+   /**
+    * The bound key, drawn as a keycap.
+    *
+    * A flat pill looked the same as the value chip on a slider, which made a
+    * keybind read as another readout rather than as something you press. A cap
+    * with a lip under it looks like a key, and while it is listening the lip
+    * goes and the cap sits flush, the way a real key does when it is held down.
+    */
    @Override
-   public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
+   public void render(NVGRenderer nvg, float mouseX, float mouseY) {
       Theme theme = this.theme();
-      float f = this.y + 11.0F;
-      nVGRenderer.text(this.setting.getName(), this.x, f, 12.5F, theme.textMuted());
-      String text2 = this.listening ? "..." : this.setting.keyName();
-      float f7 = Math.max(30.0F, nVGRenderer.textWidth(text2, 11.5F) + 12.0F);
-      float f8 = this.x + this.width - f7;
-      float f9 = 16.0F;
-      float f10 = f - f9 / 2.0F;
-      int n = this.listening ? Colors.withAlpha(theme.accent(), 0.3F) : Colors.withAlpha(-16777216, 0.45F);
-      nVGRenderer.rect(f8, f10, f7, f9, f9 / 2.0F, n);
+      float mid = this.y + HEIGHT / 2.0F;
+      boolean hovered = this.contains(mouseX, mouseY);
+
+      nvg.text(this.setting.getName(), this.x, mid, 12.0F,
+            hovered || this.listening ? theme.textPrimary() : theme.textMuted());
+
+      String label = this.listening ? "press a key" : this.setting.keyName();
+      float fontSize = this.listening ? 10.5F : 11.5F;
+      float capW = Math.max(34.0F, nvg.textWidth(label, fontSize) + 14.0F);
+      float capH = 16.0F;
+      float capX = this.x + this.width - capW;
+      float capY = mid - capH / 2.0F;
+
       if (this.listening) {
-         float f11 = (float)(0.5 + 0.5 * Math.sin((double)System.nanoTime() / 2.2E8));
-         nVGRenderer.rectOutline(f8, f10, f7, f9, f9 / 2.0F, 1.2F, Colors.withAlpha(theme.accentBright(), 0.4F + 0.6F * f11));
+         float pulse = (float)(0.5 + 0.5 * Math.sin(System.nanoTime() / 2.2E8));
+         nvg.rect(capX, capY, capW, capH, 4.5F, Colors.withAlpha(theme.accent(), 0.30F));
+         nvg.rectOutline(capX, capY, capW, capH, 4.5F, 1.2F,
+               Colors.withAlpha(theme.accentBright(), 0.35F + 0.55F * pulse));
+      } else {
+         // the lip: a sliver of darker cap peeking out below, so the face reads
+         // as raised rather than printed on the background
+         nvg.rect(capX, capY + 1.5F, capW, capH, 4.5F, Colors.withAlpha(0xFF000000, 0.55F));
+         nvg.rect(capX, capY, capW, capH - 1.0F, 4.5F,
+               Colors.withAlpha(0xFF2A2636, hovered ? 0.98F : 0.85F));
+         nvg.rectOutline(capX, capY, capW, capH - 1.0F, 4.5F, 1.0F,
+               Colors.withAlpha(theme.accent(), hovered ? 0.55F : 0.22F));
       }
 
-      nVGRenderer.text(text2, f8 + (f7 - nVGRenderer.textWidth(text2, 11.5F)) / 2.0F, f, 11.5F, this.listening ? theme.accentBright() : theme.textPrimary());
+      nvg.text(label, capX + (capW - nvg.textWidth(label, fontSize)) / 2.0F,
+            this.listening ? mid : mid - 0.5F, fontSize,
+            this.listening ? theme.accentBright() : theme.textPrimary());
    }
 
    @Override

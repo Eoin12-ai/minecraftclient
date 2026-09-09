@@ -58,7 +58,6 @@ public final class ModuleOrder {
         "Hit Box",
 
         // ── Misc: the things that keep a clip or a stash safe come first ─────
-        "Spawner Protect",
         "Name Protect",
         "Skin Protect",
         "Staff List",
@@ -70,8 +69,6 @@ public final class ModuleOrder {
         "Custom FOV",
         "Custom Crosshair",
         "Name Tags",
-        "Key Sounds",
-        "Custom Glint",
         "Armor Trim Hider",
         "Fast Use",
         "Auto Walk",
@@ -79,7 +76,6 @@ public final class ModuleOrder {
         "Fake Pay",
         "Fake Stats",
         "Fake Roles",
-        "Media Icons",
         "Stats",
         "Server Configs",
         "Chat Macro",

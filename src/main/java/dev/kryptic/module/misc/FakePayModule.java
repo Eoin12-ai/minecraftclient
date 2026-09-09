@@ -29,7 +29,7 @@ public class FakePayModule extends Module {
    );
    public final BooleanSetting sounds = this.addSetting(new BooleanSetting("Sounds", "Level-up on success, villager 'no' when it fails.", true));
    public final BooleanSetting checkBalance = this.addSetting(new BooleanSetting("Check Balance", "With FakeStats on, refuse pays you can't afford.", true));
-   public final BooleanSetting selfGuard = this.addSetting(new BooleanSetting("Self-Pay Guard", "Block paying your own name, like the real command.", true));
+   public final BooleanSetting selfGuard = this.addSetting(new BooleanSetting("Block Paying Yourself", "Block paying your own name, like the real command.", true));
 
    public FakePayModule() {
       super("Fake Pay", "Fakes a /pay for clips — blocks the real command", Category.MISC);

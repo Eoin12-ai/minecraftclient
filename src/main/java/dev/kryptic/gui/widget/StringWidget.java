@@ -28,7 +28,7 @@ public class StringWidget extends SettingWidget {
    @Override
    public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
       Theme theme = this.theme();
-      nVGRenderer.text(this.setting.getName(), this.x, this.y + 8.0F, 12.5F, theme.textMuted());
+      nVGRenderer.text(this.setting.getName(), this.x, this.y + 8.0F, 12.0F, theme.textMuted());
       float f = this.x;
       float f7 = this.y + 14.0F;
       float f8 = this.width;

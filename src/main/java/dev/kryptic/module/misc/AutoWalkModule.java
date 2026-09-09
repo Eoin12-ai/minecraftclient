@@ -18,7 +18,7 @@ public class AutoWalkModule extends Module {
    );
    public final BooleanSetting disableOnInput = this.addSetting(new BooleanSetting("Disable On Input", "Disable the module on manual movement input.", false));
    public final BooleanSetting disableOnY = this.addSetting(new BooleanSetting("Disable On Y Change", "Disable the module if you move vertically.", false));
-   public final BooleanSetting waitForChunks = this.addSetting(new BooleanSetting("No Unloaded Chunks", "Do not walk into unloaded chunks.", true));
+   public final BooleanSetting waitForChunks = this.addSetting(new BooleanSetting("Stop At Unloaded", "Do not walk into unloaded chunks.", true));
 
    public AutoWalkModule() {
       super("Auto Walk", "Automatically walks forward.", Category.MISC);

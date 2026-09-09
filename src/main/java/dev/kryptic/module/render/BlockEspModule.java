@@ -19,7 +19,7 @@ public class BlockEspModule extends Module {
    public final ColorSetting tracerColor = this.addSetting(new ColorSetting("Default Tracer Tint", "Tracer line color / alpha", 2097217480));
    public final SliderSetting highlightAlpha = this.addSetting(new SliderSetting("Highlight Alpha", "Box opacity", 255.0, 0.0, 255.0, 5.0));
    public final SliderSetting rangeExtraChunks = this.addSetting(
-      new SliderSetting("Range Extra Chunks", "Extra scan radius beyond render distance", 1.0, 0.0, 4.0, 1.0)
+      new SliderSetting("Extra Chunk Radius", "Extra scan radius beyond render distance", 1.0, 0.0, 4.0, 1.0)
    );
 
    public BlockEspModule() {

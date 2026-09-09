@@ -7,7 +7,7 @@ import dev.kryptic.settings.BooleanSetting;
 
 public class SpotifyModule extends Module {
    public final ModeSetting source = this.addSetting(
-      new ModeSetting("Source", "Auto uses the real Spotify session (Windows); Demo shows sample data", "Auto", "Auto", "Demo")
+      new ModeSetting("Track Source", "Auto uses the real Spotify session (Windows); Demo shows sample data", "Auto", "Auto", "Demo")
    );
    public final BooleanSetting controls = this.addSetting(new BooleanSetting("Controls", "Show prev / play / next buttons", true));
    public final BooleanSetting volume = this.addSetting(new BooleanSetting("Volume", "Show a slider for Spotify's app volume (Windows)", true));

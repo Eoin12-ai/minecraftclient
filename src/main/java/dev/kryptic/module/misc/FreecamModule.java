@@ -20,14 +20,14 @@ import net.minecraft.util.math.Vec3d;
 public class FreecamModule extends Module {
    private static FreecamModule instance;
    public final SliderSetting speed = this.addSetting(new SliderSetting("Speed", "Camera fly speed", 1.0, 0.1, 50.0, 0.1, "x"));
-   public final SliderSetting verticalMultiplier = this.addSetting(new SliderSetting("Vertical speed", "Up/down speed multiplier", 1.0, 0.2, 5.0, 0.05, "x"));
+   public final SliderSetting verticalMultiplier = this.addSetting(new SliderSetting("Vertical Speed", "Up/down speed multiplier", 1.0, 0.2, 5.0, 0.05, "x"));
    public final BooleanSetting smoothing = this.addSetting(new BooleanSetting("Smoothing", "Ease camera movement", true));
-   public final BooleanSetting showPlayerModel = this.addSetting(new BooleanSetting("Show own body", "Render your body while detached", true));
-   public final BooleanSetting showHands = this.addSetting(new BooleanSetting("Show hands", "Keep first-person hands visible", true));
-   public final BooleanSetting bodyFollowsKeys = this.addSetting(new BooleanSetting("Body uses movement keys", "Physical WASD also move the body", false));
+   public final BooleanSetting showPlayerModel = this.addSetting(new BooleanSetting("Show Your Body", "Render your body while detached", true));
+   public final BooleanSetting showHands = this.addSetting(new BooleanSetting("Show Hands", "Keep first-person hands visible", true));
+   public final BooleanSetting bodyFollowsKeys = this.addSetting(new BooleanSetting("WASD Moves Body", "Physical WASD also move the body", false));
    public final SliderSetting lookSensitivity = this.addSetting(new SliderSetting("Look Sensitivity", "Camera look sensitivity", 0.5, 0.1, 2.0, 0.05));
    public final SliderSetting freecamChunkDistance = this.addSetting(
-      new SliderSetting("Chunk distance", "Chunks to load around the camera", 12.0, 2.0, 32.0, 1.0)
+      new SliderSetting("Chunk Distance", "Chunks to load around the camera", 12.0, 2.0, 32.0, 1.0)
    );
    private double currentX;
    private double currentY;

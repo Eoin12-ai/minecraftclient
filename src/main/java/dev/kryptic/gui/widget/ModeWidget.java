@@ -4,17 +4,34 @@ import dev.kryptic.render.nanovg.NVGRenderer;
 import dev.kryptic.settings.ModeSetting;
 import dev.kryptic.theme.Theme;
 import dev.kryptic.theme.ThemeManager;
+import dev.kryptic.util.Colors;
 import dev.kryptic.util.UiSounds;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The options as chips.
+ *
+ * They used to be bare words separated by ten pixels of nothing, with the
+ * selected one tinted. That gives no hit target — you aim at a word and hope —
+ * and on a long list of options it reads as a sentence rather than a set of
+ * choices. A chip has an edge, so it is obvious what is clickable, obvious
+ * where one option ends and the next begins, and obvious which is selected
+ * without depending on colour alone.
+ */
 public class ModeWidget extends SettingWidget {
-   private static final float LINE_HEIGHT = 16.0F;
-   private static final float FONT_SIZE = 12.5F;
-   private static final float GAP = 10.0F;
+
+   private static final float FONT_SIZE = 11.5F;
+   private static final float CHIP_H = 17.0F;
+   private static final float CHIP_PAD = 8.0F;
+   private static final float CHIP_GAP = 4.0F;
+   private static final float ROW_GAP = 4.0F;
+   private static final float LABEL_H = 17.0F;
+
    private final ModeSetting setting;
    private final List<float[]> optionBounds = new ArrayList<>();
-   private int lines = 1;
+   private int rows = 1;
 
    public ModeWidget(ThemeManager themeManager, ModeSetting modeSetting) {
       super(themeManager, modeSetting);
@@ -23,56 +40,69 @@ public class ModeWidget extends SettingWidget {
 
    @Override
    public float height(NVGRenderer nVGRenderer) {
-      return 17.0F + (float)this.lines * 16.0F + 3.0F;
+      return LABEL_H + this.rows * CHIP_H + (this.rows - 1) * ROW_GAP + 4.0F;
    }
 
    @Override
-   public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
+   public void render(NVGRenderer nvg, float mouseX, float mouseY) {
       Theme theme = this.theme();
-      nVGRenderer.text(this.setting.getName(), this.x, this.y + 8.0F, 12.5F, theme.textMuted());
+      nvg.text(this.setting.getName(), this.x, this.y + 8.0F, 12.0F, theme.textMuted());
+
       this.optionBounds.clear();
-      float f = this.x;
-      float f4 = this.y + 17.0F + 8.0F;
-      this.lines = 1;
+      float cx = this.x;
+      float cy = this.y + LABEL_H;
+      this.rows = 1;
 
-      for (String item : this.setting.getModes()) {
-         float f5 = nVGRenderer.textWidth(item, 12.5F);
-         if (f + f5 > this.x + this.width && f > this.x) {
-            f = this.x;
-            f4 += 16.0F;
-            this.lines++;
+      for (String option : this.setting.getModes()) {
+         float chipW = nvg.textWidth(option, FONT_SIZE) + CHIP_PAD * 2.0F;
+
+         // wrap before drawing, so a chip is never clipped by the panel edge
+         if (cx + chipW > this.x + this.width && cx > this.x) {
+            cx = this.x;
+            cy += CHIP_H + ROW_GAP;
+            this.rows++;
          }
 
-         boolean ok = this.setting.is(item);
-         boolean ok2 = tickDelta >= f && tickDelta <= f + f5 && tickDelta2 >= f4 - 8.0F && tickDelta2 <= f4 + 8.0F;
-         if (ok) {
-            nVGRenderer.textGradient(item, f, f4, 12.5F, theme.accentBright(), theme.accent());
+         boolean selected = this.setting.is(option);
+         boolean hovered = mouseX >= cx && mouseX <= cx + chipW
+               && mouseY >= cy && mouseY <= cy + CHIP_H;
+
+         if (selected) {
+            nvg.rectGradient(cx, cy, chipW, CHIP_H, CHIP_H / 2.0F,
+                  Colors.withAlpha(theme.accent(), 0.95F),
+                  Colors.withAlpha(theme.accentBright(), 0.95F), false);
+            nvg.rectOutline(cx, cy, chipW, CHIP_H, CHIP_H / 2.0F, 1.0F,
+                  Colors.withAlpha(0xFFFFFFFF, 0.28F));
          } else {
-            nVGRenderer.text(item, f, f4, 12.5F, ok2 ? theme.textPrimary() : theme.textDisabled());
+            nvg.rect(cx, cy, chipW, CHIP_H, CHIP_H / 2.0F,
+                  Colors.withAlpha(0xFF000000, hovered ? 0.30F : 0.42F));
+            nvg.rectOutline(cx, cy, chipW, CHIP_H, CHIP_H / 2.0F, 1.0F,
+                  Colors.withAlpha(theme.accent(), hovered ? 0.45F : 0.16F));
          }
 
-         this.optionBounds.add(new float[]{f, f4 - 8.0F, f5});
-         f += f5 + 10.0F;
+         int textColour = selected ? 0xFFFFFFFF
+               : (hovered ? theme.textPrimary() : theme.textDisabled());
+         nvg.text(option, cx + CHIP_PAD, cy + CHIP_H / 2.0F, FONT_SIZE, textColour);
+
+         this.optionBounds.add(new float[]{cx, cy, chipW});
+         cx += chipW + CHIP_GAP;
       }
    }
 
    @Override
-   public boolean mouseClicked(float f, float f4, int n) {
-      if (n != 0) {
-         return false;
-      } else {
-         List list = this.setting.getModes();
+   public boolean mouseClicked(float mouseX, float mouseY, int button) {
+      if (button != 0) return false;
 
-         for (int offset = 0; offset < this.optionBounds.size() && offset < list.size(); offset++) {
-            float[] f5 = this.optionBounds.get(offset);
-            if (f >= f5[0] && f <= f5[0] + f5[2] && f4 >= f5[1] && f4 <= f5[1] + 16.0F) {
-               this.setting.set((String)list.get(offset));
-               UiSounds.select();
-               return true;
-            }
+      List<String> modes = this.setting.getModes();
+      for (int i = 0; i < this.optionBounds.size() && i < modes.size(); i++) {
+         float[] bounds = this.optionBounds.get(i);
+         if (mouseX >= bounds[0] && mouseX <= bounds[0] + bounds[2]
+               && mouseY >= bounds[1] && mouseY <= bounds[1] + CHIP_H) {
+            this.setting.set(modes.get(i));
+            UiSounds.select();
+            return true;
          }
-
-         return false;
       }
+      return false;
    }
 }

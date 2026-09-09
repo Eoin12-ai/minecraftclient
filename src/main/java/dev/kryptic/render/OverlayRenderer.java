@@ -34,11 +34,6 @@ public final class OverlayRenderer {
    }
 
    public static void render() {
-      try {
-         GlintTextureTinter.onFrame();
-      } catch (Throwable ex) {
-      }
-
       if (!crashed && hudManager != null) {
          MinecraftClient client = MinecraftClient.getInstance();
          Framebuffer framebuffer = client.getFramebuffer();

@@ -7,7 +7,7 @@ import dev.kryptic.settings.SliderSetting;
 
 public class ZoomModule extends Module {
    private static final double EASE_SPEED = 14.0;
-   public final SliderSetting factor = this.addSetting(new SliderSetting("Factor", "Zoom factor", 4.0, 2.0, 10.0, 0.5, "x"));
+   public final SliderSetting factor = this.addSetting(new SliderSetting("Zoom Amount", "Zoom factor", 4.0, 2.0, 10.0, 0.5, "x"));
    public final BooleanSetting smooth = this.addSetting(new BooleanSetting("Smooth", "Smooth zoom in/out", true));
    private double current = 1.0;
    private long lastNanos = 0L;

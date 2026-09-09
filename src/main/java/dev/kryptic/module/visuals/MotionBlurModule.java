@@ -8,7 +8,7 @@ import dev.kryptic.settings.BooleanSetting;
 import dev.kryptic.settings.SliderSetting;
 
 public class MotionBlurModule extends Module {
-   public final SliderSetting strength = this.addSetting(new SliderSetting("Rusdofui", "Blur strength", 30.0, 5.0, 100.0, 5.0, "V").withLabel(arg -> {
+   public final SliderSetting strength = this.addSetting(new SliderSetting("Blur Amount", "Blur strength", 30.0, 5.0, 100.0, 5.0, "V").withLabel(arg -> {
       int n = (int)Math.round(arg);
       String text = n <= 20 ? "Subtle" : (n <= 45 ? "Balanced" : (n <= 70 ? "Smooth" : (n <= 90 ? "Heavy" : "Cinematic")));
       return n + "% · " + text;

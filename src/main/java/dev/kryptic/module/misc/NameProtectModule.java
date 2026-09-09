@@ -23,7 +23,7 @@ import net.minecraft.text.TextContent;
 import net.minecraft.text.TranslatableTextContent;
 
 public class NameProtectModule extends Module {
-   public final StringSetting ownName = this.addSetting(new StringSetting("Your Alias", "What your own name is replaced with", "You", 16, "You"));
+   public final StringSetting ownName = this.addSetting(new StringSetting("Your Fake Name", "What your own name is replaced with", "You", 16, "You"));
    public final ModeSetting style = this.addSetting(
       new ModeSetting("Others", "How other players' names are replaced", "Aliases", "Aliases", "Blank", "Player #")
    );

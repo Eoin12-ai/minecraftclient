@@ -17,12 +17,12 @@ import org.lwjgl.glfw.GLFW;
 
 public class DoubleAnchorModule extends Module {
    public final KeybindSetting activateKey = this.addSetting(new KeybindSetting("Activate Key", "Hold to run the combo", 72));
-   public final SliderSetting timing = this.addSetting(new SliderSetting("Timing", "Delay between the two blows", 120.0, 40.0, 400.0, 10.0, "ms"));
+   public final SliderSetting timing = this.addSetting(new SliderSetting("Second Blow Delay", "Delay between the two blows", 120.0, 40.0, 400.0, 10.0, "ms"));
    public final SliderSetting detonateSlot = this.addSetting(
       new SliderSetting("Detonate Slot", "Hotbar slot to hold while detonating (anything but glowstone)", 1.0, 1.0, 9.0, 1.0)
    );
    public final BooleanSetting rePlace = this.addSetting(
-      new BooleanSetting("Re-Place", "Place a fresh anchor for the second blow if the first is consumed", true)
+      new BooleanSetting("Replace Anchor", "Place a fresh anchor for the second blow if the first is consumed", true)
    );
    public final BooleanSetting switchBack = this.addSetting(new BooleanSetting("Switch Back", "Return to the previous hotbar slot when done", true));
    private int step;

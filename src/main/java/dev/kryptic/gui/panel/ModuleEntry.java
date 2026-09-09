@@ -40,10 +40,10 @@ public class ModuleEntry {
     // ── row geometry ──────────────────────────────────────────────────────────
     public  static final float ROW_H          = 32.0f;
     private static final float RADIUS         = 8.0f;
-    private static final float SETTING_INDENT = 14.0f;
-    private static final float SETTING_GAP    = 3.0f;
-    private static final float DRAWER_PAD_TOP = 8.0f;
-    private static final float DRAWER_PAD_BOT = 6.0f;
+    private static final float SETTING_INDENT = 17.0f;
+    private static final float SETTING_GAP    = 5.0f;
+    private static final float DRAWER_PAD_TOP = 9.0f;
+    private static final float DRAWER_PAD_BOT = 8.0f;
 
     // ── dot indicator ─────────────────────────────────────────────────────────
     private static final float DOT_R          = 3.5f;
@@ -226,22 +226,30 @@ public class ModuleEntry {
             nvg.scissor(x, y + ROW_H, width, dH);
             nvg.alpha(xpv * edgeFade);
 
-            // drawer background
-            nvg.rect(x + 4.0f, y + ROW_H - 4.0f, width - 8.0f, dH + 4.0f,
-                    6.0f, Colors.withAlpha(0xFF0A0A0A, 0.58f));
+            // The drawer is inset and hung off a rail on the left, rather than
+            // being a second box stacked under the row. A box under a box makes
+            // the column read as two lists; a rail says these settings belong
+            // to the row above them and to nothing else.
+            float dx = x + 6.0f;
+            float dw = width - 12.0f;
+            nvg.rect(dx, y + ROW_H - 3.0f, dw, dH + 3.0f, 7.0f,
+                    Colors.withAlpha(0xFF08070C, 0.66f));
+            nvg.rectOutline(dx, y + ROW_H - 3.0f, dw, dH + 3.0f, 7.0f, 1.0f,
+                    Colors.withAlpha(th.accent(), 0.14f));
 
-            // 1 px separator line
-            nvg.rectGradient(x + 8.0f, y + ROW_H,
-                    width - 16.0f, 1.0f, 0.5f,
-                    Colors.withAlpha(th.accent(), 0.35f),
-                    Colors.withAlpha(th.accent(), 0.0f),
-                    false);
+            // the rail itself, fading out as it runs down
+            float railY = y + ROW_H + 3.0f;
+            float railH = Math.max(0.0f, dH - 9.0f);
+            nvg.rectGradient(dx + 2.5f, railY, 2.0f, railH, 1.0f,
+                    Colors.withAlpha(th.accentBright(), 0.75f),
+                    Colors.withAlpha(th.accent(), 0.05f),
+                    true);
 
             float wy = y + ROW_H + DRAWER_PAD_TOP;
             for (SettingWidget w : widgets) {
                 if (!w.isVisible()) continue;
                 float wH = w.height(nvg);
-                w.setBounds(x + SETTING_INDENT, wy, width - SETTING_INDENT * 2.0f);
+                w.setBounds(x + SETTING_INDENT, wy, width - SETTING_INDENT - 12.0f);
                 w.render(nvg, mouseX, mouseY);
                 wy += wH + SETTING_GAP;
             }

@@ -18,7 +18,7 @@ public class WeatherNotifierModule extends Module {
    public final BooleanSetting rain = this.addSetting(new BooleanSetting("Rain", "Announce when rain starts/stops", true));
    public final BooleanSetting thunder = this.addSetting(new BooleanSetting("Thunder", "Announce when a thunderstorm starts/stops", true));
    public final BooleanSetting sound = this.addSetting(new BooleanSetting("Sound", "Play a ping on each change", true));
-   public final ModeSetting output = this.addSetting(new ModeSetting("Output", "How the change is shown", "Notification", "Notification", "Chat", "Action Bar"));
+   public final ModeSetting output = this.addSetting(new ModeSetting("Show As", "How the change is shown", "Notification", "Notification", "Chat", "Action Bar"));
    private Boolean lastRaining;
    private Boolean lastThundering;
 

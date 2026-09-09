@@ -21,7 +21,7 @@ public class FreeLookModule extends Module {
       new SliderSetting("Camera Sensitivity", "How fast the camera moves in Camera mode.", 8.0, 0.0, 10.0, 0.1)
    );
    public final BooleanSetting arrows = this.addSetting(
-      new BooleanSetting("Arrows Control Opposite", "Control the other entity's rotation with the arrow keys.", true)
+      new BooleanSetting("Arrows Turn Other View", "Control the other entity's rotation with the arrow keys.", true)
    );
    public final SliderSetting arrowSpeed = this.addSetting(new SliderSetting("Arrow Speed", "Rotation speed with the arrow keys.", 4.0, 0.0, 10.0, 0.5));
    private float cameraYaw;

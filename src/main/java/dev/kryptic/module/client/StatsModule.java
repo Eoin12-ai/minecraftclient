@@ -49,7 +49,7 @@ public class StatsModule extends Module {
             "Request Stats", "Ask the server for your statistics periodically", true));
 
     public final SliderSetting requestInterval = this.addSetting(new SliderSetting(
-            "Request Every", "Seconds between statistics requests", 30.0, 10.0, 300.0, 5.0, "s"));
+            "Refresh Every", "Seconds between statistics requests", 30.0, 10.0, 300.0, 5.0, "s"));
 
     public final BooleanSetting reset = this.addSetting(new BooleanSetting(
             "Reset All", "Switch on to wipe every recorded figure, then it switches back off", false));

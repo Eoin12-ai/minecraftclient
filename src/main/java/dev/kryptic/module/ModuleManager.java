@@ -32,8 +32,6 @@ import dev.kryptic.module.misc.CoordSnapperModule;
 import dev.kryptic.module.visuals.CustomAccessoriesModule;
 import dev.kryptic.module.misc.CustomCrosshairModule;
 import dev.kryptic.module.misc.CustomFovModule;
-import dev.kryptic.module.misc.CustomGlintModule;
-import dev.kryptic.module.misc.KeySoundsModule;
 import dev.kryptic.module.render.DebugHoleEspModule;
 import dev.kryptic.module.combat.DoubleAnchorModule;
 import dev.kryptic.module.combat.ElytraSwapModule;
@@ -60,7 +58,6 @@ import dev.kryptic.module.render.RegionMapModule;
 import dev.kryptic.module.combat.ShieldBreakerModule;
 import dev.kryptic.module.misc.SkinProtectModule;
 import dev.kryptic.module.render.SpawnerNametagsModule;
-import dev.kryptic.module.misc.SpawnerProtectModule;
 import dev.kryptic.module.client.DiscordPresenceModule;
 import dev.kryptic.module.client.SpotifyModule;
 import dev.kryptic.module.client.ServerConfigsModule;
@@ -128,8 +125,6 @@ public class ModuleManager {
    public ZoomModule zoom;
    public CustomFovModule customFov;
    public MotionBlurModule motionBlur;
-   public CustomGlintModule customGlint;
-   public KeySoundsModule keySounds;
    public CustomAccessoriesModule customAccessories;
    public ChunkBordersModule chunkBorders;
    public TracersModule tracers;
@@ -144,7 +139,6 @@ public class ModuleManager {
    public FakeRolesModule fakeRoles;
    public StaffListModule staffList;
    public ArmorTrimHiderModule armorTrimHider;
-   public SpawnerProtectModule spawnerProtect;
    private Runnable openGuiAction = () -> {
    };
    private BiConsumer<Module, Boolean> toggleListener = (arg, arg2) -> {
@@ -204,23 +198,12 @@ public class ModuleManager {
       this.register(this.fakeRoles = new FakeRolesModule());
       this.register(this.armorTrimHider = new ArmorTrimHiderModule());
       this.register(this.customCrosshair = new CustomCrosshairModule());
-      this.ph(
-         "Media Icons",
-         "Marks media & staff players with icons",
-         Category.MISC,
-         new BooleanSetting("Media", "Show media icons", true),
-         new BooleanSetting("Staff", "Show staff icons", true),
-         new ModeSetting("Position", "Icon position", "Prefix", "Prefix", "Suffix")
-      );
       this.register(this.staffList = new StaffListModule());
-      this.register(this.customGlint = new CustomGlintModule());
-      this.register(this.keySounds = new KeySoundsModule());
       this.register(this.customFov = new CustomFovModule());
       this.register(this.coordSnapper = new CoordSnapperModule());
       this.register(this.autoWalk = new AutoWalkModule());
       this.register(this.zoom = new ZoomModule());
       this.register(this.freeLook = new FreeLookModule());
-      this.register(this.spawnerProtect = new SpawnerProtectModule());
       this.register(this.blockEsp = new BlockEspModule());
       this.register(this.storageEsp = new StorageEspModule());
       this.register(this.blockEntityEsp = new BlockEntityEspModule());

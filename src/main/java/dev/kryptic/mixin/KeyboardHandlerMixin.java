@@ -28,10 +28,6 @@ public class KeyboardHandlerMixin {
                                                      CallbackInfo callbackInfo) {
       MinecraftClient client = MinecraftClient.getInstance();
       int key = input.key();
-      if (KrypticClient.modules() != null && KrypticClient.modules().keySounds != null) {
-         KrypticClient.modules().keySounds.onKey(key, action);
-      }
-
       if (KrypticClient.modules() != null && action == GLFW.GLFW_PRESS) {
          if (client.currentScreen == null && client.world != null) {
             if (KrypticClient.modules().onKeyPressed(key)) {

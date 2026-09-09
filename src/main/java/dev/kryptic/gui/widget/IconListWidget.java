@@ -27,7 +27,7 @@ public class IconListWidget extends SettingWidget {
    public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
       Theme theme = this.theme();
       float f = this.y + 13.0F;
-      nVGRenderer.text(this.setting.getName(), this.x, f, 12.5F, theme.textMuted());
+      nVGRenderer.text(this.setting.getName(), this.x, f, 12.0F, theme.textMuted());
       float f7 = 88.0F;
       float f8 = 18.0F;
       float f9 = this.x + this.width - f7;

@@ -64,7 +64,7 @@ public class ColorWidget extends SettingWidget {
    public void render(NVGRenderer nVGRenderer, float tickDelta, float tickDelta2) {
       Theme theme = this.theme();
       float f = this.y + 11.0F;
-      nVGRenderer.text(this.setting.getName(), this.x, f, 12.5F, theme.textMuted());
+      nVGRenderer.text(this.setting.getName(), this.x, f, 12.0F, theme.textMuted());
       float f14 = 26.0F;
       float f15 = 14.0F;
       nVGRenderer.rect(this.x + this.width - f14, f - f15 / 2.0F, f14, f15, 5.0F, this.setting.get() | 0xFF000000);

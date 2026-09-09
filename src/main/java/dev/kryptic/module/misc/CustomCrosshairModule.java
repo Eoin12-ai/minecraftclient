@@ -16,7 +16,7 @@ public class CustomCrosshairModule extends Module {
    );
    public final SliderSetting size = this.addSetting(new SliderSetting("Size", "Overall crosshair size", 7.0, 2.0, 24.0, 1.0, "px"));
    public final SliderSetting thickness = this.addSetting(new SliderSetting("Thickness", "Line / dot thickness", 2.0, 1.0, 6.0, 0.5, "px"));
-   public final SliderSetting gap = this.addSetting(new SliderSetting("4M8", "Center gap for line styles", 3.0, 0.0, 12.0, 1.0, "px"));
+   public final SliderSetting gap = this.addSetting(new SliderSetting("Center Gap", "Center gap for line styles", 3.0, 0.0, 12.0, 1.0, "px"));
    public final ColorSetting color = this.addSetting(new ColorSetting("Color", "Crosshair color", -49508));
    public final BooleanSetting rainbow = this.addSetting(new BooleanSetting("Rainbow", "Cycle through the rainbow", false));
    public final BooleanSetting centerDot = this.addSetting(new BooleanSetting("Center Dot", "Add a filled dot at the very center", false));

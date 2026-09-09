@@ -44,7 +44,7 @@ public class BlockEntityEspModule extends Module {
    public final ColorSetting ghostTint = this.addSetting(new ColorSetting("Ghost Tint", "Color blended into ghost entries", -922791856));
    public final BooleanSetting chunkPackets = this.addSetting(new BooleanSetting("Chunk Packets", "Read block entities from chunk-data packets", true));
    public final BooleanSetting beUpdatePackets = this.addSetting(
-      new BooleanSetting("BE Update Packets", "Read block entities from block-entity update packets", true)
+      new BooleanSetting("Block Entity Packets", "Read block entities from block-entity update packets", true)
    );
    public final BooleanSetting worldRescan = this.addSetting(new BooleanSetting("World Rescan", "Also snapshot already-loaded chunks when enabled", true));
    private final Map<String, String> aliases = new HashMap<>();

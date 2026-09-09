@@ -9,8 +9,8 @@ import dev.kryptic.settings.ModeSetting;
 
 public class DebugHoleEspModule extends Module {
    public final ModeSetting depth = this.addSetting(new ModeSetting("Depth", "Hole depth check", "A", "A", "@", "2B1"));
-   public final ColorSetting safe = this.addSetting(new ColorSetting("Safe", "Safe hole color", -12654960));
-   public final ColorSetting unsafe = this.addSetting(new ColorSetting("Unsafe", "Unsafe hole color", -45715));
+   public final ColorSetting safe = this.addSetting(new ColorSetting("Safe Hole", "Safe hole color", -12654960));
+   public final ColorSetting unsafe = this.addSetting(new ColorSetting("Unsafe Hole", "Unsafe hole color", -45715));
    public final BooleanSetting tracers = this.addSetting(new BooleanSetting("Tracers", "Draw lines from the crosshair to each hole", false));
 
    public DebugHoleEspModule() {

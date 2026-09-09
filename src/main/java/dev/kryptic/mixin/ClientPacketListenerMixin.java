@@ -3,15 +3,11 @@ package dev.kryptic.mixin;
 import dev.kryptic.KrypticClient;
 import dev.kryptic.module.ModuleManager;
 import dev.kryptic.module.render.BlockEntityEspModule;
-import dev.kryptic.module.misc.SpawnerProtectModule;
 import dev.kryptic.util.TpsTracker;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.network.packet.s2c.play.BlockBreakingProgressS2CPacket;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.network.packet.s2c.play.BlockUpdateS2CPacket;
 import net.minecraft.network.packet.s2c.play.ChunkDataS2CPacket;
-import net.minecraft.network.packet.s2c.play.ChunkDeltaUpdateS2CPacket;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -81,52 +77,5 @@ public class ClientPacketListenerMixin {
    private static BlockEntityEspModule module() {
       ModuleManager moduleManager = KrypticClient.modules();
       return moduleManager != null ? moduleManager.blockEntityEsp : null;
-   }
-
-   private static SpawnerProtectModule spawnerProtect() {
-      ModuleManager moduleManager = KrypticClient.modules();
-      return moduleManager != null ? moduleManager.spawnerProtect : null;
-   }
-
-   @Inject(
-      method = {"onBlockBreakingProgress"},
-      at = {@At("HEAD")}
-   )
-   private void kryptic$spawnerProtectDestruction(BlockBreakingProgressS2CPacket blockBreakingProgressS2CPacket, CallbackInfo callbackInfo) {
-      SpawnerProtectModule spawnerProtectModule = spawnerProtect();
-      if (spawnerProtectModule != null && spawnerProtectModule.isEnabled() && MinecraftClient.getInstance().isOnThread()) {
-         try {
-            spawnerProtectModule.onBlockDestructionPacket(blockBreakingProgressS2CPacket.getEntityId(), blockBreakingProgressS2CPacket.getPos());
-         } catch (Exception ex) {
-         }
-      }
-   }
-
-   @Inject(
-      method = {"onBlockUpdate"},
-      at = {@At("HEAD")}
-   )
-   private void kryptic$spawnerProtectBlockUpdate(BlockUpdateS2CPacket blockUpdateS2CPacket, CallbackInfo callbackInfo) {
-      SpawnerProtectModule spawnerProtectModule = spawnerProtect();
-      if (spawnerProtectModule != null && spawnerProtectModule.isEnabled() && spawnerProtectModule.detectBlockUpdatesEnabled() && MinecraftClient.getInstance().isOnThread()) {
-         try {
-            spawnerProtectModule.onServerBlockUpdate(blockUpdateS2CPacket.getPos(), blockUpdateS2CPacket.getState(), false);
-         } catch (Exception ex) {
-         }
-      }
-   }
-
-   @Inject(
-      method = {"onChunkDeltaUpdate"},
-      at = {@At("HEAD")}
-   )
-   private void kryptic$spawnerProtectSectionUpdate(ChunkDeltaUpdateS2CPacket chunkDeltaUpdateS2CPacket, CallbackInfo callbackInfo) {
-      SpawnerProtectModule spawnerProtectModule = spawnerProtect();
-      if (spawnerProtectModule != null && spawnerProtectModule.isEnabled() && spawnerProtectModule.detectBlockUpdatesEnabled() && MinecraftClient.getInstance().isOnThread()) {
-         try {
-            chunkDeltaUpdateS2CPacket.visitUpdates((arg, arg2) -> spawnerProtectModule.onServerBlockUpdate(arg, arg2, true));
-         } catch (Exception ex) {
-         }
-      }
    }
 }

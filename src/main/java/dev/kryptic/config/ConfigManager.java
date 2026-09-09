@@ -97,8 +97,12 @@ public class ConfigManager {
                   JsonObject jsonObject4 = jsonObject3.getAsJsonObject("settings");
                   if (jsonObject4 != null) {
                      for (Setting setting : module.getSettings()) {
-                        if (jsonObject4.has(setting.getName())) {
-                           setting.fromJson(jsonObject4.get(setting.getName()));
+                        String saved = setting.getName();
+                        if (!jsonObject4.has(saved)) {
+                           saved = LEGACY_SETTINGS.get(name2 + "/" + saved);
+                        }
+                        if (saved != null && jsonObject4.has(saved)) {
+                           setting.fromJson(jsonObject4.get(saved));
                         }
                      }
                   }
@@ -144,17 +148,14 @@ public class ConfigManager {
          Map.entry("Coord Snapper", "CoordSnapper"),
          Map.entry("Custom Crosshair", "CustomCrosshair"),
          Map.entry("Custom FOV", "CustomFOV"),
-         Map.entry("Custom Glint", "CustomGlint"),
          Map.entry("Fake Pay", "FakePay"),
          Map.entry("Fake Roles", "FakeRoles"),
          Map.entry("Fake Stats", "FakeStats"),
          Map.entry("Fast Use", "FastUse"),
          Map.entry("Free Look", "FreeLook"),
-         Map.entry("Key Sounds", "KeySounds"),
          Map.entry("Name Protect", "NameProtect"),
          Map.entry("Name Tags", "NameTags"),
          Map.entry("Skin Protect", "SkinProtect"),
-         Map.entry("Spawner Protect", "SpawnerProtect"),
          Map.entry("Staff List", "StaffList"),
          Map.entry("Weather Notifier", "WeatherNotifier"),
          Map.entry("Click GUI", "ClickGUI"),
@@ -167,8 +168,51 @@ public class ConfigManager {
          Map.entry("Accessories", "CustomAccessories"),
          Map.entry("Block Outline", "CustomBlockOutline"),
          Map.entry("Motion Blur", "MotionBlur"),
-         Map.entry("Config Share", "ConfigShare"),
-         Map.entry("Media Icons", "Media/StaffNames/Icons"));
+         Map.entry("Config Share", "ConfigShare"));
+
+   /**
+    * Settings saved under a previous name, keyed by module and current name.
+    *
+    * A setting is stored under its label, so renaming one silently resets it to
+    * its default -- the value is still in the file, under a key nothing looks
+    * for any more. The module is part of the key because "Style" and "Color"
+    * mean something different in every module that has them.
+    */
+   private static final Map<String, String> LEGACY_SETTINGS = Map.ofEntries(
+         Map.entry("Custom Crosshair/Center Gap", "4M8"),
+         Map.entry("Motion Blur/Blur Amount", "Rusdofui"),
+         Map.entry("Spawner Nametags/Highlight Box", "1C0"),
+         Map.entry("HUD/Module List", "ArrayList"),
+         Map.entry("HUD/List Follows Theme", "List Theme Sync"),
+         Map.entry("HUD/Color Coded Numbers", "Colour Readouts"),
+         Map.entry("HUD/Speed", "Meter: Speed"),
+         Map.entry("HUD/Biome", "Meter: Biome"),
+         Map.entry("HUD/Light Level", "Meter: Light"),
+         Map.entry("HUD/World Time", "Meter: Time"),
+         Map.entry("HUD/Session Length", "Meter: Session"),
+         Map.entry("HUD/Portal Coords", "Meter: Portal"),
+         Map.entry("Freecam/Vertical Speed", "Vertical speed"),
+         Map.entry("Freecam/Show Your Body", "Show own body"),
+         Map.entry("Freecam/Show Hands", "Show hands"),
+         Map.entry("Freecam/WASD Moves Body", "Body uses movement keys"),
+         Map.entry("Freecam/Chunk Distance", "Chunk distance"),
+         Map.entry("Zoom/Zoom Amount", "Factor"),
+         Map.entry("Spotify HUD/Track Source", "Source"),
+         Map.entry("Weather Notifier/Show As", "Output"),
+         Map.entry("Double Anchor/Second Blow Delay", "Timing"),
+         Map.entry("Double Anchor/Replace Anchor", "Re-Place"),
+         Map.entry("Debug Hole ESP/Safe Hole", "Safe"),
+         Map.entry("Debug Hole ESP/Unsafe Hole", "Unsafe"),
+         Map.entry("Block Entity ESP/Block Entity Packets", "BE Update Packets"),
+         Map.entry("Block ESP/Extra Chunk Radius", "Range Extra Chunks"),
+         Map.entry("Skin Protect/Borrow Skin From", "Skin IGN"),
+         Map.entry("Name Protect/Your Fake Name", "Your Alias"),
+         Map.entry("Auto Walk/Stop At Unloaded", "No Unloaded Chunks"),
+         Map.entry("Free Look/Arrows Turn Other View", "Arrows Control Opposite"),
+         Map.entry("Fake Pay/Block Paying Yourself", "Self-Pay Guard"),
+         Map.entry("Stats/Refresh Every", "Request Every"),
+         Map.entry("Sus Chunk Finder/Merge Into Zones", "Smart Mode"),
+         Map.entry("Hit Box/Show Hitboxes", "Enable Render"));
 
    private static JsonObject legacyEntry(JsonObject modules, String currentName) {
       String old = LEGACY_NAMES.get(currentName);
