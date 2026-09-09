@@ -15,7 +15,7 @@ public class ClickGuiModule extends Module {
 
    public final ModeSetting sort = this.addSetting(new ModeSetting(
          "Sort", "Order the modules run in down each column",
-         "A-Z", "A-Z", "Z-A", "Enabled First", "Default"));
+         "Curated", "Curated", "A-Z", "Z-A", "Enabled First", "Registered"));
 
    public ClickGuiModule() {
       super("ClickGUI", "The Kryptic Client menu. In menus, Shift opens it too.", Category.CLIENT);

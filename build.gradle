@@ -46,48 +46,20 @@ processResources {
     }
 }
 
-// TEMPORARY probe: how Minecraft opens a URL on this version.
+// TEMPORARY probe: the exact type Util.getOperatingSystem() returns.
 tasks.register('apiProbe') {
     doLast {
         def cp = configurations.compileClasspath.files
         def loader = new URLClassLoader(cp.collect { it.toURI().toURL() } as URL[], (ClassLoader) null)
         println '=== PROBE BEGIN ==='
-        ['net.minecraft.util.Util'].each { cn ->
-            try {
-                def c = Class.forName(cn, false, loader)
-                println "CLASS ${cn}"
-                c.getDeclaredMethods()
-                 .findAll { it.parameterCount == 0 && !it.name.startsWith('lambda$') }
-                 .collect { "  M ${it.name}() : ${it.returnType.name}" }
-                 .findAll { it.toLowerCase().contains('operatingsystem') || it.toLowerCase().contains('os') }
-                 .sort().unique().each { println it }
-            } catch (Throwable t) { println "CLASS ${cn} -> ${t}" }
-        }
-        // whatever type that returns, dump how it opens things
-        def names = [] as Set
-        cp.each { f ->
-            if (!f.name.endsWith('.jar')) return
-            try {
-                def zf = new java.util.zip.ZipFile(f)
-                try {
-                    for (e in zf.entries()) {
-                        def n = e.name
-                        if (n.endsWith('/OperatingSystem.class') || n.endsWith('$OperatingSystem.class')) {
-                            names.add(n[0..-7].replace('/', '.'))
-                        }
-                    }
-                } finally { zf.close() }
-            } catch (ignored) { }
-        }
-        names.each { cn ->
-            try {
-                def c = Class.forName(cn, false, loader)
-                println "CLASS ${cn}"
-                c.getDeclaredMethods().collect {
-                    "  M ${it.name}(${it.parameterTypes.collect { p -> p.name }.join(', ')}) : ${it.returnType.simpleName}"
-                }.sort().each { println it }
-            } catch (Throwable t) { println "CLASS ${cn} -> ${t}" }
-        }
+        try {
+            def util = Class.forName('net.minecraft.util.Util', false, loader)
+            def os = util.getDeclaredMethod('getOperatingSystem').returnType
+            println "RETURNS ${os.name}"
+            os.getDeclaredMethods().collect {
+                "  M ${it.name}(${it.parameterTypes.collect { p -> p.name }.join(', ')}) : ${it.returnType.simpleName}"
+            }.sort().each { println it }
+        } catch (Throwable t) { println "probe -> ${t}" }
         println '=== PROBE END ==='
     }
 }

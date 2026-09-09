@@ -276,12 +276,16 @@ public class ModuleManager {
 
    private void rebuildDisplayOrder(String mode) {
       Comparator<Module> byName = Comparator.comparing(m -> m.getName().toLowerCase(Locale.ROOT));
+      // unlisted modules all share MAX_VALUE, so fall back to the name to keep
+      // their order stable rather than however the list happened to arrive
+      Comparator<Module> curated = Comparator.comparingInt(ModuleOrder::rankOf).thenComparing(byName);
       Comparator<Module> order = switch (mode) {
          case "A-Z" -> byName;
          case "Z-A" -> byName.reversed();
-         // enabled float to the top, each group still alphabetical inside itself
-         case "Enabled First" -> Comparator.comparing((Module m) -> !m.isEnabled()).thenComparing(byName);
-         default -> null;
+         // enabled float to the top, each group still in curated order inside itself
+         case "Enabled First" -> Comparator.comparing((Module m) -> !m.isEnabled()).thenComparing(curated);
+         case "Registered" -> null;
+         default -> curated;
       };
       this.displayOrder.clear();
       this.orderStamp++;
