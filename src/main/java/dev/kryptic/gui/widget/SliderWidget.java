@@ -91,7 +91,9 @@ public class SliderWidget extends SettingWidget {
          nvg.glow(knobX, knobY, KNOB_W, KNOB_H, KNOB_W / 2.0F, 5.0F,
                Colors.withAlpha(theme.accentHover(), this.dragging ? 0.55F : 0.30F));
       }
-      nvg.rect(knobX, knobY, KNOB_W, KNOB_H, KNOB_W / 2.0F, 0xFFFFFFFF);
+      // sits on the filled half of the track, which is the accent
+      nvg.rect(knobX, knobY, KNOB_W, KNOB_H, KNOB_W / 2.0F,
+            Colors.contrastOn(theme.accentBright()));
    }
 
    @Override

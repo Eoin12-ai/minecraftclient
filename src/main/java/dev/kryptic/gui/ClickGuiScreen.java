@@ -213,12 +213,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
         if (themesOpen) {
             // scrim so the floating pane reads as being above the grid
-            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF05060A, 0.42f));
+            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF050506, 0.46f));
             themesPanel.render(nvg, mouseX, mouseY, screenW, screenH);
         }
 
         if (statsOpen) {
-            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF05060A, 0.42f));
+            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF050506, 0.46f));
             statsPanel.render(nvg, mouseX, mouseY, screenW, screenH);
         }
 

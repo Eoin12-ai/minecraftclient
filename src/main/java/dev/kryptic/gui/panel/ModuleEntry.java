@@ -274,7 +274,7 @@ public class ModuleEntry {
             float dx = x + 6.0f;
             float dw = width - 12.0f;
             nvg.rect(dx, y + ROW_H - 3.0f, dw, dH + 3.0f, 7.0f,
-                    Colors.withAlpha(0xFF08070C, 0.66f));
+                    Colors.withAlpha(0xFF050506, 0.68f));
             nvg.rectOutline(dx, y + ROW_H - 3.0f, dw, dH + 3.0f, 7.0f, 1.0f,
                     Colors.withAlpha(th.accent(), 0.14f));
 

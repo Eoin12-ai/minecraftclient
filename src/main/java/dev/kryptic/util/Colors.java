@@ -53,6 +53,29 @@ public final class Colors {
       return lerp(n, withAlpha(-16777216, alpha(n)), f);
    }
 
+   /**
+    * Perceived brightness, 0..1, ignoring alpha.
+    *
+    * Rec. 709 weights rather than a flat average: the eye is far more
+    * sensitive to green than to blue, and a plain mean calls a saturated blue
+    * as bright as a mid grey.
+    */
+   public static float luminance(int n) {
+      return (0.2126F * red(n) + 0.7152F * green(n) + 0.0722F * blue(n)) / 255.0F;
+   }
+
+   /**
+    * Near-black or near-white, whichever will be legible on the given colour.
+    *
+    * A control that draws a knob or a label in a fixed colour works until the
+    * accent behind it is bright — a white knob on a white track is a switch
+    * with nothing in it. Picking by brightness keeps every theme legible
+    * without a per-theme table to maintain.
+    */
+   public static int contrastOn(int background) {
+      return luminance(background) > 0.55F ? -15790321 : -1;   // #0F0F0F / white
+   }
+
    public static float[] rgbToHsv(int n) {
       float f = (float)red(n) / 255.0F;
       float f9 = (float)green(n) / 255.0F;

@@ -66,7 +66,11 @@ public class BooleanWidget extends SettingWidget {
          nvg.circleGlow(knobX, mid, KNOB_R, KNOB_R * 1.9F,
                Colors.withAlpha(theme.accentBright(), 0.55F * t));
       }
-      nvg.circle(knobX, mid, KNOB_R, Colors.lerp(0xFFB8B4C6, 0xFFFFFFFF, t));
+      // The knob has to read against the track, and the track becomes the
+      // accent as the switch goes on. A fixed white knob vanishes the moment
+      // the accent is light -- which on the default theme it is.
+      int knob = Colors.lerp(0xFFB4B4BC, Colors.contrastOn(track), t);
+      nvg.circle(knobX, mid, KNOB_R, knob);
    }
 
    @Override

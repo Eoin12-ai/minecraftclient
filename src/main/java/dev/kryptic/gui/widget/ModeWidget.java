@@ -80,7 +80,7 @@ public class ModeWidget extends SettingWidget {
                   Colors.withAlpha(theme.accent(), hovered ? 0.45F : 0.16F));
          }
 
-         int textColour = selected ? 0xFFFFFFFF
+         int textColour = selected ? Colors.contrastOn(theme.accent())
                : (hovered ? theme.textPrimary() : theme.textDisabled());
          nvg.text(option, cx + CHIP_PAD, cy + CHIP_H / 2.0F, FONT_SIZE, textColour);
 

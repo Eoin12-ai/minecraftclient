@@ -56,7 +56,7 @@ public class KeybindWidget extends SettingWidget {
          // as raised rather than printed on the background
          nvg.rect(capX, capY + 1.5F, capW, capH, 4.5F, Colors.withAlpha(0xFF000000, 0.55F));
          nvg.rect(capX, capY, capW, capH - 1.0F, 4.5F,
-               Colors.withAlpha(0xFF2A2636, hovered ? 0.98F : 0.85F));
+               Colors.lighten(theme.background(), hovered ? 0.14F : 0.10F));
          nvg.rectOutline(capX, capY, capW, capH - 1.0F, 4.5F, 1.0F,
                Colors.withAlpha(theme.accent(), hovered ? 0.55F : 0.22F));
       }
