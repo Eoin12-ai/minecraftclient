@@ -11,7 +11,7 @@ import dev.kryptic.suschunk.SusChunkScanner;
 
 public class SusChunkFinderModule extends Module {
    public final SliderSetting sensitivity = this.addSetting(
-      new SliderSetting("Sensitivity", "Higher = stricter: more weighted evidence before a chunk flags", 3.0, 1.0, 10.0, 1.0)
+      new SliderSetting("Threshold", "Higher = stricter: more weighted evidence before a chunk flags", 3.0, 1.0, 10.0, 1.0)
          .withLabel(arg -> (int)arg + " (" + (int)arg * 5 + ")")
    );
    public final BooleanSetting amethyst = this.addSetting(
@@ -65,11 +65,6 @@ public class SusChunkFinderModule extends Module {
    );
    public final BooleanSetting smartMode = this.addSetting(
       new BooleanSetting("Merge Into Zones", "Merge nearby flags into zones with a centroid marker", true)
-   );
-   public final SliderSetting mergeRadius = this.addSetting(
-      new SliderSetting(
-         "Merge Radius", "Flags within this many chunks merge into one zone", 3.0, 1.0, 8.0, 1.0, "ch"
-      )
    );
    public final BooleanSetting centroidMarker = this.addSetting(
       new BooleanSetting("Centroid Marker", "Mark each zone's weighted centre — the likely base spot", true)

@@ -110,10 +110,19 @@ public abstract class Panel {
         return Math.max(60.0f, screenH - panelState.y - HEADER_H - 24.0f);
     }
 
+    /**
+     * How tall the body is: as tall as its content, capped by the space there
+     * is for it.
+     *
+     * A set viewport height used to mean the panel took all of it whatever it
+     * held, so a column of four modules drew four rows and then six hundred
+     * pixels of empty card. The viewport is a ceiling now, not a target — the
+     * cap is what makes a long column scroll, and nothing makes a short one
+     * pad itself out to match its neighbours.
+     */
     protected float viewHeight(NVGRenderer nvg, float screenH) {
         float max = maxViewHeight(screenH);
-        float h   = viewportH > 0.0f ? max : Math.min(contentHeight(nvg), max);
-        return h * open.value();
+        return Math.min(contentHeight(nvg), max) * open.value();
     }
 
     public float totalHeight(NVGRenderer nvg, float screenH) {

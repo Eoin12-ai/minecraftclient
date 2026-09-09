@@ -18,7 +18,7 @@ public class AutoTpaModule extends Module {
       new SliderSetting("Delay", "Time between requests — lower is faster.", 2000.0, 250.0, 10000.0, 50.0, "ms")
    );
    public final SliderSetting humanize = this.addSetting(
-      new SliderSetting("Humanize", "Random +/- swing on each delay so the timing isn't a fixed, bot-like interval. 0 = off.", 25.0, 0.0, 60.0, 5.0, "V")
+      new SliderSetting("Vary Timing", "Random +/- swing on each delay so the timing isn't a fixed, bot-like interval. 0 = off.", 25.0, 0.0, 60.0, 5.0, "V")
    );
    public final BooleanSetting notify = this.addSetting(new BooleanSetting("Notify", "Show a notification each time a request is sent.", false));
    private long nextSendAtMs = -1L;

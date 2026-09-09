@@ -29,7 +29,7 @@ public class StaffListModule extends Module {
          "How staff are recognised: the DonutSMP coloured star, a text rank prefix, or both",
          "Star + Rank",
          "Star + Rank",
-         "Star Only",
+         "Stars Only",
          "Rank Only",
          "Names Only"
       )
@@ -83,7 +83,7 @@ public class StaffListModule extends Module {
    }
 
    private boolean usesStar() {
-      return this.detectBy.is("Star + Rank") || this.detectBy.is("Star Only");
+      return this.detectBy.is("Star + Rank") || this.detectBy.is("Stars Only");
    }
 
    private boolean usesRank() {

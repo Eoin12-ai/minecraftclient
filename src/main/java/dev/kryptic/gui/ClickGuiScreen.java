@@ -65,7 +65,6 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     // One strip along the top holds all of it: title, search, buttons. The
     // columns keep their size and their position, because COL_TOP already
     // cleared the old floating search.
-    private static final float BAR_X         = 20.0f;   // matches SIDE_MARGIN
     private static final float BAR_Y         = 10.0f;
     private static final float BAR_H         = 44.0f;
     private static final float BAR_PAD       = 14.0f;
@@ -77,6 +76,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private static final float PILL_W        = 96.0f;
     private static final float PILL_H        = 28.0f;
     private static final float PILL_GAP      = 8.0f;
+    private static final float BAR_MID_GAP   = 18.0f;  // search to buttons
 
     private static final float THEMES_W      = 300.0f;
     private static final float STATS_W       = 400.0f;
@@ -220,17 +220,28 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
     // ── chrome ────────────────────────────────────────────────────────────────
 
-    /** Where each piece of the bar sits, so hit tests and drawing agree. */
-    private float barW(float sw)      { return sw - BAR_X * 2.0f; }
+    /**
+     * Where each piece of the bar sits, so hit tests and drawing agree.
+     *
+     * The bar is exactly as wide as what it holds. Stretched to the window it
+     * had a few hundred pixels of empty card between the search and the
+     * buttons, which is the one thing a strip of controls should never have —
+     * the eye reads the gap as a missing control rather than as spacing.
+     */
+    private float barW() {
+        return BAR_PAD + TITLE_W + SEARCH_W + BAR_MID_GAP
+                + PILL_W * 3.0f + PILL_GAP * 2.0f + BAR_PAD;
+    }
+
+    private float barX(float sw)      { return (sw - barW()) / 2.0f; }
     private float barMidY()           { return BAR_Y + BAR_H / 2.0f; }
-    private float searchX(float sw)   { return BAR_X + BAR_PAD + TITLE_W; }
+    private float searchX(float sw)   { return barX(sw) + BAR_PAD + TITLE_W; }
     private float searchY()           { return barMidY() - SEARCH_H / 2.0f; }
     private float buttonY()           { return barMidY() - PILL_H / 2.0f; }
 
-    /** Buttons are right-aligned, so the row reads Stats, Configs, Themes. */
+    /** Buttons sit at the right end, so the row reads Stats, Configs, Themes. */
     private float buttonX(float sw, int index) {
-        float right = BAR_X + barW(sw) - BAR_PAD;
-        float first = right - (PILL_W * 3.0f + PILL_GAP * 2.0f);
+        float first = barX(sw) + barW() - BAR_PAD - (PILL_W * 3.0f + PILL_GAP * 2.0f);
         return first + index * (PILL_W + PILL_GAP);
     }
 
@@ -244,10 +255,11 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
      */
     private void renderTopBar(NVGRenderer nvg, float mx, float my, float sw) {
         Theme th = theme();
-        Surface.card(nvg, BAR_X, BAR_Y, barW(sw), BAR_H, Surface.RADIUS, th, 0.0f);
+        float bx = barX(sw);
+        Surface.card(nvg, bx, BAR_Y, barW(), BAR_H, Surface.RADIUS, th, 0.0f);
 
         // ── wordmark ─────────────────────────────────────────────────────────
-        float titleX = BAR_X + BAR_PAD;
+        float titleX = bx + BAR_PAD;
         nvg.rect(titleX, barMidY() - 8.0f, 3.0f, 16.0f, 1.5f, th.accent());
         nvg.text("KRYPTIC", titleX + 10.0f, barMidY(), 14.0f, th.textPrimary());
 

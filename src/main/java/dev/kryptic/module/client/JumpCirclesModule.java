@@ -16,7 +16,7 @@ public class JumpCirclesModule extends Module {
    public final ColorSetting color = this.addSetting(new ColorSetting("Color", "Decal color (alpha is animated)", -38476));
    public final SliderSetting lifetime = this.addSetting(new SliderSetting("Lifetime", "How long a decal stays visible", 1.5, 0.5, 4.0, 0.1, "s"));
    public final BooleanSetting rainbow = this.addSetting(new BooleanSetting("Rainbow", "Cycle the color through the rainbow", false));
-   public final BooleanSetting shockwave = this.addSetting(new BooleanSetting("Shockwave", "Expanding ring on spawn", true));
+   public final BooleanSetting shockwave = this.addSetting(new BooleanSetting("Ground Ring", "Expanding ring on spawn", true));
    public final BooleanSetting particles = this.addSetting(new BooleanSetting("Particles", "Drifting dust motes on jump", true));
    public final SliderSetting maxCircles = this.addSetting(new SliderSetting("Max Decals", "Max simultaneous decals (oldest drops first)", 10.0, 1.0, 30.0, 1.0));
    private final Deque<JumpCirclesModule.JumpCircle> circles = new ArrayDeque<>();

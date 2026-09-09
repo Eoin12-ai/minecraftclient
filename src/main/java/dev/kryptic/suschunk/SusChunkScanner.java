@@ -478,8 +478,14 @@ public class SusChunkScanner {
       return offset;
    }
 
+   /** How far apart two flags can be and still count as one zone, in chunks. */
+   private static final int MERGE_RADIUS_CHUNKS = 3;
+
    private List<SusChunkScanner.Zone> buildZones(List<SusChunkScanner.Flag> list, Map<Long, SusChunkScanner.FlagAggregate> map) {
-      int radius = Math.max(1, this.module.mergeRadius.getInt());
+      // Pinned to what the slider defaulted to, so zone merging behaves
+      // exactly as it did before the setting was taken out. The detection
+      // itself is untouched -- this only groups flags that were already found.
+      int radius = MERGE_RADIUS_CHUNKS;
       HashMap map2 = new HashMap();
 
       for (SusChunkScanner.Flag item : list) {

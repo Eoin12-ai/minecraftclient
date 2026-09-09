@@ -207,6 +207,13 @@ public class ConfigManager {
          Map.entry("Stats/Refresh Every", "Request Every"),
          Map.entry("Fake Stats/Intercept /bal", "Balance Command"),
          Map.entry("Sus Chunk Finder/Merge Into Zones", "Smart Mode"),
+         Map.entry("Sus Chunk Finder/Threshold", "Sensitivity"),
+         Map.entry("Auto TPA/Vary Timing", "Humanize"),
+         Map.entry("Freecam/Camera Easing", "Smoothing"),
+         Map.entry("Jump Circles/Ground Ring", "Shockwave"),
+         Map.entry("Staff List/Stars Only", "Star Only"),
+         Map.entry("Chat Macro/Key", "Key "),
+         Map.entry("Chat Macro/Message", "Message "),
          Map.entry("Hit Box/Show Hitboxes", "Enable Render"));
 
    private static JsonObject legacyEntry(JsonObject modules, String currentName) {

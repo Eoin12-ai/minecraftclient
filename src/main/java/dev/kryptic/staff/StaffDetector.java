@@ -13,7 +13,7 @@ import net.minecraft.text.TextColor;
 
 public final class StaffDetector {
    public static final String MODE_STAR_RANK = "Star + Rank";
-   public static final String MODE_STAR = "Star Only";
+   public static final String MODE_STAR = "Stars Only";
    public static final String MODE_RANK = "Rank Only";
    public static final String MODE_NAMES = "Names Only";
    public static final String DEFAULT_SYMBOLS = ".TI.TJ.Pj.Pk.Pf.Pe.Pg.P`.Pa.Pb.Pc.a\\.P|.QN.VQ.Px.Py.Pz.P{.Pt.Pu.AS";
@@ -84,7 +84,7 @@ public final class StaffDetector {
          String text10 = detectConfig.mode();
 
          if (!matches && !(switch (text10) {
-            case "Star Only" -> found;
+            case "Stars Only" -> found;
             case "Rank Only" -> found2;
             case "Names Only" -> false;
             default -> found || found2;
