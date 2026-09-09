@@ -19,10 +19,12 @@ import org.lwjgl.system.MemoryUtil;
 public final class NVGRenderer {
    public static final String FONT_XUONG = "xuong";
    public static final String FONT_VANILLA = "vanilla";
+   public static final String FONT_TEN = "ten";
    private static NVGRenderer instance;
    private final long ctx = NanoVGGL3.nvgCreate(1);
    private boolean xuongLoaded;
    private boolean vanillaLoaded;
+   private boolean tenLoaded;
    private final List<ByteBuffer> retainedFontData = new ArrayList<>();
    private String activeFont = "xuong";
    private final ArrayDeque<Float> alphaStack = new ArrayDeque<>();
@@ -34,8 +36,14 @@ public final class NVGRenderer {
       } else {
          this.xuongLoaded = this.loadFont("xuong", "assets/sixsevenclient/fonts/Xuong-Regular.ttf");
          this.vanillaLoaded = this.loadFont("vanilla", "assets/sixsevenclient/fonts/Monocraft.ttf");
-         if (this.xuongLoaded && this.vanillaLoaded) {
-            NanoVG.nvgAddFallbackFont(this.ctx, "xuong", "vanilla");
+         this.tenLoaded = this.loadFont("ten", "assets/sixsevenclient/fonts/MinecraftTen.ttf");
+         if (this.vanillaLoaded) {
+            // Monocraft carries the glyphs the display faces do not. Xuong is
+            // broad but not complete, and Minecraft Ten is a logo face with 99
+            // codepoints — it has no middot and no infinity sign, both of which
+            // the HUD uses, so without a fallback those draw as blanks.
+            if (this.xuongLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "xuong", "vanilla");
+            if (this.tenLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "ten", "vanilla");
          }
       }
    }
@@ -82,8 +90,39 @@ public final class NVGRenderer {
       }
    }
 
+   /**
+    * Picks the face for the chosen mode, falling through to whatever did load.
+    *
+    * A font that failed to load must never become the active face — NanoVG
+    * silently draws nothing for an unknown face name, which looks like the
+    * whole overlay has broken rather than like one missing file.
+    */
    public void setFontMode(String str) {
-      this.activeFont = "Xuong".equals(str) && this.xuongLoaded ? "xuong" : (this.vanillaLoaded ? "vanilla" : (this.xuongLoaded ? "xuong" : null));
+      String wanted = switch (str == null ? "" : str) {
+         case "Xuong" -> "xuong";
+         case "Ten" -> "ten";
+         default -> "vanilla";
+      };
+      if (isLoaded(wanted)) {
+         this.activeFont = wanted;
+         return;
+      }
+      for (String candidate : new String[]{"vanilla", "xuong", "ten"}) {
+         if (isLoaded(candidate)) {
+            this.activeFont = candidate;
+            return;
+         }
+      }
+      this.activeFont = null;
+   }
+
+   private boolean isLoaded(String face) {
+      return switch (face) {
+         case "xuong" -> this.xuongLoaded;
+         case "vanilla" -> this.vanillaLoaded;
+         case "ten" -> this.tenLoaded;
+         default -> false;
+      };
    }
 
    public boolean hasFont() {
