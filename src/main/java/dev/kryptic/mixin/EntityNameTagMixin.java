@@ -8,8 +8,10 @@ import dev.kryptic.module.misc.NameTagsModule;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PlayerListEntry;
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.state.EntityRenderState;
+import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,6 +19,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+/**
+ * Nametag control: hiding them, censoring them, and decorating your own.
+ *
+ * The last two parameters have to be spelled out. They were typed {@code
+ * Object}, which compiles and looks harmless, but Mixin matches an @Inject
+ * handler against the target by raw descriptor and does not treat Object as a
+ * wildcard — so it threw InvalidInjectionException while applying, which is
+ * fatal whatever {@code defaultRequire} says, and the client died before the
+ * window opened. Both types came off the remapped jar rather than a guess.
+ */
 @Mixin({EntityRenderer.class})
 public class EntityNameTagMixin {
    @Inject(
@@ -24,7 +36,9 @@ public class EntityNameTagMixin {
       at = {@At("HEAD")},
       cancellable = true
    )
-   private void kryptic$nameTag(EntityRenderState entityRenderState, MatrixStack matrices, Object orderedRenderCommandQueue, Object cameraRenderState, CallbackInfo callbackInfo) {
+   private void kryptic$nameTag(EntityRenderState entityRenderState, MatrixStack matrices,
+                                OrderedRenderCommandQueue queue, CameraRenderState camera,
+                                CallbackInfo callbackInfo) {
       ModuleManager moduleManager = KrypticClient.modules();
       if (moduleManager != null && entityRenderState.displayName != null) {
          NameTagsModule nameTagsModule = moduleManager.nameTags;
