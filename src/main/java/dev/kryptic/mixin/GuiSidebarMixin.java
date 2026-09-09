@@ -6,7 +6,7 @@ import dev.kryptic.module.misc.FakeStatsModule;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.text.StringVisitable;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +22,7 @@ public class GuiSidebarMixin {
       method = {"renderScoreboardSidebar"},
       at = {@At("HEAD")}
    )
-   private void kryptic$beginSidebar(DrawContext context, ScoreboardObjective scoreboardObjective, CallbackInfo callbackInfo) {
+   private void kryptic$beginSidebar(DrawContext context, RenderTickCounter tickCounter, CallbackInfo callbackInfo) {
       FakeStatsModule fakeStatsModule = fakeStats();
       if (fakeStatsModule != null) {
          fakeStatsModule.beginSidebar();

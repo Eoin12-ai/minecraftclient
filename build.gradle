@@ -130,3 +130,79 @@ tasks.register('checkMixinAnnotationShape') {
 }
 
 tasks.named('check') { dependsOn 'checkMixinAnnotationShape' }
+
+/**
+ * Checks every @Inject handler's parameters against the method it targets.
+ *
+ * Mixin matches an @Inject to its target by raw descriptor. A parameter of the
+ * wrong type compiles clean and then throws InvalidInjectionException during
+ * apply -- fatal whatever defaultRequire says, before the window opens. Three
+ * of those shipped in a row, each found only by crashing the game, so the build
+ * resolves the target on the remapped classpath and compares for itself.
+ *
+ * Types are compared by simple name. That cannot distinguish two classes that
+ * share one, which is a trade for not having to resolve every import; the
+ * failure it is here to catch is a wholly different type in a slot, and that it
+ * catches reliably.
+ */
+tasks.register('checkInjectSignatures') {
+    dependsOn 'remapJar'
+    def mixinDir = file('src/main/java/dev/kryptic/mixin')
+    inputs.dir mixinDir
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, (ClassLoader) null)
+        def problems = []
+
+        mixinDir.eachFileMatch(~/.*\.java/) { f ->
+            def src = f.text
+            def tm = src =~ /@Mixin\(\{?\s*(\w+)\.class/
+            if (!tm.find()) return
+            def targetSimple = tm.group(1)
+            def im = src =~ /import\s+([\w.]*\.\Q${targetSimple}\E);/
+            if (!im.find()) return
+            def target
+            try {
+                target = cl.loadClass(im.group(1))
+            } catch (Throwable ignored) {
+                return                       // accessors and the like
+            }
+
+            // every @Inject block, with the handler that follows it
+            def m = src =~ /(?s)@Inject\s*\((.*?)\)\s*(?:private|public|protected)\s+(?:static\s+)?[\w.<>\[\]$]+\s+(\w+)\s*\(([^)]*)\)/
+            while (m.find()) {
+                def spec = m.group(1), handler = m.group(2)
+                def nm = spec =~ /method\s*=\s*\{?\s*"([^"(]+)/
+                if (!nm.find()) continue
+                def methodName = nm.group(1).trim()
+
+                def params = m.group(3).split(',')*.trim().findAll { it }
+                        .collect { it.split(/\s+/)[-2] }           // the type, not the name
+                        .findAll { !(it in ['CallbackInfo', 'CallbackInfoReturnable']) }
+
+                def candidates = target.declaredMethods.findAll { it.name == methodName }
+                if (candidates.isEmpty()) continue                 // handled by require/@At
+
+                def ok = candidates.any { c ->
+                    def real = c.parameterTypes*.simpleName
+                    real.size() == params.size() &&
+                        [real, params].transpose().every { r, p -> r == p }
+                }
+                if (!ok) {
+                    problems << "${f.name}#${handler} declares (${params.join(', ')}) but " +
+                        "${targetSimple}.${methodName} is " +
+                        candidates.collect { "(${it.parameterTypes*.simpleName.join(', ')})" }.join(' or ')
+                }
+            }
+        }
+
+        if (problems) {
+            throw new GradleException("@Inject parameters do not match their target "
+                + "(Mixin will reject these at apply time and the client will not start):\n  "
+                + problems.join('\n  '))
+        }
+        logger.lifecycle('checkInjectSignatures: every @Inject matches its target')
+    }
+}
+
+tasks.named('check') { dependsOn 'checkInjectSignatures' }
