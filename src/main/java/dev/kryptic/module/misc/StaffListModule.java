@@ -131,7 +131,7 @@ public class StaffListModule extends Module {
                KrypticClient.notifications().pushInfo(text + " " + staffEntry.name() + " online" + text3);
             }
          } else if (this.alerts.is("Chat")) {
-            client.player.sendMessage(Text.literal("Â§d[67] Â§f" + text + " Â§b" + staffEntry.name() + "Â§7 is online" + text3), false);
+            client.player.sendMessage(Text.literal("§d[Kryptic] §f" + text + " §b" + staffEntry.name() + "§7 is online" + text3), false);
          }
 
          if (this.alertSound.get()) {

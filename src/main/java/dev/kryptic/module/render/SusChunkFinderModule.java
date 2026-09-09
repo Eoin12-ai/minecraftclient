@@ -53,7 +53,7 @@ public class SusChunkFinderModule extends Module {
          "Toast",
          "Toast",
          "Chat",
-         "<J."
+         "Off"
       )
    );
    public final SusChunkScanner scanner = new SusChunkScanner(this);

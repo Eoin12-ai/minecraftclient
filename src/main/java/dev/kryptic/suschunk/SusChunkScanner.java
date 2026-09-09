@@ -180,7 +180,7 @@ public class SusChunkScanner {
       this.detectGrowth(client, chunk, chunkKey2);
       chunkKey2.computeScore();
       if (DEBUG_LOG && chunkKey2.coord > 0.0) {
-         KrypticClient.LOGGER.info("(_=\u001dOÃÂ¤ÃÂ¯\u0082ÃÂ¼ÃÂÃÂÃÂÃÂ¸ÃÂÃÂ³ÃÂÃÂ½ÃÂÃÂÃÂÃÂ¡ÃÂÃÂÃÂÃÂ³ÃÂÃÂÃÂÃÂÃÂÃÂ¨", new Object[]{chunk.getPos(), chunkKey2.coord, chunkKey2.hits});
+         KrypticClient.LOGGER.info("SusChunk: chunk {} scored {} on {} hits", new Object[]{chunk.getPos(), chunkKey2.coord, chunkKey2.hits});
       }
 
       return chunkKey2;
@@ -196,7 +196,7 @@ public class SusChunkScanner {
             if ((state.isAir() || state.isOf(Blocks.AMETHYST_CLUSTER)) && hasAmethystNeighbour(client, pos, mutablePos)) {
                chunkScore.amethystCells.add(pos.toImmutable());
                if (DEBUG_LOG) {
-                  KrypticClient.LOGGER.info("(_=\u001dOÃÂ¤\u008dÃÂ§\u008cÃÂ¯ÃÂ¡ÃÂºÃÂÃÂ¤ÃÂ³ÃÂÃ·ÃÂÃÂÃÂÃÂ±ÃÂÃÂÃÂÃÂ¾ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ¨ÃÂÃÂ±ÃÂÃÂÃÂ§", pos, state.isAir() ? "hidden" : "visible");
+                  KrypticClient.LOGGER.info("SusChunk: candidate chunk {} scored {} on {} hits", pos, state.isAir() ? "hidden" : "visible");
                }
             }
          }
@@ -268,7 +268,7 @@ public class SusChunkScanner {
          if (matches && n >= 8 || n >= 14) {
             chunkScore.add(SusChunkScanner.SignalType.KELP, pos);
             if (DEBUG_LOG) {
-               KrypticClient.LOGGER.info("(_=\u001dOÃÂ¤\u0087ÃÂ¯\u0085ÃÂ«ÃÂÃÂ£ÃÂ¸ÃÂÃÂ³ÃÂÃÂ»ÃÂÃÂÃÂÃÂ¨ÃÂÃÂÃÂÃÂ»ÃÂÃÂÃÂÃÂ ÃÂÃÂ°ÃÂ\u03a2ÃÂ", new Object[]{pos, n, matches});
+               KrypticClient.LOGGER.info("SusChunk: candidate chunk {} scored {} on {} hits", new Object[]{pos, n, matches});
             }
          }
       } else if (block == Blocks.BAMBOO && this.module.bamboo.get()) {
@@ -280,14 +280,14 @@ public class SusChunkScanner {
          if (localZ >= 12) {
             chunkScore.add(SusChunkScanner.SignalType.BAMBOO, pos);
             if (DEBUG_LOG) {
-               KrypticClient.LOGGER.info("(_=\u001dOÃÂ¤\u008eÃÂ«\u0084ÃÂ¹ÃÂ¦ÃÂ¬ÃÂ£ÃÂ°ÃÂ¨ÃÂÃÂ¾ÃÂÃÂÃÂÃÂ»ÃÂÃÂÃÂÃÂ ÃÂ", pos, localZ);
+               KrypticClient.LOGGER.info("SusChunk: candidate chunk {} scored {} on {} hits", pos, localZ);
             }
          }
       } else if (block == Blocks.SWEET_BERRY_BUSH && this.module.berries.get()) {
          if (state.contains(Properties.AGE_3) && (Integer)state.get(Properties.AGE_3) == 3) {
             chunkScore.add(SusChunkScanner.SignalType.BERRIES, pos);
             if (DEBUG_LOG) {
-               KrypticClient.LOGGER.info("(_=\u001dOÃÂ¤\u008eÃÂ¯\u009bÃÂ©ÃÂ ÃÂ¦ÃÂÃÂÃÂ¾ÃÂÃÂ¦ÃÂÃÂÃÂÃÂ¹ÃÂÃÂµÃÂÃÂ¦", pos);
+               KrypticClient.LOGGER.info("SusChunk: candidate chunk {} scored {} on {} hits", pos);
             }
          }
       } else if (block == Blocks.VINE && this.module.vines.get()) {
@@ -299,7 +299,7 @@ public class SusChunkScanner {
          if (localY >= 7) {
             chunkScore.add(SusChunkScanner.SignalType.VINES, pos);
             if (DEBUG_LOG) {
-               KrypticClient.LOGGER.info("(_=\u001dOÃÂ¤\u009aÃÂ£\u0087ÃÂ¾ÃÂºÃÂÃÂÃÂÃÂ®ÃÂÃÂ¶ÃÂÃÂÃÂÃÂ¡ÃÂÃÂ", pos, localY);
+               KrypticClient.LOGGER.info("SusChunk: candidate chunk {} scored {} on {} hits", pos, localY);
             }
          }
       } else if (block == Blocks.POINTED_DRIPSTONE && this.module.dripstone.get()) {
@@ -312,7 +312,7 @@ public class SusChunkScanner {
          if (step >= 5) {
             chunkScore.add(SusChunkScanner.SignalType.DRIPSTONE, pos);
             if (DEBUG_LOG) {
-               KrypticClient.LOGGER.info("(_=\u001dOÃÂ¤\u0088ÃÂ¸\u0080ÃÂ«ÃÂºÃ·ÃÂÃÂ¾ÃÂÃÂÃÂÃÂÃÂÃÂÃÂ°ÃÂÃÂÃÂÃÂ¯ÃÂÃÂÃÂÃÂ", pos, step);
+               KrypticClient.LOGGER.info("SusChunk: candidate chunk {} scored {} on {} hits", pos, step);
             }
          }
       }
@@ -552,12 +552,12 @@ public class SusChunkScanner {
                int n = (int)Math.round(zone.centroidX());
                int localX = (int)Math.round(zone.centroidZ());
                int localZ = (int)Math.hypot((double)n - client.player.getX(), (double)localX - client.player.getZ());
-               String text = "Sus zone Ã· " + localZ + "m Ã· " + n + ", " + localX;
+               String text = "Sus zone \u00B7 " + localZ + "m \u00B7 " + n + ", " + localX;
                if (this.module.notifications.is("Toast") && KrypticClient.notifications() != null) {
                   KrypticClient.notifications().pushInfo(text);
                   UiSounds.notification(true);
                } else if (this.module.notifications.is("Chat")) {
-                  client.player.sendMessage(Text.literal("ÃÂ§d[67] ÃÂ§f" + text), false);
+                  client.player.sendMessage(Text.literal("\u00A7d[Kryptic] \u00A7f" + text), false);
                }
             }
          }

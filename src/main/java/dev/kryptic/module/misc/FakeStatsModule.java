@@ -195,6 +195,6 @@ public class FakeStatsModule extends Module {
    }
 
    private static String stripCodes(String text2) {
-      return text2 == null ? "" : text2.replaceAll("[\u0013!Gµ\u009füÇðĺńĥĈǝǜǦǃ", "");
+      return text2 == null ? "" : text2.replaceAll("\u00A7[0-9A-FK-ORa-fk-or]", "");
    }
 }

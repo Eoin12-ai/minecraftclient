@@ -59,7 +59,7 @@ public final class AccessoryRenderer {
          vector3f3.normalize();
          Entry entry = matrices.peek();
          boolean found = customAccessoriesModule.cape.get() && !ok;
-         boolean found2 = found && customAccessoriesModule.capeStyle.is("67");
+         boolean found2 = found && customAccessoriesModule.capeStyle.is("Kryptic");
          float[] f15 = null;
          float[] f16 = null;
          float[] f17 = null;

@@ -12,7 +12,7 @@ import dev.kryptic.util.Colors;
 public class CustomCrosshairModule extends Module {
    private static final int HOT_PINK = -49508;
    public final ModeSetting style = this.addSetting(
-      new ModeSetting("Style", "Crosshair shape", "Cross", "7C<", "Cross", "Circle", "T-Shape", "Brackets", "Chevron", "67")
+      new ModeSetting("Style", "Crosshair shape", "Cross", "Dot", "Cross", "Circle", "T-Shape", "Brackets", "Chevron", "Kryptic")
    );
    public final SliderSetting size = this.addSetting(new SliderSetting("Size", "Overall crosshair size", 7.0, 2.0, 24.0, 1.0, "px"));
    public final SliderSetting thickness = this.addSetting(new SliderSetting("Thickness", "Line / dot thickness", 2.0, 1.0, 6.0, 0.5, "px"));
@@ -53,7 +53,7 @@ public class CustomCrosshairModule extends Module {
 
       String text2 = this.style.get();
       switch (text2) {
-         case "7C<":
+         case "Dot":
             this.dot(nVGRenderer, tickDelta, tickDelta2, Math.max(1.5F, f4 * 0.35F), n, offset);
             break;
          case "Cross":
@@ -75,14 +75,14 @@ public class CustomCrosshairModule extends Module {
 
             nVGRenderer.chevron(tickDelta, tickDelta2 + f4 * 0.15F, f4, f, n, true);
             break;
-         case "67":
+         case "Kryptic":
             this.logo(nVGRenderer, tickDelta, tickDelta2, f4, n);
             break;
          default:
             this.cross(nVGRenderer, tickDelta, tickDelta2, f4, f, f5, n, offset, true, true);
       }
 
-      if (this.centerDot.get() && !this.style.is("7C<") && !this.style.is("67")) {
+      if (this.centerDot.get() && !this.style.is("Dot") && !this.style.is("Kryptic")) {
          this.dot(nVGRenderer, tickDelta, tickDelta2, Math.max(1.2F, f * 0.8F), n, offset);
       }
    }

@@ -18,7 +18,7 @@ public class CustomAccessoriesModule extends Module {
    public final SliderSetting glow = this.addSetting(new SliderSetting("Glow", "Soft outer-halo intensity", 70.0, 0.0, 100.0, 5.0, "V"));
    public final BooleanSetting firstPerson = this.addSetting(new BooleanSetting("First Person", "Also show your accessories in first-person view", false));
    public final BooleanSetting cape = this.addSetting(new BooleanSetting("Cape", "A flowing cloth cape down your back", true));
-   public final ModeSetting capeStyle = this.addSetting(new ModeSetting("Cape Style", "Cape look", "67", "67", "Wave", "Grid", "Solid"));
+   public final ModeSetting capeStyle = this.addSetting(new ModeSetting("Cape Style", "Cape look", "Kryptic", "Kryptic", "Wave", "Grid", "Solid"));
    public final BooleanSetting capePhysics = this.addSetting(new BooleanSetting("Cape Physics", "Sway & billow with your movement", true));
    public final BooleanSetting trail = this.addSetting(new BooleanSetting("Trail", "A glowing trail left behind as you move", true));
    public final ModeSetting trailStyle = this.addSetting(new ModeSetting("Trail Style", "Trail look", "Ribbon", "Ribbon", "Sparkle", "Echo"));

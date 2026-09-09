@@ -20,7 +20,7 @@ public class AimAssistModule extends Module {
       new ModeSetting("Target", "Which part of the target to aim at", "Body", "Head", "Body", "Feet", "Nearest")
    );
    public final SliderSetting fov = this.addSetting(
-      new SliderSetting("FOV", "Only assist within this facing cone (180 = all around)", 180.0, 10.0, 180.0, 5.0, "Ã")
+      new SliderSetting("FOV", "Only assist within this facing cone (180 = all around)", 180.0, 10.0, 180.0, 5.0, "\u00B0")
    );
    public final BooleanSetting vertical = this.addSetting(new BooleanSetting("Vertical", "Also correct pitch (up/down), not just yaw", true));
    public final BooleanSetting players = this.addSetting(new BooleanSetting("Players", "Target other players", true));

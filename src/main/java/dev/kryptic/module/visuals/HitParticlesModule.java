@@ -19,7 +19,7 @@ public class HitParticlesModule extends Module {
    public static final int STYLE_HEARTS = 1;
    public static final int STYLE_LIGHTNING = 2;
    public static final int STYLE_67 = 3;
-   public final ModeSetting style = this.addSetting(new ModeSetting("Style", "Burst style", "Sparks", "Sparks", "Hearts", "Lightning", "67"));
+   public final ModeSetting style = this.addSetting(new ModeSetting("Style", "Burst style", "Sparks", "Sparks", "Hearts", "Lightning", "Kryptic"));
    public final SliderSetting amount = this.addSetting(new SliderSetting("Amount", "Particles spawned per hit", 14.0, 4.0, 40.0, 1.0));
    public final SliderSetting size = this.addSetting(new SliderSetting("Size", "Particle scale", 1.0, 0.3, 3.0, 0.1, "x"));
    public final SliderSetting lifetime = this.addSetting(new SliderSetting("Lifetime", "How long the burst lingers", 0.7, 0.3, 2.0, 0.1, "s"));
@@ -158,7 +158,7 @@ public class HitParticlesModule extends Module {
       } else if (this.style.is("Lightning")) {
          return 2;
       } else {
-         return this.style.is("67") ? 3 : 0;
+         return this.style.is("Kryptic") ? 3 : 0;
       }
    }
 

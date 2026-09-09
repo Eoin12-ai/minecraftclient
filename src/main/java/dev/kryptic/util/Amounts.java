@@ -22,7 +22,7 @@ public final class Amounts {
       if (text2 == null) {
          return Double.NaN;
       } else {
-         String trimmed = text2.trim().toLowerCase(Locale.ROOT).replaceAll("(\u0000\u0014\u001dM\u0099", "");
+         String trimmed = text2.trim().toLowerCase(Locale.ROOT).replaceAll("[\\s,]", "");
 
          while (!trimmed.isEmpty() && (trimmed.charAt(0) == '$' || trimmed.charAt(0) == 8364 || trimmed.charAt(0) == 163)) {
             trimmed = trimmed.substring(1);

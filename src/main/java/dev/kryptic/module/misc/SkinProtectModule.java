@@ -81,7 +81,7 @@ public class SkinProtectModule extends Module {
       try {
          JsonObject jsonObject = getJson("https://api.mojang.com/users/profiles/minecraft/" + trimmed);
          if (jsonObject == null || !jsonObject.has("id")) {
-            KrypticClient.LOGGER.warn("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÇµÈÈÉÈ²ËÊËÊ¾ÌÌÌÍÏÎ¯Ï\u03a2Ï", trimmed);
+            KrypticClient.LOGGER.warn("SkinProtect: no Mojang profile found for '{}'", trimmed);
             return;
          }
 
@@ -91,7 +91,7 @@ public class SkinProtectModule extends Module {
          String text2 = "^";
          JsonObject jsonObject2 = getJson("https://sessionserver.mojang.com/session/minecraft/profile/" + text.replace(text2, "") + "?unsigned=false");
          if (jsonObject2 == null || !jsonObject2.has("properties")) {
-            KrypticClient.LOGGER.warn("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÆ¾ÈÈÉÈºÊÊËË»ÌÌÌÍÏÏ§ÎÎªÎÑÐ¡ÐÐ­ÓÒª", trimmed);
+            KrypticClient.LOGGER.warn("SkinProtect: session server returned no properties for '{}'", trimmed);
             return;
          }
 
@@ -111,9 +111,9 @@ public class SkinProtectModule extends Module {
          MinecraftClient.getInstance().getSkinProvider().fetchSkinTextures(gameProfile).thenAccept(skinTextures -> {
              if (skinTextures != null) {
                 this.replacement = skinTextures.orElse(null);
-               KrypticClient.LOGGER.info("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÇ¿ÈÈÉÉ¼ÊÊËÊµÍÌÌÍÎÏ®\u038b", name);
+               KrypticClient.LOGGER.info("SkinProtect: loaded replacement skin from {}", name);
             } else {
-               KrypticClient.LOGGER.warn("(\u007f#\u0007|\u0094Â¾\u0085Â½ÄÄÄÄÇÇÇÇ«ÈÈÈÈ²ÊÊÊÊ·ÌÌÌÌÏÏ¾ÎÎ·ÎÑÐ«ÐÑ¹ÓÒ¥Ó¢Ò¡ÕÕ«ÕÔ×\u05fb", name);
+               KrypticClient.LOGGER.warn("SkinProtect: {} has no skin texture to borrow", name);
             }
          });
       } catch (Exception ex) {

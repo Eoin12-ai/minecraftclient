@@ -648,7 +648,7 @@ public class SpawnerProtectModule extends Module {
       if (this.lagWaitTicks > 40) {
          ClientPlayNetworkHandler clientPlayNetworkHandler = this.mc.getNetworkHandler();
          if (clientPlayNetworkHandler != null) {
-            clientPlayNetworkHandler.getConnection().disconnect(Text.literal("(\u007f8\u000feª©\u0098\u0099ĉĆėĦƓǧǩƾȯȐɆȷ˙ʖˍʶ̙͕̎̕ϕιϖΪϜщЫяѩӀҤӤӮՋժ՝Տא֨"));
+            clientPlayNetworkHandler.getConnection().disconnect(Text.literal("SpawnerProtect: disconnected \u2014 someone approached your spawner"));
          }
 
          this.resetModule();
@@ -817,7 +817,7 @@ public class SpawnerProtectModule extends Module {
       }
 
       try {
-         KrypticClient.notifications().pushInfo("SpawnerProtect · " + name2.replaceAll("Ô\u0002", ""));
+         KrypticClient.notifications().pushInfo("SpawnerProtect · " + name2.replaceAll("\u00A7[0-9A-FK-ORa-fk-or]", ""));
       } catch (Exception ex) {
       }
    }

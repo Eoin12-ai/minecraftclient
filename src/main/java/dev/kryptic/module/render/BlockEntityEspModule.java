@@ -72,7 +72,7 @@ public class BlockEntityEspModule extends Module {
       this.type("minecraft:enchanting_table", "Enchanting Table", Items.ENCHANTING_TABLE, -7864065, false);
       this.type("minecraft:sign", "Sign", Items.OAK_SIGN, -3355444, false);
       this.alias("minecraft:hanging_sign", "minecraft:sign");
-      this.type("minecraft:bed", "1I,", Items.RED_BED, -30584, false);
+      this.type("minecraft:bed", "Bed", Items.RED_BED, -30584, false);
       this.type("minecraft:skull", "Skull", Items.SKELETON_SKULL, -2236963, false);
       this.type("minecraft:banner", "Banner", Items.WHITE_BANNER, -1118482, false);
       this.type("minecraft:crafter", "Crafter", Items.CRAFTER, -12276993, false);

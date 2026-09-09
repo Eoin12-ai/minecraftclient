@@ -76,7 +76,7 @@ public class WeatherNotifierModule extends Module {
             }
          } else {
             boolean found = this.output.is("Action Bar");
-            client.player.sendMessage(Text.literal("Â§d[67] Â§f" + str + " — " + str3), found);
+            client.player.sendMessage(Text.literal("§d[Kryptic] §f" + str + " — " + str3), found);
          }
 
          if (this.sound.get()) {

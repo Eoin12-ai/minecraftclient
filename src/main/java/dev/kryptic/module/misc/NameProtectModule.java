@@ -23,7 +23,7 @@ import net.minecraft.text.TextContent;
 import net.minecraft.text.TranslatableTextContent;
 
 public class NameProtectModule extends Module {
-   public final StringSetting ownName = this.addSetting(new StringSetting("Your Alias", "What your own name is replaced with", "*C=", 16, "*C="));
+   public final StringSetting ownName = this.addSetting(new StringSetting("Your Alias", "What your own name is replaced with", "You", 16, "You"));
    public final ModeSetting style = this.addSetting(
       new ModeSetting("Others", "How other players' names are replaced", "Aliases", "Aliases", "Blank", "Player #")
    );
@@ -66,7 +66,7 @@ public class NameProtectModule extends Module {
          }
       } else {
          String text3 = this.ownName.get();
-         return text3 != null && !text3.isBlank() ? text3 : "*C=";
+         return text3 != null && !text3.isBlank() ? text3 : "You";
       }
    }
 
