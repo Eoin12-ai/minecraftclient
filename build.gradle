@@ -45,30 +45,3 @@ processResources {
         expand 'version': project.version
     }
 }
-
-// TEMPORARY probe: how to reach the main framebuffer's GL texture in 1.21.11.
-tasks.register('apiProbe') {
-    doLast {
-        def cp = configurations.compileClasspath.files
-        def loader = new URLClassLoader(cp.collect { it.toURI().toURL() } as URL[], (ClassLoader) null)
-        def dump = { String cn ->
-            try {
-                def c = Class.forName(cn, false, loader)
-                println "CLASS ${cn}"
-                c.getDeclaredMethods().findAll { !it.name.startsWith('lambda$') }.collect { m ->
-                    "  M ${m.name}(${m.parameterTypes.collect { it.simpleName }.join(', ')}) : ${m.returnType.name}"
-                }.sort().each { println it }
-                c.getDeclaredFields().collect { f -> "  F ${f.name} : ${f.type.name}" }.sort().each { println it }
-            } catch (Throwable t) { println "CLASS ${cn} -> ${t}" }
-        }
-        println '=== PROBE BEGIN ==='
-        ['net.minecraft.client.gl.Framebuffer',
-         'com.mojang.blaze3d.textures.GpuTexture',
-         'com.mojang.blaze3d.textures.GpuTextureView',
-         'com.mojang.blaze3d.opengl.GlTexture',
-         'com.mojang.blaze3d.opengl.GlTextureView',
-         'com.mojang.blaze3d.systems.RenderSystem'].each { dump(it) }
-        println '=== PROBE END ==='
-    }
-}
-compileJava.dependsOn 'apiProbe'

@@ -1,5 +1,6 @@
 package dev.sixseven.gui;
 
+import org.lwjgl.glfw.GLFW;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.input.CharInput;
 import net.minecraft.client.gui.Click;
@@ -416,7 +417,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         if (themesOpen && themesPanel.isListening()) { themesPanel.keyPressed(key); return true; }
         for (CategoryPanel p : columns) { if (p.isListening()) { p.keyPressed(key); return true; } }
         if (themesOpen && key == 256) { closeThemes(); return true; }
-        if (!searchFocused && (key == 47 || (key == 70 && (mods & 2) != 0))) { searchFocused = true; return true; }
+        // Ctrl+F, or Cmd+F, since Ctrl is not the search idiom on macOS
+        boolean commandHeld = (mods & GLFW.GLFW_MOD_CONTROL) != 0 || (mods & GLFW.GLFW_MOD_SUPER) != 0;
+        if (!searchFocused && (key == GLFW.GLFW_KEY_SLASH || (key == GLFW.GLFW_KEY_F && commandHeld))) {
+            searchFocused = true;
+            return true;
+        }
         if (searchFocused) {
             switch (key) {
                 case 256 -> { search.setLength(0); searchFocused = false; }

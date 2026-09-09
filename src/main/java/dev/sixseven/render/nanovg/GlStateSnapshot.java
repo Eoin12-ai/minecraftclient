@@ -3,6 +3,8 @@ package dev.sixseven.render.nanovg;
 import org.lwjgl.opengl.GL33C;
 
 public final class GlStateSnapshot {
+   private int drawFramebuffer;
+   private int readFramebuffer;
    private int program;
    private int vao;
    private int arrayBuffer;
@@ -46,6 +48,12 @@ public final class GlStateSnapshot {
 
    public static GlStateSnapshot capture() {
       GlStateSnapshot glStateSnapshot = new GlStateSnapshot();
+      // GL_DRAW_FRAMEBUFFER_BINDING / GL_READ_FRAMEBUFFER_BINDING. The overlay
+      // draws into whatever is already bound and NanoVG does not rebind, but a
+      // snapshot that restores everything except the render target is a trap
+      // waiting for the first piece of code that does.
+      glStateSnapshot.drawFramebuffer = GL33C.glGetInteger(36006);
+      glStateSnapshot.readFramebuffer = GL33C.glGetInteger(36010);
       glStateSnapshot.program = GL33C.glGetInteger(35725);
       glStateSnapshot.vao = GL33C.glGetInteger(34229);
       glStateSnapshot.arrayBuffer = GL33C.glGetInteger(34964);
@@ -96,6 +104,8 @@ public final class GlStateSnapshot {
    }
 
    public void restore() {
+      GL33C.glBindFramebuffer(36009, this.drawFramebuffer);
+      GL33C.glBindFramebuffer(36008, this.readFramebuffer);
       GL33C.glUseProgram(this.program);
       GL33C.glBindVertexArray(this.vao);
       GL33C.glBindBuffer(34962, this.arrayBuffer);

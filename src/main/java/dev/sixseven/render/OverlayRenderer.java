@@ -18,7 +18,6 @@ import org.lwjgl.opengl.GL33C;
 public final class OverlayRenderer {
    private static HudManager hudManager;
    private static NotificationManager notifications;
-   private static int fbo = -1;
    private static boolean crashed;
 
    private OverlayRenderer() {
@@ -44,7 +43,6 @@ public final class OverlayRenderer {
          MinecraftClient client = MinecraftClient.getInstance();
          Framebuffer framebuffer = client.getFramebuffer();
          if (framebuffer != null) {
-            int glTexId = 0; // framebuffer.getColorAttachment() returns GpuTexture in this build
             boolean found = client.currentScreen instanceof NvgDrawable;
             boolean found2 = client.currentScreen instanceof ChatScreen;
             boolean found3 = !client.options.hudHidden && client.world != null && !found;
@@ -59,9 +57,7 @@ public final class OverlayRenderer {
                GlStateSnapshot glStateSnapshot = GlStateSnapshot.capture();
 
                try {
-                  if (!bindOverlayFbo(glTexId, framebuffer.textureWidth, framebuffer.textureHeight)) {
-                     return;
-                  }
+                  prepareOverlayTarget(framebuffer.textureWidth, framebuffer.textureHeight);
 
                   NVGRenderer nVGRenderer = NVGRenderer.get();
                   if (enabled2) {
@@ -150,20 +146,26 @@ public final class OverlayRenderer {
       }
    }
 
-   private static boolean bindOverlayFbo(int glTexId, int bind, int bind2) {
-      if (fbo == -1) {
-         fbo = GL33C.glGenFramebuffers();
-      }
-
-      GL33C.glBindFramebuffer(36160, fbo);
-      GL33C.glFramebufferTexture2D(36160, 36064, 3553, glTexId, 0);
-      if (GL33C.glCheckFramebufferStatus(36160) != 36053) {
-         return false;
-      } else {
-         GL33C.glViewport(0, 0, bind, bind2);
-         GL33C.glDisable(3089);
-         return true;
-      }
+   /**
+    * Points the overlay at the framebuffer Minecraft already has bound.
+    *
+    * This used to build its own framebuffer object and attach the game's colour
+    * texture to it. That cannot work on this version: Minecraft's framebuffer
+    * hands back a GpuTexture, an abstraction over the graphics backend that
+    * exposes no OpenGL handle, and there is no supported way to get one. What
+    * the code actually did was attach texture 0 — which detaches the colour
+    * attachment — so the completeness check that followed could never pass and
+    * the whole overlay returned early every single frame. The HUD, the
+    * ClickGUI, the watermark and the notifications have not drawn on any
+    * platform since.
+    *
+    * Drawing into the bound framebuffer needs none of that. It is the one the
+    * game is about to present, NanoVG never changes the binding, and the state
+    * snapshot puts the viewport and scissor back afterwards.
+    */
+   private static void prepareOverlayTarget(int width, int height) {
+      GL33C.glViewport(0, 0, width, height);
+      GL33C.glDisable(GL33C.GL_SCISSOR_TEST);
    }
 
    public static float uiMouseX() {
