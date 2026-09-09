@@ -90,7 +90,7 @@ public class SusChunkFinderModule extends Module {
    public final SusChunkScanner scanner = new SusChunkScanner(this);
 
    public SusChunkFinderModule() {
-      super("SusChunkFinder", "Finds long-loaded chunks — bases — via amethyst light & growth", Category.RENDER);
+      super("Sus Chunk Finder", "Finds long-loaded chunks — bases — via amethyst light & growth", Category.RENDER);
       SliderSetting sliderSetting = this.outlineOpacity;
       BooleanSetting booleanSetting = this.outline;
       sliderSetting.visibleWhen(booleanSetting::get);

@@ -223,10 +223,6 @@ public class KrypticClient implements ClientModInitializer {
          modules.jumpCircles.clear();
       }
 
-      if (modules.hitParticles != null) {
-         modules.hitParticles.clear();
-      }
-
       if (modules.customAccessories != null) {
          modules.customAccessories.clear();
       }

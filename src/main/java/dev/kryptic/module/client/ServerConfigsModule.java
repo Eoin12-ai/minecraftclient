@@ -37,7 +37,7 @@ public class ServerConfigsModule extends Module {
             "Announce", "Notify when a config is switched on join", true));
 
     public ServerConfigsModule() {
-        super("ServerConfigs", "Apply a saved config automatically per server", Category.CLIENT);
+        super("Server Configs", "Apply a saved config automatically per server", Category.MISC);
         this.setEnabled(true);
     }
 

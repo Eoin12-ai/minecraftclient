@@ -12,7 +12,7 @@ public class HitBoxModule extends Module {
    public final BooleanSetting enableRender = this.addSetting(new BooleanSetting("Enable Render", "", true));
 
    public HitBoxModule() {
-      super("HitBox", "Hitbox expander (neutered: undetectable = does not widen server hitboxes)", Category.COMBAT);
+      super("Hit Box", "Hitbox expander (neutered: undetectable = does not widen server hitboxes)", Category.COMBAT);
    }
 
    public float getHitboxExpansion() {

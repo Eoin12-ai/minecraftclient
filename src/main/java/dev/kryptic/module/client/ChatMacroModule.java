@@ -17,7 +17,7 @@ public class ChatMacroModule extends Module {
    private final KeybindSetting[] keys = new KeybindSetting[3];
 
    public ChatMacroModule() {
-      super("ChatMacro", "Bindable chat command macros.", Category.CLIENT);
+      super("Chat Macro", "Bindable chat command macros.", Category.MISC);
 
       for (int n = 0; n < 3; n++) {
          String text = Integer.toString(n + 1);

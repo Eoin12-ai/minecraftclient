@@ -58,7 +58,7 @@ public class StatsModule extends Module {
     private long lastRequestAt;
 
     public StatsModule() {
-        super("Stats", "Your skin, session, server and lifetime statistics", Category.CLIENT);
+        super("Stats", "Your skin, session, server and lifetime statistics", Category.MISC);
     }
 
     public StatsTracker tracker() {

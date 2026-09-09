@@ -37,7 +37,7 @@ public class ChunkBordersModule extends Module {
          "Region Color", "Colour of the region grid", 0xB3FF6BD6));
 
    public ChunkBordersModule() {
-      super("ChunkBorders", "Chunk and region grid drawn in the world", Category.RENDER);
+      super("Chunk Borders", "Chunk and region grid drawn in the world", Category.RENDER);
       this.radius.visibleWhen(this.grid::get);
       this.chunkColor.visibleWhen(this.grid::get);
       this.currentColor.visibleWhen(this.current::get);

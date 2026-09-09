@@ -45,7 +45,6 @@ import dev.kryptic.module.misc.FreeLookModule;
 import dev.kryptic.module.misc.FreecamModule;
 import dev.kryptic.module.render.FullbrightModule;
 import dev.kryptic.module.combat.HitBoxModule;
-import dev.kryptic.module.visuals.HitParticlesModule;
 import dev.kryptic.module.combat.HoverTotemModule;
 import dev.kryptic.module.client.HudModule;
 import dev.kryptic.module.client.JumpCirclesModule;
@@ -128,7 +127,6 @@ public class ModuleManager {
    public CustomCrosshairModule customCrosshair;
    public ZoomModule zoom;
    public CustomFovModule customFov;
-   public HitParticlesModule hitParticles;
    public MotionBlurModule motionBlur;
    public CustomGlintModule customGlint;
    public KeySoundsModule keySounds;
@@ -163,7 +161,6 @@ public class ModuleManager {
       this.susChunkFinder = new SusChunkFinderModule();
       this.registerPlaceholders();
       this.register(this.blockOutline = new BlockOutlineModule());
-      this.register(this.hitParticles = new HitParticlesModule());
       this.register(this.customAccessories = new CustomAccessoriesModule());
       this.register(this.chunkBorders = new ChunkBordersModule());
       this.register(this.tracers = new TracersModule());
@@ -175,7 +172,7 @@ public class ModuleManager {
       this.register(this.stats = new StatsModule());
       this.register(this.serverConfigs = new ServerConfigsModule());
       this.register(this.chatMacro = new ChatMacroModule());
-      this.ph("ConfigShare", "Import/export configs via codes", Category.CLIENT, new BooleanSetting("Include HUD Layout", "Share HUD positions too", true));
+      this.ph("Config Share", "Import/export configs via codes", Category.MISC, new BooleanSetting("Include HUD Layout", "Share HUD positions too", true));
       this.register(this.swingSpeed = new SwingSpeedModule());
       this.register(this.jumpCircles = new JumpCirclesModule());
       this.register(this.clickGui = new ClickGuiModule());
@@ -208,7 +205,7 @@ public class ModuleManager {
       this.register(this.armorTrimHider = new ArmorTrimHiderModule());
       this.register(this.customCrosshair = new CustomCrosshairModule());
       this.ph(
-         "Media/StaffNames/Icons",
+         "Media Icons",
          "Marks media & staff players with icons",
          Category.MISC,
          new BooleanSetting("Media", "Show media icons", true),

@@ -23,7 +23,7 @@ public class BlockEspModule extends Module {
    );
 
    public BlockEspModule() {
-      super("BlockESP", "Highlights chosen blocks through walls", Category.RENDER);
+      super("Block ESP", "Highlights chosen blocks through walls", Category.RENDER);
       this.targets.seedDefaults();
       BooleanSetting booleanSetting = this.tracer;
       BooleanSetting booleanSetting2 = this.tracers;

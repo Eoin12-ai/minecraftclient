@@ -23,7 +23,7 @@ public class JumpCirclesModule extends Module {
    private int spawnCounter;
 
    public JumpCirclesModule() {
-      super("KrypticJumpCircles", "Stamps a glowing Kryptic decal on the ground when you jump", Category.CLIENT);
+      super("Jump Circles", "Stamps a glowing Kryptic decal on the ground when you jump", Category.VISUALS);
    }
 
    public Deque<JumpCirclesModule.JumpCircle> circles() {

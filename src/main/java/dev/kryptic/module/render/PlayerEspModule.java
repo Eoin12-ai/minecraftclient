@@ -12,6 +12,6 @@ public class PlayerEspModule extends Module {
    public final BooleanSetting tracers = this.addSetting(new BooleanSetting("Tracers", "Draw lines from the crosshair to each player", false));
 
    public PlayerEspModule() {
-      super("PlayerESP", "Highlights players through walls", Category.RENDER);
+      super("Player ESP", "Highlights players through walls", Category.RENDER);
    }
 }

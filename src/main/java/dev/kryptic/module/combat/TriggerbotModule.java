@@ -29,7 +29,7 @@ public class TriggerbotModule extends Module {
    private int currentDelay = 10;
 
    public TriggerbotModule() {
-      super("Triggerbot", "Auto-attacks entities on crosshair", Category.COMBAT);
+      super("Trigger Bot", "Auto-attacks entities on crosshair", Category.COMBAT);
    }
 
    @Override

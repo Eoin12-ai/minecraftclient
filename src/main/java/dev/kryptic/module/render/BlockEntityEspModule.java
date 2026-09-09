@@ -51,7 +51,7 @@ public class BlockEntityEspModule extends Module {
    private final Map<Long, BlockEntityEspModule.Cached> cache = new ConcurrentHashMap<>();
 
    public BlockEntityEspModule() {
-      super("BlockEntityESP", "Highlights block entities from raw packets", Category.RENDER);
+      super("Block Entity ESP", "Highlights block entities from raw packets", Category.RENDER);
       ColorSetting colorSetting = this.ghostTint;
       BooleanSetting booleanSetting = this.showGhosts;
       colorSetting.visibleWhen(booleanSetting::get);

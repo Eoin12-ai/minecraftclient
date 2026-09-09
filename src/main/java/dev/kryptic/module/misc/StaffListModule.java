@@ -75,7 +75,7 @@ public class StaffListModule extends Module {
    public final StaffTracker tracker = new StaffTracker(this);
 
    public StaffListModule() {
-      super("StaffList", "Lists online staff on the HUD (DonutSMP coloured-star detection)", Category.MISC);
+      super("Staff List", "Lists online staff on the HUD (DonutSMP coloured-star detection)", Category.MISC);
       this.rankKeywords.visibleWhen(this::usesRank);
       this.starSymbols.visibleWhen(this::usesStar);
       this.fontIcons.visibleWhen(this::usesStar);

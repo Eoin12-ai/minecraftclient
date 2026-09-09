@@ -94,6 +94,32 @@ public final class FlatOverlay {
             .color(color).normal(entry, normal);
     }
 
+    /**
+     * A line between two arbitrary points.
+     *
+     * {@link #edge} is flat and {@link #upright} is vertical; a block outline
+     * needs neither restriction, because a slab or a stair edge can run in any
+     * direction once the collision shape is the thing being traced.
+     *
+     * A zero-length segment is skipped rather than normalised: normalising it
+     * yields NaN, and a NaN normal poisons the whole buffered layer, not just
+     * the one line.
+     */
+    public static void line3d(Immediate immediate, MatrixStack matrices, Vec3d camera,
+                              double x1, double y1, double z1,
+                              double x2, double y2, double z2, int color) {
+        float dx = (float)(x2 - x1), dy = (float)(y2 - y1), dz = (float)(z2 - z1);
+        if (dx * dx + dy * dy + dz * dz < 1.0e-9f) return;
+
+        VertexConsumer consumer = immediate.getBuffer(LINES);
+        Entry entry = matrices.peek();
+        Vector3f normal = new Vector3f(dx, dy, dz).normalize();
+        consumer.vertex(entry, (float)(x1 - camera.x), (float)(y1 - camera.y), (float)(z1 - camera.z))
+            .color(color).normal(entry, normal);
+        consumer.vertex(entry, (float)(x2 - camera.x), (float)(y2 - camera.y), (float)(z2 - camera.z))
+            .color(color).normal(entry, normal);
+    }
+
     /** A small diamond laid flat on the ground, used to pin a point on the map. */
     public static void marker(Immediate immediate, MatrixStack matrices, Vec3d camera,
                               double x, double z, double y, double size, int color) {

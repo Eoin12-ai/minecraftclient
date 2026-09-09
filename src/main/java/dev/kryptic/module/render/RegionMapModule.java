@@ -106,7 +106,7 @@ public class RegionMapModule extends Module {
    public final BooleanSetting legend = this.addSetting(new BooleanSetting("Legend", "Show the region-type colour legend below the grid.", true));
 
    public RegionMapModule() {
-      super("RegionMap", "DonutSMP server region map on the HUD.", Category.RENDER);
+      super("Region Map", "DonutSMP server region map on the HUD.", Category.RENDER);
    }
 
    private static int rgb(int n, int localX, int localZ) {

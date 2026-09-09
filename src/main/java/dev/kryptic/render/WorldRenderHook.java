@@ -76,9 +76,9 @@ public final class WorldRenderHook {
                 JumpCircleRenderer.render(immediate, matrices, camera, modules.jumpCircles);
             }
         });
-        run("hitParticles", () -> {
-            if (modules.hitParticles != null && modules.hitParticles.isEnabled()) {
-                HitParticleRenderer.render(immediate, matrices, camera, modules.hitParticles);
+        run("blockOutline", () -> {
+            if (modules.blockOutline != null && modules.blockOutline.isEnabled()) {
+                BlockOutlineRenderer.render(immediate, matrices, camera, modules.blockOutline);
             }
         });
 

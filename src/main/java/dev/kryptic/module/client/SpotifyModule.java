@@ -14,7 +14,7 @@ public class SpotifyModule extends Module {
    public final BooleanSetting hideWhenIdle = this.addSetting(new BooleanSetting("Hide When Idle", "Hide the card when nothing plays", true));
 
    public SpotifyModule() {
-      super("SpotifyHUD", "Now playing — skip and seek from the HUD", Category.CLIENT);
+      super("Spotify HUD", "Now playing — skip and seek from the HUD", Category.CLIENT);
       this.setEnabled(true);
    }
 }

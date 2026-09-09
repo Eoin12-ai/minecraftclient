@@ -22,7 +22,7 @@ public class CustomFovModule extends Module {
    private long lastNanos = 0L;
 
    public CustomFovModule() {
-      super("CustomFOV", "Overrides the field of view", Category.MISC);
+      super("Custom FOV", "Overrides the field of view", Category.MISC);
       SliderSetting sliderSetting = this.speedStrength;
       BooleanSetting booleanSetting = this.speedFov;
       sliderSetting.visibleWhen(booleanSetting::get);

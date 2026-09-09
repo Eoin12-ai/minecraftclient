@@ -28,6 +28,6 @@ public class NameTagsModule extends Module {
    public final SliderSetting range = this.addSetting(new SliderSetting("Range", "Only tag within this distance", 64.0, 8.0, 256.0, 4.0, "m"));
 
    public NameTagsModule() {
-      super("NameTags", "Custom nametags for players and items", Category.MISC);
+      super("Name Tags", "Custom nametags for players and items", Category.MISC);
    }
 }

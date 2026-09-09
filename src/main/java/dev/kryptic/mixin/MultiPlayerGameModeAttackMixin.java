@@ -20,9 +20,6 @@ public class MultiPlayerGameModeAttackMixin {
    private void kryptic$onAttack(PlayerEntity player, Entity entity, CallbackInfo callbackInfo) {
       if (player == MinecraftClient.getInstance().player && entity != player) {
          ModuleManager moduleManager = KrypticClient.modules();
-         if (moduleManager != null && moduleManager.hitParticles != null && moduleManager.hitParticles.isEnabled()) {
-            moduleManager.hitParticles.onHit(entity);
-         }
       }
    }
 }

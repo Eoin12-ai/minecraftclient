@@ -27,20 +27,20 @@ public final class ModuleOrder {
     /** Column order, most-reached-for first. Matched case-insensitively. */
     private static final String[] CURATED = {
         // ── Render: what finds a base, then what helps you read it ───────────
-        "SusChunkFinder",       // the flagship signal
+        "Sus Chunk Finder",       // the flagship signal
         "Chunk Finder",
-        "StorageESP",           // chests and shulkers, the payoff
-        "BlockEntityESP",
-        "BlockESP",
-        "SpawnerNametags",
-        "PlayerESP",            // who else is here
-        "MobESP",
+        "Storage ESP",           // chests and shulkers, the payoff
+        "Block Entity ESP",
+        "Block ESP",
+        "Spawner Nametags",
+        "Player ESP",            // who else is here
+        "Mob ESP",
         "Tracers",
-        "ChunkBorders",         // navigation aids
+        "Chunk Borders",         // navigation aids
         "Breadcrumbs",
-        "RegionMap",
-        "DebugHoleESP",
-        "FullBright",
+        "Region Map",
+        "Debug Hole ESP",
+        "Full Bright",
 
         // ── Combat: keep-yourself-alive first, then offence ──────────────────
         "Auto Totem",
@@ -53,51 +53,50 @@ public final class ModuleOrder {
         "Mace Bomber",
         "Mace Swap",
         "Shield Breaker",
-        "Triggerbot",
-        "AimAssist",
-        "HitBox",
+        "Trigger Bot",
+        "Aim Assist",
+        "Hit Box",
 
         // ── Misc: the things that keep a clip or a stash safe come first ─────
-        "SpawnerProtect",
-        "NameProtect",
-        "SkinProtect",
-        "StaffList",
-        "AutoTPA",
-        "CoordSnapper",
+        "Spawner Protect",
+        "Name Protect",
+        "Skin Protect",
+        "Staff List",
+        "Auto TPA",
+        "Coord Snapper",
         "Freecam",
-        "FreeLook",
+        "Free Look",
         "Zoom",
-        "CustomFOV",
-        "CustomCrosshair",
-        "NameTags",
-        "KeySounds",
-        "CustomGlint",
-        "ArmorTrimHider",
-        "FastUse",
-        "AutoWalk",
-        "WeatherNotifier",
-        "FakePay",
-        "FakeStats",
-        "FakeRoles",
-        "Media/StaffNames/Icons",
+        "Custom FOV",
+        "Custom Crosshair",
+        "Name Tags",
+        "Key Sounds",
+        "Custom Glint",
+        "Armor Trim Hider",
+        "Fast Use",
+        "Auto Walk",
+        "Weather Notifier",
+        "Fake Pay",
+        "Fake Stats",
+        "Fake Roles",
+        "Media Icons",
+        "Stats",
+        "Server Configs",
+        "Chat Macro",
+        "Config Share",
 
         // ── Client: the things you open and configure ────────────────────────
-        "ClickGUI",
         "HUD",
-        "Stats",
-        "ServerConfigs",
-        "ConfigShare",
-        "DiscordRPC",
-        "SpotifyHUD",
-        "ChatMacro",
-        "KrypticJumpCircles",
-        "SwingSpeed",
+        "Click GUI",
+        "Discord RPC",
+        "Spotify HUD",
 
         // ── Visuals ──────────────────────────────────────────────────────────
-        "CustomAccessories",
-        "CustomBlockOutline",
-        "HitParticles",
-        "MotionBlur",
+        "Accessories",
+        "Block Outline",
+        "Jump Circles",
+        "Swing Speed",
+        "Motion Blur",
     };
 
     private static final Map<String, Integer> RANK = buildRanks();

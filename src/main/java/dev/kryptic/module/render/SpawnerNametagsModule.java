@@ -19,7 +19,7 @@ public class SpawnerNametagsModule extends Module {
    );
 
    public SpawnerNametagsModule() {
-      super("SpawnerNametags", "Shows spawner type + activation range", Category.RENDER);
+      super("Spawner Nametags", "Shows spawner type + activation range", Category.RENDER);
    }
 
    @Override

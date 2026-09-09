@@ -46,7 +46,7 @@ public class CustomAccessoriesModule extends Module {
    private boolean hasPrinted;
 
    public CustomAccessoriesModule() {
-      super("CustomAccessories", "Client-side cosmetics — cape, trail, aura & crown", Category.VISUALS);
+      super("Accessories", "Client-side cosmetics — cape, trail, aura & crown", Category.VISUALS);
       ModeSetting modeSetting = this.capeStyle;
       BooleanSetting booleanSetting = this.cape;
       modeSetting.visibleWhen(booleanSetting::get);

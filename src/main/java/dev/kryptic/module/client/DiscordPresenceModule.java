@@ -96,7 +96,7 @@ public class DiscordPresenceModule extends Module {
     private String lastAppId = "";
 
     public DiscordPresenceModule() {
-        super("DiscordRPC", "Show what you are playing in your Discord profile", Category.CLIENT);
+        super("Discord RPC", "Show what you are playing in your Discord profile", Category.CLIENT);
     }
 
     // ── lifecycle ────────────────────────────────────────────────────────────

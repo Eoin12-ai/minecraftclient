@@ -12,6 +12,6 @@ public class MobEspModule extends Module {
    public final BooleanSetting tracers = this.addSetting(new BooleanSetting("Tracers", "Draw lines from the crosshair to each mob", false));
 
    public MobEspModule() {
-      super("MobESP", "Highlights hostile mobs", Category.RENDER);
+      super("Mob ESP", "Highlights hostile mobs", Category.RENDER);
    }
 }

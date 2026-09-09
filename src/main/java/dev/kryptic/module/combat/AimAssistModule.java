@@ -35,7 +35,7 @@ public class AimAssistModule extends Module {
    private final AimAssistCompute logic = null;
 
    public AimAssistModule() {
-      super("AimAssist", "Legit aim assist — smoothly pulls toward targets in range", Category.COMBAT);
+      super("Aim Assist", "Legit aim assist — smoothly pulls toward targets in range", Category.COMBAT);
    }
 
    @Override

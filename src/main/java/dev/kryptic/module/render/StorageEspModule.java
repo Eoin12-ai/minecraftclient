@@ -30,7 +30,7 @@ public class StorageEspModule extends Module {
    private final Set<BlockPos> interactedBlocks = new HashSet<>();
 
    public StorageEspModule() {
-      super("StorageESP", "Highlights chests, barrels, shulkers", Category.RENDER);
+      super("Storage ESP", "Highlights chests, barrels, shulkers", Category.RENDER);
 
       for (StorageEspModule.StorageType storageType : StorageEspModule.StorageType.values()) {
          this.containers.add(storageType.key, storageType.label, storageType.icon, storageType.defaultEnabled, storageType.defaultColor);

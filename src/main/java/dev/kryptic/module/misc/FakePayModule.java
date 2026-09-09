@@ -32,7 +32,7 @@ public class FakePayModule extends Module {
    public final BooleanSetting selfGuard = this.addSetting(new BooleanSetting("Self-Pay Guard", "Block paying your own name, like the real command.", true));
 
    public FakePayModule() {
-      super("FakePay", "Fakes a /pay for clips — blocks the real command", Category.MISC);
+      super("Fake Pay", "Fakes a /pay for clips — blocks the real command", Category.MISC);
    }
 
    public boolean tryIntercept(String text2) {

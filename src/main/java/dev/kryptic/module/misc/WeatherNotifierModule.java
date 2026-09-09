@@ -23,7 +23,7 @@ public class WeatherNotifierModule extends Module {
    private Boolean lastThundering;
 
    public WeatherNotifierModule() {
-      super("WeatherNotifier", "Themed toast when the weather changes", Category.MISC);
+      super("Weather Notifier", "Themed toast when the weather changes", Category.MISC);
    }
 
    @Override

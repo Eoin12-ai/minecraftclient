@@ -14,7 +14,7 @@ public class DebugHoleEspModule extends Module {
    public final BooleanSetting tracers = this.addSetting(new BooleanSetting("Tracers", "Draw lines from the crosshair to each hole", false));
 
    public DebugHoleEspModule() {
-      super("DebugHoleESP", "Marks safe crystal-pvp holes", Category.RENDER);
+      super("Debug Hole ESP", "Marks safe crystal-pvp holes", Category.RENDER);
    }
 
    @Override

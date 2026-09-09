@@ -78,7 +78,7 @@ public class SpawnerProtectModule extends Module {
    private int miningTicks = 0;
 
    public SpawnerProtectModule() {
-      super("SpawnerProtect", "Auto-salvages your spawners when a stranger approaches, then logs out.", Category.MISC);
+      super("Spawner Protect", "Auto-salvages your spawners when a stranger approaches, then logs out.", Category.MISC);
       SliderSetting sliderSetting = this.doubleCheckWindow;
       BooleanSetting booleanSetting = this.doubleCheck;
       sliderSetting.visibleWhen(booleanSetting::get);

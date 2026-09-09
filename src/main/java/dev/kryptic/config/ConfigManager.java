@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dev.kryptic.KrypticClient;
+import dev.kryptic.module.Category;
 import dev.kryptic.module.Module;
 import dev.kryptic.module.ModuleManager;
 import dev.kryptic.settings.Setting;
@@ -81,6 +82,9 @@ public class ConfigManager {
                JsonObject jsonObject3 = jsonObject2.getAsJsonObject(
                   name2 + module.getCategory().name()
                );
+               if (jsonObject3 == null) {
+                  jsonObject3 = legacyEntry(jsonObject2, name2);
+               }
                if (jsonObject3 != null) {
                   if (jsonObject3.has("enabled") && jsonObject3.get("enabled").getAsBoolean() != module.isEnabled()) {
                      module.setEnabled(jsonObject3.get("enabled").getAsBoolean());
@@ -108,6 +112,72 @@ public class ConfigManager {
             }
          }
       }
+   }
+
+   /**
+    * Module state saved under a previous name or category.
+    *
+    * The key is the display name and the category glued together, so both
+    * renaming a module and moving it between columns orphan everything it had
+    * saved. Rather than let a rename silently reset a module to defaults, the
+    * old keys are looked up as a fallback -- and the category is not assumed,
+    * since several of these moved column as well as changing name.
+    */
+   private static final Map<String, String> LEGACY_NAMES = Map.ofEntries(
+         Map.entry("Aim Assist", "AimAssist"),
+         Map.entry("Hit Box", "HitBox"),
+         Map.entry("Trigger Bot", "Triggerbot"),
+         Map.entry("Block Entity ESP", "BlockEntityESP"),
+         Map.entry("Block ESP", "BlockESP"),
+         Map.entry("Chunk Borders", "ChunkBorders"),
+         Map.entry("Debug Hole ESP", "DebugHoleESP"),
+         Map.entry("Full Bright", "FullBright"),
+         Map.entry("Mob ESP", "MobESP"),
+         Map.entry("Player ESP", "PlayerESP"),
+         Map.entry("Region Map", "RegionMap"),
+         Map.entry("Spawner Nametags", "SpawnerNametags"),
+         Map.entry("Storage ESP", "StorageESP"),
+         Map.entry("Sus Chunk Finder", "SusChunkFinder"),
+         Map.entry("Armor Trim Hider", "ArmorTrimHider"),
+         Map.entry("Auto TPA", "AutoTPA"),
+         Map.entry("Auto Walk", "AutoWalk"),
+         Map.entry("Coord Snapper", "CoordSnapper"),
+         Map.entry("Custom Crosshair", "CustomCrosshair"),
+         Map.entry("Custom FOV", "CustomFOV"),
+         Map.entry("Custom Glint", "CustomGlint"),
+         Map.entry("Fake Pay", "FakePay"),
+         Map.entry("Fake Roles", "FakeRoles"),
+         Map.entry("Fake Stats", "FakeStats"),
+         Map.entry("Fast Use", "FastUse"),
+         Map.entry("Free Look", "FreeLook"),
+         Map.entry("Key Sounds", "KeySounds"),
+         Map.entry("Name Protect", "NameProtect"),
+         Map.entry("Name Tags", "NameTags"),
+         Map.entry("Skin Protect", "SkinProtect"),
+         Map.entry("Spawner Protect", "SpawnerProtect"),
+         Map.entry("Staff List", "StaffList"),
+         Map.entry("Weather Notifier", "WeatherNotifier"),
+         Map.entry("Click GUI", "ClickGUI"),
+         Map.entry("Discord RPC", "DiscordRPC"),
+         Map.entry("Spotify HUD", "SpotifyHUD"),
+         Map.entry("Chat Macro", "ChatMacro"),
+         Map.entry("Server Configs", "ServerConfigs"),
+         Map.entry("Jump Circles", "KrypticJumpCircles"),
+         Map.entry("Swing Speed", "SwingSpeed"),
+         Map.entry("Accessories", "CustomAccessories"),
+         Map.entry("Block Outline", "CustomBlockOutline"),
+         Map.entry("Motion Blur", "MotionBlur"),
+         Map.entry("Config Share", "ConfigShare"),
+         Map.entry("Media Icons", "Media/StaffNames/Icons"));
+
+   private static JsonObject legacyEntry(JsonObject modules, String currentName) {
+      String old = LEGACY_NAMES.get(currentName);
+      if (old == null) return null;
+      for (Category category : Category.values()) {
+         JsonObject found = modules.getAsJsonObject(old + category.name());
+         if (found != null) return found;
+      }
+      return null;
    }
 
    public synchronized void save() {

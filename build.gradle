@@ -45,3 +45,26 @@ processResources {
         expand 'version': project.version
     }
 }
+
+// TEMPORARY: reads the real 1.21.11 shapes off the remapped jar so the block
+// outline traces the right API. Removed once the answer is in hand.
+tasks.register('apiProbe') {
+    dependsOn 'remapJar'
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, (ClassLoader) null)
+        ['net.minecraft.block.BlockState',
+         'net.minecraft.util.shape.VoxelShape'].each { name ->
+            println "PROBE ==== ${name}"
+            try {
+                cl.loadClass(name).declaredMethods.findAll {
+                    it.name.toLowerCase().contains('shape') || it.name.toLowerCase().contains('box')
+                }.each { m ->
+                    println "PROBE   ${m.returnType.simpleName} ${m.name}(${m.parameterTypes*.simpleName.join(', ')})"
+                }
+            } catch (Throwable t) {
+                println "PROBE   FAILED ${t}"
+            }
+        }
+    }
+}

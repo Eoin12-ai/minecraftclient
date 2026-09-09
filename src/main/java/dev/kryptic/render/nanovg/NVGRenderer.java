@@ -20,11 +20,13 @@ public final class NVGRenderer {
    public static final String FONT_XUONG = "xuong";
    public static final String FONT_VANILLA = "vanilla";
    public static final String FONT_TEN = "ten";
+   public static final String FONT_MONO = "mono";
    private static NVGRenderer instance;
    private final long ctx = NanoVGGL3.nvgCreate(1);
    private boolean xuongLoaded;
    private boolean vanillaLoaded;
    private boolean tenLoaded;
+   private boolean monoLoaded;
    private final List<ByteBuffer> retainedFontData = new ArrayList<>();
    private String activeFont = "xuong";
    private final ArrayDeque<Float> alphaStack = new ArrayDeque<>();
@@ -37,6 +39,7 @@ public final class NVGRenderer {
          this.xuongLoaded = this.loadFont("xuong", "assets/krypticclient/fonts/Xuong-Regular.ttf");
          this.vanillaLoaded = this.loadFont("vanilla", "assets/krypticclient/fonts/Monocraft.ttf");
          this.tenLoaded = this.loadFont("ten", "assets/krypticclient/fonts/MinecraftTen.ttf");
+         this.monoLoaded = this.loadFont("mono", "assets/krypticclient/fonts/JetBrainsMono-Regular.ttf");
          if (this.vanillaLoaded) {
             // Monocraft carries the glyphs the display faces do not. Xuong is
             // broad but not complete, and Minecraft Ten is a logo face with 99
@@ -44,6 +47,7 @@ public final class NVGRenderer {
             // the HUD uses, so without a fallback those draw as blanks.
             if (this.xuongLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "xuong", "vanilla");
             if (this.tenLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "ten", "vanilla");
+            if (this.monoLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "mono", "vanilla");
          }
       }
    }
@@ -101,13 +105,14 @@ public final class NVGRenderer {
       String wanted = switch (str == null ? "" : str) {
          case "Xuong" -> "xuong";
          case "Ten" -> "ten";
+         case "Mono" -> "mono";
          default -> "vanilla";
       };
       if (isLoaded(wanted)) {
          this.activeFont = wanted;
          return;
       }
-      for (String candidate : new String[]{"vanilla", "xuong", "ten"}) {
+      for (String candidate : new String[]{"vanilla", "xuong", "mono", "ten"}) {
          if (isLoaded(candidate)) {
             this.activeFont = candidate;
             return;
@@ -121,6 +126,7 @@ public final class NVGRenderer {
          case "xuong" -> this.xuongLoaded;
          case "vanilla" -> this.vanillaLoaded;
          case "ten" -> this.tenLoaded;
+         case "mono" -> this.monoLoaded;
          default -> false;
       };
    }

@@ -45,7 +45,7 @@ public class KeySoundsModule extends Module {
     private final java.util.Map<Integer, SoundEvent> held = new java.util.HashMap<>();
 
     public KeySoundsModule() {
-        super("KeySounds", "Mechanical keyboard sounds when you type and click", Category.MISC);
+        super("Key Sounds", "Mechanical keyboard sounds when you type and click", Category.MISC);
     }
 
     // ── events, called from the keyboard and mouse mixins ─────────────────────

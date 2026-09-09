@@ -54,7 +54,7 @@ public class FakeStatsModule extends Module {
    private int drawIndex;
 
    public FakeStatsModule() {
-      super("FakeStats", "Fake balance + editable leaderboard, wired to FakePay", Category.MISC);
+      super("Fake Stats", "Fake balance + editable leaderboard, wired to FakePay", Category.MISC);
       this.moneyLine.visibleWhen(() -> this.sidebar.get() && !this.money.get().isBlank());
       this.shardsLine.visibleWhen(() -> this.sidebar.get() && !this.shards.get().isBlank());
       this.killsLine.visibleWhen(() -> this.sidebar.get() && !this.kills.get().isBlank());
