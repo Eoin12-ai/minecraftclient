@@ -5,6 +5,7 @@ import dev.sixseven.hud.components.ArmorHud;
 import dev.sixseven.hud.components.ArrayListHud;
 import dev.sixseven.hud.components.InfoHud;
 import dev.sixseven.hud.components.KeystrokesHud;
+import dev.sixseven.hud.components.MetersHud;
 import dev.sixseven.hud.components.PotionsHud;
 import dev.sixseven.hud.components.RadarHud;
 import dev.sixseven.hud.components.RegionMapHud;
@@ -65,9 +66,13 @@ public class HudManager {
                0.006F,
                0.985F,
                () -> hudModule.isEnabled() && hudModule.fps.get()
-            )
+            ).tinted(shown -> grade(hudModule, parseLeadingInt(shown), 60, 30, false))
          );
-      this.components.add(new InfoHud("ping", themeManager, "Ping", HudManager::pingString, 0.055F, 0.985F, () -> hudModule.isEnabled() && hudModule.ping.get()));
+      this.components
+         .add(
+            new InfoHud("ping", themeManager, "Ping", HudManager::pingString, 0.055F, 0.985F, () -> hudModule.isEnabled() && hudModule.ping.get())
+               .tinted(shown -> grade(hudModule, parseLeadingInt(shown), 80, 150, true))
+         );
       this.components.add(new InfoHud("coords", themeManager, "XYZ", HudManager::coordsString, 0.115F, 0.985F, () -> hudModule.isEnabled() && hudModule.coordinates.get()));
       this.components.add(new InfoHud("direction", themeManager, "Facing", HudManager::directionString, 0.24F, 0.985F, () -> hudModule.isEnabled() && hudModule.direction.get()));
       this.components
@@ -84,8 +89,36 @@ public class HudManager {
       this.components.add(new StaffListHud(moduleManager.staffList, themeManager));
       this.components.add(new SpotifyHud(moduleManager.spotify, spotifyService, themeManager));
       this.components.add(new StatsHud(moduleManager.stats, themeManager));
+      this.components.add(new MetersHud(hudModule, themeManager));
       this.components.add(notificationManager);
    }
+
+   /** Readouts carry a unit ("120ms"); only the number in front is graded. */
+   private static int parseLeadingInt(String shown) {
+      int end = 0;
+      while (end < shown.length() && Character.isDigit(shown.charAt(end))) end++;
+      return end == 0 ? Integer.MIN_VALUE : Integer.parseInt(shown.substring(0, end));
+   }
+
+   /**
+    * Green / amber / red for a readout, or the plain text colour when the
+    * value could not be read or the user has turned grading off.
+    *
+    * {@code lowerIsBetter} flips the comparison, so the same helper grades a
+    * framerate and a latency.
+    */
+   private static int grade(HudModule hudModule, int value, int good, int fair, boolean lowerIsBetter) {
+      if (!hudModule.colourCode.get() || value == Integer.MIN_VALUE) return COLOUR_NEUTRAL;
+      boolean isGood = lowerIsBetter ? value < good : value >= good;
+      boolean isFair = lowerIsBetter ? value < fair : value >= fair;
+      return isGood ? COLOUR_GOOD : (isFair ? COLOUR_FAIR : COLOUR_POOR);
+   }
+
+   private static final int COLOUR_GOOD    = 0xFF6BE675;
+   private static final int COLOUR_FAIR    = 0xFFFFC85C;
+   private static final int COLOUR_POOR    = 0xFFFF6B6B;
+   /** Sentinel meaning "leave it alone"; resolved against the theme at draw time. */
+   private static final int COLOUR_NEUTRAL = 0;
 
    private static String coordsString() {
       ClientPlayerEntity player = MinecraftClient.getInstance().player;
@@ -102,9 +135,9 @@ public class HudManager {
       MinecraftClient client = MinecraftClient.getInstance();
       if (client.player != null && client.getNetworkHandler() != null) {
          PlayerListEntry playerListEntry = client.getNetworkHandler().getPlayerListEntry(client.player.getUuid());
-         return playerListEntry == null ? "CA;" : "H{" + playerListEntry.getLatency();
+         return playerListEntry == null ? "—" : playerListEntry.getLatency() + "ms";
       } else {
-         return "CA;";
+         return "—";
       }
    }
 

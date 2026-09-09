@@ -82,6 +82,23 @@ public final class WorldRenderHook {
             }
         });
 
+        // ── navigation ───────────────────────────────────────────────────────
+        run("chunkBorders", () -> {
+            if (modules.chunkBorders != null && modules.chunkBorders.isEnabled()) {
+                ChunkBorderRenderer.render(immediate, matrices, camera, modules.chunkBorders);
+            }
+        });
+        run("breadcrumbs", () -> {
+            if (modules.breadcrumbs != null && modules.breadcrumbs.isEnabled()) {
+                BreadcrumbRenderer.render(immediate, matrices, camera, modules.breadcrumbs);
+            }
+        });
+        run("tracers", () -> {
+            if (modules.tracers != null && modules.tracers.isEnabled()) {
+                TracerRenderer.render(immediate, matrices, camera, modules.tracers);
+            }
+        });
+
         // ── the base-finding half ────────────────────────────────────────────
         run("storageEsp", () -> {
             if (modules.storageEsp != null && modules.storageEsp.isEnabled()) {

@@ -250,17 +250,37 @@ public class ConfigStore {
       }
    }
 
+   /**
+    * Trims a user-typed config name down to what is safe to show and store.
+    *
+    * The pattern here was decompiler wreckage with an unterminated group, so
+    * this threw PatternSyntaxException the moment anyone named a config.
+    */
    private String sanitizeName(String json) {
       if (json == null) {
          return "";
       } else {
-         String text3 = json.replaceAll("(p:2|\u0098¸·", "S").trim();
+         String text3 = json.replaceAll("[^A-Za-z0-9 ._-]", "").trim();
          return text3.length() > 24 ? text3.substring(0, 24) : text3;
       }
    }
 
+   /**
+    * Turns a config name into a filename.
+    *
+    * The pattern here matched a fixed run of mojibake, so it stripped nothing:
+    * a name carrying a slash or a run of dots went straight into the path.
+    * Anything outside the allowlist is dropped, and a name that is all dots
+    * cannot survive as one.
+    */
    private String sanitizeFileName(String json) {
-      String text3 = json.replaceAll("(r)Ch\u0085á°ùŖŐŎĜǐǎ", "").trim().replace(' ', '_');
+      if (json == null) {
+         return "config";
+      }
+      String text3 = json.replaceAll("[^A-Za-z0-9 ._-]", "").trim().replace(' ', '_');
+      while (text3.startsWith(".")) {
+         text3 = text3.substring(1);
+      }
       return text3.isEmpty() ? "config" : text3;
    }
 

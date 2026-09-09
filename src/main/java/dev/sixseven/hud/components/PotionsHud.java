@@ -47,7 +47,7 @@ public class PotionsHud extends HudComponent {
 
    private static String timer(StatusEffectInstance statusEffectInstance) {
       if (statusEffectInstance.isInfinite()) {
-         return "≭";
+         return "∞";
       } else {
          int n = statusEffectInstance.getDuration() / 20;
          return String.format("%d:%02d", n / 60, n % 60);

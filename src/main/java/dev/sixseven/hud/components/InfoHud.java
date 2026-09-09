@@ -6,6 +6,7 @@ import dev.sixseven.theme.Theme;
 import dev.sixseven.theme.ThemeManager;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class InfoHud extends HudComponent {
    private static final float HEIGHT = 22.0F;
@@ -15,6 +16,13 @@ public class InfoHud extends HudComponent {
    private final String label;
    private final Supplier<String> value;
 
+   /**
+    * Optional tint for the value, derived from the value itself. Left null the
+    * number takes the theme's primary text colour like any other readout; set,
+    * it says at a glance whether the number is a good one.
+    */
+   private ToIntFunction<String> valueColour;
+
    public InfoHud(String str, ThemeManager themeManager, String str3, Supplier<String> supplier, float f, float f3, BooleanSupplier booleanSupplier) {
       super(str, f, f3, booleanSupplier);
       this.themes = themeManager;
@@ -22,11 +30,17 @@ public class InfoHud extends HudComponent {
       this.value = supplier;
    }
 
+   /** Reads the value back to decide its tint. Returns this for chaining. */
+   public InfoHud tinted(ToIntFunction<String> colour) {
+      this.valueColour = colour;
+      return this;
+   }
+
    private String currentValue() {
       try {
          return this.value.get();
       } catch (Exception ex) {
-         return "L";
+         return "—";
       }
    }
 
@@ -47,6 +61,18 @@ public class InfoHud extends HudComponent {
       nVGRenderer.rectGradient(tickDelta, tickDelta2, tickDelta3, tickDelta4, tickDelta4 / 2.0F, theme.background(), theme.backgroundTo(), true);
       float f3 = tickDelta + 9.0F;
       f3 += nVGRenderer.textGradient(this.label, f3, f, 13.0F, theme.accentBright(), theme.accent());
-      nVGRenderer.text(this.currentValue(), f3 + 5.0F, f, 13.0F, theme.textPrimary());
+      String shown = this.currentValue();
+      int colour = theme.textPrimary();
+      if (this.valueColour != null) {
+         try {
+            int graded = this.valueColour.applyAsInt(shown);
+            // zero means "no opinion" — a fully transparent colour would
+            // otherwise erase the readout rather than leave it alone
+            if (graded != 0) colour = graded;
+         } catch (Exception ex) {
+            // a readout that cannot be graded is still a readout
+         }
+      }
+      nVGRenderer.text(shown, f3 + 5.0F, f, 13.0F, colour);
    }
 }

@@ -19,6 +19,14 @@ public class HudModule extends Module {
    public final BooleanSetting potions = this.addSetting(new BooleanSetting("Potions", "Active effects with timers", false));
    public final BooleanSetting keystrokes = this.addSetting(new BooleanSetting("Keystrokes", "WASD + mouse + space display", false));
    public final BooleanSetting radar = this.addSetting(new BooleanSetting("Radar", "Circular player radar", true));
+   public final BooleanSetting meters = this.addSetting(new BooleanSetting("Meters", "A card of extra readouts, stacked and self-sizing", true));
+   public final BooleanSetting meterSpeed = this.addSetting(new BooleanSetting("Meter: Speed", "Horizontal blocks per second", true));
+   public final BooleanSetting meterBiome = this.addSetting(new BooleanSetting("Meter: Biome", "Biome you are standing in", true));
+   public final BooleanSetting meterLight = this.addSetting(new BooleanSetting("Meter: Light", "Block and sky light where you stand", false));
+   public final BooleanSetting meterTime = this.addSetting(new BooleanSetting("Meter: Time", "World time as a clock", false));
+   public final BooleanSetting meterSession = this.addSetting(new BooleanSetting("Meter: Session", "How long this sitting has run", true));
+   public final BooleanSetting meterPortal = this.addSetting(new BooleanSetting("Meter: Portal", "Your coordinates in the other dimension", true));
+   public final BooleanSetting colourCode = this.addSetting(new BooleanSetting("Colour Readouts", "Tint the FPS and ping numbers by how good they are", true));
    public final BooleanSetting themeSync = this.addSetting(new BooleanSetting("List Theme Sync", "ArrayList follows the theme color", true));
    public final ColorSetting listColor = this.addSetting(new ColorSetting("List Color", "ArrayList color when Theme Sync is off", -49508));
    public final SliderSetting radarRange = this.addSetting(new SliderSetting("Radar Range", "Scan radius in blocks", 48.0, 16.0, 128.0, 4.0, "m"));
@@ -36,5 +44,11 @@ public class HudModule extends Module {
       SliderSetting sliderSetting = this.notifyDuration;
       BooleanSetting booleanSetting = this.notifications;
       sliderSetting.visibleWhen(booleanSetting::get);
+      this.meterSpeed.visibleWhen(this.meters::get);
+      this.meterBiome.visibleWhen(this.meters::get);
+      this.meterLight.visibleWhen(this.meters::get);
+      this.meterTime.visibleWhen(this.meters::get);
+      this.meterSession.visibleWhen(this.meters::get);
+      this.meterPortal.visibleWhen(this.meters::get);
    }
 }
