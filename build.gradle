@@ -206,3 +206,19 @@ tasks.register('checkInjectSignatures') {
 }
 
 tasks.named('check') { dependsOn 'checkInjectSignatures' }
+
+// TEMPORARY: Free Look's camera hook silently misses; reads what Camera really
+// exposes on 1.21.11 so the target can be corrected rather than guessed.
+tasks.register('apiProbe') {
+    dependsOn 'remapJar'
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, (ClassLoader) null)
+        println "PROBE ==== net.minecraft.client.render.Camera"
+        try {
+            cl.loadClass('net.minecraft.client.render.Camera').declaredMethods.each { m ->
+                println "PROBE   ${m.returnType.simpleName} ${m.name}(${m.parameterTypes*.simpleName.join(', ')})"
+            }
+        } catch (Throwable t) { println "PROBE   FAILED ${t}" }
+    }
+}

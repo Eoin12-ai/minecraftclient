@@ -111,8 +111,13 @@ public final class StorageEspRenderer {
          MinecraftClient client = MinecraftClient.getInstance();
          ClientWorld world = client.world;
          if (world != null) {
-            boolean ok = storageEspModule.mode.is("Full");
-            int n = Math.max(0, Math.min(255, storageEspModule.highlightAlpha.getInt())) << 24;
+            // Anything that is not Outline fills, so a config saved under the
+            // old "Full" still fills rather than silently falling through to a
+            // style that no longer exists.
+            boolean ok = !storageEspModule.mode.is("Outline");
+            // Box Opacity is a percentage now; the box colour still wants 0-255.
+            int alpha = Math.round(storageEspModule.highlightAlpha.getFloat() / 100.0F * 255.0F);
+            int n = Math.max(0, Math.min(255, alpha)) << 24;
             boolean ok2 = storageEspModule.tracers.get();
             boolean ok3 = storageEspModule.hideOpened();
             net.minecraft.util.math.Vec3d camera = client.gameRenderer.getCamera().getCameraPos();

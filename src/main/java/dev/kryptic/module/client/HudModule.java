@@ -19,6 +19,7 @@ public class HudModule extends Module {
    public final BooleanSetting armor = this.addSetting(new BooleanSetting("Armor", "Equipped armor + durability", false));
    public final BooleanSetting potions = this.addSetting(new BooleanSetting("Potions", "Active effects with timers", false));
    public final BooleanSetting keystrokes = this.addSetting(new BooleanSetting("Keystrokes", "WASD + mouse + space display", false));
+   public final BooleanSetting hotkeys = this.addSetting(new BooleanSetting("Hotkeys", "Every module you have bound a key to, and its key", true));
    public final BooleanSetting radar = this.addSetting(new BooleanSetting("Radar", "Circular player radar", true));
    public final SliderSetting scale = this.addSetting(new SliderSetting(
          "Scale", "Size of every HUD element at once, on top of each one's own size", 1.0, 0.5, 3.0, 0.05, "x"));

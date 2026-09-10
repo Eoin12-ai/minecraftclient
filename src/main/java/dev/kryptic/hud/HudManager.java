@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import dev.kryptic.hud.components.ArmorHud;
 import dev.kryptic.hud.components.ArrayListHud;
 import dev.kryptic.hud.components.InfoHud;
+import dev.kryptic.hud.components.HotkeysHud;
 import dev.kryptic.hud.components.KeystrokesHud;
 import dev.kryptic.hud.components.MetersHud;
 import dev.kryptic.hud.components.PotionsHud;
@@ -86,6 +87,8 @@ public class HudManager {
       this.components.add(new ArmorHud(themeManager, () -> hudModule.isEnabled() && hudModule.armor.get()));
       this.components.add(new PotionsHud(themeManager, () -> hudModule.isEnabled() && hudModule.potions.get()));
       this.components.add(new KeystrokesHud(themeManager, () -> hudModule.isEnabled() && hudModule.keystrokes.get()));
+      this.components.add(new HotkeysHud(moduleManager, themeManager,
+            () -> hudModule.isEnabled() && hudModule.hotkeys.get()));
       this.components.add(new RadarHud(hudModule, moduleManager.susChunkFinder, themeManager, () -> hudModule.isEnabled() && hudModule.radar.get()));
       this.components.add(new RegionMapHud(moduleManager.regionMap, themeManager));
       this.components.add(new StaffListHud(moduleManager.staffList, themeManager));

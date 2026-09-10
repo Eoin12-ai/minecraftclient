@@ -21,11 +21,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
 public class StorageEspModule extends Module {
-   public final ModeSetting mode = this.addSetting(new ModeSetting("Mode", "Box style — hollow outline or translucent fill", "Outline", "Outline", "Full"));
-   public final SliderSetting range = this.addSetting(new SliderSetting("Range", "Max distance a container is highlighted", 128.0, 16.0, 256.0, 8.0));
-   public final SliderSetting highlightAlpha = this.addSetting(new SliderSetting("Highlight Alpha", "Box opacity (0-255)", 200.0, 0.0, 255.0, 1.0));
-   public final BooleanSetting tracers = this.addSetting(new BooleanSetting("Tracers", "Draw lines from the crosshair to each container", false));
-   public final IconListSetting containers = this.addSetting(new IconListSetting("Containers", "Which container types to highlight"));
+   public final ModeSetting mode = this.addSetting(new ModeSetting("Box Style", "How a container is drawn", "Outline", "Outline", "Filled"));
+   public final SliderSetting range = this.addSetting(new SliderSetting("Reach", "How far out containers are marked", 128.0, 16.0, 256.0, 8.0, "m"));
+   public final SliderSetting highlightAlpha = this.addSetting(new SliderSetting("Box Opacity", "How solid the box is", 78.0, 0.0, 100.0, 2.0, "%"));
+   public final BooleanSetting tracers = this.addSetting(new BooleanSetting("Guide Lines", "Draw a line from the crosshair to each container", false));
+   public final IconListSetting containers = this.addSetting(new IconListSetting("Container Types", "Which containers are worth marking"));
    public final BooleanSetting hideOpened;
    private final Set<BlockPos> interactedBlocks = new HashSet<>();
 
@@ -36,7 +36,7 @@ public class StorageEspModule extends Module {
          this.containers.add(storageType.key, storageType.label, storageType.icon, storageType.defaultEnabled, storageType.defaultColor);
       }
 
-      this.hideOpened = this.addSetting(new BooleanSetting("Hide Opened", "Don't highlight containers you've already opened", false));
+      this.hideOpened = this.addSetting(new BooleanSetting("Skip Looted", "Stop marking a container once you have opened it", false));
    }
 
    public boolean isTypeEnabled(StorageEspModule.StorageType storageType) {

@@ -35,6 +35,7 @@ public class WatermarkHud extends HudComponent {
    private static final float PAD = 12.0F;
    private static final float MARK_H = 15.0F;
    private static final float TEXT_SIZE = 15.0F;
+   private static final float GAP = 7.0F;
 
    private final ThemeManager themes;
 
@@ -50,7 +51,8 @@ public class WatermarkHud extends HudComponent {
    @Override
    public float measureWidth(NVGRenderer nvg) {
       int mark = NVGImages.fromResource(LOGO);
-      float inner = mark > 0 ? markWidth() : nvg.textWidth("KRYPTIC", TEXT_SIZE);
+      float inner = nvg.textWidth("KRYPTIC", TEXT_SIZE);
+      if (mark > 0) inner += markWidth() + GAP;
       return PAD + inner + PAD;
    }
 
@@ -66,15 +68,22 @@ public class WatermarkHud extends HudComponent {
 
       float midY = y + h / 2.0F;
       int mark = NVGImages.fromResource(LOGO);
+      float tw = nvg.textWidth("KRYPTIC", TEXT_SIZE);
+
+      // The mark alone is a logo; the mark next to the name is a client
+      // watermark, which is what this is for -- someone watching a clip should
+      // be able to read what you are running.
       if (mark > 0) {
          float mw = markWidth();
-         nvg.image(mark, x + (w - mw) / 2.0F, midY - MARK_H / 2.0F, mw, MARK_H, -1);
+         float startX = x + (w - (mw + GAP + tw)) / 2.0F;
+         nvg.image(mark, startX, midY - MARK_H / 2.0F, mw, MARK_H, -1);
+         nvg.text("KRYPTIC", startX + mw + GAP, midY, TEXT_SIZE,
+               Colors.withAlpha(theme.textPrimary(), 0.95F));
          return;
       }
 
       // the artwork is an asset; if it will not load the name still has to
       // appear rather than leaving an empty pill on screen
-      float tw = nvg.textWidth("KRYPTIC", TEXT_SIZE);
       nvg.text("KRYPTIC", x + (w - tw) / 2.0F, midY, TEXT_SIZE,
             Colors.withAlpha(theme.textPrimary(), 0.95F));
    }

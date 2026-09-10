@@ -5,6 +5,7 @@ import dev.kryptic.module.ModuleManager;
 import dev.kryptic.render.Surface;
 import dev.kryptic.render.nanovg.NVGRenderer;
 import dev.kryptic.theme.Theme;
+import dev.kryptic.util.Colors;
 
 /**
  * The material every HUD panel is drawn on.
@@ -33,6 +34,30 @@ public final class HudSurface {
             nvg.rectGradient(x, y, w, h, radius, theme.background(), theme.backgroundTo(), true);
         }
     }
+
+    /**
+     * A panel with a title bar across the top.
+     *
+     * The header is a lighter band with the title in it and a hairline under,
+     * so a list reads as a labelled group rather than as loose rows floating on
+     * a rectangle. Returns where the body starts, so callers lay rows out from
+     * one number instead of repeating the header height.
+     */
+    public static float titledPanel(NVGRenderer nvg, float x, float y, float w, float h,
+                                    float headerH, String title, Theme theme) {
+        panel(nvg, x, y, w, h, 4.0f, theme);
+        nvg.rect(x + 1.0f, y + 1.0f, w - 2.0f, headerH - 1.0f, 3.0f,
+                Colors.withAlpha(theme.headerTop(), 0.95f));
+        nvg.rect(x + 1.0f, y + headerH - 1.0f, w - 2.0f, 1.0f, 0.0f,
+                Colors.withAlpha(theme.accent(), 0.45f));
+        // centred, because a title bar reads as a heading rather than a row
+        float tw = nvg.textWidth(title, TITLE_FONT);
+        nvg.text(title, x + (w - tw) / 2.0f, y + headerH / 2.0f, TITLE_FONT, theme.textPrimary());
+        return y + headerH;
+    }
+
+    /** Size of a panel title. */
+    public static final float TITLE_FONT = 11.5f;
 
     /** A capsule — the single-value readouts along the bottom. */
     public static void pill(NVGRenderer nvg, float x, float y, float w, float h, Theme theme) {
