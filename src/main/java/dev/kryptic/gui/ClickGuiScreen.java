@@ -213,23 +213,16 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         // geometry -- and to hit boxes that no longer match where you click.
         layoutColumns();
 
-        int rowH   = Math.round(OverlayRenderer.uiToGui(ModuleEntry.ROW_H));
-        int headH  = Math.round(OverlayRenderer.uiToGui(Panel.HEADER_H));
-        int colW   = Math.round(OverlayRenderer.uiToGui(STATE.columnWidth()));
-        int gap    = Math.round(OverlayRenderer.uiToGui(STATE.columnGap()));
-        int left   = Math.round(OverlayRenderer.uiToGui(STATE.columnsLeft()));
-        int top    = Math.round(OverlayRenderer.uiToGui(STATE.columnTop()));
+        int rowH  = Math.round(OverlayRenderer.uiToGui(ModuleEntry.ROW_H));
+        int headH = Math.round(OverlayRenderer.uiToGui(Panel.HEADER_H));
+        int colW  = Math.round(OverlayRenderer.uiToGui(STATE.columnWidth()));
+        int gap   = Math.round(OverlayRenderer.uiToGui(STATE.columnGap()));
+        int left  = Math.round(OverlayRenderer.uiToGui(STATE.columnsLeft()));
+        int top   = Math.round(OverlayRenderer.uiToGui(STATE.columnTop()));
 
-        ctx.fill(0, 0, width, height, 0xE0090909);
-        // Say why, on screen. The styled menu failing is not something the user
-        // can diagnose from a log file they have to go and find, and the reason
-        // is the one piece of information that makes the next report useful.
-        String reason = OverlayRenderer.lastError();
-        ctx.drawText(this.client.textRenderer,
-                Text.literal("Kryptic - fallback view: " + (reason == null
-                        ? "the styled menu drew nothing (no overlay error; likely no font loaded)"
-                        : reason)),
-                left, Math.max(4, top - 14), 0xFFE08A8A, true);
+        ctx.fill(0, 0, width, height, 0xF00B0B0D);
+
+        drawFallbackTopBar(ctx, left, top);
 
         String query = search.toString().toLowerCase(Locale.ROOT).trim();
         int cx = left;
@@ -241,97 +234,115 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                 }
             }
 
-            int colH = headH + inColumn.size() * rowH + 4;
-            ctx.fill(cx, top, cx + colW, top + colH, 0xF00E0E11);
-            ctx.fill(cx, top, cx + colW, top + headH, 0xFF17171A);
-            ctx.drawText(this.client.textRenderer, Text.literal(category.name()),
-                    cx + 6, top + headH / 2 - 4, 0xFFEDEDEF, true);
+            int on = 0;
+            for (Module m : inColumn) if (m.isEnabled()) on++;
 
-            int ry = top + headH + 2;
+            int colH = headH + inColumn.size() * rowH + 6;
+            panel(ctx, cx, top, cx + colW, top + colH, 0xFF0E0E11, 0xFF26262B);
+            ctx.fill(cx + 1, top + 1, cx + colW - 1, top + headH, 0xFF17171A);
+            ctx.fill(cx + 1, top + headH, cx + colW - 1, top + headH + 1, 0x70FFFFFF);
+            ctx.drawText(this.client.textRenderer, Text.literal(category.name()),
+                    cx + 8, top + headH / 2 - 4, 0xFFEDEDEF, false);
+
+            String count = on + "/" + inColumn.size();
+            int cw = this.client.textRenderer.getWidth(count);
+            ctx.drawText(this.client.textRenderer, Text.literal(count),
+                    cx + colW - 8 - cw, top + headH / 2 - 4, 0xFF5A5A62, false);
+
+            int ry = top + headH + 3;
             for (Module m : inColumn) {
-                boolean on    = m.isEnabled();
-                boolean hover = mx >= cx && mx <= cx + colW && my >= ry && my <= ry + rowH;
-                if (on || hover) {
-                    ctx.fill(cx + 2, ry, cx + colW - 2, ry + rowH, on ? 0x33FFFFFF : 0x18FFFFFF);
+                boolean enabled = m.isEnabled();
+                boolean hover   = mx >= cx && mx <= cx + colW && my >= ry && my <= ry + rowH;
+                if (enabled || hover) {
+                    ctx.fill(cx + 4, ry, cx + colW - 4, ry + rowH, enabled ? 0x26FFFFFF : 0x14FFFFFF);
                 }
 
-                if (on) {
-                    ctx.fill(cx + 3, ry + 2, cx + 5, ry + rowH - 2, 0xFFFFFFFF);
+                if (enabled) {
+                    ctx.fill(cx + 6, ry + 4, cx + 8, ry + rowH - 4, 0xFFFFFFFF);
                 }
 
                 ctx.drawText(this.client.textRenderer, Text.literal(m.getName()),
-                        cx + 9, ry + rowH / 2 - 4, on ? 0xFFFFFFFF : 0xFF8E8E96, true);
+                        cx + 13, ry + rowH / 2 - 4, enabled ? 0xFFFFFFFF : 0xFF8E8E96, false);
+
+                // the state dot, filled when on and an outline when off, which
+                // is what the styled row uses
+                int dx = cx + colW - 13;
+                int dy = ry + rowH / 2;
+                if (enabled) {
+                    ctx.fill(dx - 2, dy - 2, dx + 2, dy + 2, 0xFFFFFFFF);
+                } else {
+                    ctx.fill(dx - 2, dy - 2, dx + 2, dy - 1, 0x66FFFFFF);
+                    ctx.fill(dx - 2, dy + 1, dx + 2, dy + 2, 0x66FFFFFF);
+                    ctx.fill(dx - 2, dy - 1, dx - 1, dy + 1, 0x66FFFFFF);
+                    ctx.fill(dx + 1, dy - 1, dx + 2, dy + 1, 0x66FFFFFF);
+                }
+
                 ry += rowH;
             }
 
             cx += colW + gap;
         }
+
+        String hint = "RIGHT SHIFT to close  -  right-click a module for its settings";
+        ctx.drawText(this.client.textRenderer, Text.literal(hint),
+                (width - this.client.textRenderer.getWidth(hint)) / 2, height - 14, 0xFF5A5A62, false);
+
+        // Say why, on screen. The styled menu failing is not something the user
+        // can diagnose from a log file they have to go and find, and the reason
+        // is the one piece of information that makes the next report useful.
+        String reason = OverlayRenderer.lastError();
+        String banner = "Kryptic fallback view - " + (reason == null
+                ? "NanoVG drew nothing and reported no error (font or GL state)"
+                : reason);
+        ctx.fill(0, 0, width, 12, 0xC0301010);
+        ctx.drawText(this.client.textRenderer, Text.literal(banner), 4, 2, 0xFFE08A8A, false);
     }
 
-    @Override
-    public void tick() { finishCloseIfDone(); }
+    /** The search pill and the three buttons, so the bar is not just missing. */
+    private void drawFallbackTopBar(DrawContext ctx, int left, int columnsTop) {
+        int barH = Math.round(OverlayRenderer.uiToGui(BAR_H));
+        int y = Math.max(14, columnsTop - barH - 4);
+        int searchW = Math.round(OverlayRenderer.uiToGui(SEARCH_W));
+        int pillW = Math.round(OverlayRenderer.uiToGui(PILL_W));
+        int pillGap = Math.round(OverlayRenderer.uiToGui(PILL_GAP));
+        int h = Math.round(OverlayRenderer.uiToGui(SEARCH_H));
 
-    private void finishCloseIfDone() {
-        if (closing && openAnim.isDone()) client.setScreen(parent);
-    }
+        ctx.drawText(this.client.textRenderer, Text.literal("KRYPTIC"), left, y + h / 2 - 4, 0xFFEDEDEF, false);
+        int sx = left + this.client.textRenderer.getWidth("KRYPTIC") + 10;
 
-    @Override
-    public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
-        if (client.world == null) renderPanoramaBackground(ctx, delta);
-        if (guiModule().blur.get()) {
-            BlurHook.set(guiModule().blurStrength.getFloat() * openAnim.value());
-            // ctx.applyBlur() not available in 1.21.5
-        } else {
-            BlurHook.clear();
+        panel(ctx, sx, y, sx + searchW, y + h, 0x14FFFFFF, 0x2AFFFFFF);
+        String typed = search.length() == 0 ? "Search modules" : search.toString();
+        ctx.drawText(this.client.textRenderer, Text.literal(typed),
+                sx + 6, y + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
+
+        int px = sx + searchW + 10;
+        String[] labels = {"Stats", "Configs", "Themes"};
+        boolean[] active = {statsOpen, false, themesOpen};
+        for (int i = 0; i < labels.length; i++) {
+            int x0 = px + i * (pillW + pillGap);
+            panel(ctx, x0, y, x0 + pillW, y + h,
+                    active[i] ? 0x2EFFFFFF : 0x12FFFFFF, active[i] ? 0x55FFFFFF : 0x28FFFFFF);
+            int lw = this.client.textRenderer.getWidth(labels[i]);
+            ctx.drawText(this.client.textRenderer, Text.literal(labels[i]),
+                    x0 + (pillW - lw) / 2, y + h / 2 - 4, active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
         }
     }
 
-    @Override
-    public void renderNvg(NVGRenderer nvg, float mouseX, float mouseY, float screenW, float screenH) {
-        nvg.setFontMode(guiModule().font.get());
-        // No hasFont() gate here. It used to return early, which turned "one
-        // font failed to load" into "the entire menu is invisible" -- panels,
-        // rows and toggles included, while the dim and the blur still drew
-        // through the vanilla path and clicks still landed. That is exactly
-        // the bug that was fixed in OverlayRenderer, and this was a second
-        // copy of it that the fix missed. NanoVG draws shapes without a font;
-        // only text needs one.
-        float t = openAnim.value();
-        if (t <= 0.002f && closing) return;
-
-        layoutColumns(screenW, screenH);
-
-        nvg.save();
-        nvg.alpha(t);
-        float scale = 0.97f + 0.03f * t;
-        nvg.translate(screenW / 2.0f, screenH / 2.0f);
-        nvg.scale(scale);
-        nvg.translate(-screenW / 2.0f, -screenH / 2.0f);
-
-        String query = search.toString();
-        for (CategoryPanel cp : columns) cp.setFilter(query);
-
-        // columns render left to right; the pane under the cursor is unaffected
-        // by order because nothing overlaps in a locked grid
-        for (CategoryPanel cp : columns) cp.render(nvg, mouseX, mouseY, screenW, screenH);
-
-        renderTopBar(nvg, mouseX, mouseY, screenW);
-        renderHint(nvg, screenW, screenH);
-
-        if (themesOpen) {
-            // scrim so the floating pane reads as being above the grid
-            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF050506, 0.46f));
-            themesPanel.render(nvg, mouseX, mouseY, screenW, screenH);
-        }
-
-        if (statsOpen) {
-            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF050506, 0.46f));
-            statsPanel.render(nvg, mouseX, mouseY, screenW, screenH);
-        }
-
-        configPanel.render(nvg, mouseX, mouseY, screenW, screenH);
-        nvg.restore();
-        nvgFrames++;
+    /**
+     * A filled box with a one-pixel edge.
+     *
+     * DrawContext has no rounded rectangle, so the corners are square. Clipping
+     * the corner pixels is the closest vanilla gets to the styled panel's
+     * radius without drawing a texture for it.
+     */
+    private static void panel(DrawContext ctx, int x0, int y0, int x1, int y1, int fill, int edge) {
+        ctx.fill(x0 + 1, y0, x1 - 1, y1, fill);
+        ctx.fill(x0, y0 + 1, x0 + 1, y1 - 1, fill);
+        ctx.fill(x1 - 1, y0 + 1, x1, y1 - 1, fill);
+        ctx.fill(x0 + 1, y0, x1 - 1, y0 + 1, edge);
+        ctx.fill(x0 + 1, y1 - 1, x1 - 1, y1, edge);
+        ctx.fill(x0, y0 + 1, x0 + 1, y1 - 1, edge);
+        ctx.fill(x1 - 1, y0 + 1, x1, y1 - 1, edge);
     }
 
     // ── chrome ────────────────────────────────────────────────────────────────
