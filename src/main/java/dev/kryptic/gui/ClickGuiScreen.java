@@ -1,5 +1,8 @@
 package dev.kryptic.gui;
 
+import java.util.Locale;
+import dev.kryptic.gui.panel.ModuleEntry;
+import dev.kryptic.module.Module;
 import org.lwjgl.glfw.GLFW;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.input.CharInput;
@@ -108,6 +111,19 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private Panel                     pressedContentPanel;
     private final Screen              parent;
 
+    /**
+     * How many frames the NanoVG pass has completed, and what it read last
+     * time the vanilla pass ran.
+     *
+     * The vanilla render() runs before the overlay each frame, so comparing
+     * these tells the fallback whether NanoVG produced anything at all last
+     * frame. A one-frame lag is invisible and the check needs no knowledge of
+     * why NanoVG is silent -- a missing font, a latched crash, a framebuffer
+     * that will not bind. Any of them, the menu still draws.
+     */
+    private int nvgFrames;
+    private int nvgFramesSeen = -1;
+
     public ClickGuiScreen()              { this(null); }
 
     public ClickGuiScreen(Screen parent) {
@@ -164,7 +180,86 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     public void render(DrawContext ctx, int mx, int my, float delta) {
         int dimAlpha = (int)(48.0f * openAnim.value());
         ctx.fill(0, 0, width, height, dimAlpha << 24 | 0x060608);
+
+        boolean nvgSilent = nvgFrames == nvgFramesSeen;
+        nvgFramesSeen = nvgFrames;
+        if (nvgSilent) {
+            renderVanillaFallback(ctx, mx, my);
+        }
+
         finishCloseIfDone();
+    }
+
+    /**
+     * The menu, drawn with Minecraft's own renderer.
+     *
+     * This exists because the NanoVG overlay has more than one way to produce
+     * nothing -- no font loaded, the overlay latched off after a throw, a
+     * framebuffer that would not bind -- and every one of them looked the same
+     * from the outside: an invisible menu that still accepts clicks, because
+     * the input handlers never depended on drawing.
+     *
+     * It is not meant to be pretty. It uses the same layout and the same hit
+     * boxes as the real thing, so anything you can click here does what it
+     * would have done, and it says plainly that it is the fallback so nobody
+     * mistakes it for the design.
+     */
+    private void renderVanillaFallback(DrawContext ctx, int mx, int my) {
+        ModuleManager modules = KrypticClient.modules();
+        if (modules == null) return;
+
+        // layoutColumns normally runs from renderNvg. With NanoVG silent it
+        // never would, so a window resize would leave this drawing to stale
+        // geometry -- and to hit boxes that no longer match where you click.
+        layoutColumns();
+
+        int rowH   = Math.round(OverlayRenderer.uiToGui(ModuleEntry.ROW_H));
+        int headH  = Math.round(OverlayRenderer.uiToGui(Panel.HEADER_H));
+        int colW   = Math.round(OverlayRenderer.uiToGui(STATE.columnWidth()));
+        int gap    = Math.round(OverlayRenderer.uiToGui(STATE.columnGap()));
+        int left   = Math.round(OverlayRenderer.uiToGui(STATE.columnsLeft()));
+        int top    = Math.round(OverlayRenderer.uiToGui(STATE.columnTop()));
+
+        ctx.fill(0, 0, width, height, 0xE0090909);
+        ctx.drawText(this.client.textRenderer,
+                Text.literal("Kryptic - fallback view (the styled menu could not draw; see latest.log)"),
+                left, Math.max(4, top - 14), 0xFFBFBFC7, true);
+
+        String query = search.toString().toLowerCase(Locale.ROOT).trim();
+        int cx = left;
+        for (Category category : Category.values()) {
+            List<Module> inColumn = new ArrayList<>();
+            for (Module m : modules.inCategory(category)) {
+                if (query.isEmpty() || m.getName().toLowerCase(Locale.ROOT).contains(query)) {
+                    inColumn.add(m);
+                }
+            }
+
+            int colH = headH + inColumn.size() * rowH + 4;
+            ctx.fill(cx, top, cx + colW, top + colH, 0xF00E0E11);
+            ctx.fill(cx, top, cx + colW, top + headH, 0xFF17171A);
+            ctx.drawText(this.client.textRenderer, Text.literal(category.name()),
+                    cx + 6, top + headH / 2 - 4, 0xFFEDEDEF, true);
+
+            int ry = top + headH + 2;
+            for (Module m : inColumn) {
+                boolean on    = m.isEnabled();
+                boolean hover = mx >= cx && mx <= cx + colW && my >= ry && my <= ry + rowH;
+                if (on || hover) {
+                    ctx.fill(cx + 2, ry, cx + colW - 2, ry + rowH, on ? 0x33FFFFFF : 0x18FFFFFF);
+                }
+
+                if (on) {
+                    ctx.fill(cx + 3, ry + 2, cx + 5, ry + rowH - 2, 0xFFFFFFFF);
+                }
+
+                ctx.drawText(this.client.textRenderer, Text.literal(m.getName()),
+                        cx + 9, ry + rowH / 2 - 4, on ? 0xFFFFFFFF : 0xFF8E8E96, true);
+                ry += rowH;
+            }
+
+            cx += colW + gap;
+        }
     }
 
     @Override
@@ -188,7 +283,13 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     @Override
     public void renderNvg(NVGRenderer nvg, float mouseX, float mouseY, float screenW, float screenH) {
         nvg.setFontMode(guiModule().font.get());
-        if (!nvg.hasFont()) return;
+        // No hasFont() gate here. It used to return early, which turned "one
+        // font failed to load" into "the entire menu is invisible" -- panels,
+        // rows and toggles included, while the dim and the blur still drew
+        // through the vanilla path and clicks still landed. That is exactly
+        // the bug that was fixed in OverlayRenderer, and this was a second
+        // copy of it that the fix missed. NanoVG draws shapes without a font;
+        // only text needs one.
         float t = openAnim.value();
         if (t <= 0.002f && closing) return;
 
@@ -224,6 +325,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
         configPanel.render(nvg, mouseX, mouseY, screenW, screenH);
         nvg.restore();
+        nvgFrames++;
     }
 
     // ── chrome ────────────────────────────────────────────────────────────────

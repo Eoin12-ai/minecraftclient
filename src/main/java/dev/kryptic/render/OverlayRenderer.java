@@ -198,6 +198,24 @@ public final class OverlayRenderer {
       return f / uiScale();
    }
 
+   /**
+    * The inverse of {@link #guiToUi}: this client's UI space back to vanilla's.
+    *
+    * Needed by anything that has laid itself out in UI coordinates but has to
+    * draw through a vanilla DrawContext -- the ClickGUI's fallback pass, which
+    * runs when NanoVG has produced nothing.
+    */
+   public static float uiToGui(double d) {
+      MinecraftClient client = MinecraftClient.getInstance();
+      float f = (float)(d * (double)uiScale());
+      return f / (float)client.getWindow().getScaleFactor();
+   }
+
+   /** Whether the overlay has latched off after a crash. */
+   public static boolean isCrashed() {
+      return crashed;
+   }
+
    public static float uiWidth() {
       MinecraftClient client = MinecraftClient.getInstance();
       return (float)client.getWindow().getFramebufferWidth() / uiScale();
