@@ -68,7 +68,7 @@ public class CrystalOptimiserModule extends Module {
          return null;
       }
 
-      Vec3d at = best.getPos();
+      Vec3d at = new Vec3d(best.getX(), best.getY(), best.getZ());
       float mine = damageAt(self, at);
       float theirs = 0.0F;
       for (PlayerEntity other : client.world.getPlayers()) {
@@ -96,7 +96,9 @@ public class CrystalOptimiserModule extends Module {
 
    /** Distance falloff only; see the class note on why this is an estimate. */
    private static float damageAt(PlayerEntity player, Vec3d source) {
-      double distance = player.getPos().distanceTo(source);
+      // Entity.getPos() is not a name on this version; getX/getY/getZ are.
+      double distance = new Vec3d(player.getX(), player.getY(), player.getZ())
+            .distanceTo(source);
       double radius = 12.0;                     // a crystal explodes with power 6
       if (distance >= radius) {
          return 0.0F;

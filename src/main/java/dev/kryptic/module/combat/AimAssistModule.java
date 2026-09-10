@@ -163,15 +163,26 @@ public class AimAssistModule extends Module {
       return d;
    }
 
+   /**
+    * An entity's position as a vector.
+    *
+    * Entity.getPos() does not exist on this version -- every getPos in this
+    * codebase is on a Chunk, which is why grepping for the call name alone
+    * proved nothing. getX/getY/getZ are what the renderers use.
+    */
+   private static Vec3d posOf(net.minecraft.entity.Entity entity) {
+      return new Vec3d(entity.getX(), entity.getY(), entity.getZ());
+   }
+
    private float yawTo(ClientPlayerEntity player, LivingEntity target) {
-      Vec3d eye = player.getPos().add(0.0, EYE_HEIGHT, 0.0);
-      Vec3d at = target.getPos().add(0.0, target.getHeight() * 0.5, 0.0);
+      Vec3d eye = posOf(player).add(0.0, EYE_HEIGHT, 0.0);
+      Vec3d at = posOf(target).add(0.0, target.getHeight() * 0.5, 0.0);
       return (float) (Math.atan2(at.z - eye.z, at.x - eye.x) * (180.0 / Math.PI)) - 90.0F;
    }
 
    private float pitchTo(ClientPlayerEntity player, LivingEntity target) {
-      Vec3d eye = player.getPos().add(0.0, EYE_HEIGHT, 0.0);
-      Vec3d at = target.getPos().add(0.0, target.getHeight() * 0.5, 0.0);
+      Vec3d eye = posOf(player).add(0.0, EYE_HEIGHT, 0.0);
+      Vec3d at = posOf(target).add(0.0, target.getHeight() * 0.5, 0.0);
       double dx = at.x - eye.x;
       double dz = at.z - eye.z;
       double flat = Math.sqrt(dx * dx + dz * dz);

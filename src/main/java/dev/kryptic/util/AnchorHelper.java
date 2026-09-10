@@ -134,8 +134,10 @@ public final class AnchorHelper {
          return 0.0F;
       }
 
-      double distance = Math.sqrt(player.squaredDistanceTo(
-            pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5));
+      double dx = player.getX() - (pos.getX() + 0.5);
+      double dy = player.getY() - (pos.getY() + 0.5);
+      double dz = player.getZ() - (pos.getZ() + 0.5);
+      double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
       double radius = 5.0 * 2.0;
       if (distance >= radius) {
          return 0.0F;

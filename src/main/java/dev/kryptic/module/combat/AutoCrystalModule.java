@@ -119,8 +119,10 @@ public class AutoCrystalModule extends Module {
          return;
       }
 
-      double centreDistance = player.getPos().distanceTo(
-            new net.minecraft.util.math.Vec3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5));
+      double dx = player.getX() - (pos.getX() + 0.5);
+      double dy = player.getY() - (pos.getY() + 0.5);
+      double dz = player.getZ() - (pos.getZ() + 0.5);
+      double centreDistance = Math.sqrt(dx * dx + dy * dy + dz * dz);
       if (centreDistance > this.reach.get() + 1.0) {
          return;
       }
