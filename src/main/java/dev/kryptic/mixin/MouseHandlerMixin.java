@@ -10,7 +10,6 @@ import net.minecraft.client.Mouse;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.input.MouseInput;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Slice;
@@ -18,22 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({Mouse.class})
 public class MouseHandlerMixin {
-   @Shadow
-   private double cursorDeltaX;
-   @Shadow
-   private double cursorDeltaY;
-
-   @Inject(
-      method = {"updateMouse"},
-      at = {@At("HEAD")}
-   )
-   private void kryptic$aimAssist(double d, CallbackInfo callbackInfo) {
-      ModuleManager moduleManager = KrypticClient.modules();
-      if (moduleManager != null && moduleManager.aimAssist != null && moduleManager.aimAssist.isEnabled()) {
-         double[] deltas = moduleManager.aimAssist.computePixels(this.cursorDeltaX, this.cursorDeltaY, 1.0); if (deltas != null) { this.cursorDeltaX = this.cursorDeltaX + deltas[0]; this.cursorDeltaY = this.cursorDeltaY + deltas[1]; }
-      }
-   }
-
    @Inject(
       method = {"onMouseButton(JLnet/minecraft/client/input/MouseInput;I)V"},
       at = {@At("HEAD")},

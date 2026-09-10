@@ -206,3 +206,20 @@ tasks.register('checkInjectSignatures') {
 }
 
 tasks.named('check') { dependsOn 'checkInjectSignatures' }
+
+// A module deleted from ModuleManager leaves dangling references to its field,
+// and a local javac cannot see them: without Minecraft on the classpath the
+// import errors stop compilation before the field is ever resolved. That gap
+// let a broken build reach CI twice. This checks the source directly, so it
+// works with or without the mappings.
+tasks.register('checkModuleRefs') {
+    doLast {
+        def proc = ['python3', 'tools/modulerefs.py'].execute(null, projectDir)
+        proc.waitForProcessOutput(System.out, System.err)
+        if (proc.exitValue() != 0) {
+            throw new GradleException('checkModuleRefs: a module field referenced somewhere no longer exists')
+        }
+    }
+}
+
+tasks.named('check') { dependsOn 'checkModuleRefs' }
