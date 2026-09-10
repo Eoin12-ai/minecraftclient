@@ -64,7 +64,7 @@ public class ArmorHud extends HudComponent {
 
                if (stack.isDamageable()) {
                   float f6 = 1.0F - (float)stack.getDamage() / (float)stack.getMaxDamage();
-                  int n = Colors.lerp(-1684147, -11671924, f6);
+                  int n = Colors.healthRamp(f6);
                   float f7 = f5 + 22.0F + 3.0F;
                   nVGRenderer.rect(f, f7, 22.0F, 3.0F, 1.5F, Colors.withAlpha(-16777216, 0.45F));
                   nVGRenderer.rect(f, f7, Math.max(3.0F, 22.0F * f6), 3.0F, 1.5F, n);

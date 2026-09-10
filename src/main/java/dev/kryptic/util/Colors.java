@@ -60,6 +60,25 @@ public final class Colors {
     * sensitive to green than to blue, and a plain mean calls a saturated blue
     * as bright as a mid grey.
     */
+   /**
+    * The red-to-green ramp used by health and durability bars.
+    *
+    * Interpolating red to green straight through RGB passes through olive mud:
+    * at 50% the colour is #9A9A6C, which reads as neither danger nor safety
+    * and is exactly where a health bar most needs to be legible. Going via an
+    * amber midpoint keeps every value on the ramp a colour that means
+    * something at a glance.
+    *
+    * @param fraction 0 is empty, 1 is full; anything outside is clamped
+    */
+   public static int healthRamp(float fraction) {
+      float f = Math.clamp(fraction, 0.0F, 1.0F);
+      int low = -1684147;      // #E64D4D
+      int mid = -20393;        // #FFB047
+      int high = -11671924;    // #4DE68C
+      return f < 0.5F ? lerp(low, mid, f * 2.0F) : lerp(mid, high, (f - 0.5F) * 2.0F);
+   }
+
    public static float luminance(int n) {
       return (0.2126F * red(n) + 0.7152F * green(n) + 0.0722F * blue(n)) / 255.0F;
    }

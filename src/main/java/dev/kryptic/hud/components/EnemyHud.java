@@ -160,7 +160,7 @@ public class EnemyHud extends HudComponent {
 
       // Red when they are nearly down, green when they are not. The colour is
       // the read you get from peripheral vision, before you parse the number.
-      int fill = Colors.lerp(-1684147, -11671924, fraction);
+      int fill = Colors.healthRamp(fraction);
       nvg.rect(bx, by, Math.max(BAR_H, bw * fraction), BAR_H, BAR_H / 2.0F, fill);
 
       String value = String.valueOf(Math.round(health));
