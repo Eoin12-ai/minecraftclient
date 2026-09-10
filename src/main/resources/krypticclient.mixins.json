@@ -14,6 +14,8 @@
 		"EntityFreecamMixin",
 		"KeyMappingAccessor",
 		"EntityNameTagMixin",
+		"EntityTeamColorMixin",
+		"MinecraftClientOutlineMixin",
 		"GameRendererMixin",
 		"GuiCrosshairMixin",
 		"GuiNametagEquipmentMixin",

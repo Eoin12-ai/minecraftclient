@@ -35,6 +35,7 @@ public final class ModuleOrder {
         "Player ESP",            // who else is here
         "Mob ESP",
          "Item ESP",
+         "Chams",
         "Tracers",
         "Chunk Borders",         // navigation aids
         "Breadcrumbs",
