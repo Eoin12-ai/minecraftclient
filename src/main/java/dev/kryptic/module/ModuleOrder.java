@@ -34,6 +34,7 @@ public final class ModuleOrder {
         "Spawner Nametags",
         "Player ESP",            // who else is here
         "Mob ESP",
+         "Item ESP",
         "Tracers",
         "Chunk Borders",         // navigation aids
         "Breadcrumbs",

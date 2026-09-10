@@ -68,6 +68,10 @@ public class ThemeManager {
             JsonObject jsonObject2 = new JsonObject();
             jsonObject2.addProperty("name", theme.getName());
             jsonObject2.addProperty("accent", theme.accent());
+            if (theme.hasCustomSurface()) {
+               jsonObject2.addProperty("surface", theme.surface());
+            }
+
             jsonArray.add(jsonObject2);
          }
       }
@@ -82,7 +86,15 @@ public class ThemeManager {
          if (jsonObject.has("custom")) {
             for (JsonElement jsonElement : jsonObject.getAsJsonArray("custom")) {
                JsonObject jsonObject2 = jsonElement.getAsJsonObject();
-               this.themes.add(new Theme(jsonObject2.get("name").getAsString(), jsonObject2.get("accent").getAsInt(), true));
+               Theme restored = new Theme(
+                     jsonObject2.get("name").getAsString(), jsonObject2.get("accent").getAsInt(), true);
+               // Written only when it was set, so a theme saved before surfaces
+               // existed loads on the stock one rather than on black.
+               if (jsonObject2.has("surface")) {
+                  restored.setSurface(jsonObject2.get("surface").getAsInt());
+               }
+
+               this.themes.add(restored);
             }
          }
 

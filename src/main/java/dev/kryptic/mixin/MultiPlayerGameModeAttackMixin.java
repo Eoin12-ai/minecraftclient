@@ -1,7 +1,6 @@
 package dev.kryptic.mixin;
 
-import dev.kryptic.KrypticClient;
-import dev.kryptic.module.ModuleManager;
+import dev.kryptic.util.CombatTarget;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.entity.Entity;
@@ -19,7 +18,10 @@ public class MultiPlayerGameModeAttackMixin {
    )
    private void kryptic$onAttack(PlayerEntity player, Entity entity, CallbackInfo callbackInfo) {
       if (player == MinecraftClient.getInstance().player && entity != player) {
-         ModuleManager moduleManager = KrypticClient.modules();
+         // The one moment the client knows who you are fighting. Vanilla keeps
+         // no notion of a target, so the Enemy HUD is built from this plus the
+         // crosshair; see CombatTarget.
+         CombatTarget.attacked(entity);
       }
    }
 }

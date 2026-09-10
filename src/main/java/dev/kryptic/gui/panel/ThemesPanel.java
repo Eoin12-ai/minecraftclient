@@ -26,6 +26,8 @@ public class ThemesPanel extends Panel {
    private static final float SECTION_H = 24.0F;
    private final ColorWidget accentWidget;
    private final ColorSetting accentProxy;
+   private final ColorWidget surfaceWidget;
+   private final ColorSetting surfaceProxy;
    private final List<SettingWidget> soundWidgets = new ArrayList<>();
    private static final int STARTUP_FIRST_WIDGET = 5;
    private int hoveredRow = -1;
@@ -43,6 +45,16 @@ public class ThemesPanel extends Panel {
          }
       };
       this.accentWidget = new ColorWidget(themeManager, this.accentProxy);
+      this.surfaceProxy = new ColorSetting("Surface", "Panel color for this custom theme", themeManager.current().surface()) {
+         public void set(Integer num) {
+            super.set(num);
+            Theme theme = themeManager.current();
+            if (theme.isCustom()) {
+               theme.setSurface(num);
+            }
+         }
+      };
+      this.surfaceWidget = new ColorWidget(themeManager, this.surfaceProxy);
       SoundSettings soundSettings = KrypticClient.sounds();
       if (soundSettings != null) {
          for (Setting setting : soundSettings.all()) {
@@ -65,6 +77,7 @@ public class ThemesPanel extends Panel {
       float temp = 12.0F + (float)this.themes.getThemes().size() * 26.0F + 28.0F;
       if (this.themes.current().isCustom()) {
          temp += this.accentWidget.height(nVGRenderer) + 6.0F;
+         temp += this.surfaceWidget.height(nVGRenderer) + 6.0F;
       }
 
       temp += 48.0F;
@@ -118,6 +131,9 @@ public class ThemesPanel extends Panel {
          this.accentWidget.setBounds(this.panelState.x + 14.0F, f + 3.0F, (width() - 28.0F));
          this.accentWidget.render(nVGRenderer, tickDelta2, tickDelta3);
          f += this.accentWidget.height(nVGRenderer) + 6.0F;
+         this.surfaceWidget.setBounds(this.panelState.x + 14.0F, f + 3.0F, (width() - 28.0F));
+         this.surfaceWidget.render(nVGRenderer, tickDelta2, tickDelta3);
+         f += this.surfaceWidget.height(nVGRenderer) + 6.0F;
       }
 
       float f8 = this.edgeFade(f, f + 28.0F, tickDelta4, tickDelta5);
@@ -177,7 +193,7 @@ public class ThemesPanel extends Panel {
 
    @Override
    public boolean mouseClicked(float mx, float my, int btn) {
-      if (this.accentWidget.mouseClicked(mx, my, btn)) {
+      if (this.accentWidget.mouseClicked(mx, my, btn) || this.surfaceWidget.mouseClicked(mx, my, btn)) {
          return true;
       }
 
@@ -207,6 +223,7 @@ public class ThemesPanel extends Panel {
                this.themes.select(theme2);
                if (theme2.isCustom()) {
                   this.accentProxy.set(Integer.valueOf(theme2.accent()));
+                  this.surfaceProxy.set(Integer.valueOf(theme2.surface()));
                }
             }
 
@@ -218,12 +235,14 @@ public class ThemesPanel extends Panel {
 
       if (this.themes.current().isCustom()) {
          rowY += this.accentWidget.height((NVGRenderer)null) + 6.0F;
+         rowY += this.surfaceWidget.height((NVGRenderer)null) + 6.0F;
       }
 
       if (my >= rowY && my <= rowY + 28.0F - 4.0F && mx >= left && mx <= right) {
          Theme theme = this.themes.addCustom(this.themes.current().accent());
          this.themes.select(theme);
          this.accentProxy.set(Integer.valueOf(theme.accent()));
+         this.surfaceProxy.set(Integer.valueOf(theme.surface()));
          return true;
       }
 
@@ -237,6 +256,7 @@ public class ThemesPanel extends Panel {
    @Override
    public void mouseDragged(float f, float f3) {
       this.accentWidget.mouseDragged(f, f3);
+      this.surfaceWidget.mouseDragged(f, f3);
 
       for (SettingWidget settingWidget : this.soundWidgets) {
          settingWidget.mouseDragged(f, f3);
@@ -246,6 +266,7 @@ public class ThemesPanel extends Panel {
    @Override
    public void mouseReleased() {
       this.accentWidget.mouseReleased();
+      this.surfaceWidget.mouseReleased();
 
       for (SettingWidget settingWidget : this.soundWidgets) {
          settingWidget.mouseReleased();
@@ -254,11 +275,11 @@ public class ThemesPanel extends Panel {
 
    @Override
    public boolean keyPressed(int n) {
-      return this.accentWidget.keyPressed(n);
+      return this.accentWidget.keyPressed(n) || this.surfaceWidget.keyPressed(n);
    }
 
    @Override
    public boolean isListening() {
-      return this.accentWidget.isListening();
+      return this.accentWidget.isListening() || this.surfaceWidget.isListening();
    }
 }

@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: |
           set +e
-          ./gradlew soundProbe --no-daemon 2>&1 | tee /tmp/build.log
+          ./gradlew chamsProbe --no-daemon 2>&1 | tee /tmp/build.log
           ./gradlew build --no-daemon --stacktrace 2>&1 | tee -a /tmp/build.log
           exit ${PIPESTATUS[0]}
         env:

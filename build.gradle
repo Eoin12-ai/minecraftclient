@@ -207,47 +207,29 @@ tasks.register('checkInjectSignatures') {
 
 tasks.named('check') { dependsOn 'checkInjectSignatures' }
 
-// TEMPORARY: UiSounds.play() takes a volume and throws it away, calling the
-// pitch-only PositionedSoundInstance.ui overload. Before wiring volume through,
-// read what that class actually exposes rather than assuming the 3-arg form.
-tasks.register('soundProbe') {
+// TEMPORARY: Chams. Rather than fight 1.21.11's entity render pipeline, the
+// cheap route is vanilla's own outline pass -- it already draws through
+// terrain, which is the whole point of chams. That needs isGlowing/hasOutline
+// and a colour hook, and none of those names are worth guessing at.
+tasks.register('chamsProbe') {
     dependsOn 'remapJar'
     doLast {
         def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
         def cl = new URLClassLoader(urls, (ClassLoader) null)
-        def c = cl.loadClass('net.minecraft.client.sound.PositionedSoundInstance')
-        c.declaredMethods.findAll { java.lang.reflect.Modifier.isStatic(it.modifiers) }.each {
-            println "PROBE static ${it.returnType.simpleName} ${it.name}(${it.parameterTypes*.simpleName.join(', ')})"
-        }
-        // ui(SoundEvent, float, float) exists, but pitch and volume are both
-        // floats -- the names are erased and getting them backwards would
-        // pitch-shift every UI sound instead of balancing it. The 2-arg
-        // overload must pass a constant for whichever one it omits, so its
-        // body says which position that is.
-        def bytes = cl.getResourceAsStream(
-              'net/minecraft/client/sound/PositionedSoundInstance.class').bytes
-        def node = new org.objectweb.asm.tree.ClassNode()
-        new org.objectweb.asm.ClassReader(bytes).accept(node, 0)
-        // asm-util's Printer is not guaranteed on the buildscript classpath,
-        // so name only the handful of opcodes this question turns on.
-        def names = [11: 'FCONST_0', 12: 'FCONST_1', 13: 'FCONST_2',
-                     18: 'LDC', 23: 'FLOAD', 25: 'ALOAD',
-                     184: 'INVOKESTATIC', 183: 'INVOKESPECIAL', 176: 'ARETURN',
-                     187: 'NEW', 89: 'DUP']
-        node.methods.findAll { it.name in ['ui', 'ambient'] }.each { m ->
-            println "PROBE ==== ${m.name}${m.desc}"
-            m.instructions.each { insn ->
-                if (insn.opcode < 0) return
-                def op = names[insn.opcode] ?: "op${insn.opcode}"
-                if (insn instanceof org.objectweb.asm.tree.MethodInsnNode) {
-                    println "PROBE     ${op} ${insn.owner}.${insn.name}${insn.desc}"
-                } else if (insn instanceof org.objectweb.asm.tree.VarInsnNode) {
-                    println "PROBE     ${op} slot=${insn.var}"
-                } else if (insn instanceof org.objectweb.asm.tree.LdcInsnNode) {
-                    println "PROBE     ${op} ${insn.cst}"
-                } else {
-                    println "PROBE     ${op}"
+        [
+            'net.minecraft.entity.Entity'                 : ['isGlowing', 'getTeamColorValue', 'setGlowing'],
+            'net.minecraft.client.MinecraftClient'        : ['hasOutline'],
+            'net.minecraft.client.render.WorldRenderer'   : ['hasOutline', 'drawEntityOutlinesFramebuffer'],
+            'net.minecraft.client.render.entity.EntityRenderer' : ['getOutlineColor', 'render'],
+        ].each { className, wanted ->
+            try {
+                def c = cl.loadClass(className)
+                println "PROBE ==== ${className}"
+                c.declaredMethods.findAll { it.name in wanted }.each {
+                    println "PROBE   ${java.lang.reflect.Modifier.toString(it.modifiers)} ${it.returnType.simpleName} ${it.name}(${it.parameterTypes*.simpleName.join(', ')})"
                 }
+            } catch (Throwable t) {
+                println "PROBE ==== ${className} NOT FOUND (${t.class.simpleName})"
             }
         }
     }

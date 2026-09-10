@@ -20,11 +20,30 @@ public final class UiSounds {
       settings = soundSettings;
    }
 
-   private static void play(SoundEvent sound, float f, float f4) {
-      float f5 = settings.volume();
-      if (!(f5 <= 0.01F)) {
-         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.ui(sound, f));
+   /**
+    * @param pitch  playback rate; 1.0 is the file as authored
+    * @param volume this sound's share of the master, 0-1
+    *
+    * <p>The volume used to be accepted and dropped on the floor. This called
+    * {@code ui(sound, pitch)}, and that overload does not default the volume to
+    * 1.0 -- it hardcodes <b>0.25</b> and calls the three-argument form. So every
+    * UI sound played at a quarter volume, the per-event balance below did
+    * nothing, and the master slider worked only as a mute.
+    *
+    * <p>Both trailing parameters are floats and their names are erased in the
+    * remapped jar, so the order was read off the two-argument overload's own
+    * bytecode rather than assumed: it loads slot 2 into the constructor's volume
+    * and slot 1 into its pitch, which makes the signature (sound, pitch, volume).
+    */
+   private static void play(SoundEvent sound, float pitch, float volume) {
+      float master = settings.volume();
+      if (master <= 0.01F) {
+         return;
       }
+
+      float level = Math.clamp(volume * master, 0.0F, 1.0F);
+      MinecraftClient.getInstance().getSoundManager()
+            .play(PositionedSoundInstance.ui(sound, pitch, level));
    }
 
    public static void guiOpen() {

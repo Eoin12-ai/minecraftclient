@@ -135,6 +135,11 @@ public final class WorldRenderHook {
                 EntityEspRenderer.renderMobs(immediate, matrices, camera, modules.mobEsp);
             }
         });
+        run("itemEsp", () -> {
+            if (modules.itemEsp != null && modules.itemEsp.isEnabled()) {
+                ItemEspRenderer.render(immediate, matrices, camera, modules.itemEsp);
+            }
+        });
 
         // Anything still buffered when the frame ends is dropped, so draw now.
         run("flush", () -> FlatOverlay.flush(immediate));

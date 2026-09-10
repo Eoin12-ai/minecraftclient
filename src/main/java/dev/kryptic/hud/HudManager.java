@@ -8,6 +8,7 @@ import dev.kryptic.hud.components.HotkeysHud;
 import dev.kryptic.hud.components.KeystrokesHud;
 import dev.kryptic.hud.components.MetersHud;
 import dev.kryptic.hud.components.PotionsHud;
+import dev.kryptic.hud.components.EnemyHud;
 import dev.kryptic.hud.components.RadarHud;
 import dev.kryptic.hud.components.RegionMapHud;
 import dev.kryptic.hud.components.SpotifyHud;
@@ -90,6 +91,8 @@ public class HudManager {
       this.components.add(new HotkeysHud(moduleManager, themeManager,
             () -> hudModule.isEnabled() && hudModule.hotkeys.get()));
       this.components.add(new RadarHud(hudModule, moduleManager.susChunkFinder, themeManager, () -> hudModule.isEnabled() && hudModule.radar.get()));
+      this.components.add(new EnemyHud(themeManager,
+            () -> hudModule.isEnabled() && hudModule.enemy.get()));
       this.components.add(new RegionMapHud(moduleManager.regionMap, themeManager));
       this.components.add(new StaffListHud(moduleManager.staffList, themeManager));
       this.components.add(new SpotifyHud(moduleManager.spotify, spotifyService, themeManager));

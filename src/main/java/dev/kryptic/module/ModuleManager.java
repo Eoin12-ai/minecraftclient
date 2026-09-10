@@ -43,6 +43,7 @@ import dev.kryptic.module.client.HudModule;
 import dev.kryptic.module.client.JumpCirclesModule;
 import dev.kryptic.module.combat.MaceBomberModule;
 import dev.kryptic.module.combat.MaceSwapModule;
+import dev.kryptic.module.render.ItemEspModule;
 import dev.kryptic.module.render.MobEspModule;
 import dev.kryptic.module.misc.NameProtectModule;
 import dev.kryptic.module.misc.NameTagsModule;
@@ -108,6 +109,7 @@ public class ModuleManager {
    public AutoInventoryTotemModule autoInventoryTotem;
    public PlayerEspModule playerEsp;
    public MobEspModule mobEsp;
+   public ItemEspModule itemEsp;
    public SpawnerNametagsModule spawnerNametags;
    public FreecamModule freecam;
    public AutoTpaModule autoTpa;
@@ -193,6 +195,7 @@ public class ModuleManager {
       this.register(this.fullbright = new FullbrightModule());
       this.register(this.playerEsp = new PlayerEspModule());
       this.register(this.mobEsp = new MobEspModule());
+      this.register(this.itemEsp = new ItemEspModule());
       this.register(this.spawnerNametags = new SpawnerNametagsModule());
       this.register(this.susChunkFinder);
       this.register(this.chunkFinder = new ChunkFinderModule());
