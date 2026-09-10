@@ -219,8 +219,36 @@ tasks.register('soundProbe') {
         c.declaredMethods.findAll { java.lang.reflect.Modifier.isStatic(it.modifiers) }.each {
             println "PROBE static ${it.returnType.simpleName} ${it.name}(${it.parameterTypes*.simpleName.join(', ')})"
         }
-        c.declaredConstructors.each {
-            println "PROBE ctor (${it.parameterTypes*.simpleName.join(', ')})"
+        // ui(SoundEvent, float, float) exists, but pitch and volume are both
+        // floats -- the names are erased and getting them backwards would
+        // pitch-shift every UI sound instead of balancing it. The 2-arg
+        // overload must pass a constant for whichever one it omits, so its
+        // body says which position that is.
+        def bytes = cl.getResourceAsStream(
+              'net/minecraft/client/sound/PositionedSoundInstance.class').bytes
+        def node = new org.objectweb.asm.tree.ClassNode()
+        new org.objectweb.asm.ClassReader(bytes).accept(node, 0)
+        // asm-util's Printer is not guaranteed on the buildscript classpath,
+        // so name only the handful of opcodes this question turns on.
+        def names = [11: 'FCONST_0', 12: 'FCONST_1', 13: 'FCONST_2',
+                     18: 'LDC', 23: 'FLOAD', 25: 'ALOAD',
+                     184: 'INVOKESTATIC', 183: 'INVOKESPECIAL', 176: 'ARETURN',
+                     187: 'NEW', 89: 'DUP']
+        node.methods.findAll { it.name in ['ui', 'ambient'] }.each { m ->
+            println "PROBE ==== ${m.name}${m.desc}"
+            m.instructions.each { insn ->
+                if (insn.opcode < 0) return
+                def op = names[insn.opcode] ?: "op${insn.opcode}"
+                if (insn instanceof org.objectweb.asm.tree.MethodInsnNode) {
+                    println "PROBE     ${op} ${insn.owner}.${insn.name}${insn.desc}"
+                } else if (insn instanceof org.objectweb.asm.tree.VarInsnNode) {
+                    println "PROBE     ${op} slot=${insn.var}"
+                } else if (insn instanceof org.objectweb.asm.tree.LdcInsnNode) {
+                    println "PROBE     ${op} ${insn.cst}"
+                } else {
+                    println "PROBE     ${op}"
+                }
+            }
         }
     }
 }
