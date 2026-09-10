@@ -43,6 +43,13 @@ public final class NVGRenderer {
          this.tenLoaded = this.loadFont("ten", "assets/krypticclient/fonts/MinecraftTen.ttf");
          this.monoLoaded = this.loadFont("mono", "assets/krypticclient/fonts/JetBrainsMono-Regular.ttf");
          this.boldLoaded = this.loadFont("bold", "assets/krypticclient/fonts/Inter-Bold.ttf");
+         if (!this.xuongLoaded && !this.vanillaLoaded && !this.tenLoaded
+               && !this.monoLoaded && !this.boldLoaded) {
+            KrypticClient.LOGGER.error(
+                  "No font loaded from assets/krypticclient/fonts/ - the menu and HUD "
+                + "will draw shapes but no text.");
+         }
+
          if (this.vanillaLoaded) {
             // Monocraft carries the glyphs the display faces do not. Xuong is
             // broad but not complete, and Minecraft Ten is a logo face with 99
@@ -54,6 +61,26 @@ public final class NVGRenderer {
             if (this.boldLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "bold", "vanilla");
          }
       }
+   }
+
+   /** Class loader first, then the resource manager. */
+   private static InputStream openFont(String path) {
+      InputStream direct = NVGRenderer.class.getClassLoader().getResourceAsStream(path);
+      if (direct != null) return direct;
+      try {
+         // assets/<namespace>/<rest> -> Identifier(namespace, rest)
+         String[] parts = path.split("/", 3);
+         if (parts.length == 3 && parts[0].equals("assets")) {
+            var opt = net.minecraft.client.MinecraftClient.getInstance()
+                  .getResourceManager()
+                  .getResource(net.minecraft.util.Identifier.of(parts[1], parts[2]));
+            if (opt.isPresent()) return opt.get().getInputStream();
+         }
+      } catch (Throwable ignored) {
+         // the resource manager may not be up yet; the class loader was the
+         // real attempt and this is only the second chance
+      }
+      return null;
    }
 
    public static NVGRenderer get() {
@@ -68,10 +95,19 @@ public final class NVGRenderer {
       return this.ctx;
    }
 
+   /**
+    * Reads a bundled face, trying both ways a mod's own assets can be reached.
+    *
+    * The class loader is the usual route, but it is not guaranteed: how a mod
+    * jar sits on the classpath varies with the launcher, and when it fails
+    * here, every face fails together -- which used to skip the whole NanoVG
+    * frame in silence. Minecraft's resource manager reaches the same file by a
+    * different mechanism, so one of the two answers.
+    */
    private boolean loadFont(String str, String text3) {
       try {
          boolean found;
-         try (InputStream inputStream = NVGRenderer.class.getClassLoader().getResourceAsStream(text3)) {
+         try (InputStream inputStream = openFont(text3)) {
             if (inputStream == null) {
                KrypticClient.LOGGER.warn("Font resource missing: {}", text3);
                return false;

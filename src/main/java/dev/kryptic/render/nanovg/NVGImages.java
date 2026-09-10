@@ -26,8 +26,18 @@ public final class NVGImages {
    private NVGImages() {
    }
 
+   /**
+    * Never throws. A missing or broken image returns -1 and the caller draws
+    * its fallback; letting one propagate would reach the overlay's catch-all
+    * and disable the whole overlay for the session over a decoration.
+    */
    public static int fromResource(Identifier id) {
-      return RESOURCE_CACHE.computeIfAbsent(id, NVGImages::loadResource);
+      try {
+         return RESOURCE_CACHE.computeIfAbsent(id, NVGImages::loadResource);
+      } catch (Throwable error) {
+         KrypticClient.LOGGER.warn("Image {} could not be loaded", id, error);
+         return -1;
+      }
    }
 
    private static int loadResource(Identifier id) {

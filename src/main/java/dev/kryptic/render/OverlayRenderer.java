@@ -18,6 +18,24 @@ public final class OverlayRenderer {
    private static HudManager hudManager;
    private static NotificationManager notifications;
    private static boolean crashed;
+   private static boolean warnedNoFont;
+   private static boolean warnedScreen;
+
+   /** Said once: every frame would repeat it sixty times a second. */
+   private static void warnNoFontOnce() {
+      if (warnedNoFont) return;
+      warnedNoFont = true;
+      KrypticClient.LOGGER.error(
+            "No NanoVG font loaded - the menu and HUD will draw without any text. "
+          + "Check that assets/krypticclient/fonts/ survived in the jar.");
+   }
+
+   private static void warnScreenOnce(Object screen, Throwable error) {
+      if (warnedScreen) return;
+      warnedScreen = true;
+      KrypticClient.LOGGER.error("Screen {} failed to draw; leaving it out",
+            screen == null ? "?" : screen.getClass().getName(), error);
+   }
 
    private OverlayRenderer() {
    }
@@ -53,7 +71,14 @@ public final class OverlayRenderer {
 
                   NVGRenderer nVGRenderer = NVGRenderer.get();
                   nVGRenderer.setFontMode(KrypticClient.modules().clickGui.font.get());
-                  if (nVGRenderer.hasFont()) {
+                  // Draw whether or not a face loaded. This used to be wrapped
+                  // in `if (hasFont())`, so a font that failed to load silently
+                  // skipped the entire frame -- no menu, no HUD, and not one
+                  // line in the log to say why. NanoVG draws shapes without a
+                  // font; only text needs one, and losing the labels is a far
+                  // better failure than losing everything.
+                  if (!nVGRenderer.hasFont()) warnNoFontOnce();
+                  {
                      float f = uiScale();
                      float f4 = (float)framebuffer.textureWidth / f;
                      float f5 = (float)framebuffer.textureHeight / f;
@@ -85,7 +110,14 @@ public final class OverlayRenderer {
                      }
 
                      if (found) {
-                        ((NvgDrawable)client.currentScreen).renderNvg(nVGRenderer, uiMouseX(), uiMouseY(), f4, f5);
+                        // Guarded on its own: a screen that throws should lose
+                        // itself, not latch `crashed` and take the HUD down for
+                        // the rest of the session.
+                        try {
+                           ((NvgDrawable)client.currentScreen).renderNvg(nVGRenderer, uiMouseX(), uiMouseY(), f4, f5);
+                        } catch (Throwable screenError) {
+                           warnScreenOnce(client.currentScreen, screenError);
+                        }
                      }
 
                      nVGRenderer.restore();
