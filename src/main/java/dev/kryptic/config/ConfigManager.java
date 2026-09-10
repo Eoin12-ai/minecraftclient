@@ -128,8 +128,6 @@ public class ConfigManager {
     * since several of these moved column as well as changing name.
     */
    private static final Map<String, String> LEGACY_NAMES = Map.ofEntries(
-         Map.entry("Aim Assist", "AimAssist"),
-         Map.entry("Trigger Bot", "Triggerbot"),
          Map.entry("Block ESP", "BlockESP"),
          Map.entry("Chunk Borders", "ChunkBorders"),
          Map.entry("Full Bright", "FullBright"),
@@ -194,8 +192,6 @@ public class ConfigManager {
          Map.entry("Zoom/Zoom Amount", "Factor"),
          Map.entry("Spotify HUD/Track Source", "Source"),
          Map.entry("Weather Notifier/Show As", "Output"),
-         Map.entry("Double Anchor/Second Blow Delay", "Timing"),
-         Map.entry("Double Anchor/Replace Anchor", "Re-Place"),
          Map.entry("Block ESP/Extra Chunk Radius", "Range Extra Chunks"),
          Map.entry("Skin Protect/Borrow Skin From", "Skin IGN"),
          Map.entry("Name Protect/Your Fake Name", "Your Alias"),

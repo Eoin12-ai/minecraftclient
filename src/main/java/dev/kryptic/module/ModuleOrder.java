@@ -42,18 +42,6 @@ public final class ModuleOrder {
         "Full Bright",
 
         // ── Combat: keep-yourself-alive first, then offence ──────────────────
-        "Auto Totem",
-        "Hover Totem",
-        "Inv Totem",
-        "Elytra Swap",
-        "Auto Crystal",
-        "Anchor Macro",
-        "Double Anchor",
-        "Mace Bomber",
-        "Mace Swap",
-        "Shield Breaker",
-        "Trigger Bot",
-        "Aim Assist",
 
         // ── Misc: the things that keep a clip or a stash safe come first ─────
         "Name Protect",
