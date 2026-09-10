@@ -1,5 +1,6 @@
 package dev.kryptic.module.misc;
 
+import dev.kryptic.theme.ThemeColors;
 import dev.kryptic.module.Category;
 import dev.kryptic.module.Module;
 import dev.kryptic.render.nanovg.NVGRenderer;
@@ -36,7 +37,7 @@ public class CustomCrosshairModule extends Module {
          float f = (float)(System.nanoTime() % 3000000000L) / 3.0E9F;
          return 0xFF000000 | Colors.hsvToRgb(f, 0.85F, 1.0F) & 16777215;
       } else {
-         return this.color.get();
+         return ThemeColors.resolve(this.color.get());
       }
    }
 

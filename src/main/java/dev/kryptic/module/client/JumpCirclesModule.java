@@ -1,5 +1,6 @@
 package dev.kryptic.module.client;
 
+import dev.kryptic.theme.ThemeColors;
 import dev.kryptic.module.Category;
 import dev.kryptic.module.Module;
 import dev.kryptic.settings.BooleanSetting;
@@ -40,7 +41,7 @@ public class JumpCirclesModule extends Module {
    }
 
    public int baseRgb() {
-      return this.color.get() & 16777215;
+      return ThemeColors.resolveRgb(this.color.get() & 16777215);
    }
 
    public void onPlayerJump(ClientPlayerEntity player) {

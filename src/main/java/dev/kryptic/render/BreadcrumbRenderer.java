@@ -1,5 +1,6 @@
 package dev.kryptic.render;
 
+import dev.kryptic.theme.ThemeColors;
 import dev.kryptic.module.render.BreadcrumbsModule;
 import dev.kryptic.util.Colors;
 import net.minecraft.client.render.VertexConsumer;
@@ -25,7 +26,7 @@ public final class BreadcrumbRenderer {
       VertexConsumer consumer = immediate.getBuffer(FlatOverlay.LINES);
       Entry entry = matrices.peek();
 
-      int colour = module.color.get();
+      int colour = ThemeColors.resolve(module.color.get());
       int baseAlpha = Colors.alpha(colour);
       boolean fade = module.fade.get();
       float lift = module.eyeOffset.getFloat();

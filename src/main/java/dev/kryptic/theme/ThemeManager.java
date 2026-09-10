@@ -1,6 +1,7 @@
 package dev.kryptic.theme;
 
 import com.google.gson.JsonArray;
+import dev.kryptic.settings.BooleanSetting;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.ArrayList;
@@ -9,6 +10,18 @@ import java.util.List;
 public class ThemeManager {
    /** Plain white — the mark is white, so the client is. */
    public static final int MONO = -1;
+
+   /**
+    * Whether world visuals follow the theme accent instead of their own colour.
+    *
+    * Off by default: turning it on is a deliberate choice to trade per-module
+    * colours for one look, and it should never happen to someone who has spent
+    * time setting those colours. Only modules whose colour is decoration
+    * follow it — see ThemeColors.
+    */
+   public final BooleanSetting moduleColors = new BooleanSetting("Theme Drives Module Colors",
+         "Single-colour modules use the theme accent. Modules whose colours mean something keep theirs.",
+         false);
    private final List<Theme> themes = new ArrayList<>();
    private Theme current;
 
@@ -77,6 +90,7 @@ public class ThemeManager {
       }
 
       jsonObject.add("custom", jsonArray);
+      jsonObject.add("moduleColors", this.moduleColors.toJson());
       return jsonObject;
    }
 
@@ -96,6 +110,10 @@ public class ThemeManager {
 
                this.themes.add(restored);
             }
+         }
+
+         if (jsonObject.has("moduleColors")) {
+            this.moduleColors.fromJson(jsonObject.get("moduleColors"));
          }
 
          if (jsonObject.has("current")) {

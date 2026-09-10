@@ -28,6 +28,7 @@ public class ThemesPanel extends Panel {
    private final ColorSetting accentProxy;
    private final ColorWidget surfaceWidget;
    private final ColorSetting surfaceProxy;
+   private final BooleanWidget moduleColorsWidget;
    private final List<SettingWidget> soundWidgets = new ArrayList<>();
    private static final int STARTUP_FIRST_WIDGET = 5;
    private int hoveredRow = -1;
@@ -55,6 +56,7 @@ public class ThemesPanel extends Panel {
          }
       };
       this.surfaceWidget = new ColorWidget(themeManager, this.surfaceProxy);
+      this.moduleColorsWidget = new BooleanWidget(themeManager, themeManager.moduleColors);
       SoundSettings soundSettings = KrypticClient.sounds();
       if (soundSettings != null) {
          for (Setting setting : soundSettings.all()) {
@@ -81,6 +83,7 @@ public class ThemesPanel extends Panel {
       }
 
       temp += 48.0F;
+      temp += 24.0F + this.moduleColorsWidget.height(nVGRenderer) + 6.0F;
 
       for (SettingWidget settingWidget : this.soundWidgets) {
          temp += settingWidget.height(nVGRenderer) + 3.0F;
@@ -155,6 +158,15 @@ public class ThemesPanel extends Panel {
       }
 
       f += 28.0F;
+      f = this.sectionHeader(nVGRenderer, "Colors", f, tickDelta4, tickDelta5);
+      this.moduleColorsWidget.setBounds(this.panelState.x + 14.0F, f, (width() - 28.0F));
+      float fModule = this.edgeFade(f, f + this.moduleColorsWidget.height(nVGRenderer), tickDelta4, tickDelta5);
+      nVGRenderer.save();
+      nVGRenderer.alpha(fModule);
+      this.moduleColorsWidget.render(nVGRenderer, tickDelta2, tickDelta3);
+      nVGRenderer.restore();
+      f += this.moduleColorsWidget.height(nVGRenderer) + 6.0F;
+
       f = this.sectionHeader(nVGRenderer, "Sounds", f, tickDelta4, tickDelta5);
 
       for (int offset = 0; offset < this.soundWidgets.size(); offset++) {
@@ -193,7 +205,9 @@ public class ThemesPanel extends Panel {
 
    @Override
    public boolean mouseClicked(float mx, float my, int btn) {
-      if (this.accentWidget.mouseClicked(mx, my, btn) || this.surfaceWidget.mouseClicked(mx, my, btn)) {
+      if (this.accentWidget.mouseClicked(mx, my, btn)
+            || this.surfaceWidget.mouseClicked(mx, my, btn)
+            || this.moduleColorsWidget.mouseClicked(mx, my, btn)) {
          return true;
       }
 

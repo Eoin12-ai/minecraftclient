@@ -1,5 +1,6 @@
 package dev.kryptic.render;
 
+import dev.kryptic.theme.ThemeColors;
 import dev.kryptic.module.render.MobEspModule;
 import dev.kryptic.module.render.PlayerEspModule;
 import dev.kryptic.util.Colors;
@@ -25,7 +26,7 @@ public final class EntityEspRenderer {
       MinecraftClient client = MinecraftClient.getInstance();
       ClientWorld world = client.world;
       if (world != null && client.player != null) {
-         int n = playerEspModule.color.get();
+         int n = ThemeColors.resolve(playerEspModule.color.get());
          boolean found = playerEspModule.style.is("Glow");
          boolean found2 = playerEspModule.tracers.get();
          Vector3fc camera = found2 ? client.gameRenderer.getCamera().getHorizontalPlane() : null;

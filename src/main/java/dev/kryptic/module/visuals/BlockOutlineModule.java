@@ -1,5 +1,6 @@
 package dev.kryptic.module.visuals;
 
+import dev.kryptic.theme.ThemeColors;
 import dev.kryptic.module.Category;
 import dev.kryptic.module.Module;
 import dev.kryptic.settings.ColorSetting;
@@ -55,7 +56,7 @@ public class BlockOutlineModule extends Module {
          float hue = (float)(System.currentTimeMillis() % period) / period * 360.0F;
          return Colors.hsvToRgb(hue, 0.8F, 1.0F) & 16777215;
       }
-      return this.color.get() & 16777215;
+      return ThemeColors.resolveRgb(this.color.get() & 16777215);
    }
 
    public float glowStrength() {
