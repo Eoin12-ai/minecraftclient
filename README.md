@@ -85,8 +85,30 @@ and the user sees a silent reset. `ConfigManager` holds `LEGACY_NAMES` (modules)
 and `LEGACY_SETTINGS` (settings, keyed by module and name) for exactly this.
 Add an entry whenever you rename.
 
+### The UI sounds are cut, not collected
+
+The ten sounds under `assets/krypticclient/sounds/ui/` are all derived from
+three source recordings, cut and pitched by `tools/mksounds.py`. Keep that
+script as the source of truth: it holds the segment boundaries, the pitch
+ratios and the per-role peak targets, so a sound can be re-cut or rebalanced
+without anyone guessing at what the last one was.
+
+Two things it does that are easy to leave out by hand. Pairs (open/close,
+on/off) are the *same* segment played in opposite directions, which is what
+makes them read as a pair. And every clip is faded to land on real silence a
+few milliseconds before its nominal end — a fade-out aimed at the exact end
+gets truncated by the resampler and that truncation is an audible click.
+
+Peaks are targeted per role rather than normalised flat, because these do not
+all play equally often: `hover` fires every time the cursor crosses a row and
+has to sit under everything else, while a notification has to carry over the
+game.
+
 ## Licence
 
 Bundled fonts keep their own licences, next to them in
 `assets/krypticclient/fonts/`. Inter, JetBrains Mono, Monocraft and Xuong are
 SIL OFL; Minecraft Ten carries its own notice.
+
+The UI sounds are cut from Mixkit sound effects, used under the Mixkit Sound
+Effects Free License.
