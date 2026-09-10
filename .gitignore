@@ -8,3 +8,6 @@ run/
 
 # local build output fetched from CI
 dist/
+
+# javac argument dumps from local structural checks
+javac.*.args
