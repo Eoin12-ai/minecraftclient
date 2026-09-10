@@ -40,6 +40,10 @@ public final class ModuleOrder {
         "Breadcrumbs",
         "Region Map",
         "Full Bright",
+        "Auto Totem",
+        "Elytra Swap",
+        "Trigger Bot",
+        "Shield Breaker",
 
         // ── Combat: keep-yourself-alive first, then offence ──────────────────
 
