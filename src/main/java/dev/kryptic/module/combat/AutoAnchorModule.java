@@ -41,8 +41,6 @@ public class AutoAnchorModule extends Module {
    public final BooleanSetting swapBack = this.addSetting(new BooleanSetting("Restore Slot",
       "Go back to the slot you were holding when the sequence ends", true));
 
-   public final BooleanSetting stopWhenCrouched = this.addSetting(new BooleanSetting("Pause When Crouched",
-      "Stand down while sneaking rather than placing glowstone on the floor", true));
 
    /** 0 idle, 1 swap to glowstone, 2 charge, 3 swap off, 4 detonate. */
    private int step;
@@ -70,14 +68,6 @@ public class AutoAnchorModule extends Module {
       MinecraftClient client = MinecraftClient.getInstance();
       ClientPlayerEntity player = client.player;
       if (player == null || client.interactionManager == null || client.world == null) {
-         return;
-      }
-
-      // Sneaking would turn every interaction below into a block placement.
-      // Standing down is the only correct move; there is no delay that fixes it.
-      if (this.stopWhenCrouched.get() && player.isSneaking()) {
-         this.restore();
-         this.reset();
          return;
       }
 

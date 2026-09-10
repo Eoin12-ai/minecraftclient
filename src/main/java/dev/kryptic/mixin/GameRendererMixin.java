@@ -57,19 +57,6 @@ public class GameRendererMixin {
    }
 
    @ModifyExpressionValue(
-      method = {"getFov"},
-      at = {@At(
-         value = "INVOKE",
-         target = "Lnet/minecraft/util/math/MathHelper;lerp(FFF)F",
-         ordinal = 0
-      )}
-   )
-   private float kryptic$customFov(float f) {
-      ModuleManager moduleManager = KrypticClient.modules();
-      return moduleManager != null && moduleManager.customFov != null ? moduleManager.customFov.fovMultiplier(f) : f;
-   }
-
-   @ModifyExpressionValue(
       method = {"renderHand"},
       at = {@At(
          value = "INVOKE",

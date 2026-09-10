@@ -127,12 +127,6 @@ public class AutoCrystalModule extends Module {
          return;
       }
 
-      // Sneaking would place the held item as a block rather than use the
-      // support block, which is the same trap the anchor modules hit.
-      if (player.isSneaking()) {
-         return;
-      }
-
       if (this.occupied(client, pos)) {
          return;
       }

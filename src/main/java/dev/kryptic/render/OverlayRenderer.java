@@ -3,7 +3,6 @@ package dev.kryptic.render;
 import dev.kryptic.KrypticClient;
 import dev.kryptic.hud.HudDragController;
 import dev.kryptic.hud.HudManager;
-import dev.kryptic.module.misc.CustomCrosshairModule;
 import dev.kryptic.notification.NotificationManager;
 import dev.kryptic.render.nanovg.GlStateSnapshot;
 import dev.kryptic.render.nanovg.NVGRenderer;
@@ -88,11 +87,6 @@ public final class OverlayRenderer {
                      if (found3) {
                         if (found2 && HudDragController.isDragging()) {
                            HudDragController.updateDrag(nVGRenderer);
-                        }
-
-                        CustomCrosshairModule customCrosshairModule = KrypticClient.modules().customCrosshair;
-                        if (customCrosshairModule.isEnabled() && client.currentScreen == null) {
-                           customCrosshairModule.render(nVGRenderer, f4 / 2.0F, f5 / 2.0F);
                         }
 
                         if (client.currentScreen == null) {

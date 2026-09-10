@@ -139,8 +139,6 @@ public class ConfigManager {
          Map.entry("Sus Chunk Finder", "SusChunkFinder"),
          Map.entry("Auto TPA", "AutoTPA"),
          Map.entry("Auto Walk", "AutoWalk"),
-         Map.entry("Custom Crosshair", "CustomCrosshair"),
-         Map.entry("Custom FOV", "CustomFOV"),
          Map.entry("Fake Pay", "FakePay"),
          Map.entry("Fake Roles", "FakeRoles"),
          Map.entry("Fake Stats", "FakeStats"),
@@ -171,7 +169,6 @@ public class ConfigManager {
     * mean something different in every module that has them.
     */
    private static final Map<String, String> LEGACY_SETTINGS = Map.ofEntries(
-         Map.entry("Custom Crosshair/Center Gap", "4M8"),
          Map.entry("Motion Blur/Blur Amount", "Rusdofui"),
          Map.entry("Spawner Nametags/Highlight Box", "1C0"),
          Map.entry("HUD/Module List", "ArrayList"),

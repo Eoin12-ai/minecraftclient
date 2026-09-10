@@ -22,8 +22,6 @@ import dev.kryptic.module.render.ChunkFinderModule;
 import dev.kryptic.module.render.TracersModule;
 import dev.kryptic.module.client.ClickGuiModule;
 import dev.kryptic.module.visuals.CustomAccessoriesModule;
-import dev.kryptic.module.misc.CustomCrosshairModule;
-import dev.kryptic.module.misc.CustomFovModule;
 import dev.kryptic.module.misc.FakePayModule;
 import dev.kryptic.module.misc.FakeRolesModule;
 import dev.kryptic.module.misc.FakeStatsModule;
@@ -110,9 +108,7 @@ public class ModuleManager {
    public FreecamModule freecam;
    public AutoTpaModule autoTpa;
    public JumpCirclesModule jumpCircles;
-   public CustomCrosshairModule customCrosshair;
    public ZoomModule zoom;
-   public CustomFovModule customFov;
    public CustomAccessoriesModule customAccessories;
    public ChunkBordersModule chunkBorders;
    public TracersModule tracers;
@@ -168,9 +164,7 @@ public class ModuleManager {
       this.register(this.weatherNotifier = new WeatherNotifierModule());
       this.register(this.fakeStats = new FakeStatsModule());
       this.register(this.fakeRoles = new FakeRolesModule());
-      this.register(this.customCrosshair = new CustomCrosshairModule());
       this.register(this.staffList = new StaffListModule());
-      this.register(this.customFov = new CustomFovModule());
       this.register(this.autoWalk = new AutoWalkModule());
       this.register(this.zoom = new ZoomModule());
       this.register(this.freeLook = new FreeLookModule());

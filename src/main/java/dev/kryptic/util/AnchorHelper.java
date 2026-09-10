@@ -12,16 +12,16 @@ import net.minecraft.util.math.BlockPos;
 /**
  * The parts every anchor module needs, in one place.
  *
- * Most of this exists because of one Minecraft rule that is easy to forget and
- * ruins an anchor macro: <b>sneaking suppresses block use</b>. Vanilla's
- * interactBlock checks whether you are sneaking with something in your hand,
- * and if you are it skips using the block and places the held item instead.
+ * One Minecraft rule shapes how these modules behave: sneaking suppresses
+ * block use. Vanilla's interactBlock checks whether you are sneaking with
+ * something in your hand, and if you are it skips using the block and places
+ * the held item instead.
  *
- * So an anchor macro that fires while you are crouched does not charge the
- * anchor — it puts a glowstone block on the floor. That is not a timing bug or
- * a race, it is the client doing exactly what vanilla asks for, and no amount
- * of delay tuning fixes it. Every interaction here goes through
- * {@link #canInteract} for that reason.
+ * <p>That is <em>kept</em>, deliberately. Crouching with glowstone in hand
+ * places a glowstone block rather than charging the anchor, which is a real
+ * technique — crouch to build, stand to charge — and the modules here do not
+ * override it. Anyone reading this expecting a sneak guard: it was tried and
+ * removed on purpose.
  */
 public final class AnchorHelper {
 
@@ -36,25 +36,17 @@ public final class AnchorHelper {
    }
 
    /**
-    * Whether a block interaction right now would actually use the block.
+    * Whether the client is in a state where a block interaction means anything.
     *
-    * Crouching is the whole point of this check. The others are the ordinary
-    * "is the client in a state where clicking means anything" guards.
+    * Sneaking is deliberately not checked. Crouching turns the interaction into
+    * a glowstone placement and that is wanted behaviour, not a failure.
     */
    public static boolean canInteract() {
       MinecraftClient client = mc();
-      ClientPlayerEntity player = client.player;
-      if (player == null || client.interactionManager == null || client.world == null) {
-         return false;
-      }
-
-      if (client.currentScreen != null) {
-         return false;
-      }
-
-      // The one that matters. Sneaking with a full hand turns every "use the
-      // block" into "place what you are holding".
-      return !player.isSneaking();
+      return client.player != null
+            && client.interactionManager != null
+            && client.world != null
+            && client.currentScreen == null;
    }
 
    /** The respawn anchor under the crosshair, or null. */
@@ -81,8 +73,8 @@ public final class AnchorHelper {
    /**
     * Put one charge into an anchor.
     *
-    * @return false when it could not be done — no glowstone, or you are
-    *         crouched, in which case doing it anyway would place a block
+    * @return false when there is no glowstone to hand, or the client is not in
+    *         a state to interact at all
     */
    public static boolean charge(BlockHitResult hit) {
       if (!canInteract()) {

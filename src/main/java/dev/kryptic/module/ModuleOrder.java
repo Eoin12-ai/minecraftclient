@@ -61,8 +61,6 @@ public final class ModuleOrder {
         "Freecam",
         "Free Look",
         "Zoom",
-        "Custom FOV",
-        "Custom Crosshair",
         "Name Tags",
         "Fast Use",
         "Auto Walk",

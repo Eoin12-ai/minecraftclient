@@ -42,8 +42,6 @@ public class DoubleAnchorModule extends Module {
    public final BooleanSetting swapBack = this.addSetting(new BooleanSetting("Restore Slot",
       "Go back to the slot you were holding when the sequence ends", true));
 
-   public final BooleanSetting stopWhenCrouched = this.addSetting(new BooleanSetting("Pause When Crouched",
-      "Stand down while sneaking rather than placing glowstone on the floor", true));
 
    private int step;
    private int ticks;
@@ -78,12 +76,6 @@ public class DoubleAnchorModule extends Module {
       MinecraftClient client = MinecraftClient.getInstance();
       ClientPlayerEntity player = client.player;
       if (player == null || client.interactionManager == null || this.step == 0) {
-         return;
-      }
-
-      if (this.stopWhenCrouched.get() && player.isSneaking()) {
-         this.restore();
-         this.reset();
          return;
       }
 
