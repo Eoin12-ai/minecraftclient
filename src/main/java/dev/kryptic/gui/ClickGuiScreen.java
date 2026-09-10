@@ -345,6 +345,72 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         ctx.fill(x1 - 1, y0 + 1, x1, y1 - 1, edge);
     }
 
+    @Override
+    public void tick() { finishCloseIfDone(); }
+
+    private void finishCloseIfDone() {
+        if (closing && openAnim.isDone()) client.setScreen(parent);
+    }
+
+    @Override
+    public void renderBackground(DrawContext ctx, int mx, int my, float delta) {
+        if (client.world == null) renderPanoramaBackground(ctx, delta);
+        if (guiModule().blur.get()) {
+            BlurHook.set(guiModule().blurStrength.getFloat() * openAnim.value());
+            // ctx.applyBlur() not available in 1.21.5
+        } else {
+            BlurHook.clear();
+        }
+    }
+
+    @Override
+    public void renderNvg(NVGRenderer nvg, float mouseX, float mouseY, float screenW, float screenH) {
+        nvg.setFontMode(guiModule().font.get());
+        // No hasFont() gate here. It used to return early, which turned "one
+        // font failed to load" into "the entire menu is invisible" -- panels,
+        // rows and toggles included, while the dim and the blur still drew
+        // through the vanilla path and clicks still landed. That is exactly
+        // the bug that was fixed in OverlayRenderer, and this was a second
+        // copy of it that the fix missed. NanoVG draws shapes without a font;
+        // only text needs one.
+        float t = openAnim.value();
+        if (t <= 0.002f && closing) return;
+
+        layoutColumns(screenW, screenH);
+
+        nvg.save();
+        nvg.alpha(t);
+        float scale = 0.97f + 0.03f * t;
+        nvg.translate(screenW / 2.0f, screenH / 2.0f);
+        nvg.scale(scale);
+        nvg.translate(-screenW / 2.0f, -screenH / 2.0f);
+
+        String query = search.toString();
+        for (CategoryPanel cp : columns) cp.setFilter(query);
+
+        // columns render left to right; the pane under the cursor is unaffected
+        // by order because nothing overlaps in a locked grid
+        for (CategoryPanel cp : columns) cp.render(nvg, mouseX, mouseY, screenW, screenH);
+
+        renderTopBar(nvg, mouseX, mouseY, screenW);
+        renderHint(nvg, screenW, screenH);
+
+        if (themesOpen) {
+            // scrim so the floating pane reads as being above the grid
+            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF050506, 0.46f));
+            themesPanel.render(nvg, mouseX, mouseY, screenW, screenH);
+        }
+
+        if (statsOpen) {
+            nvg.rect(0.0f, 0.0f, screenW, screenH, 0.0f, Colors.withAlpha(0xFF050506, 0.46f));
+            statsPanel.render(nvg, mouseX, mouseY, screenW, screenH);
+        }
+
+        configPanel.render(nvg, mouseX, mouseY, screenW, screenH);
+        nvg.restore();
+        nvgFrames++;
+    }
+
     // ── chrome ────────────────────────────────────────────────────────────────
 
     /**
