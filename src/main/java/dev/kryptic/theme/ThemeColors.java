@@ -13,10 +13,10 @@ import dev.kryptic.KrypticClient;
  *
  * <p><b>What it deliberately does not touch.</b> Only modules whose colour is
  * decoration go through here. Where a module uses several colours to say
- * something — Item ESP's three tiers, Mob ESP's hostile against passive, Chams
- * per entity type, Storage ESP per container — tinting them all one colour
- * would not unify them, it would delete what they were telling you. Those keep
- * their own colours whatever the theme is set to.
+ * something — Item ESP's three tiers, Mob ESP's hostile against passive, Block
+ * ESP per block, Storage ESP per container — tinting them all one colour would
+ * not unify them, it would delete what they were telling you. Those keep their
+ * own colours whatever the theme is set to.
  */
 public final class ThemeColors {
 
