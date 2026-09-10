@@ -44,6 +44,12 @@ public final class ModuleOrder {
         "Elytra Swap",
         "Trigger Bot",
         "Shield Breaker",
+        "Auto Anchor",
+        "Double Anchor",
+        "Safe Anchor",
+        "Auto Crystal",
+        "Crystal Optimiser",
+        "Aim Assist",
 
         // ── Combat: keep-yourself-alive first, then offence ──────────────────
 

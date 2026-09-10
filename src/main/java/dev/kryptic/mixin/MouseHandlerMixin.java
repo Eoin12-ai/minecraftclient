@@ -10,6 +10,7 @@ import net.minecraft.client.Mouse;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.input.MouseInput;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Slice;
@@ -17,6 +18,32 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({Mouse.class})
 public class MouseHandlerMixin {
+   @Shadow
+   private double cursorDeltaX;
+   @Shadow
+   private double cursorDeltaY;
+
+   /**
+    * Aim Assist scales the movement you are already making.
+    *
+    * It adds to the deltas rather than writing a rotation, so every angle the
+    * server sees still originated from your hand. A still mouse produces no
+    * deltas and therefore no assistance at all.
+    */
+   @Inject(method = "updateMouse", at = @At("HEAD"))
+   private void kryptic$aimAssist(double d, CallbackInfo callbackInfo) {
+      ModuleManager modules = KrypticClient.modules();
+      if (modules == null || modules.aimAssist == null) {
+         return;
+      }
+
+      double[] extra = modules.aimAssist.assist(this.cursorDeltaX, this.cursorDeltaY);
+      if (extra != null) {
+         this.cursorDeltaX += extra[0];
+         this.cursorDeltaY += extra[1];
+      }
+   }
+
    @Inject(
       method = {"onMouseButton(JLnet/minecraft/client/input/MouseInput;I)V"},
       at = {@At("HEAD")},
