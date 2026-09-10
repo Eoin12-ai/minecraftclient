@@ -16,7 +16,23 @@ import org.lwjgl.opengl.GL33C;
 public final class OverlayRenderer {
    private static HudManager hudManager;
    private static NotificationManager notifications;
-   private static boolean crashed;
+   /**
+    * The last failure from the overlay frame, and how many there have been.
+    *
+    * This used to be a boolean latch: one throw set it and the overlay never
+    * drew again for the rest of the session. That is why the menu appeared for
+    * a split second and then vanished -- the first frame drew, the second
+    * threw, and everything after was skipped in silence.
+    *
+    * A failure is now recorded and retried. Most causes are transient (a
+    * resize, a resource pack reload, a frame where a texture is not ready) and
+    * cost one dropped frame instead of the whole session. The message is kept
+    * so the ClickGUI's fallback can show it, because a log file the user has to
+    * find is a diagnosis nobody makes.
+    */
+   private static volatile String lastError;
+   private static int errorCount;
+   private static long lastErrorLogged;
    private static boolean warnedNoFont;
    private static boolean warnedScreen;
 
@@ -50,7 +66,7 @@ public final class OverlayRenderer {
    }
 
    public static void render() {
-      if (!crashed && hudManager != null) {
+      if (hudManager != null) {
          MinecraftClient client = MinecraftClient.getInstance();
          Framebuffer framebuffer = client.getFramebuffer();
          if (framebuffer != null) {
@@ -122,8 +138,7 @@ public final class OverlayRenderer {
                   glStateSnapshot.restore();
                }
             } catch (Throwable ex2) {
-               crashed = true;
-               KrypticClient.LOGGER.error("Kryptic Client overlay renderer crashed; disabling overlay", ex2);
+               recordFailure(ex2);
                return;
             }
          }
@@ -211,9 +226,32 @@ public final class OverlayRenderer {
       return f / (float)client.getWindow().getScaleFactor();
    }
 
-   /** Whether the overlay has latched off after a crash. */
-   public static boolean isCrashed() {
-      return crashed;
+   /**
+    * The last overlay failure, formatted for display, or null if it has never
+    * failed. Shown by the ClickGUI fallback.
+    */
+   public static String lastError() {
+      return lastError;
+   }
+
+   /**
+    * Records a failed frame and logs it, throttled.
+    *
+    * Throttled rather than once-only: an error that starts happening later is
+    * worth a line, but sixty a second is worth none.
+    */
+   private static void recordFailure(Throwable error) {
+      errorCount++;
+      String name = error.getClass().getSimpleName();
+      String message = error.getMessage();
+      lastError = errorCount + "x " + name + (message == null ? "" : ": " + message);
+
+      long now = System.currentTimeMillis();
+      if (now - lastErrorLogged > 5000L) {
+         lastErrorLogged = now;
+         KrypticClient.LOGGER.error(
+               "Kryptic overlay frame failed ({} so far); retrying next frame", errorCount, error);
+      }
    }
 
    public static float uiWidth() {

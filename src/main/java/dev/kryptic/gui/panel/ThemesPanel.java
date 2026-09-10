@@ -30,7 +30,6 @@ public class ThemesPanel extends Panel {
    private final ColorSetting surfaceProxy;
    private final BooleanWidget moduleColorsWidget;
    private final List<SettingWidget> soundWidgets = new ArrayList<>();
-   private static final int STARTUP_FIRST_WIDGET = 5;
    private int hoveredRow = -1;
    private float lastStartY = Float.MIN_VALUE;
 
@@ -170,10 +169,6 @@ public class ThemesPanel extends Panel {
       f = this.sectionHeader(nVGRenderer, "Sounds", f, tickDelta4, tickDelta5);
 
       for (int offset = 0; offset < this.soundWidgets.size(); offset++) {
-         if (offset == 5) {
-            f = this.sectionHeader(nVGRenderer, "Startup Sound", f, tickDelta4, tickDelta5);
-         }
-
          SettingWidget settingWidget = this.soundWidgets.get(offset);
          settingWidget.setBounds(this.panelState.x + 14.0F, f, (width() - 28.0F));
          float f9 = this.edgeFade(f, f + settingWidget.height(nVGRenderer), tickDelta4, tickDelta5);

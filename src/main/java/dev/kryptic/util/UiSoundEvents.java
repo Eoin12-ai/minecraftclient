@@ -16,10 +16,6 @@ public final class UiSoundEvents {
    public static final SoundEvent KEYBIND = register("ui.keybind");
    public static final SoundEvent NOTIFY_ON = register("ui.notify_on");
    public static final SoundEvent NOTIFY_OFF = register("ui.notify_off");
-   public static final SoundEvent STARTUP_SAD = register("startup.sad");
-   public static final SoundEvent STARTUP_SONG = register("startup.song");
-   public static final SoundEvent STARTUP_TIKI = register("startup.tiki");
-   public static final SoundEvent STARTUP_67 = register("startup.67");
 
    private UiSoundEvents() {
    }

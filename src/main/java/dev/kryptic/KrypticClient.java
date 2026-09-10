@@ -56,7 +56,6 @@ public class KrypticClient implements ClientModInitializer {
    private static DiscordPresenceService discord;
    private static ServerConfigs serverConfigs;
    private static SoundSettings soundSettings;
-   private static boolean startupSoundPlayed;
 
    public static ModuleManager modules() {
       return modules;
@@ -159,11 +158,6 @@ public class KrypticClient implements ClientModInitializer {
       // so none of it had ever rendered. This is the hook that calls them.
       WorldRenderHook.init();
       ScreenEvents.AFTER_INIT.register((AfterInit)(arg, freecamModule, arg3, arg4) -> {
-         if (freecamModule instanceof TitleScreen && !startupSoundPlayed) {
-            startupSoundPlayed = true;
-            UiSounds.playStartup();
-         }
-
          // Screens that draw themselves through NanoVG get the overlay drawn
          // after vanilla finishes with them. This also covers the ClickGUI
          // opened from a menu, where there is no world and therefore no HUD

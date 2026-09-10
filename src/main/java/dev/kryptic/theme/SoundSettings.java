@@ -12,20 +12,12 @@ public class SoundSettings {
    public final BooleanSetting hoverSounds = new BooleanSetting("Hover", "Soft ticks when hovering elements", true);
    public final BooleanSetting clickSounds = new BooleanSetting("Clicks & Toggles", "Pops for toggles, sliders and keybinds", true);
    public final BooleanSetting notificationSounds = new BooleanSetting("Notifications", "Chimes with toggle toasts", true);
-   public final BooleanSetting startup67 = new BooleanSetting("Kryptic Theme", "Startup track candidate", true);
-   public final BooleanSetting startupSad = new BooleanSetting("Slow Fade", "Startup track candidate", false);
-   public final BooleanSetting startupSong = new BooleanSetting("Anthem", "Startup track candidate", false);
-   public final BooleanSetting startupTiki = new BooleanSetting("Tiki Phonk", "Startup track candidate", false);
    private final List<Setting<?>> all = List.of(
       this.masterVolume,
       this.guiSounds,
       this.hoverSounds,
       this.clickSounds,
-      this.notificationSounds,
-      this.startup67,
-      this.startupSad,
-      this.startupSong,
-      this.startupTiki
+      this.notificationSounds
    );
 
    public List<Setting<?>> all() {
@@ -46,20 +38,13 @@ public class SoundSettings {
       return jsonObject;
    }
 
-   /** Startup tracks saved under the names they carried before the rename. */
-   private static final java.util.Map<String, String> LEGACY = java.util.Map.of(
-      "Kryptic Theme", "Kryptic",
-      "Slow Fade", "67 Sad Song",
-      "Anthem", "67 Song",
-      "Tiki Phonk", "67 Tiki Phonk");
 
    public void fromJson(JsonObject jsonObject) {
+      // The rename table that used to sit here only ever held startup-track
+      // names, and there are no startup tracks any more.
       for (Setting setting : this.all) {
          String saved = setting.getName();
-         if (!jsonObject.has(saved)) {
-            saved = LEGACY.get(saved);
-         }
-         if (saved != null && jsonObject.has(saved)) {
+         if (jsonObject.has(saved)) {
             setting.fromJson(jsonObject.get(saved));
          }
       }

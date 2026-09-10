@@ -221,9 +221,15 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int top    = Math.round(OverlayRenderer.uiToGui(STATE.columnTop()));
 
         ctx.fill(0, 0, width, height, 0xE0090909);
+        // Say why, on screen. The styled menu failing is not something the user
+        // can diagnose from a log file they have to go and find, and the reason
+        // is the one piece of information that makes the next report useful.
+        String reason = OverlayRenderer.lastError();
         ctx.drawText(this.client.textRenderer,
-                Text.literal("Kryptic - fallback view (the styled menu could not draw; see latest.log)"),
-                left, Math.max(4, top - 14), 0xFFBFBFC7, true);
+                Text.literal("Kryptic - fallback view: " + (reason == null
+                        ? "the styled menu drew nothing (no overlay error; likely no font loaded)"
+                        : reason)),
+                left, Math.max(4, top - 14), 0xFFE08A8A, true);
 
         String query = search.toString().toLowerCase(Locale.ROOT).trim();
         int cx = left;

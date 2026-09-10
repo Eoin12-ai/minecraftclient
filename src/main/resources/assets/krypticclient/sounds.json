@@ -48,37 +48,5 @@
     "sounds": [
       "krypticclient:ui/notify_off"
     ]
-  },
-  "startup.sad": {
-    "sounds": [
-      {
-        "name": "krypticclient:startup/startup_sad",
-        "stream": true
-      }
-    ]
-  },
-  "startup.song": {
-    "sounds": [
-      {
-        "name": "krypticclient:startup/startup_song",
-        "stream": true
-      }
-    ]
-  },
-  "startup.tiki": {
-    "sounds": [
-      {
-        "name": "krypticclient:startup/startup_tiki",
-        "stream": true
-      }
-    ]
-  },
-  "startup.67": {
-    "sounds": [
-      {
-        "name": "krypticclient:startup/startup_67",
-        "stream": true
-      }
-    ]
   }
 }

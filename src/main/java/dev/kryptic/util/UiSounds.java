@@ -1,8 +1,6 @@
 package dev.kryptic.util;
 
 import dev.kryptic.theme.SoundSettings;
-import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -120,27 +118,4 @@ public final class UiSounds {
       }
    }
 
-   public static void playStartup() {
-      ArrayList<SoundEvent> list = new ArrayList<>();
-      if (settings.startup67.get()) {
-         list.add(UiSoundEvents.STARTUP_67);
-      }
-
-      if (settings.startupSad.get()) {
-         list.add(UiSoundEvents.STARTUP_SAD);
-      }
-
-      if (settings.startupSong.get()) {
-         list.add(UiSoundEvents.STARTUP_SONG);
-      }
-
-      if (settings.startupTiki.get()) {
-         list.add(UiSoundEvents.STARTUP_TIKI);
-      }
-
-      if (!list.isEmpty()) {
-         SoundEvent sound = list.get(ThreadLocalRandom.current().nextInt(list.size()));
-         play(sound, 1.0F, 0.9F);
-      }
-   }
 }
