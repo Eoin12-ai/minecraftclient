@@ -127,8 +127,6 @@ public final class OverlayRenderer {
                } finally {
                   glStateSnapshot.restore();
                }
-
-               return;
             } catch (Throwable ex2) {
                crashed = true;
                KrypticClient.LOGGER.error("Kryptic Client overlay renderer crashed; disabling overlay", ex2);
