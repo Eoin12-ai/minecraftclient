@@ -206,29 +206,3 @@ tasks.register('checkInjectSignatures') {
 }
 
 tasks.named('check') { dependsOn 'checkInjectSignatures' }
-
-// TEMPORARY: does Camera.update actually call setRotation? If it does not, the
-// @ModifyArgs has no call site and misses in silence. ASM reads the real body.
-tasks.register('apiProbe') {
-    dependsOn 'remapJar'
-    doLast {
-        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
-        def cl = new URLClassLoader(urls, (ClassLoader) null)
-        def c = cl.loadClass('net.minecraft.client.render.Camera')
-        c.declaredMethods.findAll { it.name in ['setRotation', 'update', 'clipToSpace'] }.each {
-            println "PROBE   ${java.lang.reflect.Modifier.toString(it.modifiers)} ${it.name}(${it.parameterTypes*.simpleName.join(', ')})"
-        }
-        def bytes = cl.getResourceAsStream('net/minecraft/client/render/Camera.class').bytes
-        def reader = new org.objectweb.asm.ClassReader(bytes)
-        def node = new org.objectweb.asm.tree.ClassNode()
-        reader.accept(node, 0)
-        node.methods.findAll { it.name == 'update' }.each { m ->
-            println "PROBE ==== calls inside update${m.desc}"
-            m.instructions.each { insn ->
-                if (insn instanceof org.objectweb.asm.tree.MethodInsnNode) {
-                    println "PROBE     ${insn.owner}.${insn.name}${insn.desc}"
-                }
-            }
-        }
-    }
-}

@@ -1,0 +1,5 @@
+-nowarn
+-proc:none
+-d
+/tmp/claude-0/-home-user-minecraftclient/3f841caa-b969-5b71-9934-7e9fd13493dc/scratchpad/out
+@/tmp/claude-0/-home-user-minecraftclient/3f841caa-b969-5b71-9934-7e9fd13493dc/scratchpad/srcs.txt

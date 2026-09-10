@@ -12,13 +12,18 @@ import org.lwjgl.glfw.GLFW;
 
 public class FreeLookModule extends Module {
    private static FreeLookModule instance;
-   public final ModeSetting mode = this.addSetting(new ModeSetting("Mode", "Which entity the mouse rotates.", "Player", "Player", "Camera"));
+   public final ModeSetting mode = this.addSetting(new ModeSetting("Mode",
+      "Free Camera: your body holds still and the mouse swings the camera. "
+    + "Locked Camera: the camera holds still and the mouse turns your body.",
+      "Free Camera", "Free Camera", "Locked Camera"));
    public final BooleanSetting togglePerspective = this.addSetting(new BooleanSetting("Toggle Perspective", "Switch to third person on toggle.", true));
    public final BooleanSetting throughWalls = this.addSetting(
       new BooleanSetting("Through Walls", "See through walls — the third-person camera ignores wall collision.", false)
    );
    public final SliderSetting sensitivity = this.addSetting(
-      new SliderSetting("Camera Sensitivity", "How fast the camera moves in Camera mode.", 8.0, 0.0, 10.0, 0.1)
+      new SliderSetting("Camera Sensitivity",
+         "How fast the mouse swings the camera in Free Camera mode. 5 matches your normal look speed.",
+         5.0, 0.5, 10.0, 0.1)
    );
    public final BooleanSetting arrows = this.addSetting(
       new BooleanSetting("Arrows Turn Other View", "Control the other entity's rotation with the arrow keys.", true)
@@ -71,7 +76,7 @@ public class FreeLookModule extends Module {
             int n = (int)(this.arrowSpeed.get() * 2.0);
 
             for (int offset = 0; offset < n; offset++) {
-               if (this.mode.is("Player")) {
+               if (!this.mode.is("Free Camera")) {
                   if (pressed) {
                      this.cameraYaw -= 0.5F;
                   }
@@ -125,22 +130,29 @@ public class FreeLookModule extends Module {
       return this.isActive() && this.throughWalls.get();
    }
 
+   /**
+    * Whether the mouse drives the camera rather than the player.
+    *
+    * ModeSetting refuses to load a value that is not in its list, so the old
+    * "Player" and "Camera" both fall back to the new default. That is the
+    * outcome we want here rather than one to migrate around: Free Camera is
+    * what the old default should have been.
+    */
    public boolean cameraMode() {
-      return this.isActive() && this.mode.is("Camera");
-   }
-
-   public boolean playerMode() {
-      return this.isActive() && MinecraftClient.getInstance().options.getPerspective() == Perspective.THIRD_PERSON_BACK && this.mode.is("Player");
+      return this.isActive() && this.mode.is("Free Camera");
    }
 
    public void addCameraLook(double d, double coord) {
+      // The arguments arrive raw, the way Entity.changeLookDirection receives
+      // them, so this has to apply vanilla's own 0.15 itself. The slider used
+      // to be a divisor, which made "sensitivity 10" the slowest setting on
+      // the bar -- it scales the speed now, so the number reads the way the
+      // label promises. 5 lands on vanilla's factor exactly.
       float f = this.sensitivity.getFloat();
-      if (f <= 0.0F) {
-         f = 1.0F;
-      }
+      double scale = 0.15 * (f / 5.0);
 
-      this.cameraYaw += (float)(d / (double)f);
-      this.cameraPitch += (float)(coord / (double)f);
+      this.cameraYaw += (float)(d * scale);
+      this.cameraPitch += (float)(coord * scale);
       if (Math.abs(this.cameraPitch) > 90.0F) {
          this.cameraPitch = this.cameraPitch > 0.0F ? 90.0F : -90.0F;
       }

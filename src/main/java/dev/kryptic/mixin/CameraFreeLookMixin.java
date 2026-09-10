@@ -20,6 +20,11 @@ public abstract class CameraFreeLookMixin {
       )
    )
    private void kryptic$freeLookRotation(Args args) {
+      // Both modes need this. In Free Camera the mouse writes these angles and
+      // the camera has to read them back; in Locked Camera nothing writes them
+      // after enable, which is the point -- the camera holds the angle it was
+      // enabled at while your body turns underneath it. Guarding this on
+      // cameraMode() would leave Locked Camera doing nothing at all.
       FreeLookModule freeLookModule = FreeLookModule.get();
       if (freeLookModule != null && freeLookModule.isActive()) {
          FreecamModule freecamModule = FreecamModule.get();
