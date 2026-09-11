@@ -11,6 +11,9 @@ public class ThemeManager {
    /** Plain white — the mark is white, so the client is. */
    public static final int MONO = -1;
 
+   /** #9FA6AE — a neutral grey with the faintest cool cast, so it is not dead. */
+   public static final int GRAPHITE = 0xFF9FA6AE;
+
    /**
     * Whether world visuals follow the theme accent instead of their own colour.
     *
@@ -26,6 +29,9 @@ public class ThemeManager {
    private Theme current;
 
    public ThemeManager() {
+      // Graphite leads: a grey accent on a grey surface, which is the one
+      // palette that has to carry itself on material rather than on colour.
+      this.themes.add(new Theme("Graphite", GRAPHITE, false));
       this.themes.add(new Theme("Mono", MONO, false));
       this.themes.add(new Theme("Steel", -3618608, false));    // #C8C8D0
       this.themes.add(new Theme("Amber", -678620, false));

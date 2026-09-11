@@ -616,40 +616,54 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
     private static final int PANEL_RADIUS = 12;
 
+    /** How many steps the gloss fades out over, across its own width. */
+    private static final int GLOSS_BANDS = 6;
+
     /**
-     * A pane of liquid glass.
+     * A pane of glass, lit.
      *
-     * The blur behind it is already there -- renderBackground blurs the world
-     * before any of this draws -- and the single biggest thing standing between
-     * that and glass was opacity. A panel at 76% alpha is a dark card with a
-     * blurred photograph faintly behind it. Dropping it lets the blur become
-     * the material instead of the backdrop, which is the whole effect: what you
-     * see through the panel is the world, smeared, not a picture of it.
+     * The previous version had a band of white across the top and a rim of even
+     * brightness all the way round. Both are the shorthand for glass rather
+     * than the thing itself, and at this size the difference is visible: a
+     * uniform band reads as a gradient somebody applied to a rectangle.
      *
-     * On top of that go the four things that make a sheet of glass read as one
-     * rather than as a translucent rectangle:
+     * Four properties of real glass, in the order they are drawn:
      *
      * <ul>
-     * <li>a sheen across the top third, strongest at the very top and gone by
-     *     the middle -- light entering the face of the pane, not a border;
-     * <li>a bounce along the bottom, much fainter, from light coming back up
-     *     off whatever it is sitting on;
-     * <li>a rim that is bright where the pane is lit and dark where it is not,
-     *     so the edge turns with the curve instead of tracing it evenly;
-     * <li>a wide, weak shadow, which is what puts it above the background
-     *     rather than in it.
+     * <li><b>Two shadows, not one.</b> A tight dark one directly beneath, which
+     *     is contact, and a wide faint one spread further, which is ambient
+     *     occlusion. A single shadow can be one or the other and is usually
+     *     read as a border.
+     * <li><b>A vignette.</b> Light falls off toward the edges of a pane and
+     *     hardest at its corners, so the body darkens at the rim by an amount
+     *     that grows with distance from the vertical centre.
+     * <li><b>A directional gloss.</b> Light arrives from somewhere. A wedge
+     *     that is widest at the top and narrows as it descends puts the source
+     *     up and to the left, which is where every eye assumes it is; a
+     *     full-width band puts it nowhere.
+     * <li><b>Fresnel.</b> Glass reflects more at a glancing angle than head-on,
+     *     which is why a pane is brightest exactly at its edge and why the top
+     *     and bottom edges catch more than the sides. The rim alpha is driven
+     *     by that rather than being one value.
      * </ul>
      */
     private static void glass(DrawContext ctx, int x0, int y0, int x1, int y1,
                               int topArgb, int bottomArgb) {
         int height = Math.max(1, y1 - y0);
-        int radius = radiusFor(x1 - x0, height);
+        int width = Math.max(1, x1 - x0);
+        int radius = radiusFor(width, height);
 
-        // Five rings rather than three, each weaker. A tight dark shadow reads
-        // as a border; a wide faint one reads as height.
-        for (int ring = 5; ring >= 1; ring--) {
-            shadowRing(ctx, x0 - ring, y0 - ring + 2, x1 + ring, y1 + ring + 2,
-                    radius + ring, ((6 - ring) * 5) << 24);
+        // Contact: tight, dark, barely offset. This is the shadow that says the
+        // pane is resting on something rather than floating over it.
+        for (int ring = 2; ring >= 1; ring--) {
+            shadowRing(ctx, x0 - ring + 1, y0 + ring, x1 + ring - 1, y1 + ring + 1,
+                    radius, (0x30 / ring) << 24);
+        }
+
+        // Ambient: wide, weak, offset further down.
+        for (int ring = 7; ring >= 3; ring--) {
+            shadowRing(ctx, x0 - ring, y0 - ring + 3, x1 + ring, y1 + ring + 3,
+                    radius + ring, ((9 - ring) * 4) << 24);
         }
 
         for (int i = 0; i < height; i++) {
@@ -658,25 +672,53 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, argb);
         }
 
-        // The sheen. Quadratic rather than linear so it falls away quickly and
-        // then lingers, which is how light through a curved face behaves; a
-        // straight ramp looks like a gradient someone applied.
-        int sheen = Math.max(1, (int) (height * 0.42f));
-        for (int i = 0; i < sheen; i++) {
-            float k = 1.0f - (float) i / sheen;
-            int alpha = (int) (0x2E * k * k);
+        // Vignette: darkest at the corners, nothing across the middle.
+        int band = Math.max(2, width / 12);
+        for (int i = 0; i < height; i++) {
+            float away = Math.abs((float) i / Math.max(1, height - 1) - 0.5f) * 2.0f;
+            int alpha = (int) (0x22 * away * away);
             if (alpha <= 0) {
                 continue;
             }
 
             int inset = cornerInset(i, height, radius);
-            ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, alpha << 24 | 0xFFFFFF);
+            ctx.fill(x0 + inset, y0 + i, x0 + inset + band, y0 + i + 1, alpha << 24);
+            ctx.fill(x1 - inset - band, y0 + i, x1 - inset, y0 + i + 1, alpha << 24);
         }
 
+        // The gloss wedge. Widest at the top, narrowing as it falls.
+        //
+        // Each row is laid down as a few bands of falling alpha rather than one
+        // fill, because a wedge that simply stops has a hard diagonal edge
+        // running across the panel -- which is what the first version of this
+        // did, and it read as a crease rather than as light.
+        int gloss = Math.max(1, (int) (height * 0.52f));
+        for (int i = 0; i < gloss; i++) {
+            float k = 1.0f - (float) i / gloss;
+            int base = (int) (0x32 * k * k);
+            if (base <= 0) {
+                continue;
+            }
+
+            int inset = cornerInset(i, height, radius);
+            int left = x0 + inset;
+            int right = Math.min(x1 - inset, left + (int) (width * (0.32f + 0.68f * k)));
+            for (int band = 0; band < GLOSS_BANDS; band++) {
+                int bx0 = left + (right - left) * band / GLOSS_BANDS;
+                int bx1 = left + (right - left) * (band + 1) / GLOSS_BANDS;
+                float fade = 1.0f - (float) band / GLOSS_BANDS;
+                int alpha = (int) (base * fade * fade);
+                if (alpha > 0 && bx1 > bx0) {
+                    ctx.fill(bx0, y0 + i, bx1, y0 + i + 1, alpha << 24 | 0xFFFFFF);
+                }
+            }
+        }
+
+        // Bounce: light coming back up off whatever it sits on.
         int bounce = Math.max(1, (int) (height * 0.22f));
         for (int i = 0; i < bounce; i++) {
             float k = (float) i / bounce;
-            int alpha = (int) (0x12 * k * k);
+            int alpha = (int) (0x14 * k * k);
             if (alpha <= 0) {
                 continue;
             }
@@ -686,24 +728,28 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             ctx.fill(x0 + inset, y0 + row, x1 - inset, y0 + row + 1, alpha << 24 | 0xFFFFFF);
         }
 
-        // The rim, turning with the curve: bright along the top, neutral at the
-        // waist, dark underneath.
+        // Fresnel rim. Brightest where the pane faces away hardest -- its very
+        // top and bottom -- and lowest across the waist, with the bottom going
+        // dark because what it reflects down there is the shadow it casts.
         for (int i = 0; i < height; i++) {
             int inset = cornerInset(i, height, radius);
             float t = (float) i / Math.max(1, height - 1);
+            float grazing = Math.abs(t - 0.5f) * 2.0f;
             int edge = t < 0.5f
-                    ? Colors.lerpArgb(0x66FFFFFF, 0x14FFFFFF, t * 2.0f)
-                    : Colors.lerpArgb(0x14FFFFFF, 0x3C000000, (t - 0.5f) * 2.0f);
+                    ? (int) (0x1A + 0x54 * grazing) << 24 | 0xFFFFFF
+                    : (int) (0x14 + 0x3A * grazing) << 24;
             ctx.fill(x0 + inset, y0 + i, x0 + inset + 1, y0 + i + 1, edge);
             ctx.fill(x1 - inset - 1, y0 + i, x1 - inset, y0 + i + 1, edge);
         }
 
         int cap = cornerInset(0, height, radius);
-        ctx.fill(x0 + cap, y0, x1 - cap, y0 + 1, 0x72FFFFFF);
-        ctx.fill(x0 + cap, y1 - 1, x1 - cap, y1, 0x3C000000);
+        ctx.fill(x0 + cap, y0, x1 - cap, y0 + 1, 0x7EFFFFFF);
+        ctx.fill(x0 + cap, y1 - 1, x1 - cap, y1, 0x46000000);
 
+        // The thickness of the pane: one line inside the top edge, which is the
+        // far face seen through the near one.
         int inner = cornerInset(1, height, radius);
-        ctx.fill(x0 + inner + 1, y0 + 1, x1 - inner - 1, y0 + 2, 0x2CFFFFFF);
+        ctx.fill(x0 + inner + 1, y0 + 1, x1 - inner - 1, y0 + 2, 0x30FFFFFF);
     }
 
     /** A solid rounded rectangle, for anything sitting inside a panel. */

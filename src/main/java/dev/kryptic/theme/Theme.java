@@ -3,8 +3,16 @@ package dev.kryptic.theme;
 import dev.kryptic.util.Colors;
 
 public class Theme {
-   /** #0A0A0B — the stock card body, and what an unset surface falls back to. */
-   private static final int DEFAULT_SURFACE = -16119285;
+   /**
+    * #17181A — the stock card body.
+    *
+    * Was #0A0A0B, which is very nearly black. Black is not a material: it has
+    * no tone for light to fall across, so a gradient over it is a gradient
+    * over nothing and every panel reads as a hole rather than as a surface.
+    * Lifting it to a real dark grey gives the sheen, the vignette and the
+    * bounce something to sit on, and costs no contrast against white text.
+    */
+   private static final int DEFAULT_SURFACE = 0xFF17181A;
 
    private final String name;
    private int accent;
@@ -87,34 +95,22 @@ public class Theme {
    // The panels are opaque. Translucent bodies over a blurred world meant text
    // contrast changed as the player turned around.
 
-   /** #0A0A0B by default — the card body. */
+   /** #17181A by default — the card body. */
    public int background() {
       return this.surface();
    }
 
    /** A step toward the light, for the gradient's far end. */
    public int backgroundTo() {
-      if (!this.hasCustomSurface()) {
-         return -15658733;
-      }
-
       return step(0.06F);
    }
 
    /** The column header strip: a further step, so the band reads as a band. */
    public int headerTop() {
-      if (!this.hasCustomSurface()) {
-         return -15263974;
-      }
-
       return step(0.13F);
    }
 
    public int headerBottom() {
-      if (!this.hasCustomSurface()) {
-         return -15658733;
-      }
-
       return step(0.06F);
    }
 
@@ -124,6 +120,11 @@ public class Theme {
     * Lightening works on a dark theme and does nothing visible on a near-white
     * one, so a light surface steps down instead. Without this a pale custom
     * theme loses its header strip and its gradient entirely.
+    *
+    * <p>Every surface tone is derived through here now, custom theme or not.
+    * The stock ones used to be three frozen literals worked out by hand from
+    * the old near-black, so moving the surface left them behind -- which is how
+    * a theme ends up with a header strip a different colour from its own body.
     */
    private int step(float amount) {
       return this.lightSurface()
