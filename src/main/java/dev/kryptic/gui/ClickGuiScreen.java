@@ -287,13 +287,18 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             panel(ctx, cx, top, cx + colW, top + colH, 0xFF0E0E11, 0xFF26262B);
             ctx.fill(cx + 1, top + 1, cx + colW - 1, top + headH, 0xFF17171A);
             ctx.fill(cx + 1, top + headH, cx + colW - 1, top + headH + 1, 0x70FFFFFF);
-            ctx.drawText(this.client.textRenderer, ui(category.name()),
-                    cx + 8, top + headH / 2 - 4, 0xFFEDEDEF, false);
+            // a small square standing in for the category glyph, then the name
+            ctx.fill(cx + 8, top + headH / 2 - 3, cx + 14, top + headH / 2 + 3, 0xFFFFFFFF);
+            ctx.drawText(this.client.textRenderer, ui(category.name().toUpperCase(Locale.ROOT)),
+                    cx + 19, top + headH / 2 - 4, 0xFFEDEDEF, false);
+
+            // the collapse mark sits hard right, where the reference puts it
+            ctx.fill(cx + colW - 15, top + headH / 2 - 1, cx + colW - 8, top + headH / 2, 0xFF8E8E96);
 
             String count = on + "/" + inColumn.size();
             int cw = this.client.textRenderer.getWidth(ui(count));
             ctx.drawText(this.client.textRenderer, ui(count),
-                    cx + colW - 8 - cw, top + headH / 2 - 4, 0xFF5A5A62, false);
+                    cx + colW - 21 - cw, top + headH / 2 - 4, 0xFF5A5A62, false);
 
             int ry = top + headH + 3;
             for (Module m : inColumn) {
@@ -307,29 +312,17 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                     ctx.fill(cx + 6, ry + 4, cx + 8, ry + rowH - 4, 0xFFFFFFFF);
                 }
 
-                ctx.drawText(this.client.textRenderer, ui(m.getName()),
+                ctx.drawText(this.client.textRenderer, ui(m.getName().toUpperCase(Locale.ROOT)),
                         cx + 13, ry + rowH / 2 - 4, enabled ? 0xFFFFFFFF : 0xFF8E8E96, false);
 
-                // the state dot, filled when on and an outline when off, which
-                // is what the styled row uses
-                int dx = cx + colW - 13;
-                int dy = ry + rowH / 2;
-                if (enabled) {
-                    ctx.fill(dx - 2, dy - 2, dx + 2, dy + 2, 0xFFFFFFFF);
-                } else {
-                    ctx.fill(dx - 2, dy - 2, dx + 2, dy - 1, 0x66FFFFFF);
-                    ctx.fill(dx - 2, dy + 1, dx + 2, dy + 2, 0x66FFFFFF);
-                    ctx.fill(dx - 2, dy - 1, dx - 1, dy + 1, 0x66FFFFFF);
-                    ctx.fill(dx + 1, dy - 1, dx + 2, dy + 1, 0x66FFFFFF);
-                }
-
+                toggle(ctx, cx + colW - 9 - SWITCH_W, ry + rowH / 2 - SWITCH_H / 2, enabled);
                 ry += rowH;
             }
 
             cx += colW + gap;
         }
 
-        String hint = "RIGHT SHIFT to close  -  right-click a module for its settings";
+        String hint = "RIGHT SHIFT TO CLOSE   -   RIGHT-CLICK A MODULE FOR ITS SETTINGS";
         ctx.drawText(this.client.textRenderer, ui(hint),
                 (width - this.client.textRenderer.getWidth(ui(hint))) / 2, height - 14, 0xFF5A5A62, false);
 
@@ -357,12 +350,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int sx = left + this.client.textRenderer.getWidth(ui("KRYPTIC")) + 10;
 
         panel(ctx, sx, y, sx + searchW, y + h, 0x14FFFFFF, 0x2AFFFFFF);
-        String typed = search.length() == 0 ? "Search modules" : search.toString();
+        String typed = search.length() == 0 ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
         ctx.drawText(this.client.textRenderer, ui(typed),
                 sx + 6, y + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
 
         int px = sx + searchW + 10;
-        String[] labels = {"Stats", "Configs", "Themes"};
+        String[] labels = {"STATS", "CONFIGS", "THEMES"};
         boolean[] active = {statsOpen, false, themesOpen};
         for (int i = 0; i < labels.length; i++) {
             int x0 = px + i * (pillW + pillGap);
@@ -372,6 +365,31 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             ctx.drawText(this.client.textRenderer, ui(labels[i]),
                     x0 + (pillW - lw) / 2, y + h / 2 - 4, active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
         }
+    }
+
+    private static final int SWITCH_W = 14;
+    private static final int SWITCH_H = 8;
+
+    /**
+     * A toggle switch, the way the reference client draws one.
+     *
+     * A dot says "this is on" and nothing else. A switch says which way it
+     * moves, so a column of them reads as a set of controls rather than as a
+     * column of indicator lights -- and it makes the hit target obvious, which
+     * a three-pixel dot never did.
+     */
+    private static void toggle(DrawContext ctx, int x, int y, boolean on) {
+        int track = on ? 0xFFFFFFFF : 0x33FFFFFF;
+        // the track, with its end pixels clipped so it reads as a rounded pill
+        ctx.fill(x + 1, y, x + SWITCH_W - 1, y + SWITCH_H, track);
+        ctx.fill(x, y + 1, x + 1, y + SWITCH_H - 1, track);
+        ctx.fill(x + SWITCH_W - 1, y + 1, x + SWITCH_W, y + SWITCH_H - 1, track);
+
+        int knobX = on ? x + SWITCH_W - SWITCH_H + 1 : x + 1;
+        int knob = on ? 0xFF15151A : 0xFFB0B0B8;
+        ctx.fill(knobX + 1, y + 1, knobX + SWITCH_H - 2, y + SWITCH_H - 1, knob);
+        ctx.fill(knobX, y + 2, knobX + 1, y + SWITCH_H - 2, knob);
+        ctx.fill(knobX + SWITCH_H - 2, y + 2, knobX + SWITCH_H - 1, y + SWITCH_H - 2, knob);
     }
 
     /**
