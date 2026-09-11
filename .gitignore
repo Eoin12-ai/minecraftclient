@@ -5,3 +5,9 @@ build/
 out/
 run/
 .DS_Store
+
+# local build output fetched from CI
+dist/
+
+# javac argument dumps from local structural checks
+javac.*.args

@@ -1,0 +1,20 @@
+MinecraftTen.ttf
+================
+
+Family     : Minecraft Ten
+Subfamily  : Regular
+Version    : Version 1.00; September 8, 2019; FontCreator 12.0.0.2522 32-bit
+Glyphs     : 100 (99 mapped codepoints)
+
+A fan-made display face styled after the Minecraft 10th-anniversary logo.
+
+Provenance: taken from a third-party client jar supplied by the user
+(assets/krypton/fonts/font.ttf). The file carries no copyright, licence,
+trademark, designer or vendor entry in its name table, so no licence text
+can be reproduced here the way Monocraft's and Xuong's OFL notices are.
+Treat its redistribution terms as unverified.
+
+Coverage note: it has the full Latin alphabet in both cases, the digits and
+most ASCII punctuation, but it lacks U+00B7 MIDDLE DOT and U+221E INFINITY,
+both of which this client's HUD uses. NVGRenderer registers Monocraft as its
+fallback so those codepoints still render.

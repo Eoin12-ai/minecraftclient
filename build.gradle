@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'fabric-loom' version '1.17.20'
     id 'java'
 }
 
@@ -8,19 +8,9 @@ group   = project.maven_group
 
 base { archivesName = project.archives_base_name }
 
-loom {
-    mixin {
-        defaultRefmapName = 'epsteinclient.refmap.json'
-    }
-}
-
 repositories {
     mavenCentral()
     maven { url = 'https://maven.fabricmc.net/' }
-}
-
-configurations {
-    localDeps
 }
 
 dependencies {
@@ -29,9 +19,10 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    // Pre-compiled JAR supplies class_11905/8/9 and other snapshot-only APIs
-    // that aren't yet in the stable Yarn mappings
-    compileOnly fileTree(dir: 'libs', include: '*.jar')
+    // NanoVG is bound at compile time from libs/ and shipped as the nested jars
+    // under META-INF/jars. The rest of libs/ was a pre-compiled copy of this mod
+    // built against older mappings; it has no business on the compile classpath.
+    compileOnly files('libs/lwjgl-nanovg-3.3.3.jar')
 
     compileOnly 'org.jetbrains:annotations:24.1.0'
 }
@@ -54,3 +45,211 @@ processResources {
         expand 'version': project.version
     }
 }
+
+/**
+ * Fails the build on an @Inject handler that declares an Object parameter.
+ *
+ * Mixin matches an @Inject against its target by raw descriptor and does not
+ * treat Object as a wildcard, so one of these compiles clean, passes every
+ * check here, ships, and then throws InvalidInjectionException while applying
+ * -- which is fatal whatever defaultRequire says. The client dies before the
+ * window opens, which is the worst way to find out.
+ *
+ * This is a lint, not a verifier: it does not resolve the target method, it
+ * just refuses the one shape that has actually shipped broken. Our legitimate
+ * Object parameters are all on @ModifyExpressionValue, hooking erased generics
+ * like SimpleOption.getValue, so this cannot fire on them.
+ */
+tasks.register('checkMixinDescriptors') {
+    def mixinDir = file('src/main/java/dev/kryptic/mixin')
+    inputs.dir mixinDir
+    doLast {
+        def offenders = []
+        mixinDir.eachFileMatch(~/.*\.java/) { f ->
+            def src = f.text
+            // every handler declaration, with the annotations that precede it
+            def matcher = src =~ /(?s)(?:private|public|protected)\s+(?:static\s+)?[\w.<>\[\]$]+\s+(kryptic\$\w+)\s*\(([^)]*)\)/
+            while (matcher.find()) {
+                def head = src.substring(0, matcher.start())
+                def anns = (head =~ /@(Inject|ModifyVariable|ModifyExpressionValue|ModifyReturnValue|Redirect|ModifyArg|ModifyArgs|WrapOperation)\b/)
+                            .collect { it[1] }
+                if (!anns || anns[-1] != 'Inject') continue
+                def params = matcher.group(2).split(',')*.trim().findAll { it }
+                if (params.any { it.split(/\s+/)[0] == 'Object' }) {
+                    offenders << "${f.name}#${matcher.group(1)}"
+                }
+            }
+        }
+        if (offenders) {
+            throw new GradleException(
+                "@Inject handlers with an Object parameter (Mixin will reject these at "
+                + "apply time and the client will not start): " + offenders.join(', '))
+        }
+    }
+}
+
+tasks.named('check') { dependsOn 'checkMixinDescriptors' }
+
+/**
+ * Fails the build if the Mixin we compile against declares a singular-in-runtime
+ * annotation member as an array.
+ *
+ * @Redirect, @ModifyArg, @ModifyArgs and @ModifyVariable take one @At. When the
+ * Mixin on the compile classpath declares at() as At[] instead, javac silently
+ * auto-wraps `at = @At(...)` into `at = [@At(...)]` -- legal Java, compiles
+ * clean, and then MixinExtras casts that attribute to a single AnnotationNode
+ * at apply time and throws ClassCastException. The client dies before the
+ * window opens and the stack trace names neither the mixin nor the mod.
+ *
+ * Checking the classpath rather than our source is the point: our source was
+ * correct both times. What was wrong was what it compiled against.
+ */
+tasks.register('checkMixinAnnotationShape') {
+    dependsOn 'remapJar'
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, (ClassLoader) null)
+        def bad = []
+        ['Redirect', 'ModifyArg', 'ModifyArgs', 'ModifyVariable'].each { name ->
+            try {
+                def type = cl.loadClass("org.spongepowered.asm.mixin.injection.${name}")
+                        .getMethod('at').returnType
+                if (type.isArray()) bad << "@${name}.at() is ${type.simpleName}"
+            } catch (Throwable t) {
+                logger.warn("could not inspect @${name}: ${t}")
+            }
+        }
+        if (bad) {
+            throw new GradleException(
+                "Mixin on the compile classpath has array-valued at(): " + bad.join(', ')
+                + ". Building against this produces at=[@At(...)] on injectors that take a "
+                + "single @At, which MixinExtras rejects at apply time. Pin loader_version "
+                + "to a release whose Mixin declares these singular.")
+        }
+    }
+}
+
+tasks.named('check') { dependsOn 'checkMixinAnnotationShape' }
+
+/**
+ * Checks every @Inject handler's parameters against the method it targets.
+ *
+ * Mixin matches an @Inject to its target by raw descriptor. A parameter of the
+ * wrong type compiles clean and then throws InvalidInjectionException during
+ * apply -- fatal whatever defaultRequire says, before the window opens. Three
+ * of those shipped in a row, each found only by crashing the game, so the build
+ * resolves the target on the remapped classpath and compares for itself.
+ *
+ * Types are compared by simple name. That cannot distinguish two classes that
+ * share one, which is a trade for not having to resolve every import; the
+ * failure it is here to catch is a wholly different type in a slot, and that it
+ * catches reliably.
+ */
+tasks.register('checkInjectSignatures') {
+    dependsOn 'remapJar'
+    def mixinDir = file('src/main/java/dev/kryptic/mixin')
+    inputs.dir mixinDir
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, (ClassLoader) null)
+        def problems = []
+
+        mixinDir.eachFileMatch(~/.*\.java/) { f ->
+            def src = f.text
+            def tm = src =~ /@Mixin\(\{?\s*(\w+)\.class/
+            if (!tm.find()) return
+            def targetSimple = tm.group(1)
+            def im = src =~ /import\s+([\w.]*\.\Q${targetSimple}\E);/
+            if (!im.find()) return
+            def target
+            try {
+                target = cl.loadClass(im.group(1))
+            } catch (Throwable ignored) {
+                return                       // accessors and the like
+            }
+
+            // every @Inject block, with the handler that follows it
+            def m = src =~ /(?s)@Inject\s*\((.*?)\)\s*(?:private|public|protected)\s+(?:static\s+)?[\w.<>\[\]$]+\s+(\w+)\s*\(([^)]*)\)/
+            while (m.find()) {
+                def spec = m.group(1), handler = m.group(2)
+                def nm = spec =~ /method\s*=\s*\{?\s*"([^"(]+)/
+                if (!nm.find()) continue
+                def methodName = nm.group(1).trim()
+
+                def params = m.group(3).split(',')*.trim().findAll { it }
+                        .collect { it.split(/\s+/)[-2] }           // the type, not the name
+                        .findAll { !(it in ['CallbackInfo', 'CallbackInfoReturnable']) }
+
+                def candidates = target.declaredMethods.findAll { it.name == methodName }
+                if (candidates.isEmpty()) continue                 // handled by require/@At
+
+                def ok = candidates.any { c ->
+                    def real = c.parameterTypes*.simpleName
+                    real.size() == params.size() &&
+                        [real, params].transpose().every { r, p -> r == p }
+                }
+                if (!ok) {
+                    problems << "${f.name}#${handler} declares (${params.join(', ')}) but " +
+                        "${targetSimple}.${methodName} is " +
+                        candidates.collect { "(${it.parameterTypes*.simpleName.join(', ')})" }.join(' or ')
+                }
+            }
+        }
+
+        if (problems) {
+            throw new GradleException("@Inject parameters do not match their target "
+                + "(Mixin will reject these at apply time and the client will not start):\n  "
+                + problems.join('\n  '))
+        }
+        logger.lifecycle('checkInjectSignatures: every @Inject matches its target')
+    }
+}
+
+tasks.named('check') { dependsOn 'checkInjectSignatures' }
+
+// A module deleted from ModuleManager leaves dangling references to its field,
+// and a local javac cannot see them: without Minecraft on the classpath the
+// import errors stop compilation before the field is ever resolved. That gap
+// let a broken build reach CI twice. This checks the source directly, so it
+// works with or without the mappings.
+tasks.register('checkModuleRefs') {
+    doLast {
+        def proc = ['python3', 'tools/modulerefs.py'].execute(null, projectDir)
+        proc.waitForProcessOutput(System.out, System.err)
+        if (proc.exitValue() != 0) {
+            throw new GradleException('checkModuleRefs: a module field referenced somewhere no longer exists')
+        }
+    }
+}
+
+// A local shadowing an enclosing local is rejected by javac and invisible to
+// everything else we can run here, for the same reason: no Minecraft on the
+// classpath means no compile. It cost a build when glass() named a strip width
+// and a loop counter both `band`, and the Python model these renders are
+// checked against rebinds happily, so the picture looked right.
+tasks.register('checkJavaLocals') {
+    doLast {
+        def proc = ['python3', 'tools/javalocals.py'].execute(null, projectDir)
+        proc.waitForProcessOutput(System.out, System.err)
+        if (proc.exitValue() != 0) {
+            throw new GradleException('checkJavaLocals: a local shadows one already in scope')
+        }
+    }
+}
+
+
+// An Identifier must be lowercase or Minecraft will not parse it, and nothing
+// says so: the resource is simply absent and whatever wanted it silently has
+// nothing. Every font in this client drew as the missing-glyph box for exactly
+// that reason -- twelve providers pointing at Inter-Bold.ttf and friends.
+tasks.register('checkIdentifiers') {
+    doLast {
+        def proc = ['python3', 'tools/identifiers.py'].execute(null, projectDir)
+        proc.waitForProcessOutput(System.out, System.err)
+        if (proc.exitValue() != 0) {
+            throw new GradleException('checkIdentifiers: an Identifier is not valid')
+        }
+    }
+}
+
+tasks.named('check') { dependsOn 'checkModuleRefs', 'checkJavaLocals', 'checkIdentifiers' }

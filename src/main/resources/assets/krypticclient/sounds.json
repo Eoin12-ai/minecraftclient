@@ -1,0 +1,52 @@
+{
+  "ui.gui_open": {
+    "sounds": [
+      "krypticclient:ui/gui_open"
+    ]
+  },
+  "ui.gui_close": {
+    "sounds": [
+      "krypticclient:ui/gui_close"
+    ]
+  },
+  "ui.hover": {
+    "sounds": [
+      "krypticclient:ui/hover"
+    ]
+  },
+  "ui.toggle_on": {
+    "sounds": [
+      "krypticclient:ui/toggle_on"
+    ]
+  },
+  "ui.toggle_off": {
+    "sounds": [
+      "krypticclient:ui/toggle_off"
+    ]
+  },
+  "ui.slider": {
+    "sounds": [
+      "krypticclient:ui/slider"
+    ]
+  },
+  "ui.select": {
+    "sounds": [
+      "krypticclient:ui/select"
+    ]
+  },
+  "ui.keybind": {
+    "sounds": [
+      "krypticclient:ui/keybind"
+    ]
+  },
+  "ui.notify_on": {
+    "sounds": [
+      "krypticclient:ui/notify_on"
+    ]
+  },
+  "ui.notify_off": {
+    "sounds": [
+      "krypticclient:ui/notify_off"
+    ]
+  }
+}
