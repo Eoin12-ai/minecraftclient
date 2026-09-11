@@ -235,6 +235,7 @@ tasks.register('fontProbe') {
         [
             'net.minecraft.text.Style'            : ['withFont', 'getFont'],
             'net.minecraft.text.StyleSpriteSource': null,
+            'net.minecraft.text.StyleSpriteSource$Font': null,
             'net.minecraft.client.font.FontManager': ['getTextRenderer', 'createTextRenderer'],
             'net.minecraft.client.MinecraftClient': ['getFontManager', 'getTextRenderer'],
         ].each { className, wanted ->
@@ -254,6 +255,15 @@ tasks.register('fontProbe') {
                 }
                 if (c.isInterface() || java.lang.reflect.Modifier.isAbstract(c.modifiers)) {
                     println "PROBE   permitted: ${c.permittedSubclasses*.simpleName}"
+                }
+                c.declaredClasses.each { n ->
+                    println "PROBE   nested ${n.name}"
+                    n.declaredConstructors.each { k ->
+                        println "PROBE     ctor (${k.parameterTypes*.simpleName.join(', ')})"
+                    }
+                    n.declaredMethods.findAll { java.lang.reflect.Modifier.isPublic(it.modifiers) }.each { k ->
+                        println "PROBE     ${java.lang.reflect.Modifier.isStatic(k.modifiers) ? 'static ' : ''}${k.returnType.simpleName} ${k.name}(${k.parameterTypes*.simpleName.join(', ')})"
+                    }
                 }
             } catch (Throwable t) {
                 println "PROBE ==== ${className} NOT FOUND"
