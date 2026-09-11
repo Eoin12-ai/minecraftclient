@@ -101,11 +101,20 @@ public class HudManager {
       this.components.add(notificationManager);
    }
 
-   /** Readouts carry a unit ("120ms"); only the number in front is graded. */
+   /**
+    * Readouts carry a unit ("120ms"); only the number in front is graded.
+    *
+    * The digit run is capped because parseInt throws on anything past
+    * 2147483647, and this is fed whatever a readout happens to say. A session
+    * timer or a distance that runs to eleven digits would have taken the HUD
+    * down with a NumberFormatException -- unlikely, but it costs one comparison
+    * to make impossible, and "ungraded" is the right answer for a number that
+    * large anyway.
+    */
    private static int parseLeadingInt(String shown) {
       int end = 0;
       while (end < shown.length() && Character.isDigit(shown.charAt(end))) end++;
-      return end == 0 ? Integer.MIN_VALUE : Integer.parseInt(shown.substring(0, end));
+      return end == 0 || end > 9 ? Integer.MIN_VALUE : Integer.parseInt(shown.substring(0, end));
    }
 
    /**
