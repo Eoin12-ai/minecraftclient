@@ -312,7 +312,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                     ctx.fill(cx + 6, ry + 4, cx + 8, ry + rowH - 4, 0xFFFFFFFF);
                 }
 
-                ctx.drawText(this.client.textRenderer, ui(m.getName().toUpperCase(Locale.ROOT)),
+                // The switch owns the right of the row, so the name has to stop
+                // short of it. Without this, long names run underneath the
+                // switch and the two become unreadable together.
+                int nameRoom = colW - 13 - SWITCH_W - 12;
+                ctx.drawText(this.client.textRenderer,
+                        ui(fit(m.getName().toUpperCase(Locale.ROOT), nameRoom)),
                         cx + 13, ry + rowH / 2 - 4, enabled ? 0xFFFFFFFF : 0xFF8E8E96, false);
 
                 toggle(ctx, cx + colW - 9 - SWITCH_W, ry + rowH / 2 - SWITCH_H / 2, enabled);
@@ -342,20 +347,29 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int barH = Math.round(OverlayRenderer.uiToGui(BAR_H));
         int y = Math.max(14, columnsTop - barH - 4);
         int searchW = Math.round(OverlayRenderer.uiToGui(SEARCH_W));
-        int pillW = Math.round(OverlayRenderer.uiToGui(PILL_W));
         int pillGap = Math.round(OverlayRenderer.uiToGui(PILL_GAP));
         int h = Math.round(OverlayRenderer.uiToGui(SEARCH_H));
+
+        // A fixed pill width is a UI-space number; converted to vanilla's it is
+        // narrower than the words it has to hold, so the labels spilled out of
+        // their buttons and into each other. Size the pill to its widest label.
+        String[] labels = {"STATS", "CONFIGS", "THEMES"};
+        int pillW = 0;
+        for (String label : labels) {
+            pillW = Math.max(pillW, this.client.textRenderer.getWidth(ui(label)));
+        }
+
+        pillW += 10;
 
         ctx.drawText(this.client.textRenderer, ui("KRYPTIC"), left, y + h / 2 - 4, 0xFFEDEDEF, false);
         int sx = left + this.client.textRenderer.getWidth(ui("KRYPTIC")) + 10;
 
         panel(ctx, sx, y, sx + searchW, y + h, 0x14FFFFFF, 0x2AFFFFFF);
         String typed = search.length() == 0 ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
-        ctx.drawText(this.client.textRenderer, ui(typed),
+        ctx.drawText(this.client.textRenderer, ui(fit(typed, searchW - 12)),
                 sx + 6, y + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
 
         int px = sx + searchW + 10;
-        String[] labels = {"STATS", "CONFIGS", "THEMES"};
         boolean[] active = {statsOpen, false, themesOpen};
         for (int i = 0; i < labels.length; i++) {
             int x0 = px + i * (pillW + pillGap);
@@ -365,6 +379,34 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             ctx.drawText(this.client.textRenderer, ui(labels[i]),
                     x0 + (pillW - lw) / 2, y + h / 2 - 4, active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
         }
+    }
+
+    /**
+     * The longest prefix of {@code text} that fits in {@code room} pixels.
+     *
+     * The column is about a hundred pixels wide once the UI-space layout is
+     * converted to vanilla's, and plenty of module names are wider than what
+     * is left after the switch takes its share. Measuring against the styled
+     * text matters: the width of the glyphs actually drawn is not the width of
+     * the same string in the default font.
+     */
+    private String fit(String text, int room) {
+        if (room <= 0 || this.client.textRenderer.getWidth(ui(text)) <= room) {
+            return text;
+        }
+
+        String ellipsis = "..";
+        int budget = room - this.client.textRenderer.getWidth(ui(ellipsis));
+        StringBuilder kept = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            if (this.client.textRenderer.getWidth(ui(kept.toString() + text.charAt(i))) > budget) {
+                break;
+            }
+
+            kept.append(text.charAt(i));
+        }
+
+        return kept + ellipsis;
     }
 
     private static final int SWITCH_W = 14;
