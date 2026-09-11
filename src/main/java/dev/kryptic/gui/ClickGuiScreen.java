@@ -1,5 +1,6 @@
 package dev.kryptic.gui;
 
+import net.minecraft.text.Style;
 import java.util.Locale;
 import dev.kryptic.gui.panel.ModuleEntry;
 import dev.kryptic.module.Module;
@@ -121,6 +122,26 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
      * why NanoVG is silent -- a missing font, a latched crash, a framebuffer
      * that will not bind. Any of them, the menu still draws.
      */
+    /**
+     * Inter, drawn by Minecraft rather than by NanoVG.
+     *
+     * The fallback used the default font and came out pixelated, because
+     * Minecraft's own font is a bitmap. Minecraft will render a TTF though --
+     * that is what the ttf font provider is for -- so registering Inter as a
+     * font and asking for it by name gives the fallback the same typeface as
+     * the styled menu, anti-aliased, with no NanoVG involved at all.
+     *
+     * If the provider fails to load, Minecraft falls back to the default font
+     * on its own, so the worst case is what this looked like before.
+     */
+    private static final Style UI_FONT =
+            Style.EMPTY.withFont(Identifier.of("krypticclient", "inter"));
+
+    /** Text in the client's own typeface. */
+    private static Text ui(String s) {
+        return Text.literal(s).setStyle(UI_FONT);
+    }
+
     private int nvgFrames;
     private int nvgFramesSeen = -1;
 
@@ -241,12 +262,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             panel(ctx, cx, top, cx + colW, top + colH, 0xFF0E0E11, 0xFF26262B);
             ctx.fill(cx + 1, top + 1, cx + colW - 1, top + headH, 0xFF17171A);
             ctx.fill(cx + 1, top + headH, cx + colW - 1, top + headH + 1, 0x70FFFFFF);
-            ctx.drawText(this.client.textRenderer, Text.literal(category.name()),
+            ctx.drawText(this.client.textRenderer, ui(category.name()),
                     cx + 8, top + headH / 2 - 4, 0xFFEDEDEF, false);
 
             String count = on + "/" + inColumn.size();
-            int cw = this.client.textRenderer.getWidth(count);
-            ctx.drawText(this.client.textRenderer, Text.literal(count),
+            int cw = this.client.textRenderer.getWidth(ui(count));
+            ctx.drawText(this.client.textRenderer, ui(count),
                     cx + colW - 8 - cw, top + headH / 2 - 4, 0xFF5A5A62, false);
 
             int ry = top + headH + 3;
@@ -261,7 +282,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                     ctx.fill(cx + 6, ry + 4, cx + 8, ry + rowH - 4, 0xFFFFFFFF);
                 }
 
-                ctx.drawText(this.client.textRenderer, Text.literal(m.getName()),
+                ctx.drawText(this.client.textRenderer, ui(m.getName()),
                         cx + 13, ry + rowH / 2 - 4, enabled ? 0xFFFFFFFF : 0xFF8E8E96, false);
 
                 // the state dot, filled when on and an outline when off, which
@@ -284,8 +305,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         }
 
         String hint = "RIGHT SHIFT to close  -  right-click a module for its settings";
-        ctx.drawText(this.client.textRenderer, Text.literal(hint),
-                (width - this.client.textRenderer.getWidth(hint)) / 2, height - 14, 0xFF5A5A62, false);
+        ctx.drawText(this.client.textRenderer, ui(hint),
+                (width - this.client.textRenderer.getWidth(ui(hint))) / 2, height - 14, 0xFF5A5A62, false);
 
         // Say why, on screen. The styled menu failing is not something the user
         // can diagnose from a log file they have to go and find, and the reason
@@ -295,7 +316,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                 ? "NanoVG drew nothing and reported no error (font or GL state)"
                 : reason);
         ctx.fill(0, 0, width, 12, 0xC0301010);
-        ctx.drawText(this.client.textRenderer, Text.literal(banner), 4, 2, 0xFFE08A8A, false);
+        ctx.drawText(this.client.textRenderer, ui(banner), 4, 2, 0xFFE08A8A, false);
     }
 
     /** The search pill and the three buttons, so the bar is not just missing. */
@@ -307,12 +328,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int pillGap = Math.round(OverlayRenderer.uiToGui(PILL_GAP));
         int h = Math.round(OverlayRenderer.uiToGui(SEARCH_H));
 
-        ctx.drawText(this.client.textRenderer, Text.literal("KRYPTIC"), left, y + h / 2 - 4, 0xFFEDEDEF, false);
-        int sx = left + this.client.textRenderer.getWidth("KRYPTIC") + 10;
+        ctx.drawText(this.client.textRenderer, ui("KRYPTIC"), left, y + h / 2 - 4, 0xFFEDEDEF, false);
+        int sx = left + this.client.textRenderer.getWidth(ui("KRYPTIC")) + 10;
 
         panel(ctx, sx, y, sx + searchW, y + h, 0x14FFFFFF, 0x2AFFFFFF);
         String typed = search.length() == 0 ? "Search modules" : search.toString();
-        ctx.drawText(this.client.textRenderer, Text.literal(typed),
+        ctx.drawText(this.client.textRenderer, ui(typed),
                 sx + 6, y + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
 
         int px = sx + searchW + 10;
@@ -322,8 +343,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             int x0 = px + i * (pillW + pillGap);
             panel(ctx, x0, y, x0 + pillW, y + h,
                     active[i] ? 0x2EFFFFFF : 0x12FFFFFF, active[i] ? 0x55FFFFFF : 0x28FFFFFF);
-            int lw = this.client.textRenderer.getWidth(labels[i]);
-            ctx.drawText(this.client.textRenderer, Text.literal(labels[i]),
+            int lw = this.client.textRenderer.getWidth(ui(labels[i]));
+            ctx.drawText(this.client.textRenderer, ui(labels[i]),
                     x0 + (pillW - lw) / 2, y + h / 2 - 4, active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
         }
     }
