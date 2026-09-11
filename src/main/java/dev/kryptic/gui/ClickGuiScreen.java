@@ -673,7 +673,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         }
 
         // Vignette: darkest at the corners, nothing across the middle.
-        int band = Math.max(2, width / 12);
+        int vignette = Math.max(2, width / 12);
         for (int i = 0; i < height; i++) {
             float away = Math.abs((float) i / Math.max(1, height - 1) - 0.5f) * 2.0f;
             int alpha = (int) (0x22 * away * away);
@@ -682,8 +682,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             }
 
             int inset = cornerInset(i, height, radius);
-            ctx.fill(x0 + inset, y0 + i, x0 + inset + band, y0 + i + 1, alpha << 24);
-            ctx.fill(x1 - inset - band, y0 + i, x1 - inset, y0 + i + 1, alpha << 24);
+            ctx.fill(x0 + inset, y0 + i, x0 + inset + vignette, y0 + i + 1, alpha << 24);
+            ctx.fill(x1 - inset - vignette, y0 + i, x1 - inset, y0 + i + 1, alpha << 24);
         }
 
         // The gloss wedge. Widest at the top, narrowing as it falls.
