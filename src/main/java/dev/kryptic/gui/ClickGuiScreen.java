@@ -285,7 +285,6 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     }
 
     private int nvgFrames;
-    private int nvgFramesSeen = -1;
 
     public ClickGuiScreen()              { this(null); }
 
@@ -346,11 +345,23 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int dimAlpha = (int)(48.0f * openAnim.value());
         ctx.fill(0, 0, width, height, dimAlpha << 24 | 0x060608);
 
-        boolean nvgSilent = nvgFrames == nvgFramesSeen;
-        nvgFramesSeen = nvgFrames;
-        if (nvgSilent) {
-            renderVanillaFallback(ctx, mx, my);
-        }
+        // This used to draw only when NanoVG had failed to increment its frame
+        // counter, on the reasoning that a NanoVG frame which completed must
+        // have drawn something. It does not follow, and it is the whole of "the
+        // menu shows for a second and then goes".
+        //
+        // While renderNvg threw, the counter stayed put, the menu was judged
+        // silent, and this drew it. The moment renderNvg stopped throwing --
+        // some lazily built resource finally ready -- the counter started
+        // moving, this concluded NanoVG had it covered, and stopped. NanoVG
+        // then drew nothing, as it has all along, and the menu vanished while
+        // still open and still taking clicks.
+        //
+        // A completed frame is not a visible one, and there is no way from here
+        // to tell whether a pixel landed. So this draws every frame and stops
+        // guessing. If NanoVG ever does work it paints over the top: this runs
+        // from Screen.render, and the overlay runs after it from afterRender.
+        renderVanillaFallback(ctx, mx, my);
 
         finishCloseIfDone();
     }
@@ -526,14 +537,15 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                 (width - this.client.textRenderer.getWidth(ui(hint))) / 2, height - 14,
                 th.textDisabled(), false);
 
-        // Say why, on screen. The styled menu failing is not something the user
-        // can diagnose from a log file they have to go and find, and the reason
-        // is the one piece of information that makes the next report useful.
-        // The status leads and the label follows, because this line gets cut off
-        // at the window edge and the half worth reading is the diagnosis.
-        String banner = fit(OverlayRenderer.status() + "  (Kryptic fallback view)", width - 8);
-        ctx.fill(0, 0, width, 12, 0xC0301010);
-        ctx.drawText(this.client.textRenderer, ui(banner), 4, 2, 0xFFE08A8A, false);
+        // Only when something actually threw. This renderer is the menu now,
+        // not a diagnostic mode, and a red bar across a working interface is
+        // just noise -- but an error still deserves to be on screen rather than
+        // in a log file nobody goes looking for.
+        if (OverlayRenderer.lastError() != null) {
+            String banner = fit(OverlayRenderer.status(), width - 8);
+            ctx.fill(0, 0, width, 12, 0xC0301010);
+            ctx.drawText(this.client.textRenderer, ui(banner), 4, 2, 0xFFE08A8A, false);
+        }
     }
 
     /**
