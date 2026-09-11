@@ -266,7 +266,11 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int left  = Math.round(OverlayRenderer.uiToGui(STATE.columnsLeft()));
         int top   = Math.round(OverlayRenderer.uiToGui(STATE.columnTop()));
 
-        ctx.fill(0, 0, width, height, 0xF00B0B0D);
+        // A near-opaque sheet here threw away the blur that renderBackground
+        // had already applied, which is what made the menu read as a flat black
+        // screen rather than as glass over the world. Just enough tint to sit
+        // the panels on.
+        ctx.fill(0, 0, width, height, 0x4C06060A);
 
         drawFallbackTopBar(ctx, left, top);
 
@@ -284,9 +288,9 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             for (Module m : inColumn) if (m.isEnabled()) on++;
 
             int colH = headH + inColumn.size() * rowH + 6;
-            panel(ctx, cx, top, cx + colW, top + colH, 0xFF0E0E11, 0xFF26262B);
-            ctx.fill(cx + 1, top + 1, cx + colW - 1, top + headH, 0xFF17171A);
-            ctx.fill(cx + 1, top + headH, cx + colW - 1, top + headH + 1, 0x70FFFFFF);
+            glass(ctx, cx, top, cx + colW, top + colH, 0xC22A2C34, 0xC2121318);
+            glass(ctx, cx + 1, top + 1, cx + colW - 1, top + headH, 0xB03A3D47, 0xB01E2028);
+            ctx.fill(cx + 3, top + headH, cx + colW - 3, top + headH + 1, 0x55FFFFFF);
             // a small square standing in for the category glyph, then the name
             ctx.fill(cx + 8, top + headH / 2 - 3, cx + 14, top + headH / 2 + 3, 0xFFFFFFFF);
             ctx.drawText(this.client.textRenderer, ui(category.name().toUpperCase(Locale.ROOT)),
@@ -305,7 +309,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                 boolean enabled = m.isEnabled();
                 boolean hover   = mx >= cx && mx <= cx + colW && my >= ry && my <= ry + rowH;
                 if (enabled || hover) {
-                    ctx.fill(cx + 4, ry, cx + colW - 4, ry + rowH, enabled ? 0x26FFFFFF : 0x14FFFFFF);
+                    ctx.fill(cx + 4, ry, cx + colW - 4, ry + rowH, enabled ? 0x2EFFFFFF : 0x16FFFFFF);
                 }
 
                 if (enabled) {
@@ -364,7 +368,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         ctx.drawText(this.client.textRenderer, ui("KRYPTIC"), left, y + h / 2 - 4, 0xFFEDEDEF, false);
         int sx = left + this.client.textRenderer.getWidth(ui("KRYPTIC")) + 10;
 
-        panel(ctx, sx, y, sx + searchW, y + h, 0x14FFFFFF, 0x2AFFFFFF);
+        panel(ctx, sx, y, sx + searchW, y + h, 0x38202430, 0x2EFFFFFF);
         String typed = search.length() == 0 ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
         ctx.drawText(this.client.textRenderer, ui(fit(typed, searchW - 12)),
                 sx + 6, y + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
@@ -374,7 +378,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         for (int i = 0; i < labels.length; i++) {
             int x0 = px + i * (pillW + pillGap);
             panel(ctx, x0, y, x0 + pillW, y + h,
-                    active[i] ? 0x2EFFFFFF : 0x12FFFFFF, active[i] ? 0x55FFFFFF : 0x28FFFFFF);
+                    active[i] ? 0x66323744 : 0x3A222630, active[i] ? 0x66FFFFFF : 0x2AFFFFFF);
             int lw = this.client.textRenderer.getWidth(ui(labels[i]));
             ctx.drawText(this.client.textRenderer, ui(labels[i]),
                     x0 + (pillW - lw) / 2, y + h / 2 - 4, active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
@@ -435,20 +439,46 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     }
 
     /**
-     * A filled box with a one-pixel edge.
+     * A glass panel: translucent, lit from the top, with a soft edge.
      *
-     * DrawContext has no rounded rectangle, so the corners are square. Clipping
-     * the corner pixels is the closest vanilla gets to the styled panel's
-     * radius without drawing a texture for it.
+     * Three things make it read as glass rather than as a grey box. It is
+     * translucent, so the blurred world behind it shows through and moves when
+     * you do. It carries a vertical gradient, because a flat fill reads as
+     * paint and a graded one reads as a surface catching light. And it has a
+     * bright hairline along its top inside edge, which is the specular line a
+     * real pane would have.
+     *
+     * DrawContext has no gradient call that this codebase has proven, so the
+     * gradient is drawn as one-pixel rows. At the size these panels actually
+     * render -- about a hundred pixels wide -- that is a few dozen fills.
      */
+    private static void glass(DrawContext ctx, int x0, int y0, int x1, int y1,
+                              int topArgb, int bottomArgb) {
+        int height = Math.max(1, y1 - y0);
+        for (int i = 0; i < height; i++) {
+            float t = (float) i / height;
+            int argb = Colors.lerpArgb(topArgb, bottomArgb, t);
+            // the first and last row are inset by a pixel, which rounds the
+            // corners as far as square fills allow
+            int inset = (i == 0 || i == height - 1) ? 2 : (i == 1 || i == height - 2) ? 1 : 0;
+            ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, argb);
+        }
+
+        // the specular line, and a darker seat along the bottom
+        ctx.fill(x0 + 2, y0 + 1, x1 - 2, y0 + 2, 0x24FFFFFF);
+        ctx.fill(x0 + 2, y1 - 2, x1 - 2, y1 - 1, 0x18000000);
+
+        // edges, softer at the corners
+        ctx.fill(x0 + 2, y0, x1 - 2, y0 + 1, 0x40FFFFFF);
+        ctx.fill(x0 + 2, y1 - 1, x1 - 2, y1, 0x30000000);
+        ctx.fill(x0, y0 + 2, x0 + 1, y1 - 2, 0x28FFFFFF);
+        ctx.fill(x1 - 1, y0 + 2, x1, y1 - 2, 0x28FFFFFF);
+    }
+
+    /** A small glass surface -- the search field and the three buttons. */
     private static void panel(DrawContext ctx, int x0, int y0, int x1, int y1, int fill, int edge) {
-        ctx.fill(x0 + 1, y0, x1 - 1, y1, fill);
-        ctx.fill(x0, y0 + 1, x0 + 1, y1 - 1, fill);
-        ctx.fill(x1 - 1, y0 + 1, x1, y1 - 1, fill);
-        ctx.fill(x0 + 1, y0, x1 - 1, y0 + 1, edge);
-        ctx.fill(x0 + 1, y1 - 1, x1 - 1, y1, edge);
-        ctx.fill(x0, y0 + 1, x0 + 1, y1 - 1, edge);
-        ctx.fill(x1 - 1, y0 + 1, x1, y1 - 1, edge);
+        glass(ctx, x0, y0, x1, y1, fill, fill);
+        ctx.fill(x0 + 2, y0, x1 - 2, y0 + 1, edge);
     }
 
     @Override

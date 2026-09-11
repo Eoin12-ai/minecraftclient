@@ -71,6 +71,23 @@ public final class Colors {
     *
     * @param fraction 0 is empty, 1 is full; anything outside is clamped
     */
+   /**
+    * Interpolate two colours including their alpha.
+    *
+    * {@link #lerp} blends the colour channels and keeps the first argument's
+    * alpha, which is right for a tint but wrong for a translucent gradient --
+    * a glass panel that fades from one alpha to another needs the alpha to
+    * travel with it.
+    */
+   public static int lerpArgb(int from, int to, float t) {
+      float f = Math.clamp(t, 0.0F, 1.0F);
+      int a = Math.round(alpha(from) + (alpha(to) - alpha(from)) * f);
+      int r = Math.round(red(from) + (red(to) - red(from)) * f);
+      int g = Math.round(green(from) + (green(to) - green(from)) * f);
+      int b = Math.round(blue(from) + (blue(to) - blue(from)) * f);
+      return argb(a, r, g, b);
+   }
+
    public static int healthRamp(float fraction) {
       float f = Math.clamp(fraction, 0.0F, 1.0F);
       int low = -1684147;      // #E64D4D
