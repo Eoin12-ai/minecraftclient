@@ -155,7 +155,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             case "Vanilla" -> "vanilla";
             case "Mono"    -> "mono";
             case "Ten"     -> "ten";
-            default        -> "bold";
+            case "Bold"    -> "bold";
+            default        -> "kryptic";
         };
 
         return Style.EMPTY.withFont(

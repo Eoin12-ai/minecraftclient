@@ -1,0 +1,27 @@
+Kryptic Regular
+===============
+
+Drawn for this client, not licensed from anyone. Every glyph is defined as a
+set of centre-line coordinates in tools/mkfont.py and stroked into outlines at
+build time by that script; the .ttf files checked in here and in ../font/ are
+its output, so the script is the source and the font is the artefact.
+
+To change a letter, edit its coordinates in tools/mkfont.py and run:
+
+    python3 tools/mkfont.py src/main/resources/assets/krypticclient/fonts/Kryptic-Regular.ttf
+    cp src/main/resources/assets/krypticclient/fonts/Kryptic-Regular.ttf \
+       src/main/resources/assets/krypticclient/font/Kryptic-Regular.ttf
+
+Both copies are needed: NanoVG reads fonts/ off the classpath directly, and
+Minecraft's own text renderer reads font/ through a font provider
+(font/kryptic.json). Updating one and not the other gives you a font that
+changes depending on which of the two renderers happens to be drawing.
+
+Licence
+-------
+
+CC0 1.0 Universal. To the extent possible under law, the author has waived all
+copyright and related rights to this typeface. No attribution required.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+It contains no outlines taken from any other font.

@@ -22,6 +22,7 @@ public final class NVGRenderer {
    public static final String FONT_TEN = "ten";
    public static final String FONT_MONO = "mono";
    public static final String FONT_BOLD = "bold";
+   public static final String FONT_KRYPTIC = "kryptic";
    private static NVGRenderer instance;
    private final long ctx = NanoVGGL3.nvgCreate(1);
    private boolean xuongLoaded;
@@ -29,8 +30,9 @@ public final class NVGRenderer {
    private boolean tenLoaded;
    private boolean monoLoaded;
    private boolean boldLoaded;
+   private boolean krypticLoaded;
    private final List<ByteBuffer> retainedFontData = new ArrayList<>();
-   private String activeFont = "bold";
+   private String activeFont = "kryptic";
    private final ArrayDeque<Float> alphaStack = new ArrayDeque<>();
    private float appliedAlpha = 1.0F;
 
@@ -43,8 +45,9 @@ public final class NVGRenderer {
          this.tenLoaded = this.loadFont("ten", "assets/krypticclient/fonts/MinecraftTen.ttf");
          this.monoLoaded = this.loadFont("mono", "assets/krypticclient/fonts/JetBrainsMono-Regular.ttf");
          this.boldLoaded = this.loadFont("bold", "assets/krypticclient/fonts/Inter-Bold.ttf");
+         this.krypticLoaded = this.loadFont("kryptic", "assets/krypticclient/fonts/Kryptic-Regular.ttf");
          if (!this.xuongLoaded && !this.vanillaLoaded && !this.tenLoaded
-               && !this.monoLoaded && !this.boldLoaded) {
+               && !this.monoLoaded && !this.boldLoaded && !this.krypticLoaded) {
             KrypticClient.LOGGER.error(
                   "No font loaded from assets/krypticclient/fonts/ - the menu and HUD "
                 + "will draw shapes but no text.");
@@ -59,6 +62,7 @@ public final class NVGRenderer {
             if (this.tenLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "ten", "vanilla");
             if (this.monoLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "mono", "vanilla");
             if (this.boldLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "bold", "vanilla");
+            if (this.krypticLoaded) NanoVG.nvgAddFallbackFont(this.ctx, "kryptic", "vanilla");
          }
       }
    }
@@ -147,13 +151,14 @@ public final class NVGRenderer {
          case "Ten" -> "ten";
          case "Mono" -> "mono";
          case "Vanilla" -> "vanilla";
-         default -> "bold";
+         case "Bold" -> "bold";
+         default -> "kryptic";
       };
       if (isLoaded(wanted)) {
          this.activeFont = wanted;
          return;
       }
-      for (String candidate : new String[]{"bold", "vanilla", "xuong", "mono", "ten"}) {
+      for (String candidate : new String[]{"kryptic", "bold", "vanilla", "xuong", "mono", "ten"}) {
          if (isLoaded(candidate)) {
             this.activeFont = candidate;
             return;
@@ -169,6 +174,7 @@ public final class NVGRenderer {
          case "ten" -> this.tenLoaded;
          case "mono" -> this.monoLoaded;
          case "bold" -> this.boldLoaded;
+         case "kryptic" -> this.krypticLoaded;
          default -> false;
       };
    }
