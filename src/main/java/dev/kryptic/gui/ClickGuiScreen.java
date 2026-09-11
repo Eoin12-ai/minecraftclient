@@ -136,23 +136,35 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
      * on its own, so the worst case is what this looked like before.
      */
     /**
-     * Inter, drawn by Minecraft rather than by NanoVG.
+     * The typeface the fallback draws in, following the client's Font setting.
+     *
+     * Every bundled face is registered as a Minecraft font, so this honours the
+     * same setting the NanoVG path uses rather than hard-coding one. Picking a
+     * typeface is a matter of taste and changing it should not need a rebuild.
      *
      * On this version Style.withFont takes a StyleSpriteSource rather than an
      * Identifier, and the concrete type is the record nested inside it -- read
      * off the remapped jar rather than guessed, after guessing cost a build.
+     * If a provider fails to load, Minecraft falls back to its default font on
+     * its own.
      */
-    private static final Style UI_FONT = Style.EMPTY.withFont(
-            new StyleSpriteSource.Font(Identifier.of("krypticclient", "inter")));
+    private static Style uiStyle() {
+        ClickGuiModule gui = KrypticClient.modules() == null ? null : KrypticClient.modules().clickGui;
+        String face = switch (gui == null ? "Bold" : gui.font.get()) {
+            case "Xuong"   -> "xuong";
+            case "Vanilla" -> "vanilla";
+            case "Mono"    -> "mono";
+            case "Ten"     -> "ten";
+            default        -> "bold";
+        };
 
-    /**
-     * Text in the client's own typeface.
-     *
-     * If the font provider fails to load, Minecraft falls back to the default
-     * font by itself, so the worst case is the bitmap type this replaced.
-     */
+        return Style.EMPTY.withFont(
+                new StyleSpriteSource.Font(Identifier.of("krypticclient", face)));
+    }
+
+    /** Text in whichever typeface the Font setting names. */
     private static Text ui(String s) {
-        return Text.literal(s).setStyle(UI_FONT);
+        return Text.literal(s).setStyle(uiStyle());
     }
 
     private int nvgFrames;

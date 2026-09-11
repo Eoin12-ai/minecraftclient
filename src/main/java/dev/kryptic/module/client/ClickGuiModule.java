@@ -11,7 +11,7 @@ public class ClickGuiModule extends Module {
    public final SliderSetting blurStrength = this.addSetting(new SliderSetting("Blur Strength", "How strong the background blur is", 6.0, 1.0, 10.0, 1.0));
    public final ModeSetting font = this.addSetting(new ModeSetting(
          "Font", "Typeface for the whole client — the menu and every HUD element",
-         "Bold", "Bold", "Xuong", "Vanilla", "Mono", "Ten"));
+         "Mono", "Bold", "Xuong", "Vanilla", "Mono", "Ten"));
 
    public final ModeSetting sort = this.addSetting(new ModeSetting(
          "Sort", "Order the modules run in down each column",
