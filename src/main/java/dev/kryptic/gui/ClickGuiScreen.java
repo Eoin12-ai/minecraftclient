@@ -300,7 +300,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         // had already applied, which is what made the menu read as a flat black
         // screen rather than as glass over the world. Just enough tint to sit
         // the panels on.
-        ctx.fill(0, 0, width, height, 0x4C06060A);
+        ctx.fill(0, 0, width, height, 0x2E06060A);
 
         drawFallbackTopBar(ctx);
 
@@ -318,8 +318,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             for (Module m : inColumn) if (m.isEnabled()) on++;
 
             int colH = headH + inColumn.size() * rowH + 6;
-            glass(ctx, cx, top, cx + colW, top + colH, 0xC22A2C34, 0xC2121318);
-            glass(ctx, cx + 1, top + 1, cx + colW - 1, top + headH, 0xB03A3D47, 0xB01E2028);
+            glass(ctx, cx, top, cx + colW, top + colH, 0x7A2E3038, 0x6E101218);
+            glass(ctx, cx + 1, top + 1, cx + colW - 1, top + headH, 0x5E3E4250, 0x52202430);
             ctx.fill(cx + 3, top + headH, cx + colW - 3, top + headH + 1, 0x55FFFFFF);
             // a small square standing in for the category glyph, then the name
             ctx.fill(cx + 8, top + headH / 2 - 3, cx + 14, top + headH / 2 + 3, 0xFFFFFFFF);
@@ -339,7 +339,10 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                 boolean enabled = m.isEnabled();
                 boolean hover   = mx >= cx && mx <= cx + colW && my >= ry && my <= ry + rowH;
                 if (enabled || hover) {
-                    ctx.fill(cx + 4, ry, cx + colW - 4, ry + rowH, enabled ? 0x2EFFFFFF : 0x16FFFFFF);
+                    // Rounded, because a square highlight inside a rounded
+                    // panel is the one shape that gives the whole thing away.
+                    roundFill(ctx, cx + 4, ry, cx + colW - 4, ry + rowH, 5,
+                            enabled ? 0x30FFFFFF : 0x18FFFFFF);
                 }
 
                 if (enabled) {
@@ -409,7 +412,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         ctx.drawText(this.client.textRenderer, ui(fit("KRYPTIC", markRoom)),
                 markX, sy + h / 2 - textDy(), 0xFFEDEDEF, false);
 
-        panel(ctx, sx, sy, sx + searchW, sy + h, 0x38202430, 0x2EFFFFFF);
+        panel(ctx, sx, sy, sx + searchW, sy + h, 0x30202430, 0x2EFFFFFF);
         String typed = search.length() == 0
                 ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
         ctx.drawText(this.client.textRenderer, ui(fit(typed, searchW - 12)),
@@ -420,7 +423,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         for (int i = 0; i < labels.length; i++) {
             int x0 = Math.round(OverlayRenderer.uiToGui(buttonX(sw, i)));
             panel(ctx, x0, by, x0 + pillW, by + pillH,
-                    active[i] ? 0x66323744 : 0x3A222630, active[i] ? 0x66FFFFFF : 0x2AFFFFFF);
+                    active[i] ? 0x5C323744 : 0x30222630, active[i] ? 0x66FFFFFF : 0x2AFFFFFF);
             String label = fit(labels[i], pillW - 6);
             int lw = this.client.textRenderer.getWidth(ui(label));
             ctx.drawText(this.client.textRenderer, ui(label),
@@ -473,8 +476,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
         // a scrim, so the pane reads as sitting above the grid
         ctx.fill(0, 0, width, height, 0x66050506);
-        glass(ctx, x, y, x + w, y + h, 0xD22A2C34, 0xD2121318);
-        glass(ctx, x + 1, y + 1, x + w - 1, y + headH, 0xB03A3D47, 0xB01E2028);
+        glass(ctx, x, y, x + w, y + h, 0x8A2E3038, 0x7E101218);
+        glass(ctx, x + 1, y + 1, x + w - 1, y + headH, 0x5E3E4250, 0x52202430);
         ctx.drawText(this.client.textRenderer, ui(title), x + 8, y + headH / 2 - textDy(), 0xFFEDEDEF, false);
 
         int ry = y + headH + 3;
@@ -568,60 +571,107 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         return Math.max(0, Math.min(PANEL_RADIUS, Math.min(w, h) / 2 - 1));
     }
 
-    private static final int PANEL_RADIUS = 8;
+    private static final int PANEL_RADIUS = 12;
 
     /**
-     * A translucent panel with rounded corners, a gradient, and a shadow.
+     * A pane of liquid glass.
      *
-     * Three things make a surface read as glass rather than as paint: you can
-     * see the world moving behind it, it is brighter at the top than the bottom
-     * so it looks like it is catching light, and it has a hard bright line
-     * along its top edge where a real pane would throw a specular. The shadow
-     * is what lifts it off the background; without one a translucent panel
-     * reads as a stain on the screen instead of a sheet above it.
+     * The blur behind it is already there -- renderBackground blurs the world
+     * before any of this draws -- and the single biggest thing standing between
+     * that and glass was opacity. A panel at 76% alpha is a dark card with a
+     * blurred photograph faintly behind it. Dropping it lets the blur become
+     * the material instead of the backdrop, which is the whole effect: what you
+     * see through the panel is the world, smeared, not a picture of it.
+     *
+     * On top of that go the four things that make a sheet of glass read as one
+     * rather than as a translucent rectangle:
+     *
+     * <ul>
+     * <li>a sheen across the top third, strongest at the very top and gone by
+     *     the middle -- light entering the face of the pane, not a border;
+     * <li>a bounce along the bottom, much fainter, from light coming back up
+     *     off whatever it is sitting on;
+     * <li>a rim that is bright where the pane is lit and dark where it is not,
+     *     so the edge turns with the curve instead of tracing it evenly;
+     * <li>a wide, weak shadow, which is what puts it above the background
+     *     rather than in it.
+     * </ul>
      */
     private static void glass(DrawContext ctx, int x0, int y0, int x1, int y1,
                               int topArgb, int bottomArgb) {
         int height = Math.max(1, y1 - y0);
         int radius = radiusFor(x1 - x0, height);
 
-        // Shadow first, underneath: three rings, each fainter and wider. Drawn
-        // as outlines rather than filled boxes so the panel's own translucency
-        // is not sitting on three stacked blacks.
-        for (int ring = 3; ring >= 1; ring--) {
-            int alpha = (4 - ring) * 10;
+        // Five rings rather than three, each weaker. A tight dark shadow reads
+        // as a border; a wide faint one reads as height.
+        for (int ring = 5; ring >= 1; ring--) {
             shadowRing(ctx, x0 - ring, y0 - ring + 2, x1 + ring, y1 + ring + 2,
-                    radius + ring, alpha << 24);
+                    radius + ring, ((6 - ring) * 5) << 24);
         }
 
         for (int i = 0; i < height; i++) {
-            float t = (float) i / height;
-            int argb = Colors.lerpArgb(topArgb, bottomArgb, t);
             int inset = cornerInset(i, height, radius);
+            int argb = Colors.lerpArgb(topArgb, bottomArgb, (float) i / height);
             ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, argb);
         }
 
-        // The specular: brightest across the top, fading down the sides, gone
-        // by halfway. A line that runs the whole way round reads as a border;
-        // only the top-lit part of it reads as glass.
+        // The sheen. Quadratic rather than linear so it falls away quickly and
+        // then lingers, which is how light through a curved face behaves; a
+        // straight ramp looks like a gradient someone applied.
+        int sheen = Math.max(1, (int) (height * 0.42f));
+        for (int i = 0; i < sheen; i++) {
+            float k = 1.0f - (float) i / sheen;
+            int alpha = (int) (0x2E * k * k);
+            if (alpha <= 0) {
+                continue;
+            }
+
+            int inset = cornerInset(i, height, radius);
+            ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, alpha << 24 | 0xFFFFFF);
+        }
+
+        int bounce = Math.max(1, (int) (height * 0.22f));
+        for (int i = 0; i < bounce; i++) {
+            float k = (float) i / bounce;
+            int alpha = (int) (0x12 * k * k);
+            if (alpha <= 0) {
+                continue;
+            }
+
+            int row = height - bounce + i;
+            int inset = cornerInset(row, height, radius);
+            ctx.fill(x0 + inset, y0 + row, x1 - inset, y0 + row + 1, alpha << 24 | 0xFFFFFF);
+        }
+
+        // The rim, turning with the curve: bright along the top, neutral at the
+        // waist, dark underneath.
         for (int i = 0; i < height; i++) {
             int inset = cornerInset(i, height, radius);
-            int edge = i < height / 2
-                    ? Colors.lerpArgb(0x50FFFFFF, 0x10FFFFFF, (float) i / Math.max(1, height / 2))
-                    : Colors.lerpArgb(0x10000000, 0x38000000, (float) (i - height / 2) / Math.max(1, height / 2));
+            float t = (float) i / Math.max(1, height - 1);
+            int edge = t < 0.5f
+                    ? Colors.lerpArgb(0x66FFFFFF, 0x14FFFFFF, t * 2.0f)
+                    : Colors.lerpArgb(0x14FFFFFF, 0x3C000000, (t - 0.5f) * 2.0f);
             ctx.fill(x0 + inset, y0 + i, x0 + inset + 1, y0 + i + 1, edge);
             ctx.fill(x1 - inset - 1, y0 + i, x1 - inset, y0 + i + 1, edge);
         }
 
-        int capInset = cornerInset(0, height, radius);
-        ctx.fill(x0 + capInset, y0, x1 - capInset, y0 + 1, 0x55FFFFFF);
-        ctx.fill(x0 + capInset, y1 - 1, x1 - capInset, y1, 0x38000000);
+        int cap = cornerInset(0, height, radius);
+        ctx.fill(x0 + cap, y0, x1 - cap, y0 + 1, 0x72FFFFFF);
+        ctx.fill(x0 + cap, y1 - 1, x1 - cap, y1, 0x3C000000);
 
-        // The inner highlight, one pixel below the top edge. This is the line
-        // that sells it: the edge itself is the pane, this is the light coming
-        // through it.
-        int innerInset = cornerInset(1, height, radius);
-        ctx.fill(x0 + innerInset + 1, y0 + 1, x1 - innerInset - 1, y0 + 2, 0x22FFFFFF);
+        int inner = cornerInset(1, height, radius);
+        ctx.fill(x0 + inner + 1, y0 + 1, x1 - inner - 1, y0 + 2, 0x2CFFFFFF);
+    }
+
+    /** A solid rounded rectangle, for anything sitting inside a panel. */
+    private static void roundFill(DrawContext ctx, int x0, int y0, int x1, int y1,
+                                  int radius, int argb) {
+        int height = Math.max(1, y1 - y0);
+        int r = Math.max(0, Math.min(radius, Math.min(x1 - x0, height) / 2 - 1));
+        for (int i = 0; i < height; i++) {
+            int inset = cornerInset(i, height, r);
+            ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, argb);
+        }
     }
 
     /** One row-by-row rounded outline, used to build the shadow. */

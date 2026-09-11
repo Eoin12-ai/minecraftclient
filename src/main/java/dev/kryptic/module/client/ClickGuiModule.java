@@ -8,7 +8,7 @@ import dev.kryptic.settings.ModeSetting;
 
 public class ClickGuiModule extends Module {
    public final BooleanSetting blur = this.addSetting(new BooleanSetting("Blur", "Gaussian-blur the world behind the GUI", true));
-   public final SliderSetting blurStrength = this.addSetting(new SliderSetting("Blur Strength", "How strong the background blur is", 6.0, 1.0, 10.0, 1.0));
+   public final SliderSetting blurStrength = this.addSetting(new SliderSetting("Blur Strength", "How strong the background blur is", 9.0, 1.0, 14.0, 1.0));
    public final ModeSetting font = this.addSetting(new ModeSetting(
          "Font", "Typeface for the whole client — the menu and every HUD element",
          "Kryptic", "Kryptic", "Bold", "Xuong", "Vanilla", "Mono", "Ten"));
