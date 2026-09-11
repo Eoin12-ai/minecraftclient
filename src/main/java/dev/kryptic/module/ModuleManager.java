@@ -1,5 +1,6 @@
 package dev.kryptic.module;
 
+import dev.kryptic.KrypticClient;
 import dev.kryptic.settings.BooleanSetting;
 import dev.kryptic.settings.ModeSetting;
 import dev.kryptic.settings.Setting;
@@ -295,7 +296,7 @@ public class ModuleManager {
    public void onTick() {
       for (Module module : this.modules) {
          if (module.isEnabled() && module.getCategory() != Category.COMBAT) {
-            module.onTick();
+            tick(module);
          }
       }
    }
@@ -303,8 +304,30 @@ public class ModuleManager {
    public void onCombatTick() {
       for (Module module : this.modules) {
          if (module.isEnabled() && module.getCategory() == Category.COMBAT) {
-            module.onTick();
+            tick(module);
          }
+      }
+   }
+
+   /**
+    * One module's tick, which is not allowed to end the game.
+    *
+    * A tick runs every 50ms against a world that can change underneath it --
+    * a dimension swap, a disconnect, an entity that left between the check and
+    * the use. Letting that escape crashes Minecraft from inside its own tick
+    * loop, with a stack trace that names our module but kills everything.
+    *
+    * <p>The module is turned off rather than skipped. Skipping means it throws
+    * again in 50ms and forever after, which is a log file growing at twenty
+    * lines a second and a client that stutters; off is honest, visible in the
+    * menu, and one click from being tried again.
+    */
+   private void tick(Module module) {
+      try {
+         module.onTick();
+      } catch (Throwable error) {
+         KrypticClient.LOGGER.error("{} threw while ticking; turning it off", module.getName(), error);
+         module.setEnabled(false);
       }
    }
 }

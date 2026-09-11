@@ -108,22 +108,24 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private boolean                   closing;
 
     /**
-     * When this screen opened, in nanoseconds.
+     * Whether the key that opened this menu has been let go of yet.
      *
-     * Right Shift opens the menu from the mixin, which only looks at GLFW_PRESS.
-     * Minecraft calls Screen.keyPressed on PRESS <em>and</em> REPEAT, and GLFW
-     * starts repeating a held key after about half a second -- so holding the
-     * key a fraction too long sent a repeat straight through to keyPressed,
-     * which matched the ClickGUI bind and closed the menu again. That is the
-     * whole of "it only shows up for a second".
+     * Right Shift opens the menu from the mixin, which only looks at
+     * GLFW_PRESS. Minecraft calls Screen.keyPressed on PRESS <em>and</em>
+     * REPEAT, so a held key sends a repeat straight through to keyPressed,
+     * where it matches the ClickGUI bind and closes the menu again.
      *
-     * The bind is ignored for a short window after opening. Escape is not, so
-     * there is always an immediate way out.
+     * <p>I first gave this a 400ms grace window, which did not work and could
+     * not have: GLFW waits about half a second before the first repeat, so the
+     * window expired just before the event it existed to swallow. Timing was
+     * the wrong tool. What actually matters is whether the key went up, so
+     * that is what is tracked -- no repeat can close the menu, however long you
+     * hold it, and the next real press closes it immediately.
+     *
+     * <p>It starts true when the key is not already down, so opening the menu
+     * any other way leaves the bind working at once.
      */
-    private final long                openedAt    = System.nanoTime();
-
-    /** Long enough to outlast key repeat, short enough that nobody waits on it. */
-    private static final long OPEN_GRACE_NANOS = 400_000_000L;
+    private boolean                   openKeyReleased;
     private final ConfigPanel         configPanel = new ConfigPanel();
     private boolean                   configHovered;
     private boolean                   themesHovered;
@@ -299,6 +301,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         statsPanel.setWidth(STATS_W);
         layoutColumns();
         forgetFontProbes();
+        openKeyReleased = !bindKeyDown();
         openAnim.setTarget(1.0f);
     }
 
@@ -1000,7 +1003,22 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     @Override
     public void tick() { finishCloseIfDone(); }
 
+    /** Is the physical key bound to the menu held down right now? */
+    private boolean bindKeyDown() {
+        if (client == null || client.getWindow() == null) {
+            return false;
+        }
+
+        int key = guiModule().getKeybind().get();
+        return key >= 0
+            && GLFW.glfwGetKey(client.getWindow().getHandle(), key) == GLFW.GLFW_PRESS;
+    }
+
     private void finishCloseIfDone() {
+        if (!openKeyReleased && !bindKeyDown()) {
+            openKeyReleased = true;
+        }
+
         if (closing && openAnim.isDone()) client.setScreen(parent);
     }
 
@@ -1387,10 +1405,10 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         if (key == 256 && themesOpen) { closeThemes(); return true; }
         if (key == 256) { close(); return true; }
         if (guiModule().getKeybind().matches(key)) {
-            // Swallow it during the grace window rather than passing it on: the
-            // press that opened this screen is still repeating, and vanilla has
-            // no business with it either.
-            if (System.nanoTime() - openedAt > OPEN_GRACE_NANOS) {
+            // Swallowed rather than passed on while the opening key is still
+            // held: it is the same physical press that got us here, and vanilla
+            // has no business with it either.
+            if (openKeyReleased) {
                 close();
             }
 
