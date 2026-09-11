@@ -34,7 +34,20 @@ public final class OverlayRenderer {
    private static int errorCount;
    private static long lastErrorLogged;
    private static boolean warnedNoFont;
-   private static boolean warnedScreen;
+
+   /**
+    * How many overlay frames have actually completed, and how many times a
+    * screen has been asked to draw itself.
+    *
+    * These exist to tell apart the failures that look identical from the
+    * outside. An overlay that never runs, one that runs and throws, and one
+    * that runs cleanly and still puts no pixels on the screen all present as
+    * the same blank menu, and they have nothing in common as causes. A count
+    * separates them in one glance.
+    */
+   private static volatile int overlayFrames;
+   private static volatile int screenDraws;
+   private static volatile boolean fontLoaded;
 
    /** Said once: every frame would repeat it sixty times a second. */
    private static void warnNoFontOnce() {
@@ -45,11 +58,19 @@ public final class OverlayRenderer {
           + "Check that assets/krypticclient/fonts/ survived in the jar.");
    }
 
-   private static void warnScreenOnce(Object screen, Throwable error) {
-      if (warnedScreen) return;
-      warnedScreen = true;
-      KrypticClient.LOGGER.error("Screen {} failed to draw; leaving it out",
-            screen == null ? "?" : screen.getClass().getName(), error);
+   /**
+    * A screen that threw while drawing.
+    *
+    * This used to log once and swallow the rest, and never touched lastError.
+    * That is the worst of both: the screen's own fallback asks lastError why it
+    * is being shown, got null, and told the user "NanoVG drew nothing and
+    * reported no error" -- while the real exception was being thrown sixty
+    * times a second and discarded. The one message that would have identified
+    * the fault was the one the code went out of its way to hide.
+    */
+   private static void recordScreenFailure(Object screen, Throwable error) {
+      String name = screen == null ? "?" : screen.getClass().getSimpleName();
+      recordFailure("screen " + name, error);
    }
 
    private OverlayRenderer() {
@@ -92,7 +113,8 @@ public final class OverlayRenderer {
                   // line in the log to say why. NanoVG draws shapes without a
                   // font; only text needs one, and losing the labels is a far
                   // better failure than losing everything.
-                  if (!nVGRenderer.hasFont()) warnNoFontOnce();
+                  fontLoaded = nVGRenderer.hasFont();
+                  if (!fontLoaded) warnNoFontOnce();
                   {
                      float f = uiScale();
                      float f4 = (float)framebuffer.textureWidth / f;
@@ -123,15 +145,17 @@ public final class OverlayRenderer {
                         // Guarded on its own: a screen that throws should lose
                         // itself, not latch `crashed` and take the HUD down for
                         // the rest of the session.
+                        screenDraws++;
                         try {
                            ((NvgDrawable)client.currentScreen).renderNvg(nVGRenderer, uiMouseX(), uiMouseY(), f4, f5);
                         } catch (Throwable screenError) {
-                           warnScreenOnce(client.currentScreen, screenError);
+                           recordScreenFailure(client.currentScreen, screenError);
                         }
                      }
 
                      nVGRenderer.restore();
                      nVGRenderer.endFrame();
+                     overlayFrames++;
                      return;
                   }
                } finally {
@@ -241,17 +265,60 @@ public final class OverlayRenderer {
     * worth a line, but sixty a second is worth none.
     */
    private static void recordFailure(Throwable error) {
+      recordFailure("overlay", error);
+   }
+
+   private static void recordFailure(String where, Throwable error) {
       errorCount++;
       String name = error.getClass().getSimpleName();
       String message = error.getMessage();
-      lastError = errorCount + "x " + name + (message == null ? "" : ": " + message);
+
+      // The class name alone is rarely enough -- a NullPointerException says
+      // nothing without the frame it came from -- so the top line of our own
+      // code goes in too. That is the line somebody has to open.
+      String at = "";
+      for (StackTraceElement frame : error.getStackTrace()) {
+         if (frame.getClassName().startsWith("dev.kryptic.")) {
+            at = " at " + frame.getFileName() + ":" + frame.getLineNumber();
+            break;
+         }
+      }
+
+      lastError = errorCount + "x " + where + " " + name
+            + (message == null ? "" : ": " + message) + at;
 
       long now = System.currentTimeMillis();
       if (now - lastErrorLogged > 5000L) {
          lastErrorLogged = now;
          KrypticClient.LOGGER.error(
-               "Kryptic overlay frame failed ({} so far); retrying next frame", errorCount, error);
+               "Kryptic {} frame failed ({} so far); retrying next frame", where, errorCount, error);
       }
+   }
+
+   /**
+    * One line saying what the overlay is actually doing, for the fallback to
+    * show.
+    *
+    * Ordered by how early the failure is: a hook that never fires, a frame that
+    * throws, a missing font, and finally the case where everything reports
+    * success and nothing appears -- which is the only one that points at GL
+    * state rather than at our own code.
+    */
+   public static String status() {
+      if (overlayFrames == 0 && errorCount == 0) {
+         return "the overlay render hook has never fired";
+      }
+      if (lastError != null) {
+         return lastError;
+      }
+      if (screenDraws == 0) {
+         return "overlay ran " + overlayFrames + "x but this screen was never asked to draw";
+      }
+      if (!fontLoaded) {
+         return "overlay ran " + overlayFrames + "x, no font loaded - check assets/krypticclient/fonts/";
+      }
+      return "overlay ran " + overlayFrames + "x and drew " + screenDraws
+           + "x with no error - NanoVG is producing no pixels (GL state)";
    }
 
    public static float uiWidth() {

@@ -341,10 +341,9 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         // Say why, on screen. The styled menu failing is not something the user
         // can diagnose from a log file they have to go and find, and the reason
         // is the one piece of information that makes the next report useful.
-        String reason = OverlayRenderer.lastError();
-        String banner = "Kryptic fallback view - " + (reason == null
-                ? "NanoVG drew nothing and reported no error (font or GL state)"
-                : reason);
+        // The status leads and the label follows, because this line gets cut off
+        // at the window edge and the half worth reading is the diagnosis.
+        String banner = fit(OverlayRenderer.status() + "  (Kryptic fallback view)", width - 8);
         ctx.fill(0, 0, width, 12, 0xC0301010);
         ctx.drawText(this.client.textRenderer, ui(banner), 4, 2, 0xFFE08A8A, false);
     }
