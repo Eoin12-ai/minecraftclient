@@ -229,7 +229,6 @@ tasks.named('check') { dependsOn 'checkModuleRefs' }
 // client exposes for getting a TextRenderer for a named font, rather than
 // guessing at either.
 tasks.register('fontProbe') {
-    dependsOn 'remapJar'
     doLast {
         def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
         def cl = new URLClassLoader(urls, (ClassLoader) null)

@@ -134,12 +134,17 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
      * If the provider fails to load, Minecraft falls back to the default font
      * on its own, so the worst case is what this looked like before.
      */
-    private static final Style UI_FONT =
-            Style.EMPTY.withFont(Identifier.of("krypticclient", "inter"));
+    private static final Identifier UI_FONT_ID = Identifier.of("krypticclient", "inter");
 
-    /** Text in the client's own typeface. */
+    /**
+     * Text in the client's own typeface.
+     *
+     * Style.withFont takes a StyleSpriteSource on this version rather than an
+     * Identifier, and the probe that reads how one is built could not run while
+     * this file would not compile. Plain text until that lands.
+     */
     private static Text ui(String s) {
-        return Text.literal(s).setStyle(UI_FONT);
+        return Text.literal(s);
     }
 
     private int nvgFrames;
