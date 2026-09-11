@@ -237,4 +237,37 @@ tasks.register('checkJavaLocals') {
     }
 }
 
+
+// TEMPORARY. What does Style.withFont actually want on this version? The menu
+// draws every character as the missing-glyph box, which means the id we pin
+// resolves to a font with no providers -- so either the assets are not being
+// registered or StyleSpriteSource.Font is not the thing that names a font.
+// Guessing has cost a build before; this reads the remapped jar instead.
+tasks.register('probeFont') {
+    doLast {
+        def urls = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def loader = new URLClassLoader(urls, (ClassLoader) null)
+        ['net.minecraft.text.StyleSpriteSource',
+         'net.minecraft.text.Style',
+         'net.minecraft.client.font.FontManager',
+         'net.minecraft.client.font.FontStorage'].each { name ->
+            try {
+                def c = loader.loadClass(name)
+                println "=== ${name}"
+                c.declaredClasses.each { n ->
+                    println "  nested ${n.simpleName}: ${n.declaredConstructors.collect { ctor -> ctor.parameterTypes.collect { p -> p.simpleName }.join(', ') }}"
+                }
+                c.declaredMethods.findAll { m -> m.name.toLowerCase().contains('font') || m.name.toLowerCase().contains('id') }.each { m ->
+                    println "  ${m.returnType.simpleName} ${m.name}(${m.parameterTypes.collect { p -> p.simpleName }.join(', ')})"
+                }
+                c.declaredFields.findAll { f -> java.lang.reflect.Modifier.isStatic(f.modifiers) }.each { f ->
+                    println "  static ${f.type.simpleName} ${f.name}"
+                }
+            } catch (Throwable t) {
+                println "=== ${name}: ${t}"
+            }
+        }
+    }
+}
+
 tasks.named('check') { dependsOn 'checkModuleRefs', 'checkJavaLocals' }

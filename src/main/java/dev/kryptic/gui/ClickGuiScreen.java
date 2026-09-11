@@ -38,6 +38,10 @@ import dev.kryptic.util.Colors;
 import dev.kryptic.util.UiSounds;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
+import java.util.HashMap;
+import java.util.Map;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;
@@ -102,6 +106,24 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private final StatsPanel          statsPanel;
     private final Animation           openAnim    = new Animation(180.0f, 0.0f);
     private boolean                   closing;
+
+    /**
+     * When this screen opened, in nanoseconds.
+     *
+     * Right Shift opens the menu from the mixin, which only looks at GLFW_PRESS.
+     * Minecraft calls Screen.keyPressed on PRESS <em>and</em> REPEAT, and GLFW
+     * starts repeating a held key after about half a second -- so holding the
+     * key a fraction too long sent a repeat straight through to keyPressed,
+     * which matched the ClickGUI bind and closed the menu again. That is the
+     * whole of "it only shows up for a second".
+     *
+     * The bind is ignored for a short window after opening. Escape is not, so
+     * there is always an immediate way out.
+     */
+    private final long                openedAt    = System.nanoTime();
+
+    /** Long enough to outlast key repeat, short enough that nobody waits on it. */
+    private static final long OPEN_GRACE_NANOS = 400_000_000L;
     private final ConfigPanel         configPanel = new ConfigPanel();
     private boolean                   configHovered;
     private boolean                   themesHovered;
@@ -159,8 +181,71 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             default        -> "kryptic";
         };
 
-        return Style.EMPTY.withFont(new StyleSpriteSource.Font(
-                Identifier.of("krypticclient", smallText() ? face + "_small" : face)));
+        // Cascade: the half-size twin, then the full-size face, then Minecraft's
+        // own font. A pinned font that did not load does not fall back on its
+        // own -- every codepoint comes out as the missing-glyph rectangle, which
+        // is what "the font is just a square" looks like -- so each candidate is
+        // checked before it is used.
+        if (smallText() && fontUsable(face + "_small")) {
+            return pin(face + "_small");
+        }
+
+        if (fontUsable(face)) {
+            return pin(face);
+        }
+
+        return Style.EMPTY;
+    }
+
+    private static Style pin(String face) {
+        return Style.EMPTY.withFont(
+                new StyleSpriteSource.Font(Identifier.of("krypticclient", face)));
+    }
+
+    /** Faces already probed, so the measuring happens once per face and not per string. */
+    private static final Map<String, Boolean> FONT_USABLE = new HashMap<>();
+
+    /**
+     * Whether a font id actually resolved to a font.
+     *
+     * There is no API that answers this, so it is measured. A codepoint in the
+     * Private Use Area is in no font at all and always draws as the missing
+     * glyph; if a real letter measures the same width as that, then the letter
+     * is drawing as the missing glyph too, which means the font behind this id
+     * never loaded. A loaded font gives the two different widths.
+     *
+     * <p>Monospace faces are safe here. They give every <em>letter</em> the same
+     * width, but the missing-glyph rectangle comes from somewhere else entirely
+     * and is not that width.
+     */
+    private static boolean fontUsable(String face) {
+        Boolean known = FONT_USABLE.get(face);
+        if (known != null) {
+            return known;
+        }
+
+        TextRenderer text = MinecraftClient.getInstance().textRenderer;
+        if (text == null) {
+            return true;                   // too early to measure; do not cache
+        }
+
+        Style style = pin(face);
+        int letter = text.getWidth(Text.literal("A").setStyle(style));
+        int missing = text.getWidth(Text.literal("\uE000").setStyle(style));
+        boolean usable = letter > 0 && letter != missing;
+        FONT_USABLE.put(face, usable);
+        if (!usable) {
+            KrypticClient.LOGGER.error(
+                  "Font krypticclient:{} did not load - every glyph is drawing as the "
+                + "missing-glyph box. Falling back.", face);
+        }
+
+        return usable;
+    }
+
+    /** A resource reload can bring a font back, so nothing is remembered across one. */
+    public static void forgetFontProbes() {
+        FONT_USABLE.clear();
     }
 
     /**
@@ -213,6 +298,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         statsPanel = new StatsPanel(tm, STATE);
         statsPanel.setWidth(STATS_W);
         layoutColumns();
+        forgetFontProbes();
         openAnim.setTarget(1.0f);
     }
 
@@ -1299,7 +1385,17 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         }
         if (key == 256 && statsOpen)  { closeStats();  return true; }
         if (key == 256 && themesOpen) { closeThemes(); return true; }
-        if (key == 256 || guiModule().getKeybind().matches(key)) { close(); return true; }
+        if (key == 256) { close(); return true; }
+        if (guiModule().getKeybind().matches(key)) {
+            // Swallow it during the grace window rather than passing it on: the
+            // press that opened this screen is still repeating, and vanilla has
+            // no business with it either.
+            if (System.nanoTime() - openedAt > OPEN_GRACE_NANOS) {
+                close();
+            }
+
+            return true;
+        }
         return super.keyPressed(input);
     }
 
