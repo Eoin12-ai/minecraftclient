@@ -37,6 +37,10 @@ jobs:
         env:
           GRADLE_OPTS: '-Xmx3g'
 
+      - name: Probe the font API
+        if: always()
+        run: ./gradlew probeFont --no-daemon 2>&1 | tee -a /tmp/build.log || true
+
       # The build log is published to a throwaway orphan branch rather than
       # committed onto the branch being built, so a failing run never races the
       # working branch and pushes stay fast-forward.
@@ -51,10 +55,6 @@ jobs:
           TREE=$(printf '100644 blob %s\tbuild.log\n' "$BLOB" | git mktree)
           COMMIT=$(git commit-tree "$TREE" -m "ci: build log for $GITHUB_SHA")
           git push --force origin "$COMMIT:refs/heads/claude/build-log"
-
-      - name: Probe the font API
-        if: always()
-        run: ./gradlew probeFont --no-daemon 2>&1 | tee -a /tmp/build.log || true
 
       - name: List build output
         if: success()
