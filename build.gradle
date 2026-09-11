@@ -222,4 +222,19 @@ tasks.register('checkModuleRefs') {
     }
 }
 
-tasks.named('check') { dependsOn 'checkModuleRefs' }
+// A local shadowing an enclosing local is rejected by javac and invisible to
+// everything else we can run here, for the same reason: no Minecraft on the
+// classpath means no compile. It cost a build when glass() named a strip width
+// and a loop counter both `band`, and the Python model these renders are
+// checked against rebinds happily, so the picture looked right.
+tasks.register('checkJavaLocals') {
+    doLast {
+        def proc = ['python3', 'tools/javalocals.py'].execute(null, projectDir)
+        proc.waitForProcessOutput(System.out, System.err)
+        if (proc.exitValue() != 0) {
+            throw new GradleException('checkJavaLocals: a local shadows one already in scope')
+        }
+    }
+}
+
+tasks.named('check') { dependsOn 'checkModuleRefs', 'checkJavaLocals' }

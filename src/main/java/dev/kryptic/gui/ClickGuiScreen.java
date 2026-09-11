@@ -330,12 +330,14 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                     Colors.withAlpha(th.headerTop(), 0.37f),
                     Colors.withAlpha(th.headerBottom(), 0.32f));
 
-            // The rule under the header carries the accent. It is one pixel and
-            // it is the line your eye lands on first, which makes it the
-            // cheapest place in the whole menu to say which theme is on.
-            ctx.fill(cx + 3, top + headH, cx + colW - 3, top + headH + 1,
-                    Colors.withAlpha(th.accent(), 0.7f));
-            ctx.fill(cx + 8, top + headH / 2 - 3, cx + 14, top + headH / 2 + 3, th.accent());
+            // The rule under the header carries the accent, and fades out to
+            // the right rather than stopping dead. A line of even weight is a
+            // border; one that falls away has a direction, and it runs the same
+            // way as the gloss above it.
+            roundFillGradX(ctx, cx + 3, top + headH, cx + colW - 3, top + headH + 1, 0,
+                    Colors.withAlpha(th.accent(), 0.85f), Colors.withAlpha(th.accent(), 0.06f));
+
+            drawMark(ctx, markFor(category), cx + 8, top + headH / 2 - 3, th.accent());
             ctx.drawText(this.client.textRenderer, ui(category.name().toUpperCase(Locale.ROOT)),
                     cx + 19, top + headH / 2 - textDy(), th.textPrimary(), false);
 
@@ -348,20 +350,48 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                     cx + colW - 21 - cw, top + headH / 2 - textDy(),
                     on > 0 ? th.accent() : th.textDisabled(), false);
 
+            // How much of this column is on, along its bottom inside edge.
+            // It is the same information as the 3/10, at a glance instead of a
+            // read, and it costs two fills.
+            if (!inColumn.isEmpty()) {
+                int footY = top + colH - 2;
+                ctx.fill(cx + 6, footY, cx + colW - 6, footY + 1,
+                        Colors.withAlpha(th.textMuted(), 0.14f));
+                int lit = (colW - 12) * on / inColumn.size();
+                if (lit > 0) {
+                    roundFillGradX(ctx, cx + 6, footY, cx + 6 + lit, footY + 1, 0,
+                            Colors.withAlpha(th.accent(), 0.85f),
+                            Colors.withAlpha(th.accent(), 0.35f));
+                }
+            }
+
             int ry = top + headH + 3;
             for (Module m : inColumn) {
                 boolean enabled = m.isEnabled();
                 boolean hover   = mx >= cx && mx <= cx + colW && my >= ry && my <= ry + rowH;
-                if (enabled || hover) {
-                    // Rounded, because a square highlight inside a rounded
-                    // panel is the one shape that gives the whole thing away.
+                if (enabled) {
+                    // The wash starts at the accent bar and falls away across
+                    // the row, so the row reads as lit from its own marker
+                    // rather than as a block of colour someone filled in.
+                    roundFillGradX(ctx, cx + 4, ry, cx + colW - 4, ry + rowH, 5,
+                            Colors.withAlpha(th.moduleActiveFill(), 0.62f),
+                            Colors.withAlpha(th.moduleActiveFill(), 0.14f));
+                } else if (hover) {
                     roundFill(ctx, cx + 4, ry, cx + colW - 4, ry + rowH, 5,
-                            enabled ? Colors.withAlpha(th.moduleActiveFill(), 0.55f)
-                                    : Colors.withAlpha(th.accent(), 0.12f));
+                            Colors.withAlpha(th.accent(), 0.12f));
                 }
 
                 if (enabled) {
-                    ctx.fill(cx + 6, ry + 4, cx + 8, ry + rowH - 4, th.accent());
+                    // The bar is brightest at its middle, which is where the
+                    // eye lands, and tapers at both ends so it does not read as
+                    // a cut edge.
+                    int barTop = ry + 3;
+                    int barH = rowH - 6;
+                    for (int i = 0; i < barH; i++) {
+                        float away = Math.abs((float) i / Math.max(1, barH - 1) - 0.5f) * 2.0f;
+                        ctx.fill(cx + 6, barTop + i, cx + 8, barTop + i + 1,
+                                Colors.withAlpha(th.accent(), 1.0f - 0.55f * away * away));
+                    }
                 }
 
                 // A bound key, right up against the switch. It is the one
@@ -387,7 +417,13 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                         cx + 13, ry + rowH / 2 - textDy(),
                         enabled ? th.textPrimary() : th.textMuted(), false);
 
-                toggle(ctx, switchX, ry + rowH / 2 - SWITCH_H / 2, enabled, th);
+                int switchY = ry + rowH / 2 - SWITCH_H / 2;
+                if (enabled) {
+                    glow(ctx, switchX, switchY, switchX + SWITCH_W, switchY + SWITCH_H,
+                            th.accent());
+                }
+
+                toggle(ctx, switchX, switchY, enabled, th);
                 ry += rowH;
             }
 
@@ -751,6 +787,96 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int inner = cornerInset(1, height, radius);
         ctx.fill(x0 + inner + 1, y0 + 1, x1 - inner - 1, y0 + 2, 0x30FFFFFF);
     }
+
+
+    /**
+     * A seven-by-seven mark per category, drawn a pixel at a time.
+     *
+     * The header used to carry a plain white square for every category, which
+     * tells you nothing and is the same square every other client draws. These
+     * are small enough to stay crisp at any GUI scale -- they are made of whole
+     * pixels, so they never resample -- and they let you find a column without
+     * reading its name.
+     */
+    private static final String[] MARK_COMBAT = {
+        "#.....#", ".#...#.", "..#.#..", "...#...", "..#.#..", ".#...#.", "#.....#"};
+    private static final String[] MARK_MISC = {
+        "#######", ".......", "#######", ".......", "#######", ".......", "#######"};
+    private static final String[] MARK_RENDER = {
+        "...#...", "..###..", ".##.##.", "##.#.##", ".##.##.", "..###..", "...#..."};
+    private static final String[] MARK_VISUALS = {
+        "...#...", "...#...", ".#####.", "#######", ".#####.", "...#...", "...#..."};
+    private static final String[] MARK_CLIENT = {
+        ".#####.", "#.....#", "#.###.#", "#.#.#.#", "#.###.#", "#.....#", ".#####."};
+
+    private static String[] markFor(Category category) {
+        return switch (category) {
+            case COMBAT -> MARK_COMBAT;
+            case MISC -> MARK_MISC;
+            case RENDER -> MARK_RENDER;
+            case VISUALS -> MARK_VISUALS;
+            default -> MARK_CLIENT;
+        };
+    }
+
+    private static void drawMark(DrawContext ctx, String[] mark, int x, int y, int argb) {
+        for (int row = 0; row < mark.length; row++) {
+            String line = mark[row];
+            int run = -1;
+            for (int col = 0; col <= line.length(); col++) {
+                boolean lit = col < line.length() && line.charAt(col) == '#';
+                if (lit && run < 0) {
+                    run = col;
+                } else if (!lit && run >= 0) {
+                    // whole runs rather than single pixels: a seven-wide row of
+                    // ink is one fill instead of seven
+                    ctx.fill(x + run, y + row, x + col, y + row + 1, argb);
+                    run = -1;
+                }
+            }
+        }
+    }
+
+    /** A rounded fill that runs left to right through two colours. */
+    private static void roundFillGradX(DrawContext ctx, int x0, int y0, int x1, int y1,
+                                       int radius, int leftArgb, int rightArgb) {
+        int height = Math.max(1, y1 - y0);
+        int r = Math.max(0, Math.min(radius, Math.min(x1 - x0, height) / 2 - 1));
+        for (int i = 0; i < height; i++) {
+            int inset = cornerInset(i, height, r);
+            int left = x0 + inset;
+            int right = x1 - inset;
+            int span = Math.max(1, right - left);
+            for (int band = 0; band < WASH_BANDS; band++) {
+                int bx0 = left + span * band / WASH_BANDS;
+                int bx1 = left + span * (band + 1) / WASH_BANDS;
+                if (bx1 <= bx0) {
+                    continue;
+                }
+
+                int argb = Colors.lerpArgb(leftArgb, rightArgb,
+                        (band + 0.5f) / WASH_BANDS);
+                ctx.fill(bx0, y0 + i, bx1, y0 + i + 1, argb);
+            }
+        }
+    }
+
+    /**
+     * A halo around something that is on.
+     *
+     * Two rounded outlines at low alpha. It is the difference between a switch
+     * that is coloured in and a switch that is lit, and it costs four fills a
+     * row on only the rows that are enabled.
+     */
+    private static void glow(DrawContext ctx, int x0, int y0, int x1, int y1, int accent) {
+        for (int ring = 2; ring >= 1; ring--) {
+            shadowRing(ctx, x0 - ring, y0 - ring, x1 + ring, y1 + ring, 3,
+                    Colors.withAlpha(accent, ring == 1 ? 0.22f : 0.10f));
+        }
+    }
+
+    /** Steps across a horizontal wash. Six is past where banding shows. */
+    private static final int WASH_BANDS = 8;
 
     /** A solid rounded rectangle, for anything sitting inside a panel. */
     private static void roundFill(DrawContext ctx, int x0, int y0, int x1, int y1,
