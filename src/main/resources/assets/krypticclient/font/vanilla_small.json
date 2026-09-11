@@ -1,0 +1,14 @@
+{
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "krypticclient:Monocraft.ttf",
+      "size": 5.0,
+      "oversample": 8.0,
+      "shift": [
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

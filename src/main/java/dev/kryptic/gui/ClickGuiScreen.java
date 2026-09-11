@@ -159,8 +159,37 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             default        -> "kryptic";
         };
 
-        return Style.EMPTY.withFont(
-                new StyleSpriteSource.Font(Identifier.of("krypticclient", face)));
+        return Style.EMPTY.withFont(new StyleSpriteSource.Font(
+                Identifier.of("krypticclient", smallText() ? face + "_small" : face)));
+    }
+
+    /**
+     * Whether the fallback needs the half-size twin of the chosen face.
+     *
+     * The fallback converts a layout measured in UI space into Minecraft's
+     * scaled space by dividing by the GUI scale. The panels shrink with it;
+     * Minecraft's text does not. At GUI scale 3 a column that is 300 units wide
+     * becomes 100 pixels while the text stays the size it always was, so the
+     * proportions come out roughly two and a half times heavier than the
+     * NanoVG path and fit() eats the labels -- CONFIGS renders as "CON..",
+     * CRYSTAL OPTIMISER as "CRYSTAL O..".
+     *
+     * <p>Halving the face restores the ratio. It is chosen from the converted
+     * width rather than from the GUI scale directly, because what actually
+     * matters is how many pixels a column ends up with, and that depends on the
+     * window as well as the setting. At GUI scale 1 and 2 there is room for the
+     * full-size face and it keeps it.
+     *
+     * <p>Only the fallback goes through here. NanoVG sets its own point size
+     * and was never affected.
+     */
+    private static boolean smallText() {
+        return OverlayRenderer.uiToGui(300.0) < 140.0f;
+    }
+
+    /** Half the cap height of whichever face is in use, to centre a line on a row. */
+    private static int textDy() {
+        return smallText() ? 3 : 4;
     }
 
     /** Text in whichever typeface the Font setting names. */
@@ -295,7 +324,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             // a small square standing in for the category glyph, then the name
             ctx.fill(cx + 8, top + headH / 2 - 3, cx + 14, top + headH / 2 + 3, 0xFFFFFFFF);
             ctx.drawText(this.client.textRenderer, ui(category.name().toUpperCase(Locale.ROOT)),
-                    cx + 19, top + headH / 2 - 4, 0xFFEDEDEF, false);
+                    cx + 19, top + headH / 2 - textDy(), 0xFFEDEDEF, false);
 
             // the collapse mark sits hard right, where the reference puts it
             ctx.fill(cx + colW - 15, top + headH / 2 - 1, cx + colW - 8, top + headH / 2, 0xFF8E8E96);
@@ -303,7 +332,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             String count = on + "/" + inColumn.size();
             int cw = this.client.textRenderer.getWidth(ui(count));
             ctx.drawText(this.client.textRenderer, ui(count),
-                    cx + colW - 21 - cw, top + headH / 2 - 4, 0xFF5A5A62, false);
+                    cx + colW - 21 - cw, top + headH / 2 - textDy(), 0xFF5A5A62, false);
 
             int ry = top + headH + 3;
             for (Module m : inColumn) {
@@ -323,7 +352,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                 int nameRoom = colW - 13 - SWITCH_W - 12;
                 ctx.drawText(this.client.textRenderer,
                         ui(fit(m.getName().toUpperCase(Locale.ROOT), nameRoom)),
-                        cx + 13, ry + rowH / 2 - 4, enabled ? 0xFFFFFFFF : 0xFF8E8E96, false);
+                        cx + 13, ry + rowH / 2 - textDy(), enabled ? 0xFFFFFFFF : 0xFF8E8E96, false);
 
                 toggle(ctx, cx + colW - 9 - SWITCH_W, ry + rowH / 2 - SWITCH_H / 2, enabled);
                 ry += rowH;
@@ -371,15 +400,20 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         int by = Math.round(OverlayRenderer.uiToGui(buttonY()));
 
         int markX = Math.round(OverlayRenderer.uiToGui(barX(sw)));
-        ctx.drawText(this.client.textRenderer, ui(fit("KRYPTIC",
-                        Math.round(OverlayRenderer.uiToGui(MARK_W)))),
-                markX, sy + h / 2 - 4, 0xFFEDEDEF, false);
+        // The mark's room is its own width plus the gap that follows it. In the
+        // NanoVG path that width holds a logo image; here it holds the word,
+        // and the word is wider than the image at any size that stays legible.
+        // Lending it the gap costs nothing -- the search box starts after it,
+        // and two pixels are held back so the two never touch.
+        int markRoom = Math.round(OverlayRenderer.uiToGui(MARK_W + MARK_GAP)) - 2;
+        ctx.drawText(this.client.textRenderer, ui(fit("KRYPTIC", markRoom)),
+                markX, sy + h / 2 - textDy(), 0xFFEDEDEF, false);
 
         panel(ctx, sx, sy, sx + searchW, sy + h, 0x38202430, 0x2EFFFFFF);
         String typed = search.length() == 0
                 ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
         ctx.drawText(this.client.textRenderer, ui(fit(typed, searchW - 12)),
-                sx + 6, sy + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
+                sx + 6, sy + h / 2 - textDy(), search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
 
         String[] labels = {"STATS", "CONFIGS", "THEMES"};
         boolean[] active = {statsOpen, false, themesOpen};
@@ -390,7 +424,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             String label = fit(labels[i], pillW - 6);
             int lw = this.client.textRenderer.getWidth(ui(label));
             ctx.drawText(this.client.textRenderer, ui(label),
-                    x0 + (pillW - lw) / 2, by + pillH / 2 - 4,
+                    x0 + (pillW - lw) / 2, by + pillH / 2 - textDy(),
                     active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
         }
     }
@@ -441,7 +475,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         ctx.fill(0, 0, width, height, 0x66050506);
         glass(ctx, x, y, x + w, y + h, 0xD22A2C34, 0xD2121318);
         glass(ctx, x + 1, y + 1, x + w - 1, y + headH, 0xB03A3D47, 0xB01E2028);
-        ctx.drawText(this.client.textRenderer, ui(title), x + 8, y + headH / 2 - 4, 0xFFEDEDEF, false);
+        ctx.drawText(this.client.textRenderer, ui(title), x + 8, y + headH / 2 - textDy(), 0xFFEDEDEF, false);
 
         int ry = y + headH + 3;
         for (String line : lines) {
@@ -451,7 +485,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             }
 
             ctx.drawText(this.client.textRenderer, ui(fit(line, w - 16)),
-                    x + 8, ry + rowH / 2 - 4, current ? 0xFFFFFFFF : 0xFF9CA0AC, false);
+                    x + 8, ry + rowH / 2 - textDy(), current ? 0xFFFFFFFF : 0xFF9CA0AC, false);
             ry += rowH;
         }
     }
