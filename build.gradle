@@ -262,7 +262,10 @@ tasks.register('probeFont') {
             } catch (Throwable t) { println "  (zip) ${t}" }
         }
 
-        ['net.minecraft.text.Style',
+        ['net.minecraft.client.font.TrueTypeFontLoader',
+         'net.minecraft.client.font.FontType',
+         'net.minecraft.client.font.FontLoader',
+         'net.minecraft.text.Style',
          'net.minecraft.text.StyleSpriteSource',
          'net.minecraft.client.font.FontManager',
          'net.minecraft.client.font.FontStorage',
@@ -279,8 +282,11 @@ tasks.register('probeFont') {
                         println "      ${m.returnType.simpleName} ${m.name}(${m.parameterTypes.collect { p -> p.simpleName }.join(', ')})"
                     }
                 }
+                if (c.isRecord()) {
+                    println "  RECORD COMPONENTS: " + c.recordComponents.collect { rc -> "${rc.name}:${rc.type.simpleName}" }.join(', ')
+                }
                 c.declaredMethods.findAll { m ->
-                    m.name.toLowerCase().contains('font') || m.name.toLowerCase().contains('sprite')
+                    m.parameterCount == 0 && !m.name.startsWith('lambda')
                 }.each { m ->
                     println "  ${m.returnType.name} ${m.name}(${m.parameterTypes.collect { p -> p.name }.join(', ')})"
                 }
