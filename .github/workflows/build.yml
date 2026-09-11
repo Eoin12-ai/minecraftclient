@@ -37,10 +37,6 @@ jobs:
         env:
           GRADLE_OPTS: '-Xmx3g'
 
-      - name: Probe the font API
-        if: always()
-        run: ./gradlew probeFont --no-daemon 2>&1 | tee -a /tmp/build.log || true
-
       # The build log is published to a throwaway orphan branch rather than
       # committed onto the branch being built, so a failing run never races the
       # working branch and pushes stay fast-forward.

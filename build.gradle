@@ -238,67 +238,18 @@ tasks.register('checkJavaLocals') {
 }
 
 
-// TEMPORARY. What does Style.withFont actually want on this version? The menu
-// draws every character as the missing-glyph box, which means the id we pin
-// resolves to a font with no providers -- so either the assets are not being
-// registered or StyleSpriteSource.Font is not the thing that names a font.
-// Guessing has cost a build before; this reads the remapped jar instead.
-tasks.register('probeFont') {
+// An Identifier must be lowercase or Minecraft will not parse it, and nothing
+// says so: the resource is simply absent and whatever wanted it silently has
+// nothing. Every font in this client drew as the missing-glyph box for exactly
+// that reason -- twelve providers pointing at Inter-Bold.ttf and friends.
+tasks.register('checkIdentifiers') {
     doLast {
-        def jars = configurations.compileClasspath.files
-        def urls = jars.collect { it.toURI().toURL() } as URL[]
-        def loader = new URLClassLoader(urls, (ClassLoader) null)
-
-        println "PROBE ---- classes that name a font"
-        jars.findAll { it.name.contains('minecraft') }.each { jar ->
-            try {
-                new java.util.zip.ZipFile(jar).entries().each { e ->
-                    def n = e.name
-                    if (n.endsWith('.class') && (n.startsWith('net/minecraft/client/font/')
-                            || (n.startsWith('net/minecraft/text/') && n.contains('Style')))) {
-                        println "  " + n.replace('/', '.').replace('.class', '')
-                    }
-                }
-            } catch (Throwable t) { println "  (zip) ${t}" }
+        def proc = ['python3', 'tools/identifiers.py'].execute(null, projectDir)
+        proc.waitForProcessOutput(System.out, System.err)
+        if (proc.exitValue() != 0) {
+            throw new GradleException('checkIdentifiers: an Identifier is not valid')
         }
-
-        ['net.minecraft.client.font.TrueTypeFontLoader',
-         'net.minecraft.client.font.FontType',
-         'net.minecraft.client.font.FontLoader',
-         'net.minecraft.text.Style',
-         'net.minecraft.text.StyleSpriteSource',
-         'net.minecraft.client.font.FontManager',
-         'net.minecraft.client.font.FontStorage',
-         'net.minecraft.client.font.TextRenderer'].each { name ->
-            println "PROBE ---- ${name}"
-            try {
-                def c = loader.loadClass(name)
-                c.declaredClasses.each { n ->
-                    println "  nested ${n.name}"
-                    n.declaredConstructors.each { ctor ->
-                        println "      ctor(${ctor.parameterTypes.collect { p -> p.name }.join(', ')})"
-                    }
-                    n.declaredMethods.each { m ->
-                        println "      ${m.returnType.simpleName} ${m.name}(${m.parameterTypes.collect { p -> p.simpleName }.join(', ')})"
-                    }
-                }
-                if (c.isRecord()) {
-                    println "  RECORD COMPONENTS: " + c.recordComponents.collect { rc -> "${rc.name}:${rc.type.simpleName}" }.join(', ')
-                }
-                c.declaredMethods.findAll { m ->
-                    m.parameterCount == 0 && !m.name.startsWith('lambda')
-                }.each { m ->
-                    println "  ${m.returnType.name} ${m.name}(${m.parameterTypes.collect { p -> p.name }.join(', ')})"
-                }
-                c.declaredFields.findAll { f -> java.lang.reflect.Modifier.isStatic(f.modifiers) }.each { f ->
-                    println "  static ${f.type.name} ${f.name}"
-                }
-            } catch (Throwable t) {
-                println "  ${t}"
-            }
-        }
-        println "PROBE ---- end"
     }
 }
 
-tasks.named('check') { dependsOn 'checkModuleRefs', 'checkJavaLocals' }
+tasks.named('check') { dependsOn 'checkModuleRefs', 'checkJavaLocals', 'checkIdentifiers' }

@@ -2,7 +2,7 @@
   "providers": [
     {
       "type": "ttf",
-      "file": "krypticclient:Inter-Bold.ttf",
+      "file": "krypticclient:inter-bold.ttf",
       "size": 10.0,
       "oversample": 8.0,
       "shift": [

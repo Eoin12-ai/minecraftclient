@@ -2,7 +2,7 @@
   "providers": [
     {
       "type": "ttf",
-      "file": "krypticclient:MinecraftTen.ttf",
+      "file": "krypticclient:minecraftten.ttf",
       "size": 4.5,
       "oversample": 8.0,
       "shift": [

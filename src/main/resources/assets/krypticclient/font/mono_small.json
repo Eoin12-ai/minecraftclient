@@ -2,7 +2,7 @@
   "providers": [
     {
       "type": "ttf",
-      "file": "krypticclient:JetBrainsMono-Regular.ttf",
+      "file": "krypticclient:jetbrainsmono-regular.ttf",
       "size": 5.5,
       "oversample": 8.0,
       "shift": [

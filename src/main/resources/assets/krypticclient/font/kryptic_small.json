@@ -2,7 +2,7 @@
   "providers": [
     {
       "type": "ttf",
-      "file": "krypticclient:Kryptic-Regular.ttf",
+      "file": "krypticclient:kryptic-regular.ttf",
       "size": 5.5,
       "oversample": 8.0,
       "shift": [
