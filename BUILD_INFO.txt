@@ -1,0 +1,5 @@
+commit: 71e8194e09d844028c8c9cd9bc60426d5424a13f
+ref:    refs/heads/claude/click-gui-right-shift-column-y6ejiz
+run:    34637389985
+jar:    krypticclient-1.6.2.jar
+sha256: 1dc19453c0b66cf34a0050dcdca0b3c97ecfea099eb1b10f1207fe15e0fee700
