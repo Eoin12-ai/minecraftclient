@@ -300,7 +300,12 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         // had already applied, which is what made the menu read as a flat black
         // screen rather than as glass over the world. Just enough tint to sit
         // the panels on.
-        ctx.fill(0, 0, width, height, 0x2E06060A);
+        // Everything below takes its colour from the theme. It used to be a
+        // wall of hardcoded greys, which is why picking Ember or Emerald or Ice
+        // changed nothing you could see: the styled renderer honoured the theme
+        // and this one, the one actually on screen, did not.
+        Theme th = theme();
+        ctx.fill(0, 0, width, height, Colors.withAlpha(th.background(), 0.18f));
 
         drawFallbackTopBar(ctx);
 
@@ -318,21 +323,30 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             for (Module m : inColumn) if (m.isEnabled()) on++;
 
             int colH = headH + inColumn.size() * rowH + 6;
-            glass(ctx, cx, top, cx + colW, top + colH, 0x7A2E3038, 0x6E101218);
-            glass(ctx, cx + 1, top + 1, cx + colW - 1, top + headH, 0x5E3E4250, 0x52202430);
-            ctx.fill(cx + 3, top + headH, cx + colW - 3, top + headH + 1, 0x55FFFFFF);
-            // a small square standing in for the category glyph, then the name
-            ctx.fill(cx + 8, top + headH / 2 - 3, cx + 14, top + headH / 2 + 3, 0xFFFFFFFF);
+            glass(ctx, cx, top, cx + colW, top + colH,
+                    Colors.withAlpha(th.backgroundTo(), 0.48f),
+                    Colors.withAlpha(th.background(), 0.43f));
+            glass(ctx, cx + 1, top + 1, cx + colW - 1, top + headH,
+                    Colors.withAlpha(th.headerTop(), 0.37f),
+                    Colors.withAlpha(th.headerBottom(), 0.32f));
+
+            // The rule under the header carries the accent. It is one pixel and
+            // it is the line your eye lands on first, which makes it the
+            // cheapest place in the whole menu to say which theme is on.
+            ctx.fill(cx + 3, top + headH, cx + colW - 3, top + headH + 1,
+                    Colors.withAlpha(th.accent(), 0.7f));
+            ctx.fill(cx + 8, top + headH / 2 - 3, cx + 14, top + headH / 2 + 3, th.accent());
             ctx.drawText(this.client.textRenderer, ui(category.name().toUpperCase(Locale.ROOT)),
-                    cx + 19, top + headH / 2 - textDy(), 0xFFEDEDEF, false);
+                    cx + 19, top + headH / 2 - textDy(), th.textPrimary(), false);
 
             // the collapse mark sits hard right, where the reference puts it
-            ctx.fill(cx + colW - 15, top + headH / 2 - 1, cx + colW - 8, top + headH / 2, 0xFF8E8E96);
+            ctx.fill(cx + colW - 15, top + headH / 2 - 1, cx + colW - 8, top + headH / 2, th.textMuted());
 
             String count = on + "/" + inColumn.size();
             int cw = this.client.textRenderer.getWidth(ui(count));
             ctx.drawText(this.client.textRenderer, ui(count),
-                    cx + colW - 21 - cw, top + headH / 2 - textDy(), 0xFF5A5A62, false);
+                    cx + colW - 21 - cw, top + headH / 2 - textDy(),
+                    on > 0 ? th.accent() : th.textDisabled(), false);
 
             int ry = top + headH + 3;
             for (Module m : inColumn) {
@@ -342,22 +356,38 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
                     // Rounded, because a square highlight inside a rounded
                     // panel is the one shape that gives the whole thing away.
                     roundFill(ctx, cx + 4, ry, cx + colW - 4, ry + rowH, 5,
-                            enabled ? 0x30FFFFFF : 0x18FFFFFF);
+                            enabled ? Colors.withAlpha(th.moduleActiveFill(), 0.55f)
+                                    : Colors.withAlpha(th.accent(), 0.12f));
                 }
 
                 if (enabled) {
-                    ctx.fill(cx + 6, ry + 4, cx + 8, ry + rowH - 4, 0xFFFFFFFF);
+                    ctx.fill(cx + 6, ry + 4, cx + 8, ry + rowH - 4, th.accent());
+                }
+
+                // A bound key, right up against the switch. It is the one
+                // thing about a module you cannot work out by looking at the
+                // row, and every other client makes you open a submenu to see
+                // it.
+                int switchX = cx + colW - 9 - SWITCH_W;
+                String key = m.getKeybind() != null && m.getKeybind().isBound()
+                        ? m.getKeybind().keyName() : "";
+                int keyW = key.isEmpty() ? 0 : this.client.textRenderer.getWidth(ui(key)) + 5;
+                if (!key.isEmpty()) {
+                    ctx.drawText(this.client.textRenderer, ui(key),
+                            switchX - 4 - (keyW - 5), ry + rowH / 2 - textDy(),
+                            th.textDisabled(), false);
                 }
 
                 // The switch owns the right of the row, so the name has to stop
                 // short of it. Without this, long names run underneath the
                 // switch and the two become unreadable together.
-                int nameRoom = colW - 13 - SWITCH_W - 12;
+                int nameRoom = colW - 13 - SWITCH_W - 12 - keyW;
                 ctx.drawText(this.client.textRenderer,
                         ui(fit(m.getName().toUpperCase(Locale.ROOT), nameRoom)),
-                        cx + 13, ry + rowH / 2 - textDy(), enabled ? 0xFFFFFFFF : 0xFF8E8E96, false);
+                        cx + 13, ry + rowH / 2 - textDy(),
+                        enabled ? th.textPrimary() : th.textMuted(), false);
 
-                toggle(ctx, cx + colW - 9 - SWITCH_W, ry + rowH / 2 - SWITCH_H / 2, enabled);
+                toggle(ctx, switchX, ry + rowH / 2 - SWITCH_H / 2, enabled, th);
                 ry += rowH;
             }
 
@@ -368,7 +398,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
         String hint = "RIGHT SHIFT TO CLOSE   -   RIGHT-CLICK A MODULE FOR ITS SETTINGS";
         ctx.drawText(this.client.textRenderer, ui(hint),
-                (width - this.client.textRenderer.getWidth(ui(hint))) / 2, height - 14, 0xFF5A5A62, false);
+                (width - this.client.textRenderer.getWidth(ui(hint))) / 2, height - 14,
+                th.textDisabled(), false);
 
         // Say why, on screen. The styled menu failing is not something the user
         // can diagnose from a log file they have to go and find, and the reason
@@ -393,6 +424,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
      * for the same reason: the width is not this method's to choose.
      */
     private void drawFallbackTopBar(DrawContext ctx) {
+        Theme th = theme();
         float sw = OverlayRenderer.uiWidth();
         int h = Math.round(OverlayRenderer.uiToGui(SEARCH_H));
         int searchW = Math.round(OverlayRenderer.uiToGui(SEARCH_W));
@@ -410,25 +442,30 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         // and two pixels are held back so the two never touch.
         int markRoom = Math.round(OverlayRenderer.uiToGui(MARK_W + MARK_GAP)) - 2;
         ctx.drawText(this.client.textRenderer, ui(fit("KRYPTIC", markRoom)),
-                markX, sy + h / 2 - textDy(), 0xFFEDEDEF, false);
+                markX, sy + h / 2 - textDy(), th.textPrimary(), false);
 
-        panel(ctx, sx, sy, sx + searchW, sy + h, 0x30202430, 0x2EFFFFFF);
+        panel(ctx, sx, sy, sx + searchW, sy + h,
+                Colors.withAlpha(th.headerTop(), 0.30f), Colors.withAlpha(th.accent(), 0.30f));
         String typed = search.length() == 0
                 ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
         ctx.drawText(this.client.textRenderer, ui(fit(typed, searchW - 12)),
-                sx + 6, sy + h / 2 - textDy(), search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
+                sx + 6, sy + h / 2 - textDy(),
+                search.length() == 0 ? th.textDisabled() : th.textPrimary(), false);
 
         String[] labels = {"STATS", "CONFIGS", "THEMES"};
         boolean[] active = {statsOpen, false, themesOpen};
         for (int i = 0; i < labels.length; i++) {
             int x0 = Math.round(OverlayRenderer.uiToGui(buttonX(sw, i)));
             panel(ctx, x0, by, x0 + pillW, by + pillH,
-                    active[i] ? 0x5C323744 : 0x30222630, active[i] ? 0x66FFFFFF : 0x2AFFFFFF);
+                    active[i] ? Colors.withAlpha(th.accent(), 0.28f)
+                              : Colors.withAlpha(th.headerTop(), 0.30f),
+                    active[i] ? Colors.withAlpha(th.accent(), 0.85f)
+                              : Colors.withAlpha(th.textMuted(), 0.22f));
             String label = fit(labels[i], pillW - 6);
             int lw = this.client.textRenderer.getWidth(ui(label));
             ctx.drawText(this.client.textRenderer, ui(label),
                     x0 + (pillW - lw) / 2, by + pillH / 2 - textDy(),
-                    active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
+                    active[i] ? th.accentBright() : th.textMuted(), false);
         }
     }
 
@@ -476,9 +513,14 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
 
         // a scrim, so the pane reads as sitting above the grid
         ctx.fill(0, 0, width, height, 0x66050506);
-        glass(ctx, x, y, x + w, y + h, 0x8A2E3038, 0x7E101218);
-        glass(ctx, x + 1, y + 1, x + w - 1, y + headH, 0x5E3E4250, 0x52202430);
-        ctx.drawText(this.client.textRenderer, ui(title), x + 8, y + headH / 2 - textDy(), 0xFFEDEDEF, false);
+        Theme th = theme();
+        glass(ctx, x, y, x + w, y + h,
+                Colors.withAlpha(th.backgroundTo(), 0.58f), Colors.withAlpha(th.background(), 0.52f));
+        glass(ctx, x + 1, y + 1, x + w - 1, y + headH,
+                Colors.withAlpha(th.headerTop(), 0.37f), Colors.withAlpha(th.headerBottom(), 0.32f));
+        ctx.fill(x + 3, y + headH, x + w - 3, y + headH + 1, Colors.withAlpha(th.accent(), 0.7f));
+        ctx.drawText(this.client.textRenderer, ui(title), x + 8, y + headH / 2 - textDy(),
+                th.textPrimary(), false);
 
         int ry = y + headH + 3;
         for (String line : lines) {
@@ -488,7 +530,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             }
 
             ctx.drawText(this.client.textRenderer, ui(fit(line, w - 16)),
-                    x + 8, ry + rowH / 2 - textDy(), current ? 0xFFFFFFFF : 0xFF9CA0AC, false);
+                    x + 8, ry + rowH / 2 - textDy(),
+                    current ? th.accentBright() : th.textMuted(), false);
             ry += rowH;
         }
     }
@@ -525,22 +568,22 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     private static final int SWITCH_H = 8;
 
     /**
-     * A toggle switch, the way the reference client draws one.
+     * The switch on a module row.
      *
-     * A dot says "this is on" and nothing else. A switch says which way it
-     * moves, so a column of them reads as a set of controls rather than as a
-     * column of indicator lights -- and it makes the hit target obvious, which
-     * a three-pixel dot never did.
+     * On takes the accent and off takes a washed-out text tone, rather than the
+     * white and grey this used regardless of theme. The track's end pixels are
+     * clipped so it reads as a pill without needing a real curve at eight
+     * pixels tall, and the knob is drawn in the surface colour so it looks like
+     * a hole in the track rather than a dot on top of it.
      */
-    private static void toggle(DrawContext ctx, int x, int y, boolean on) {
-        int track = on ? 0xFFFFFFFF : 0x33FFFFFF;
-        // the track, with its end pixels clipped so it reads as a rounded pill
+    private static void toggle(DrawContext ctx, int x, int y, boolean on, Theme th) {
+        int track = on ? th.accent() : Colors.withAlpha(th.textMuted(), 0.3f);
         ctx.fill(x + 1, y, x + SWITCH_W - 1, y + SWITCH_H, track);
         ctx.fill(x, y + 1, x + 1, y + SWITCH_H - 1, track);
         ctx.fill(x + SWITCH_W - 1, y + 1, x + SWITCH_W, y + SWITCH_H - 1, track);
 
         int knobX = on ? x + SWITCH_W - SWITCH_H + 1 : x + 1;
-        int knob = on ? 0xFF15151A : 0xFFB0B0B8;
+        int knob = on ? th.background() : Colors.lighten(th.textMuted(), 0.25F);
         ctx.fill(knobX + 1, y + 1, knobX + SWITCH_H - 2, y + SWITCH_H - 1, knob);
         ctx.fill(knobX, y + 2, knobX + 1, y + SWITCH_H - 2, knob);
         ctx.fill(knobX + SWITCH_H - 2, y + 2, knobX + SWITCH_H - 1, y + SWITCH_H - 2, knob);
