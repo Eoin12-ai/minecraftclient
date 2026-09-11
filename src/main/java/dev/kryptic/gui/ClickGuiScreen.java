@@ -456,6 +456,34 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         }
     }
 
+    /**
+     * The longest prefix of {@code text} that fits in {@code room} pixels.
+     *
+     * The column is about a hundred pixels wide once the UI-space layout is
+     * converted to vanilla's, and plenty of module names are wider than what
+     * is left after the switch takes its share. Measuring against the styled
+     * text matters: the width of the glyphs actually drawn is not the width of
+     * the same string in the default font.
+     */
+    private String fit(String text, int room) {
+        if (room <= 0 || this.client.textRenderer.getWidth(ui(text)) <= room) {
+            return text;
+        }
+
+        String ellipsis = "..";
+        int budget = room - this.client.textRenderer.getWidth(ui(ellipsis));
+        StringBuilder kept = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            if (this.client.textRenderer.getWidth(ui(kept.toString() + text.charAt(i))) > budget) {
+                break;
+            }
+
+            kept.append(text.charAt(i));
+        }
+
+        return kept + ellipsis;
+    }
+
     private static final int SWITCH_W = 14;
     private static final int SWITCH_H = 8;
 
