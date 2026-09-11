@@ -19,10 +19,40 @@ import re
 import sys
 
 
+def close_paren(src: str, open_at: int) -> int:
+    """Index just past the ) that matches the ( at open_at."""
+    depth, i = 0, open_at
+    while i < len(src):
+        if src[i] == "(":
+            depth += 1
+        elif src[i] == ")":
+            depth -= 1
+            if depth == 0:
+                return i + 1
+        i += 1
+    raise SystemExit("replace_method: unbalanced parentheses")
+
+
+def is_declaration(src: str, match: "re.Match") -> bool:
+    """
+    True for `void glass(...) {`, false for the call `glass(ctx, x0, ...);`.
+
+    The name-plus-paren pattern cannot tell those apart -- an indented call
+    reads as `<something> <name>(` just as a declaration does, which is why
+    asking for `glass` matched six places and the tool refused. What separates
+    them is on the other side: a declaration's parameter list is followed by a
+    body, a call's is followed by a semicolon or an operator.
+    """
+    after = src[close_paren(src, src.index("(", match.end() - 1)):]
+    after = re.sub(r"^\s*(?:throws\s+[\w.,\s]+)?", "", after)
+    return after.startswith("{")
+
+
 def span(src: str, name: str) -> tuple[int, int]:
     decls = [m for m in re.finditer(
         r"^[ \t]*(?:@\w+[^\n]*\n)*[ \t]*(?:public|private|protected|static|final|abstract|synchronized|\s)*"
         r"[\w<>\[\],.?\s]+\s" + re.escape(name) + r"\s*\(", src, re.M)]
+    decls = [m for m in decls if is_declaration(src, m)]
     if len(decls) != 1:
         raise SystemExit(f"replace_method: {name!r} matched {len(decls)} declarations; refusing")
 

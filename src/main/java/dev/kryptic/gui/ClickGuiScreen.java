@@ -510,40 +510,100 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
     }
 
     /**
-     * A glass panel: translucent, lit from the top, with a soft edge.
+     * How far a row is pulled in, to round a corner.
      *
-     * Three things make it read as glass rather than as a grey box. It is
-     * translucent, so the blurred world behind it shows through and moves when
-     * you do. It carries a vertical gradient, because a flat fill reads as
-     * paint and a graded one reads as a surface catching light. And it has a
-     * bright hairline along its top inside edge, which is the specular line a
-     * real pane would have.
+     * The old version inset the first row by two pixels and the second by one,
+     * which is what you do when you have square fills and have given up. A
+     * corner is a quarter circle, and a row's inset is just the horizontal
+     * distance from the arc to the edge at that height, so a radius of eight
+     * gives five pixels on the top row and nothing by the eighth. That is a
+     * real curve, drawn one row at a time.
+     */
+    private static int cornerInset(int row, int height, int radius) {
+        int fromEnd = Math.min(row, height - 1 - row);
+        if (fromEnd >= radius) {
+            return 0;
+        }
+
+        double dy = radius - 0.5 - fromEnd;
+        return (int) Math.round(radius - Math.sqrt(Math.max(0.0, radius * radius - dy * dy)));
+    }
+
+    /** The radius a box of this size can carry without the curves meeting. */
+    private static int radiusFor(int w, int h) {
+        return Math.max(0, Math.min(PANEL_RADIUS, Math.min(w, h) / 2 - 1));
+    }
+
+    private static final int PANEL_RADIUS = 8;
+
+    /**
+     * A translucent panel with rounded corners, a gradient, and a shadow.
      *
-     * DrawContext has no gradient call that this codebase has proven, so the
-     * gradient is drawn as one-pixel rows. At the size these panels actually
-     * render -- about a hundred pixels wide -- that is a few dozen fills.
+     * Three things make a surface read as glass rather than as paint: you can
+     * see the world moving behind it, it is brighter at the top than the bottom
+     * so it looks like it is catching light, and it has a hard bright line
+     * along its top edge where a real pane would throw a specular. The shadow
+     * is what lifts it off the background; without one a translucent panel
+     * reads as a stain on the screen instead of a sheet above it.
      */
     private static void glass(DrawContext ctx, int x0, int y0, int x1, int y1,
                               int topArgb, int bottomArgb) {
         int height = Math.max(1, y1 - y0);
+        int radius = radiusFor(x1 - x0, height);
+
+        // Shadow first, underneath: three rings, each fainter and wider. Drawn
+        // as outlines rather than filled boxes so the panel's own translucency
+        // is not sitting on three stacked blacks.
+        for (int ring = 3; ring >= 1; ring--) {
+            int alpha = (4 - ring) * 10;
+            shadowRing(ctx, x0 - ring, y0 - ring + 2, x1 + ring, y1 + ring + 2,
+                    radius + ring, alpha << 24);
+        }
+
         for (int i = 0; i < height; i++) {
             float t = (float) i / height;
             int argb = Colors.lerpArgb(topArgb, bottomArgb, t);
-            // the first and last row are inset by a pixel, which rounds the
-            // corners as far as square fills allow
-            int inset = (i == 0 || i == height - 1) ? 2 : (i == 1 || i == height - 2) ? 1 : 0;
+            int inset = cornerInset(i, height, radius);
             ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, argb);
         }
 
-        // the specular line, and a darker seat along the bottom
-        ctx.fill(x0 + 2, y0 + 1, x1 - 2, y0 + 2, 0x24FFFFFF);
-        ctx.fill(x0 + 2, y1 - 2, x1 - 2, y1 - 1, 0x18000000);
+        // The specular: brightest across the top, fading down the sides, gone
+        // by halfway. A line that runs the whole way round reads as a border;
+        // only the top-lit part of it reads as glass.
+        for (int i = 0; i < height; i++) {
+            int inset = cornerInset(i, height, radius);
+            int edge = i < height / 2
+                    ? Colors.lerpArgb(0x50FFFFFF, 0x10FFFFFF, (float) i / Math.max(1, height / 2))
+                    : Colors.lerpArgb(0x10000000, 0x38000000, (float) (i - height / 2) / Math.max(1, height / 2));
+            ctx.fill(x0 + inset, y0 + i, x0 + inset + 1, y0 + i + 1, edge);
+            ctx.fill(x1 - inset - 1, y0 + i, x1 - inset, y0 + i + 1, edge);
+        }
 
-        // edges, softer at the corners
-        ctx.fill(x0 + 2, y0, x1 - 2, y0 + 1, 0x40FFFFFF);
-        ctx.fill(x0 + 2, y1 - 1, x1 - 2, y1, 0x30000000);
-        ctx.fill(x0, y0 + 2, x0 + 1, y1 - 2, 0x28FFFFFF);
-        ctx.fill(x1 - 1, y0 + 2, x1, y1 - 2, 0x28FFFFFF);
+        int capInset = cornerInset(0, height, radius);
+        ctx.fill(x0 + capInset, y0, x1 - capInset, y0 + 1, 0x55FFFFFF);
+        ctx.fill(x0 + capInset, y1 - 1, x1 - capInset, y1, 0x38000000);
+
+        // The inner highlight, one pixel below the top edge. This is the line
+        // that sells it: the edge itself is the pane, this is the light coming
+        // through it.
+        int innerInset = cornerInset(1, height, radius);
+        ctx.fill(x0 + innerInset + 1, y0 + 1, x1 - innerInset - 1, y0 + 2, 0x22FFFFFF);
+    }
+
+    /** One row-by-row rounded outline, used to build the shadow. */
+    private static void shadowRing(DrawContext ctx, int x0, int y0, int x1, int y1,
+                                   int radius, int argb) {
+        int height = Math.max(1, y1 - y0);
+        int r = Math.max(0, Math.min(radius, Math.min(x1 - x0, height) / 2 - 1));
+        for (int i = 0; i < height; i++) {
+            int inset = cornerInset(i, height, r);
+            if (i == 0 || i == height - 1) {
+                ctx.fill(x0 + inset, y0 + i, x1 - inset, y0 + i + 1, argb);
+            } else {
+                ctx.fill(x0 + inset, y0 + i, x0 + inset + 1, y0 + i + 1, argb);
+                ctx.fill(x1 - inset - 1, y0 + i, x1 - inset, y0 + i + 1, argb);
+            }
+        }
     }
 
     /** A small glass surface -- the search field and the three buttons. */
