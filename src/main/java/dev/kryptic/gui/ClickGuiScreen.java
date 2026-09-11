@@ -272,7 +272,7 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         // the panels on.
         ctx.fill(0, 0, width, height, 0x4C06060A);
 
-        drawFallbackTopBar(ctx, left, top);
+        drawFallbackTopBar(ctx);
 
         String query = search.toString().toLowerCase(Locale.ROOT).trim();
         int cx = left;
@@ -331,6 +331,8 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
             cx += colW + gap;
         }
 
+        drawFallbackPanes(ctx);
+
         String hint = "RIGHT SHIFT TO CLOSE   -   RIGHT-CLICK A MODULE FOR ITS SETTINGS";
         ctx.drawText(this.client.textRenderer, ui(hint),
                 (width - this.client.textRenderer.getWidth(ui(hint))) / 2, height - 14, 0xFF5A5A62, false);
@@ -346,71 +348,112 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
         ctx.drawText(this.client.textRenderer, ui(banner), 4, 2, 0xFFE08A8A, false);
     }
 
-    /** The search pill and the three buttons, so the bar is not just missing. */
-    private void drawFallbackTopBar(DrawContext ctx, int left, int columnsTop) {
-        int barH = Math.round(OverlayRenderer.uiToGui(BAR_H));
-        int y = Math.max(14, columnsTop - barH - 4);
-        int searchW = Math.round(OverlayRenderer.uiToGui(SEARCH_W));
-        int pillGap = Math.round(OverlayRenderer.uiToGui(PILL_GAP));
+    /**
+     * The bar, drawn where the click handler says it is.
+     *
+     * This used to lay itself out independently -- title at the column margin,
+     * pills sized to their labels -- which looked fine and was wrong: every hit
+     * test goes through buttonX, searchX and buttonY in UI space, so the
+     * buttons you saw were not the buttons you were clicking. Converting those
+     * same functions is the only way the two can agree.
+     *
+     * Labels are cut to the converted pill rather than the pill being widened,
+     * for the same reason: the width is not this method's to choose.
+     */
+    private void drawFallbackTopBar(DrawContext ctx) {
+        float sw = OverlayRenderer.uiWidth();
         int h = Math.round(OverlayRenderer.uiToGui(SEARCH_H));
+        int searchW = Math.round(OverlayRenderer.uiToGui(SEARCH_W));
+        int sx = Math.round(OverlayRenderer.uiToGui(searchX(sw)));
+        int sy = Math.round(OverlayRenderer.uiToGui(searchY()));
+        int pillW = Math.round(OverlayRenderer.uiToGui(PILL_W));
+        int pillH = Math.round(OverlayRenderer.uiToGui(PILL_H));
+        int by = Math.round(OverlayRenderer.uiToGui(buttonY()));
 
-        // A fixed pill width is a UI-space number; converted to vanilla's it is
-        // narrower than the words it has to hold, so the labels spilled out of
-        // their buttons and into each other. Size the pill to its widest label.
-        String[] labels = {"STATS", "CONFIGS", "THEMES"};
-        int pillW = 0;
-        for (String label : labels) {
-            pillW = Math.max(pillW, this.client.textRenderer.getWidth(ui(label)));
-        }
+        int markX = Math.round(OverlayRenderer.uiToGui(barX(sw)));
+        ctx.drawText(this.client.textRenderer, ui(fit("KRYPTIC",
+                        Math.round(OverlayRenderer.uiToGui(MARK_W)))),
+                markX, sy + h / 2 - 4, 0xFFEDEDEF, false);
 
-        pillW += 10;
-
-        ctx.drawText(this.client.textRenderer, ui("KRYPTIC"), left, y + h / 2 - 4, 0xFFEDEDEF, false);
-        int sx = left + this.client.textRenderer.getWidth(ui("KRYPTIC")) + 10;
-
-        panel(ctx, sx, y, sx + searchW, y + h, 0x38202430, 0x2EFFFFFF);
-        String typed = search.length() == 0 ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
+        panel(ctx, sx, sy, sx + searchW, sy + h, 0x38202430, 0x2EFFFFFF);
+        String typed = search.length() == 0
+                ? "SEARCH MODULES" : search.toString().toUpperCase(Locale.ROOT);
         ctx.drawText(this.client.textRenderer, ui(fit(typed, searchW - 12)),
-                sx + 6, y + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
+                sx + 6, sy + h / 2 - 4, search.length() == 0 ? 0xFF5A5A62 : 0xFFEDEDEF, false);
 
-        int px = sx + searchW + 10;
+        String[] labels = {"STATS", "CONFIGS", "THEMES"};
         boolean[] active = {statsOpen, false, themesOpen};
         for (int i = 0; i < labels.length; i++) {
-            int x0 = px + i * (pillW + pillGap);
-            panel(ctx, x0, y, x0 + pillW, y + h,
+            int x0 = Math.round(OverlayRenderer.uiToGui(buttonX(sw, i)));
+            panel(ctx, x0, by, x0 + pillW, by + pillH,
                     active[i] ? 0x66323744 : 0x3A222630, active[i] ? 0x66FFFFFF : 0x2AFFFFFF);
-            int lw = this.client.textRenderer.getWidth(ui(labels[i]));
-            ctx.drawText(this.client.textRenderer, ui(labels[i]),
-                    x0 + (pillW - lw) / 2, y + h / 2 - 4, active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
+            String label = fit(labels[i], pillW - 6);
+            int lw = this.client.textRenderer.getWidth(ui(label));
+            ctx.drawText(this.client.textRenderer, ui(label),
+                    x0 + (pillW - lw) / 2, by + pillH / 2 - 4,
+                    active[i] ? 0xFFFFFFFF : 0xFF8E8E96, false);
         }
     }
 
     /**
-     * The longest prefix of {@code text} that fits in {@code room} pixels.
+     * The Themes and Stats panes, which otherwise opened invisibly.
      *
-     * The column is about a hundred pixels wide once the UI-space layout is
-     * converted to vanilla's, and plenty of module names are wider than what
-     * is left after the switch takes its share. Measuring against the styled
-     * text matters: the width of the glyphs actually drawn is not the width of
-     * the same string in the default font.
+     * The fallback drew the columns and the bar and nothing else, so pressing
+     * Themes set the flag, the NanoVG pane never drew, and the menu looked
+     * broken -- a button that swallows a click and does nothing is worse than a
+     * button that is missing. These are drawn at the panes' own coordinates so
+     * what is on screen lines up with what is clickable.
      */
-    private String fit(String text, int room) {
-        if (room <= 0 || this.client.textRenderer.getWidth(ui(text)) <= room) {
-            return text;
+    private void drawFallbackPanes(DrawContext ctx) {
+        if (themesOpen) {
+            pane(ctx, themesPanel, "THEMES", themeLines());
         }
 
-        String ellipsis = "..";
-        int budget = room - this.client.textRenderer.getWidth(ui(ellipsis));
-        StringBuilder kept = new StringBuilder();
-        for (int i = 0; i < text.length(); i++) {
-            if (this.client.textRenderer.getWidth(ui(kept.toString() + text.charAt(i))) > budget) {
-                break;
+        if (statsOpen) {
+            pane(ctx, statsPanel, "STATS", List.of("Open the pane in the styled menu for the full read-out."));
+        }
+    }
+
+    private List<String> themeLines() {
+        List<String> lines = new ArrayList<>();
+        ThemeManager themes = KrypticClient.themes();
+        if (themes == null) {
+            return lines;
+        }
+
+        for (Theme theme : themes.getThemes()) {
+            lines.add((theme == themes.current() ? "> " : "  ") + theme.getName().toUpperCase(Locale.ROOT));
+        }
+
+        lines.add("  + ADD CUSTOM");
+        return lines;
+    }
+
+    private void pane(DrawContext ctx, Panel panel, String title, List<String> lines) {
+        int x = Math.round(OverlayRenderer.uiToGui(panel.getX()));
+        int y = Math.round(OverlayRenderer.uiToGui(panel.getY()));
+        int w = Math.round(OverlayRenderer.uiToGui(panel.width()));
+        int headH = Math.round(OverlayRenderer.uiToGui(Panel.HEADER_H));
+        int rowH = Math.round(OverlayRenderer.uiToGui(26.0f));
+        int h = headH + lines.size() * rowH + 6;
+
+        // a scrim, so the pane reads as sitting above the grid
+        ctx.fill(0, 0, width, height, 0x66050506);
+        glass(ctx, x, y, x + w, y + h, 0xD22A2C34, 0xD2121318);
+        glass(ctx, x + 1, y + 1, x + w - 1, y + headH, 0xB03A3D47, 0xB01E2028);
+        ctx.drawText(this.client.textRenderer, ui(title), x + 8, y + headH / 2 - 4, 0xFFEDEDEF, false);
+
+        int ry = y + headH + 3;
+        for (String line : lines) {
+            boolean current = line.startsWith(">");
+            if (current) {
+                ctx.fill(x + 4, ry, x + w - 4, ry + rowH, 0x2EFFFFFF);
             }
 
-            kept.append(text.charAt(i));
+            ctx.drawText(this.client.textRenderer, ui(fit(line, w - 16)),
+                    x + 8, ry + rowH / 2 - 4, current ? 0xFFFFFFFF : 0xFF9CA0AC, false);
+            ry += rowH;
         }
-
-        return kept + ellipsis;
     }
 
     private static final int SWITCH_W = 14;
