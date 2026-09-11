@@ -1,6 +1,7 @@
 package dev.kryptic.gui;
 
 import net.minecraft.text.Style;
+import net.minecraft.text.StyleSpriteSource;
 import java.util.Locale;
 import dev.kryptic.gui.panel.ModuleEntry;
 import dev.kryptic.module.Module;
@@ -134,17 +135,24 @@ public class ClickGuiScreen extends Screen implements NvgDrawable {
      * If the provider fails to load, Minecraft falls back to the default font
      * on its own, so the worst case is what this looked like before.
      */
-    private static final Identifier UI_FONT_ID = Identifier.of("krypticclient", "inter");
+    /**
+     * Inter, drawn by Minecraft rather than by NanoVG.
+     *
+     * On this version Style.withFont takes a StyleSpriteSource rather than an
+     * Identifier, and the concrete type is the record nested inside it -- read
+     * off the remapped jar rather than guessed, after guessing cost a build.
+     */
+    private static final Style UI_FONT = Style.EMPTY.withFont(
+            new StyleSpriteSource.Font(Identifier.of("krypticclient", "inter")));
 
     /**
      * Text in the client's own typeface.
      *
-     * Style.withFont takes a StyleSpriteSource on this version rather than an
-     * Identifier, and the probe that reads how one is built could not run while
-     * this file would not compile. Plain text until that lands.
+     * If the font provider fails to load, Minecraft falls back to the default
+     * font by itself, so the worst case is the bitmap type this replaced.
      */
     private static Text ui(String s) {
-        return Text.literal(s);
+        return Text.literal(s).setStyle(UI_FONT);
     }
 
     private int nvgFrames;
